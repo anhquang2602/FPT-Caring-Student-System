@@ -64,6 +64,34 @@
         <servlet-name>BusPagingServlet</servlet-name>
         <servlet-class>controller.BusPagingServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddHostelController</servlet-name>
+        <servlet-class>controller.AddHostelController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FindDistrictController</servlet-name>
+        <servlet-class>controller.FindDistrictController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditHostelController</servlet-name>
+        <servlet-class>controller.EditHostelController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HostelController</servlet-name>
+        <servlet-class>controller.ListHostelbySellerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAllHostelController</servlet-name>
+        <servlet-class>controller.ListAllHostelController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HostelDetailController</servlet-name>
+        <servlet-class>controller.HostelDetailController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteHostel</servlet-name>
+        <servlet-class>controller.DeleteHostel</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -127,6 +155,34 @@
     <servlet-mapping>
         <servlet-name>BusPagingServlet</servlet-name>
         <url-pattern>/BusPagingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddHostelController</servlet-name>
+        <url-pattern>/addhostel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FindDistrictController</servlet-name>
+        <url-pattern>/findDistrict</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditHostelController</servlet-name>
+        <url-pattern>/edithostel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HostelController</servlet-name>
+        <url-pattern>/hostellist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllHostelController</servlet-name>
+        <url-pattern>/listallhostels</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HostelDetailController</servlet-name>
+        <url-pattern>/detailhostel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteHostel</servlet-name>
+        <url-pattern>/deletehostel</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

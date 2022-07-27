@@ -1,0 +1,14 @@
+SMAP
+listAllHostels_jsp.java
+JSP
+*S JSP
+*F
++ 0 listAllHostels.jsp
+listAllHostels.jsp
+*L
+5,13:54
+17:90,11
+18:101,6
+19,2:107
+20,4:69
+*E

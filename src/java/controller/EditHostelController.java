@@ -5,22 +5,27 @@
  */
 package controller;
 
-import dao.AccountDAO;
-import dao.SellerDAO;
+import com.google.gson.Gson;
+import dao.AddressDAO;
+import dao.DepartmentDAO;
+import dao.HostelDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Account;
+import model.Department;
+import model.Hostel;
+import model.User;
 
 /**
  *
- * @author longn
+ * @author nguye
  */
-public class LoginServlet extends HttpServlet {
+public class EditHostelController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +39,7 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,7 +54,22 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            response.sendRedirect("login.jsp");
+        processRequest(request, response);
+        
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        
+        String id = request.getParameter("id");
+        HostelDAO dao = new HostelDAO();
+        Hostel h = dao.getHostelInfo(Integer.parseInt(id));
+      
+        
+
+        AddressDAO a = new AddressDAO();
+        request.setAttribute("listProvince", a.listProvince());
+        request.setAttribute("editHostel", h);
+        request.setAttribute("listDistrict", a.getDistrictByProName(h.getProvinceNamẹ()));
+        request.getRequestDispatcher("editHostel.jsp").forward(request, response);
     }
 
     /**
@@ -74,26 +83,26 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("pass");
-        String role;
-       
-        SellerDAO sdao = new SellerDAO();
-        AccountDAO dao = new AccountDAO();
-        Account a = dao.checkLogin(username, password);
+        processRequest(request, response);
+        PrintWriter out = response.getWriter();
+        HostelDAO dao = new HostelDAO();
+        int id = Integer.parseInt(request.getParameter("hostelId"));
+        String hostelName = request.getParameter("hostelName");
+        int room = Integer.parseInt(request.getParameter("room"));
+        boolean status = request.getParameter("status").equals("yes");
+        int floor = Integer.parseInt(request.getParameter("floor"));
+        int provinceID = Integer.parseInt(request.getParameter("province"));
+        int districtID = Integer.parseInt(request.getParameter("district"));
+        String address = request.getParameter("address");
+        double cost = Double.parseDouble(request.getParameter("cost"));
+        double distance = Double.parseDouble(request.getParameter("distance"));
+        String description = request.getParameter("description");
         
-        if (a != null && a.isStatus() == true) {
-            request.getSession().setAttribute("role", a.getRoleId());
-            request.getSession().setAttribute("username", username);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        } else if (a == null) {
-            request.setAttribute("errorLogin"," username or password is not correct.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else if (a.isStatus() == false) {
-            request.setAttribute("errorLogin", "can not login because" + username + " is deactive now");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-
+	Hostel h  = new Hostel(id,hostelName, room, status, floor, provinceID, districtID, address, cost, distance, description);
+	dao.updateHostel(h);   
+        
+	response.sendRedirect(request.getContextPath() + "/edithostel?id="+id);
+       
     }
 
     /**
@@ -107,3 +116,4 @@ public class LoginServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+    

@@ -5,22 +5,30 @@
  */
 package controller;
 
-import dao.AccountDAO;
+import dao.AddressDAO;
+import dao.HostelDAO;
 import dao.SellerDAO;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Account;
+import javax.servlet.http.Part;
+import model.Hostel;
 
 /**
  *
- * @author longn
+ * @author nguye
  */
-public class LoginServlet extends HttpServlet {
+@MultipartConfig
+public class AddHostelController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +42,7 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,7 +57,12 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            response.sendRedirect("login.jsp");
+        processRequest(request, response);
+
+        AddressDAO a = new AddressDAO();
+        request.setAttribute("listProvince", a.listProvince());
+        request.getRequestDispatcher("addHostel.jsp").forward(request, response);
+
     }
 
     /**
@@ -71,29 +73,30 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private final String UPLOAD_DIRECTORY = "C:/";
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("pass");
-        String role;
-       
-        SellerDAO sdao = new SellerDAO();
-        AccountDAO dao = new AccountDAO();
-        Account a = dao.checkLogin(username, password);
-        
-        if (a != null && a.isStatus() == true) {
-            request.getSession().setAttribute("role", a.getRoleId());
-            request.getSession().setAttribute("username", username);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        } else if (a == null) {
-            request.setAttribute("errorLogin"," username or password is not correct.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else if (a.isStatus() == false) {
-            request.setAttribute("errorLogin", "can not login because" + username + " is deactive now");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        String hostelName = request.getParameter("hostelName");
+        int room = Integer.parseInt(request.getParameter("room"));
+        boolean status = request.getParameter("status").equals("yes");
+        int floor = Integer.parseInt(request.getParameter("floor"));
+        int provinceID = Integer.parseInt(request.getParameter("province"));
+        int districtID = Integer.parseInt(request.getParameter("district"));
+        String address = request.getParameter("address");
+        double cost = Double.parseDouble(request.getParameter("cost"));
+        double distance = Double.parseDouble(request.getParameter("distance"));
+        String description = request.getParameter("description");
 
+        SellerDAO sda = new SellerDAO();
+        String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
+        HostelDAO h = new HostelDAO();
+        h.addHostel(new Hostel(hostelName, Integer.parseInt(sellerID), room, status, floor, 1, provinceID, districtID, address, cost, distance, description));
+        response.sendRedirect(request.getContextPath() + "/hostellist");
     }
 
     /**

@@ -31,6 +31,10 @@ public class Seller {
     public Seller() {
     }
 
+    public Seller(int sellerID) {
+        this.sellerID = sellerID;
+    }
+
     public Seller(int sellerID, String firstName, String lastName, int age, int phone, String email, String countryName, String provinceName, String districtName, String address, int status, int gender, String image) {
         this.sellerID = sellerID;
         this.firstName = firstName;
@@ -77,9 +81,6 @@ public class Seller {
         this.image = image;
     }
     
-
-   
-
     public String getFirstName() {
         return firstName;
     }

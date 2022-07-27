@@ -5,22 +5,21 @@
  */
 package controller;
 
-import dao.AccountDAO;
-import dao.SellerDAO;
+import com.google.gson.Gson;
+import dao.AddressDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.util.Collections.list;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Account;
 
 /**
  *
- * @author longn
+ * @author nguye
  */
-public class LoginServlet extends HttpServlet {
+public class FindDistrictController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +38,10 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
+            out.println("<title>Servlet FindDistrictController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet FindDistrictController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +59,19 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            response.sendRedirect("login.jsp");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        int provinceID = Integer.parseInt(request.getParameter("province"));
+        AddressDAO dao = new AddressDAO();
+        
+        String json = new Gson().toJson(dao.listDistrict(provinceID));
+        out.print(json);
+        out.flush();
+        out.close();
+
+//        response.getWriter().write(json);
     }
 
     /**
@@ -74,26 +85,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("pass");
-        String role;
-       
-        SellerDAO sdao = new SellerDAO();
-        AccountDAO dao = new AccountDAO();
-        Account a = dao.checkLogin(username, password);
-        
-        if (a != null && a.isStatus() == true) {
-            request.getSession().setAttribute("role", a.getRoleId());
-            request.getSession().setAttribute("username", username);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        } else if (a == null) {
-            request.setAttribute("errorLogin"," username or password is not correct.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else if (a.isStatus() == false) {
-            request.setAttribute("errorLogin", "can not login because" + username + " is deactive now");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-
+        processRequest(request, response);
     }
 
     /**

@@ -5,22 +5,20 @@
  */
 package controller;
 
-import dao.AccountDAO;
-import dao.SellerDAO;
+import dao.HostelDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Account;
+import model.Hostel;
 
 /**
  *
- * @author longn
+ * @author nguye
  */
-public class LoginServlet extends HttpServlet {
+public class DeleteHostel extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +32,7 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,7 +47,18 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            response.sendRedirect("login.jsp");
+        
+        HostelDAO dao = new HostelDAO();
+        int hostelID =Integer.parseInt(request.getParameter("id")) ;
+        dao.deleteHostelImage(hostelID);
+        dao.deleteHostel(hostelID);
+ 
+        response.sendRedirect(request.getContextPath() + "/hostellist");
+        
+        
+       
+        
+         
     }
 
     /**
@@ -74,26 +72,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("pass");
-        String role;
-       
-        SellerDAO sdao = new SellerDAO();
-        AccountDAO dao = new AccountDAO();
-        Account a = dao.checkLogin(username, password);
-        
-        if (a != null && a.isStatus() == true) {
-            request.getSession().setAttribute("role", a.getRoleId());
-            request.getSession().setAttribute("username", username);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        } else if (a == null) {
-            request.setAttribute("errorLogin"," username or password is not correct.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else if (a.isStatus() == false) {
-            request.setAttribute("errorLogin", "can not login because" + username + " is deactive now");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-
+        processRequest(request, response);
     }
 
     /**

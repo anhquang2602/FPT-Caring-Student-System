@@ -1,0 +1,14 @@
+SMAP
+addHostel_jsp.java
+JSP
+*S JSP
+*F
++ 0 addHostel.jsp
+addHostel.jsp
+*L
+5,96:54
+100:331,11
+101:342,6
+102:348
+102,162:152
+*E

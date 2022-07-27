@@ -130,4 +130,21 @@ public class SellerDAO extends DBContext {
         }
         return null;
     }
+    
+    public String getSellerID(String userName) {
+        String sql = "select s.SellerID from Sellers s join Account a on s.Email = a.Username where a.Username = ?";
+        PreparedStatement st;
+        try {
+            st = connection.prepareCall(sql);
+            st.setString(1, userName);
+            ResultSet rs = st.executeQuery();
+            
+            if (rs.next()) {
+               return rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       return null;
+    }
 }
