@@ -83,6 +83,9 @@ public class EditHostelController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        
         processRequest(request, response);
         PrintWriter out = response.getWriter();
         HostelDAO dao = new HostelDAO();

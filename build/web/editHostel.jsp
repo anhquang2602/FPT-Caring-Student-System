@@ -154,10 +154,11 @@
                                     <div class="input_text"> <input type="text" name="address" value="${editHostel.address}"> <span>Địa chỉ</span> </div>
                                     <div class="input_text"> <input type="number" name="cost" value="${editHostel.cost}"> <span>Giá thuê</span> </div>
                                     <div class="input_text"> <input type="number" name="distance" value="${editHostel.distance}"> <span>Khoảng cách</span> </div>
-                                    <div class="input_text"> <span>Mô tả</span> </div>
-                                    <textarea rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="description">
-                                        ${editHostel.description}
-                                    </textarea>
+                                    <div> <span>Mô tả</span> 
+                                        <textarea style="width: 100%; margin-top: 10px" type="text" name="description">
+                                            ${editHostel.description}
+                                        </textarea>
+                                    </div>
                                     <div class="pay"> 
                                         <button type="submit">Save</button>                  
                                     </div>
