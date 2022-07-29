@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="css/viewListStyle.css">
     </header>
     <body>
@@ -30,17 +29,15 @@
                         <li><a style="color: #fff; font-size: 18px" href="StudentListController">view list students</a><li>
                         <li><a style="color: #fff; font-size: 18px" href="ClubListController">view list club</a><li> 
                         <li><a style="color: #fff; font-size: 18px" href="#">view list reports</a><li>
-                        <!--<li><span class="far fa-user-circle ava mt-1"></span></li>-->   
-                        <li class="dropdownProfile">
-                            <a class="dropdown-toggle" style="color: #fff; text-decoration: none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="dropdownProfile" style="margin-left: 200px">
+                            <button class="dropdown-toggle mt-2" style="background-color: rgb(238, 77, 45); color: white; text-decoration: none; border: none; font-size: 20px; text-align: right" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 ${sessionScope.username}
-                            </a>
-                            <div class="dropdown-menu" style="background-color: white" aria-labelledby="dropdownMenuButton">
-                                <!--<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+                            </button>
+                            <div class="dropdown-menu" style="background-color: white; left: 0;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 999" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" style="color: red" href="#">Profile</a>
                                 <a class="dropdown-item" style="color: red" href="login.jsp">Logout</a>
                             </div>
-                        </li>
+                        </div>
                     </ul>
                 </div>
             </div>

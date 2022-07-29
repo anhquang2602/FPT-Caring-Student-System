@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="col-md-4 mt-5">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <form action="ClubListController">
+                                <form>
                                     <div class="form-group">                       
                                         <img src="${departmentdetail.img1}" class="form-control" style="padding: 0px">
                                     </div>

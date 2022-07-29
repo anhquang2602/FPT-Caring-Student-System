@@ -47,7 +47,6 @@
                                         <tr>
                                             <td><a class = "long" href="detailhostel?id=${o.hostelID}">${o.hostelName}</a></td>
                                         </tr>
-                                        <br>
                                     </c:forEach>
                                 </table>
                             </div>

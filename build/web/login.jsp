@@ -13,10 +13,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/loginStyle.css">
     </head>
-    <body style="background-color: rgb(238, 77, 45)">
+    <body style="background-image: url(images/logo.jpg); background-size: 100% 100%">
         <div class="container mt-5 mb-5">
             <div class="d-flex flex row g-0">
-                <div class="col-md-6 mt-3">
+                <div class="col-md-7"></div>
+                <div class="col-md-5 mt-5">
                     <div class="card card1 p-3">
                         <div class="d-flex flex-column">  
                             <span class="login mt-3">Đăng nhập</span> 
@@ -32,13 +33,6 @@
                             <div class="text2 mt-4"> <span>Bạn chưa có tài khoản?<a class="register" style="text-decoration: none; color: rgb(238, 77, 45)" href="register.jsp">  Đăng ký</a></span> </div>
                             <h2 style="color: red"> ${errorLogin}</h2>
                             <h2 style="color: green"> ${InputNewPassMess}</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mt-3">
-                    <div class="card card2">
-                        <div class="image">
-                            <img src="https://vcdn-vnexpress.vnecdn.net/2021/02/01/FPT-3063-1612164117.png">
                         </div>
                     </div>
                 </div>
