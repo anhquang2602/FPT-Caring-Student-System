@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -168,144 +168,145 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script>
-                                $(document).on('change', '.province', function () {
-                                    var province = document.getElementById("province").value;
-                                    $('#district').empty();
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+                            $(document).on('change', '.province', function () {
+                                var province = document.getElementById("province").value;
+                                $('#district').empty();
 
 
-                                    $.ajax({
-                                        type: "GET",
+                                $.ajax({
+                                    type: "GET",
 
-                                        url: "/Test_1/findDistrict",
-                                        data: {
-                                            province: province,
-                                        },
-                                        headers: {
-                                            Accept: "application/json; charset=utf-8",
-                                            contentType: "application/json; charset=utf-8"
-                                        },
+                                    url: "/Test_1/findDistrict",
+                                    data: {
+                                        province: province,
+                                    },
+                                    headers: {
+                                        Accept: "application/json; charset=utf-8",
+                                        contentType: "application/json; charset=utf-8"
+                                    },
 
-                                        success: function (data) {
+                                    success: function (data) {
 
-                                            data.forEach(function (a) {
-                                                $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+                                        data.forEach(function (a) {
+                                            $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
 
-                                            });
-                                        },
-                                        error: function (e) {
-                                            console.log("ERROR: ", e);
-                                        }
-                                    });
-
+                                        });
+                                    },
+                                    error: function (e) {
+                                        console.log("ERROR: ", e);
+                                    }
                                 });
-            </script>
 
-            <script>
-                function reset() {
-                    location.reload();
+                            });
+        </script>
+
+        <script>
+            function reset() {
+                location.reload();
+            }
+
+        </script>
+
+        <script>
+            function validateEditHostel() {
+                let isValid = true;
+                const hostelName = document.edithostelForm.hostelName.value;
+                const room = document.edithostelForm.room.value;
+                const floor = document.edithostelForm.floor.value;
+                const province = document.edithostelForm.province.value;
+                const address = document.edithostelForm.address.value;
+                const cost = document.edithostelForm.cost.value;
+                const distance = document.edithostelForm.distance.value;
+                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex2 = /^[0-9]*$/;
+                const success = document.getElementById('success');
+
+                document.getElementById('errorName').innerText = ' ';
+                document.getElementById('errorRoom').innerText = ' ';
+                document.getElementById('errorFloor').innerText = ' ';
+                document.getElementById('errorProvince').innerText = ' ';
+                document.getElementById('errorAddress').innerText = ' ';
+                document.getElementById('errorCost').innerText = ' ';
+                document.getElementById('errorDistance').innerText = ' ';
+
+
+                if (!hostelName) {
+                    document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
+                    isValid = false;
                 }
 
-            </script>
-
-            <script>
-                function validateEditHostel() {
-                    let isValid = true;
-                    const hostelName = document.edithostelForm.hostelName.value;
-                    const room = document.edithostelForm.room.value;
-                    const floor = document.edithostelForm.floor.value;
-                    const province = document.edithostelForm.province.value;
-                    const address = document.edithostelForm.address.value;
-                    const cost = document.edithostelForm.cost.value;
-                    const distance = document.edithostelForm.distance.value;
-                    const regex = /[+-]?([0-9]*[.])?[0-9]+/;
-                    const regex2 = /^[0-9]*$/;
-                    const success = document.getElementById('success');
-
-                    document.getElementById('errorName').innerText = ' ';
-                    document.getElementById('errorRoom').innerText = ' ';
-                    document.getElementById('errorFloor').innerText = ' ';
-                    document.getElementById('errorProvince').innerText = ' ';
-                    document.getElementById('errorAddress').innerText = ' ';
-                    document.getElementById('errorCost').innerText = ' ';
-                    document.getElementById('errorDistance').innerText = ' ';
-
-
-                    if (!hostelName) {
-                        document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
-                        isValid = false;
-                    }
-
-                    if (!room) {
-                        document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
-                        isValid = false;
-                    } else if (room <= 0) {
-                        document.getElementById('errorRoom').innerText = 'Invalid!';
-                        isValid = false;
-                    } else if (!regex2.test(room)) {
-                        document.getElementById('errorRoom').innerText = 'Invalid!';
-                        isValid = false;
-                    }
-
-                    if (!floor) {
-                        document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
-                        isValid = false;
-                    } else if (!regex2.test(floor)) {
-                        document.getElementById('errorFloor').innerText = 'Invalid!';
-                        isValid = false;
-                    } else if (floor <= 0) {
-                        document.getElementById('errorFloor').innerText = 'Invalid!';
-                        isValid = false;
-                    }
-
-                    if (!province) {
-                        document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
-                        isValid = false;
-                    }
-
-                    if (!address) {
-                        document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
-                        isValid = false;
-                    }
-
-                    if (!cost) {
-                        document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
-                        isValid = false;
-                    } else if (!regex.test(cost)) {
-                        document.getElementById('errorCost').innerText = 'Invalid!';
-                        isValid = false;
-                    } else if (cost <= 0) {
-                        document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
-                        isValid = false;
-                    }
-
-                    if (!distance) {
-                        document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
-                        isValid = false;
-                    } else if (!regex.test(distance)) {
-                        document.getElementById('errorDistance').innerText = 'Invalid!';
-                        isValid = false;
-                    } else if (distance <= 0) {
-                        document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
-                        isValid = false;
-                    }
-
-                    if (isValid) {
-                        alert('Save successfully!');
-                    }
-
-                    return isValid;
-
+                if (!room) {
+                    document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
+                    isValid = false;
+                } else if (room <= 0) {
+                    document.getElementById('errorRoom').innerText = 'Invalid!';
+                    isValid = false;
+                } else if (!regex2.test(room)) {
+                    document.getElementById('errorRoom').innerText = 'Invalid!';
+                    isValid = false;
                 }
-            </script>
 
-            <script
-                src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                crossorigin="anonymous">
-            </script>
+                if (!floor) {
+                    document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
+                    isValid = false;
+                } else if (!regex2.test(floor)) {
+                    document.getElementById('errorFloor').innerText = 'Invalid!';
+                    isValid = false;
+                } else if (floor <= 0) {
+                    document.getElementById('errorFloor').innerText = 'Invalid!';
+                    isValid = false;
+                }
+
+                if (!province) {
+                    document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+                    isValid = false;
+                }
+
+                if (!address) {
+                    document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
+                    isValid = false;
+                }
+
+                if (!cost) {
+                    document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
+                    isValid = false;
+                } else if (!regex.test(cost)) {
+                    document.getElementById('errorCost').innerText = 'Invalid!';
+                    isValid = false;
+                } else if (cost <= 0) {
+                    document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
+                    isValid = false;
+                }
+
+                if (!distance) {
+                    document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
+                    isValid = false;
+                } else if (!regex.test(distance)) {
+                    document.getElementById('errorDistance').innerText = 'Invalid!';
+                    isValid = false;
+                } else if (distance <= 0) {
+                    document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    alert('Save successfully!');
+                }
+
+                return isValid;
+
+            }
+        </script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous">
+        </script>
     </body>
     <%@include file="/footer.jsp" %>
 </html>

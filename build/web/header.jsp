@@ -3,7 +3,7 @@
     Created on : Jun 21, 2022, 11:55:08 PM
     Author     : asus
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,23 +25,28 @@
             <div id="topnavbar">
                 <div class="topnav" style="width: 100%;  background-color: rgb(238, 77, 45)">
                     <ul class="d-flex my-2">
-                        <li><a style="color: #fff; font-size: 18px" href="SellerListController">View List Sellers</a></li>
-                        <li><a style="color: #fff; font-size: 18px" href="StudentListController">view list students</a><li>
-                        <li><a style="color: #fff; font-size: 18px" href="ClubListController">view list club</a><li> 
-                        <li><a style="color: #fff; font-size: 18px" href="#">view list reports</a><li>
+                        <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                        <a style="color: #fff" href="SellerListController">View List Sellers</a>  
+                        <a style="color: #fff" href="StudentListController">view list students</a> 
+                        <a style="color: #fff" href="ClubListController">view list club</a> 
+                        <a style="color: #fff" href="#contact">view list reports</a>
+                        <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
+                        <a style="color: #fff" href="hostellist">My Hostel</a>  
+                        <a style="color: #fff" href="#">My Restaurant</a>                           
+                        <%}%>
                         <div class="dropdownProfile" style="margin-left: 200px">
                             <button class="dropdown-toggle mt-2" style="background-color: rgb(238, 77, 45); color: white; text-decoration: none; border: none; font-size: 20px; text-align: right" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 ${sessionScope.username}
                             </button>
                             <div class="dropdown-menu" style="background-color: white; left: 0;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 999" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" style="color: red" href="#">Profile</a>
-                                <a class="dropdown-item" style="color: red" href="login.jsp">Logout</a>
+                                <a class="dropdown-item" style="color: red" href="UpdateSellerProfile">My Profile</a>
+                                <a class="dropdown-item" style="color: red" href="ChangePasswordServlet">Change Password</a>
+                                <a class="dropdown-item" style="color: red" href="LogoutServlet">Log out</a>
                             </div>
                         </div>
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

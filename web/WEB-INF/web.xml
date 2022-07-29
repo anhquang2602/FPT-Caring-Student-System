@@ -92,6 +92,14 @@
         <servlet-name>DeleteHostel</servlet-name>
         <servlet-class>controller.DeleteHostel</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateSellerProfile</servlet-name>
+        <servlet-class>controller.UpdateSellerProfile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -183,6 +191,14 @@
     <servlet-mapping>
         <servlet-name>DeleteHostel</servlet-name>
         <url-pattern>/deletehostel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSellerProfile</servlet-name>
+        <url-pattern>/UpdateSellerProfile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

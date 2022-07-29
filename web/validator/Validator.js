@@ -1,8 +1,8 @@
 let check = 0;
 
 /*
-to check if email is in valid format and notice this form of email to user
-*/
+ to check if email is in valid format and notice this form of email to user
+ */
 function checkMail(nameOfForm) {
     const email = document[nameOfForm].username.value;
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -33,17 +33,17 @@ function checkMail(nameOfForm) {
 
 
 /*function checkName(nameOfInput,name,nameOfdiv,nameOfForm) {
-    const username = document.registerForm[nameOfInput].value;
-    if (username == '') {
-        const usernameError = document.createElement('div');
-        usernameError.append('The '+name+ ' should not be blank');
-        usernameError.setAttribute('class', 'alert-danger alert error');
-        usernameError.setAttribute('role', 'alert');
-        // Append div to parent element
-        document.getElementById(nameOfdiv).appendChild(usernameError);
-        check = 0;
-    }
-}*/
+ const username = document.registerForm[nameOfInput].value;
+ if (username == '') {
+ const usernameError = document.createElement('div');
+ usernameError.append('The '+name+ ' should not be blank');
+ usernameError.setAttribute('class', 'alert-danger alert error');
+ usernameError.setAttribute('role', 'alert');
+ // Append div to parent element
+ document.getElementById(nameOfdiv).appendChild(usernameError);
+ check = 0;
+ }
+ }*/
 
 function checkPhone(nameOfForm) {
     const phone = document.nameOfForm.phone.value;
@@ -56,8 +56,7 @@ function checkPhone(nameOfForm) {
         //  Append div to parent element
         document.getElementById('divCheckPhone').appendChild(phoneError);
         check = 0;
-    }
-    else if (!re.test(String(phone).toLowerCase())) {
+    } else if (!re.test(String(phone).toLowerCase())) {
         // Step 1: Create dynamic div
         const phoneError = document.createElement('div');
         phoneError.append('Please input your correct phone number(###-###-#######).');
@@ -82,6 +81,23 @@ function checkRepass(nameOfForm) {
         document.getElementById('divCheckRePass').appendChild(repassError);
         check = 0;
     }
+}
+
+function checkImg() {
+    if ($('#avatarImg')[0].files[0] != null) {
+        var ftype = $('#avatarImg')[0].files[0].type;
+        if (ftype == 'image/png' || ftype == 'image/gif' || ftype == 'image/jpeg' || ftype == 'image/pjpeg') {
+
+        } else {
+            const imgError = document.createElement('div');
+            imgError.append('Unsupported File!');
+            imgError.setAttribute('class', 'alert-danger alert error');
+            imgError.setAttribute('role', 'alert');
+            document.getElementById('divCheckImg').appendChild(imgError);
+            check = 0;
+        }
+    }
+
 }
 
 function checkPass(nameOfForm) {
@@ -113,30 +129,30 @@ function checkPass(nameOfForm) {
 
 
 /*function checkCountryChoose(){
-    const country = document.registerForm.country.value;
-    if (country == 'Select country') {
-        const ChooseError = document.createElement('div');
-        ChooseError.append('Please select your country');
-        ChooseError.setAttribute('class', 'alert-danger alert error');
-        ChooseError.setAttribute('role', 'alert');
-        //  Append div to parent element
-        document.getElementById('divCountry').appendChild(ChooseError);
-        check = 0;
-    }
-}*/
+ const country = document.registerForm.country.value;
+ if (country == 'Select country') {
+ const ChooseError = document.createElement('div');
+ ChooseError.append('Please select your country');
+ ChooseError.setAttribute('class', 'alert-danger alert error');
+ ChooseError.setAttribute('role', 'alert');
+ //  Append div to parent element
+ document.getElementById('divCountry').appendChild(ChooseError);
+ check = 0;
+ }
+ }*/
 
 /*function checkPositionChoose(){
-    const position = document.registerForm.position.value;
-    if (position == 'Choose desired position') {
-        const ChooseError = document.createElement('div');
-        ChooseError.append('Please select the position.');
-        ChooseError.setAttribute('class', 'alert-danger alert error');
-        ChooseError.setAttribute('role', 'alert');
-        //  Append div to parent element
-        document.getElementById('divPosition').appendChild(ChooseError);
-        check = 0;
-    }
-}*/
+ const position = document.registerForm.position.value;
+ if (position == 'Choose desired position') {
+ const ChooseError = document.createElement('div');
+ ChooseError.append('Please select the position.');
+ ChooseError.setAttribute('class', 'alert-danger alert error');
+ ChooseError.setAttribute('role', 'alert');
+ //  Append div to parent element
+ document.getElementById('divPosition').appendChild(ChooseError);
+ check = 0;
+ }
+ }*/
 
 
 
@@ -153,13 +169,13 @@ function checkValidatorForRegister() {
     //checkCountryChoose();
     //checkPositionChoose();
 }
-  
+
 function checkValidatorForInputNewPass() {
     check = 1;
     document.querySelectorAll('div.error').forEach(e => e.remove());
     //checkName('fistName','First Name','yourname1');
     //checkName('lastName','Last Name','yourname2');
-   
+
     checkPass('inputNewPassForm');
     checkRepass('inputNewPassForm');
     //checkPhone();
@@ -167,12 +183,34 @@ function checkValidatorForInputNewPass() {
     //checkPositionChoose();
 }
 
+function checkValidatorForChangePassword() {
+    check = 1;
+    document.querySelectorAll('div.error').forEach(e => e.remove());
+    //checkName('fistName','First Name','yourname1');
+    //checkName('lastName','Last Name','yourname2');
+
+    checkPass('changePassForm');
+    checkRepass('changePassForm');
+    //checkPhone();
+    //checkCountryChoose();
+    //checkPositionChoose();
+}
+
+function checkValidatorForUpdateProfile()
+{
+    check = 1;
+    document.querySelectorAll('div.error').forEach(e => e.remove());
+    checkImg();
+
+}
+
+
 function checkValidatorForLogin() {
     check = 1;
     document.querySelectorAll('div.error').forEach(e => e.remove());
     //checkName('fistName','First Name','yourname1');
     //checkName('lastName','Last Name','yourname2');
-    checkMail('loginForm');   
+    checkMail('loginForm');
     //checkPhone();
     //checkCountryChoose();
     //checkPositionChoose();
@@ -183,7 +221,7 @@ function checkValidatorForgotPassword_InputEmail() {
     document.querySelectorAll('div.error').forEach(e => e.remove());
     //checkName('fistName','First Name','yourname1');
     //checkName('lastName','Last Name','yourname2');
-    checkMail('inputEmailForm');   
+    checkMail('inputEmailForm');
     //checkPhone();
     //checkCountryChoose();
     //checkPositionChoose();
