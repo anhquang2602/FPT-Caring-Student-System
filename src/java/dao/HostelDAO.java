@@ -167,7 +167,7 @@ public class HostelDAO extends DBContext {
 
     public void updateHostel(Hostel h) {
         try {
-       
+
             String sql = "UPDATE [dbo].[Hostels]\n"
                     + "   SET [HostelName] = ?\n"
                     + "      ,[TotalRoom] = ?\n"
@@ -198,24 +198,24 @@ public class HostelDAO extends DBContext {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void deleteHostelImage(int hostelID) {
-        
+
         try {
-       
+
             String sql = "DELETE FROM HostelImage WHERE HostelID =?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1,hostelID );
+            statement.setInt(1, hostelID);
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void deleteHostel(int hostelID) {
-        
+
         try {
-       
+
             String sql = "DELETE FROM Hostels WHERE HostelID =?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, hostelID);
@@ -223,9 +223,77 @@ public class HostelDAO extends DBContext {
         } catch (SQLException ex) {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
+
+    public ArrayList<Hostel> listHostel() {
+        ArrayList<Hostel> h = new ArrayList<>();
+        try {
+
+            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom,h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions from Hostels h\n"
+                    + "join Country c on h.CountryID=c.CountryID\n"
+                    + "join District d on h.DistrictID = d.DistrictID\n"
+                    + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                    + "join Sellers s on h.SellerID = s.SellerID";
+
+            PreparedStatement st;
+
+            st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
+                        rs.getString(19)));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return h;
+    }
+
+    public ArrayList<Hostel> getlHostelByName(String keyword) {
+        ArrayList<Hostel> h = new ArrayList<>();
+        try {
+
+            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom,h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions from Hostels h\n"
+                    + "                    join Country c on h.CountryID=c.CountryID\n"
+                    + "                    join District d on h.DistrictID = d.DistrictID\n"
+                    + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
+                    + "                    join Sellers s on h.SellerID = s.SellerID\n"
+                    + "					where h.HostelName like '%" + keyword + "%'";
+
+            PreparedStatement st;
+
+            st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
+                        rs.getString(19)));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return h;
+    }
+
+    // dem so luong nha tro
+    public int getTotalPage(String keyword, ArrayList<Hostel> hostels) {
+        if (keyword.isEmpty() || keyword.equalsIgnoreCase("")) {
+            hostels = listHostel();
+        } else {
+            hostels = getlHostelByName(keyword);
+        }
+        int totalPage = hostels.size() / 5;
+        if (hostels.size() % 5 != 0) {
+            totalPage++;
+        }
+        return totalPage;
+    }
 
     public static void main(String[] args) {
         HostelDAO h = new HostelDAO();
