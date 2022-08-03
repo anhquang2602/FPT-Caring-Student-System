@@ -8,6 +8,7 @@ package controller;
 import dao.HostelDAO;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -48,9 +49,27 @@ public class ListAllHostelController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HostelDAO dao = new HostelDAO();
-        ArrayList<Hostel> h = dao.listAllHostel();
-        request.setAttribute("listallHostels", h);
+              
+        
+       HostelDAO dao = new HostelDAO();
+        String indexPage= request.getParameter("index");
+         if(indexPage==null){
+            indexPage ="1";
+        }
+        int index = Integer.parseInt(indexPage);
+ 
+        int total = dao.getTotalHostels();
+        int endPage = total / 6;
+        if (total % 6 != 0) {
+            endPage++;
+        }
+        
+        
+        List<Hostel> pagingHostel = dao.pagingHostels(index);
+        request.setAttribute("listHostelPaging", pagingHostel);
+        request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
+        
         request.getRequestDispatcher("listAllHostels.jsp").forward(request, response);
     }
 
