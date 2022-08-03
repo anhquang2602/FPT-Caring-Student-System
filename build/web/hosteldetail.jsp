@@ -33,24 +33,24 @@
                                 <form>
                                     <div class="form-group row"> 
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img1}"  class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img2}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img3}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                     </div>
                                     <div class="form-group row"> 
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img4}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img5}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img6}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                     </div>
                                 </form>
@@ -68,9 +68,9 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Tình trạng phòng</label>
-                                            <input type="radio" id="collection1" name="status" 
-                                                   <c:if test = "${editHostel.status == true}">
-                                                       checked
+                                            <input type="radio" id="collection1" name="status"  
+                                                   <c:if test = "${hosteldetail.status == true}">
+                                                       checked 
                                                    </c:if> value="yes"> 
                                             <label for="collection1">
                                                 <div class="left_box">
@@ -82,8 +82,8 @@
                                                 </div>
                                             </label> 
                                             <input type="radio" id="collection2" name="status" 
-                                                   <c:if test = "${editHostel.status == false}">
-                                                       checked
+                                                   <c:if test = "${hosteldetail.status == false}">
+                                                       checked  
                                                    </c:if>  name="status" value="no"> 
                                             <label for="collection2">
                                                 <div class="left_box">

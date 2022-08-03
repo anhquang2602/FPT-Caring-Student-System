@@ -30,7 +30,7 @@
                         <a style="color: #fff" href="StudentListController">view list students</a> 
                         <a style="color: #fff" href="ClubListController">view list club</a> 
                         <a style="color: #fff" href="#contact">view list reports</a>
-                        <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
+                        <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
                         <a style="color: #fff" href="hostellist">My Hostel</a>  
                         <a style="color: #fff" href="#">My Restaurant</a>                           
                         <%}%>
