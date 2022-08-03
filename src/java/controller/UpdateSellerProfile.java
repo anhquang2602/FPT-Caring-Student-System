@@ -9,6 +9,7 @@ import dao.AddressDAO;
 import dao.SellerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -57,7 +58,9 @@ public class UpdateSellerProfile extends HttpServlet {
         }
     }
 
-    public void reloadPage(HttpServletRequest request, HttpServletResponse response) {
+    public void reloadPage(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         SellerDAO sellerDAO = new SellerDAO();
         String username = (String) request.getSession().getAttribute("username");
         Seller seller = sellerDAO.getSellertByUsername(username);
