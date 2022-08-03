@@ -100,6 +100,10 @@
         <servlet-name>UpdateSellerProfile</servlet-name>
         <servlet-class>controller.UpdateSellerProfile</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteImageController</servlet-name>
+        <servlet-class>controller.DeleteImageController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>UpdateSellerProfile</servlet-name>
         <url-pattern>/UpdateSellerProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteImageController</servlet-name>
+        <url-pattern>/deleteImage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
