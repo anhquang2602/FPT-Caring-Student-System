@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.HostelDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -57,6 +58,10 @@ public class DeleteImageController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+          HostelDAO dao = new HostelDAO();
+        int hostelID =Integer.parseInt(request.getParameter("id")) ;
+        
+        String url = request.getParameter("url");
     }
 
     /**
