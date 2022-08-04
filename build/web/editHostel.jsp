@@ -36,9 +36,9 @@
                     <div class="col-xl-12 mb-5">
                         <div>
                             <ul class="breadcrumb bg-white">
-                                <li><a href="home.jsp">Home</a></li>
-                                <li><a href="hostellist">List My Hostels</a></li>
-                                <li><a>My Hostel Detail</a></li>
+                                <li><a href="home.jsp">Trang chủ</a></li>
+                                <li><a href="hostellist">Danh sách nhà trọ của tôi</a></li>
+                                <li><a>Chi tiết nhà trọ</a></li>
                             </ul>
                         </div>
                         <div class="card">

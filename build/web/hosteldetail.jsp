@@ -22,9 +22,9 @@
                 <div class="container rounded bg-white mt-5 mb-5">
                     <div>
                         <ul class="breadcrumb bg-white">
-                            <li><a href="home.jsp">Home</a></li>
-                            <li><a href="listallhostels">List All Hostels</a></li>
-                            <li><a>Hostel Detail</a></li>
+                            <li><a href="home.jsp">Trang chủ</a></li>
+                            <li><a href="listallhostels">Danh sách nhà trọ</a></li>
+                            <li><a>Chi tiết nhà trọ</a></li>
                         </ul>
                     </div>
                     <div class="row">
