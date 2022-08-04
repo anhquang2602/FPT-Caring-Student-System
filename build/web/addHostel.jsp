@@ -34,11 +34,11 @@
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Home</a></li>
                                 <li><a href="hostellist">List My Hostels</a></li>
-                                <li><a>My Hostel Detail</a></li>
+                                <li><a>Thêm  nhà trọ mới</a></li>
                             </ul>
                         </div>
                         <div class="card">
-                            <form class="form" method="POST" action="addhostel" name="addhostelForm" onsubmit="return validateAddHostel()">
+                            <form class="form" method="POST" action="addhostel" name="addhostelForm" onsubmit="return validateAddHostel()"  enctype="multipart/form-data">
                                 <div class="left-side">
                                     <div class="left_top">
                                         <h4>Thêm phòng</h4>
@@ -96,6 +96,79 @@
                                                 </div>                                    
                                             </div>
                                         </label>
+                                        Image1 : <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="img1">
+                                        <img id="output1" class="rounded-circle mt-5" width="150px"/>
+                                        <script>
+                                            var loadFile = function (event) {
+                                                var output = document.getElementById('output1');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output1.src) // free memory
+                                                }
+                                            };
+                                        </script><br>
+
+                                        Image2 : <input type="file" accept="image/*" onchange="loadFile2(event)" name ="image2" id="img2">
+                                        <img id="output2" class="rounded-circle mt-5" width="150px"/>
+                                        <script>
+                                            var loadFile2 = function (event) {
+                                                var output = document.getElementById('output2');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output2.src) // free memory
+                                                }
+                                            };
+                                        </script><br>
+
+                                        Image3 : <input type="file" accept="image/*" onchange="loadFile3(event)" name ="image3" id="img3">
+                                        <img id="output3" class="rounded-circle mt-5" width="150px"/>
+                                        <script>
+                                            var loadFile3 = function (event) {
+                                                var output = document.getElementById('output3');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output.src) // free memory
+                                                }
+                                            };
+                                        </script><br>
+
+                                        Image4 : <input type="file" accept="image/*" onchange="loadFile4(event)" name ="image4" id="img4">
+                                        <img id="output4" class="rounded-circle mt-5" width="150px"/>
+                                        <script>
+                                            var loadFile4 = function (event) {
+                                                var output = document.getElementById('output4');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output.src) // free memory
+                                                }
+                                            };
+                                        </script><br>
+
+                                        Image5 : <input type="file" accept="image/*" onchange="loadFile5(event)" name ="image5" id="img5">
+                                        <img id="output5" class="rounded-circle mt-5" width="150px"/>
+                                        <script>
+                                            var loadFile5 = function (event) {
+                                                var output = document.getElementById('output5');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output.src) // free memory
+                                                }
+                                            };
+                                        </script> <br>
+
+                                        Image6 : <input type="file" accept="image/*" onchange="loadFile6(event)" name ="image6" id="img6">
+                                        <img id="output6" class="rounded-circle mt-5" width="150px"/>
+                                        <script>
+                                            var loadFile6 = function (event) {
+                                                var output = document.getElementById('output6');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output.src) // free memory
+                                                }
+                                            };
+                                        </script><br>
+
+                                        <div class="error" id="errorImg"></div>
                                     </div>
                                 </div>
 
@@ -127,17 +200,19 @@
                                         </div>                         
                                     </div>
 
-                                    <div class="input_text"> <input type="text" name="address" placeholder="Nhập địa chỉ cụ thể"> <span>Địa chỉ</span> </div>
-                                    <div class="input_text"> <input type="number" name="cost" placeholder="Nhập giá thuê"> <span>Giá thuê</span> </div>
-                                    <div class="input_text"> <input type="number" name="distance" placeholder="Nhập khoảng cách"> <span>Khoảng cách</span> </div>
+                                    <div class="input_text"> <input type="text" name="address" placeholder="Nhập địa chỉ cụ thể"> <span>Địa chỉ</span> 
+                                        <div class="error" id="errorAddress"></div></div>
+                                    <div class="input_text"> <input type="text" name="cost" placeholder="Nhập giá thuê"> <span>Giá thuê</span>
+                                        <div class="error" id="errorCost"></div></div>
+                                    <div class="input_text"> <input type="text" name="distance" placeholder="Nhập khoảng cách"> <span>Khoảng cách</span> 
+                                        <div class="error" id="errorDistance"></div></div>
                                     <div class="input_text"> <span>Mô tả</span> </div>
                                     <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="description" style="width:250px;height:150px;"></textarea>
+
                                     <div class="pay"> 
                                         <button type="submit">Thêm nhà trọ</button>                  
                                     </div>
-                                    <div class="pay"> 
-                                        <button type="reset">Reset Button</button>
-                                    </div>
+
                                 </div>
                             </form>
                         </div>
@@ -269,7 +344,7 @@
                 }
             </script>
     </body>
-    <%@include file="/footer.jsp" %>
+    <%@include file="/footer.jsp" %>    
 </html>
 
 

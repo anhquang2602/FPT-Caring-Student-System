@@ -26,6 +26,7 @@
                 <div class="topnav" style="width: 100%;  background-color: rgb(238, 77, 45)">
                     <ul class="d-flex my-2">
                         <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+
                         <a style="color: #fff; margin-left: 50px" href="SellerListController">View List Sellers</a>  
                         <a style="color: #fff; margin-left: 50px" href="StudentListController">view list students</a> 
                         <a style="color: #fff; margin-left: 50px" href="ClubListController">view list club</a> 
@@ -33,6 +34,7 @@
                         <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
                         <a style="color: #fff; margin-left: 50px" href="hostellist">My Hostel</a>  
                         <a style="color: #fff; margin-left: 50px" href="ListRestaurantBySeller">My Restaurant</a>                           
+
                         <%}%>
                         <div class="dropdownProfile" style="margin-left: 200px">    
                             <button class="dropdown-toggle mt-2" style="background-color: rgb(238, 77, 45); color: white; text-decoration: none; border: none; font-size: 20px" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
