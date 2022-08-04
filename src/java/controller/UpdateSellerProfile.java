@@ -110,7 +110,8 @@ public class UpdateSellerProfile extends HttpServlet {
         String UserAvatar = null;
         Part part = request.getPart("avatarImage");
 
-        String realPath = request.getServletContext().getRealPath("/avatarImages");
+        String realPath1 = request.getServletContext().getRealPath("/avatarImages");
+        String realPath=realPath1.replaceFirst("build","");
         String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
@@ -145,7 +146,7 @@ public class UpdateSellerProfile extends HttpServlet {
             Seller seller = sdb.getSellertByUsername(username);*/
             String avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
             UserAvatar = "avatarImages/" + avatarName;
-            part.write(realPath + "/" + avatarName);
+            part.write(realPath + "\\" + avatarName);
             /* try (PrintWriter out = response.getWriter()) {
                 out.println("<h1>Name: " + avatarName + "</h1>");
                 out.println("<h1>uplodName: " + realPath.toString() + "</h1>");

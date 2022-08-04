@@ -4,6 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+            <file>file:/C:/Users/longn/Desktop/DoAn/web/editRestaurant.jsp</file>
+            <file>file:/C:/Users/longn/Desktop/DoAn/src/java/model/Restaurant.java</file>
+            <file>file:/C:/Users/longn/Desktop/DoAn/src/java/dao/RestaurantDAO.java</file>
+            <file>file:/C:/Users/longn/Desktop/DoAn/src/java/controller/EditRestaurantController.java</file>
+        </group>
+=======
+<<<<<<< HEAD
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/AddHostelController.java</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/sidebar.jsp</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listAllHostels.jsp</file>
@@ -36,5 +43,6 @@
 >>>>>>> c681df0484423d99a8d71905be6799e03539fc04
 >>>>>>> df3ef000370204b45d24a2a2c918aa8c1f34f553
 >>>>>>> e9012106b7f41fd2f375a64facef57c8dee2b286
+>>>>>>> 15db72f628b1ae7b258b18d897ce5b9cce0455ea
     </open-files>
 </project-private>

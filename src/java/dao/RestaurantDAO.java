@@ -133,6 +133,7 @@ public class RestaurantDAO extends DBContext {
                 restaurant.setCost(rs.getString(8));
                 restaurant.setDistance(rs.getFloat(9));
                 restaurant.setDescription(rs.getString(10));
+                restaurant.setRestaurantImage(rs.getString(11));
             }
             return restaurant;
         } catch (SQLException ex) {
@@ -157,7 +158,35 @@ public class RestaurantDAO extends DBContext {
             stm.setString(7, description);
             stm.setString(8, image);
             stm.setInt(9, restaurantID);
-            
+
+            stm.executeUpdate();
+            System.out.println(sql);
+            System.out.println("Update OK");
+            stm.close();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Update fail" + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean updateRestaurantNoImg(int restaurantID, String restaurantName, int provinceID, int districtID, String address, String cost, float distance, String description) {
+        try {
+            String sql = "UPDATE Restaurants SET  RestaurantName = ?, ProvinceID = ?, DistrictID= ? , "
+                    + "AddressDetail= ? , Cost= ? , Distance=?, Descriptions=?"
+                    + "  WHERE RestaurantID = ? ";
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, restaurantName);
+
+            stm.setInt(2, provinceID);
+            stm.setInt(3, districtID);
+            stm.setString(4, address);
+            stm.setString(5, cost);
+            stm.setFloat(6, distance);
+            stm.setString(7, description);
+
+            stm.setInt(8, restaurantID);
+
             stm.executeUpdate();
             System.out.println(sql);
             System.out.println("Update OK");
@@ -213,11 +242,10 @@ public class RestaurantDAO extends DBContext {
 //        }
 //        return false;
 //    }
-
     public Food getFoodID(int foodID) {
         Food food = new Food();
         try {
-            String sql ="select Foods.FoodID,Restaurants.RestaurantID,Restaurants.RestaurantName , Foods.FoodName, Foods.Cost, Foods.Descriptions, FoodImage.ImageUrl\n"
+            String sql = "select Foods.FoodID,Restaurants.RestaurantID,Restaurants.RestaurantName , Foods.FoodName, Foods.Cost, Foods.Descriptions, FoodImage.ImageUrl\n"
                     + "from Foods\n"
                     + "inner join Restaurants on Foods.RestaurantID = Restaurants.RestaurantID\n"
                     + "inner join FoodImage on Foods.FoodID = FoodImage.FoodID\n"
@@ -240,6 +268,7 @@ public class RestaurantDAO extends DBContext {
         }
         return null;
     }
+
     public ArrayList<Restaurant> listAllRestaurant() {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
@@ -260,7 +289,8 @@ public class RestaurantDAO extends DBContext {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return restaurant;
-    }   
+    }
+
     public boolean updateFood(int foodID, String foodName, double cost, String description) {
         try {
             String sql = "UPDATE Foods SET  FoodName = ?, Cost = ?, Descriptions= ? "
@@ -279,7 +309,8 @@ public class RestaurantDAO extends DBContext {
             System.out.println("Update fail" + e.getMessage());
         }
         return false;
-    } 
+    }
+
     public void deleteFood(int foodID) {
         try {
             String sql = "DELETE FROM Foods WHERE FoodID=?";
