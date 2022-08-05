@@ -7,6 +7,7 @@ package controller;
 
 import dao.AddressDAO;
 import dao.RestaurantDAO;
+import dao.SellerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -42,17 +43,15 @@ public class AddRestaurantController extends HttpServlet {
         float distance = Float.parseFloat(request.getParameter("distance"));
         String description = request.getParameter("description");
         String image = request.getParameter("image");
-         Cookie arr[]= request.getCookies();
-        for (Cookie o : arr) {
-            if (o.getName().equals("sellerID")) {
-                String sellerID = o.getValue();
+         SellerDAO sda = new SellerDAO();
+        String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
                 RestaurantDAO restaurantDAO = new RestaurantDAO();
                 if(restaurantDAO.createRestaurant(restaurantName, Integer.parseInt(sellerID), 1,provinceID, districtID, address, cost, distance, description,image)){
                     response.sendRedirect("ListRestaurantBySeller");
                 }
             }
-        }
-    }
+        
+    
 
     /**
      * Returns a short description of the servlet.

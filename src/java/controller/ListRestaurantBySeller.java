@@ -6,6 +6,7 @@
 package controller;
 
 import dao.RestaurantDAO;
+import dao.SellerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -52,16 +53,8 @@ public class ListRestaurantBySeller extends HttpServlet {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
 
         Cookie[] arr = request.getCookies();
-        String sellerID = "";
-       // String restaurantID = "";
-        for (Cookie o : arr) {
-            if (o.getName().equals("sellerID")) {
-                sellerID = o.getValue();
-            }
-//            if (o.getName().equals("restaurantID")) {
-//                restaurantID = o.getValue();
-//            }
-        }
+        SellerDAO sda = new SellerDAO();
+        String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
         ArrayList<Restaurant> listRestaurant = restaurantDAO.listRestaurantBySeller(Integer.parseInt(sellerID));
        // ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(Integer.parseInt(restaurantID));
         request.setAttribute("listRestaurant", listRestaurant);
