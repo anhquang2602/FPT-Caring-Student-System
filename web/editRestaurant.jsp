@@ -64,7 +64,7 @@
             <input class="mt-4 btn btn-dark d-flex justify-content-center align-items-center" type="submit" value="Sửa thông tin nhà ăn"/>
         </form>
         <h2>Thêm món ăn</h2>
-        <form action="AddFoodController" method="post">
+        <form action="AddFoodController" method="post" enctype="multipart/form-data">
             <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
 
             <label>Tên món ăn: </label>
@@ -75,6 +75,10 @@
             <br>
             <label>Ghi chú :</label>
             <input type="text" name="desFood">
+            <br>
+            <label>Hình ảnh :</label>
+            <img class="rounded-circle mt-5" width="150px" src="" id="output2"><br>
+            <input type="file" name ="foodImage" accept="image/*" onchange="loadFile2(event)" class="form-control-file" />   <br> <br>
             <br>
             <input class="mt-4 btn btn-dark d-flex justify-content-center align-items-center" type="submit" value="Thêm món ăn"/>
         </form>
@@ -90,7 +94,7 @@
                     <td>${food.foodName}</td>
                     <td>${food.cost}</td>
                     <td>${food.descriptions}</td>
-                    <td>${food.imageURL}</td>
+                    <td><img src="${food.imageURL}" width="100px" height="100px"> </td>
                     <td>
                         <a class="dropdown-item" href="EditFoodController?id=${food.foodID}">Edit Food</a>
                         <a class="dropdown-item" href="DeleteFoodController?id=${food.foodID}">Delete Post</a>
@@ -142,6 +146,15 @@
         <script>
             var loadFile = function (event) {
                 var output = document.getElementById('output');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function () {
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+            };
+        </script>
+        <script>
+            var loadFile2 = function (event) {
+                var output = document.getElementById('output2');
                 output.src = URL.createObjectURL(event.target.files[0]);
                 output.onload = function () {
                     URL.revokeObjectURL(output.src) // free memory

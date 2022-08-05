@@ -50,7 +50,7 @@ public abstract class DBContext {
         try {
             String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS";
             String user = "sa";
-            String pass = "123456";
+            String pass = "bacninh123";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException | SQLException ex) {
