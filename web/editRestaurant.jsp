@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form class="my-2" method="POST" action="EditRestaurantController">
+        <form class="my-2" method="POST" action="EditRestaurantController" enctype="multipart/form-data">
             <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Tên nhà hàng</label>
@@ -58,7 +58,8 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Mô tả</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description">${restaurant.description}</textarea>
             </div><br>
-            Image : <input type="file" name ="image" value="${restaurant.restaurantImage}"/>
+            Image : <img class="rounded-circle mt-5" width="150px" src="${restaurant.restaurantImage}" id="output"><br>
+            <input type="file" name ="restaurantImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="avatarImg"/>   <br> <br>
             <br>
             <input class="mt-4 btn btn-dark d-flex justify-content-center align-items-center" type="submit" value="Sửa thông tin nhà ăn"/>
         </form>
@@ -137,6 +138,15 @@
                 });
 
             });
+        </script>
+        <script>
+            var loadFile = function (event) {
+                var output = document.getElementById('output');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function () {
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+            };
         </script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

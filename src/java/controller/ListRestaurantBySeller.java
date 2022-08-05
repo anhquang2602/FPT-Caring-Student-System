@@ -52,9 +52,12 @@ public class ListRestaurantBySeller extends HttpServlet {
             throws ServletException, IOException {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
 
-        Cookie[] arr = request.getCookies();
         SellerDAO sda = new SellerDAO();
-        String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
+      
+
+       
+        String sellerID = sda.getSellerID((String)request.getSession().getAttribute("username"));
+
         ArrayList<Restaurant> listRestaurant = restaurantDAO.listRestaurantBySeller(Integer.parseInt(sellerID));
        // ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(Integer.parseInt(restaurantID));
         request.setAttribute("listRestaurant", listRestaurant);

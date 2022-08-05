@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/profileStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
-    <body>
+    <body class="bg-white">
         <div class="px-0 bg-white">
             <%@include file="/header.jsp" %> 
             <div class="d-md-flex">
@@ -31,12 +31,12 @@
 
                             <div class="col-md-4">
                                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="${UserAvatar}" id="output">
-                                    <div class="form-group">                       
+                                    <div class="form-group mt-3">                       
                                         <input style="padding-left: 80px" type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="avatarImg">
                                     </div>
                                     <div id="divCheckImg"></div>
-                                    <span class="font-weight-bold">Username</span>
-                                    <span class="text-black-50">${seller.email}</span><span></span></div>
+                                    <span class="mt-2">${seller.email}</span>
+                                </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="p-3 py-5">
@@ -57,9 +57,11 @@
                                             <input class="form-check-input" type="radio" name="gender"  id="inlineRadio1" value="1"> Nam
                                             <input class="form-check-input" type="radio" name="gender"  id="inlineRadio2" value="0"> Nữ                                            
                                         </div>
-                                        <label for="cars">Tỉnh,thành phố</label>
+                                    </div>
 
-                                        <select name="province" id="province" class="province" onchange>
+                                    <div class="col-md-12">
+                                        <label class="labels" for="cars">Tỉnh, thành phố</label>
+                                        <select name="province" id="province" class="province form-select" onchange>
                                             <option value="">Select Province</option>
                                             <c:forEach items ="${listProvince}" var="o">
                                                 <option value="${o.provinceID}" 
@@ -69,42 +71,37 @@
                                                         </c:if>    >${o.provinceName}</option>
 
                                             </c:forEach>
-
-                                        </select><br><br>
-                                        <div class="error" id="errorProvince"></div> 
-
-                                        <label for="cars">Quận,phường</label>
-
-                                        <select name="district"  id ="district" class="district">
-                                            listDistrict
-
+                                        </select>
+                                    </div>
+                                    <div class="error" id="errorProvince"></div> 
+                                    <div class="col-md-12">
+                                        <label class="labels" for="cars">Quận, phường</label>
+                                        <select name="district"  id ="district" class="district form-select">
                                             <c:forEach items ="${listDistrict}" var="o">
                                                 <option value="${o.districtID}" 
-
                                                         <c:if test = "${seller.districtID == o.districtID }">
                                                             selected="selected"
                                                         </c:if>    >${o.districtName}</option>
-
                                             </c:forEach>
-
-                                        </select><br><br>
-                                        <div class="col-md-12"><label class="labels">Address Detail</label><input type="text" name="addressDetail" class="form-control"value="${seller.address}" ></div>
+                                        </select>
                                     </div>
-                                    <div class="mt-5 text-center">
-                                        <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateProfile()" >Save Profile</button>
-                                    </div>
-                                    <label class="labels">${UpdateError}</label>
-                                    <label class="labels">${UpdateProcess}</label>
+                                    <div class="col-md-12"><label class="labels">Address Detail</label><input type="text" name="addressDetail" class="form-control"value="${seller.address}" ></div>
                                 </div>
+                                <div class="mt-5 text-center">
+                                    <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateProfile()" >Save Profile</button>
+                                </div>
+                                <label class="labels">${UpdateError}</label>
+                                <label class="labels">${UpdateProcess}</label>
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
-        </div>
-    </body>
-    <script src="validator/Validator.js"></script>
-    <script language="javascript">
+        </form>
+    </div>
+</div>
+</body>
+<script src="validator/Validator.js"></script>
+<script language="javascript">
 
                                         var gender = document.getElementById('genderlable').innerHTML;
 
@@ -121,13 +118,13 @@
 
         
        
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-    <script>
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+<script>
                                         $(document).on('change', '.province', function () {
                                             var province = document.getElementById("province").value;
                                             $('#district').empty();
@@ -158,17 +155,17 @@
                                             });
 
                                         });
-    </script>
+</script>
 
 
-    <script>
-        var loadFile = function (event) {
-            var output = document.getElementById('output');
-            output.src = URL.createObjectURL(event.target.files[0]);
-            output.onload = function () {
-                URL.revokeObjectURL(output.src) // free memory
-            }
-        };
-    </script>
-    <%@include file="/footer.jsp" %>
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>
+<%@include file="/footer.jsp" %>
 </html>
