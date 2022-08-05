@@ -5,7 +5,9 @@
  */
 package controller;
 
-import dao.ClubDAO;
+import com.google.gson.Gson;
+import dao.AddressDAO;
+import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -13,13 +15,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Club;
+import model.Food;
+import model.Restaurant;
 
 /**
  *
- * @author win
+ * @author DELL
  */
-public class ClubListController extends HttpServlet {
+public class EditRestaurantController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,18 +36,8 @@ public class ClubListController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ClubListController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ClubListController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
+        request.setCharacterEncoding("utf-8");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,11 +54,21 @@ public class ClubListController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        ArrayList<Club> listClubs = new ArrayList<>();
-        ClubDAO clubDAO = new ClubDAO();
-        listClubs = clubDAO.getListClubs();
-        request.setAttribute("listClubs", listClubs);
-        request.getRequestDispatcher("listClubs.jsp").forward(request, response);
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
+        Restaurant restaurant = restaurantDAO.getRestaurantID(id);
+        
+        ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(id);
+
+        AddressDAO a = new AddressDAO();
+        request.setAttribute("listFood", listFood);
+        request.setAttribute("restaurant", restaurant);
+        
+        request.setAttribute("listProvince", a.listProvince());
+        request.setAttribute("listDistrict", a.getDistrictByProName(restaurant.getProvinceName()));
+        request.getRequestDispatcher("editRestaurant.jsp").forward(request, response);
     }
 
     /**
@@ -79,7 +82,21 @@ public class ClubListController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       request.getRequestDispatcher("listClubs.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
+        int restaurantID = Integer.parseInt(request.getParameter("id"));
+        String restaurantName = request.getParameter("restaurantName");
+        int provinceID = Integer.parseInt(request.getParameter("province"));
+        int districtID = Integer.parseInt(request.getParameter("district"));
+        String address = request.getParameter("address");
+        String cost = request.getParameter("cost");
+        String image = request.getParameter("image");
+        float distance = Float.parseFloat(request.getParameter("distance"));
+        String description = request.getParameter("description");
+        if (restaurantDAO.updateRestaurant(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description,image)) {
+            response.sendRedirect("ListRestaurantBySeller");
+        }
     }
 
     /**

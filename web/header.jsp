@@ -30,9 +30,15 @@
                         <a style="color: #fff" href="StudentListController">view list students</a> 
                         <a style="color: #fff" href="ClubListController">view list club</a> 
                         <a style="color: #fff" href="#contact">view list reports</a>
-                        <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
+                        <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
                         <a style="color: #fff" href="hostellist">My Hostel</a>  
-                        <a style="color: #fff" href="#">My Restaurant</a>                           
+                        <a style="color: #fff" href="ListRestaurantBySeller">My Restaurant</a>                           
+                        <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
+                        <a style="color: #fff" href="ListAllRestaurantController">Nhà Ăn</a>  
+                        <a style="color: #fff" href="listallhostels">Nhà Trọ</a> 
+                        <a style="color: #fff" href="ClubListController">Câu Lạc Bộ</a> 
+                        <a style="color: #fff" href="BusPagingServlet">Xe Bus</a>
+                        <a style="color: #fff" href="department">Phòng Ban</a>
                         <%}%>
                         <div class="dropdownProfile" style="margin-left: 200px">
                             <button class="dropdown-toggle mt-2" style="background-color: rgb(238, 77, 45); color: white; text-decoration: none; border: none; font-size: 20px; text-align: right" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

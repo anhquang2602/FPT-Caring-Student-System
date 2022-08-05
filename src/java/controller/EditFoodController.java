@@ -5,21 +5,20 @@
  */
 package controller;
 
-import dao.ClubDAO;
+import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Club;
+import model.Food;
 
 /**
  *
- * @author win
+ * @author DELL
  */
-public class ClubListController extends HttpServlet {
+public class EditFoodController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class ClubListController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ClubListController</title>");
+            out.println("<title>Servlet EditFoodController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ClubListController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditFoodController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,11 +60,12 @@ public class ClubListController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        ArrayList<Club> listClubs = new ArrayList<>();
-        ClubDAO clubDAO = new ClubDAO();
-        listClubs = clubDAO.getListClubs();
-        request.setAttribute("listClubs", listClubs);
-        request.getRequestDispatcher("listClubs.jsp").forward(request, response);
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
+        Food food = restaurantDAO.getFoodID(id);
+        request.setAttribute("food", food);
+        request.getRequestDispatcher("editFood.jsp").forward(request, response);
     }
 
     /**
@@ -79,7 +79,16 @@ public class ClubListController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       request.getRequestDispatcher("listClubs.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
+        int foodID = Integer.parseInt(request.getParameter("id"));
+        String foodName = request.getParameter("foodName");
+        double cost = Double.parseDouble(request.getParameter("costFood"));
+        String description = request.getParameter("desFood");
+        if(restaurantDAO.updateFood(foodID, foodName, cost, description)){
+            response.sendRedirect("ListRestaurantBySeller");
+        }
     }
 
     /**

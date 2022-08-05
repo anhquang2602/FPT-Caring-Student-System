@@ -30,7 +30,6 @@ public abstract class DBContext {
 //            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
-    
     public DBContext() {
         try {
              String url = "jdbc:sqlserver://DESKTOP-P8PPKT2\\SQLEXPRESS:1433;databaseName=FCS_UPDATE";

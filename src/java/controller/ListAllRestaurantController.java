@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.ClubDAO;
+import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -13,13 +13,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Club;
+import model.Restaurant;
 
 /**
  *
- * @author win
+ * @author DELL
  */
-public class ClubListController extends HttpServlet {
+public class ListAllRestaurantController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class ClubListController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ClubListController</title>");
+            out.println("<title>Servlet ListAllRestaurantController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ClubListController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListAllRestaurantController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,13 +59,10 @@ public class ClubListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-        ArrayList<Club> listClubs = new ArrayList<>();
-        ClubDAO clubDAO = new ClubDAO();
-        listClubs = clubDAO.getListClubs();
-        request.setAttribute("listClubs", listClubs);
-        request.getRequestDispatcher("listClubs.jsp").forward(request, response);
+         RestaurantDAO dao = new RestaurantDAO();
+        ArrayList<Restaurant> restaurant = dao.listAllRestaurant();
+        request.setAttribute("listRestaurant", restaurant);
+        request.getRequestDispatcher("listAllRestaurant.jsp").forward(request, response);
     }
 
     /**
@@ -79,7 +76,7 @@ public class ClubListController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       request.getRequestDispatcher("listClubs.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
