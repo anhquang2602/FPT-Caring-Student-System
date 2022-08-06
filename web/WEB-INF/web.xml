@@ -104,7 +104,7 @@
         <servlet-name>DeleteImageController</servlet-name>
         <servlet-class>controller.DeleteImageController</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>AddRestaurantController</servlet-name>
         <servlet-class>controller.AddRestaurantController</servlet-class>
     </servlet>

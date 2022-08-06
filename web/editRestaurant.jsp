@@ -96,8 +96,8 @@
                     <td>${food.descriptions}</td>
                     <td><img src="${food.imageURL}" width="100px" height="100px"> </td>
                     <td>
-                        <a class="dropdown-item" href="EditFoodController?id=${food.foodID}">Edit Food</a>
-                        <a class="dropdown-item" href="DeleteFoodController?id=${food.foodID}">Delete Post</a>
+                        <a class="dropdown-item" href="EditFoodController?foodId=${food.foodID}">Edit Food</a>
+                        <a class="dropdown-item" href="DeleteFoodController?foodId=${food.foodID}">Delete Post</a>
                     </td>
                 </tr>
             </c:forEach>

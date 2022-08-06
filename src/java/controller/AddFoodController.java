@@ -109,9 +109,7 @@ public class AddFoodController extends HttpServlet {
                 restaurantDAO.createFoodImg(newestFoodId, saveFoodImg);
                 response.sendRedirect("ListRestaurantBySeller");
             }
-
         }
-
 //        if (restaurantDAO.createFood(restaurantID, foodName, costFodd, description)) {
 //            response.sendRedirect("ListRestaurantBySeller");
 //        }

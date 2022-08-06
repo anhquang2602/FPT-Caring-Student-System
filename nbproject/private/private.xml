@@ -4,11 +4,6 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/DoAn_Final/web/editFood.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/dao/RestaurantDAO.java</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/DeleteFoodController.java</file>
-            <file>file:/D:/DoAn_Final/src/java/model/Food.java</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/EditFoodController.java</file>
-            <file>file:/D:/DoAn_Final/web/editRestaurant.jsp</file>
         </group>
     </open-files>
 </project-private>
