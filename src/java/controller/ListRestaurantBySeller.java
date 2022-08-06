@@ -51,8 +51,13 @@ public class ListRestaurantBySeller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
-        SellerDAO sda=new SellerDAO();
+
+        SellerDAO sda = new SellerDAO();
+      
+
+       
         String sellerID = sda.getSellerID((String)request.getSession().getAttribute("username"));
+
         ArrayList<Restaurant> listRestaurant = restaurantDAO.listRestaurantBySeller(Integer.parseInt(sellerID));
        // ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(Integer.parseInt(restaurantID));
         request.setAttribute("listRestaurant", listRestaurant);

@@ -86,4 +86,8 @@ public class BusDAO extends DBContext{
 
         return 0;
     }
+     public static void main(String[] args) {
+        BusDAO b = new BusDAO();
+         System.out.println(b.getAllBus());
+    }
 }
