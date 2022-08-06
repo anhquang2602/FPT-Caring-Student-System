@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -47,18 +48,6 @@ public class AddRestaurantController extends HttpServlet {
         String cost = request.getParameter("cost");
         float distance = Float.parseFloat(request.getParameter("distance"));
         String description = request.getParameter("description");
-
-        String image = request.getParameter("image");
-         SellerDAO sda = new SellerDAO();
-        String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
-                RestaurantDAO restaurantDAO = new RestaurantDAO();
-                if(restaurantDAO.createRestaurant(restaurantName, Integer.parseInt(sellerID), 1,provinceID, districtID, address, cost, distance, description,image)){
-                    response.sendRedirect("ListRestaurantBySeller");
-                }
-            }
-        
-    
-
         
         SellerDAO sda = new SellerDAO();
         String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
@@ -84,8 +73,7 @@ public class AddRestaurantController extends HttpServlet {
 
         }
 
-    
-
+    }
 
     /**
      * Returns a short description of the servlet.

@@ -226,6 +226,38 @@ public class RestaurantDAO extends DBContext {
         }
         return false;
     }
+    
+    public boolean createFoodImg(int foodID, String foodImg) {
+        try {
+            String sql = "INSERT INTO FoodImage (foodID,ImageUrl) VALUES (?,?)";
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, foodID);
+            stm.setString(2, foodImg);           
+            stm.executeUpdate();
+            System.out.println(sql);
+            System.out.println("Insert OK");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Insert fail" + e.getMessage());
+        }
+        return false;
+    }
+    
+    public int getNewestFoodID() {
+        try {
+
+            String sql = "SELECT  TOP 1 FoodID FROM Foods ORDER BY FoodID DESC";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 
 //    public boolean createImageFood(int foodID, String imageFood) {
 //        try {
@@ -300,6 +332,24 @@ public class RestaurantDAO extends DBContext {
             stm.setDouble(2, cost);
             stm.setString(3, description);
             stm.setInt(4, foodID);
+            stm.executeUpdate();
+            System.out.println(sql);
+            System.out.println("Update OK");
+            stm.close();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Update fail" + e.getMessage());
+        }
+        return false;
+    }
+    
+    public boolean updateFoodImg(int foodID, String foodImg) {
+        try {
+            String sql = "UPDATE FoodImage SET ImageUrl = ?"
+                    + "  WHERE FoodID = ? ";
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, foodImg);
+            stm.setInt(2, foodID);
             stm.executeUpdate();
             System.out.println(sql);
             System.out.println("Update OK");
