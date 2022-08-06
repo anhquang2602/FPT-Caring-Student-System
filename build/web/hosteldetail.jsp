@@ -11,6 +11,50 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/hostelStyle.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .rate {
+                float: left;
+                height: 46px;
+                padding: 0 10px;
+            }
+            .rate:not(:checked) > input {
+                position:absolute;
+                top:-9999px;
+            }
+            .rate:not(:checked) > label {
+                float:right;
+                width:1em;
+                overflow:hidden;
+                white-space:nowrap;
+                cursor:pointer;
+                font-size:30px;
+                color:#ccc;
+            }
+            .rate:not(:checked) > label:before {
+                content: '★ ';
+            }
+            .rate > input:checked ~ label {
+                color: #ffc700;    
+            }
+            .rate:not(:checked) > label:hover,
+            .rate:not(:checked) > label:hover ~ label {
+                color: #deb217;  
+            }
+            .rate > input:checked + label:hover,
+            .rate > input:checked + label:hover ~ label,
+            .rate > input:checked ~ label:hover,
+            .rate > input:checked ~ label:hover ~ label,
+            .rate > label:hover ~ input:checked ~ label {
+                color: #c59b08;
+            }
+
+
+        </style>
     </head>
     <body class="bg-white">
         <div class="px-0">
@@ -56,6 +100,19 @@
                                 </form>
                                 <span class="font-weight-bold labels mt-5" ><label class="labels">Nhà trọ:</label> ${hosteldetail.hostelName}</span>
                                 <span class="font-weight-bold labels"><label class="labels">Chủ trọ:</label> ${hosteldetail.sellerName}</span>
+                                <BR>
+                                <div class="rate">
+                                    <input type="radio" id="star5" name="rate" value="5" />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rate" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rate" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="rate" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rate" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-8">
@@ -132,27 +189,122 @@
             </div>
         </div>
 
-        <!--                        <p>•Trạng thái:</p>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio"  id="flexRadioDefault1" name="status" 
-        <c:if test = "${hosteldetail.status == true}">
-            checked
-        </c:if> value="yes">
-    
-    
-    <label class="form-check-label" for="flexRadioDefault1">
-     Còn phòng
-    </label>
-    </div><br>
-    <div class="form-check">
-    <input class="form-check-input" type="radio"  id="flexRadioDefault2" <c:if test = "${hosteldetail.status == false}">
-        checked
-        </c:if>  name="status" value="no">
-    <label class="form-check-label" for="flexRadioDefault2">
-        Hết phòng
-    </label>
-    </div><br>-->
+        <script>
+            $("#star5").click(function () {
+                $.ajax({
+                        type: "GET",
 
+                        url: "/Test_1/star",
+                        data: {
+                            star: 5,
+                        },
+                        headers: {
+                            Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
+                        },
+
+                        success: function (data) {
+
+                            alert(data);
+                        },
+                        error: function (e) {
+                            console.log("ERROR: ", e);
+                        }
+                    });
+            });
+            $("#star4").click(function () {
+                $.ajax({
+                        type: "GET",
+
+                        url: "/Test_1/star",
+                        data: {
+                            star: 4,
+                        },
+                        headers: {
+                            Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
+                        },
+
+                        success: function (data) {
+
+                            alert(data);
+                        },
+                        error: function (e) {
+                            console.log("ERROR: ", e);
+                        }
+                    });
+            });
+            $("#star3").click(function () {
+                $.ajax({
+                        type: "GET",
+
+                        url: "/Test_1/star",
+                        data: {
+                            star: 3,
+                        },
+                        headers: {
+                            Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
+                        },
+
+                        success: function (data) {
+
+                            alert(data);
+                        },
+                        error: function (e) {
+                            console.log("ERROR: ", e);
+                        }
+                    });
+            });
+            $("#star2").click(function () {
+                $.ajax({
+                        type: "GET",
+
+                        url: "/Test_1/star",
+                        data: {
+                            star: 2,
+                        },
+                        headers: {
+                            Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
+                        },
+
+                        success: function (data) {
+
+                            alert(data);
+                        },
+                        error: function (e) {
+                            console.log("ERROR: ", e);
+                        }
+                    });
+            });
+            $("#star1").click(function () {
+                $.ajax({
+                        type: "GET",
+
+                        url: "/Test_1/star",
+                        data: {
+                            star: 1,
+                        },
+                        headers: {
+                            Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
+                        },
+
+                        success: function (data) {
+
+                            alert(data);
+                        },
+                        error: function (e) {
+                            console.log("ERROR: ", e);
+                        }
+                    });
+            });
+            
+            
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
