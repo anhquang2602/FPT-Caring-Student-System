@@ -117,8 +117,8 @@ public class AddHostelController extends HttpServlet {
         listPart.add(part5);
         listPart.add(part6);
 
-        String realPath = request.getServletContext().getRealPath("/HostelImages");
-
+        String realPath1 = request.getServletContext().getRealPath("/HostelImages");
+        String realPath=realPath1.replaceFirst("build","");
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
         }

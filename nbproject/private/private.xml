@@ -5,9 +5,10 @@
         <group>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/LoginServlet.java</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/addHostel.jsp</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DBContext.java</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/hosteldetail.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listHostelbySeller.jsp</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/StarVotingController.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listHostelbySeller.jsp</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/FindDistrictController.java</file>
         </group>
     </open-files>

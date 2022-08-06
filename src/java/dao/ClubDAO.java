@@ -29,11 +29,13 @@ public class ClubDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 listClub.add(new Club(rs.getInt("ClubID"), rs.getString("Avatar"), rs.getString("ClubName"), rs.getString("ClubPresident"), rs.getString("Facebook"), rs.getString("Email"), rs.getString("Description")));
+               
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listClub;
+        
 
     }
 
@@ -75,5 +77,9 @@ public class ClubDAO extends DBContext {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+    public static void main(String[] args) {
+        ClubDAO club = new ClubDAO();
+        System.out.println(club.getListClubs());
     }
 }

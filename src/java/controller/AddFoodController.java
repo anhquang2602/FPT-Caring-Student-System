@@ -8,11 +8,15 @@ package controller;
 import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import model.Food;
 import model.Restaurant;
 
@@ -20,6 +24,7 @@ import model.Restaurant;
  *
  * @author DELL
  */
+@MultipartConfig
 public class AddFoodController extends HttpServlet {
 
     /**
@@ -50,14 +55,14 @@ public class AddFoodController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-       // int foodID = Integer.parseInt(request.getParameter("foodID"));
+        // int foodID = Integer.parseInt(request.getParameter("foodID"));
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         //Food food = restaurantDAO.getFoodID(foodID);
         Restaurant restaurant = restaurantDAO.getRestaurantID(id);
         ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(id);
         request.setAttribute("listFood", listFood);
         request.setAttribute("restaurant", restaurant);
-      //  request.setAttribute("food", food);
+        //  request.setAttribute("food", food);
         request.getRequestDispatcher("editRestaurant.jsp").forward(request, response);
     }
 
@@ -82,9 +87,32 @@ public class AddFoodController extends HttpServlet {
 //        String image = request.getParameter("imageFood");
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(restaurantID);
-        if (restaurantDAO.createFood(restaurantID, foodName, costFodd, description)) {
-            response.sendRedirect("ListRestaurantBySeller");
+        Part part = request.getPart("foodImage");
+        String realPath1 = request.getServletContext().getRealPath("/foodImages");
+        String realPath = realPath1.replaceFirst("build", "");
+        String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+        if (!Files.exists(Paths.get(realPath))) {
+            Files.createDirectories(Paths.get(realPath));
         }
+        if (part.getSize() == 0) {
+            if (restaurantDAO.createFood(restaurantID, foodName, costFodd, description)) {
+                int newestFoodId = restaurantDAO.getNewestFoodID();
+                restaurantDAO.createFoodImg(newestFoodId, "");
+                response.sendRedirect("ListRestaurantBySeller");
+            }
+        } else {
+            if (restaurantDAO.createFood(restaurantID, foodName, costFodd, description)) {
+                int newestFoodId = restaurantDAO.getNewestFoodID();
+                String foodImg = restaurantID + "_" + newestFoodId + ".jpg";
+                String saveFoodImg = "foodImages/" + foodImg;
+                part.write(realPath + "\\" + foodImg);
+                restaurantDAO.createFoodImg(newestFoodId, saveFoodImg);
+                response.sendRedirect("ListRestaurantBySeller");
+            }
+        }
+//        if (restaurantDAO.createFood(restaurantID, foodName, costFodd, description)) {
+//            response.sendRedirect("ListRestaurantBySeller");
+//        }
 //        if(restaurantDAO.createImageFood(foodID, image)){
 //            response.sendRedirect("ListRestaurantBySeller");
 //        }
