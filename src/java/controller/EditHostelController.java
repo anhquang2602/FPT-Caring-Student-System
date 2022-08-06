@@ -95,6 +95,7 @@ public class EditHostelController extends HttpServlet {
 
         HostelDAO dao = new HostelDAO();
         int id = Integer.parseInt(request.getParameter("hostelId"));
+        
         String hostelName = request.getParameter("hostelName");
         int room = Integer.parseInt(request.getParameter("room"));
         boolean status = request.getParameter("status").equals("yes");

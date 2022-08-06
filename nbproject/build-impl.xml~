@@ -795,8 +795,6 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
     </target>
     <target name="-init-taskdefs">
 <<<<<<< HEAD
-        
-=======
         <fail unless="libs.CopyLibs.classpath">
 The libs.CopyLibs.classpath property is not set up.
 This property must point to 
@@ -807,7 +805,9 @@ Either open the project in the IDE and make sure CopyLibs library
 exists or setup the property manually. For example like this:
  ant -Dlibs.CopyLibs.classpath=a/path/to/org-netbeans-modules-java-j2seproject-copylibstask.jar
                 </fail>
->>>>>>> 197aaff7f2c4f90bb23c2d7f2857a842f3adaaf7
+=======
+
+>>>>>>> 11b64ca654d12dcbc26e9ddf9022f7dd4c6ea6d2
         <taskdef classpath="${libs.CopyLibs.classpath}" resource="org/netbeans/modules/java/j2seproject/copylibstask/antlib.xml"/>
     </target>
     <target name="-init-ap-cmdline-properties">
@@ -1006,30 +1006,24 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.smtp.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.jstl.classpath}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.javaee-web-api-7.0.classpath}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.gson-2.8.0.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.gson-2.8.0.jar-2}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
 <<<<<<< HEAD
         <copyfiles files="${file.reference.gson-2.8.0.jar-1}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
 =======
-        <copyfiles files="${file.reference.gson-2.8.0.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
-
->>>>>>> 197aaff7f2c4f90bb23c2d7f2857a842f3adaaf7
+>>>>>>> 11b64ca654d12dcbc26e9ddf9022f7dd4c6ea6d2
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
     <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
-<<<<<<< HEAD
-       
-       
-=======
         <copyfiles files="${file.reference.sqljdbc42.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.mail.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.smtp.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${libs.jstl.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${libs.javaee-web-api-7.0.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.gson-2.8.0.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
-
         <copyfiles files="${file.reference.gson-2.8.0.jar-2}" todir="${build.web.dir}/WEB-INF/lib"/>
-
->>>>>>> 197aaff7f2c4f90bb23c2d7f2857a842f3adaaf7
+        <copyfiles files="${file.reference.gson-2.8.0.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
         <delete dir="${build.web.dir}/WEB-INF/lib"/>
