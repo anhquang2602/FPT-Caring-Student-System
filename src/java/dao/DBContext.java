@@ -94,7 +94,7 @@ public abstract class DBContext {
         try {
 
 
-            String url = "jdbc:sqlserver://DESKTOP-PV3034R\\SQLEXPRESS:1433;databaseName=FCSchuannhat";
+            String url = "jdbc:sqlserver://DESKTOP-PV3034R\\SQLEXPRESS:1433;databaseName=FCS_UPDATE";
             String user = "sa";
             String pass = "12345";
 

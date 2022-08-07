@@ -7,12 +7,15 @@ package controller;
 
 import com.google.gson.Gson;
 import dao.AddressDAO;
+import dao.StarDAO;
+import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.StarVoting;
 
 /**
  *
@@ -62,8 +65,22 @@ public class StarVotingController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         
-        int star = Integer.parseInt(request.getParameter("star"));       
+        int star = Integer.parseInt(request.getParameter("star"));    
+        int hostelId = Integer.parseInt(request.getParameter("hostelId"));  
+        StudentDAO stdao = new StudentDAO();
+        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
+        
+        StarDAO dao = new StarDAO();
+        
+        for (StarVoting a : dao.getAllStarVotings()) {
+            if(a.getStudentNo()==studentNo && a.getHostelID() == hostelId){
+                dao.updateStarVoting(a.getId(), star);
+            }
+        }
+      
+        dao.addStarVoting(new StarVoting(studentNo, hostelId, star));
         String json = new Gson().toJson(star);
+        
         out.print(json);
         out.flush();
         out.close();
