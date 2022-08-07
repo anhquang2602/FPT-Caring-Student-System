@@ -10,11 +10,15 @@ import dao.AddressDAO;
 import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import model.Food;
 import model.Restaurant;
 
@@ -22,6 +26,7 @@ import model.Restaurant;
  *
  * @author DELL
  */
+@MultipartConfig
 public class EditRestaurantController extends HttpServlet {
 
     /**
@@ -54,18 +59,18 @@ public class EditRestaurantController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        
+
         int id = Integer.parseInt(request.getParameter("id"));
-        
+
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         Restaurant restaurant = restaurantDAO.getRestaurantID(id);
-        
+
         ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(id);
 
         AddressDAO a = new AddressDAO();
         request.setAttribute("listFood", listFood);
         request.setAttribute("restaurant", restaurant);
-        
+
         request.setAttribute("listProvince", a.listProvince());
         request.setAttribute("listDistrict", a.getDistrictByProName(restaurant.getProvinceName()));
         request.getRequestDispatcher("editRestaurant.jsp").forward(request, response);
@@ -94,8 +99,27 @@ public class EditRestaurantController extends HttpServlet {
         String image = request.getParameter("image");
         float distance = Float.parseFloat(request.getParameter("distance"));
         String description = request.getParameter("description");
-        if (restaurantDAO.updateRestaurant(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description,image)) {
-            response.sendRedirect("ListRestaurantBySeller");
+//        if (restaurantDAO.updateRestaurant(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description,image)) {
+//            response.sendRedirect("ListRestaurantBySeller");
+//        }
+        Part part = request.getPart("restaurantImage");
+        String realPath1 = request.getServletContext().getRealPath("/restaurantImages");
+        String realPath = realPath1.replaceFirst("build", "");
+        String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+        if (!Files.exists(Paths.get(realPath))) {
+            Files.createDirectories(Paths.get(realPath));
+        }
+        if (part.getSize() == 0) {
+            if (restaurantDAO.updateRestaurantNoImg(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description)) {
+                response.sendRedirect("ListRestaurantBySeller");
+            }
+        } else {
+            String restaurantImg = restaurantName + "img.jpg";
+            String SaveRestaurantImg = "restaurantImages/" + restaurantImg;
+            part.write(realPath + "\\" + restaurantImg);
+            if (restaurantDAO.updateRestaurant(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description, SaveRestaurantImg)) {
+                response.sendRedirect("ListRestaurantBySeller");
+            }
         }
     }
 

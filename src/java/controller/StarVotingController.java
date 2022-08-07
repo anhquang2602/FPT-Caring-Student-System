@@ -5,21 +5,20 @@
  */
 package controller;
 
-import dao.ClubDAO;
+import com.google.gson.Gson;
+import dao.AddressDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Club;
 
 /**
  *
- * @author win
+ * @author nguye
  */
-public class ClubListController extends HttpServlet {
+public class StarVotingController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class ClubListController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ClubListController</title>");
+            out.println("<title>Servlet StarVotingController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ClubListController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet StarVotingController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,13 +58,15 @@ public class ClubListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-        ArrayList<Club> listClubs = new ArrayList<>();
-        ClubDAO clubDAO = new ClubDAO();
-        listClubs = clubDAO.getListClubs();
-        request.setAttribute("listClubs", listClubs);
-        request.getRequestDispatcher("listClubs.jsp").forward(request, response);
+         response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        int star = Integer.parseInt(request.getParameter("star"));       
+        String json = new Gson().toJson(star);
+        out.print(json);
+        out.flush();
+        out.close();
     }
 
     /**
@@ -79,7 +80,7 @@ public class ClubListController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       request.getRequestDispatcher("listClubs.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

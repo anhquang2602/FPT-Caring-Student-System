@@ -8,16 +8,21 @@ package controller;
 import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import model.Food;
 
 /**
  *
  * @author DELL
  */
+@MultipartConfig
 public class EditFoodController extends HttpServlet {
 
     /**
@@ -60,8 +65,8 @@ public class EditFoodController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        
-        int id = Integer.parseInt(request.getParameter("id"));
+
+        int id = Integer.parseInt(request.getParameter("foodId"));
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         Food food = restaurantDAO.getFoodID(id);
         request.setAttribute("food", food);
@@ -81,13 +86,31 @@ public class EditFoodController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        RestaurantDAO restaurantDAO = new RestaurantDAO();
-        int foodID = Integer.parseInt(request.getParameter("id"));
+        RestaurantDAO restaurantDAO = new RestaurantDAO(); 
         String foodName = request.getParameter("foodName");
         double cost = Double.parseDouble(request.getParameter("costFood"));
+        int foodID = Integer.parseInt(request.getParameter("foodId"));
         String description = request.getParameter("desFood");
-        if(restaurantDAO.updateFood(foodID, foodName, cost, description)){
-            response.sendRedirect("ListRestaurantBySeller");
+        Food food = restaurantDAO.getFoodID(foodID);
+        Part part = request.getPart("foodImage");
+        String realPath1 = request.getServletContext().getRealPath("/foodImages");
+        String realPath = realPath1.replaceFirst("build", "");
+        String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+        if (!Files.exists(Paths.get(realPath))) {
+            Files.createDirectories(Paths.get(realPath));
+        }
+        if (part.getSize() == 0) {
+            if (restaurantDAO.updateFood(foodID, foodName, cost, description)) {
+                response.sendRedirect("ListRestaurantBySeller");
+            }
+        } else {
+            if (restaurantDAO.updateFood(foodID, foodName, cost, description)) {
+                String foodImg = food.getRestaurantID() + "_" + foodID  + ".jpg";
+                String saveFoodImg = "foodImages/" + foodImg;
+                part.write(realPath + "\\" + foodImg);
+                restaurantDAO.updateFoodImg(foodID, saveFoodImg);
+                response.sendRedirect("ListRestaurantBySeller");
+            }    
         }
     }
 

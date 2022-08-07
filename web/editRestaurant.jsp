@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form class="my-2" method="POST" action="EditRestaurantController">
+        <form class="my-2" method="POST" action="EditRestaurantController" enctype="multipart/form-data">
             <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Tên nhà hàng</label>
@@ -58,12 +58,13 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Mô tả</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description">${restaurant.description}</textarea>
             </div><br>
-            Image : <input type="file" name ="image" value="${restaurant.restaurantImage}"/>
+            Image : <img class="rounded-circle mt-5" width="150px" src="${restaurant.restaurantImage}" id="output"><br>
+            <input type="file" name ="restaurantImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="avatarImg"/>   <br> <br>
             <br>
             <input class="mt-4 btn btn-dark d-flex justify-content-center align-items-center" type="submit" value="Sửa thông tin nhà ăn"/>
         </form>
         <h2>Thêm món ăn</h2>
-        <form action="AddFoodController" method="post">
+        <form action="AddFoodController" method="post" enctype="multipart/form-data">
             <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
 
             <label>Tên món ăn: </label>
@@ -74,6 +75,10 @@
             <br>
             <label>Ghi chú :</label>
             <input type="text" name="desFood">
+            <br>
+            <label>Hình ảnh :</label>
+            <img class="rounded-circle mt-5" width="150px" src="" id="output2"><br>
+            <input type="file" name ="foodImage" accept="image/*" onchange="loadFile2(event)" class="form-control-file" />   <br> <br>
             <br>
             <input class="mt-4 btn btn-dark d-flex justify-content-center align-items-center" type="submit" value="Thêm món ăn"/>
         </form>
@@ -89,10 +94,10 @@
                     <td>${food.foodName}</td>
                     <td>${food.cost}</td>
                     <td>${food.descriptions}</td>
-                    <td>${food.imageURL}</td>
+                    <td><img src="${food.imageURL}" width="100px" height="100px"> </td>
                     <td>
-                        <a class="dropdown-item" href="EditFoodController?id=${food.foodID}">Edit Food</a>
-                        <a class="dropdown-item" href="DeleteFoodController?id=${food.foodID}">Delete Post</a>
+                        <a class="dropdown-item" href="EditFoodController?foodId=${food.foodID}">Edit Food</a>
+                        <a class="dropdown-item" href="DeleteFoodController?foodId=${food.foodID}">Delete Post</a>
                     </td>
                 </tr>
             </c:forEach>
@@ -137,6 +142,24 @@
                 });
 
             });
+        </script>
+        <script>
+            var loadFile = function (event) {
+                var output = document.getElementById('output');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function () {
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+            };
+        </script>
+        <script>
+            var loadFile2 = function (event) {
+                var output = document.getElementById('output2');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function () {
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+            };
         </script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

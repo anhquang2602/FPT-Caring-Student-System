@@ -35,23 +35,62 @@
                             <div class="col-lg-12 mb-5">
                                 <div>
                                     <ul class="breadcrumb bg-white">
-                                        <li><a href="home.jsp">Home</a></li>
-                                        <li><a>List my Hostels </a></li>
+                                        <li><a href="home.jsp">Trang chủ</a></li>
+                                        <li><a>Nhà trọ của tôi </a></li>
                                     </ul>
                                 </div>
-                                <table class="table" id="seller">
+                                <!--                                <table class="table" id="seller">
+                                                                    <tr>
+                                                                        <th>Hostel Name</th>
+                                                                        <th>Delete Hostel</th>
+                                                                    </tr>
+                                <c:forEach items="${listH}" var="o" >
                                     <tr>
-                                        <th>Hostel Name</th>
-                                        <th>Delete Hostel</th>
+                                        <td><a href="edithostel?id=${o.hostelID}">${o.hostelName}</a></td> 
+                                        <td><a href="deletehostel?id=${o.hostelID}">Delete Hostel</a></td>
                                     </tr>
-                                    <c:forEach items="${listH}" var="o" >
-                                        <tr>
-                                            <td><a href="edithostel?id=${o.hostelID}">${o.hostelName}</a></td> 
-                                            <td><a href="deletehostel?id=${o.hostelID}">Delete Hostel</a></td>
-                                        </tr>
+                                </c:forEach>
+                            </table>-->
+
+
+                                <a href="addhostel" >Thêm nhà trọ mới (+)</a><br><br>
+                                <ul class="list-group shadow">
+                                    <c:forEach items="${listH}" var="d" >
+                                        <li class="list-group-item">
+                                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
+                                                <div class="media-body order-2 order-lg-1 description" id="description">
+                                                    <h5 class="mt-0 font-weight-bold mb-2">
+                                                        <a href="detailhostel?id=${d.hostelID}" style="text-decoration: underline;color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
+                                                    </h5>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê: ${d.cost} VND</p>
+                                                </div>
+                                                <div class="media-body order-2 order-lg-1 image">
+                                                    <img src="${d.img1}" style="width: 150px; height: 150px" >
+                                                </div>
+                                                <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
+                                                <a class="btn btn-danger" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
+
+                                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                Xoá nhà trọ
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Bạn có chắc chắn muốn xoá nhà trọ này không?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                                                <a class="btn btn-danger btn-ok">Xoá</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </li> 
                                     </c:forEach>
-                                </table>
-                                <a href="addhostel">Add Hostel</a>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -59,6 +98,11 @@
             </div>
         </div>
     </body>
+    <script>
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+    </script>
     <%@include file="/footer.jsp" %>
 </html>
 

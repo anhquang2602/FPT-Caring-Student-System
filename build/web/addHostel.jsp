@@ -221,7 +221,7 @@
                                     <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="description" style="width:250px;height:150px;"></textarea>
 
                                     <div class="pay"> 
-                                        <button type="submit">Thêm nhà trọ</button>                  
+                                        <button type="submit" >Thêm nhà trọ</button>                  
                                     </div>
 
                                 </div>
