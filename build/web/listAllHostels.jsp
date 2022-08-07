@@ -17,6 +17,21 @@
         <link rel="stylesheet" href="css/sellerStyle.css">
     </head>
     <body class="bg-white">
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Report Hostel Successfully</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Report Hostel Successfully !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <div class="px-0">
             <%@include file="/header.jsp" %>
             <div class="d-md-flex">
@@ -31,7 +46,7 @@
                         </form>
                     </div>
                     <div class="container" style="margin-top: 50px">
-                     <div class="row">
+                        <div class="row">
                             <div class="col-lg-12 mb-5">
                                 <div>
                                     <ul class="breadcrumb">
@@ -46,6 +61,7 @@
                                                 <div class="media-body order-2 order-lg-1 description" id="description">
                                                     <h5 class="mt-0 font-weight-bold mb-2">
                                                         <a href="detailhostel?id=${d.hostelID}" style="text-decoration: underline;color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
+                                                        <a href="ReportHostelController?id=${d.hostelID}" style="margin-left: 1000px"> Báo Cáo Bài Viết</a> 
                                                     </h5>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê: ${d.cost} VND</p>
@@ -76,6 +92,13 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+
+            });
+        </script>
     </body>
     <%@include file="/footer.jsp" %>
 </html>
