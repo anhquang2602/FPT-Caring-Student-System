@@ -30,7 +30,8 @@
                         <a style="color: #fff; margin-left: 50px" href="SellerListController">View List Sellers</a>  
                         <a style="color: #fff; margin-left: 50px" href="StudentListController">view list students</a> 
                         <a style="color: #fff; margin-left: 50px" href="ClubListController">view list club</a> 
-                        <a style="color: #fff; margin-left: 50px" href="ListAllReportController">view list reports</a>
+                        <a style="color: #fff; margin-left: 50px" href="ListAllReportHostelController">view list reports hostel</a>
+                          <a style="color: #fff; margin-left: 50px" href="ListAllReportRestaurantController">view list reports restaurant</a>
                         <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
 
                         <a style="color: #fff" href="hostellist">My Hostel</a>  
