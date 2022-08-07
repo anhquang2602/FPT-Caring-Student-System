@@ -30,7 +30,7 @@
                         <a style="color: #fff; margin-left: 50px" href="SellerListController">View List Sellers</a>  
                         <a style="color: #fff; margin-left: 50px" href="StudentListController">view list students</a> 
                         <a style="color: #fff; margin-left: 50px" href="ClubListController">view list club</a> 
-                        <a style="color: #fff; margin-left: 50px" href="#">view list reports</a>
+                        <a style="color: #fff; margin-left: 50px" href="ListAllReportController">view list reports</a>
                         <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
 
                         <a style="color: #fff" href="hostellist">My Hostel</a>  
@@ -41,11 +41,6 @@
                         <a style="color: #fff" href="ClubListController">Câu Lạc Bộ</a> 
                         <a style="color: #fff" href="BusPagingServlet">Xe Bus</a>
                         <a style="color: #fff" href="department">Phòng Ban</a>
-
-                        <a style="color: #fff; margin-left: 50px" href="hostellist">My Hostel</a>  
-                        <a style="color: #fff; margin-left: 50px" href="ListRestaurantBySeller">My Restaurant</a>                           
-
-
                         <%}%>
                         <div class="dropdownProfile" style="margin-left: 200px">    
                             <button class="dropdown-toggle mt-2" style="background-color: rgb(238, 77, 45); color: white; text-decoration: none; border: none; font-size: 20px" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

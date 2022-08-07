@@ -140,9 +140,22 @@
         <servlet-name>RestaurantListController</servlet-name>
         <servlet-class>controller.RestaurantListController</servlet-class>
     </servlet>
+    
     <servlet>
         <servlet-name>StarVotingController</servlet-name>
         <servlet-class>controller.StarVotingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportRestaurantController</servlet-name>
+        <servlet-class>controller.ReportRestaurantController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAllReportController</servlet-name>
+        <servlet-class>controller.ListAllReportController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportHostelController</servlet-name>
+        <servlet-class>controller.ReportHostelController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -287,6 +300,18 @@
     <servlet-mapping>
         <servlet-name>StarVotingController</servlet-name>
         <url-pattern>/star</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportRestaurantController</servlet-name>
+        <url-pattern>/ReportRestaurantController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllReportController</servlet-name>
+        <url-pattern>/ListAllReportController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportHostelController</servlet-name>
+        <url-pattern>/ReportHostelController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
