@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/dao/DBContext.java</file>
             <file>file:/C:/Users/asus/Desktop/FCS_Final/web/editHostel.jsp</file>
             <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/addHostelStyle.css</file>
             <file>file:/C:/Users/asus/Desktop/FCS_Final/web/addHostel.jsp</file>
         </group>
+=======
+        <group/>
+>>>>>>> 2be4e67c610bdc07af3d0244d2f228f2426caccb
     </open-files>
 </project-private>
