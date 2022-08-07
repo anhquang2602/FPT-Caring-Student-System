@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>ADD RESTAURANT</h1>
-        <form class="my-2" method="POST" action="AddRestaurantController"  >
+        <form class="my-2" method="POST" action="AddRestaurantController" enctype="multipart/form-data" >
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Tên nhà hàng</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="restaurantName" >
@@ -51,7 +51,8 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Mô tả</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
             </div><br>
-            Image : <input type="file" name ="image"/>   <br> <br>
+            Image : <img class="rounded-circle mt-5" width="150px" src="" id="output"><br>
+            <input type="file" name ="restaurantImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="avatarImg"/>   <br> <br>
 
             <input class="mt-4 btn btn-dark d-flex justify-content-center align-items-center" type="submit" value="Thêm nhà ăn"/>
         </form>
@@ -61,32 +62,41 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
         <script>
-            $(document).on('change', '.province', function () {
-                var province = document.getElementById("province").value;
-                $('#district').empty();
-                $.ajax({
-                    type: "GET",
-                    url: "/Test_1/findDistrict",
-                    data: {
-                        province: province,
-                    },
-                    headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
-                    },
-                    success: function (data) {
+                $(document).on('change', '.province', function () {
+                    var province = document.getElementById("province").value;
+                    $('#district').empty();
+                    $.ajax({
+                        type: "GET",
+                        url: "/Test_1/findDistrict",
+                        data: {
+                            province: province,
+                        },
+                        headers: {
+                            Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
+                        },
+                        success: function (data) {
 
-                        data.forEach(function (a) {
-                            $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+                            data.forEach(function (a) {
+                                $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
 
-                        });
-                    },
-                    error: function (e) {
-                        console.log("ERROR: ", e);
-                    }
+                            });
+                        },
+                        error: function (e) {
+                            console.log("ERROR: ", e);
+                        }
+                    });
+
                 });
-
-            });
+        </script>
+        <script>
+            var loadFile = function (event) {
+                var output = document.getElementById('output');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function () {
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+            };
         </script>
     </body>
 </html>

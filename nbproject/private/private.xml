@@ -3,7 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Desktop/codenew/src/java/controller/LoginServlet.java</file>
+<<<<<<< HEAD
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/AddHostelController.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/model/StarVoting.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/addHostelStyle.css</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/addHostel.jsp</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/controller/AddHostelController.java</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/controller/LoginServlet.java</file>
+=======
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/LoginServlet.java</file>
+>>>>>>> 916b41dccba941041152d758d15e1f305ce4700d
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/addHostel.jsp</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/SellerDAO.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/hosteldetail.jsp</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/StarVotingController.java</file>
+<<<<<<< HEAD
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/StarDAO.java</file>
+=======
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listHostelbySeller.jsp</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/FindDistrictController.java</file>
+>>>>>>> c17907f7f38bb12d53b88383f0393115817b37a3
+>>>>>>> 916b41dccba941041152d758d15e1f305ce4700d
         </group>
     </open-files>
 </project-private>

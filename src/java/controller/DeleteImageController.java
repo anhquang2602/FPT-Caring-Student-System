@@ -36,7 +36,7 @@ public class DeleteImageController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteImageController</title>");            
+            out.println("<title>Servlet DeleteImageController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DeleteImageController at " + request.getContextPath() + "</h1>");
@@ -57,11 +57,16 @@ public class DeleteImageController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-          HostelDAO dao = new HostelDAO();
-        int hostelID =Integer.parseInt(request.getParameter("id")) ;
         
+        PrintWriter writer = response.getWriter();
+        HostelDAO dao = new HostelDAO();
+        int hostelID = Integer.parseInt(request.getParameter("id"));
         String url = request.getParameter("url");
+
+        dao.deleteImage(hostelID, url);
+        writer.print(url);
+        writer.flush();
+        writer.close();
     }
 
     /**

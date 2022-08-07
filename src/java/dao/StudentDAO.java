@@ -31,6 +31,22 @@ public class StudentDAO extends DBContext {
             connection.close();
         }
     }
+      public String getStudentNo(String userName) {
+        String sql = "select s.StudentNo from Students s join Account a on s.Email = a.Username where a.Username = ?";
+        PreparedStatement st;
+        try {
+            st = connection.prepareCall(sql);
+            st.setString(1, userName);
+            ResultSet rs = st.executeQuery();
+            
+            if (rs.next()) {
+               return rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       return null;
+    }
 
     public ArrayList<Student> getAllStudent() throws ClassNotFoundException, SQLException, Exception {
         ArrayList<Student> list = new ArrayList<>();

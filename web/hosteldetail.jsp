@@ -11,6 +11,69 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/hostelStyle.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style>
+
+
+
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body{
+                flex-direction: column;
+                font-family: Arial, Helvetica, san-serif;
+
+            }
+            .rating_heading{
+                animation: scale-up 1s ease;
+                font-weight:  bold;
+                color: orange;
+            }
+            @keyframes scale-up{
+                0%{
+                    opacity: 0;
+                    transform: scale(.5);
+                }
+                100%{
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            .star_rating {
+                user-select: none;
+                background-color: #e6e6e6;
+                padding: 1rem 2rem;
+                margin: 1rem;
+                border-radius: .3rem;
+                animation: slide-up 1s ease;
+            }
+            @keyframes slide-up{
+                0%{
+                    opacity: 0;
+                    transform: translateY(50px);
+                }
+                100%{
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+            }
+            .star {
+                font-size: 3rem;
+                color: #ff9800;
+                background-color: unset;
+                border: none;
+                text-align: center;
+
+            }
+            .star:hover{
+                cursor: pointer;   
+            }
+
+        </style>
     </head>
     <body class="bg-white">
         <div class="px-0">
@@ -19,12 +82,13 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
+                <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
                 <div class="container rounded bg-white mt-5 mb-5">
                     <div>
                         <ul class="breadcrumb bg-white">
-                            <li><a href="home.jsp">Home</a></li>
-                            <li><a href="listallhostels">List All Hostels</a></li>
-                            <li><a>Hostel Detail</a></li>
+                            <li><a href="home.jsp">Trang chủ</a></li>
+                            <li><a href="listallhostels">Danh sách nhà trọ</a></li>
+                            <li><a>Chi tiết nhà trọ</a></li>
                         </ul>
                     </div>
                     <div class="row">
@@ -33,29 +97,56 @@
                                 <form>
                                     <div class="form-group row"> 
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img1}"  class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img2}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img3}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                     </div>
                                     <div class="form-group row"> 
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img4}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img5}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                         <div class="col mt-5 thumbnail">
-                                            <img src="https://noithatnhadepviet.vn/upload/elfinder/h%C3%ACnh%20thi%E1%BA%BFt%20k%E1%BA%BF/hinh%20support%205/2-thiet-ke-nha-tro-12m2.jpg" class="form-control" style="padding: 0px" alt="">
+                                            <img src="${hosteldetail.img6}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
                                         </div>
                                     </div>
                                 </form>
                                 <span class="font-weight-bold labels mt-5" ><label class="labels">Nhà trọ:</label> ${hosteldetail.hostelName}</span>
                                 <span class="font-weight-bold labels"><label class="labels">Chủ trọ:</label> ${hosteldetail.sellerName}</span>
+                                <BR>
+
+                                <!--                                <div class="rate">
+                                
+                                                                    <input type="radio" id="star5" name="rate" value="5" />
+                                                                    <label for="star5" title="text">5 stars</label>
+                                                                    <input type="radio" id="star4" name="rate" value="4" />
+                                                                    <label for="star4" title="text">4 stars</label>
+                                                                    <input type="radio" id="star3" name="rate" value="3" />
+                                                                    <label for="star3" title="text">3 stars</label>
+                                                                    <input type="radio" id="star2" name="rate" value="2" />
+                                                                    <label for="star2" title="text">2 stars</label>
+                                                                    <input type="radio" id="star1" name="rate" />
+                                                                    <label for="star1" title="text">1 star</label>
+                                
+                                                                </div>-->
+
+                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
+                                <div class ="star_rating">
+                                    <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
+                                    <button class="star" id="star1"  value="1">&#9734;</button>
+                                    <button class="star" id="star2"  value="2">&#9734;</button>
+                                    <button class="star" id="star3"  value="3">&#9734;</button>
+                                    <button class="star" id="star4"  value="4">&#9734;</button>
+                                    <button class="star" id="star5"  value="5">&#9734;</button>
+                                    <p class="current_rating">0 trên 5</p>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-8">
@@ -68,9 +159,9 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Tình trạng phòng</label>
-                                            <input type="radio" id="collection1" name="status" 
-                                                   <c:if test = "${editHostel.status == true}">
-                                                       checked
+                                            <input type="radio" id="collection1" name="status"  
+                                                   <c:if test = "${hosteldetail.status == true}">
+                                                       checked 
                                                    </c:if> value="yes"> 
                                             <label for="collection1">
                                                 <div class="left_box">
@@ -82,8 +173,8 @@
                                                 </div>
                                             </label> 
                                             <input type="radio" id="collection2" name="status" 
-                                                   <c:if test = "${editHostel.status == false}">
-                                                       checked
+                                                   <c:if test = "${hosteldetail.status == false}">
+                                                       checked  
                                                    </c:if>  name="status" value="no"> 
                                             <label for="collection2">
                                                 <div class="left_box">
@@ -121,7 +212,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Mô tả</label>
-                                            <textarea class="form-control" readonly="" rows="15">${hosteldetail.description}</textarea>
+                                            <textarea class="form-control" readonly="" rows="5  ">${hosteldetail.description}</textarea>
                                         </div>
                                     </form>
                                 </div>
@@ -132,27 +223,156 @@
             </div>
         </div>
 
-        <!--                        <p>•Trạng thái:</p>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio"  id="flexRadioDefault1" name="status" 
-        <c:if test = "${hosteldetail.status == true}">
-            checked
-        </c:if> value="yes">
-    
-    
-    <label class="form-check-label" for="flexRadioDefault1">
-     Còn phòng
-    </label>
-    </div><br>
-    <div class="form-check">
-    <input class="form-check-input" type="radio"  id="flexRadioDefault2" <c:if test = "${hosteldetail.status == false}">
-        checked
-        </c:if>  name="status" value="no">
-    <label class="form-check-label" for="flexRadioDefault2">
-        Hết phòng
-    </label>
-    </div><br>-->
+        <script>
+            const allStars = document.querySelectorAll('.star');
+            let current_rating = document.querySelector('.current_rating');
 
+            allStars.forEach((star, i) => {
+                star.onclick = function () {
+                    let current_star_level = i + 1;
+                    current_rating.innerText = current_star_level + ' trên 5 ';
+                    allStars.forEach((star, j) => {
+                        if (current_star_level >= j + 1) {
+                            star.innerHTML = '&#9733';
+                        } else {
+                            star.innerHTML = '&#9734';
+                        }
+                    })
+                }
+            })
+
+        </script>                            
+
+        <script>
+            $("#star5").click(function () {
+                var hostelId = document.getElementById("hostelId").value;
+
+                $.ajax({
+                    type: "GET",
+
+                    url: "/Test_1/star",
+                    data: {
+                        hostelId: hostelId,
+                        star: 5,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
+
+                    success: function (data) {
+
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
+            });
+            $("#star4").click(function () {
+                var hostelId = document.getElementById("hostelId").value;
+                $.ajax({
+                    type: "GET",
+
+                    url: "/Test_1/star",
+                    data: {
+                        hostelId: hostelId,
+                        star: 4,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
+
+                    success: function (data) {
+
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
+            });
+            $("#star3").click(function () {
+                var hostelId = document.getElementById("hostelId").value;
+                $.ajax({
+                    type: "GET",
+
+                    url: "/Test_1/star",
+                    data: {
+                        hostelId: hostelId,
+                        star: 3,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
+
+                    success: function (data) {
+
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
+            });
+            $("#star2").click(function () {
+                var hostelId = document.getElementById("hostelId").value;
+                $.ajax({
+                    type: "GET",
+
+                    url: "/Test_1/star",
+                    data: {
+                        hostelId: hostelId,
+                        star: 2,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
+
+                    success: function (data) {
+
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
+            });
+            $("#star1").click(function () {
+                var hostelId = document.getElementById("hostelId").value;
+                $.ajax({
+                    type: "GET",
+
+                    url: "/Test_1/star",
+                    data: {
+                        hostelId: hostelId,
+                        star: 1,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
+
+                    success: function (data) {
+
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
+            });
+
+
+        </script>
+
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

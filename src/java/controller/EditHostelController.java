@@ -11,12 +11,17 @@ import dao.DepartmentDAO;
 import dao.HostelDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import model.Department;
 import model.Hostel;
 import model.User;
@@ -25,6 +30,7 @@ import model.User;
  *
  * @author nguye
  */
+@MultipartConfig
 public class EditHostelController extends HttpServlet {
 
     /**
@@ -83,13 +89,13 @@ public class EditHostelController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        
-        processRequest(request, response);
-        PrintWriter out = response.getWriter();
+
         HostelDAO dao = new HostelDAO();
         int id = Integer.parseInt(request.getParameter("hostelId"));
+        
         String hostelName = request.getParameter("hostelName");
         int room = Integer.parseInt(request.getParameter("room"));
         boolean status = request.getParameter("status").equals("yes");
@@ -100,11 +106,46 @@ public class EditHostelController extends HttpServlet {
         double cost = Double.parseDouble(request.getParameter("cost"));
         double distance = Double.parseDouble(request.getParameter("distance"));
         String description = request.getParameter("description");
-        
-	Hostel h  = new Hostel(id,hostelName, room, status, floor, provinceID, districtID, address, cost, distance, description);
-	dao.updateHostel(h);   
-        
-	response.sendRedirect(request.getContextPath() + "/edithostel?id="+id);
+
+        String hostelImg;
+        Part part1 = request.getPart("image1");
+        Part part2 = request.getPart("image2");
+        Part part3 = request.getPart("image3");
+        Part part4 = request.getPart("image4");
+        Part part5 = request.getPart("image5");
+        Part part6 = request.getPart("image6");
+        List<Part> listPart = new ArrayList<>();
+        listPart.add(part1);
+        listPart.add(part2);
+        listPart.add(part3);
+        listPart.add(part4);
+        listPart.add(part5);
+        listPart.add(part6);
+        String realPath = request.getServletContext().getRealPath("/HostelImages");
+
+        if (!Files.exists(Paths.get(realPath))) {
+            Files.createDirectories(Paths.get(realPath));
+        }
+
+        for (int i = 0; i < listPart.size(); i++) {
+
+            if (listPart.get(i).getSize() != 0) {
+                String filename = Paths.get(listPart.get(i).getSubmittedFileName()).getFileName().toString();
+//                if (filename.endsWith(".jpg") || filename.endsWith(".png") || filename.endsWith(".jpeg") || filename.endsWith(".gif")) {
+
+                String imgName = hostelName + "url" + (i + 1) + ".jpg";
+                hostelImg = "HostelImages/" + imgName;
+                listPart.get(i).write(realPath + "/" + imgName);
+
+                dao.addEachImage(id, hostelImg, "url" + (i + 1));
+
+//                } 
+            }
+        }
+
+        Hostel h = new Hostel(id, hostelName, room, status, floor, provinceID, districtID, address, cost, distance, description);
+        dao.updateHostel(h);
+        response.sendRedirect(request.getContextPath() + "/edithostel?id=" + id);
        
     }
 
