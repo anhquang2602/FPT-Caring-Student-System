@@ -21,7 +21,7 @@ public abstract class DBContext {
 
     public DBContext() {
         try {
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS_UPDATE";
+             String url = "jdbc:sqlserver://DESKTOP-P8PPKT2\\SQLEXPRESS:1433;databaseName=FCS_UPDATE";
             String user = "sa";
             String pass = "123";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
