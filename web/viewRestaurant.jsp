@@ -16,6 +16,7 @@
         
         <form class="my-2" method="POST" action="RestaurantListController">
             <h1>All information about restaurant </h1>
+              <a href="ReportRestaurantController?id=${restaurant.restaurantID}" style="margin-left: 1000px">Báo Cáo Bài Viết</a> 
             <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Tên nhà hàng</label>

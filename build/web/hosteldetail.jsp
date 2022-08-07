@@ -91,6 +91,7 @@
                             <li><a>Chi tiết nhà trọ</a></li>
                         </ul>
                     </div>
+                      <a href="ReportHostelController?id=${hosteldetail.hostelID}" style="margin-left: 1000px"> Báo Cáo Bài Viết</a> 
                     <div class="row">
                         <div class="col-md-4 mt-5">
                             <div class="d-flex flex-column align-items-center text-center">
@@ -147,6 +148,7 @@
                                     <button class="star" id="star5"  value="5">&#9734;</button>
                                     <p class="current_rating">0 trên 5</p>
                                 </div>
+                              
                             </div>
                         </div>
                         <div class="col-md-8">

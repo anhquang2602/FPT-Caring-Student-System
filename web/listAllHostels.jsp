@@ -61,7 +61,7 @@
                                                 <div class="media-body order-2 order-lg-1 description" id="description">
                                                     <h5 class="mt-0 font-weight-bold mb-2">
                                                         <a href="detailhostel?id=${d.hostelID}" style="text-decoration: underline;color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
-                                                        <a href="ReportHostelController?id=${d.hostelID}" style="margin-left: 1000px"> Báo Cáo Bài Viết</a> 
+                                                        
                                                     </h5>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê: ${d.cost} VND</p>
