@@ -13,46 +13,65 @@
         <link rel="stylesheet" href="css/hostelStyle.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <style>
-            *{
+
+
+
+
+            * {
                 margin: 0;
                 padding: 0;
+                box-sizing: border-box;
             }
-            .rate {
-                float: left;
-                height: 46px;
-                padding: 0 10px;
+            body{
+                flex-direction: column;
+                font-family: Arial, Helvetica, san-serif;
+
             }
-            .rate:not(:checked) > input {
-                position:absolute;
-                top:-9999px;
+            .rating_heading{
+                animation: scale-up 1s ease;
+                font-weight:  bold;
+                color: orange;
             }
-            .rate:not(:checked) > label {
-                float:right;
-                width:1em;
-                overflow:hidden;
-                white-space:nowrap;
-                cursor:pointer;
-                font-size:30px;
-                color:#ccc;
-            }
-            .rate:not(:checked) > label:before {
-                content: '★ ';
-            }
-            .rate > input:checked ~ label {
-                color: #ffc700;    
-            }
-            .rate:not(:checked) > label:hover,
-            .rate:not(:checked) > label:hover ~ label {
-                color: #deb217;  
-            }
-            .rate > input:checked + label:hover,
-            .rate > input:checked + label:hover ~ label,
-            .rate > input:checked ~ label:hover,
-            .rate > input:checked ~ label:hover ~ label,
-            .rate > label:hover ~ input:checked ~ label {
-                color: #c59b08;
+            @keyframes scale-up{
+                0%{
+                    opacity: 0;
+                    transform: scale(.5);
+                }
+                100%{
+                    opacity: 1;
+                    transform: scale(1);
+                }
             }
 
+            .star_rating {
+                user-select: none;
+                background-color: #e6e6e6;
+                padding: 1rem 2rem;
+                margin: 1rem;
+                border-radius: .3rem;
+                animation: slide-up 1s ease;
+            }
+            @keyframes slide-up{
+                0%{
+                    opacity: 0;
+                    transform: translateY(50px);
+                }
+                100%{
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+            }
+            .star {
+                font-size: 3rem;
+                color: #ff9800;
+                background-color: unset;
+                border: none;
+                text-align: center;
+
+            }
+            .star:hover{
+                cursor: pointer;   
+            }
 
         </style>
     </head>
@@ -63,6 +82,7 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
+                <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
                 <div class="container rounded bg-white mt-5 mb-5">
                     <div>
                         <ul class="breadcrumb bg-white">
@@ -101,17 +121,31 @@
                                 <span class="font-weight-bold labels mt-5" ><label class="labels">Nhà trọ:</label> ${hosteldetail.hostelName}</span>
                                 <span class="font-weight-bold labels"><label class="labels">Chủ trọ:</label> ${hosteldetail.sellerName}</span>
                                 <BR>
-                                <div class="rate">
-                                    <input type="radio" id="star5" name="rate" value="5" />
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rate" value="4" />
-                                    <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rate" value="3" />
-                                    <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rate" value="2" />
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rate" value="1" />
-                                    <label for="star1" title="text">1 star</label>
+
+                                <!--                                <div class="rate">
+                                
+                                                                    <input type="radio" id="star5" name="rate" value="5" />
+                                                                    <label for="star5" title="text">5 stars</label>
+                                                                    <input type="radio" id="star4" name="rate" value="4" />
+                                                                    <label for="star4" title="text">4 stars</label>
+                                                                    <input type="radio" id="star3" name="rate" value="3" />
+                                                                    <label for="star3" title="text">3 stars</label>
+                                                                    <input type="radio" id="star2" name="rate" value="2" />
+                                                                    <label for="star2" title="text">2 stars</label>
+                                                                    <input type="radio" id="star1" name="rate" />
+                                                                    <label for="star1" title="text">1 star</label>
+                                
+                                                                </div>-->
+
+                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
+                                <div class ="star_rating">
+                                    <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
+                                    <button class="star" id="star1"  value="1">&#9734;</button>
+                                    <button class="star" id="star2"  value="2">&#9734;</button>
+                                    <button class="star" id="star3"  value="3">&#9734;</button>
+                                    <button class="star" id="star4"  value="4">&#9734;</button>
+                                    <button class="star" id="star5"  value="5">&#9734;</button>
+                                    <p class="current_rating">0 trên 5</p>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +212,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Mô tả</label>
-                                            <textarea class="form-control" readonly="" rows="15">${hosteldetail.description}</textarea>
+                                            <textarea class="form-control" readonly="" rows="5  ">${hosteldetail.description}</textarea>
                                         </div>
                                     </form>
                                 </div>
@@ -190,119 +224,153 @@
         </div>
 
         <script>
-            $("#star5").click(function () {
-                $.ajax({
-                        type: "GET",
+            const allStars = document.querySelectorAll('.star');
+            let current_rating = document.querySelector('.current_rating');
 
-                        url: "/Test_1/star",
-                        data: {
-                            star: 5,
-                        },
-                        headers: {
-                            Accept: "application/json; charset=utf-8",
-                            contentType: "application/json; charset=utf-8"
-                        },
-
-                        success: function (data) {
-
-                            alert(data);
-                        },
-                        error: function (e) {
-                            console.log("ERROR: ", e);
+            allStars.forEach((star, i) => {
+                star.onclick = function () {
+                    let current_star_level = i + 1;
+                    current_rating.innerText = current_star_level + ' trên 5 ';
+                    allStars.forEach((star, j) => {
+                        if (current_star_level >= j + 1) {
+                            star.innerHTML = '&#9733';
+                        } else {
+                            star.innerHTML = '&#9734';
                         }
-                    });
+                    })
+                }
+            })
+
+        </script>                            
+
+        <script>
+            $("#star5").click(function () {
+                var hostelId = document.getElementById("hostelId").value;
+
+                $.ajax({
+                    type: "GET",
+
+                    url: "/Test_1/star",
+                    data: {
+                        hostelId: hostelId,
+                        star: 5,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
+
+                    success: function (data) {
+
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
             });
             $("#star4").click(function () {
+                var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
-                        type: "GET",
+                    type: "GET",
 
-                        url: "/Test_1/star",
-                        data: {
-                            star: 4,
-                        },
-                        headers: {
-                            Accept: "application/json; charset=utf-8",
-                            contentType: "application/json; charset=utf-8"
-                        },
+                    url: "/Test_1/star",
+                    data: {
+                        hostelId: hostelId,
+                        star: 4,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
 
-                        success: function (data) {
+                    success: function (data) {
 
-                            alert(data);
-                        },
-                        error: function (e) {
-                            console.log("ERROR: ", e);
-                        }
-                    });
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
             });
             $("#star3").click(function () {
+                var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
-                        type: "GET",
+                    type: "GET",
 
-                        url: "/Test_1/star",
-                        data: {
-                            star: 3,
-                        },
-                        headers: {
-                            Accept: "application/json; charset=utf-8",
-                            contentType: "application/json; charset=utf-8"
-                        },
+                    url: "/Test_1/star",
+                    data: {
+                        hostelId: hostelId,
+                        star: 3,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
 
-                        success: function (data) {
+                    success: function (data) {
 
-                            alert(data);
-                        },
-                        error: function (e) {
-                            console.log("ERROR: ", e);
-                        }
-                    });
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
             });
             $("#star2").click(function () {
+                var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
-                        type: "GET",
+                    type: "GET",
 
-                        url: "/Test_1/star",
-                        data: {
-                            star: 2,
-                        },
-                        headers: {
-                            Accept: "application/json; charset=utf-8",
-                            contentType: "application/json; charset=utf-8"
-                        },
+                    url: "/Test_1/star",
+                    data: {
+                        hostelId: hostelId,
+                        star: 2,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
 
-                        success: function (data) {
+                    success: function (data) {
 
-                            alert(data);
-                        },
-                        error: function (e) {
-                            console.log("ERROR: ", e);
-                        }
-                    });
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
             });
             $("#star1").click(function () {
+                var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
-                        type: "GET",
+                    type: "GET",
 
-                        url: "/Test_1/star",
-                        data: {
-                            star: 1,
-                        },
-                        headers: {
-                            Accept: "application/json; charset=utf-8",
-                            contentType: "application/json; charset=utf-8"
-                        },
+                    url: "/Test_1/star",
+                    data: {
+                        hostelId: hostelId,
+                        star: 1,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
 
-                        success: function (data) {
+                    success: function (data) {
 
-                            alert(data);
-                        },
-                        error: function (e) {
-                            console.log("ERROR: ", e);
-                        }
-                    });
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
             });
-            
-            
+
+
         </script>
+
+
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

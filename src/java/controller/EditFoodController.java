@@ -101,7 +101,7 @@ public class EditFoodController extends HttpServlet {
         }
         if (part.getSize() == 0) {
             if (restaurantDAO.updateFood(foodID, foodName, cost, description)) {
-                response.sendRedirect("ListRestaurantBySeller");
+                response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + food.getRestaurantID());
             }
         } else {
             if (restaurantDAO.updateFood(foodID, foodName, cost, description)) {
@@ -109,7 +109,7 @@ public class EditFoodController extends HttpServlet {
                 String saveFoodImg = "foodImages/" + foodImg;
                 part.write(realPath + "\\" + foodImg);
                 restaurantDAO.updateFoodImg(foodID, saveFoodImg);
-                response.sendRedirect("ListRestaurantBySeller");
+               response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + food.getRestaurantID());
             }    
         }
     }

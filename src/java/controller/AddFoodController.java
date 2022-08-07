@@ -63,7 +63,7 @@ public class AddFoodController extends HttpServlet {
         request.setAttribute("listFood", listFood);
         request.setAttribute("restaurant", restaurant);
         //  request.setAttribute("food", food);
-        request.getRequestDispatcher("editRestaurant.jsp").forward(request, response);
+        request.getRequestDispatcher("addfood.jsp").forward(request, response);
     }
 
     /**
@@ -98,7 +98,9 @@ public class AddFoodController extends HttpServlet {
             if (restaurantDAO.createFood(restaurantID, foodName, costFodd, description)) {
                 int newestFoodId = restaurantDAO.getNewestFoodID();
                 restaurantDAO.createFoodImg(newestFoodId, "");
-                response.sendRedirect("ListRestaurantBySeller");
+                //response.sendRedirect("ListRestaurantBySeller");
+                
+                response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + restaurantID);
             }
         } else {
             if (restaurantDAO.createFood(restaurantID, foodName, costFodd, description)) {
@@ -107,7 +109,8 @@ public class AddFoodController extends HttpServlet {
                 String saveFoodImg = "foodImages/" + foodImg;
                 part.write(realPath + "\\" + foodImg);
                 restaurantDAO.createFoodImg(newestFoodId, saveFoodImg);
-                response.sendRedirect("ListRestaurantBySeller");
+                //response.sendRedirect("ListRestaurantBySeller");
+                response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + restaurantID);
             }
         }
 //        if (restaurantDAO.createFood(restaurantID, foodName, costFodd, description)) {

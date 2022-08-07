@@ -109,6 +109,7 @@
                                             </div>
                                         </label>
                                     </div>
+                                    
                                     Image1 : <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="img1">
                                     <c:if test="${editHostel.img1 != null}">
                                         <a id="U1" class ="Url1" href="deleteImage?id=${editHostel.hostelID}&url=Url1">Delete Image</a>
