@@ -104,7 +104,7 @@
         <servlet-name>DeleteImageController</servlet-name>
         <servlet-class>controller.DeleteImageController</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>AddRestaurantController</servlet-name>
         <servlet-class>controller.AddRestaurantController</servlet-class>
     </servlet>
@@ -139,6 +139,10 @@
     <servlet>
         <servlet-name>RestaurantListController</servlet-name>
         <servlet-class>controller.RestaurantListController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editFoodBySeller</servlet-name>
+        <servlet-class>controller.editFoodBySeller</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -279,6 +283,10 @@
     <servlet-mapping>
         <servlet-name>RestaurantListController</servlet-name>
         <url-pattern>/RestaurantListController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editFoodBySeller</servlet-name>
+        <url-pattern>/editFoodBySeller</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

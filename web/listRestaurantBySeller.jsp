@@ -17,11 +17,11 @@
     </head>
     <body>
 
-
-        <!--        <form action="AddRestaurantController" >
+        <h2>My restaurant</h2>
+<!--                <form action="AddRestaurantController" >
                     <input type="submit" value="Thêm bài biết">
-                </form>-->
-        <!--        <table>
+                </form>
+                <table>
         <c:forEach items="${listRestaurant}" var="restaurant" >
             <tr>
                 <td>
@@ -48,15 +48,29 @@
                             <ul class="testimonial-list">
                                 <c:forEach items="${listRestaurant}" var="restaurant" >
                                     <li>
-                                        <div class="card p-3" data-toggle="collapse" data-target="#collapse${restaurant.restaurantID}" aria-expanded="false" aria-controls="${restaurant.restaurantID}">
+                                        <div class="card p-3" data-toggle="collapse" data-target="#collapse${restaurant.restaurantID}" aria-expanded="true" aria-controls="${restaurant.restaurantID}">
                                             <div class="d-flex flex-row align-items-center">
                                                 <img src="https://i.imgur.com/FFStwMz.jpeg" width="50" class="rounded-circle">
                                                 <div class="d-flex flex-column ml-2">
                                                     <span class="font-weight-normal">${restaurant.restaurantName}</span>
-                                                    
+
+                                                </div>
+                                                <div class="item-action dropdown">
+                                                    <a href="#" data-toggle="dropdown" class="text-muted" data-abc="true">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+                                                        <circle cx="12" cy="12" r="1"></circle>
+                                                        <circle cx="12" cy="5" r="1"></circle>
+                                                        <circle cx="12" cy="19" r="1"></circle>
+                                                        </svg>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right bg-black" role="menu">
+                                                        <a class="dropdown-item" href="EditRestaurantController?id=${restaurant.restaurantID}">Edit Post </a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item trash" href="DeleteRestaurantController?id=${restaurant.restaurantID}">Delete Post</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                                    
+
                                         </div>   
                                     </li>
                                 </c:forEach>                               
@@ -67,19 +81,11 @@
 
                     <div class="col-md-6">
                         <div class="p-3 testimonials-margin">
-                             <c:forEach items="${listRestaurant}" var="restaurant" >
-                            <div id="collapse${restaurant.restaurantID}" class="collapse" data-parent="#accordionExample" >
-                                <div class="card-body">
-                                    <h4>It was a great experience</h4>
-                                    <div class="ratings">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p>${restaurant.address}</p>
-                                </div>
-                            </div>  
-                             </c:forEach>
+                            <c:forEach items="${listRestaurant}" var="restaurant" >
+                                <div id="collapse${restaurant.restaurantID}" class="collapse" aria-expanded="true" data-parent="#accordionExample" >
+                                    <a class="dropdown-item" href="EditRestaurantController?id=${restaurant.restaurantID}">Edit Post</a>
+                                </div>  
+                            </c:forEach>
                         </div>
                     </div>
 

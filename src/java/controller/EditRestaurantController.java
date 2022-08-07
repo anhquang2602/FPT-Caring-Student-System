@@ -68,7 +68,7 @@ public class EditRestaurantController extends HttpServlet {
         
         request.setAttribute("listProvince", a.listProvince());
         request.setAttribute("listDistrict", a.getDistrictByProName(restaurant.getProvinceName()));
-        request.getRequestDispatcher("editRestaurant.jsp").forward(request, response);
+        request.getRequestDispatcher("listRestaurantBySeller.jsp").forward(request, response);
     }
 
     /**
