@@ -149,7 +149,7 @@
         <servlet-class>controller.ReportRestaurantController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListAllReportController</servlet-name>
+        <servlet-name>ListAllReportHostelController</servlet-name>
         <servlet-class>controller.ListAllReportHostelController</servlet-class>
     </servlet>
     <servlet>

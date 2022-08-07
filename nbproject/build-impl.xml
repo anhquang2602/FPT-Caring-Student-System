@@ -794,12 +794,7 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
         </macrodef>
     </target>
     <target name="-init-taskdefs">
-<<<<<<< HEAD
-        
-=======
-      
-             
->>>>>>> bcbefe99793678e220b858d1d452e2e6740797ff
+
         <taskdef classpath="${libs.CopyLibs.classpath}" resource="org/netbeans/modules/java/j2seproject/copylibstask/antlib.xml"/>
     </target>
     <target name="-init-ap-cmdline-properties">
