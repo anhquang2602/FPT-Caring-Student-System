@@ -2,38 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/DoAn_Final/src/java/dao/DBContext.java</file>
-            <file>file:/D:/DoAn_Final/src/java/dao/SellerDAO.java</file>
-            <file>file:/D:/DoAn_Final/web/self_profileSeller.jsp</file>
-            <file>file:/D:/DoAn_Final/web/viewRestaurant.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/UpdateSellerProfile.java</file>
-            <file>file:/D:/DoAn_Final/src/java/model/Seller.java</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/ViewSellerController.java</file>
+            <file>file:/D:/DoAn_Final/web/profileSeller.jsp</file>
             <file>file:/D:/DoAn_Final/src/java/controller/LoginServlet.java</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/RegisterServlet.java</file>
         </group>
-=======
-            <file>file:/C:/Users/DELL/Desktop/codenew/web/listAllReportHostel.jsp</file>
-            <file>file:/C:/Users/DELL/Desktop/codenew/src/java/controller/ListAllReportHostelController.java</file>
-            <file>file:/C:/Users/DELL/Desktop/codenew/src/java/controller/LoginServlet.java</file>
-            <file>file:/C:/Users/DELL/Desktop/codenew/web/hosteldetail.jsp</file>
-            <file>file:/C:/Users/DELL/Desktop/codenew/web/header.jsp</file>
-            <file>file:/C:/Users/DELL/Desktop/codenew/web/listAllReportRestaurant.jsp</file>
-            <file>file:/C:/Users/DELL/Desktop/codenew/web/WEB-INF/web.xml</file>
-        </group>
-
-
-        <group>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/dao/DBContext.java</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/editHostel.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/addHostelStyle.css</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/addHostel.jsp</file>
-        </group>
-
-        <group/>
-
->>>>>>> 4fd5f9360d0b64f84c46b16c44814dac848b5a32
     </open-files>
 </project-private>
