@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/hostelStyle.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <style>
 
 
@@ -82,7 +83,9 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
+                
                 <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
+                
                 <div class="container rounded bg-white mt-5 mb-5">
                     <div>
                         <ul class="breadcrumb bg-white">
@@ -136,8 +139,10 @@
                                                                     <label for="star1" title="text">1 star</label>
                                 
                                                                 </div>-->
-
-                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
+                                <a href="comment?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a>
+                                
+                              
+<!--                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
                                 <div class ="star_rating">
                                     <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
                                     <button class="star" id="star1"  value="1">&#9734;</button>
@@ -146,7 +151,7 @@
                                     <button class="star" id="star4"  value="4">&#9734;</button>
                                     <button class="star" id="star5"  value="5">&#9734;</button>
                                     <p class="current_rating">0 trên 5</p>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div class="col-md-8">

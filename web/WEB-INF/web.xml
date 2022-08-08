@@ -144,6 +144,10 @@
         <servlet-name>StarVotingController</servlet-name>
         <servlet-class>controller.StarVotingController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CommentController</servlet-name>
+        <servlet-class>controller.CommentController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -287,6 +291,10 @@
     <servlet-mapping>
         <servlet-name>StarVotingController</servlet-name>
         <url-pattern>/star</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentController</servlet-name>
+        <url-pattern>/comment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
