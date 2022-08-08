@@ -37,7 +37,7 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="hostellist">Danh sách nhà trọ của tôi</a></li>
+                                <li><a href="hostellist">Nhà trọ của tôi</a></li>
                                 <li><a>Chi tiết nhà trọ</a></li>
                             </ul>
                         </div>
@@ -50,8 +50,7 @@
                                     <div class="mt-5">
                                         <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
-                                        <img id="Url1" name="Url1"
-                                             width="170px" height="170px"
+                                        <img id="Url1" name="Url1" width="170px" height="170px"
                                              <c:if test="${editHostel.img1 != null}">
                                                  src="${editHostel.img1}" </c:if>/>
                                              <script>
@@ -65,9 +64,9 @@
                                                      }
                                                  };
                                              </script>
-                                        <%--<c:if test="${editHostel.img1 != null}">--%>
-                                            <!--<a id="U1" class ="Url1" href="deleteImage?id=${editHostel.hostelID}&url=Url1">Delete Image</a>-->
-                                        <%--</c:if>--%>
+                                        <c:if test="${editHostel.img1 != null}">
+                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
+                                        </c:if>
 
                                         <input type="file" accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
                                         <%--<c:if test="${editHostel.img2 != null}">--%>
@@ -110,10 +109,15 @@
                                                      }
                                                  };
                                              </script>
-                                        </div>
+                                        <c:if test="${editHostel.img3 != null}">
+                                            <a id="U3" class ="Url3" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url3">X</a>
+                                            <input type="file" accept="image/*" onchange="loadFile(event)" name ="image3" id="file3">
+                                            <label for="file3" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
+                                        </c:if>
+                                    </div>
 
-                                        <div class="mt-5">    
-                                            <input type="file" accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
+                                    <div class="mt-5">    
+                                        <input type="file" accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
                                         <%--<c:if test="${editHostel.img4 != null}">--%>
                                             <!--<a id="U4" class ="Url4" href="deleteImage?id=${editHostel.hostelID}&url=Url4">Delete Image</a>-->
                                         <%--</c:if>--%>
@@ -522,5 +526,4 @@
     </body>
     <%@include file="/footer.jsp" %>
 </html>
-
 

@@ -35,7 +35,8 @@
                                         <input style="padding-left: 80px" type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="avatarImg">
                                     </div>
                                     <div id="divCheckImg"></div>
-                                    <span class="mt-2">${seller.email}</span>
+                                    <span class="mt-2">${seller.email}</span><br>
+                                    <a href="${seller.linkFb}" title="" target="_blank">My Facebook</a>
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -52,6 +53,7 @@
                                         <div class="col-md-12"><label class="labels">Age</label><input type="number" name="age" class="form-control"value="${seller.age}" ></div>
                                         <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" value="${seller.phone}" ></div>
                                         <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" readonly="" value="${seller.email}" ></div>
+                                        <div class="col-md-12"><label class="labels">Link Facebook</label><input type="text" class="form-control" name="linkFb" value="${seller.linkFb}" ></div>
                                         <div class="col-md-12"><label class="labels">Sex</label></br>
                                             <label class="labels" id="genderlable" hidden="">${seller.gender}</label>
                                             <input class="form-check-input" type="radio" name="gender"  id="inlineRadio1" value="1"> Nam

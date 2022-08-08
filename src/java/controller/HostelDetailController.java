@@ -52,7 +52,9 @@ public class HostelDetailController extends HttpServlet {
         String id = request.getParameter("id");
         HostelDAO dao = new HostelDAO();
         Hostel h = dao.getHostelInfo(Integer.parseInt(id));
+        int SellerID=dao.getSellerIdByHostelId(Integer.parseInt(id));
         request.setAttribute("hosteldetail", h);
+        request.setAttribute("sellerId", SellerID);
         request.getRequestDispatcher("hosteldetail.jsp").forward(request, response);
         
     }

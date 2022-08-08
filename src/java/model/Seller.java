@@ -27,6 +27,15 @@ public class Seller {
     private int status;
     int gender;
     private String image;
+    private String linkFb;
+
+    public String getLinkFb() {
+        return linkFb;
+    }
+
+    public void setLinkFb(String linkFb) {
+        this.linkFb = linkFb;
+    }
 
     public Seller() {
     }
@@ -65,7 +74,7 @@ public class Seller {
         this.gender = gender;
     }
     
-    public Seller(int sellerID, String firstName, String lastName, int age, String phone, String email, int countryID, int provinceID, int districtID, String address, int gender) {
+    public Seller(int sellerID, String firstName, String lastName, int age, String phone, String email, int countryID, int provinceID, int districtID, String address, int gender,String linkFb) {
         this.sellerID = sellerID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -77,9 +86,10 @@ public class Seller {
         this.districtID = districtID;
         this.address = address;
         this.gender = gender;
+        this.linkFb=linkFb;
     }
     
-    public Seller(String firstName, String lastName, int age, String phone, String email, int countryID, int provinceID, int districtID, String address, int gender) {
+    public Seller(String firstName, String lastName, int age, String phone, String email, int countryID, int provinceID, int districtID, String address, int gender,String linkFb) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -90,6 +100,7 @@ public class Seller {
         this.districtID = districtID;
         this.address = address;
         this.gender = gender;
+        this.linkFb=linkFb;
     }
 
     public int getSellerID() {

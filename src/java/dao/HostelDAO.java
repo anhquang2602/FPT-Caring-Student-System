@@ -271,6 +271,23 @@ public class HostelDAO extends DBContext {
         return 0;
     }
 
+     public int getSellerIdByHostelId(int hostelID) {
+        String sql = "select SellerID from Hostels where HostelID=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, hostelID);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return 0;
+    }
+    
     public void addHostelID(int hostelID) {
         try {
 
