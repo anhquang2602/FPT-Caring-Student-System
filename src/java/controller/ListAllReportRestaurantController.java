@@ -5,7 +5,7 @@ package controller;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import dao.HostelDAO;
 import dao.ReportHostelDAO;
 import dao.ReportRestaurantDAO;
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class ListAllReportRestaurantController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListAllReportRestaurantController</title>");            
+            out.println("<title>Servlet ListAllReportRestaurantController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListAllReportRestaurantController at " + request.getContextPath() + "</h1>");
@@ -62,11 +62,9 @@ public class ListAllReportRestaurantController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ReportRestaurantDAO reportRestaurantDAO = new ReportRestaurantDAO();
-        
-        ReportHostelDAO reportHostelDAO = new ReportHostelDAO();
-         ArrayList<ReportRestaurant> reportRestaurant = reportRestaurantDAO.listAllReportRestaurant();
-           request.setAttribute("listReportRestaurant", reportRestaurant);
-            request.getRequestDispatcher("listAllReportRestaurant.jsp").forward(request, response);
+        ArrayList<ReportRestaurant> reportRestaurant = reportRestaurantDAO.listAllReportRestaurant();
+        request.setAttribute("listReportRestaurant", reportRestaurant);
+        request.getRequestDispatcher("listAllReportRestaurant.jsp").forward(request, response);
     }
 
     /**

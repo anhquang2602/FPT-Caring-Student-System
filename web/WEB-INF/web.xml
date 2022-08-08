@@ -125,10 +125,6 @@
         <servlet-class>controller.AddFoodController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListAllRestaurantController</servlet-name>
-        <servlet-class>controller.ListAllRestaurantController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>EditFoodController</servlet-name>
         <servlet-class>controller.EditFoodController</servlet-class>
     </servlet>
@@ -159,6 +155,10 @@
     <servlet>
         <servlet-name>ListAllReportRestaurantController</servlet-name>
         <servlet-class>controller.ListAllReportRestaurantController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAllRestaurantController</servlet-name>
+        <servlet-class>controller.ListAllRestaurantController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -285,10 +285,6 @@
         <url-pattern>/AddFoodController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListAllRestaurantController</servlet-name>
-        <url-pattern>/ListAllRestaurantController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>EditFoodController</servlet-name>
         <url-pattern>/EditFoodController</url-pattern>
     </servlet-mapping>
@@ -319,6 +315,10 @@
     <servlet-mapping>
         <servlet-name>ListAllReportRestaurantController</servlet-name>
         <url-pattern>/ListAllReportRestaurantController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllRestaurantController</servlet-name>
+        <url-pattern>/ListAllRestaurantController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

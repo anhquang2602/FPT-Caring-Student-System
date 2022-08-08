@@ -32,6 +32,7 @@
                     <td>${report.truthless}</td>
                     <td>   
                         <a href="#">Xóa bài đăng</a>
+                        <a href="detailhostel?id=${report.hostelID}">View post</a>
                     </td>
                 </tr>
             </c:forEach>

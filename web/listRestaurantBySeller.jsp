@@ -24,7 +24,21 @@
         <link rel="stylesheet" href="css/listRestaurantBySellerStyle.css">
     </head>
     <body>
-
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4> ADD SUCCESS </h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Add New Restaurant Successfully !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
 
         <h1>List Restaurant of me</h1>
         <form action="AddRestaurantController" >
@@ -101,6 +115,13 @@
             </div>
 
         </div>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+
+            });
+        </script>
     </body>
 </html>
 

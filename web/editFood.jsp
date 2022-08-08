@@ -12,16 +12,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+         <style>
+            .error {
+                color: red;
+            }
+        </style>
     </head>
     <body>
-        <form action="EditFoodController" method="POST" enctype="multipart/form-data">
+        <form action="EditFoodController" method="POST" name="editFoodForm" onsubmit="return validateFood()" enctype="multipart/form-data">
             <h1>Edit Food</h1>
-            <input type="text" name="foodId" value="${food.foodID}">   
+            <input type="text" name="foodId" value="${food.foodID}" hidden>   
             <label>Tên món ăn: </label>
             <input type="text" name="foodName" value="${food.foodName}">
+            <div class="error" id="errorName"></div>
             <br>
             <label>Giá : </label>
             <input type="text" name="costFood" value="${food.cost}">
+             <div class="error" id="errorCost"></div>
             <br>
             <label>Ghi chú :</label>
             <input type="text" name="desFood" value="${food.descriptions}">
@@ -42,6 +49,33 @@
                 URL.revokeObjectURL(output.src) // free memory
             }
         };
+    </script>
+    <script>
+                function validateFood() {
+                let isValid = true;
+                        const foodName = document.editFoodForm.foodName.value;
+                        const costFood = document.editFoodForm.costFood.value;
+                        const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                        const regex2 = /^[0-9]*$/;
+                        document.getElementById('errorName').innerText = ' ';
+                        document.getElementById('errorCost').innerText = ' ';
+                        if (!foodName) {
+                document.getElementById('errorName').innerText = 'Bạn phải nhập tên món ăn!';
+                        isValid = false;
+                }
+                if (!costFood) {
+                document.getElementById('errorCost').innerText = 'Bạn phải nhập giá của món ăn!';
+                        isValid = false;
+                } else if (!regex.test(distance)) {
+                document.getElementById('errorCost').innerText = 'Invalid!';
+                        isValid = false;
+                } else if (distance <= 0) {
+                document.getElementById('errorCost').innerText = 'Giá tiền phải > 0 ';
+                        isValid = false;
+                }
+
+                return isValid;
+                }
     </script>
     </body>
 </html>
