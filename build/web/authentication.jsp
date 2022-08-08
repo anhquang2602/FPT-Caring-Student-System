@@ -28,12 +28,13 @@
                                 <input class="btn btn-danger px-4 validate" style="background-color: rgb(238, 77, 45)" type="submit" value="Confirm">
                             </div> 
                             <div class="mt-3 content d-flex justify-content-center align-items-center"> 
-                            </div> 
+                            </div>
                         </form>
+                        <div>${errorAuthentication}</div>
                     </div> 
                 </div>
             </div> 
         </div>
-
     </body>
+    <script src="validator/Validator.js"></script>
 </html>
