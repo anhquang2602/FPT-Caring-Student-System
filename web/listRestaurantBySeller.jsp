@@ -24,30 +24,45 @@
         <link rel="stylesheet" href="css/listRestaurantBySellerStyle.css">
     </head>
     <body>
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4> ADD SUCCESS </h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Add New Restaurant Successfully !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
 
-
-                <h1>List Restaurant of me</h1>
+        <h1>List Restaurant of me</h1>
         <form action="AddRestaurantController" >
             <input type="submit" value="Thêm bài biết">
         </form>
- <!--       <table>
-            <c:forEach items="${listRestaurant}" var="restaurant" >
-                <tr>
-                    <td>
-                        <a class = "long" href="">${restaurant.restaurantName}</a>
-                    </td>
+        <!--       <table>
+        <c:forEach items="${listRestaurant}" var="restaurant" >
+            <tr>
+                <td>
+                    <a class = "long" href="">${restaurant.restaurantName}</a>
+                </td>
 
-                    <td>
-                        <div class="dropdown">
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="EditRestaurantController?id=${restaurant.restaurantID}">Edit Post</a>
-                                <a class="dropdown-item" href="DeleteRestaurantController?id=${restaurant.restaurantID}">Delete Post</a>
-                            </div>
+                <td>
+                    <div class="dropdown">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="EditRestaurantController?id=${restaurant.restaurantID}">Edit Post</a>
+                            <a class="dropdown-item" href="DeleteRestaurantController?id=${restaurant.restaurantID}">Delete Post</a>
                         </div>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>-->
+                    </div>
+                </td>
+            </tr>
+            
+        </c:forEach>
+    </table>-->
 
         <div class="container">
             <div class="accordion d-flex justify-content-center align-items-center height" id="accordionExample">
@@ -62,10 +77,10 @@
                                                 <img src="${restaurant.restaurantImage}" width="50" class="rounded-circle">
                                                 <div class="d-flex flex-column ml-2">
                                                     <span class="font-weight-normal">${restaurant.restaurantName}</span>
-                                                    
+
                                                 </div>
                                             </div>
-                                                    
+
                                         </div>   
                                     </li>
                                 </c:forEach>                               
@@ -76,21 +91,23 @@
 
                     <div class="col-md-6">
                         <div class="p-3 testimonials-margin">
-                             <c:forEach items="${listRestaurant}" var="restaurant" >
-                            <div id="collapse${restaurant.restaurantID}" class="collapse" data-parent="#accordionExample" >
-                                <div class="card-body">
-                                    <h4>It was a great experience</h4>
-                                    <div class="ratings">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
+                            <c:forEach items="${listRestaurant}" var="restaurant" >
+                                <div id="collapse${restaurant.restaurantID}" class="collapse" data-parent="#accordionExample" >
+                                    <div class="card-body">
+                                        <h4>It was a great experience</h4>
+                                        <div class="ratings">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <p>${restaurant.address}</p>
+                                        <a href="EditRestaurantController?id=${restaurant.restaurantID}">Edit Post</a>
+                                        <a href="DeleteRestaurantController?id=${restaurant.restaurantID}">Delete Post</a>
+                                        <a  href="AddFoodController?id=${restaurant.restaurantID}" >Menu của tôi</a>
+
                                     </div>
-                                    <p>${restaurant.address}</p>
-                                     <a href="EditRestaurantController?id=${restaurant.restaurantID}">Edit Post</a>
-                                    <a href="DeleteRestaurantController?id=${restaurant.restaurantID}">Delete Post</a>
-                                </div>
-                            </div>  
-                             </c:forEach>
+                                </div>  
+                            </c:forEach>
                         </div>
                     </div>
 
@@ -98,6 +115,13 @@
             </div>
 
         </div>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+
+            });
+        </script>
     </body>
 </html>
 

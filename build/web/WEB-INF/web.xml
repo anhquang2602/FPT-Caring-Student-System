@@ -125,10 +125,6 @@
         <servlet-class>controller.AddFoodController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListAllRestaurantController</servlet-name>
-        <servlet-class>controller.ListAllRestaurantController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>EditFoodController</servlet-name>
         <servlet-class>controller.EditFoodController</servlet-class>
     </servlet>
@@ -139,6 +135,30 @@
     <servlet>
         <servlet-name>RestaurantListController</servlet-name>
         <servlet-class>controller.RestaurantListController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StarVotingController</servlet-name>
+        <servlet-class>controller.StarVotingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportRestaurantController</servlet-name>
+        <servlet-class>controller.ReportRestaurantController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAllReportHostelController</servlet-name>
+        <servlet-class>controller.ListAllReportHostelController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportHostelController</servlet-name>
+        <servlet-class>controller.ReportHostelController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAllReportRestaurantController</servlet-name>
+        <servlet-class>controller.ListAllReportRestaurantController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAllRestaurantController</servlet-name>
+        <servlet-class>controller.ListAllRestaurantController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -265,10 +285,6 @@
         <url-pattern>/AddFoodController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListAllRestaurantController</servlet-name>
-        <url-pattern>/ListAllRestaurantController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>EditFoodController</servlet-name>
         <url-pattern>/EditFoodController</url-pattern>
     </servlet-mapping>
@@ -279,6 +295,30 @@
     <servlet-mapping>
         <servlet-name>RestaurantListController</servlet-name>
         <url-pattern>/RestaurantListController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StarVotingController</servlet-name>
+        <url-pattern>/star</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportRestaurantController</servlet-name>
+        <url-pattern>/ReportRestaurantController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllReportHostelController</servlet-name>
+        <url-pattern>/ListAllReportHostelController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportHostelController</servlet-name>
+        <url-pattern>/ReportHostelController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllReportRestaurantController</servlet-name>
+        <url-pattern>/ListAllReportRestaurantController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllRestaurantController</servlet-name>
+        <url-pattern>/ListAllRestaurantController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

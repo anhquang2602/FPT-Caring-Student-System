@@ -100,6 +100,7 @@ public class AddHostelController extends HttpServlet {
         String hostelImg;
 
         SellerDAO sda = new SellerDAO();
+            
         String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
 
         Part part1 = request.getPart("image1");

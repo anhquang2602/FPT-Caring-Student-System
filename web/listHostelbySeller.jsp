@@ -68,8 +68,25 @@
                                                 <div class="media-body order-2 order-lg-1 image">
                                                     <img src="${d.img1}" style="width: 150px; height: 150px" >
                                                 </div>
-                                                <a href="edithostel?id=${d.hostelID}" style="margin-left: 1000px">Chỉnh sửa</a> 
-                                                <a href="deletehostel?id=${d.hostelID}" style="margin-left: 1000px">Xoá nhà trọ</a> 
+                                                <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
+                                                <a class="btn btn-danger" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
+
+                                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                Xoá nhà trọ
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Bạn có chắc chắn muốn xoá nhà trọ này không?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                                                <a class="btn btn-danger btn-ok">Xoá</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div> 
                                         </li> 
                                     </c:forEach>
@@ -81,6 +98,11 @@
             </div>
         </div>
     </body>
+    <script>
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+    </script>
     <%@include file="/footer.jsp" %>
 </html>
 

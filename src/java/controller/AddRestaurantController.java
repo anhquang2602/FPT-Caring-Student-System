@@ -19,6 +19,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -41,6 +42,7 @@ public class AddRestaurantController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
         String restaurantName = request.getParameter("restaurantName");
         int provinceID = Integer.parseInt(request.getParameter("province"));
         int districtID = Integer.parseInt(request.getParameter("district"));
@@ -48,7 +50,7 @@ public class AddRestaurantController extends HttpServlet {
         String cost = request.getParameter("cost");
         float distance = Float.parseFloat(request.getParameter("distance"));
         String description = request.getParameter("description");
-        
+
         SellerDAO sda = new SellerDAO();
         String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
         RestaurantDAO restaurantDAO = new RestaurantDAO();
@@ -68,7 +70,8 @@ public class AddRestaurantController extends HttpServlet {
             String SaveRestaurantImg = "restaurantImages/" + restaurantImg;
             part.write(realPath + "\\" + restaurantImg);
             if (restaurantDAO.createRestaurant(restaurantName, Integer.parseInt(sellerID), 1, provinceID, districtID, address, cost, distance, description, SaveRestaurantImg)) {
-                response.sendRedirect("ListRestaurantBySeller");
+                session.setAttribute("stt", "1");
+                response.sendRedirect(request.getContextPath() + "/ListRestaurantBySeller");
             }
 
         }
