@@ -34,7 +34,6 @@
                 <tr>
                     <td>
                         <a class = "long" href="RestaurantListController?id=${restaurant.restaurantID}">${restaurant.restaurantName}</a>
-                        <a href="ReportRestaurantController?id=${restaurant.restaurantID}" style="margin-left: 1000px">Báo Cáo Bài Viết</a> 
                     </td>
                 </tr>
             </c:forEach>
