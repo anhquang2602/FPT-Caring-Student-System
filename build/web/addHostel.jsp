@@ -32,9 +32,9 @@
                     <div class="col-xl-12 mb-5">
                         <div>
                             <ul class="breadcrumb bg-white">
-                                <li><a href="home.jsp">Home</a></li>
-                                <li><a href="hostellist">List My Hostels</a></li>
-                                <li><a>Thêm  nhà trọ mới</a></li>
+                                <li><a href="home.jsp">Trang chủ</a></li>
+                                <li><a href="hostellist">Nhà trọ của tôi</a></li>
+                                <li><a>Thêm nhà trọ mới</a></li>
                             </ul>
                         </div>
                         <div class="card">
@@ -58,7 +58,7 @@
                                         </script>
 
                                         <input type="file" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
-                                        <label for="file2" style="position: absolute; margin-left: 100px; margin-top: 60px; opacity: 50%">+</label>
+                                        <label for="file2" style="position: absolute; margin-left: 100px; margin-top: 60px; opacity: 30%">+</label>
                                         <img id="output2" style="margin-left: 30px" width="170px" height="170px"/>
                                         <script>
                                             var loadFile2 = function (event) {
@@ -71,7 +71,7 @@
                                         </script>
 
                                         <input type="file" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
-                                        <label for="file3" style="position: absolute; margin-left: 100px; margin-top: 60px; opacity: 50%">+</label>
+                                        <label for="file3" style="position: absolute; margin-left: 100px; margin-top: 60px; opacity: 30%">+</label>
                                         <img id="output3" style="margin-left: 30px" width="170px" height="170px"/>
                                         <script>
                                             var loadFile3 = function (event) {
@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="mt-5">
                                         <input type="file" hidden accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
-                                        <label for="file4" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
+                                        <label for="file4" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 30%">+</label>
                                         <img id="output4" width="170px" height="170px"/>
                                         <script>
                                             var loadFile4 = function (event) {
@@ -98,7 +98,7 @@
                                         </script>
 
                                         <input type="file" hidden accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
-                                        <label for="file5" style="position: absolute; margin-left: 100px; margin-top: 65px; opacity: 50%">+</label>
+                                        <label for="file5" style="position: absolute; margin-left: 100px; margin-top: 65px; opacity: 30%">+</label>
                                         <img id="output5" style="margin-left: 30px" width="170px" height="170px"/>
                                         <script>
                                             var loadFile5 = function (event) {
@@ -111,7 +111,7 @@
                                         </script> 
 
                                         <input type="file" hidden accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
-                                        <label for="file6" style="position: absolute; margin-left: 100px; margin-top: 65px; opacity: 50%">+</label>
+                                        <label for="file6" style="position: absolute; margin-left: 100px; margin-top: 65px; opacity: 30%">+</label>
                                         <img id="output6" style="margin-left: 30px" width="170px" height="170px"/>
                                         <script>
                                             var loadFile6 = function (event) {
@@ -327,5 +327,4 @@
     </body>
     <%@include file="/footer.jsp" %>    
 </html>
-
 

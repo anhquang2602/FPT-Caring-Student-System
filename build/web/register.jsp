@@ -14,7 +14,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/registerStyle.css">
     </head>
-
     <body>
         <div class="container mt-5 mb-5 g-0">
             <div class="d-flex flex row">
@@ -41,7 +40,9 @@
                                     </span> 
                                 </div>
                             </form>
-                            <h2 style="color: red"> ${errorRegister}</h2>
+                            <div class="mt-4 ml-3">
+                                <h3 style="color: red; text-align: center"> ${errorRegister}</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
