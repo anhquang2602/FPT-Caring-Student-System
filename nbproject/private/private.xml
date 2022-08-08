@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <group/>
 =======
 =======
@@ -12,11 +13,14 @@
 >>>>>>> 4fd5f9360d0b64f84c46b16c44814dac848b5a32
 =======
 >>>>>>> 49b85b826967bab2f8f98e5a6bb69ee3ecf61340
+=======
+>>>>>>> de62174135721bb1a6ab81913713d67ba8c84313
         <group>
             <file>file:/D:/DoAn_Final/src/java/controller/ViewSellerController.java</file>
             <file>file:/D:/DoAn_Final/web/profileSeller.jsp</file>
             <file>file:/D:/DoAn_Final/src/java/controller/LoginServlet.java</file>
         </group>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 
@@ -38,5 +42,7 @@
 >>>>>>> 4fd5f9360d0b64f84c46b16c44814dac848b5a32
 =======
 >>>>>>> 49b85b826967bab2f8f98e5a6bb69ee3ecf61340
+=======
+>>>>>>> de62174135721bb1a6ab81913713d67ba8c84313
     </open-files>
 </project-private>
