@@ -2,6 +2,33 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/Users/DELL/Desktop/codenew/web/listAllReportHostel.jsp</file>
+            <file>file:/C:/Users/DELL/Desktop/codenew/src/java/controller/ListAllReportHostelController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/codenew/src/java/controller/LoginServlet.java</file>
+            <file>file:/C:/Users/DELL/Desktop/codenew/web/hosteldetail.jsp</file>
+            <file>file:/C:/Users/DELL/Desktop/codenew/web/header.jsp</file>
+            <file>file:/C:/Users/DELL/Desktop/codenew/web/listAllReportRestaurant.jsp</file>
+            <file>file:/C:/Users/DELL/Desktop/codenew/web/WEB-INF/web.xml</file>
+        </group>
+=======
+<<<<<<< HEAD
+        <group>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/dao/DBContext.java</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/editHostel.jsp</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/addHostelStyle.css</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/addHostel.jsp</file>
+        </group>
+<<<<<<< HEAD
+=======
+=======
+        <group/>
+>>>>>>> 2be4e67c610bdc07af3d0244d2f228f2426caccb
+>>>>>>> bcbefe99793678e220b858d1d452e2e6740797ff
+>>>>>>> 7ce199b7b097fe0bccb596620eef54cc3a9ef905
+>>>>>>> 272196e328a4f34621315c33335bf9a48348b9dd
     </open-files>
 </project-private>
