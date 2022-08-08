@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="col-md-12"><label class="labels">District</label>
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected value="${seller.districID}">${seller.districtName}</option>
+                                            <option selected value="${seller.districtID}">${seller.districtName}</option>
                                         </select>
                                     </div>
                                     <div class="col-md-12"><label class="labels">Address Detail</label>
