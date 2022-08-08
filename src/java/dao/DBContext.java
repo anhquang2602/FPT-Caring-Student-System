@@ -35,7 +35,7 @@ public abstract class DBContext {
      public DBContext() {
         try {
 
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS_UPDATE";
             String user = "sa";
             String pass = "bacninh123";
 

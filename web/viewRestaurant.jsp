@@ -76,7 +76,7 @@
                     <td>${food.foodName}</td>
                     <td>${food.cost}</td>
                     <td>${food.descriptions}</td>
-                    <td>${food.imageURL}</td>
+                    <td><img src="${food.imageURL}"></td>
                     
                 </tr>
             </c:forEach>

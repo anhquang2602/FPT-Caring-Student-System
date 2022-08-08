@@ -68,9 +68,11 @@ public class UpdateSellerProfile extends HttpServlet {
         request.setAttribute("seller", seller);
         request.setAttribute("UserAvatar", UserAvatar);
         AddressDAO a = new AddressDAO();
-
+        
         request.setAttribute("listProvince", a.listProvince());
-        request.setAttribute("listDistrict", a.listDistrict(seller.getProvinceID()));
+        if (seller.getProvinceID()+"" != "") {
+            request.setAttribute("listDistrict", a.listDistrict(seller.getProvinceID()));
+        }
 
     }
 
@@ -111,7 +113,7 @@ public class UpdateSellerProfile extends HttpServlet {
         Part part = request.getPart("avatarImage");
 
         String realPath1 = request.getServletContext().getRealPath("/avatarImages");
-        String realPath=realPath1.replaceFirst("build","");
+        String realPath = realPath1.replaceFirst("build", "");
         String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
@@ -119,7 +121,7 @@ public class UpdateSellerProfile extends HttpServlet {
         if (part.getSize() == 0) {
             SellerDAO sdb = new SellerDAO();
             UserAvatar = sdb.getAvatarByUsername(email);
-            String firstName, lastName, addressDetail, phone;
+            String firstName, lastName, addressDetail, phone,linkFb;
             int age, countryID;
             int gender = Integer.parseInt(request.getParameter("gender"));
             int provinceID = Integer.parseInt(request.getParameter("province"));
@@ -129,8 +131,8 @@ public class UpdateSellerProfile extends HttpServlet {
             addressDetail = request.getParameter("addressDetail");
             phone = request.getParameter("phone");
             age = Integer.parseInt(request.getParameter("age"));
-
-            Seller sellerUpdate = new Seller(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender);
+            linkFb=request.getParameter("linkFb");
+            Seller sellerUpdate = new Seller(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender,linkFb);
             if (sdb.updateSellerProfile(UserAvatar, sellerUpdate) == true) {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update successfully");
@@ -155,7 +157,7 @@ public class UpdateSellerProfile extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }*/
-            String firstName, lastName, addressDetail, phone;
+            String firstName, lastName, addressDetail, phone,linkFb;
             int age, countryID, provinceID, districtID;
             int gender = Integer.parseInt(request.getParameter("gender"));
             firstName = request.getParameter("firstName");
@@ -163,10 +165,10 @@ public class UpdateSellerProfile extends HttpServlet {
             addressDetail = request.getParameter("addressDetail");
             phone = request.getParameter("phone");
             age = Integer.parseInt(request.getParameter("age"));
-
+            linkFb=request.getParameter("linkFb");
             provinceID = Integer.parseInt(request.getParameter("province"));
             districtID = Integer.parseInt(request.getParameter("district"));
-            Seller sellerUpdate = new Seller(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender);
+            Seller sellerUpdate = new Seller(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender,linkFb);
             SellerDAO sdb = new SellerDAO();
             if (sdb.updateSellerProfile(UserAvatar, sellerUpdate) == true) {
                 request.setAttribute("UpdateProcess", "Update successfully");
