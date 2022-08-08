@@ -42,7 +42,7 @@
                         <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="listallhostels">Nhà Trọ</a> 
                         <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="ClubListController">Club</a> 
                         <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="BusPagingServlet">Xe Bus</a>
-                        <a class="col-sm-3 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="department">Phòng Ban</a>
+                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="department">Phòng Ban</a>
                         <%}%>
                         <div class="dropdownProfile col-sm-1"></div>   
                         <div class="dropdownProfile col-sm-4">    
