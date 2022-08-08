@@ -23,7 +23,7 @@
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Tên nhà hàng</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="restaurantName" >
-                 <div class="error" id="errorName"></div>
+                 <div class="error" id="errorName">
             </div><br>
             <label for="cars">Tỉnh,thành phố</label>
             <select name="province" id="province" class="province">

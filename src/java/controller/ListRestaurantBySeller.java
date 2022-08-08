@@ -15,6 +15,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Food;
 import model.Restaurant;
 
@@ -50,19 +51,19 @@ public class ListRestaurantBySeller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         RestaurantDAO restaurantDAO = new RestaurantDAO();
 
         SellerDAO sda = new SellerDAO();
-      
 
-       
-        String sellerID = sda.getSellerID((String)request.getSession().getAttribute("username"));
+        String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
 
         ArrayList<Restaurant> listRestaurant = restaurantDAO.listRestaurantBySeller(Integer.parseInt(sellerID));
-       // ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(Integer.parseInt(restaurantID));
+        // ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(Integer.parseInt(restaurantID));
         request.setAttribute("listRestaurant", listRestaurant);
-      //  request.setAttribute("listFood", listFood);
+        //  request.setAttribute("listFood", listFood);
         request.getRequestDispatcher("listRestaurantBySeller.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**

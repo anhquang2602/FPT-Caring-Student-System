@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.HostelDAO;
 import dao.ReportHostelDAO;
 import dao.ReportRestaurantDAO;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Hostel;
 import model.ReportHostel;
 import model.ReportRestaurant;
 
@@ -62,7 +64,7 @@ public class ListAllReportHostelController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         ReportHostelDAO reportHostelDAO = new ReportHostelDAO();
         ArrayList<ReportHostel> reportHostel = reportHostelDAO.listAllReportHostel();
         request.setAttribute("listReportHostel", reportHostel);

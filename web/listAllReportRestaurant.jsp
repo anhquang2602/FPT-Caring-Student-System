@@ -33,6 +33,7 @@
                     <td>${report.truthless}</td>
                     <td>   
                         <a href="#">Xóa bài đăng</a>
+                        <a href="RestaurantListController?id=${report.restaurantID}">View post</a>
                     </td>
                 </tr>
             </c:forEach>
