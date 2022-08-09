@@ -798,6 +798,7 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
      
@@ -811,6 +812,9 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
 =======
      
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
+=======
+     
+>>>>>>> main
         <taskdef classpath="${libs.CopyLibs.classpath}" resource="org/netbeans/modules/java/j2seproject/copylibstask/antlib.xml"/>
     </target>
     <target name="-init-ap-cmdline-properties">
@@ -1016,6 +1020,7 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <copyfiles files="${file.reference.gson-2.8.0.jar-2}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.sqljdbc42.jar-1}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
 >>>>>>> main
@@ -1026,6 +1031,8 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
 =======
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
+=======
+>>>>>>> main
         <copyfiles files="${file.reference.gson-2.8.0.jar-3}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.gson-2.8.0.jar-2}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
 =======
@@ -1034,6 +1041,7 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
 =======
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
@@ -1041,10 +1049,13 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
 =======
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
+=======
+>>>>>>> main
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
     <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1061,6 +1072,8 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
 =======
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
+=======
+>>>>>>> main
         <copyfiles files="${file.reference.sqljdbc42.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.mail.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.smtp.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
@@ -1078,6 +1091,7 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
 =======
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
@@ -1085,6 +1099,8 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
 =======
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
+=======
+>>>>>>> main
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
         <delete dir="${build.web.dir}/WEB-INF/lib"/>

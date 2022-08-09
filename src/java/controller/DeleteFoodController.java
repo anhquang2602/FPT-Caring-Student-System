@@ -58,6 +58,7 @@ public class DeleteFoodController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         int foodID = Integer.parseInt(request.getParameter("fid"));
         Food food = restaurantDAO.getFoodID(foodID);
