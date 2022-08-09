@@ -35,18 +35,18 @@
                             <div class="col-lg-12 mb-5">
                                 <div>
                                     <ul class="breadcrumb bg-white">
-                                        <li><a href="home.jsp">Home</a></li>
-                                        <li><a>List Club</a></li>
+                                        <li><a href="home.jsp">Trang chủ</a></li>
+                                        <li><a>Danh sách Câu Lạc Bộ</a></li>
                                     </ul>
                                 </div>
                                 <table id="club">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Club Name</th>
-                                            <th scope="col">Club President</th>
-                                            <th scope="col">Facebook</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Detail</th>
+                                            <th scope="col">CÂU LẠC BỘ</th>
+                                            <th scope="col">CHỦ NHIỆM</th>
+                                            <th scope="col">LINK FACEBOOK CÂU LẠC BỘ</th>
+                                            <th scope="col">EMAIL</th>
+                                            <th scope="col">XEM CHI TIẾT</th>
                                         </tr>
                                     </thead>
                                     <tbody>
