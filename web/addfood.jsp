@@ -48,23 +48,18 @@
             <th>Action</th>
                 <c:forEach items="${listFood}" var="food" >
                 <tr>
-<<<<<<< HEAD
+
                 <input type="text" value="${food.foodID}" name="fid" hidden>
-=======
-                     <input type="text" value="${food.foodID}" name="fid" hidden>
->>>>>>> main
+
                     <td>${food.foodName}</td>
                     <td>${food.cost}</td>
                     <td>${food.descriptions}</td>
                     <td><img src="${food.imageURL}" width="100px" height="100px"> </td>
                     <td>
                         <a class="dropdown-item" href="EditFoodController?foodId=${food.foodID}">Edit Food</a>
-<<<<<<< HEAD
                         <a class="dropdown-item" href="DeleteFoodController?fid=${food.foodID}">Delete Post</a>
                         
-=======
-                       <a class="dropdown-item" href="DeleteFoodController?fid=${food.foodID}">Delete Food</a>
->>>>>>> main
+
                     </td>
                 </tr>
             </c:forEach>
