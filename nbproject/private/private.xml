@@ -8,6 +8,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/LoginServlet.java</file>
 =======
             <file>file:/D:/DoAn_Final/src/java/controller/ViewSellerController.java</file>
@@ -34,6 +35,11 @@
             <file>file:/D:/DoAn_Final/web/profileSeller.jsp</file>
             <file>file:/D:/DoAn_Final/src/java/controller/LoginServlet.java</file>
 >>>>>>> main
+=======
+            <file>file:/D:/DoAn_Final/src/java/controller/ViewSellerController.java</file>
+            <file>file:/D:/DoAn_Final/web/profileSeller.jsp</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/LoginServlet.java</file>
+>>>>>>> 9e1ff5eb0176a0afe9a72014c27fe2c9140a8ebc
         </group>
     </open-files>
 </project-private>

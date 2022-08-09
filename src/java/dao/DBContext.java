@@ -31,6 +31,7 @@ public abstract class DBContext {
 //            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
+<<<<<<< HEAD
 
 
 
@@ -38,6 +39,23 @@ public abstract class DBContext {
     public DBContext() {
         try {
             String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS_UPDATE";
+=======
+//    public DBContext() {
+//        try {
+//            String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS_UPDATE";
+//            String user = "sa";
+//            String pass = "12345678";
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            connection = DriverManager.getConnection(url, user, pass);
+//        } catch (ClassNotFoundException | SQLException ex) {
+//            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+    
+       public DBContext() {
+        try {
+             String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS_UPDATE";
+>>>>>>> 9e1ff5eb0176a0afe9a72014c27fe2c9140a8ebc
             String user = "sa";
             String pass = "123";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

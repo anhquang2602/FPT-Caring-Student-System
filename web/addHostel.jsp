@@ -60,9 +60,12 @@
                                         <input type="file" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
                                         <label for="file2" style="position: absolute; margin-left: 100px; margin-top: 60px; opacity: 30%">+</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> main
+=======
+>>>>>>> 9e1ff5eb0176a0afe9a72014c27fe2c9140a8ebc
                                         <img id="output2" style="margin-left: 10px" width="170px" height="170px"/>
                                         <script>
                                             var loadFile2 = function (event) {
@@ -77,10 +80,13 @@
                                         <input type="file" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
                                         <label for="file3" style="position: absolute; margin-left: 100px; margin-top: 60px; opacity: 30%">+</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> main
+=======
+>>>>>>> 9e1ff5eb0176a0afe9a72014c27fe2c9140a8ebc
                                         <img id="output3" style="margin-left: 10px" width="170px" height="170px"/>
                                         <script>
                                             var loadFile3 = function (event) {

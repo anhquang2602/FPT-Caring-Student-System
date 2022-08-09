@@ -49,8 +49,8 @@
                 <c:forEach items="${listFood}" var="food" >
                 <tr>
 
-                <input type="text" value="${food.foodID}" name="fid" hidden>
 
+                     <input type="text" value="${food.foodID}" name="fid" hidden>
                     <td>${food.foodName}</td>
                     <td>${food.cost}</td>
                     <td>${food.descriptions}</td>
@@ -58,8 +58,6 @@
                     <td>
                         <a class="dropdown-item" href="EditFoodController?foodId=${food.foodID}">Edit Food</a>
                         <a class="dropdown-item" href="DeleteFoodController?fid=${food.foodID}">Delete Post</a>
-                        
-
                     </td>
                 </tr>
             </c:forEach>
