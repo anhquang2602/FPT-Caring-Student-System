@@ -52,7 +52,6 @@ public abstract class DBContext {
 //        }
 //    }
     
-
             String user = "sa";
             String pass = "123";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
