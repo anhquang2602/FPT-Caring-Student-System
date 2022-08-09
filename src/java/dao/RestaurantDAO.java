@@ -401,5 +401,25 @@ public class RestaurantDAO extends DBContext {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     public void deleteRestaurantIDFromReport(int restaurantID) {
+        try {
+            String sql = "DELETE FROM ReportRestaurant WHERE RestaurantID=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, restaurantID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public void deleteAllFood(int restaurantID) {
+        try {
+            String sql = "DELETE FROM Foods WHERE RestaurantID=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, restaurantID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

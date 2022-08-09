@@ -58,19 +58,19 @@ public class ReportRestaurantDAO extends DBContext {
     public ArrayList<ReportRestaurant> listAllReportRestaurant() {
         ArrayList<ReportRestaurant> report = new ArrayList<>();
         try {
-            String sql = "Select a.RestaurantName, SUM( a.Spam) Spam, SUM(a.Violent) Violent,\n"
-                    + "SUM(a.Offensive) Offensive,SUM(a.Truthless) Truthless\n"
-                    + "from\n"
-                    + "(\n"
-                    + "select rt.RestaurantName RestaurantName, CONVERT(INT, rr.Spam) Spam, CONVERT(INT,rr.Offensive) Offensive,\n"
-                    + "CONVERT(INT, rr.Violent) Violent, CONVERT(INT, rr.Truthless) Truthless\n"
-                    + "from Restaurants rt\n"
-                    + "inner join ReportRestaurant rr on rt.RestaurantID = rr.RestaurantID) as a\n"
-                    + "group by a.RestaurantName";
+            String sql = "Select a.RestaurantID,a.RestaurantName, SUM( a.Spam) Spam, SUM(a.Violent) Violent,\n"
+                    + "                    SUM(a.Offensive) Offensive,SUM(a.Truthless) Truthless\n"
+                    + "                    from\n"
+                    + "                    (\n"
+                    + "                   select rt.RestaurantID,rt.RestaurantName RestaurantName, CONVERT(INT, rr.Spam) Spam, CONVERT(INT,rr.Offensive) Offensive,\n"
+                    + "                   CONVERT(INT, rr.Violent) Violent, CONVERT(INT, rr.Truthless) Truthless\n"
+                    + "                   from Restaurants rt\n"
+                    + "                   inner join ReportRestaurant rr on rt.RestaurantID = rr.RestaurantID) as a\n"
+                    + "                    group by a.RestaurantName, a.RestaurantID";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                report.add(new ReportRestaurant(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5)));
+                 report.add(new ReportRestaurant(rs.getInt(1),rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
