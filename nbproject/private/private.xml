@@ -2,53 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <group/>
-=======
-=======
-
->>>>>>> 4fd5f9360d0b64f84c46b16c44814dac848b5a32
-=======
->>>>>>> 49b85b826967bab2f8f98e5a6bb69ee3ecf61340
-=======
->>>>>>> de62174135721bb1a6ab81913713d67ba8c84313
-=======
->>>>>>> de62174135721bb1a6ab81913713d67ba8c84313
         <group>
-            <file>file:/D:/DoAn_Final/src/java/controller/ViewSellerController.java</file>
-            <file>file:/D:/DoAn_Final/web/profileSeller.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/LoginServlet.java</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/LoginServlet.java</file>
         </group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-        <group>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/dao/DBContext.java</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/editHostel.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/addHostelStyle.css</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/addHostel.jsp</file>
-        </group>
-
-        <group/>
-<<<<<<< HEAD
->>>>>>> 2be4e67c610bdc07af3d0244d2f228f2426caccb
->>>>>>> bcbefe99793678e220b858d1d452e2e6740797ff
->>>>>>> 7ce199b7b097fe0bccb596620eef54cc3a9ef905
->>>>>>> 272196e328a4f34621315c33335bf9a48348b9dd
-=======
-
->>>>>>> 4fd5f9360d0b64f84c46b16c44814dac848b5a32
-=======
->>>>>>> 49b85b826967bab2f8f98e5a6bb69ee3ecf61340
-=======
->>>>>>> de62174135721bb1a6ab81913713d67ba8c84313
-=======
->>>>>>> de62174135721bb1a6ab81913713d67ba8c84313
     </open-files>
 </project-private>

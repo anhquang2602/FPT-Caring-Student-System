@@ -209,6 +209,18 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
+    public void deleteAllFood(int restaurantID) {
+        try {
+            String sql = "DELETE FROM Foods WHERE RestaurantID=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, restaurantID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+ 
     public boolean createFood(int restaurantID, String foodName, double cost, String description) {
         try {
             String sql = "INSERT INTO Foods (RestaurantID,FoodName,Cost,Descriptions) VALUES (?,?,?,?)";
@@ -376,6 +388,19 @@ public class RestaurantDAO extends DBContext {
             System.out.println("Update fail" + e.getMessage());
         }
         return false;
+    }
+
+    public void deleteFoodlImage(int foodID) {
+
+        try {
+
+            String sql = "DELETE FROM FoodImage WHERE FoodID =?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, foodID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void deleteFood(int foodID) {

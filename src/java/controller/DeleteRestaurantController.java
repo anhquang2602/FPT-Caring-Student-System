@@ -60,6 +60,7 @@ public class DeleteRestaurantController extends HttpServlet {
             throws ServletException, IOException {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         int restaurantID = Integer.parseInt(request.getParameter("id"));
+        restaurantDAO.deleteAllFood(restaurantID);
         restaurantDAO.deleteRestaurant(restaurantID);
         response.sendRedirect("ListRestaurantBySeller");
     }

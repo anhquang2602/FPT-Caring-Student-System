@@ -15,13 +15,10 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    <file>${libs.javaee-web-api-7.0.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
+                    <file>${&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD}</file>
                 </library>
                 <library dirs="200">
-                    <file>${libs.jstl.classpath}</file>
+                    <file>${file.reference.gson-2.8.0.jar-2}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
@@ -29,31 +26,11 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.gson-2.8.0.jar-2}</file>
-=======
-                    <file>${file.reference.gson-2.8.0.jar-3}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-=======
-                    <file>${file.reference.gson-2.8.0.jar-3}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
->>>>>>> de62174135721bb1a6ab81913713d67ba8c84313
-                    <file>${file.reference.sqljdbc42.jar}</file>
+                    <file>${libs.jstl.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${libs.javaee-web-api-7.0.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${libs.jstl.classpath}</file>
-<<<<<<< HEAD
->>>>>>> de62174135721bb1a6ab81913713d67ba8c84313
-=======
->>>>>>> de62174135721bb1a6ab81913713d67ba8c84313
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
