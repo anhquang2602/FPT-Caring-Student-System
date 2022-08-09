@@ -59,11 +59,10 @@
 
                                         <input type="file" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
                                         <label for="file2" style="position: absolute; margin-left: 100px; margin-top: 60px; opacity: 30%">+</label>
-<<<<<<< HEAD
-                                        <img id="output2" style="margin-left: 30px" width="170px" height="170px"/>
-=======
+
+
                                         <img id="output2" style="margin-left: 10px" width="170px" height="170px"/>
->>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
+
                                         <script>
                                             var loadFile2 = function (event) {
                                                 var output = document.getElementById('output2');
@@ -76,11 +75,9 @@
 
                                         <input type="file" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
                                         <label for="file3" style="position: absolute; margin-left: 100px; margin-top: 60px; opacity: 30%">+</label>
-<<<<<<< HEAD
-                                        <img id="output3" style="margin-left: 30px" width="170px" height="170px"/>
-=======
+
                                         <img id="output3" style="margin-left: 10px" width="170px" height="170px"/>
->>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
+
                                         <script>
                                             var loadFile3 = function (event) {
                                                 var output = document.getElementById('output3');
