@@ -795,8 +795,11 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
     </target>
     <target name="-init-taskdefs">
 <<<<<<< HEAD
+<<<<<<< HEAD
        
 =======
+=======
+>>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
         <fail unless="libs.CopyLibs.classpath">
 The libs.CopyLibs.classpath property is not set up.
 This property must point to 
@@ -807,6 +810,9 @@ Either open the project in the IDE and make sure CopyLibs library
 exists or setup the property manually. For example like this:
  ant -Dlibs.CopyLibs.classpath=a/path/to/org-netbeans-modules-java-j2seproject-copylibstask.jar
                 </fail>
+<<<<<<< HEAD
+>>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
+=======
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
         <taskdef classpath="${libs.CopyLibs.classpath}" resource="org/netbeans/modules/java/j2seproject/copylibstask/antlib.xml"/>
     </target>
@@ -1010,6 +1016,9 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.sqljdbc42.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.javaee-web-api-7.0.classpath}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.jstl.classpath}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+<<<<<<< HEAD
+>>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
+=======
 >>>>>>> 8b4bffe680f662fd368371dee5d13d367388ff85
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update"/>
