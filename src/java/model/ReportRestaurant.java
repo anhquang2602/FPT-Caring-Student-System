@@ -107,13 +107,16 @@ public class ReportRestaurant {
         
     }
 
-    public ReportRestaurant(String restaurantName, int spam, int offensive, int violent, int truthless) {
+    public ReportRestaurant(int restaurantID, String restaurantName, int spam, int offensive, int violent, int truthless) {
+        this.restaurantID = restaurantID;
         this.restaurantName = restaurantName;
         this.spam = spam;
         this.offensive = offensive;
         this.violent = violent;
         this.truthless = truthless;
     }
+
+ 
 
    
 

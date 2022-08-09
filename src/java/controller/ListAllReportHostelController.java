@@ -64,10 +64,13 @@ public class ListAllReportHostelController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         ReportHostelDAO reportHostelDAO = new ReportHostelDAO();
+      
         ArrayList<ReportHostel> reportHostel = reportHostelDAO.listAllReportHostel();
+      //  int hostelID = reportHostelDAO.getHostelID(Integer.parseInt(id));
         request.setAttribute("listReportHostel", reportHostel);
+       // request.setAttribute("hostelID", hostelID);
         request.getRequestDispatcher("listAllReportHostel.jsp").forward(request, response);
 
     }

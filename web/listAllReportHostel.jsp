@@ -25,6 +25,7 @@
             </tr>
             <c:forEach items="${listReportHostel}" var="report">
                 <tr>
+                
                     <td>${report.hostelName}</td>
                     <td>${report.spam}</td>
                     <td>${report.violent}</td>
@@ -32,7 +33,7 @@
                     <td>${report.truthless}</td>
                     <td>   
                         <a href="#">Xóa bài đăng</a>
-                        <a href="detailhostel?id=${report.hostelID}">View post</a>
+                        <a target="blank_" href="detailhostel?id=${report.hostelID}">View post</a>
                     </td>
                 </tr>
             </c:forEach>

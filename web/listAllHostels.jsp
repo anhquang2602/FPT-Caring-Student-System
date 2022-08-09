@@ -82,7 +82,7 @@
                                             <li class="page-item ${tag==i?"active":""}"><a href="listallhostels?index=${i}" class="page-link">${i}</a></li>
                                             </c:forEach>
                                             <c:if test="${tag<endP}">
-                                            <li class="page-item"><a href="listallhostels?index=${tag+1}" class="page-link">Next</a></li>
+                                            <li class="page-item"><a hre f="listallhostels?index=${tag+1}" class="page-link">Next</a></li>
                                             </c:if>
                                     </ul>
                                 </div> 
