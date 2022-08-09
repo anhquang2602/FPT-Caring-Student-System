@@ -378,6 +378,19 @@ public class RestaurantDAO extends DBContext {
         return false;
     }
 
+    public void deleteFoodlImage(int foodID) {
+
+        try {
+
+            String sql = "DELETE FROM FoodImage WHERE FoodID =?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, foodID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void deleteFood(int foodID) {
         try {
             String sql = "DELETE FROM Foods WHERE FoodID=?";

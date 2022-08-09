@@ -84,6 +84,8 @@ public class StarVotingController extends HttpServlet {
         out.print(json);
         out.flush();
         out.close();
+        
+        
     }
 
     /**
@@ -97,7 +99,27 @@ public class StarVotingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+        int star = Integer.parseInt(request.getParameter("star"));    
+        int hostelId = Integer.parseInt(request.getParameter("hostelId"));
+        String comment = request.getParameter("message");
+        
+        String json = new Gson().toJson(star);
+        StudentDAO stdao = new StudentDAO();
+        
+        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
+        
+        long millis = System.currentTimeMillis();
+        java.sql.Date date = new java.sql.Date(millis);
+        
+        StarDAO dao = new StarDAO();
+        dao.addStarVoting(new StarVoting(studentNo, hostelId, date, comment, star));
+        
+        out.print(json);
+        out.flush();
+        out.close();
     }
 
     /**

@@ -1,9 +1,9 @@
 <%--<%@page import="model.Seller"%>--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">-->
-<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!DOCTYPE html> 
 <html lang="en">
@@ -69,7 +69,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-11">
                                         <label class="labels">LINK FACEBOOK</label>
-                                        <input type="text" name="addressDetail" class="form-control"value="${seller.linkFb}">
+                                        <input type="text" name="linkFb" class="form-control"value="${seller.linkFb}">
                                     </div>
                                     <div class="col-md-1 mt-4">
                                         <a class="login-facebook-icon" style="height: 40px; width: 40px; margin-left: calc(100%-20px)" href="${seller.linkFb}" title="" target="_blank">f</a>
