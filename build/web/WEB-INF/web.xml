@@ -160,6 +160,10 @@
         <servlet-name>ListAllRestaurantController</servlet-name>
         <servlet-class>controller.ListAllRestaurantController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>controller.ChangePasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -319,6 +323,10 @@
     <servlet-mapping>
         <servlet-name>ListAllRestaurantController</servlet-name>
         <url-pattern>/ListAllRestaurantController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/ChangePasswordServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

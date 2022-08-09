@@ -26,23 +26,23 @@
                 <div class="topnav" style="background-color: rgb(238, 77, 45)">
                     <ul class="d-flex">
                         <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
-                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="SellerListController">List Sellers</a>  
-                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="StudentListController">List students</a> 
-                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 70px" href="ClubListController">List club</a> 
-                        <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="ListAllReportHostelController">hostel reports</a>
-                        <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ListAllReportRestaurantController">restaurant reports</a>
+                        <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="SellerListController">NGƯỜI BÁN HÀNG</a>  
+                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="StudentListController">HỌC SINH</a> 
+                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ClubListController">CÂU LẠC BỘ</a> 
+                        <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ListAllReportHostelController">BÁO CÁO NHÀ TRỌ</a>
+                        <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ListAllReportRestaurantController">BÁO CÁO NHÀ ĂN</a>
 
                         <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
                         <a class="col-sm-2 mt-4"></a>
-                        <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="hostellist">My Hostel</a>  
-                        <a class="col-sm-4 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="ListRestaurantBySeller">My Restaurant</a>  
+                        <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="hostellist">NHÀ TRỌ CỦA TÔI</a>  
+                        <a class="col-sm-4 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="ListRestaurantBySeller">NHÀ ĂN CỦA TÔI</a>  
 
                         <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
-                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="ListAllRestaurantController">Nhà Ăn</a>  
-                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="listallhostels">Nhà Trọ</a> 
-                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="ClubListController">Club</a> 
-                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="BusPagingServlet">Xe Bus</a>
-                        <a class="col-sm-3 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="department">Phòng Ban</a>
+                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ListAllRestaurantController">NHÀ ĂN</a>  
+                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="listallhostels">NHÀ TRỌ</a> 
+                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ClubListController">CÂU LẠC BỘ</a> 
+                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="BusPagingServlet">XE BUS</a>
+                        <a class="col-sm-3 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="department">PHÒNG BAN</a>
                         <%}%>
                         <div class="dropdownProfile col-sm-1"></div>   
                         <div class="dropdownProfile col-sm-4">    
@@ -50,9 +50,9 @@
                                 ${sessionScope.username}
                             </button>
                             <div class="dropdown-menu" style="background-color: white; left: 0;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 999" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" style="color: red" href="UpdateSellerProfile">My Profile</a>
-                                <a class="dropdown-item" style="color: red" href="ChangePasswordServlet">Change Password</a>
-                                <a class="dropdown-item" style="color: red" href="LogoutServlet">Log out</a>
+                                <a class="dropdown-item" style="color: red" href="UpdateSellerProfile">HỒ SƠ CỦA TÔI</a>
+                                <a class="dropdown-item" style="color: red" href="ChangePasswordServlet">ĐỔI MẬT KHẨU</a>
+                                <a class="dropdown-item" style="color: red" href="LogoutServlet">ĐĂNG XUẤT</a>
                             </div>
                         </div>
                     </ul>
