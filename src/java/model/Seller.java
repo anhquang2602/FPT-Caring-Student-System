@@ -44,7 +44,7 @@ public class Seller {
         this.sellerID = sellerID;
     }
 
-    public Seller(int sellerID, String firstName, String lastName, int age, String phone, String email, String countryName, String provinceName, String districtName, String address, int status, int gender, String image) {
+    public Seller(int sellerID, String firstName, String lastName, int age, String phone, String email, String countryName, String provinceName, String districtName, String address, int status, int gender, String image,String linkFb) {
         this.sellerID = sellerID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -58,9 +58,10 @@ public class Seller {
         this.status = status;
         this.gender = gender;
         this.image = image;
+        this.linkFb=linkFb;
     }
 
-    public Seller(int sellerID, String firstName, String lastName, int age, String phone, String email, String countryName, String provinceName, String districtName, String address, int gender) {
+    public Seller(int sellerID, String firstName, String lastName, int age, String phone, String email, String countryName, String provinceName, String districtName, String address, int gender,String linkFb) {
         this.sellerID = sellerID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -72,6 +73,7 @@ public class Seller {
         this.districtName = districtName;
         this.address = address;
         this.gender = gender;
+        this.linkFb=linkFb;
     }
     
     public Seller(int sellerID, String firstName, String lastName, int age, String phone, String email, int countryID, int provinceID, int districtID, String address, int gender,String linkFb) {

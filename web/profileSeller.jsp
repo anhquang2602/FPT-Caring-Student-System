@@ -29,13 +29,14 @@
                         </div>
                         <div class="col-md-3">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                                <img class="rounded-circle mt-5" width="150px" src="${seller.image}">
                                 <!--                                <form action="ViewSellerController" method="post">
                                                                     <div class="form-group">                       
                                                                         <input style="padding-left: 80px"type="file" class="form-control-file" id="exampleFormControlFile1">
                                                                     </div>
                                                                 </form>-->
                             </div>
+                            <a href="${seller.linkFb}" title="" target="_blank">My Facebook</a>
                         </div>
                         <div class="col-md-5">
                             <div class="p-3 py-5">
@@ -84,7 +85,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="p-3 py-5">
-                                
+                                <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
                                 <form action="ChangeStatusSeller" method="post">
                                     <div class="col-md-12 mt-5 ml-5"><label class="labels">Status</label></br>
                                         <input type="text" class="form-control" name="email" value="${seller.email}" readonly="" hidden="">
@@ -101,7 +102,7 @@
                                         <input class="ml-3" type="submit" value="Confirm"/>
                                     </div>
                                 </form>
-                                
+                                <%}%>
                             </div>
                         </div>
                     </div>

@@ -68,6 +68,20 @@ function checkPhone(nameOfForm) {
     }
 }
 
+//
+function checkInputCode(nameOfForm) {
+    const code = document[nameOfForm].inputCode.value;
+    
+    if (code == '') {
+        const phoneError = document.createElement('div');
+        phoneError.append('code can not empty');
+        phoneError.setAttribute('class', 'alert-danger alert error');
+        phoneError.setAttribute('role', 'alert');
+        //  Append div to parent element
+        document.getElementById('divCheckCode').appendChild(phoneError);
+        check = 0;
+    } 
+}
 
 function checkRepass(nameOfForm) {
     const pass = document[nameOfForm].pass.value;
@@ -204,6 +218,17 @@ function checkValidatorForUpdateProfile()
 
 }
 
+
+function checkValidatorForInputCode() {
+    check = 1;
+    document.querySelectorAll('div.error').forEach(e => e.remove());
+    //checkName('fistName','First Name','yourname1');
+    //checkName('lastName','Last Name','yourname2');
+    checkInputCode('authenticate');
+    //checkPhone();
+    //checkCountryChoose();
+    //checkPositionChoose();
+}
 
 function checkValidatorForLogin() {
     check = 1;

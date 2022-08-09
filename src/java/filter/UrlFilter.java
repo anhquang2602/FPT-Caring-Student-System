@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  * @author longn
  */
 @WebFilter(filterName = "UrlFilter", urlPatterns = {"/department","/detaildepartment","/StudentListController",
-    "/SellerListController","/ViewStudentController","/ViewSellerController","/ChangeStatusStudent","/BusDetailServlet","/ClubListController",
+    "/SellerListController","/ViewStudentController","/ChangeStatusStudent","/BusDetailServlet","/ClubListController",
     "/BusPagingServlet","/detailClub","/UpdateSellerProfile","/LogoutServlet"})
 public class UrlFilter implements Filter {
     
