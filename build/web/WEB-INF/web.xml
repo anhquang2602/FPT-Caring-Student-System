@@ -320,16 +320,6 @@
         <servlet-name>ListAllRestaurantController</servlet-name>
         <url-pattern>/ListAllRestaurantController</url-pattern>
     </servlet-mapping>
-     <servlet>
-        <servlet-name>CommentController</servlet-name>
-        <servlet-class>controller.CommentController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CommentController</servlet-name>
-        <url-pattern>/comment</url-pattern>
-    </servlet-mapping>
-    
-    
     <session-config>
         <session-timeout>
             30
