@@ -8,7 +8,10 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Department;
@@ -25,15 +28,22 @@ public class StarDAO extends DBContext {
             String sql = "INSERT INTO [dbo].[StarVotingHostel]\n"
                     + "           ([StudentNo]\n"
                     + "           ,[HostelID]\n"
-                    + "           ,[StarVoting])\n"
+                    + "           ,[StarVoting]\n"
+                    + "           ,[Comment]\n"
+                    + "           ,[Date])\n"
                     + "     VALUES\n"
                     + "           (?\n"
                     + "           ,?\n"
+                    + "           ,?\n"
+                    + "           ,?\n"
                     + "           ,?)";
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, s.getStudentNo());
             statement.setInt(2, s.getHostelID());
             statement.setInt(3, s.getStarvoting());
+            statement.setString(4, s.getMessage());
+            statement.setDate(5, s.getDate());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(StarDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,12 +86,11 @@ public class StarDAO extends DBContext {
     }
 
     public static void main(String[] args) {
+        long millis = System.currentTimeMillis();
+        java.sql.Date date = new java.sql.Date(millis);
+        System.out.println(date);
 
-        StarDAO dao = new StarDAO();
-//       dao.addStarVoting(new StarVoting(1, 76, 5));
-        ArrayList<StarVoting> star = dao.getAllStarVotings();
-        dao.updateStarVoting(1, 4);
-        System.out.println(star.get(0).getHostelID());
+
 
     }
 }
