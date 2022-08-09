@@ -31,7 +31,9 @@
                             </form>
                             <div class="text1 mt-4"> <a style="text-decoration: none; color: rgb(238, 77, 45); margin-left: 10px" href="forgotPass_InputEmail.jsp">Quên mật khẩu</a> </div>
                             <div class="text2 mt-4"> <span>Bạn chưa có tài khoản?<a class="register" style="text-decoration: none; color: rgb(238, 77, 45)" href="register.jsp">  Đăng ký</a></span> </div>
-                            <h2 style="color: red"> ${errorLogin}</h2>
+                            <div class="mt-4 ml-3">
+                                <h3 style="color: red; text-align: center"> ${errorLogin}</h3>
+                            </div>
                             <h2 style="color: green"> ${InputNewPassMess}</h2>
                         </div>
                     </div>

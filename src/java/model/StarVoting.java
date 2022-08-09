@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.sql.Date;
+
+
 /**
  *
  * @author nguye
@@ -14,7 +17,8 @@ public class StarVoting {
     private int id;
     private int studentNo;
     private int hostelID;
-    
+    private Date date;
+    private String message;
     private int restaurantID;
     private int starvoting;
 
@@ -34,12 +38,32 @@ public class StarVoting {
         this.hostelID = hostelID;
         this.starvoting = starvoting;
     }
+
+    public StarVoting(int studentNo, int hostelID, Date date, String message, int starvoting) {
+        this.studentNo = studentNo;
+        this.hostelID = hostelID;
+        this.date = date;
+        this.message = message;
+        this.starvoting = starvoting;
+    }
     
 
-    
+    public Date getDate() {
+        return date;
+    }
 
-    
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    
     public int getId() {
         return id;
     }

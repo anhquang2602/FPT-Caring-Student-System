@@ -39,16 +39,16 @@
                                         </ol>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img style="height: 700px" class="w-100" src="images/fpt.jpg">
+                                                <img style="height: 800px" class="w-100" src="images/fpt.jpg">
                                             </div>
                                             <div class="carousel-item">
-                                                <img style="height: 700px" class="w-100" src="images/fpt2.jpg">
+                                                <img style="height: 800px" class="w-100" src="images/fpt2.jpg">
                                             </div>
                                             <div class="carousel-item">
-                                                <img style="height: 700px" class="w-100" src="images/fpt3.jpg">
+                                                <img style="height: 800px" class="w-100" src="images/fpt3.jpg">
                                             </div>
                                             <div class="carousel-item">
-                                                <img style="height: 700px" class="w-100" src="images/fpt4.jpg">
+                                                <img style="height: 800px" class="w-100" src="images/fpt4.jpg">
                                             </div>
                                         </div>
                                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -74,4 +74,3 @@
     </body>
     <%@include file="/footer.jsp" %>
 </html>
-
