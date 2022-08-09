@@ -120,8 +120,9 @@
                                     </div>
                                 </form>
                                 <span class="font-weight-bold labels mt-5" ><label class="labels">Nhà trọ:</label> ${hosteldetail.hostelName}</span>
-                                <span class="font-weight-bold labels"><label class="labels">Chủ trọ:</label> ${hosteldetail.sellerName}</span>
-                                <BR>
+                                <span class="font-weight-bold labels"><label class="labels">Chủ trọ:</label>
+                                    <a href="ViewSellerController?id=${sellerId}" title="" target="_blank">${hosteldetail.sellerName}</a>
+                                </span>
 
                                 <!--                                <div class="rate">
                                 

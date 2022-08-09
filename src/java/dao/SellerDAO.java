@@ -34,7 +34,7 @@ public class SellerDAO extends DBContext {
 
     public ArrayList<Seller> getAllSeller() throws ClassNotFoundException, SQLException, Exception {
         ArrayList<Seller> list = new ArrayList<>();
-        String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail ,Account.AccountStatus , Gender,Avatar\n"
+        String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook\n"
                 + "from Sellers\n"
                 + "inner join Country on Sellers.CountryID=Country.CountryID\n"
                 + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
@@ -46,7 +46,7 @@ public class SellerDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
-                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"),rs.getString("Avatar")));
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"),rs.getString("Avatar"),rs.getString("LinkFacebook")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,7 +57,7 @@ public class SellerDAO extends DBContext {
 
     public Seller getSellertBySellerID(int sellerID) {
         try {
-            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus,Gender,Avatar\n"
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus,Gender,Avatar,LinkFacebook\n"
                     + "from Sellers\n"
                     + "inner join Country on Sellers.CountryID=Country.CountryID\n"
                     + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
@@ -71,7 +71,7 @@ public class SellerDAO extends DBContext {
             rs = st.executeQuery();
             while (rs.next()) {
                 Seller seller = new Seller(rs.getInt("SellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
-                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"),rs.getInt("Gender"),rs.getString("Avatar"));
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"),rs.getInt("Gender"),rs.getString("Avatar"),rs.getString("LinkFacebook"));
                 st.close();
                 rs.close();
                 return seller;
@@ -103,7 +103,7 @@ public class SellerDAO extends DBContext {
     }
     public Seller getAccount(String account) {
         try {
-            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus,Gender,Avatar\n"
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus,Gender,Avatar,LinkFacebook\n"
                     + "from Sellers\n"
                     + "inner join Country on Sellers.CountryID=Country.CountryID\n"
                     + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
@@ -117,7 +117,7 @@ public class SellerDAO extends DBContext {
             rs = st.executeQuery();
             while (rs.next()) {
                 Seller seller = new Seller(rs.getInt("SellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
-                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"),rs.getInt("Gender"),rs.getString("Avatar"));
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"),rs.getInt("Gender"),rs.getString("Avatar"),rs.getString("LinkFacebook"));
                 st.close();
                 rs.close();
                 return seller;
