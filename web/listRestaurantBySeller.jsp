@@ -55,20 +55,7 @@
                                                     <span class="font-weight-normal">${restaurant.restaurantName}</span>
 
                                                 </div>
-                                                <div class="item-action dropdown">
-                                                    <a href="#" data-toggle="dropdown" class="text-muted" data-abc="true">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-                                                        <circle cx="12" cy="12" r="1"></circle>
-                                                        <circle cx="12" cy="5" r="1"></circle>
-                                                        <circle cx="12" cy="19" r="1"></circle>
-                                                        </svg>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right bg-black" role="menu">
-                                                        <a class="dropdown-item" href="EditRestaurantController?id=${restaurant.restaurantID}">Edit Post </a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item trash" href="DeleteRestaurantController?id=${restaurant.restaurantID}">Delete Post</a>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
 
                                         </div>   
