@@ -38,17 +38,17 @@
                                     <div class="left_top">
                                         <strong class="fs-3">Ảnh nhà trọ</strong>
                                     </div> 
-<<<<<<< HEAD
+<!--
                                     <div class="mt-5">
                                         <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1" >
                                         <label for="file1" style="position: absolute; margin-left: 30px; margin-top: 60px; opacity: 30%">+</label>
-                                        <img id="output1" width="170px" height="170px"/>
-=======
+                                        <img id="output1" width="170px" height="170px"/>-->
+
                                     <div class="mt-4">
                                         <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(4.5%); opacity: 30%">+</label>
                                         <img id="output1" width="170rem" height="170rem"/>
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                         <script>
                                             var loadFile = function (event) {
                                                 var output = document.getElementById('output1');
@@ -64,15 +64,15 @@
                                             };
                                         </script>
 
-<<<<<<< HEAD
+<!--
                                         <input type="" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2" onclick="clickImg()" >
                                         <label for="file2" style="position: absolute; margin-left: 40px; margin-top: 60px; opacity: 30%">+</label>
-                                        <img id="output2" style="margin-left: 10px" width="170px" height="170px"/>
-=======
-                                        <input type="file" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
+                                        <img id="output2" style="margin-left: 10px" width="170px" height="170px"/>-->
+
+                                        <input type="" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2" onclick="clickImg()">
                                         <label for="file2" style="position: absolute; margin-left: calc(8%); margin-top: calc(4.5%); opacity: 30%">+</label>
                                         <img id="output2" style="margin-left: calc(5.5%)" width="170rem" height="170rem"/>
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                         <script>
                                             var loadFile2 = function (event) {
                                                 var output = document.getElementById('output2');
@@ -83,15 +83,15 @@
                                             };
                                         </script>
 
-<<<<<<< HEAD
-                                        <input type="" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3" onclick="clickImg()">
+
+<!--                                        <input type="" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3" onclick="clickImg()">
                                         <label for="file3" style="position: absolute; margin-left: 40px; margin-top: 60px; opacity: 30%">+</label>
-                                        <img id="output3" style="margin-left: 10px" width="170px" height="170px"/>
-=======
-                                        <input type="file" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
+                                        <img id="output3" style="margin-left: 10px" width="170px" height="170px"/>-->
+
+                                        <input type="" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3" onclick="clickImg()">
                                         <label for="file3" style="position: absolute; margin-left: calc(8%); margin-top: calc(4.5%); opacity: 30%">+</label>
                                         <img id="output3" style="margin-left: calc(5.5%)" width="170rem" height="170rem"/>
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                         <script>
                                             var loadFile3 = function (event) {
                                                 var output = document.getElementById('output3');
@@ -103,15 +103,15 @@
                                         </script>
                                     </div>
                                     <div class="mt-5">
-<<<<<<< HEAD
-                                        <input type="" hidden accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4" onclick="clickImg()">
+
+<!--                                        <input type="" hidden accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4" onclick="clickImg()">
                                         <label for="file4" style="position: absolute; margin-left: 30px; margin-top: 65px; opacity: 30%">+</label>
-                                        <img id="output4" width="170px" height="170px"/>
-=======
-                                        <input type="file" hidden accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
+                                        <img id="output4" width="170px" height="170px"/>-->
+
+                                        <input type="" hidden accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4"  onclick="clickImg()">
                                         <label for="file4" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="output4" style="margin-left: calc(0.5%)" width="170rem" height="170rem"/>
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                         <script>
                                             var loadFile4 = function (event) {
                                                 var output = document.getElementById('output4');
@@ -122,15 +122,15 @@
                                             };
                                         </script>
 
-<<<<<<< HEAD
-                                        <input type="" hidden accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5" onclick="clickImg()">
+
+<!--                                        <input type="" hidden accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5" onclick="clickImg()">
                                         <label for="file5" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 30%">+</label>
-                                        <img id="output5" style="margin-left: 10px" width="170px" height="170px"/>
-=======
-                                        <input type="file" hidden accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
+                                        <img id="output5" style="margin-left: 10px" width="170px" height="170px"/>-->
+
+                                        <input type="" hidden accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5"  onclick="clickImg()">
                                         <label for="file5" style="position: absolute; margin-left: calc(8%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="output5" style="margin-left: calc(5.5%)" width="170rem" height="170rem"/>
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                         <script>
                                             var loadFile5 = function (event) {
                                                 var output = document.getElementById('output5');
@@ -141,15 +141,15 @@
                                             };
                                         </script> 
 
-<<<<<<< HEAD
-                                        <input type="" hidden accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6" onclick="clickImg()">
+
+<!--                                        <input type="" hidden accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6" onclick="clickImg()">
                                         <label for="file6" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 30%">+</label>
-                                        <img id="output6" style="margin-left: 10px" width="170px" height="170px"/>
-=======
-                                        <input type="file" hidden accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
+                                        <img id="output6" style="margin-left: 10px" width="170px" height="170px"/>-->
+
+                                        <input type="" hidden accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6"  onclick="clickImg()">
                                         <label for="file6" style="position: absolute; margin-left: calc(8%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="output6" style="margin-left: calc(5.5%)" width="170rem" height="170rem"/>
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                         <script>
                                             var loadFile6 = function (event) {
                                                 var output = document.getElementById('output6');

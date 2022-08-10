@@ -91,7 +91,7 @@ public class StarDAO extends DBContext {
 
     }
 
-    public StarVoting getListCommentByStudent(int hostelID, int studentNo) {
+    public StarVoting getCommentofStudent(int hostelID, int studentNo) {
 
         try {
 

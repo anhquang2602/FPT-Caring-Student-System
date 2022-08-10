@@ -22,11 +22,11 @@
                             <h6 style="color: #21214e">Please enter the OTP<br> </h6> 
                             <div> <span> sent to your email</span>  </div> 
                             <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2"> 
-<<<<<<< HEAD
+
                                 <input class="m-2 text-center form-control rounded" style="width: 100px" type="number" id="inputCode" name="inputCode" required=""/> 
-=======
+
                                 <input class="m-2 text-center form-control rounded" style="width: 100px" type="number" id="inputCode" name="inputCode" required/> 
->>>>>>> 7d6a49d0065ca3037eaf8925858015488c89a567
+
                             </div> 
                             <div class="mt-4"> 
                                 <input class="btn btn-danger px-4 validate" style="background-color: rgb(238, 77, 45)" type="submit" value="Confirm">

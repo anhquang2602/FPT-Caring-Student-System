@@ -22,60 +22,32 @@
 
 
         <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            body{
-                flex-direction: column;
-                font-family: Arial, Helvetica, san-serif;
-
-            }
-            .rating_heading{
-                animation: scale-up 1s ease;
-                font-weight:  bold;
-                color: orange;
-            }
-            @keyframes scale-up{
-                0%{
-                    opacity: 0;
-                    transform: scale(.5);
-                }
-                100%{
-                    opacity: 1;
-                    transform: scale(1);
-                }
+            .stars-outer {
+                position: relative;
+                display: inline-block;
             }
 
-            .star_rating {
-                user-select: none;
-                background-color: #e6e6e6;
-                padding: 1rem 2rem;
-                margin: 1rem;
-                border-radius: .3rem;
-                animation: slide-up 1s ease;
+            .stars-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 0;
             }
-            @keyframes slide-up{
-                0%{
-                    opacity: 0;
-                    transform: translateY(50px);
-                }
-                100%{
-                    opacity: 1;
-                    transform: translateY(0px);
-                }
-            }
-            .star {
-                font-size: 3rem;
-                color: #ff9800;
-                background-color: unset;
-                border: none;
-                text-align: center;
 
+            .stars-outer::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #ccc;
             }
-            .star:hover{
-                cursor: pointer;   
+
+            .stars-inner::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #f8ce0b;
             }
         </style>
     </head>
@@ -125,6 +97,9 @@
                                     </div>
                                 </form>
                                 <span class="font-weight-bold labels mt-5" ><label class="labels">Nhà trọ:</label> ${hosteldetail.hostelName}</span>
+                                 <div class="stars-outer">
+                                    <div class="stars-inner" style="width: ${hosteldetail.starAVG}%"> </div>
+                                </div> <br><br>
                                 <span class="font-weight-bold labels"><label class="labels">Chủ trọ:</label>
                                     <a href="ViewSellerController?id=${sellerId}" title="" target="_blank">${hosteldetail.sellerName}</a>
                                 </span>
@@ -143,8 +118,12 @@
                                                                     <label for="star1" title="text">1 star</label>
                                 
                                                                 </div>-->
-                                <a href="comment?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a>
+                               
+                                <c:if test = "${isStudent== 1}">
+                                    <a href="comment?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
+                                </c:if>
 
+                                
 
                                 <!--                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
                                                                 <div class ="star_rating">
