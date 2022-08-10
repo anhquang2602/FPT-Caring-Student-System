@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/DoAn_Final/web/self_profileSeller.jsp</file>
-            <file>file:/D:/DoAn_Final/web/listdepartment.jsp</file>
-            <file>file:/D:/DoAn_Final/web/login.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/AuthenticateServlet.java</file>
-            <file>file:/D:/DoAn_Final/web/voteChart.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/RegisterServlet.java</file>
-            <file>file:/D:/DoAn_Final/web/listbus.jsp</file>
-            <file>file:/D:/DoAn_Final/web/busDetail.jsp</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/UpdateStudentProfile.java</file>
+            <file>file:/D:/DoAn_Final/src/java/model/Student.java</file>
+            <file>file:/D:/DoAn_Final/src/java/dao/AddressDAO.java</file>
+            <file>file:/D:/DoAn_Final/src/java/dao/StudentDAO.java</file>
+            <file>file:/D:/DoAn_Final/web/self_profileStudent.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -59,6 +59,7 @@ public class BusDetailServlet extends HttpServlet {
             throws ServletException, IOException {
         int number=Integer.parseInt(request.getParameter("number"));
         BusDAO bd=new BusDAO();
+        
         String StopPoint=bd.getBusStopByNumber(number);
         request.setAttribute("StopPoint",StopPoint);
         request.setAttribute("busnumber", number);

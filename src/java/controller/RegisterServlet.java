@@ -6,6 +6,8 @@
 package controller;
 
 import dao.AccountDAO;
+import dao.SellerDAO;
+import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -57,14 +59,14 @@ public class RegisterServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {       
+            throws ServletException, IOException {
         String username = request.getParameter("username");
         String pass = request.getParameter("pass");
-        String role = request.getParameter("role");  
-        String accept=(String)request.getAttribute("accept");
-        if (username == null && pass == null && role == null && accept==null) {
+        String role = request.getParameter("role");
+        String accept = (String) request.getAttribute("accept");
+        if (username == null && pass == null && role == null && accept == null) {
             response.sendRedirect("register.jsp");
-        } else if("YES".equals(accept)){       
+        } else if ("YES".equals(accept)) {
             doPost(request, response);
         }
     }
@@ -82,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         //fptcaringsystem@gmail.com
         //doan1234
-        if (request.getParameter("username")!=null&&request.getParameter("pass")!=null) {
+        if (request.getParameter("username") != null && request.getParameter("pass") != null) {
             String username = request.getParameter("username");
             String pass = request.getParameter("pass");
             String role = request.getParameter("role");
@@ -92,7 +94,7 @@ public class RegisterServlet extends HttpServlet {
                 request.setAttribute("errorRegister", username + " exsited!!!");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
             } else {
-                Account a = new Account(username, pass, Integer.parseInt(role), status);               
+                Account a = new Account(username, pass, Integer.parseInt(role), status);
                 request.getSession().setAttribute("account", a);
                 request.getSession().setAttribute("directAfterAuthen", "RegisterServlet");
                 request.setAttribute("email", username);
@@ -102,11 +104,18 @@ public class RegisterServlet extends HttpServlet {
                 // response.sendRedirect("checkRegisterCode.jsp");
             }
         } else {
-            if("YES".equals((String)request.getAttribute("accept"))){
+            if ("YES".equals((String) request.getAttribute("accept"))) {
                 Account a = new Account();
-                AccountDAO adb=new AccountDAO();
-                a=(Account)request.getSession().getAttribute("account");
+                AccountDAO adb = new AccountDAO();
+                a = (Account) request.getSession().getAttribute("account");
                 adb.insertNewAccount(a);
+                if (a.getRoleId() == 2) {
+                   StudentDAO stda=new StudentDAO();
+                   stda.insertNewStudent(a.getUsername());
+                } else if (a.getRoleId() == 3) {
+                    SellerDAO sda=new SellerDAO();
+                    sda.insertNewSeller(a.getUsername());
+                }
                 request.getSession().invalidate();
                 request.removeAttribute("accept");
                 response.sendRedirect("login.jsp");

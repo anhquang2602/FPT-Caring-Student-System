@@ -160,6 +160,18 @@
         <servlet-name>ListAllRestaurantController</servlet-name>
         <servlet-class>controller.ListAllRestaurantController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChartVoteController</servlet-name>
+        <servlet-class>controller.ChartVoteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateStudentProfile</servlet-name>
+        <servlet-class>controller.UpdateStudentProfile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateAdminProfile</servlet-name>
+        <servlet-class>controller.UpdateAdminProfile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -319,6 +331,18 @@
     <servlet-mapping>
         <servlet-name>ListAllRestaurantController</servlet-name>
         <url-pattern>/ListAllRestaurantController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChartVoteController</servlet-name>
+        <url-pattern>/ChartVoteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateStudentProfile</servlet-name>
+        <url-pattern>/UpdateStudentProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateAdminProfile</servlet-name>
+        <url-pattern>/UpdateAdminProfile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

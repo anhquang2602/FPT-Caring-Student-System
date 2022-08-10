@@ -16,7 +16,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private int age;
-    private int phone;
+    private String phone;
     private String unit;
     private String email;
     private int countryID;
@@ -24,16 +24,25 @@ public class Student {
     private String provinceName;
     private String districtName;
     private int provinceID;
-    private int districID;
+    private int districtID;
     private String address;
     private int status;
     private int gender;
     private String image;
+    private String linkFb;
 
     public Student() {
     }
 
-    public Student(int studentNo, String studentID, String firstName, String lastName, int age, int phone, String unit, String email, int countryID, String countryName, String provinceName, String districtName, int provinceID, int districID, String address, int status, int gender) {
+    public String getLinkFb() {
+        return linkFb;
+    }
+
+    public void setLinkFb(String linkFb) {
+        this.linkFb = linkFb;
+    }
+
+    public Student(int studentNo, String studentID, String firstName, String lastName, int age, String phone, String unit, String email, int countryID, String countryName, String provinceName, String districtName, int provinceID, int districtID, String address, int status, int gender) {
         this.studentNo = studentNo;
         this.studentID = studentID;
         this.firstName = firstName;
@@ -47,13 +56,48 @@ public class Student {
         this.provinceName = provinceName;
         this.districtName = districtName;
         this.provinceID = provinceID;
-        this.districID = districID;
+        this.districtID = districtID;
         this.address = address;
         this.status = status;
         this.gender = gender;
     }
 
-    public Student(String studentID, String firstName, String lastName, int age, int phone, String unit, String email, String countryName, String provinceName, String districtName, String address, int status , int gender, String image) {
+    public Student(String studentID, String firstName, String lastName, int age, String phone, String unit, String email, int countryId, int provinceId, int districtId, String address, int gender, String linkFb) {
+        this.studentID = studentID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.phone = phone;
+        this.unit = unit;
+        this.email = email;
+        this.countryID = countryId;
+        this.provinceID = provinceId;
+        this.districtID = districtId;
+        this.address = address;
+        this.gender = gender;
+        this.linkFb = linkFb;
+    }
+
+    public Student(String studentID, String firstName, String lastName, int age, String phone, String unit, String email, int countryId, int provinceId, int districtId, String address, int status, int gender, String image, String linkFb, int studentNo) {
+        this.studentID = studentID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.phone = phone;
+        this.unit = unit;
+        this.email = email;
+        this.countryID = countryId;
+        this.provinceID = provinceId;
+        this.districtID = districtId;
+        this.address = address;
+        this.status = status;
+        this.gender = gender;
+        this.image = image;
+        this.linkFb = linkFb;
+        this.studentNo = studentNo;
+    }
+
+    public Student(String studentID, String firstName, String lastName, int age, String phone, String unit, String email, String countryName, String provinceName, String districtName, String address, int status, int gender, String image) {
         this.studentID = studentID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -68,9 +112,10 @@ public class Student {
         this.status = status;
         this.gender = gender;
         this.image = image;
+
     }
 
-    public Student(String studentID, String firstName, String lastName, int age, int phone, String unit,String email, String countryName, String provinceName, String districtName, String address, int gender) {
+    public Student(String studentID, String firstName, String lastName, int age, String phone, String unit, String email, String countryName, String provinceName, String districtName, String address, int gender) {
         this.studentID = studentID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -92,7 +137,7 @@ public class Student {
     public void setImage(String image) {
         this.image = image;
     }
-    
+
     public String getCountryName() {
         return countryName;
     }
@@ -140,8 +185,6 @@ public class Student {
     public void setStatus(int status) {
         this.status = status;
     }
-
-   
 
     public String getFirstName() {
         return firstName;
@@ -191,11 +234,11 @@ public class Student {
         this.address = address;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -215,12 +258,12 @@ public class Student {
         this.email = email;
     }
 
-    public int getDistricID() {
-        return districID;
+    public int getDistrictID() {
+        return districtID;
     }
 
-    public void setDistricID(int districID) {
-        this.districID = districID;
+    public void setDistrictID(int districtID) {
+        this.districtID = districtID;
     }
 
     public int getGender() {
@@ -230,6 +273,5 @@ public class Student {
     public void setGender(int gender) {
         this.gender = gender;
     }
-    
 
 }
