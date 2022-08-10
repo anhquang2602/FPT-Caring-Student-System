@@ -1,4 +1,4 @@
-<%-- 
+   <%-- 
     Document   : editFood
     Created on : Jul 29, 2022, 9:42:27 AM
     Author     : DELL
@@ -67,7 +67,7 @@
                 document.getElementById('errorCost').innerText = 'Bạn phải nhập giá của món ăn!';
                         isValid = false;
                 } else if (!regex.test(distance)) {
-                document.getElementById('errorCost').innerText = 'Invalid!';
+                document.getElementById('errorCost').innerText = 'Giá trị nhập không đúng. Giá tiền phải là số!';
                         isValid = false;
                 } else if (distance <= 0) {
                 document.getElementById('errorCost').innerText = 'Giá tiền phải > 0 ';
