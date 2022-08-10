@@ -31,7 +31,7 @@
                     <td>${report.offensive}</td>
                     <td>${report.truthless}</td>
                     <td>   
-                        <a href="#">Xóa bài đăng</a>
+                        <a href="deletehostel?id=${report.hostelID}">Xóa bài đăng</a>
                         <a href="detailhostel?id=${report.hostelID}">View post</a>
                     </td>
                 </tr>
