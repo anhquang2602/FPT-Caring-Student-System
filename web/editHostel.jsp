@@ -41,15 +41,15 @@
                                         <strong class="fs-3">Ảnh nhà trọ</strong>
                                     </div>
                                     <div class="mt-5">
-<<<<<<< HEAD
-                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
+
+<!--                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: 30px; margin-top: 65px; opacity: 50%">+</label>
-                                        <img id="Url1" name="Url1" width="170px" height="170px"
-=======
+                                        <img id="Url1" name="Url1" width="170px" height="170px"-->
+
                                         <input type="file" accept="image/*" onchange="loadFile(event)" name="image1" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(4.5%); opacity: 30%">+</label>
                                         <img id="Url1" name="Url1" width="170rem" height="170rem"
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                              <c:if test="${editHostel.img1 != null}">
                                                  src="${editHostel.img1}" </c:if>/>
                                              <script>
@@ -67,19 +67,19 @@
                                             <a id="U1" class ="Url1" style="position: absolute; margin-left: calc(6%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
                                         </c:if>
 
-<<<<<<< HEAD
+<!--
                                         <input type="file" accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
                                         <%--<c:if test="${editHostel.img2 != null}">--%>
-                                            <!--<a id="U2" class ="Url2" href="deleteImage?id=${editHostel.hostelID}&url=Url2">Delete Image</a>-->
+                                            <a id="U2" class ="Url2" href="deleteImage?id=${editHostel.hostelID}&url=Url2">Delete Image</a>
                                         <%--</c:if>--%>
                                         <label for="file2" style="position: absolute; margin-left: 40px; margin-top: 60px; opacity: 50%">+</label>
                                         <img id="Url2" name="Url2" style="margin-left: 10px"
-                                             width="170px" height="170px"
-=======
+                                             width="170px" height="170px"-->
+
                                         <input type="file" accept="image/*" onchange="loadFile2(event)" name="image2" id="file2">
                                         <label for="file2" style="position: absolute; margin-left: calc(7.5%); margin-top: calc(4.5%); opacity: 30%">+</label>
                                         <img id="Url2" name="Url2" style="margin-left: calc(4.5%)" width="170rem" height="170rem"
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                              <c:if test="${editHostel.img2 != null}">
                                                  src="${editHostel.img2}" </c:if>/>
                                              <script>
@@ -97,19 +97,19 @@
                                             <a id="U2" class ="Url2" style="position: absolute; margin-left: calc(8%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url2">X</a>
                                         </c:if>
 
-<<<<<<< HEAD
-                                             <input type="file" accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
+
+<!--                                             <input type="file" accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
                                         <%--<c:if test="${editHostel.img3 != null}">--%>
-                                            <!--<a id="U3" class ="Url3" href="deleteImage?id=${editHostel.hostelID}&url=Url3">Delete Image</a>-->
+                                            <a id="U3" class ="Url3" href="deleteImage?id=${editHostel.hostelID}&url=Url3">Delete Image</a>
                                         <%--</c:if>--%>
                                         <label for="file3" style="position: absolute; margin-left: 40px; margin-top: 60px; opacity: 50%">+</label>
                                         <img id="Url3" name="Url3" style="margin-left: 10px"
-                                             width="170px" height="170px"
-=======
+                                             width="170px" height="170px"-->
+
                                         <input type="file" accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
                                         <label for="file3" style="position: absolute; margin-left: calc(7.5%); margin-top: calc(4.5%); opacity: 30%">+</label>
                                         <img id="Url3" name="Url3" style="margin-left: calc(4.5%)" width="170rem" height="170rem"
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                              <c:if test="${editHostel.img3 != null}">
                                                  src="${editHostel.img3}" </c:if>/>
                                              <script>
@@ -124,29 +124,29 @@
                                                  };
                                              </script>
                                         <c:if test="${editHostel.img3 != null}">
-<<<<<<< HEAD
-                                            <a id="U3" class ="Url3" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url3">X</a>
+
+<!--                                            <a id="U3" class ="Url3" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url3">X</a>
                                             <input type="file" accept="image/*" onchange="loadFile(event)" name ="image3" id="file3">
-                                            <label for="file3" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 50%">+</label>
-=======
+                                            <label for="file3" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 50%">+</label>-->
+
                                             <a id="U3" class ="Url3" style="position: absolute; margin-left: calc(6%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url3">X</a>
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                         </c:if>
                                     </div>
 
                                     <div class="mt-5">    
                                         <input type="file" accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
-<<<<<<< HEAD
+
                                         <%--<c:if test="${editHostel.img4 != null}">--%>
                                             <!--<a id="U4" class ="Url4" href="deleteImage?id=${editHostel.hostelID}&url=Url4">Delete Image</a>-->
                                         <%--</c:if>--%>
-                                        <label for="file4" style="position: absolute; margin-left: 30px; margin-top: 65px; opacity: 50%">+</label>
+<!--                                        <label for="file4" style="position: absolute; margin-left: 30px; margin-top: 65px; opacity: 50%">+</label>
                                         <img id="Url4" name="Url4"
-                                             width="170px" height="170px"
-=======
+                                             width="170px" height="170px"-->
+
                                         <label for="file4" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="Url4" name="Url4"width="170rem" height="170rem"
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                              <c:if test="${editHostel.img4 != null}">
                                                  src="${editHostel.img4}" </c:if>/>
                                              <script>
@@ -160,23 +160,26 @@
                                                      }
                                                  };
                                              </script>
-<<<<<<< HEAD
 
-                                             <input type="file" accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
+
+<!--                                             <input type="file" accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
                                         <%--<c:if test="${editHostel.img5 != null}">--%>
-                                            <!--<a id="U5" class ="Url5" href="deleteImage?id=${editHostel.hostelID}&url=Url5">Delete Image</a>-->
+                                            <a id="U5" class ="Url5" href="deleteImage?id=${editHostel.hostelID}&url=Url5">Delete Image</a>
                                         <%--</c:if>--%>
                                         <label for="file5" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 50%">+</label>
                                         <img id="Url5" name="Url5" style="margin-left: 10px"
-                                             width="170px" height="170px"
-=======
+                                             width="170px" height="170px"-->
+
                                         <c:if test="${editHostel.img4 != null}">
                                             <a id="U4" class ="Url4" style="position: absolute; margin-left: calc(6%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url4">X</a>
                                         </c:if>
+                                            
+                                            
+                                            
                                         <input type="file" accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
                                         <label for="file5" style="position: absolute; margin-left: calc(7.5%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="Url5" name="Url5" style="margin-left: calc(4.5%)" width="170rem" height="170rem"
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                              <c:if test="${editHostel.img5 != null}">
                                                  src="${editHostel.img5}" </c:if>/>
                                              <script>
@@ -190,23 +193,26 @@
                                                      }
                                                  };
                                              </script>
-<<<<<<< HEAD
 
-                                             <input type="file" accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
+
+<!--                                             <input type="file" accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
                                         <%--<c:if test="${editHostel.img6 != null}">--%>
-                                            <!--<a id="U6" class ="Url6" href="deleteImage?id=${editHostel.hostelID}&url=Url6">Delete Image</a>-->
+                                            <a id="U6" class ="Url6" href="deleteImage?id=${editHostel.hostelID}&url=Url6">Delete Image</a>
                                         <%--</c:if>--%>
                                         <label for="file6" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 50%">+</label>
                                         <img id="Url6" name="Url6" style="margin-left: 10px"
-                                             width="170px" height="170px"
-=======
+                                             width="170px" height="170px"-->
+
                                         <c:if test="${editHostel.img5 != null}">
                                             <a id="U5" class ="Url5" style="position: absolute; margin-left: calc(6%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url5">X</a>
                                         </c:if>
+                                            
+                                            
+                                            
                                         <input type="file" accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
                                         <label for="file6" style="position: absolute; margin-left: calc(7.5%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="Url6" name="Url6" style="margin-left: calc(4.5%)" width="170rem" height="170rem"
->>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+
                                              <c:if test="${editHostel.img6 != null}">
                                                  src="${editHostel.img6}" </c:if>/>
                                              <script>
@@ -223,6 +229,8 @@
                                         <c:if test="${editHostel.img6 != null}">
                                             <a id="U6" class ="Url6" style="position: absolute; margin-left: calc(6%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url6">X</a>
                                         </c:if>
+                                            
+                                            
                                     </div> 
                                     <div class="oriton_img"> 
                                         <strong class="fs-3">Tình trạng phòng</strong>                   
@@ -397,8 +405,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                        output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -415,8 +422,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                       output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -433,8 +439,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                       output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -451,8 +456,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                       output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -469,8 +473,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                       output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory

@@ -7,13 +7,16 @@ package controller;
 
 import dao.HostelDAO;
 import dao.StarDAO;
+import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Hostel;
+import model.StarVoting;
 
 /**
  *
@@ -53,6 +56,27 @@ public class HostelDetailController extends HttpServlet {
         String id = request.getParameter("id");
         HostelDAO dao = new HostelDAO();
         Hostel h = dao.getHostelInfo(Integer.parseInt(id));
+        StudentDAO stdao = new StudentDAO();
+        if(stdao.getStudentNo((String) request.getSession().getAttribute("username"))!=null){
+            request.setAttribute("isStudent", 1);
+        }
+        
+         StarDAO daost = new StarDAO();
+         ArrayList<StarVoting> sv = daost.getListCommentByHostel(Integer.parseInt(id));
+            if (!sv.isEmpty()) {
+                
+                int count = 0;
+                double sum = 0;
+                for (StarVoting starVoting : sv) {
+                    sum += starVoting.getStarvoting();
+                    count++;
+                }
+
+                h.setStarAVG((sum/count)/5*100);
+            }else{
+                h.setStarAVG(0);
+            }
+        
         int SellerID=dao.getSellerIdByHostelId(Integer.parseInt(id));
         
       
