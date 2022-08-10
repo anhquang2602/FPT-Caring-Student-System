@@ -9,7 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Seller;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import model.Student;
 
 /**
@@ -50,27 +53,39 @@ public class StudentDAO extends DBContext {
         return null;
     }
 
-    public ArrayList<Student> getAllStudent() throws ClassNotFoundException, SQLException, Exception {
+    public ArrayList<Student> getAllStudent(int index) throws ClassNotFoundException, SQLException, Exception {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Email , CountryName , ProvinceName , DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
                 + "from Students\n"
                 + "inner join Country on Students.CountryID=Country.CountryID\n"
                 + "inner join Province on Students.ProvinceID = Province.ProvinceID\n"
                 + "inner join District on Students.DistrictID = District.DistrictID\n"
-                + "inner join Account on Students.Email = Account.username";
-        PreparedStatement st;
-        try {
-            st = connection.prepareCall(sql);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
-                        rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+                + "inner join Account on Students.Email = Account.username\n"
+                + "ORDER BY StudentID\n"
+                + "OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1, (index - 1) * 6);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
         }
-        System.out.println(list);
         return list;
+    }
+
+    public int getTotalStudent() {
+        String sql = "select count(*) from Students";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
     public Student getStudentByStudentID(String studentID) {
@@ -88,6 +103,7 @@ public class StudentDAO extends DBContext {
             st.setString(1, studentID);
             rs = st.executeQuery();
             while (rs.next()) {
+
                 Student student = new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
                         rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"));
                 st.close();
@@ -171,6 +187,7 @@ public class StudentDAO extends DBContext {
             st.setString(1, account);
             rs = st.executeQuery();
             while (rs.next()) {
+
                 Student student = new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
                         rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"));
                 st.close();

@@ -164,7 +164,7 @@
                 document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
                         isValid = false;
                 } else if (!regex.test(distance)) {
-                document.getElementById('errorDistance').innerText = 'Invalid!';
+                document.getElementById('errorDistance').innerText = 'Giá trị nhập không đúng. Khoảng cách phải là số!';
                         isValid = false;
                 } else if (distance <= 0) {
                 document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';

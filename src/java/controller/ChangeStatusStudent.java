@@ -36,7 +36,7 @@ public class ChangeStatusStudent extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,14 +56,14 @@ public class ChangeStatusStudent extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(StudentListController.class.getName()).log(Level.SEVERE, null, ex);
         }
-         try {
-             StudentDAO dAO = new StudentDAO();
-             String email = request.getParameter("email");
-             Student student = dAO.getAccount(email);
-             request.setAttribute("student", student);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
+        try {
+            StudentDAO dAO = new StudentDAO();
+            String email = request.getParameter("email");
+            Student student = dAO.getAccount(email);
+            request.setAttribute("student", student);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         request.getRequestDispatcher("profileStudent.jsp").forward(request, response);
     }
 
@@ -87,8 +87,20 @@ public class ChangeStatusStudent extends HttpServlet {
         int status = Integer.parseInt(request.getParameter("status"));
         String email = (request.getParameter("email"));
         StudentDAO studentDAO = new StudentDAO();
+        String indexPage = request.getParameter("index");
+            if (indexPage == null) {
+                indexPage = "1";
+            }
+            int index = Integer.parseInt(indexPage);
+
+            int total = studentDAO.getTotalStudent();
+            int endPage = total / 6;
+            if (total % 6 != 0) {
+                endPage++;
+            }
         try {
-            studentDAO.getAllStudent();
+            
+            studentDAO.getAllStudent(index);
         } catch (SQLException ex) {
             Logger.getLogger(ChangeStatusStudent.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
@@ -96,6 +108,8 @@ public class ChangeStatusStudent extends HttpServlet {
         }
         studentDAO.updateStatus(email, status);
         request.setAttribute("listStudent", listStudent);
+         request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
         request.getRequestDispatcher("StudentListController").forward(request, response);
     }
 

@@ -1,11 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box
-}
-
 .container {
     min-height: 100vh;
     height: scroll;
@@ -223,6 +215,10 @@ input[type="radio"] {
     width: 100%
 }
 
+.input_text::placeholder {
+    font-size: 18px;
+}
+
 input[type="text"] {
     width: 100%;
     height: 40px;
@@ -230,7 +226,7 @@ input[type="text"] {
     outline: 0;
     border-radius: 5px;
     padding: 5px 10px;
-    font-size: 13px;
+    font-size: 18px;
     transition: all 0.5s
 }
 
@@ -283,12 +279,6 @@ input[type="text"]:focus~span {
     border-radius:0 !important;
 }
 
-.cvv_month {
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
-
 ._input input[type="text"] {
     border-right-style: none !important;
 
@@ -311,30 +301,6 @@ input[type="text"]:focus~span {
 
 ._input input[type="text"] {
     padding-left: 25px;
-}
-
-.months{
-    width: 60px;
-    border-left-style: none !important; 
-    border-right-style: none !important;
-    border-radius: none;
-    border-top: 1px solid #eaeaec;
-    align-items: center;
-    padding: none;
-}
-.cvcs{
-    width: 60px;
-    border-left: 1px solid #fff;
-    border-left-style: none !important;
-    padding: none;
-}
-
-.cvv_month .input_text input[type="text"]:nth-child(1):focus {
-    border: 1px solid #7047eb !important;
-}
-
-.cvv_month ::placeholder {
-    font-size: 10px
 }
 
 .input_text select {
@@ -472,6 +438,7 @@ input[type="text"]:focus~span {
 }
 
 [type="file"] + label {
+    
     color: black;
     border-radius: 5px;
     cursor: pointer;
@@ -515,6 +482,9 @@ input[type="text"]:focus~span {
             }
         }
     }
+}
+.error {
+    color: red;
 }
 
 

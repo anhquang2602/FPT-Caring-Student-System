@@ -3,77 +3,52 @@
     Created on : Jul 17, 2022, 7:05:42 PM
     Author     : nguye
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/hostelStyle.css">
+        <link rel="stylesheet" href="css/commentStyle.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+
         <style>
-
-
-
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            body{
-                flex-direction: column;
-                font-family: Arial, Helvetica, san-serif;
-
-            }
-            .rating_heading{
-                animation: scale-up 1s ease;
-                font-weight:  bold;
-                color: orange;
-            }
-            @keyframes scale-up{
-                0%{
-                    opacity: 0;
-                    transform: scale(.5);
-                }
-                100%{
-                    opacity: 1;
-                    transform: scale(1);
-                }
+            .stars-outer {
+                position: relative;
+                display: inline-block;
             }
 
-            .star_rating {
-                user-select: none;
-                background-color: #e6e6e6;
-                padding: 1rem 2rem;
-                margin: 1rem;
-                border-radius: .3rem;
-                animation: slide-up 1s ease;
-            }
-            @keyframes slide-up{
-                0%{
-                    opacity: 0;
-                    transform: translateY(50px);
-                }
-                100%{
-                    opacity: 1;
-                    transform: translateY(0px);
-                }
-            }
-            .star {
-                font-size: 3rem;
-                color: #ff9800;
-                background-color: unset;
-                border: none;
-                text-align: center;
-
-            }
-            .star:hover{
-                cursor: pointer;   
+            .stars-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 0;
             }
 
+            .stars-outer::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #ccc;
+            }
+
+            .stars-inner::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #f8ce0b;
+            }
         </style>
     </head>
     <body class="bg-white">
@@ -83,9 +58,9 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                
+
                 <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
-                
+
                 <div class="container rounded bg-white mt-5 mb-5">
                     <div>
                         <ul class="breadcrumb bg-white">
@@ -122,8 +97,12 @@
                                     </div>
                                 </form>
                                 <span class="font-weight-bold labels mt-5" ><label class="labels">Nhà trọ:</label> ${hosteldetail.hostelName}</span>
-                                <span class="font-weight-bold labels"><label class="labels">Chủ trọ:</label> ${hosteldetail.sellerName}</span>
-                                <BR>
+                                 <div class="stars-outer">
+                                    <div class="stars-inner" style="width: ${hosteldetail.starAVG}%"> </div>
+                                </div> <br><br>
+                                <span class="font-weight-bold labels"><label class="labels">Chủ trọ:</label>
+                                    <a href="ViewSellerController?id=${sellerId}" title="" target="_blank">${hosteldetail.sellerName}</a>
+                                </span>
 
                                 <!--                                <div class="rate">
                                 
@@ -139,19 +118,23 @@
                                                                     <label for="star1" title="text">1 star</label>
                                 
                                                                 </div>-->
-                                <a href="comment?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a>
+                               
+                                <c:if test = "${isStudent== 1}">
+                                    <a href="comment?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
+                                </c:if>
+
                                 
-                              
-<!--                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
-                                <div class ="star_rating">
-                                    <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
-                                    <button class="star" id="star1"  value="1">&#9734;</button>
-                                    <button class="star" id="star2"  value="2">&#9734;</button>
-                                    <button class="star" id="star3"  value="3">&#9734;</button>
-                                    <button class="star" id="star4"  value="4">&#9734;</button>
-                                    <button class="star" id="star5"  value="5">&#9734;</button>
-                                    <p class="current_rating">0 trên 5</p>
-                                </div>-->
+
+                                <!--                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
+                                                                <div class ="star_rating">
+                                                                    <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
+                                                                    <button class="star" id="star1"  value="1">&#9734;</button>
+                                                                    <button class="star" id="star2"  value="2">&#9734;</button>
+                                                                    <button class="star" id="star3"  value="3">&#9734;</button>
+                                                                    <button class="star" id="star4"  value="4">&#9734;</button>
+                                                                    <button class="star" id="star5"  value="5">&#9734;</button>
+                                                                    <p class="current_rating">0 trên 5</p>
+                                                                </div>-->
                             </div>
                         </div>
                         <div class="col-md-8">
@@ -224,6 +207,35 @@
                             </div>
                         </div>
                     </div>
+                    <!--                                         <div class="container mt-5">
+                                                        <div class="d-flex justify-content-center row">
+                                                            <div class="col-md-8" style="min-width: 100%">
+                                                                <div class="d-flex flex-column comment-section">-->
+
+                    <h4>Đánh giá:</h4>
+                    <c:forEach items="${listComment}" var="d" >
+                        <div class="bg-white p-2">
+                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="40">
+                                <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">${d.studentName}</span><span class="date text-black-50">${d.date}</span></div>
+                            </div>
+                            <div class="sold_stars ml-auto">
+                                <c:forEach begin="1" end="${d.starvoting}" >
+                                    <i class="fa fa-star"></i>      
+                                </c:forEach>
+
+
+                            </div>
+                            <div class="mt-2">
+                                <p class="comment-text">${d.message}</p>
+                            </div>
+
+
+                        </div>
+                    </c:forEach>
+                    <!--                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
                 </div>
             </div>
         </div>

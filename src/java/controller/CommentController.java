@@ -5,6 +5,8 @@
  */
 package controller;
 
+import dao.StarDAO;
+import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -56,9 +58,19 @@ public class CommentController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         int hostelID = Integer.parseInt(request.getParameter("hostelID"));
+        StarDAO dao = new StarDAO();
+
+        StudentDAO stdao = new StudentDAO();
+        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
         request.setAttribute("hostelID", hostelID);
+        if(dao.getCommentofStudent(hostelID, studentNo)==null){
+            request.setAttribute("studentComment", null);
+        }else{
+            request.setAttribute("studentComment", dao.getCommentofStudent(hostelID, studentNo));
+        }
+        
         request.getRequestDispatcher("comment.jsp").forward(request, response);
 
     }

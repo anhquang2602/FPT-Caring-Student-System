@@ -165,7 +165,7 @@ public class UpdateSellerProfile extends HttpServlet {
             addressDetail = request.getParameter("addressDetail");
             phone = request.getParameter("phone");
             age = Integer.parseInt(request.getParameter("age"));
-            linkFb=request.getParameter("linkFb");
+            linkFb = request.getParameter("linkFb");
             provinceID = Integer.parseInt(request.getParameter("province"));
             districtID = Integer.parseInt(request.getParameter("district"));
             Seller sellerUpdate = new Seller(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender,linkFb);

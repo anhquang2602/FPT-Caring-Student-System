@@ -53,26 +53,43 @@ public class ReportHostelDAO extends DBContext {
         return false;
     }
 
-    public ArrayList<ReportHostel> listAllReportHostel() {
+    public ArrayList<ReportHostel> listAllReportHostel(int index) {
         ArrayList<ReportHostel> report = new ArrayList<>();
         try {
-            String sql = "Select a.HostelName, SUM( a.Spam) Spam, SUM(a.Violent) Violent,\n"
-                    + "SUM(a.Offensive) Offensive,SUM(a.Truthless) Truthless\n"
-                    + "from\n"
-                    + "(\n"
-                    + "select rt.HostelName HostelName, CONVERT(INT, rr.Spam) Spam, CONVERT(INT,rr.Offensive) Offensive,\n"
-                    + "CONVERT(INT, rr.Violent) Violent, CONVERT(INT, rr.Truthless) Truthless\n"
-                    + "from Hostels rt\n"
-                    + "inner join ReportHostel rr on rt.HostelID = rr.HostelID) as a\n"
-                    + "group by a.HostelName";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet rs = statement.executeQuery();
+            String sql = "Select a.HostelID, a.HostelName, SUM( a.Spam) Spam, SUM(a.Violent) Violent,\n"
+                    + "                    SUM(a.Offensive) Offensive,SUM(a.Truthless) Truthless\n"
+                    + "                    from\n"
+                    + "                    (\n"
+                    + "                    select rt.HostelID,rt.HostelName HostelName, CONVERT(INT, rr.Spam) Spam, CONVERT(INT,rr.Offensive) Offensive,\n"
+                    + "                    CONVERT(INT, rr.Violent) Violent, CONVERT(INT, rr.Truthless) Truthless \n"
+                    + "                    from Hostels rt \n"
+                    + "                    inner join ReportHostel rr on rt.HostelID = rr.HostelID) as a \n"
+                    + "                    group by a.HostelName,a.HostelID\n"
+                    + "ORDER BY HostelID\n"
+                    + "OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY;";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, (index - 1) * 20);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                report.add(new ReportHostel(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5)));
+                report.add(new ReportHostel(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return report;
+    }
+
+    public int getTotalReportHostel() {
+        String sql = "select count(*) from ReportHostel";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 }

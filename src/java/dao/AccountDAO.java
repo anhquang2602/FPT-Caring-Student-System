@@ -102,4 +102,19 @@ public class AccountDAO extends DBContext {
         return null;
     }
 
+    public String getPasswordByUsername(String username) {
+        String sql = "select password from account where username=?";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            st.setString(1, username);           
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {           
+                return rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }
