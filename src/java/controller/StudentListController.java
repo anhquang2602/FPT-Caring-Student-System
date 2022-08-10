@@ -37,8 +37,21 @@ public class StudentListController extends HttpServlet {
             throws ServletException, IOException, SQLException, Exception {
         ArrayList<Student> listStudent = new ArrayList<>();
         StudentDAO dao = new StudentDAO();
-        listStudent = dao.getAllStudent();
+        String indexPage= request.getParameter("index");
+         if(indexPage==null){
+            indexPage ="1";
+        }
+        int index = Integer.parseInt(indexPage);
+ 
+        int total = dao.getTotalStudent();
+        int endPage = total / 6;
+        if (total % 6 != 0) {
+            endPage++;
+        }
+        listStudent = dao.getAllStudent(index);
         request.setAttribute("listStudent", listStudent);
+         request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
         request.getRequestDispatcher("student-list.jsp").forward(request, response);
     }
 

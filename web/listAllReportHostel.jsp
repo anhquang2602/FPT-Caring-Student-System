@@ -1,7 +1,7 @@
 <%-- 
-    Document   : listAllReportHostel
-    Created on : Aug 8, 2022, 3:12:32 AM
-    Author     : DELL
+ Document   : listAllReportHostel
+ Created on : Aug 8, 2022, 3:12:32 AM
+ Author     : DELL
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-       <h1>List All Report Of Hostel</h1>
+        <h1>List All Report Of Hostel</h1>
         <table border="1">
             <tr>
                 <th>Tên Trọ</th>
@@ -37,5 +37,18 @@
                 </tr>
             </c:forEach>
         </table>
+        <div class="clearfix">
+            <ul class="pagination">
+                <c:if test="${tag>1}">
+                    <li class="page-item disabled"><a href="ListAllReportHostelController?index=${tag-1}">Previous</a></li>
+                    </c:if>
+                    <c:forEach begin="1" end="${endP}" var="i">
+                    <li class="page-item ${tag==i?"active":""}"><a href="ListAllReportHostelController?index=${i}" class="page-link">${i}</a></li>
+                    </c:forEach>
+                    <c:if test="${tag<endP}">
+                    <li class="page-item"><a href="ListAllReportHostelController?index=${tag+1}" class="page-link">Next</a></li>
+                    </c:if>
+            </ul>
+        </div> 
     </body>
 </html>

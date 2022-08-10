@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Seller;
 
 /**
@@ -32,27 +34,38 @@ public class SellerDAO extends DBContext {
         }
     }
 
-    public ArrayList<Seller> getAllSeller() throws ClassNotFoundException, SQLException, Exception {
+    public ArrayList<Seller> getAllSeller(int index) throws ClassNotFoundException, SQLException, Exception {
         ArrayList<Seller> list = new ArrayList<>();
         String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook\n"
                 + "from Sellers\n"
                 + "inner join Country on Sellers.CountryID=Country.CountryID\n"
                 + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
                 + "inner join District on Sellers.DistrictID = District.DistrictID\n"
-                + "inner join Account on Sellers.Email = Account.username";
-        PreparedStatement st;
-        try {
-            st = connection.prepareCall(sql);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
-                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"),rs.getString("Avatar"),rs.getString("LinkFacebook")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+                + "inner join Account on Sellers.Email = Account.username\n"
+                + "ORDER BY SellerID\n"
+                + "OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1, (index - 1) * 6);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
         }
-        System.out.println(list);
         return list;
+    }
+
+    public int getTotalSeller() {
+        String sql = "select count(*) from Sellers";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
     public Seller getSellertBySellerID(int sellerID) {
@@ -71,7 +84,7 @@ public class SellerDAO extends DBContext {
             rs = st.executeQuery();
             while (rs.next()) {
                 Seller seller = new Seller(rs.getInt("SellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
-                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"),rs.getInt("Gender"),rs.getString("Avatar"),rs.getString("LinkFacebook"));
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook"));
                 st.close();
                 rs.close();
                 return seller;
@@ -101,6 +114,7 @@ public class SellerDAO extends DBContext {
         }
         return false;
     }
+
     public Seller getAccount(String account) {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus,Gender,Avatar,LinkFacebook\n"
@@ -117,7 +131,7 @@ public class SellerDAO extends DBContext {
             rs = st.executeQuery();
             while (rs.next()) {
                 Seller seller = new Seller(rs.getInt("SellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
-                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"),rs.getInt("Gender"),rs.getString("Avatar"),rs.getString("LinkFacebook"));
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook"));
                 st.close();
                 rs.close();
                 return seller;
@@ -130,7 +144,7 @@ public class SellerDAO extends DBContext {
         }
         return null;
     }
-    
+
     public String getSellerID(String userName) {
         String sql = "select s.SellerID from Sellers s join Account a on s.Email = a.Username where a.Username = ?";
         PreparedStatement st;
@@ -138,16 +152,16 @@ public class SellerDAO extends DBContext {
             st = connection.prepareCall(sql);
             st.setString(1, userName);
             ResultSet rs = st.executeQuery();
-            
+
             if (rs.next()) {
-               return rs.getString(1);
+                return rs.getString(1);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-       return null;
+        return null;
     }
-    
+
     public void insertNewSeller(String email) {
         String sql = "insert into Sellers(Email) values(?)";
         try {
@@ -158,7 +172,7 @@ public class SellerDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
+
     public Seller getSellertByUsername(String username) {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryID , ProvinceID , DistrictID , AddressDetail , Gender, LinkFacebook\n"
@@ -171,7 +185,7 @@ public class SellerDAO extends DBContext {
             rs = st.executeQuery();
             while (rs.next()) {
                 Seller seller = new Seller(rs.getInt("SellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
-                        rs.getString("Email"), rs.getInt("CountryID"), rs.getInt("ProvinceID"), rs.getInt("DistrictID"), rs.getString("AddressDetail"), rs.getInt("Gender"),rs.getString("LinkFacebook"));
+                        rs.getString("Email"), rs.getInt("CountryID"), rs.getInt("ProvinceID"), rs.getInt("DistrictID"), rs.getString("AddressDetail"), rs.getInt("Gender"), rs.getString("LinkFacebook"));
                 st.close();
                 rs.close();
                 return seller;
@@ -184,7 +198,7 @@ public class SellerDAO extends DBContext {
         }
         return null;
     }
-    
+
     public String getAvatarByUsername(String username) {
         try {
             String sql = "select Avatar\n"
@@ -196,7 +210,7 @@ public class SellerDAO extends DBContext {
             st.setString(1, username);
             rs = st.executeQuery();
             if (rs.next()) {
-                String avatar=rs.getString(1);
+                String avatar = rs.getString(1);
                 st.close();
                 rs.close();
                 return avatar;
@@ -209,7 +223,7 @@ public class SellerDAO extends DBContext {
         }
         return null;
     }
-    
+
     public boolean updateSellerProfile(String avatar, Seller seller) {
         boolean gender = true;
         if (seller.getGender() == 1) {
@@ -233,7 +247,7 @@ public class SellerDAO extends DBContext {
             st.setBoolean(10, gender);
             st.setString(11, seller.getLinkFb());
             st.setString(12, seller.getEmail());
-            st.executeUpdate();           
+            st.executeUpdate();
             st.close();
             return true;
         } catch (Exception e) {

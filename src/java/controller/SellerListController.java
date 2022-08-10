@@ -40,8 +40,21 @@ public class SellerListController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<Seller> listSeller = new ArrayList<>();
         SellerDAO dao = new SellerDAO();
-        listSeller = dao.getAllSeller();
+        String indexPage= request.getParameter("index");
+         if(indexPage==null){
+            indexPage ="1";
+        }
+        int index = Integer.parseInt(indexPage);
+ 
+        int total = dao.getTotalSeller();
+        int endPage = total / 6;
+        if (total % 6 != 0) {
+            endPage++;
+        }
+        listSeller = dao.getAllSeller(index);
         request.setAttribute("listSeller", listSeller);
+         request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
         request.getRequestDispatcher("seller-list.jsp").forward(request, response);
     }
 

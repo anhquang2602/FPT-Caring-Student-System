@@ -66,7 +66,7 @@ public class DeleteRestaurantController extends HttpServlet {
         for (Food f : listFood) {
             restaurantDAO.deleteFoodlImage(f.getFoodID());
         }
-          restaurantDAO.deleteAllFood(restaurantID);
+        restaurantDAO.deleteAllFood(restaurantID);
         restaurantDAO.deleteRestaurantIDFromReport(restaurantID);
         restaurantDAO.deleteRestaurant(restaurantID);
         response.sendRedirect("ListRestaurantBySeller");

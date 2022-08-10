@@ -87,8 +87,19 @@ public class ChangeStatusSeller extends HttpServlet {
         int status = Integer.parseInt(request.getParameter("status"));
         String email = (request.getParameter("email"));
         SellerDAO sellerDAO = new SellerDAO();
+        String indexPage= request.getParameter("index");
+         if(indexPage==null){
+            indexPage ="1";
+        }
+        int index = Integer.parseInt(indexPage);
+ 
+        int total = sellerDAO.getTotalSeller();
+        int endPage = total / 6;
+        if (total % 6 != 0) {
+            endPage++;
+        }
         try {
-            sellerDAO.getAllSeller();
+            sellerDAO.getAllSeller(index);
         } catch (SQLException ex) {
             Logger.getLogger(ChangeStatusSeller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
@@ -96,6 +107,8 @@ public class ChangeStatusSeller extends HttpServlet {
         }
         sellerDAO.updateStatus(email, status);
         request.setAttribute("listSeller", listSeller);
+         request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
         request.getRequestDispatcher("SellerListController").forward(request, response);
     }
 
