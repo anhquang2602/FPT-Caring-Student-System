@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Department;
 import model.Hostel;
+import model.StarVote;
 
 /**
  *
@@ -281,7 +282,7 @@ public class HostelDAO extends DBContext {
         return 0;
     }
 
-     public int getSellerIdByHostelId(int hostelID) {
+    public int getSellerIdByHostelId(int hostelID) {
         String sql = "select SellerID from Hostels where HostelID=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -297,7 +298,7 @@ public class HostelDAO extends DBContext {
 
         return 0;
     }
-    
+
     public void addHostelID(int hostelID) {
         try {
 
@@ -355,15 +356,15 @@ public class HostelDAO extends DBContext {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-      public void deleteImage(int hostelID, String indexofURL) {
+
+    public void deleteImage(int hostelID, String indexofURL) {
 
         try {
 
             String sql = "UPDATE [dbo].[HostelImage]\n"
                     + "   SET \n"
                     + indexofURL + "       = NULL\n"
-                    + "WHERE HostelID = ?" ;
+                    + "WHERE HostelID = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, hostelID);
             statement.executeUpdate();
@@ -388,6 +389,25 @@ public class HostelDAO extends DBContext {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
+    }
+
+    public List<StarVote> listStar(int hostelID) {
+        List<StarVote> list = new ArrayList<>();
+        String sql = "SELECT StarVoting, COUNT(*) as numberofvote\n"
+                + "  FROM StarVotingHostel\n"
+                + "  where HostelID=?\n"
+                + "  group by StarVoting";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, hostelID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new StarVote(rs.getInt(1), rs.getInt(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 
     public static void main(String[] args) {

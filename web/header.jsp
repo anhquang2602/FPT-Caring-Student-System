@@ -26,6 +26,7 @@
                 <div class="topnav" style="background-color: rgb(238, 77, 45)">
                     <ul class="d-flex">
                         <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+
                         <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="SellerListController">NGƯỜI BÁN HÀNG</a>  
                         <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="StudentListController">HỌC SINH</a> 
                         <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ClubListController">CÂU LẠC BỘ</a> 
@@ -36,6 +37,7 @@
                         <a class="col-sm-2 mt-4"></a>
                         <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="hostellist">NHÀ TRỌ CỦA TÔI</a>  
                         <a class="col-sm-4 mt-4" style="color: #fff; font-size: 16px; padding: 0; margin-left: 50px" href="ListRestaurantBySeller">NHÀ ĂN CỦA TÔI</a>  
+
 
                         <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
                         <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ListAllRestaurantController">NHÀ ĂN</a>  
@@ -50,9 +52,17 @@
                                 ${sessionScope.username}
                             </button>
                             <div class="dropdown-menu" style="background-color: white; left: 0;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 999" aria-labelledby="dropdownMenuButton">
+
+                                <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
                                 <a class="dropdown-item" style="color: red" href="UpdateSellerProfile">HỒ SƠ CỦA TÔI</a>
+                                <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
+                                <a class="dropdown-item" style="color: red" href="UpdateStudentProfile">HỒ SƠ CỦA TÔI</a>
+                                <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                                <a class="dropdown-item" style="color: red" href="UpdateAdminProfile">HỒ SƠ CỦA TÔI</a>
+                                <%}%>
                                 <a class="dropdown-item" style="color: red" href="ChangePasswordServlet">ĐỔI MẬT KHẨU</a>
                                 <a class="dropdown-item" style="color: red" href="LogoutServlet">ĐĂNG XUẤT</a>
+
                             </div>
                         </div>
                     </ul>

@@ -4,6 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+            <file>file:/D:/DoAn_Final/src/java/controller/UpdateStudentProfile.java</file>
+            <file>file:/D:/DoAn_Final/src/java/model/Student.java</file>
+            <file>file:/D:/DoAn_Final/src/java/dao/AddressDAO.java</file>
+            <file>file:/D:/DoAn_Final/src/java/dao/StudentDAO.java</file>
+            <file>file:/D:/DoAn_Final/web/self_profileStudent.jsp</file>
+=======
+<<<<<<< HEAD
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/model/StarVoting.java</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/comment.jsp</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/CommentController.java</file>
@@ -42,6 +49,7 @@
             <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/StudentListController.java</file>
             <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/dao/ReportHostelDAO.java</file>
 >>>>>>> c7227b5574c8b4a0d17b6ae91241e0b3da2bfe3a
+>>>>>>> 8769bad5ee395de5512601d9691272070f577870
         </group>
     </open-files>
 </project-private>
