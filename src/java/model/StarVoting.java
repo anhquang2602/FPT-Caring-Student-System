@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 
 /**
@@ -16,20 +17,23 @@ public class StarVoting {
 
     private int id;
     private int studentNo;
+    private String studentName;
     private int hostelID;
-    private Date date;
+    private Timestamp date;
     private String message;
     private int restaurantID;
     private int starvoting;
+    private String studentAvatar;
 
     public StarVoting() {
     }
 
-    public StarVoting( int studentNo, int hostelID, int starvoting) {
+    public StarVoting( int studentNo, int hostelID, String message, int starvoting) {
         
         this.studentNo = studentNo;
         this.hostelID = hostelID;
         this.starvoting = starvoting;
+        this.message = message;
     }
 
     public StarVoting(int id, int studentNo, int hostelID, int starvoting) {
@@ -39,23 +43,53 @@ public class StarVoting {
         this.starvoting = starvoting;
     }
 
-    public StarVoting(int studentNo, int hostelID, Date date, String message, int starvoting) {
+    public StarVoting(int studentNo, int hostelID, Timestamp date, String message, int starvoting) {
         this.studentNo = studentNo;
         this.hostelID = hostelID;
         this.date = date;
         this.message = message;
         this.starvoting = starvoting;
     }
+
+    public StarVoting(int id, String studentName, Timestamp date, String message, int starvoting,String studentAvatar) {
+        this.id = id;
+        this.studentName = studentName;
+        this.date = date;
+        this.message = message;
+        this.starvoting = starvoting;
+        this.studentAvatar = studentAvatar;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getStudentAvatar() {
+        return studentAvatar;
+    }
+
+    public void setStudentAvatar(String studentAvatar) {
+        this.studentAvatar = studentAvatar;
+    }
+    
+    
+    
     
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
-
+    
+    
+    
     public String getMessage() {
         return message;
     }

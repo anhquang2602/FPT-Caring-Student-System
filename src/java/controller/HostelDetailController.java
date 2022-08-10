@@ -6,6 +6,7 @@
 package controller;
 
 import dao.HostelDAO;
+import dao.StarDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -52,7 +53,13 @@ public class HostelDetailController extends HttpServlet {
         String id = request.getParameter("id");
         HostelDAO dao = new HostelDAO();
         Hostel h = dao.getHostelInfo(Integer.parseInt(id));
+        int SellerID=dao.getSellerIdByHostelId(Integer.parseInt(id));
+        
+      
+        StarDAO dao1 = new StarDAO();
+        request.setAttribute("listComment", dao1.getListCommentByHostel(Integer.parseInt(id)));
         request.setAttribute("hosteldetail", h);
+        request.setAttribute("sellerId", SellerID);
         request.getRequestDispatcher("hosteldetail.jsp").forward(request, response);
         
     }

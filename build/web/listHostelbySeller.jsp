@@ -39,34 +39,26 @@
                                         <li><a>Nhà trọ của tôi </a></li>
                                     </ul>
                                 </div>
-                                <!--                                <table class="table" id="seller">
-                                                                    <tr>
-                                                                        <th>Hostel Name</th>
-                                                                        <th>Delete Hostel</th>
-                                                                    </tr>
-                                <c:forEach items="${listH}" var="o" >
-                                    <tr>
-                                        <td><a href="edithostel?id=${o.hostelID}">${o.hostelName}</a></td> 
-                                        <td><a href="deletehostel?id=${o.hostelID}">Delete Hostel</a></td>
-                                    </tr>
-                                </c:forEach>
-                            </table>-->
-
-
-                                <a href="addhostel" >Thêm nhà trọ mới (+)</a><br><br>
+                                <div class="mb-3" style="text-align: end">
+                                    <a style="padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="addhostel">Thêm nhà trọ mới (+)</a>
+                                </div>
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listH}" var="d" >
                                         <li class="list-group-item">
                                             <div class="media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="media-body order-2 order-lg-1 description" id="description">
                                                     <h5 class="mt-0 font-weight-bold mb-2">
-                                                        <a href="detailhostel?id=${d.hostelID}" style="text-decoration: underline;color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
+                                                        <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
                                                     </h5>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê: ${d.cost} VND</p>
                                                 </div>
                                                 <div class="media-body order-2 order-lg-1 image">
-                                                    <img src="${d.img1}" style="width: 150px; height: 150px" >
+                                                    <img  <c:if test="${d.img1 != null}">
+                                                            src="${d.img1}" </c:if>
+                                                        <c:if test="${d.img1 == null}">
+                                                            src="images/nhà trọ.jpg" </c:if>
+                                                         style="width: 150px; height: 150px" >
                                                 </div>
                                                 <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
@@ -105,5 +97,4 @@
     </script>
     <%@include file="/footer.jsp" %>
 </html>
-
 

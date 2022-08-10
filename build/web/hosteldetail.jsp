@@ -11,8 +11,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/hostelStyle.css">
+        <link rel="stylesheet" href="css/commentStyle.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+
         <style>
 
 
@@ -83,9 +88,9 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                
+
                 <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
-                
+
                 <div class="container rounded bg-white mt-5 mb-5">
                     <div>
                         <ul class="breadcrumb bg-white">
@@ -140,18 +145,18 @@
                                 
                                                                 </div>-->
                                 <a href="comment?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a>
-                                
-                              
-<!--                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
-                                <div class ="star_rating">
-                                    <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
-                                    <button class="star" id="star1"  value="1">&#9734;</button>
-                                    <button class="star" id="star2"  value="2">&#9734;</button>
-                                    <button class="star" id="star3"  value="3">&#9734;</button>
-                                    <button class="star" id="star4"  value="4">&#9734;</button>
-                                    <button class="star" id="star5"  value="5">&#9734;</button>
-                                    <p class="current_rating">0 trên 5</p>
-                                </div>-->
+
+
+                                <!--                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
+                                                                <div class ="star_rating">
+                                                                    <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
+                                                                    <button class="star" id="star1"  value="1">&#9734;</button>
+                                                                    <button class="star" id="star2"  value="2">&#9734;</button>
+                                                                    <button class="star" id="star3"  value="3">&#9734;</button>
+                                                                    <button class="star" id="star4"  value="4">&#9734;</button>
+                                                                    <button class="star" id="star5"  value="5">&#9734;</button>
+                                                                    <p class="current_rating">0 trên 5</p>
+                                                                </div>-->
                             </div>
                         </div>
                         <div class="col-md-8">
@@ -224,6 +229,35 @@
                             </div>
                         </div>
                     </div>
+                    <!--                                         <div class="container mt-5">
+                                                        <div class="d-flex justify-content-center row">
+                                                            <div class="col-md-8" style="min-width: 100%">
+                                                                <div class="d-flex flex-column comment-section">-->
+
+                    <h4>Đánh giá:</h4>
+                    <c:forEach items="${listComment}" var="d" >
+                        <div class="bg-white p-2">
+                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="40">
+                                <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">${d.studentName}</span><span class="date text-black-50">${d.date}</span></div>
+                            </div>
+                            <div class="sold_stars ml-auto">
+                                <c:forEach begin="1" end="${d.starvoting}" >
+                                    <i class="fa fa-star"></i>      
+                                </c:forEach>
+
+
+                            </div>
+                            <div class="mt-2">
+                                <p class="comment-text">${d.message}</p>
+                            </div>
+
+
+                        </div>
+                    </c:forEach>
+                    <!--                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
                 </div>
             </div>
         </div>

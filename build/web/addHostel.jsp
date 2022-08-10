@@ -32,9 +32,9 @@
                     <div class="col-xl-12 mb-5">
                         <div>
                             <ul class="breadcrumb bg-white">
-                                <li><a href="home.jsp">Home</a></li>
-                                <li><a href="hostellist">List My Hostels</a></li>
-                                <li><a>Thêm  nhà trọ mới</a></li>
+                                <li><a href="home.jsp">Trang chủ</a></li>
+                                <li><a href="hostellist">Nhà trọ của tôi</a></li>
+                                <li><a>Thêm nhà trọ mới</a></li>
                             </ul>
                         </div>
                         <div class="card">
@@ -43,81 +43,55 @@
                                     <div class="left_top">
                                         <h4>Thêm phòng</h4>
                                     </div> 
-                                    <!--                                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                                                            <div class="carousel-indicators"> 
-                                                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                                                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                                                                            </div>
-                                                                            <div class="carousel-inner">
-                                                                                <div class="carousel-item active"> <img src="https://imgur.com/j1R465T.jpg" class="d-block w-100" alt="..."> </div>
-                                                                                <div class="carousel-item"> <img src="https://imgur.com/LPFGIoY.jpg" class="d-block w-100" alt="..."> </div>
-                                                                                <div class="carousel-item"> <img src="https://imgur.com/v7bSlKX.jpg" class="d-block w-100" alt="..."> </div>
-                                                                                <div class="carousel-item">
-                                                                                    <img src="https://imgur.com/xZ6h8of.jpg" class="d-block w-100" alt="..."> 
-                                                                                </div>
-                                                                                <div class="carousel-item">
-                                                                                    <img src="https://imgur.com/I2GDFqA.jpg" class="d-block w-100 " alt="...">
-                                                                                </div>
-                                                                            </div>
-                                                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
-                                                                                <span class="visually-hidden">Previous</span> 
-                                                                            </button> 
-                                                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next"> 
-                                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                                                <span class="visually-hidden">Next</span>
-                                                                            </button>
-                                                                        </div>-->
-                                    <div class="container">
-                                        <div class="flex flex-column items-center justify-content-center border-dashed">
-                                            <input type="file" hidden accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
-                                            <label for="file1">Chọn ảnh</label>
-                                            <img id="output1" width="150px" height="150px"/>
-                                            <script>
-                                                var loadFile = function (event) {
-                                                    var output = document.getElementById('output1');
-                                                    output.src = URL.createObjectURL(event.target.files[0]);
-                                                    output.onload = function () {
-                                                        URL.revokeObjectURL(output1.src) // free memory
-                                                    }
-                                                };
-                                            </script>
-                                            <input type="file" accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
-                                            <label for="file2" class="btn-file">Chọn ảnh</label>
-                                            <img id="output2" width="150px" height="150px"/>
-                                            <script>
-                                                var loadFile2 = function (event) {
-                                                    var output = document.getElementById('output2');
-                                                    output.src = URL.createObjectURL(event.target.files[0]);
-                                                    output.onload = function () {
-                                                        URL.revokeObjectURL(output2.src) // free memory
-                                                    }
-                                                };
-                                            </script>
+                                    <div class="mt-5">
+                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1" >
+                                        <label for="file1" style="position: absolute; margin-left: 30px; margin-top: 60px; opacity: 30%">+</label>
+                                        <img id="output1" width="170px" height="170px"/>
+                                        <script>
+                                            var loadFile = function (event) {
+                                                var output = document.getElementById('output1');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                var img2 = document.getElementById('file2').type = "file";
+                                                var img3 = document.getElementById('file3').type = "file";
+                                                var img4 = document.getElementById('file4').type = "file";
+                                                var img5 = document.getElementById('file5').type = "file";
+                                                var img6 = document.getElementById('file6').type = "file";
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output1.src) // free memory
+                                                }
+                                            };
+                                        </script>
 
-                                            <input type="file" accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
-                                            <label for="file3" class="btn-file" width="150px">Chọn ảnh</label>
-                                            <img id="output3" width="150px" height="150px"/>
-                                            <script>
-                                                var loadFile3 = function (event) {
-                                                    var output = document.getElementById('output3');
-                                                    output.src = URL.createObjectURL(event.target.files[0]);
-                                                    output.onload = function () {
-                                                        URL.revokeObjectURL(output.src) // free memory
-                                                    }
-                                                };
-                                            </script>
-                                        </div>
+                                        <input type="" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2" onclick="clickImg()" >
+                                        <label for="file2" style="position: absolute; margin-left: 40px; margin-top: 60px; opacity: 30%">+</label>
+                                        <img id="output2" style="margin-left: 10px" width="170px" height="170px"/>
+                                        <script>
+                                            var loadFile2 = function (event) {
+                                                var output = document.getElementById('output2');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output2.src) // free memory
+                                                }
+                                            };
+                                        </script>
+
+                                        <input type="" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3" onclick="clickImg()">
+                                        <label for="file3" style="position: absolute; margin-left: 40px; margin-top: 60px; opacity: 30%">+</label>
+                                        <img id="output3" style="margin-left: 10px" width="170px" height="170px"/>
+                                        <script>
+                                            var loadFile3 = function (event) {
+                                                var output = document.getElementById('output3');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output.src) // free memory
+                                                }
+                                            };
+                                        </script>
                                     </div>
-
-
-                                    <div>
-                                        <input type="file" accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
-                                        <label for="file4" class="btn-file" width="150px">+</label>
-                                        <img id="output4" class="rounded-circle mt-5" width="150px"/>
+                                    <div class="mt-5">
+                                        <input type="" hidden accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4" onclick="clickImg()">
+                                        <label for="file4" style="position: absolute; margin-left: 30px; margin-top: 65px; opacity: 30%">+</label>
+                                        <img id="output4" width="170px" height="170px"/>
                                         <script>
                                             var loadFile4 = function (event) {
                                                 var output = document.getElementById('output4');
@@ -128,9 +102,9 @@
                                             };
                                         </script>
 
-                                        <input type="file" accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
-                                        <label for="file5" class="btn-file" width="150px">+</label>
-                                        <img id="output5" class="border-radius mt-5" width="150px"/>
+                                        <input type="" hidden accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5" onclick="clickImg()">
+                                        <label for="file5" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 30%">+</label>
+                                        <img id="output5" style="margin-left: 10px" width="170px" height="170px"/>
                                         <script>
                                             var loadFile5 = function (event) {
                                                 var output = document.getElementById('output5');
@@ -141,9 +115,9 @@
                                             };
                                         </script> 
 
-                                        <input type="file" accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
-                                        <label for="file6" class="btn-file" width="150px">+</label>
-                                        <img id="output6" class="rounded-circle mt-5" width="150px"/>
+                                        <input type="" hidden accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6" onclick="clickImg()">
+                                        <label for="file6" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 30%">+</label>
+                                        <img id="output6" style="margin-left: 10px" width="170px" height="170px"/>
                                         <script>
                                             var loadFile6 = function (event) {
                                                 var output = document.getElementById('output6');
@@ -351,13 +325,30 @@
                     isValid = false;
                 }
 
+
                 return isValid;
 
             }
         </script>
+        <script>
+            function clickImg() {
+                var img1 = document.getElementById('output1').src;
+//                var img2 = document.getElementById('output2').src;
+//                var img3 = document.getElementById('output3').src;
+//                var img4 = document.getElementById('output4').src;
+//                var img5 = document.getElementById('output5').src;
+//                var img6 = document.getElementById('output6').src;
+                if (img1 == "") {
+
+                    alert("Bạn phải thêm ảnh 1 đầu tiên");
+                    return;
+
+                }
+
+            }
+           
+        </script>
     </body>
     <%@include file="/footer.jsp" %>    
 </html>
-
-
 

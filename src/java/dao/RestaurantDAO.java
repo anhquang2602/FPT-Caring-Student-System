@@ -226,13 +226,13 @@ public class RestaurantDAO extends DBContext {
         }
         return false;
     }
-    
+
     public boolean createFoodImg(int foodID, String foodImg) {
         try {
             String sql = "INSERT INTO FoodImage (foodID,ImageUrl) VALUES (?,?)";
             stm = connection.prepareStatement(sql);
             stm.setInt(1, foodID);
-            stm.setString(2, foodImg);           
+            stm.setString(2, foodImg);
             stm.executeUpdate();
             System.out.println(sql);
             System.out.println("Insert OK");
@@ -242,7 +242,7 @@ public class RestaurantDAO extends DBContext {
         }
         return false;
     }
-    
+
     public int getNewestFoodID() {
         try {
 
@@ -301,7 +301,7 @@ public class RestaurantDAO extends DBContext {
         return null;
     }
 
-    public ArrayList<Restaurant> listAllRestaurant() {
+    public ArrayList<Restaurant> listAllRestaurant(int index) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
             String sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName, \n"
@@ -311,9 +311,12 @@ public class RestaurantDAO extends DBContext {
                     + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
                     + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
                     + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Restaurants.DistrictID = District.DistrictID\n";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet rs = statement.executeQuery();
+                    + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                    + "ORDER BY RestaurantID\n"
+                    + "OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, (index - 1) * 6);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11)));
             }
@@ -321,6 +324,20 @@ public class RestaurantDAO extends DBContext {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return restaurant;
+    }
+
+    public int getTotalRestaurant() {
+        String sql = "select count(*) from Restaurants";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
     public boolean updateFood(int foodID, String foodName, double cost, String description) {
@@ -342,7 +359,7 @@ public class RestaurantDAO extends DBContext {
         }
         return false;
     }
-    
+
     public boolean updateFoodImg(int foodID, String foodImg) {
         try {
             String sql = "UPDATE FoodImage SET ImageUrl = ?"
@@ -371,4 +388,5 @@ public class RestaurantDAO extends DBContext {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }

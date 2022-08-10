@@ -37,7 +37,7 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="hostellist">Danh sách nhà trọ của tôi</a></li>
+                                <li><a href="hostellist">Nhà trọ của tôi</a></li>
                                 <li><a>Chi tiết nhà trọ</a></li>
                             </ul>
                         </div>
@@ -47,45 +47,147 @@
                                     <input type="text" name="hostelId" value="${editHostel.hostelID}" hidden>
                                 </div>
                                 <div class="left-side">
-                                    <div class="left_top">
-                                        <h4>Thay đổi thông tin phòng</h4>
+                                    <div class="mt-5">
+                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
+                                        <label for="file1" style="position: absolute; margin-left: 30px; margin-top: 65px; opacity: 50%">+</label>
+                                        <img id="Url1" name="Url1" width="170px" height="170px"
+                                             <c:if test="${editHostel.img1 != null}">
+                                                 src="${editHostel.img1}" </c:if>/>
+                                             <script>
+                                                 var loadFile = function (event) {
+                                                     var output = document.getElementById('Url1');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "170px";
+                                                     output.style.height = "170px";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };
+                                             </script>
+                                        <c:if test="${editHostel.img1 != null}">
+                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
+                                        </c:if>
+
+                                        <input type="file" accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
+                                        <%--<c:if test="${editHostel.img2 != null}">--%>
+                                            <!--<a id="U2" class ="Url2" href="deleteImage?id=${editHostel.hostelID}&url=Url2">Delete Image</a>-->
+                                        <%--</c:if>--%>
+                                        <label for="file2" style="position: absolute; margin-left: 40px; margin-top: 60px; opacity: 50%">+</label>
+                                        <img id="Url2" name="Url2" style="margin-left: 10px"
+                                             width="170px" height="170px"
+                                             <c:if test="${editHostel.img2 != null}">
+                                                 src="${editHostel.img2}" </c:if>/>
+                                             <script>
+                                                 var loadFile2 = function (event) {
+                                                     var output = document.getElementById('Url2');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "170px";
+                                                     output.style.height = "170px";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };
+                                             </script>
+
+                                             <input type="file" accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
+                                        <%--<c:if test="${editHostel.img3 != null}">--%>
+                                            <!--<a id="U3" class ="Url3" href="deleteImage?id=${editHostel.hostelID}&url=Url3">Delete Image</a>-->
+                                        <%--</c:if>--%>
+                                        <label for="file3" style="position: absolute; margin-left: 40px; margin-top: 60px; opacity: 50%">+</label>
+                                        <img id="Url3" name="Url3" style="margin-left: 10px"
+                                             width="170px" height="170px"
+                                             <c:if test="${editHostel.img3 != null}">
+                                                 src="${editHostel.img3}" </c:if>/>
+                                             <script>
+                                                 var loadFile3 = function (event) {
+                                                     var output = document.getElementById('Url3');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "170px";
+                                                     output.style.height = "170px";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };
+                                             </script>
+                                        <c:if test="${editHostel.img3 != null}">
+                                            <a id="U3" class ="Url3" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url3">X</a>
+                                            <input type="file" accept="image/*" onchange="loadFile(event)" name ="image3" id="file3">
+                                            <label for="file3" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 50%">+</label>
+                                        </c:if>
                                     </div>
-                                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-indicators"> 
-                                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                                        </div>
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active"> <img src="https://imgur.com/j1R465T.jpg" class="d-block w-100" alt="..."> </div>
-                                            <div class="carousel-item"> <img src="https://imgur.com/LPFGIoY.jpg" class="d-block w-100" alt="..."> </div>
-                                            <div class="carousel-item"> <img src="https://imgur.com/v7bSlKX.jpg" class="d-block w-100" alt="..."> </div>
-                                            <div class="carousel-item">
-                                                <img src="https://imgur.com/xZ6h8of.jpg" class="d-block w-100" alt="..."> 
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="https://imgur.com/I2GDFqA.jpg" class="d-block w-100 " alt="...">
-                                            </div>
-                                        </div>
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
-                                            <span class="visually-hidden">Previous</span> 
-                                        </button> 
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next"> 
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </button>
-                                    </div>
-                                    <div class="oriton_img"> 
-                                        <h5>Tình trạng phòng</h5>                   
-                                    </div>   
-                                    <div class="left_text">
-                                        <input type="radio" id="collection1" name="status" 
-                                               <c:if test = "${editHostel.status == true}">
-                                                   checked
-                                               </c:if> value="yes"> 
+
+                                    <div class="mt-5">    
+                                        <input type="file" accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
+                                        <%--<c:if test="${editHostel.img4 != null}">--%>
+                                            <!--<a id="U4" class ="Url4" href="deleteImage?id=${editHostel.hostelID}&url=Url4">Delete Image</a>-->
+                                        <%--</c:if>--%>
+                                        <label for="file4" style="position: absolute; margin-left: 30px; margin-top: 65px; opacity: 50%">+</label>
+                                        <img id="Url4" name="Url4"
+                                             width="170px" height="170px"
+                                             <c:if test="${editHostel.img4 != null}">
+                                                 src="${editHostel.img4}" </c:if>/>
+                                             <script>
+                                                 var loadFile4 = function (event) {
+                                                     var output = document.getElementById('Url4');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "170px";
+                                                     output.style.height = "170px";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };
+                                             </script>
+
+                                             <input type="file" accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
+                                        <%--<c:if test="${editHostel.img5 != null}">--%>
+                                            <!--<a id="U5" class ="Url5" href="deleteImage?id=${editHostel.hostelID}&url=Url5">Delete Image</a>-->
+                                        <%--</c:if>--%>
+                                        <label for="file5" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 50%">+</label>
+                                        <img id="Url5" name="Url5" style="margin-left: 10px"
+                                             width="170px" height="170px"
+                                             <c:if test="${editHostel.img5 != null}">
+                                                 src="${editHostel.img5}" </c:if>/>
+                                             <script>
+                                                 var loadFile5 = function (event) {
+                                                     var output = document.getElementById('Url5');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "170px";
+                                                     output.style.height = "170px";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };
+                                             </script>
+
+                                             <input type="file" accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
+                                        <%--<c:if test="${editHostel.img6 != null}">--%>
+                                            <!--<a id="U6" class ="Url6" href="deleteImage?id=${editHostel.hostelID}&url=Url6">Delete Image</a>-->
+                                        <%--</c:if>--%>
+                                        <label for="file6" style="position: absolute; margin-left: 40px; margin-top: 65px; opacity: 50%">+</label>
+                                        <img id="Url6" name="Url6" style="margin-left: 10px"
+                                             width="170px" height="170px"
+                                             <c:if test="${editHostel.img6 != null}">
+                                                 src="${editHostel.img6}" </c:if>/>
+                                             <script>
+                                                 var loadFile6 = function (event) {
+                                                     var output = document.getElementById('Url6');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "170px";
+                                                     output.style.height = "170px";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };
+                                             </script>
+                                        </div> 
+                                        <div class="oriton_img"> 
+                                            <h5>Tình trạng phòng</h5>                   
+                                        </div>   
+                                        <div class="left_text">
+                                            <input type="radio" id="collection1" name="status" 
+                                            <c:if test = "${editHostel.status == true}">
+                                                checked
+                                            </c:if> value="yes"> 
                                         <label for="collection1">
                                             <div class="left_box">
                                                 <div class="left_box_collection"> 
@@ -109,130 +211,6 @@
                                             </div>
                                         </label>
                                     </div>
-                                    
-                                    Image1 : <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="img1">
-                                    <c:if test="${editHostel.img1 != null}">
-                                        <a id="U1" class ="Url1" href="deleteImage?id=${editHostel.hostelID}&url=Url1">Delete Image</a>
-
-                                    </c:if> 
-
-                                    <img id="Url1" name="Url1" class="rounded-circle mt-5" 
-                                         <c:if test="${editHostel.img1 != null}">
-                                             width="150px" height="150"
-                                         </c:if>  src="${editHostel.img1}"/>
-                                    <script>
-                                        var loadFile = function (event) {
-                                            var output = document.getElementById('Url1');
-                                            output.src = URL.createObjectURL(event.target.files[0]);
-                                            output.style.width = "150px"
-                                            output.onload = function () {
-                                                URL.revokeObjectURL(output.src) // free memory
-                                            }
-                                        };
-                                    </script><br>
-
-
-
-                                    Image2 : <input type="file" accept="image/*" onchange="loadFile2(event)" name ="image2" id="img2">
-                                    <c:if test="${editHostel.img2 != null}">
-                                        <a id="U2" class ="Url2" href="deleteImage?id=${editHostel.hostelID}&url=Url2">Delete Image</a>
-                                    </c:if>
-                                    <img id="Url2" class="rounded-circle mt-5" 
-                                         <c:if test="${editHostel.img2 != null}">
-                                             width="150px" height="150"
-                                         </c:if>  src="${editHostel.img2}"/>
-                                    <script>
-                                        var loadFile2 = function (event) {
-                                            var output = document.getElementById('Url2');
-                                            output.src = URL.createObjectURL(event.target.files[0]);
-                                            output.style.width = "150px"
-                                            output.onload = function () {
-                                                URL.revokeObjectURL(output.src) // free memory
-                                            }
-                                        };
-                                    </script><br>
-
-
-
-                                    Image3 : <input type="file" accept="image/*" onchange="loadFile3(event)" name ="image3" id="img3">
-                                    <c:if test="${editHostel.img3 != null}">
-                                        <a id="U3" class ="Url3" href="deleteImage?id=${editHostel.hostelID}&url=Url3">Delete Image</a>
-                                    </c:if>
-                                    <img id="Url3" class="rounded-circle mt-5"  
-                                         <c:if test="${editHostel.img3 != null}">
-                                             width="150px" height="150"
-                                         </c:if>  src="${editHostel.img3}"/>
-
-
-                                    <script>
-                                        var loadFile3 = function (event) {
-                                            var output = document.getElementById('Url3');
-                                            output.src = URL.createObjectURL(event.target.files[0]);
-                                            output.style.width = "150px"
-                                            output.onload = function () {
-                                                URL.revokeObjectURL(output.src) // free memory
-                                            }
-                                        };
-                                    </script><br>
-
-                                    Image4 : <input type="file" accept="image/*" onchange="loadFile4(event)" name ="image4" id="img4">
-                                    <c:if test="${editHostel.img4 != null}">
-                                        <a id="U4" class ="Url4" href="deleteImage?id=${editHostel.hostelID}&url=Url4">Delete Image</a>
-                                    </c:if>
-                                    <img id="Url4" class="rounded-circle mt-5" 
-                                          <c:if test="${editHostel.img4 != null}">
-                                             width="150px" height="150"
-                                         </c:if> src="${editHostel.img4}"/>
-                                    <script>
-                                        var loadFile4 = function (event) {
-                                            var output = document.getElementById('Url4');
-                                            output.src = URL.createObjectURL(event.target.files[0]);
-                                            output.style.width = "150px"
-                                            output.onload = function () {
-                                                URL.revokeObjectURL(output.src) // free memory
-                                            }
-                                        };
-                                    </script><br>
-
-
-                                    Image5 : <input type="file" accept="image/*" onchange="loadFile5(event)" name ="image5" id="img5">
-                                    <c:if test="${editHostel.img5 != null}">
-                                        <a id="U5" class ="Url5" href="deleteImage?id=${editHostel.hostelID}&url=Url5">Delete Image</a>
-                                    </c:if>
-                                    <img id="Url5" class="rounded-circle mt-5"  
-                                         <c:if test="${editHostel.img5 != null}">
-                                             width="150px" height="150"
-                                         </c:if>  src="${editHostel.img5}"/>
-                                    <script>
-                                        var loadFile5 = function (event) {
-                                            var output = document.getElementById('Url5');
-                                            output.src = URL.createObjectURL(event.target.files[0]);
-                                            output.style.width = "150px"
-                                            output.onload = function () {
-                                                URL.revokeObjectURL(output.src) // free memory
-                                            }
-                                        };
-                                    </script> <br>
-
-
-                                    Image6 : <input type="file" accept="image/*" onchange="loadFile6(event)" name ="image6" id="img6">
-                                    <c:if test="${editHostel.img6 != null}">
-                                        <a id="U6" class ="Url6" href="deleteImage?id=${editHostel.hostelID}&url=Url6">Delete Image</a>
-                                    </c:if>
-                                    <img id="Url6" class="rounded-circle mt-5"  
-                                         <c:if test="${editHostel.img6 != null}">
-                                             width="150px" height="150"
-                                         </c:if>  src="${editHostel.img6}"/>
-                                    <script>
-                                        var loadFile6 = function (event) {
-                                            var output = document.getElementById('Url6');
-                                            output.src = URL.createObjectURL(event.target.files[0]);
-                                            output.style.width = "150px"
-                                            output.onload = function () {
-                                                URL.revokeObjectURL(output.src) // free memory
-                                            }
-                                        };
-                                    </script><br>
                                 </div>
 
                                 <div class="right-side">
@@ -300,36 +278,36 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-                                        $(document).on('change', '.province', function () {
-                                            var province = document.getElementById("province").value;
-                                            $('#district').empty();
+                                                 $(document).on('change', '.province', function () {
+                                                     var province = document.getElementById("province").value;
+                                                     $('#district').empty();
 
 
-                                            $.ajax({
-                                                type: "GET",
+                                                     $.ajax({
+                                                         type: "GET",
 
-                                                url: "/Test_1/findDistrict",
-                                                data: {
-                                                    province: province,
-                                                },
-                                                headers: {
-                                                    Accept: "application/json; charset=utf-8",
-                                                    contentType: "application/json; charset=utf-8"
-                                                },
+                                                         url: "/Test_1/findDistrict",
+                                                         data: {
+                                                             province: province,
+                                                         },
+                                                         headers: {
+                                                             Accept: "application/json; charset=utf-8",
+                                                             contentType: "application/json; charset=utf-8"
+                                                         },
 
-                                                success: function (data) {
+                                                         success: function (data) {
 
-                                                    data.forEach(function (a) {
-                                                        $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+                                                             data.forEach(function (a) {
+                                                                 $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
 
-                                                    });
-                                                },
-                                                error: function (e) {
-                                                    console.log("ERROR: ", e);
-                                                }
-                                            });
+                                                             });
+                                                         },
+                                                         error: function (e) {
+                                                             console.log("ERROR: ", e);
+                                                         }
+                                                     });
 
-                                        });
+                                                 });
         </script>
         <script>
             $("#U1").click(function (event) {
@@ -338,8 +316,8 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                        output.removeAttribute('src');
+                        
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -548,6 +526,4 @@
     </body>
     <%@include file="/footer.jsp" %>
 </html>
-
-
 

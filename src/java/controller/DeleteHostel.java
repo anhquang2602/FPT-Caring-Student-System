@@ -50,6 +50,7 @@ public class DeleteHostel extends HttpServlet {
         
         HostelDAO dao = new HostelDAO();
         int hostelID =Integer.parseInt(request.getParameter("id")) ;
+        dao.deleteReportbyHostel(hostelID);
         dao.deleteHostelImage(hostelID);
         dao.deleteHostel(hostelID);
  

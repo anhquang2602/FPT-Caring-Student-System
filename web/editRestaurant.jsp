@@ -11,13 +11,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+            .error {
+                color: red;
+            }
+        </style>
     </head>
     <body>
-        <form class="my-2" method="POST" action="EditRestaurantController" enctype="multipart/form-data">
+        <form class="my-2" method="POST" name="editRestaurantForm" onsubmit="return validateRestaurant()" action="EditRestaurantController" enctype="multipart/form-data">
             <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Tên nhà hàng</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="restaurantName" value="${restaurant.restaurantName}">
+                  <div class="error" id="errorName"></div>
             </div><br>
             <label for="cars">Tỉnh,thành phố</label>
 
@@ -30,6 +36,7 @@
                             </c:if>    >${o.provinceName}</option>
                 </c:forEach>
             </select><br><br>
+             <div class="error" id="errorProvince"></div>
 
             <label for="cars">Quận,phường</label>
             <select name="district"  id ="district" class="district">
@@ -44,15 +51,18 @@
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Địa chỉ</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="address" value="${restaurant.address}">
+             <div class="error" id="errorAddress"></div>
             </div><br>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Giá chung :</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="cost" value="${restaurant.cost}"  >
+             <div class="error" id="errorCost">
             </div><br>
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Khoảng cách</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="distance" value="${restaurant.distance}" >
+            <div class="error" id="errorDistance">
             </div><br>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Mô tả</label>
@@ -115,6 +125,55 @@
                 }
             };
         </script>
+        <script>
+                function validateRestaurant() {
+                let isValid = true;
+                        const restaurantName = document.editRestaurantForm.restaurantName.value;
+                        const province = document.editRestaurantForm.province.value;
+                        const address = document.editRestaurantForm.address.value;
+                        const cost = document.editRestaurantForm.cost.value;
+                        const distance = document.editRestaurantForm.distance.value;
+                        const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                        const regex2 = /^[0-9]*$/;
+                        document.getElementById('errorName').innerText = ' ';
+                        document.getElementById('errorProvince').innerText = ' ';
+                        document.getElementById('errorAddress').innerText = ' ';
+                        document.getElementById('errorCost').innerText = ' ';
+                        document.getElementById('errorDistance').innerText = ' ';
+                        if (!restaurantName) {
+                document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà ăn!';
+                        isValid = false;
+                }
+
+                if (!province) {
+                document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+                        isValid = false;
+                }
+
+                if (!address) {
+                document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
+                        isValid = false;
+                }
+
+                if (!cost) {
+                document.getElementById('errorCost').innerText = 'Bạn phải nhập giá !';
+                        isValid = false;
+                }
+
+                if (!distance) {
+                document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
+                        isValid = false;
+                } else if (!regex.test(distance)) {
+                document.getElementById('errorDistance').innerText = 'Invalid!';
+                        isValid = false;
+                } else if (distance <= 0) {
+                document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
+                        isValid = false;
+                }
+
+                return isValid;
+                }
+    </script>
     
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

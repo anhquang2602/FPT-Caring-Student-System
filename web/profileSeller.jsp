@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="col-md-12"><label class="labels">District</label>
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected value="${seller.districID}">${seller.districtName}</option>
+                                            <option selected value="${seller.districtID}">${seller.districtName}</option>
                                         </select>
                                     </div>
                                     <div class="col-md-12"><label class="labels">Address Detail</label>
@@ -84,6 +84,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="p-3 py-5">
+                                
                                 <form action="ChangeStatusSeller" method="post">
                                     <div class="col-md-12 mt-5 ml-5"><label class="labels">Status</label></br>
                                         <input type="text" class="form-control" name="email" value="${seller.email}" readonly="" hidden="">
@@ -100,6 +101,7 @@
                                         <input class="ml-3" type="submit" value="Confirm"/>
                                     </div>
                                 </form>
+                                
                             </div>
                         </div>
                     </div>

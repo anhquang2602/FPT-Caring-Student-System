@@ -161,7 +161,7 @@ public class SellerDAO extends DBContext {
     
     public Seller getSellertByUsername(String username) {
         try {
-            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryID , ProvinceID , DistrictID , AddressDetail , Gender\n"
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryID , ProvinceID , DistrictID , AddressDetail , Gender, LinkFacebook\n"
                     + "from Sellers\n"
                     + "where Sellers.Email=?";
             PreparedStatement st;
@@ -171,7 +171,7 @@ public class SellerDAO extends DBContext {
             rs = st.executeQuery();
             while (rs.next()) {
                 Seller seller = new Seller(rs.getInt("SellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
-                        rs.getString("Email"), rs.getInt("CountryID"), rs.getInt("ProvinceID"), rs.getInt("DistrictID"), rs.getString("AddressDetail"), rs.getInt("Gender"));
+                        rs.getString("Email"), rs.getInt("CountryID"), rs.getInt("ProvinceID"), rs.getInt("DistrictID"), rs.getString("AddressDetail"), rs.getInt("Gender"),rs.getString("LinkFacebook"));
                 st.close();
                 rs.close();
                 return seller;
@@ -218,7 +218,7 @@ public class SellerDAO extends DBContext {
             gender = false;
         }
         try {
-            String sql = "UPDATE Sellers SET  Avatar=?,FirstName=?,LastName=?,Age=?,Phone=?,CountryID=?,ProvinceID=?,DistrictID=?,AddressDetail=?,Gender=? where email=?";
+            String sql = "UPDATE Sellers SET  Avatar=?,FirstName=?,LastName=?,Age=?,Phone=?,CountryID=?,ProvinceID=?,DistrictID=?,AddressDetail=?,Gender=?,LinkFacebook=? where email=?";
             PreparedStatement st;
             st = connection.prepareStatement(sql);
             st.setString(1, avatar);
@@ -231,7 +231,8 @@ public class SellerDAO extends DBContext {
             st.setInt(8, seller.getDistrictID());
             st.setString(9, seller.getAddress());
             st.setBoolean(10, gender);
-            st.setString(11, seller.getEmail());
+            st.setString(11, seller.getLinkFb());
+            st.setString(12, seller.getEmail());
             st.executeUpdate();           
             st.close();
             return true;
