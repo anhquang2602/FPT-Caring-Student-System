@@ -46,9 +46,15 @@
                             ${sessionScope.username}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="UpdateSellerProfile">HỒ SƠ CỦA TÔI</a>
-                            <a class="dropdown-item" href="ChangePasswordServlet">ĐỔI MẬT KHẨU</a>
-                            <a class="dropdown-item" href="LogoutServlet">ĐĂNG XUẤT</a>
+                            <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
+                            <a class="dropdown-item" style="color: red" href="UpdateSellerProfile">HỒ SƠ CỦA TÔI</a>
+                            <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
+                            <a class="dropdown-item" style="color: red" href="UpdateStudentProfile">HỒ SƠ CỦA TÔI</a>
+                            <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                            <a class="dropdown-item" style="color: red" href="UpdateAdminProfile">HỒ SƠ CỦA TÔI</a>
+                            <%}%>
+                            <a class="dropdown-item" style="color: red" href="ChangePasswordServlet">ĐỔI MẬT KHẨU</a>
+                            <a class="dropdown-item" style="color: red" href="LogoutServlet">ĐĂNG XUẤT</a>
                         </div>
                     </div>
                 </div>

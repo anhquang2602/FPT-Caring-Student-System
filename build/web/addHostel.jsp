@@ -58,7 +58,7 @@
                                             };
                                         </script>
 
-                                        <input type="file" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
+                                        <input type="" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2" onclick="clickImg()">
                                         <label for="file2" style="position: absolute; margin-left: calc(8%); margin-top: calc(4.5%); opacity: 30%">+</label>
                                         <img id="output2" style="margin-left: calc(5.5%)" width="170rem" height="170rem"/>
                                         <script>
@@ -71,7 +71,7 @@
                                             };
                                         </script>
 
-                                        <input type="file" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
+                                        <input type="" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3" onclick="clickImg()">
                                         <label for="file3" style="position: absolute; margin-left: calc(8%); margin-top: calc(4.5%); opacity: 30%">+</label>
                                         <img id="output3" style="margin-left: calc(5.5%)" width="170rem" height="170rem"/>
                                         <script>
@@ -85,7 +85,7 @@
                                         </script>
                                     </div>
                                     <div class="mt-5">
-                                        <input type="file" hidden accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
+                                        <input type="" hidden accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4"  onclick="clickImg()">
                                         <label for="file4" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="output4" style="margin-left: calc(0.5%)" width="170rem" height="170rem"/>
                                         <script>
@@ -98,7 +98,7 @@
                                             };
                                         </script>
 
-                                        <input type="file" hidden accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
+                                        <input type="" hidden accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5"  onclick="clickImg()">
                                         <label for="file5" style="position: absolute; margin-left: calc(8%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="output5" style="margin-left: calc(5.5%)" width="170rem" height="170rem"/>
                                         <script>
@@ -111,7 +111,7 @@
                                             };
                                         </script> 
 
-                                        <input type="file" hidden accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
+                                        <input type="" hidden accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6"  onclick="clickImg()">
                                         <label for="file6" style="position: absolute; margin-left: calc(8%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="output6" style="margin-left: calc(5.5%)" width="170rem" height="170rem"/>
                                         <script>
@@ -358,7 +358,7 @@
                 }
 
             }
-           
+
         </script>
     </body>
     <%@include file="/footer.jsp" %>    

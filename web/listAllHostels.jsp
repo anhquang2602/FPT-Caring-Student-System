@@ -104,10 +104,11 @@
                                                     </div>
                                                 </div> 
                                             <td>
+                                                
                                                 <div class="stars-outer">
                                                     <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
                                                 </div>
-                                                <span class="number-rating"></span>
+                                                
                                             </td>
                                             </li> 
                                     </c:forEach>
@@ -135,7 +136,7 @@
             $(document).ready(function () {
                 $(".toast").toast({delay: 4000});
                 $(".toast").toast("show");
-
+                
             });
         </script>
     </body>

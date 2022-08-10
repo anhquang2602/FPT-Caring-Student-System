@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
@@ -374,7 +373,7 @@
                 document.getElementById('errorCost').innerText = 'Bạn phải nhập giá của món ăn!';
                         isValid = false;
                 } else if (!regex.test(distance)) {
-                document.getElementById('errorCost').innerText = 'Invalid!';
+                document.getElementById('errorCost').innerText = 'Giá trị nhập không đúng. Giá tiền phải là số!';
                         isValid = false;
                 } else if (distance <= 0) {
                 document.getElementById('errorCost').innerText = 'Giá tiền phải > 0 ';

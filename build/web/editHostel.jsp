@@ -42,6 +42,7 @@
                                         <strong class="fs-3">Ảnh nhà trọ</strong>
                                     </div>
                                     <div class="mt-5">
+
                                         <input type="file" accept="image/*" onchange="loadFile(event)" name="image1" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(4.5%); opacity: 30%">+</label>
                                         <img id="Url1" name="Url1" width="170rem" height="170rem"
@@ -105,7 +106,11 @@
 
                                     <div class="mt-5">    
                                         <input type="file" accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
+                                        <<<<<<< HEAD
                                         <label for="file4" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(5%); opacity: 30%">+</label>
+                                        <img id="Url4" name="Url4"width="170rem" height="170rem"
+
+                                             <label for="file4" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="Url4" name="Url4"width="170rem" height="170rem"
                                              <c:if test="${editHostel.img4 != null}">
                                                  src="${editHostel.img4}" </c:if>/>
@@ -318,7 +323,7 @@
                     success: function (response) {
                         var output = document.getElementById(response);
                         output.removeAttribute('src');
-                        
+
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -335,8 +340,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                        output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -353,8 +357,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                        output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -371,8 +374,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                        output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -389,8 +391,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                        output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -407,8 +408,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                        output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory

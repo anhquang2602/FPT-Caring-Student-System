@@ -65,10 +65,10 @@ public class CommentController extends HttpServlet {
         StudentDAO stdao = new StudentDAO();
         int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
         request.setAttribute("hostelID", hostelID);
-        if(dao.getListCommentByStudent(hostelID, studentNo)==null){
+        if(dao.getCommentofStudent(hostelID, studentNo)==null){
             request.setAttribute("studentComment", null);
         }else{
-            request.setAttribute("studentComment", dao.getListCommentByStudent(hostelID, studentNo));
+            request.setAttribute("studentComment", dao.getCommentofStudent(hostelID, studentNo));
         }
         
         request.getRequestDispatcher("comment.jsp").forward(request, response);

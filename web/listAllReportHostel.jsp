@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
     </head>
+    <<<<<<< HEAD
     <body class="bg-white">
         <div class="px-0">
             <%@include file="/header.jsp" %>
