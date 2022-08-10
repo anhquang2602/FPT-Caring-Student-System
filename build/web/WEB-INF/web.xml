@@ -160,6 +160,10 @@
         <servlet-name>ListAllRestaurantController</servlet-name>
         <servlet-class>controller.ListAllRestaurantController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>controller.ChangePasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -320,6 +324,10 @@
         <servlet-name>ListAllRestaurantController</servlet-name>
         <url-pattern>/ListAllRestaurantController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/ChangePasswordServlet</url-pattern>
+    </servlet-mapping>
      <servlet>
         <servlet-name>CommentController</servlet-name>
         <servlet-class>controller.CommentController</servlet-class>
@@ -328,8 +336,6 @@
         <servlet-name>CommentController</servlet-name>
         <url-pattern>/comment</url-pattern>
     </servlet-mapping>
-    
-    
     <session-config>
         <session-timeout>
             30

@@ -40,18 +40,18 @@
                                     </ul>
                                 </div>
                                 <div class="mb-3" style="text-align: end">
-                                    <a style="padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="addhostel">Thêm nhà trọ mới (+)</a>
+                                    <a style="font-size: 20px; padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="addhostel">Thêm nhà trọ mới (+)</a>
                                 </div>
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listH}" var="d" >
                                         <li class="list-group-item">
                                             <div class="media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="media-body order-2 order-lg-1 description" id="description">
-                                                    <h5 class="mt-0 font-weight-bold mb-2">
+                                                    <h4 class="mt-0 font-weight-bold mb-3">
                                                         <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
-                                                    </h5>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê: ${d.cost} VND</p>
+                                                    </h4>
+                                                    <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
+                                                    <p style="font-size: 20px">Giá thuê: ${d.cost} VND</p>
                                                 </div>
                                                 <div class="media-body order-2 order-lg-1 image">
                                                     <img  <c:if test="${d.img1 != null}">

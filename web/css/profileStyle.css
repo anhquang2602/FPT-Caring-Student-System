@@ -68,3 +68,34 @@ label{
 .info {
     padding-left: 200px;
 }
+
+.login-facebook-icon{
+	align-items: center;
+        text-decoration: none;
+	background-color: rgb(59, 89, 152);
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	display: flex;
+	font-family: Arial, sans-serif;
+	font-size: 23px;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant-caps: normal;
+	font-variant-east-asian: normal;
+	font-variant-ligatures: normal;
+	font-variant-numeric: normal;
+	font-weight: 400;
+	height: 48px;
+	justify-content: center;
+	letter-spacing: normal;
+	line-height: normal;
+	text-align: center;
+	text-indent: 0;
+	text-rendering: auto;
+	text-shadow: none;
+	text-transform: none;
+	width: 58px;
+	word-spacing: 0;
+	writing-mode: horizontal-tb;
+	-webkit-font-smoothing: antialiased;
+}
