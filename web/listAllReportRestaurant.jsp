@@ -32,7 +32,7 @@
                     <td>${report.offensive}</td>
                     <td>${report.truthless}</td>
                     <td>   
-                        <a href="#">Xóa bài đăng</a>
+                        <a href="DeleteRestaurantController?id=${report.restaurantID}">Xóa bài đăng</a>
                         <a href="RestaurantListController?id=${report.restaurantID}">View post</a>
                     </td>
                 </tr>
