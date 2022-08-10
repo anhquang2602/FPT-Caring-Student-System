@@ -54,7 +54,11 @@
                                                     <p style="font-size: 20px">Giá thuê: ${d.cost} VND</p>
                                                 </div>
                                                 <div class="media-body order-2 order-lg-1 image">
-                                                    <img src="${d.img1}" style="width: 150px; height: 150px" >
+                                                    <img  <c:if test="${d.img1 != null}">
+                                                            src="${d.img1}" </c:if>
+                                                        <c:if test="${d.img1 == null}">
+                                                            src="images/nhà trọ.jpg" </c:if>
+                                                         style="width: 150px; height: 150px" >
                                                 </div>
                                                 <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
