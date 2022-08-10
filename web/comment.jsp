@@ -89,41 +89,72 @@
                         <h3 class="rating_heading">Đánh giá 5 sao</h3>
                         <div class ="star_rating">
                             <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
+                            	
+                            
+                            <c:if test="${studentComment == null}">
                             <button class="star" id="star1"  value="1">&#9734;</button>
                             <button class="star" id="star2"  value="2">&#9734;</button>
                             <button class="star" id="star3"  value="3">&#9734;</button>
                             <button class="star" id="star4"  value="4">&#9734;</button>
                             <button class="star" id="star5"  value="5">&#9734;</button>
                             <p class="current_rating">0 trên 5</p></div>
+                            </c:if> 
+                            
+                            <c:if test="${studentComment.starvoting == 1}">
+                            <button class="star" id="star1"  value="1">&#9733;</button>
+                            <button class="star" id="star2"  value="2">&#9734;</button>
+                            <button class="star" id="star3"  value="3">&#9734;</button>
+                            <button class="star" id="star4"  value="4">&#9734;</button>
+                            <button class="star" id="star5"  value="5">&#9734;</button>
+                            <p class="current_rating">1 trên 5</p></div>
+                            </c:if>   
+                            
+                            <c:if test="${studentComment.starvoting  == 2}">
+                            <button class="star" id="star1"  value="1">&#9733;</button>
+                            <button class="star" id="star2"  value="2">&#9733;</button>
+                            <button class="star" id="star3"  value="3">&#9734;</button>
+                            <button class="star" id="star4"  value="4">&#9734;</button>
+                            <button class="star" id="star5"  value="5">&#9734;</button>
+                            <p class="current_rating">2 trên 5</p></div>
+                            </c:if>  
+                            
+                            <c:if test="${studentComment.starvoting  == 3}">
+                            <button class="star" id="star1"  value="1">&#9733;</button>
+                            <button class="star" id="star2"  value="2">&#9733;</button>
+                            <button class="star" id="star3"  value="3">&#9733;</button>
+                            <button class="star" id="star4"  value="4">&#9734;</button>
+                            <button class="star" id="star5"  value="5">&#9734;</button>
+                            <p class="current_rating">3 trên 5</p></div>
+                            </c:if>  
+                            
+                            <c:if test="${studentComment.starvoting == 4}">
+                            <button class="star" id="star1"  value="1">&#9733;</button>
+                            <button class="star" id="star2"  value="2">&#9733;</button>
+                            <button class="star" id="star3"  value="3">&#9733;</button>
+                            <button class="star" id="star4"  value="4">&#9733;</button>
+                            <button class="star" id="star5"  value="5">&#9734;</button>
+                            <p class="current_rating">4 trên 5</p></div>
+                            </c:if>  
+            
+                            <c:if test="${studentComment.starvoting == 5}">
+                            <button class="star" id="star1"  value="1">&#9733;</button>
+                            <button class="star" id="star2"  value="2">&#9733;</button>
+                            <button class="star" id="star3"  value="3">&#9733;</button>
+                            <button class="star" id="star4"  value="4">&#9733;</button>
+                            <button class="star" id="star5"  value="5">&#9733;</button>
+                            <p class="current_rating">5 trên 5</p></div>
+                            </c:if>  
+                            
+                            
 
                         <div class="bg-light p-2">
-                            <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40"><textarea class="form-control ml-1 shadow-none textarea" id="message"></textarea></div>
+                            <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="" width="40"><textarea class="form-control ml-1 shadow-none textarea" id="message" > ${studentComment.message}</textarea></div>
 
                             <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" onclick="postComment()" type="button">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
                         </div>
 
 
-                        <div class="bg-white p-2">
-                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40">
-                                <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Marry Andrews</span><span class="date text-black-50">Shared publicly - Jan 2020</span></div>
-                            </div>
-                            <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                            <div class="mt-2">
-                                <p class="comment-text">Comment 1</p>
-                            </div>
 
-
-                        </div>
-
-                        <div class="bg-white p-2">
-                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40">
-                                <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Marry Andrews</span><span class="date text-black-50">Shared publicly - Jan 2020</span></div>
-                            </div>
-                            <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                            <div class="mt-2">
-                                <p class="comment-text">Comment 2</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -147,53 +178,54 @@
                     })
                 }
             });
-            
-            
+
+
 
         </script>  
         <script>
-            
-            function postComment(){
+
+            function postComment() {
                 var hostelId = document.getElementById("hostelId").value;
                 var x = document.getElementById("message").value;
                 var u = 0;
                 allStars.forEach((star, i) => {
-                    if(star.textContent != "☆"){
-                      u++;  
+                    if (star.textContent != "☆") {
+                        u++;
                     }
-                   
+
                 });
-                
-                if(u==0){
+
+                if (u == 0) {
                     alert("Vui lòng xếp hạng nhà trọ!");
                     return;
-                }else{
-                   $.ajax({
-                    type: "POST",
+                } else {
+                    $.ajax({
+                        type: "POST",
 
-                    url: "/Test_1/star",
-                    data: {
-                        hostelId: hostelId,
-                        star: u,
-                        message:x
-                    },
-                    headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
-                    },
+                        url: "/Test_1/star",
+                        data: {
+                            hostelId: hostelId,
+                            star: u,
+                            message: x
+                        },
+                        headers: {
+                            Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
+                        },
 
-                    success: function (data) {
+                        success: function (data) {
 
-                        alert(data);
-                    },
-                    error: function (e) {
-                        console.log("ERROR: ", e);
-                    }
-                });
+                            alert('Cảm ơn bạn đã đánh giá nhà trọ!');
+                            window.location="/Test_1/detailhostel?id="+hostelId;
+                        },
+                        error: function (e) {
+                            console.log("ERROR: ", e);
+                        }
+                    });
                 }
             }
-            
-            
+
+
             $(".btnSave").click(function () {
                 var hostelId = document.getElementById("hostelId").value;
                 var i = 0;
@@ -201,7 +233,7 @@
                     i++;
                 });
                 alert(i);
-                 $.ajax({
+                $.ajax({
                     type: "POST",
 
                     url: "/Test_1/star",
