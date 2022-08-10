@@ -96,13 +96,16 @@ public class ReportHostel {
         this.truthless = truthless;
     }
 
-    public ReportHostel(String hostelName, int spam, int offensive, int violent, int truthless) {
+    public ReportHostel(int hostelID, String hostelName, int spam, int offensive, int violent, int truthless) {
+        this.hostelID = hostelID;
         this.hostelName = hostelName;
         this.spam = spam;
         this.offensive = offensive;
         this.violent = violent;
         this.truthless = truthless;
     }
+
+   
     
     
     

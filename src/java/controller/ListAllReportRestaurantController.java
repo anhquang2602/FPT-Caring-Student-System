@@ -62,8 +62,21 @@ public class ListAllReportRestaurantController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ReportRestaurantDAO reportRestaurantDAO = new ReportRestaurantDAO();
-        ArrayList<ReportRestaurant> reportRestaurant = reportRestaurantDAO.listAllReportRestaurant();
+        String indexPage = request.getParameter("index");
+        if (indexPage == null) {
+            indexPage = "1";
+        }
+        int index = Integer.parseInt(indexPage);
+
+        int total = reportRestaurantDAO.getTotalReportRestaurant();
+        int endPage = total / 20;
+        if (total % 20 != 0) {
+            endPage++;
+        }
+        ArrayList<ReportRestaurant> reportRestaurant = reportRestaurantDAO.listAllReportRestaurant(index);
         request.setAttribute("listReportRestaurant", reportRestaurant);
+         request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
         request.getRequestDispatcher("listAllReportRestaurant.jsp").forward(request, response);
     }
 

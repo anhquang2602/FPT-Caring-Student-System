@@ -8,11 +8,13 @@ package controller;
 import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import static jdk.nashorn.internal.runtime.Debug.id;
+import model.Food;
 
 /**
  *
@@ -37,7 +39,7 @@ public class DeleteRestaurantController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteRestaurantController</title>");            
+            out.println("<title>Servlet DeleteRestaurantController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DeleteRestaurantController at " + request.getContextPath() + "</h1>");
@@ -58,10 +60,25 @@ public class DeleteRestaurantController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         RestaurantDAO restaurantDAO = new RestaurantDAO();
+       
+        int role = Integer.parseInt(request.getSession().getAttribute("role").toString());
+       
         int restaurantID = Integer.parseInt(request.getParameter("id"));
+        ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(restaurantID);
+        for (Food f : listFood) {
+            restaurantDAO.deleteFoodlImage(f.getFoodID());
+        }
+        restaurantDAO.deleteAllFood(restaurantID);
+        restaurantDAO.deleteRestaurantIDFromReport(restaurantID);
         restaurantDAO.deleteRestaurant(restaurantID);
+        if(role == 3){
         response.sendRedirect("ListRestaurantBySeller");
+        }
+        else if(role ==1){
+            response.sendRedirect("ListAllReportRestaurantController");
+        }
     }
 
     /**
@@ -75,7 +92,7 @@ public class DeleteRestaurantController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                processRequest(request, response);
+        processRequest(request, response);
 
     }
 

@@ -13,14 +13,15 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
     </head>
     <body class="bg-white">
-        <div class="px-0">
+        <div>
             <%@include file="/header.jsp" %>
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar">
@@ -54,7 +55,11 @@
                                                     <p style="font-size: 20px">Giá thuê: ${d.cost} VND</p>
                                                 </div>
                                                 <div class="media-body order-2 order-lg-1 image">
-                                                    <img src="${d.img1}" style="width: 150px; height: 150px" >
+                                                    <img  <c:if test="${d.img1 != null}">
+                                                            src="${d.img1}" </c:if>
+                                                        <c:if test="${d.img1 == null}">
+                                                            src="images/nhà trọ.jpg" </c:if>
+                                                         style="width: 150px; height: 150px" >
                                                 </div>
                                                 <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>

@@ -13,14 +13,15 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/addHostelStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
     <body class="bg-white">
         <div>
             <%@include file="/header.jsp" %> 
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div class="container rounded bg-white mt-5 mb-5">
@@ -46,6 +47,11 @@
                                             var loadFile = function (event) {
                                                 var output = document.getElementById('output1');
                                                 output.src = URL.createObjectURL(event.target.files[0]);
+                                                var img2 = document.getElementById('file2').type = "file";
+                                                var img3 = document.getElementById('file3').type = "file";
+                                                var img4 = document.getElementById('file4').type = "file";
+                                                var img5 = document.getElementById('file5').type = "file";
+                                                var img6 = document.getElementById('file6').type = "file";
                                                 output.onload = function () {
                                                     URL.revokeObjectURL(output1.src); // free memory
                                                 };
@@ -331,9 +337,28 @@
                     isValid = false;
                 }
 
+
                 return isValid;
 
             }
+        </script>
+        <script>
+            function clickImg() {
+                var img1 = document.getElementById('output1').src;
+//                var img2 = document.getElementById('output2').src;
+//                var img3 = document.getElementById('output3').src;
+//                var img4 = document.getElementById('output4').src;
+//                var img5 = document.getElementById('output5').src;
+//                var img6 = document.getElementById('output6').src;
+                if (img1 == "") {
+
+                    alert("Bạn phải thêm ảnh 1 đầu tiên");
+                    return;
+
+                }
+
+            }
+           
         </script>
     </body>
     <%@include file="/footer.jsp" %>    

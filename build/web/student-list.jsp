@@ -13,14 +13,15 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/studentStyle.css">
     </head>
     <body class="bg-white">
         <div class="px-0">
             <%@include file="/header.jsp" %>   
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar">
@@ -79,6 +80,19 @@
                                         </tr>
                                     </c:forEach>
                                 </table>
+                                <div class="clearfix">
+                                    <ul class="pagination">
+                                        <c:if test="${tag>1}">
+                                            <li class="page-item disabled"><a href="StudentListController?index=${tag-1}">Previous</a></li>
+                                            </c:if>
+                                            <c:forEach begin="1" end="${endP}" var="i">
+                                            <li class="page-item ${tag==i?"active":""}"><a href="StudentListController?index=${i}" class="page-link">${i}</a></li>
+                                            </c:forEach>
+                                            <c:if test="${tag<endP}">
+                                            <li class="page-item"><a href="StudentListController?index=${tag+1}" class="page-link">Next</a></li>
+                                            </c:if>
+                                    </ul>
+                                </div> 
                             </div>
                         </div>
                     </div>

@@ -64,10 +64,23 @@ public class ListAllReportHostelController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         ReportHostelDAO reportHostelDAO = new ReportHostelDAO();
-        ArrayList<ReportHostel> reportHostel = reportHostelDAO.listAllReportHostel();
+        String indexPage = request.getParameter("index");
+        if (indexPage == null) {
+            indexPage = "1";
+        }
+        int index = Integer.parseInt(indexPage);
+
+        int total = reportHostelDAO.getTotalReportHostel();
+        int endPage = total / 20;
+        if (total % 20 != 0) {
+            endPage++;
+        }
+        ArrayList<ReportHostel> reportHostel = reportHostelDAO.listAllReportHostel(index);
         request.setAttribute("listReportHostel", reportHostel);
+        request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
         request.getRequestDispatcher("listAllReportHostel.jsp").forward(request, response);
 
     }

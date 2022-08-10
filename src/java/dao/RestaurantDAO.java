@@ -242,6 +242,23 @@ public class RestaurantDAO extends DBContext {
         }
         return false;
     }
+    
+    public int getResIdbyFoodID(int foodId) {
+        try {
+
+            String sql = "SELECT  restaurantid FROM foods where foodid=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, foodId);
+            ResultSet rs = statement.executeQuery();
+           
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 
     public int getNewestFoodID() {
         try {
@@ -396,6 +413,26 @@ public class RestaurantDAO extends DBContext {
             String sql = "DELETE FROM Foods WHERE FoodID=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, foodID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public void deleteRestaurantIDFromReport(int restaurantID) {
+        try {
+            String sql = "DELETE FROM ReportRestaurant WHERE RestaurantID=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, restaurantID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public void deleteAllFood(int restaurantID) {
+        try {
+            String sql = "DELETE FROM Foods WHERE RestaurantID=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, restaurantID);
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
