@@ -35,20 +35,20 @@
                             <div class="col-lg-12 mb-5">
                                 <div>
                                     <ul class="breadcrumb bg-white">
-                                        <li><a href="home.jsp">Home</a></li>
-                                        <li><a>List Seller</a></li>
+                                        <li><a href="home.jsp">Trang chủ</a></li>
+                                        <li><a>Danh sách Chủ Kinh Doanh</a></li>
                                     </ul>
                                 </div>
                                 <table class="table" id="seller">
                                     <tr>
-                                        <th>Seller ID</th>
-                                        <th>Full Name</th>
-                                        <th>Age</th>
-                                        <th>Sex</th>
-                                        <th>Phone</th>
+                                        <th>ID Chủ Kinh Doanh</th>
+                                        <th>Tên Chủ Kinh Doanh</th>
+                                        <th>Tuổi</th>
+                                        <th>Giới Tính</th>
+                                        <th>Số Điện Thoại</th>
                                         <th>Email</th>
-                                        <th>Status</th>
-                                        <th>View</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Xem Hồ Sơ</th>
                                     </tr>
                                     <c:forEach items="${listSeller}" var="seller">
                                         <tr>
@@ -63,18 +63,18 @@
                                             <td>${seller.email}</td>
                                             <td>
                                                 <c:if test="${seller.status==1}">
-                                                    <span
-                                                        class="inline-flex px-5 py-2 font-semibold leading-5 text-green-800 bg-green-100 rounded-lg text-md "
-                                                        ><a href="ChangeStatusCriteria?id=${seller.sellerID}" style="text-decoration: none"> Active</a></span>
+                                                    <span class="inline-flex px-5 py-2 font-semibold leading-5 text-green-800 bg-green-100 rounded-lg text-md">
+                                                        <a href="ChangeStatusCriteria?id=${seller.sellerID}" style="text-decoration: none">Hoạt Động</a>
+                                                    </span>
                                                 </c:if>
                                                 <c:if test="${seller.status==0}">
-                                                    <span
-                                                        class="inline-flex px-5 py-2 font-semibold leading-5 text-green-800 bg-green-100 rounded-lg text-md "
-                                                        ><a href="ChangeStatusCriteria?id=${seller.sellerID}" style="text-decoration: none"> Inactive</a></span> 
-                                                </c:if>
+                                                    <span class="inline-flex px-5 py-2 font-semibold leading-5 text-green-800 bg-green-100 rounded-lg text-md">
+                                                        <a href="ChangeStatusCriteria?id=${seller.sellerID}" style="text-decoration: none">Không Hoạt Động</a>
+                                                    </span> 
+                                                    </c:if>
                                             </td>
                                             <td>
-                                                <a href="ViewSellerController?id=${seller.sellerID}" style="text-decoration: none">View detail</a>
+                                                <a href="ViewSellerController?id=${seller.sellerID}" style="text-decoration: none">Chi Tiết</a>
                                             </td>
                                         </tr>
                                     </c:forEach>

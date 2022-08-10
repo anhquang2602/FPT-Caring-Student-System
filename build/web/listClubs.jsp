@@ -65,7 +65,7 @@
                                                     ${club.email}
                                                 </td>    
                                                 <td>
-                                                    <a style="text-decoration: none" href="detailClub?id=${club.clubID}">View detail</a>
+                                                    <a style="text-decoration: none" href="detailClub?id=${club.clubID}">Chi Tiết</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

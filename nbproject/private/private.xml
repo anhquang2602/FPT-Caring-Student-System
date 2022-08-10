@@ -2,27 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/validator/Validator.js</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/controller/AuthenticateServlet.java</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/header.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/controller/UpdateSellerProfile.java</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/listHostelbySeller.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/authentication.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/listAllHostels.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/controller/LoginServlet.java</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/self_profileSeller.jsp</file>
-=======
-            <file>file:/D:/DoAn_Final/web/self_profileSeller.jsp</file>
-            <file>file:/D:/DoAn_Final/web/listdepartment.jsp</file>
-            <file>file:/D:/DoAn_Final/web/login.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/AuthenticateServlet.java</file>
-            <file>file:/D:/DoAn_Final/web/voteChart.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/RegisterServlet.java</file>
-            <file>file:/D:/DoAn_Final/web/listbus.jsp</file>
-            <file>file:/D:/DoAn_Final/web/busDetail.jsp</file>
->>>>>>> 7d6a49d0065ca3037eaf8925858015488c89a567
-        </group>
+        <group/>
     </open-files>
 </project-private>

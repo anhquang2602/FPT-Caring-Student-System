@@ -22,9 +22,9 @@
                     <div class="row">
                         <div>
                             <ul class="breadcrumb bg-white">
-                                <li><a href="home.jsp">Home</a></li>
-                                <li><a href="StudentListController">List Student</a></li>
-                                <li><a>Detail Student</a></li>
+                                <li><a href="home.jsp">Trang chủ</a></li>
+                                <li><a href="StudentListController">Danh sách Học Sinh</a></li>
+                                <li><a>Hồ sơ Học Sinh</a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">
@@ -37,19 +37,21 @@
                                                                 </form>-->
                                 <div class="p-3 py-5">
                                     <form action="ChangeStatusStudent" method="post">
-                                        <div class="col-md-12 mt-5 ml-5"><label class="labels">Status</label></br>
+                                        <div class="col-md-12 mt-5 ml-5">
                                             <input type="text" class="form-control" name="email" value="${student.email}" readonly="" hidden="">
                                         </div>
                                         <div class="mt-1">
                                             <c:if test="${student.status eq 1}">
-                                                <input class="form-check-input" type="radio" name="status" checked="" id="inlineRadio1" value="1">Active
-                                                <input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0" >Inactive
+                                                <strong class="ml-3 mr-1">Hoạt Động</strong><input class="form-check-input" type="radio" name="status" checked="" id="inlineRadio1" value="1">
+                                                <strong class="ml-3 mr-1">Không Hoạt Động</strong><input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0">
                                             </c:if>
                                             <c:if test="${student.status eq 0}">
-                                                <input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">Active
-                                                <input class="form-check-input" type="radio" name="status" checked=""  id="inlineRadio1" value="0" >Inactive
+                                                <strong class="ml-3 mr-1">Hoạt Động</strong><input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">
+                                                <strong class="ml-3 mr-1">Không Hoạt Động</strong><input class="form-check-input" type="radio" name="status" checked=""  id="inlineRadio1" value="0">
                                             </c:if>
-                                            <input class="ml-3" type="submit" value="Confirm"/>
+                                            <div class="mt-3">
+                                                <input class="ml-3 p-1" type="submit" value="Confirm"/>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -58,45 +60,83 @@
                         <div class="col-md-8">
                             <div class="p-3 py-5">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h4 class="text-right">Profile Student</h4>
+                                    <h3 class="text-right">HỒ SƠ HỌC SINH</h3>
                                 </div>
                                 <div class="row mt-2">
                                     <input name="id" value="${student.studentID}" hidden="">
-                                    <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" value="${student.firstName}" readonly=""></div>
-                                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value="${student.lastName}" readonly=""></div>
+                                    <div class="col-md-6">
+                                        <h4>Họ</h4>
+                                        <input type="text" class="form-control" value="${student.firstName}" readonly="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>Tên</h4>
+                                        <input type="text" class="form-control" value="${student.lastName}" readonly="">
+                                    </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">Age</label><input type="number" class="form-control"value="${student.age}" readonly=""></div>
-                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" value="0${student.phone}" readonly=""></div>
-                                    <div class="col-md-12"><label class="labels">Unit</label><input type="text" class="form-control" value="${student.unit}" readonly=""></div>
-                                    <div class="col-md-12"><label  class="labels">Email</label><input type="text" class="form-control" name="email" value="${student.email}" readonly=""></div>
-                                    <div class="col-md-12"><label class="labels">Sex</label></br>
+                                    <div class="col-md-12">
+                                        <h4>Tuổi</h4>
+                                        <input type="number" class="form-control"value="${student.age}" readonly="">
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <h4>Số điện thoại</h4>
+                                        <input type="text" class="form-control" value="0${student.phone}" readonly="">
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <h4>Khóa</h4>
+                                        <input type="text" class="form-control" value="${student.unit}" readonly="">
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <h4>Email</h4>
+                                        <input type="text" class="form-control" name="email" value="${student.email}" readonly="">
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <h4>Giới tính</h4>
                                         <c:if test="${student.gender eq 1}">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" checked="" id="inlineRadio1" value="1">Nam
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"   id="inlineRadio1" value="0" >Nữ
+                                            <span class="ml-3 mr-1">Nam</span><input class="form-check-input" type="radio" name="inlineRadioOptions" checked="" id="inlineRadio1" value="1">
+                                            <span class="ml-3 mr-1">Nữ</span><input class="form-check-input" type="radio" name="inlineRadioOptions"   id="inlineRadio1" value="0">
                                         </c:if>
                                         <c:if test="${student.gender eq 0}">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"  id="inlineRadio1" value="1">Nam
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" checked=""  id="inlineRadio1" value="0" >Nữ
+                                            <span class="ml-3 mr-1">Nam</span><input class="form-check-input" type="radio" name="inlineRadioOptions"  id="inlineRadio1" value="1">
+                                            <span class="ml-3 mr-1">Nữ</span><input class="form-check-input" type="radio" name="inlineRadioOptions" checked=""  id="inlineRadio1" value="0">
                                         </c:if>
                                     </div>
-                                    <div class="col-md-12"><label class="labels">Country</label>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <h4>Đất Nước</h4>
                                         <select class="form-select" aria-label="Default select example">
                                             <option selected value="${student.countryID}">${student.countryName}</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-12"><label class="labels">Province</label>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <h4>Tỉnh, Thành Phố</h4>
                                         <select class="form-select" aria-label="Default select example">
                                             <option selected value="${student.provinceID}">${student.provinceName}</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-12"><label class="labels">District</label>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <h4>Quận, Huyện</h4>
                                         <select class="form-select" aria-label="Default select example">
                                             <option selected value="${student.districID}">${student.districtName}</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="row mt-3">
                                     <div class="col-md-12">
-                                        <label class="labels">Address Detail</label>
+                                        <h4>Địa Chỉ</h4>
                                         <input type="text" class="form-control"value="${student.address}" readonly="">
                                     </div>
                                 </div>
@@ -106,6 +146,7 @@
                 </div>
             </div>
         </div>
-    </body>
-    <%@include file="/footer.jsp" %>
+    </div>
+</body>
+<%@include file="/footer.jsp" %>
 </html>

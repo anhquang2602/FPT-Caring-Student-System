@@ -50,7 +50,7 @@
                             <div class="p-3 py-5">
                                 <div class="row mt-5">
                                     <div class="col-md-12">
-                                        <h4>President</h4>
+                                        <h4>Chủ Nhiệm</h4>
                                         <input type="text" class="form-control" value="${club.clubPresident}" readonly="">
                                     </div>
                                     <div class="col-md-12 mt-3">
