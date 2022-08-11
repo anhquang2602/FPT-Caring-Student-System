@@ -68,9 +68,9 @@ public class ReportRestaurantDAO extends DBContext {
                     + "                   inner join ReportRestaurant rr on rt.RestaurantID = rr.RestaurantID) as a\n"
                     + "                    group by a.RestaurantName, a.RestaurantID\n"
                     + "ORDER BY RestaurantID\n"
-                    + "OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY;";
+                    + "OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, (index - 1) * 20);
+            ps.setInt(1, (index - 1) * 6);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 report.add(new ReportRestaurant(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
@@ -82,7 +82,7 @@ public class ReportRestaurantDAO extends DBContext {
     }
 
     public int getTotalReportRestaurant() {
-        String sql = "select count(*) from ReportRestaurant";
+        String sql = "select COUNT (RestaurantName) from Restaurants";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
