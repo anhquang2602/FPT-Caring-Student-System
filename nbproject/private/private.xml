@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/DoAn_Final/web/self_profileSeller.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/UpdateStudentProfile.java</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/AddHostelController.java</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/UpdateSellerProfile.java</file>
-            <file>file:/D:/DoAn_Final/web/validator/Validator.js</file>
-            <file>file:/D:/DoAn_Final/web/self_profileAdmin.jsp</file>
-            <file>file:/D:/DoAn_Final/web/addHostel.jsp</file>
-            <file>file:/D:/DoAn_Final/web/self_profileStudent.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

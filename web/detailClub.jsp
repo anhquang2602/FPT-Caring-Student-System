@@ -14,14 +14,15 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/profileStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
     <body class="bg-white">
         <div class="px-0">
             <%@include file="/header.jsp" %> 
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div class="container rounded bg-white mt-5 mb-5">
@@ -50,7 +51,7 @@
                             <div class="p-3 py-5">
                                 <div class="row mt-5">
                                     <div class="col-md-12">
-                                        <h4>President</h4>
+                                        <h4>Chủ Nhiệm</h4>
                                         <input type="text" class="form-control" value="${club.clubPresident}" readonly="">
                                     </div>
                                     <div class="col-md-12 mt-3">

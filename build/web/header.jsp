@@ -15,23 +15,25 @@
         <link rel="stylesheet" href="css/viewListStyle.css">
     </header>
     <body>
-        <div class="d-flex">
-            <div class="d-flex align-items-center" style="background-color: rgb(238, 77, 45); width: 20%"> 
+        <div class="d-flex main">
+            <div class="d-flex align-items-center left_box"> 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-items" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation"> 
                     <span class="fas fa-bars"></span> 
                 </button> 
                 <a class="text-decoration-none fs14 ps-2" href="home.jsp">FCS<span class="fs13 pe-2">.com</span></a> 
             </div>
-            <div id="topnavbar" class="width: 80%">
-                <div class="topnav" style="background-color: rgb(238, 77, 45)">
-                    <ul class="d-flex">
-                        <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+            <div class="topnav">
+                <div class="d-flex">
+                    <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                    <a class="col-md-2"  href="SellerListController">CHỦ KINH DOANH</a>  
+                    <a class="col-md-2"  href="StudentListController">HỌC SINH</a> 
+                    <a class="col-md-2"  href="ListAllReportHostelController">BÁO CÁO NHÀ TRỌ</a>
+                    <a class="col-sm-2"  href="ListAllReportRestaurantController">BÁO CÁO NHÀ ĂN</a>
 
-                        <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="SellerListController">NGƯỜI BÁN HÀNG</a>  
-                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="StudentListController">HỌC SINH</a> 
-                        <a class="col-sm-1 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ClubListController">CÂU LẠC BỘ</a> 
-                        <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ListAllReportHostelController">BÁO CÁO NHÀ TRỌ</a>
-                        <a class="col-sm-2 mt-4" style="color: #fff; font-size: 16px; padding: 0" href="ListAllReportRestaurantController">BÁO CÁO NHÀ ĂN</a>
+                    <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
+                    <a class="col-md-2"></a>
+                    <a class="col-md-3" href="hostellist">NHÀ TRỌ CỦA TÔI</a>  
+                    <a class="col-md-3" href="ListRestaurantBySeller">NHÀ ĂN CỦA TÔI</a>  
 
                         <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
                         <a class="col-sm-2 mt-4"></a>
@@ -52,7 +54,6 @@
                                 ${sessionScope.username}
                             </button>
                             <div class="dropdown-menu" style="background-color: white; left: 0;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 999" aria-labelledby="dropdownMenuButton">
-
                                 <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
                                 <a class="dropdown-item" style="color: red" href="UpdateSellerProfile">HỒ SƠ CỦA TÔI</a>
                                 <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
@@ -64,10 +65,10 @@
                                 <%}%>
                                 <a class="dropdown-item" style="color: red" href="ChangePasswordServlet">ĐỔI MẬT KHẨU</a>
                                 <a class="dropdown-item" style="color: red" href="LogoutServlet">ĐĂNG XUẤT</a>
-
                             </div>
+
                         </div>
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>

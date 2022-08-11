@@ -4,22 +4,20 @@
     Author     : nguye
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/hostelStyle.css">
         <link rel="stylesheet" href="css/commentStyle.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
-
 
         <style>
             .stars-outer {
@@ -52,10 +50,10 @@
         </style>
     </head>
     <body class="bg-white">
-        <div class="px-0">
+        <div>
             <%@include file="/header.jsp" %> 
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
 
@@ -97,7 +95,7 @@
                                     </div>
                                 </form>
                                 <span class="font-weight-bold labels mt-5" ><label class="labels">Nhà trọ:</label> ${hosteldetail.hostelName}</span>
-                                 <div class="stars-outer">
+                                <div class="stars-outer">
                                     <div class="stars-inner" style="width: ${hosteldetail.starAVG}%"> </div>
                                 </div> <br><br>
                                 <span class="font-weight-bold labels"><label class="labels">Chủ trọ:</label>
@@ -118,12 +116,12 @@
                                                                     <label for="star1" title="text">1 star</label>
                                 
                                                                 </div>-->
-                               
+
                                 <c:if test = "${isStudent== 1}">
                                     <a href="comment?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
                                 </c:if>
 
-                                
+
 
                                 <!--                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
                                                                 <div class ="star_rating">
@@ -254,9 +252,9 @@
                         } else {
                             star.innerHTML = '&#9734';
                         }
-                    })
-                }
-            })
+                    });
+                };
+            });
 
         </script>                            
 
@@ -270,7 +268,7 @@
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
-                        star: 5,
+                        star: 5
                     },
                     headers: {
                         Accept: "application/json; charset=utf-8",
@@ -294,7 +292,7 @@
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
-                        star: 4,
+                        star: 4
                     },
                     headers: {
                         Accept: "application/json; charset=utf-8",
@@ -318,7 +316,7 @@
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
-                        star: 3,
+                        star: 3
                     },
                     headers: {
                         Accept: "application/json; charset=utf-8",
@@ -342,7 +340,7 @@
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
-                        star: 2,
+                        star: 2
                     },
                     headers: {
                         Accept: "application/json; charset=utf-8",
@@ -366,7 +364,7 @@
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
-                        star: 1,
+                        star: 1
                     },
                     headers: {
                         Accept: "application/json; charset=utf-8",
@@ -385,9 +383,6 @@
 
 
         </script>
-
-
-
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

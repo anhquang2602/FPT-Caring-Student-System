@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import model.Food;
+import model.Restaurant;
 
 /**
  *
@@ -63,16 +64,16 @@ public class EditFoodController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-
         int id = Integer.parseInt(request.getParameter("foodId"));
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         Food food = restaurantDAO.getFoodID(id);
         request.setAttribute("food", food);
+        int restaurantId = restaurantDAO.getResIdbyFoodID(id);       
+        request.setAttribute("restaurantId", restaurantId);
         request.getRequestDispatcher("editFood.jsp").forward(request, response);
     }
-
+//run ddi t het pin
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
