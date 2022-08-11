@@ -9,9 +9,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Department;
 import model.Hostel;
+import model.StarVote;
 
 /**
  *
@@ -84,7 +87,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19)));
+                        rs.getString(19),0));
 
             }
 
@@ -210,7 +213,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19)));
+                        rs.getString(19),0));
 
             }
 
@@ -302,6 +305,17 @@ public class HostelDAO extends DBContext {
         try {
 
             String sql = "DELETE FROM HostelImage WHERE HostelID =?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, hostelID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteReportbyHostel(int hostelID) {
+        try {
+            String sql = "DELETE FROM ReportHostel WHERE HostelID=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, hostelID);
             statement.executeUpdate();
@@ -460,20 +474,178 @@ public class HostelDAO extends DBContext {
         return maxCost;
     }
 
-    public static void main(String[] args) {
-        HostelDAO h = new HostelDAO();
-//        ArrayList<Hostel> hostels = h.filterHostel("t", 1800000, 2000000, 2);
-//        for (Hostel hostel : hostels) {
-//            System.out.println(hostel.getHostelName());;
-//        }
-//        double max = h.getMaxCost();
-//        System.out.println(max);
-        ArrayList<Hostel> hostel = h.filterHostelPagging(1400000, 2500000, 3, 2);
-        for (Hostel hostel1 : hostel) {
-            System.out.println(hostel1.getHostelName());
+
+
+    public List<Hostel> pagingHostels(int index) {
+        List<Hostel> list = new ArrayList<>();
+        String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+                + "join Country c on h.CountryID =c.CountryID\n"
+                + "join District d on h.DistrictID = d.DistrictID\n"
+                + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                + "join Sellers s on h.SellerID = s.SellerID\n"
+                + "left join HostelImage i on h.HostelID = i.HostelID\n"
+                + "ORDER BY HostelID\n"
+                + "OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ps.setInt(1, (index - 1) * 6);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
+                        rs.getString(19),0));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(hostel.size());
-        int count = h.getTotalPageByFilter(hostel, 1400000, 2500000, 3);
-        System.out.println(count);
+        return list;
     }
+
+    public int getTotalHostels() {
+        String sql = "select count(*) from Hostels";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return 0;
+    }
+
+    public int getSellerIdByHostelId(int hostelID) {
+        String sql = "select SellerID from Hostels where HostelID=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, hostelID);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return 0;
+    }
+
+    public void addHostelID(int hostelID) {
+        try {
+
+            String sql = "INSERT INTO [dbo].[HostelImage]\n"
+                    + "			   ([HostelID])\n"
+                    + "		 VALUES\n"
+                    + "			   (?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, hostelID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void addImage(int hostelID, String url1, String url2, String url3, String url4, String url5, String url6) {
+        try {
+
+            String sql = "UPDATE [dbo].[HostelImage]\n"
+                    + "   SET \n"
+                    + "      [Url1] = ?\n"
+                    + "      ,[Url2] = ?\n"
+                    + "      ,[Url3] = ?\n"
+                    + "      ,[Url4] = ?\n"
+                    + "      ,[Url5] = ?\n"
+                    + "      ,[Url6] = ?\n"
+                    + "WHERE HostelID = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, url1);
+            statement.setString(2, url2);
+            statement.setString(3, url3);
+            statement.setString(4, url4);
+            statement.setString(5, url5);
+            statement.setString(6, url6);
+            statement.setInt(7, hostelID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void addEachImage(int hostelID, String url, String indexofURL) {
+        try {
+
+            String sql = "UPDATE [dbo].[HostelImage]\n"
+                    + "   SET \n"
+                    + indexofURL + "       = ?\n"
+                    + "WHERE HostelID = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, url);
+
+            statement.setInt(2, hostelID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteImage(int hostelID, String indexofURL) {
+
+        try {
+
+            String sql = "UPDATE [dbo].[HostelImage]\n"
+                    + "   SET \n"
+                    + indexofURL + "       = NULL\n"
+                    + "WHERE HostelID = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, hostelID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+      
+
+    public int getNewestHostelID() {
+        try {
+
+            String sql = "SELECT  TOP 1 HostelID FROM Hostels ORDER BY HostelID DESC";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public List<StarVote> listStar(int hostelID) {
+        List<StarVote> list = new ArrayList<>();
+        String sql = "SELECT StarVoting, COUNT(*) as numberofvote\n"
+                + "  FROM StarVotingHostel\n"
+                + "  where HostelID=?\n"
+                + "  group by StarVoting";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, hostelID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new StarVote(rs.getInt(1), rs.getInt(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+   
 }

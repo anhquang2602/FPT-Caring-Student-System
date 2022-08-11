@@ -10,8 +10,16 @@
     list-style: none;
     font-family: 'Roboto';
 }
+.main {
+    width: 100%;
+}
+.left_box {
+    background-color: rgb(238, 77, 45); 
+    width: 20%;
+}
 .topnav {
-    background-color: #ffff;
+    width: 80%;
+    background-color: rgb(238, 77, 45);
     overflow: hidden;
 }
 .far.fa-user-circle {
@@ -39,9 +47,11 @@
     font-weight: 800;
     font-size: 14px;
     text-transform: uppercase;
-    padding: 14px 40px;
+    padding: 20px;
     text-decoration: none;
     border-bottom: 3px solid transparent;
+    color: #fff;
+    font-size: 16px
 }
 .topnav a:hover {
     color: black;
@@ -104,13 +114,13 @@ form.example::after {
     background-image: linear-gradient(to right, #5d7ecd, #0c91e6);
 }
 .table thead tr th {
-    font-size: 11px;
+    font-size: 18px;
     color: #868585;
     padding: 10px 10px;
     text-align: center;
 }
 .table tbody tr td {
-    font-size: 13.5px;
+    font-size: 18px;
     padding: 10px 10px;
 }
 #navbar {
@@ -127,9 +137,6 @@ form.example::after {
 }
 #navbar a {
     color: black;
-}
-.fas.fa-bars {
-    color: white;
 }
 #navbar2 {
     width: 80%;
@@ -156,9 +163,6 @@ ul#navbar-items li:hover {
 ul li:hover .fas {
     color: #f7910c;
 }
-#topnavbar {
-    width: 80%;
-}
 .fs12 {
     font-size: 18px;
 }
@@ -177,47 +181,6 @@ ul li:hover .fas {
 }
 .example {
     width: 50%;
-}
-@media (max-width: 780px) {
-    #navbar {
-        width: 20%;
-    }
-    #topnavbar {
-        width: 80%;
-    }
-    .text-decoration-none.fs14 {
-        font-size: 10px;
-    }
-    .text-decoration-none .fs13 {
-        font-size: 9px;
-    }
-}
-@media (max-width: 430px) {
-    #navbar-items,
-    #topnavbar {
-        width: 100%;
-        height: 100%;
-    }
-    #navbar-items {
-        padding: 20px;
-    }
-    .topnav a {
-        font-size: 12px;
-        padding: 12px;
-    }
-    #navbar {
-        width: 100%;
-        background-color: blue;
-    }
-    .example {
-        width: 100%;
-    }
-    .text-decoration-none.fs14 {
-        font-size: 14px;
-    }
-    .text-decoration-none .fs13 {
-        font-size: 13px;
-    }
 }
 @media (max-width: 376px) {
     #navbar-items {
@@ -251,12 +214,70 @@ ul li:hover .fas {
     z-index: 999;
 }
 
+#dropdownMenuButton {
+    background-color: rgb(238, 77, 45); 
+    color: white; 
+    text-decoration: none; 
+    border: none; 
+    font-size: 20px
+}
+
 .dropdown-menu {
+    background-color: white; 
+    left: 0;
+    color: red;
     display: none;
     position: absolute;
-    background-color: #e9d8f4;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 999;
 }
+.dropdown-menu a {
+    color: rgb(238, 77, 45);
+    background-color: white;
+}
 
+.main-sb {
+    background-color: #f2f2f2;
+    height: 1100px;
+}
+.main-sb ul {
+    padding-left: 0;
+    padding-top: 50px;
+}
+.main-sb ul li a {
+    text-decoration: none; 
+    color: rgb(238, 77, 45);
+}
+
+a .fs12: hover {
+    color: orange;
+}
+
+.nav-item ul {
+    padding-left: 0;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+}
+
+.main-home {
+    height: 1100px;
+}
+
+#topnavbar {
+    width: 80%;
+    float: right;
+    position: relative;
+}
+
+.ft {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}

@@ -76,24 +76,21 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("pass");
-        String role;
-       
+        String role;     
         SellerDAO sdao = new SellerDAO();
         AccountDAO dao = new AccountDAO();
         Account a = dao.checkLogin(username, password);
-        
         if (a != null && a.isStatus() == true) {
             request.getSession().setAttribute("role", a.getRoleId());
             request.getSession().setAttribute("username", username);
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } else if (a == null) {
-            request.setAttribute("errorLogin"," username or password is not correct.");
+            request.setAttribute("errorLogin","Email hoặc mật khẩu chưa đúng !");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else if (a.isStatus() == false) {
-            request.setAttribute("errorLogin", "can not login because" + username + " is deactive now");
+            request.setAttribute("errorLogin", "Không thể đăng nhập do" + username + "không còn hoạt động");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-
     }
 
     /**

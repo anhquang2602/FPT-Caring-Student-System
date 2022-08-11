@@ -15,14 +15,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/busStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
     <body class="bg-white">
         <div class="px-0">
             <%@include file="/header.jsp" %> 
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar">
@@ -37,8 +38,8 @@
                             <div class="col-lg-12">
                                 <div>
                                     <ul class="breadcrumb bg-white">
-                                        <li><a href="home.jsp">Home</a></li>
-                                        <li><a>List Bus</a></li>
+                                        <li><a href="home.jsp">Trang chủ</a></li>
+                                        <li><a>Danh sách xe Bus</a></li>
                                     </ul>
                                 </div>
                                 <ul class="list-group shadow">
@@ -54,7 +55,7 @@
                                                 <h5 class="mt-0 font-weight-bold mb-2">
                                                     <a href="BusDetailServlet?number=<%=b.getNumber()%>" style="text-decoration: none; font-weight: bold">Xe <%=b.getNumber()%></a>
                                                 </h5>
-                                                <p class="font-italic text-muted mb-0 small" style="font-size: 18px"><%=b.getShortDes()%></p>
+                                                <p style="font-size: 18px"><%=b.getShortDes()%></p>
                                             </div>
                                             <div class="media-body order-2 order-lg-1 image">
                                                 <img src="<%=b.getUrl1()%>" alt="Generic placeholder image">
@@ -64,7 +65,7 @@
                                     <%}%>
                                 </ul> 
                                 <div class="clearfix">
-                                    <ul class="pagination mt-5 mb-5">
+                                    <ul class="pagination mb-5">
                                         <c:if test="${tag>1}">
                                             <li class="page-item disabled"><a href="BusPagingServlet?index=${tag-1}">Previous</a></li>
                                             </c:if>

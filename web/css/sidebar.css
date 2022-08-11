@@ -1,3 +1,10 @@
+.main-sb {
+    background-color: #f2f2f2;
+}
+.main-sb ul li a {
+    text-decoration: none; 
+    color: rgb(238, 77, 45);
+}
 a .fs12: hover {
     color: orange;
 }

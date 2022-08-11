@@ -15,14 +15,15 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/departmentStyle.css">
     </head>
     <body class="bg-white">
         <div class="px-0">
             <%@include file="/header.jsp" %>   
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar">
@@ -34,11 +35,11 @@
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-12 mb-5">
+                            <div class="col-lg-12 mt-5 mb-5">
                                 <div>
                                     <ul class="breadcrumb bg-white">
-                                        <li><a href="home.jsp">Home</a></li>
-                                        <li><a>List Department</a></li>
+                                        <li><a href="home.jsp">Trang chủ</a></li>
+                                        <li><a>Danh sách Phòng Ban</a></li>
                                     </ul>
                                 </div>
                                 <ul class="list-group shadow">
@@ -46,10 +47,10 @@
                                         <li class="list-group-item">
                                             <div class="media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="media-body order-2 order-lg-1 description" id="description">
-                                                    <h5 class="mt-0 font-weight-bold mb-2">
+                                                    <h4 class="font-weight-bold mb-3">
                                                         <a href="detaildepartment?id=${d.depId}" style="text-decoration: none; font-weight: bold">${d.depName}</a>
-                                                    </h5>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${d.shortdes}</p>
+                                                    </h4>
+                                                    <p style="font-size: 18px">${d.shortdes}</p>
                                                 </div>
                                                 <div class="media-body order-2 order-lg-1 image">
                                                     <img src="${d.img1}" alt="Generic placeholder image">
@@ -59,7 +60,7 @@
                                     </c:forEach>
                                 </ul> 
                                 <div class="clearfix">
-                                    <ul class="pagination mt-5">
+                                    <ul class="pagination">
                                         <c:if test="${tag>1}">
                                             <li class="page-item disabled"><a href="department?index=${tag-1}">Previous</a></li>
                                             </c:if>

@@ -34,7 +34,9 @@ public class Hostel {
     private String img4;
     private String img5;
     private String img6;
-
+    
+    private double starAVG;
+    
     public Hostel() {
     }
 
@@ -65,7 +67,7 @@ public class Hostel {
         this.description = description;
     }
     
-    public Hostel(int hostelID, String hostelName, String sellerName, int totalRoom, boolean status, int floor, String countryName, String provinceNamẹ, String districtName, String address, double cost, double distance, String description, String img1, String img2, String img3, String img4, String img5, String img6) {
+    public Hostel(int hostelID, String hostelName, String sellerName, int totalRoom, boolean status, int floor, String countryName, String provinceNamẹ, String districtName, String address, double cost, double distance, String description, String img1, String img2, String img3, String img4, String img5, String img6, double starAVG) {
         this.hostelID = hostelID;
         this.hostelName = hostelName;
         this.sellerName = sellerName;
@@ -85,6 +87,7 @@ public class Hostel {
         this.img4 = img4;
         this.img5 = img5;
         this.img6 = img6;
+        this.starAVG = starAVG;
     }
 
     public Hostel(int hostelID, String hostelName, int sellerID, int totalRoom, boolean status, int floor, int countryID, int provinceID, int districtID, String address, double cost, double distance, String description) {
@@ -119,6 +122,23 @@ public class Hostel {
         this.description = description;
     }
 
+    public Hostel(int aInt, String string, String string0, int aInt0, boolean aBoolean, int aInt1, String string1, String string2, String string3, String string4, double aDouble, double aDouble0, String string5, String string6, String string7, String string8, String string9, String string10, String string11) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public double getStarAVG() {
+        return starAVG;
+    }
+
+    public void setStarAVG(double starAVG) {
+        this.starAVG = starAVG;
+    }
+
+    
+
+    
+
+    
     public String getImg1() {
         return img1;
     }

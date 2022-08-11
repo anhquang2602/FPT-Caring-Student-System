@@ -15,18 +15,27 @@ public class Seller {
     private String firstName;
     private String lastName;
     private int age;
-    private int phone;
+    private String phone;
     private String email;
     private int countryID;
     private String countryName;
     private String provinceName;
     private String districtName;
     private int provinceID;
-    private int districID;
+    private int districtID;
     private String address;
     private int status;
     int gender;
     private String image;
+    private String linkFb;
+
+    public String getLinkFb() {
+        return linkFb;
+    }
+
+    public void setLinkFb(String linkFb) {
+        this.linkFb = linkFb;
+    }
 
     public Seller() {
     }
@@ -35,7 +44,7 @@ public class Seller {
         this.sellerID = sellerID;
     }
 
-    public Seller(int sellerID, String firstName, String lastName, int age, int phone, String email, String countryName, String provinceName, String districtName, String address, int status, int gender, String image) {
+    public Seller(int sellerID, String firstName, String lastName, int age, String phone, String email, String countryName, String provinceName, String districtName, String address, int status, int gender, String image,String linkFb) {
         this.sellerID = sellerID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,9 +58,10 @@ public class Seller {
         this.status = status;
         this.gender = gender;
         this.image = image;
+        this.linkFb=linkFb;
     }
 
-    public Seller(int sellerID, String firstName, String lastName, int age, int phone, String email, String countryName, String provinceName, String districtName, String address, int gender) {
+    public Seller(int sellerID, String firstName, String lastName, int age, String phone, String email, String countryName, String provinceName, String districtName, String address, int gender,String linkFb) {
         this.sellerID = sellerID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -63,6 +73,36 @@ public class Seller {
         this.districtName = districtName;
         this.address = address;
         this.gender = gender;
+        this.linkFb=linkFb;
+    }
+    
+    public Seller(int sellerID, String firstName, String lastName, int age, String phone, String email, int countryID, int provinceID, int districtID, String address, int gender,String linkFb) {
+        this.sellerID = sellerID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.phone = phone;
+        this.email = email;
+        this.countryID = countryID;
+        this.provinceID = provinceID;
+        this.districtID = districtID;
+        this.address = address;
+        this.gender = gender;
+        this.linkFb=linkFb;
+    }
+    
+    public Seller(String firstName, String lastName, int age, String phone, String email, int countryID, int provinceID, int districtID, String address, int gender,String linkFb) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.phone = phone;
+        this.email = email;
+        this.countryID = countryID;
+        this.provinceID = provinceID;
+        this.districtID = districtID;
+        this.address = address;
+        this.gender = gender;
+        this.linkFb=linkFb;
     }
 
     public int getSellerID() {
@@ -105,11 +145,11 @@ public class Seller {
         this.age = age;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -161,12 +201,12 @@ public class Seller {
         this.provinceID = provinceID;
     }
 
-    public int getDistricID() {
-        return districID;
+    public int getDistrictID() {
+        return districtID;
     }
 
     public void setDistricID(int districID) {
-        this.districID = districID;
+        this.districtID = districID;
     }
 
     public String getAddress() {

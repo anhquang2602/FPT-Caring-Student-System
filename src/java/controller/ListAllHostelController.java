@@ -6,13 +6,16 @@
 package controller;
 
 import dao.HostelDAO;
+import dao.StarDAO;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Hostel;
+import model.StarVoting;
 
 /**
  *
@@ -32,8 +35,7 @@ public class ListAllHostelController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,9 +50,44 @@ public class ListAllHostelController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HostelDAO dao = new HostelDAO();
-        ArrayList<Hostel> h = dao.listAllHostel();
-        request.setAttribute("listallHostels", h);
+        String indexPage = request.getParameter("index");
+        if (indexPage == null) {
+            indexPage = "1";
+        }
+        int index = Integer.parseInt(indexPage);
+
+        int total = dao.getTotalHostels();
+        int endPage = total / 6;
+        if (total % 6 != 0) {
+            endPage++;
+        }
+        StarDAO daost = new StarDAO();
+
+        List<Hostel> pagingHostel = dao.pagingHostels(index);
+        for (Hostel hostel : pagingHostel) {
+            ArrayList<StarVoting> sv = daost.getListCommentByHostel(hostel.getHostelID());
+            if (!sv.isEmpty()) {
+                
+                int count = 0;
+                double sum = 0;
+                for (StarVoting starVoting : sv) {
+                    sum += starVoting.getStarvoting();
+                    count++;
+                }
+
+                hostel.setStarAVG((sum/count)/5*100);
+            }else{
+                hostel.setStarAVG(0);
+            }
+
+        }
+        
+        request.setAttribute("listHostelPaging", pagingHostel);
+        request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
+
         request.getRequestDispatcher("listAllHostels.jsp").forward(request, response);
     }
 
