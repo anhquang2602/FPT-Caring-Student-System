@@ -19,28 +19,59 @@
     </head>
     <body>
         <div style="margin-bottom: 20px">
-            <form action="SearchController" method="post">
-                Hostel <input type="text" name="keywordHostel" value="${keywordHostel}" > 
-                <input type="submit" value="Tìm Kiếm">
-            </form>
+            <!--            <form action="SearchController" method="post">
+                            Hostel <input type="text" name="keywordHostel" value="${keywordHostel}" > 
+                            <input type="submit" value="Tìm Kiếm">
+                        </form>-->
 
             <div style="margin-top:  20px;margin-bottom:   20px">
                 <form action="FilterHostelController" method="post">
-                    ${keywordHostel}
+                    Hostel <input type="text" name="keywordHostel" value="${keywordHostel}" >
                     Bộ lọc tìm kiếm <br/>
 
                     Giá: <input type="text" name="under" value="${under}"> - <input type="text" name="upper" value="${upper}"> <br/>
                     <mark>${costReport}</mark>
                     <br/>
                     Khoảng cách: <select name="distance">
-                        <option value="1"> < 1km</option>
-                        <option value="2"> < 2km</option>
-                        <option value="3"> < 3km</option>
-                        <option value="5"> < 5km</option>
-                        <option value="10"> < 10km</option>
+                        <option value="1" <c:if test = "${distance == 1 }">
+                                selected="selected"
+                            </c:if> > < 1km</option>
+                        <option value="2"<c:if test = "${distance == 2 }">
+                                selected="selected"
+                            </c:if>> < 2km</option>
+                        <option value="3" <c:if test = "${distance == 3 }">
+                                selected="selected"
+                            </c:if>> < 3km</option>
+                        <option value="5" <c:if test = "${distance == 5 }">
+                                selected="selected"
+                            </c:if>> < 5km</option>
+                        <option value="10" <c:if test = "${distance == 10 }">
+                                selected="selected"
+                            </c:if>> Tất cả</option>
                     </select>
                     <br/>
-                    <input type="submit" value="Áp Dụng"> 
+                    <br/>
+                    Xếp hạng: <select name="star">
+                        <option value="1" <c:if test = "${star == 1 }">
+                                selected="selected"
+                            </c:if>> 1</option>
+                        <option value="2" <c:if test = "${star == 2 }">
+                                selected="selected"
+                            </c:if>> 2</option>
+                        <option value="3" <c:if test = "${star == 3 }">
+                                selected="selected"
+                            </c:if>> 3</option>
+                        <option value="4" <c:if test = "${star == 4 }">
+                                selected="selected"
+                            </c:if>> 4</option>
+                        <option value="5" <c:if test = "${star == 5 }">
+                                selected="selected"
+                            </c:if>> 5</option>
+                        <option value="6" <c:if test = "${star == 6 }">
+                                selected="selected"
+                            </c:if>> Tất cả</option>
+                    </select>
+                    <input type="submit" value="Tìm kiếm"> 
                 </form>
 
             </div>

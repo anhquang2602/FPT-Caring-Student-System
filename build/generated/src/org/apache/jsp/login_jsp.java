@@ -42,10 +42,10 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css\">\r\n");
       out.write("<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js\"></script>\r\n");
       out.write("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\r\n");
-      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
@@ -63,19 +63,19 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        </div>\r\n");
       out.write("                        <div class=\"input-field d-flex flex-column mt-3\"> \r\n");
       out.write("                            <form name=\"loginForm\" action=\"LoginServlet\" method=\"post\" onsubmit=\"return checkSend()\">\r\n");
-      out.write("                                Nhập email<input class=\"form-control\" placeholder=\"Enter your email\" type=\"text\" name=\"username\"/><br/>\r\n");
+      out.write("                                Nhập email<input class=\"form-control\" placeholder=\"Nhập email của bạn\" type=\"text\" name=\"username\"/><br/>\r\n");
       out.write("                                <div id=\"divCheckEmail\"></div>\r\n");
-      out.write("                                Nhập mật khẩu<input class=\"form-control\" placeholder=\"Enter your password\" type=\"password\" name=\"pass\"/><br/>            \r\n");
+      out.write("                                Nhập mật khẩu<input class=\"form-control\" placeholder=\"Nhập mật khẩu của bạn\" type=\"password\" name=\"pass\"/><br/>            \r\n");
       out.write("                                <input class=\"mt-4 btn btn-dark d-flex justify-content-center align-items-center\" type=\"submit\" value=\"Đăng nhập\" onclick=\"checkValidatorForLogin()\"/>\r\n");
       out.write("                            </form>\r\n");
       out.write("                            <div class=\"text1 mt-4\"> <a style=\"text-decoration: none; color: rgb(238, 77, 45); margin-left: 10px\" href=\"forgotPass_InputEmail.jsp\">Quên mật khẩu</a> </div>\r\n");
       out.write("                            <div class=\"text2 mt-4\"> <span>Bạn chưa có tài khoản?<a class=\"register\" style=\"text-decoration: none; color: rgb(238, 77, 45)\" href=\"register.jsp\">  Đăng ký</a></span> </div>\r\n");
-      out.write("                            <h2 style=\"color: red\"> ");
+      out.write("                            <h4 class=\"mt-3\" style=\"text-align: center; color: #842029\"> ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${errorLogin}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</h2>\r\n");
-      out.write("                            <h2 style=\"color: green\"> ");
+      out.write("</h4>\r\n");
+      out.write("                            <h4 class=\"mt-3\" style=\"text-align: center; color: #842029\"> ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${InputNewPassMess}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</h2>\r\n");
+      out.write("</h4>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
@@ -83,7 +83,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\r\n");
       out.write("    </body>\r\n");
       out.write("    <script src=\"validator/Validator.js\"></script>\r\n");
-      out.write("</html>\r\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

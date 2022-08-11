@@ -119,7 +119,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19)));
+                        rs.getString(19),0));
 
             }
 
@@ -149,10 +149,10 @@ public class HostelDAO extends DBContext {
             st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
+               h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19)));
+                        rs.getString(19),0));
             }
 
         } catch (SQLException ex) {
@@ -186,7 +186,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19)));
+                        rs.getString(19),0));
             }
 
         } catch (SQLException ex) {
@@ -339,7 +339,7 @@ public class HostelDAO extends DBContext {
     }
 
     public ArrayList<Hostel> getlHostelByNamePagging(String keyword, int index) {
-        ArrayList<Hostel> list = new ArrayList<>();
+        ArrayList<Hostel> h = new ArrayList<>();
         try {
 
             String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom,h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions from Hostels h\n"
@@ -357,27 +357,16 @@ public class HostelDAO extends DBContext {
             st.setInt(1, (index - 1) * 6);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Hostel h = new Hostel();
-                h.setHostelID(rs.getInt(1));
-                h.setHostelName(rs.getString(2));
-                h.setSellerName(rs.getString(3));
-                h.setTotalRoom(rs.getInt(4));
-                h.setStatus(rs.getBoolean(5));
-                h.setFloor(rs.getInt(6));
-                h.setCountryName(rs.getString(7));
-                h.setProvinceNamẹ(rs.getString(8));
-                h.setDistrictName(rs.getString(9));
-                h.setAddress(rs.getString(10));
-                h.setCost(rs.getDouble(11));
-                h.setDistance(rs.getDouble(12));
-                h.setDescription(rs.getString(13));
-                list.add(h);
+                h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
+                        rs.getString(19),0));
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return list;
+        return h;
     }
 
     public ArrayList<Hostel> getlHostelByName(String keyword) {
@@ -396,21 +385,10 @@ public class HostelDAO extends DBContext {
             st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Hostel h = new Hostel();
-                h.setHostelID(rs.getInt(1));
-                h.setHostelName(rs.getString(2));
-                h.setSellerName(rs.getString(3));
-                h.setTotalRoom(rs.getInt(4));
-                h.setStatus(rs.getBoolean(5));
-                h.setFloor(rs.getInt(6));
-                h.setCountryName(rs.getString(7));
-                h.setProvinceNamẹ(rs.getString(8));
-                h.setDistrictName(rs.getString(9));
-                h.setAddress(rs.getString(10));
-                h.setCost(rs.getDouble(11));
-                h.setDistance(rs.getDouble(12));
-                h.setDescription(rs.getString(13));
-                list.add(h);
+                list.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
+                        rs.getString(19),0));
             }
 
         } catch (SQLException ex) {
@@ -647,5 +625,12 @@ public class HostelDAO extends DBContext {
         return list;
     }
 
+    public static void main(String[] args) {
+        HostelDAO h = new HostelDAO();
+        ArrayList<Hostel> hostels = h.listAllHostelPagging(1);
+        for (Hostel hostel : hostels) {
+            System.out.println(hostel.getHostelName());
+        }
+    }
    
 }

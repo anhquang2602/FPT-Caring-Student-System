@@ -70,7 +70,7 @@
                 </ul>
                 <div id="topnavbar">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-                        <form class="example d-flex align-items-center"> 
+                        <form class="example d-flex align-items-center" action="SearchController" method="post"> 
                             <input type="text" placeholder="" name="search"> 
                             <button type="submit"><i class="fa fa-search"></i></button> 
                         </form>

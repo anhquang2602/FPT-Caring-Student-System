@@ -32,42 +32,7 @@ public class SearchController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-        String keywordHostel = request.getParameter("keywordHostel");
-        int index = Integer.parseInt(request.getParameter("index"));
-        HostelDAO hostelDAO = new HostelDAO();
-        ArrayList<Hostel> hostels = new ArrayList<>();
-
-        if (keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
-//            hostels = hostelDAO.listAllHostel(index);
-        } else {
-            hostels = hostelDAO.getlHostelByName(keywordHostel);
-        }
-        int totalPage = hostelDAO.getTotalPage(keywordHostel, hostels);
-        PrintWriter out = response.getWriter();
-        for (Hostel hostel : hostels) {
-            out.println("<c:forEach items=\"" + hostels + "\" var=\"" + hostel + "\">\n"
-                    + "                    <div>\n"
-                    + "                        <img src=\"img/DH-FPT.jpg\"> <br/>\n"
-                    + "                        Tên nhà trọ: " + hostel.getHostelName() + " <br/>\n"
-                    + "                        Tình trạng: \n"
-                    + "                        <c:if test=\"" + hostel.isStatus() + " eq true}\">\n"
-                    + "                            Còn Phòng\n"
-                    + "                        </c:if>\n"
-                    + "                        <c:if test=\"" + hostel.isStatus() + " eq false}\">\n"
-                    + "                            Hết Phòng\n"
-                    + "                        </c:if>\n"
-                    + "                        <br/>\n"
-                    + "                        Địa chỉ: " + hostel.getAddress() + ", " + hostel.getDistrictName() + ", " + hostel.getProvinceNamẹ() + ", " + hostel.getCountryName() + " <br/>\n"
-                    + "                        Giá: " + hostel.getCost() + " <br/>\n"
-                    + "                        Khoảng cách: " + hostel.getDistance() + "\n"
-                    + "                    </div>\n"
-                    + "                </c:forEach>");
-        }
-    }
+  
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
