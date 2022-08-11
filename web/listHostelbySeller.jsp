@@ -55,6 +55,7 @@
                                                             src="images/nhà trọ.jpg" </c:if>
                                                          style="width: 150px; height: 150px" >
                                                 </div>
+                                                <a class="btn btn-primary" href="ChartVoteController?hostelId=${d.hostelID}" style="margin-left: 700px">Xem Biểu Đồ</a> 
                                                 <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
 
