@@ -16,45 +16,66 @@
             <ul>
                 <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
                 <li> 
-                    <span class="fas fa-th-list"></span> 
-                    <a class="fs12 ps-3" style="" href="ListAllRestaurantController">NHÀ ĂN</a>  
+                    <a class="bg-hostel-light fs12 ps-3" href="ListAllRestaurantController">
+                        <span class="fas fa-utensils"></span> 
+                        <span>NHÀ ĂN</span>
+                    </a>  
                 </li>
                 <li> 
-                    <span class="fas fa-chart-line"></span> 
-                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="listallhostels">NHÀ TRỌ</a> 
+                    <a class="bg-hostel-light fs12 ps-3" href="listallhostels">
+                        <span class="fas fa-bed"></span> 
+                        <span>NHÀ TRỌ</span>
+                    </a> 
                 </li>
                 <li> 
-                    <span class="fas fa-chart-line"></span> 
-                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="ClubListController">CÂU LẠC BỘ</a> 
+                    <a class="bg-hostel-light fs12 ps-3" href="ClubListController">
+                        <span class="fas fa-user-friends"></span>
+                        <span>CÂU LẠC BỘ</span> 
+                    </a> 
                 <li> 
-                    <span class="fas fa-suitcase-rolling"></span> 
-                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="BusPagingServlet">XE BUS</a> 
+                    <a class="bg-hostel-light fs12 ps-3" href="BusPagingServlet">
+                        <span class="fas fa-bus"></span> 
+                        <span>XE BUS</span>
+                    </a> 
                 </li>
                 <li> 
-                    <span class="fas fa-calendar-alt"></span> 
-                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="department">PHÒNG BAN</a> 
+                    
+                    <a class="bg-hostel-light fs12 ps-3" href="department">
+                        <span class="fas fa-graduation-cap"></span> 
+                        <span>PHÒNG BAN</span>
+                    </a> 
                 </li>
 
                 <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
                 <li> 
-                    <span class="fas fa-th-list"></span> 
-                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="ListAllRestaurantController">NHÀ ĂN</a>  
+                    <a class="bg-hostel-light fs12 ps-3" href="ListAllRestaurantController">
+                        <span class="fas fa-utensils mr-4"></span> 
+                        NHÀ ĂN
+                    </a>  
                 </li>
                 <li> 
-                    <span class="fas fa-chart-line"></span> 
-                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="listallhostels">NHÀ TRỌ</a> 
+                    <a class="bg-hostel-light fs12 ps-3" href="listallhostels">
+                        <span class="fas fa-bed mr-3"></span> 
+                        NHÀ TRỌ
+                    </a> 
                 </li>
                 <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
                 <li> 
-                    <span class="fas fa-chart-line"></span> 
-                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="ClubListController">CÂU LẠC BỘ</a> 
+                    <a class="bg-hostel-light fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="ClubListController">
+                        <span class="fas fa-user-friends"></span>
+                        <span>CÂU LẠC BỘ</span>
+                    </a> 
                 <li> 
-                    <span class="fas fa-suitcase-rolling"></span> 
-                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="BusPagingServlet">XE BUS</a> 
+                    <a class="bg-hostel-light fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="BusPagingServlet">
+                        <span class="fas fa-bus"></span> 
+                        <span>XE BUS</span>
+                    </a> 
                 </li>
                 <li> 
-                    <span class="fas fa-calendar-alt"></span> 
-                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="department">PHÒNG BAN</a> 
+                    <a class="bg-hostel-light fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="department">
+                        <span class="fas fa-graduation-cap"></span> 
+                        <span>PHÒNG BAN</span>
+                    </a> 
                 </li>
                 <%}%>
             </ul>
