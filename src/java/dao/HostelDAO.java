@@ -70,11 +70,11 @@ public class HostelDAO extends DBContext {
         try {
 
             String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
-                    + "join Country c on h.CountryID =c.CountryID\n"
-                    + "join District d on h.DistrictID = d.DistrictID\n"
-                    + "join Province p on h.ProvinceID = p.ProvinceID\n"
-                    + "join Sellers s on h.SellerID = s.SellerID\n"
-                    + "left join HostelImage i on h.HostelID = i.HostelID";
+                    + "                    join Country c on h.CountryID =c.CountryID\n"
+                    + "                    join District d on h.DistrictID = d.DistrictID\n"
+                    + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
+                    + "                    join Sellers s on h.SellerID = s.SellerID\n"
+                    + "                    left join HostelImage i on h.HostelID = i.HostelID";
 
             PreparedStatement st;
 
@@ -86,6 +86,104 @@ public class HostelDAO extends DBContext {
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
                         rs.getString(19)));
 
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return h;
+    }
+
+    public ArrayList<Hostel> listAllHostelPagging(int intdex) {
+        ArrayList<Hostel> h = new ArrayList<>();
+        try {
+
+            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+                    + "                    join Country c on h.CountryID =c.CountryID\n"
+                    + "                    join District d on h.DistrictID = d.DistrictID\n"
+                    + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
+                    + "                    join Sellers s on h.SellerID = s.SellerID\n"
+                    + "                    left join HostelImage i on h.HostelID = i.HostelID\n"
+                    + "					order by h.HostelID\n"
+                    + "					OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+
+            PreparedStatement st;
+
+            st = connection.prepareStatement(sql);
+            st.setInt(1, (intdex - 1) * 6);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
+                        rs.getString(19)));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return h;
+    }
+
+    public ArrayList<Hostel> filterHostel(double costUnder, double costUpper, double distance) {
+        ArrayList<Hostel> h = new ArrayList<>();
+        try {
+
+            String sql = "";
+
+            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+                    + "                                        join Country c on h.CountryID =c.CountryID\n"
+                    + "                                       join District d on h.DistrictID = d.DistrictID\n"
+                    + "                                       join Province p on h.ProvinceID = p.ProvinceID\n"
+                    + "                                        join Sellers s on h.SellerID = s.SellerID\n"
+                    + "                                       left join HostelImage i on h.HostelID = i.HostelID\n"
+                    + "									   where h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                    + "									   and h.Distance <= " + distance + "\n"
+                    + "                    				order by h.HostelID";
+            PreparedStatement st;
+
+            st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
+                        rs.getString(19)));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return h;
+    }
+
+    public ArrayList<Hostel> filterHostelPagging(double costUnder, double costUpper, double distance, int index) {
+        ArrayList<Hostel> h = new ArrayList<>();
+        try {
+
+            String sql = "";
+
+            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+                    + "                                        join Country c on h.CountryID =c.CountryID\n"
+                    + "                                       join District d on h.DistrictID = d.DistrictID\n"
+                    + "                                       join Province p on h.ProvinceID = p.ProvinceID\n"
+                    + "                                        join Sellers s on h.SellerID = s.SellerID\n"
+                    + "                                       left join HostelImage i on h.HostelID = i.HostelID\n"
+                    + "									   where h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                    + "									   and h.Distance <= " + distance + "\n"
+                    + "                    				order by h.HostelID\n"
+                    + "                    				OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+            PreparedStatement st;
+
+            st = connection.prepareStatement(sql);
+            st.setInt(1, (index - 1) * 6);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
+                        rs.getString(19)));
             }
 
         } catch (SQLException ex) {
@@ -226,35 +324,8 @@ public class HostelDAO extends DBContext {
 
     }
 
-    public ArrayList<Hostel> listHostel() {
-        ArrayList<Hostel> h = new ArrayList<>();
-        try {
-
-            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom,h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions from Hostels h\n"
-                    + "join Country c on h.CountryID=c.CountryID\n"
-                    + "join District d on h.DistrictID = d.DistrictID\n"
-                    + "join Province p on h.ProvinceID = p.ProvinceID\n"
-                    + "join Sellers s on h.SellerID = s.SellerID";
-
-            PreparedStatement st;
-
-            st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
-                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
-                        rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19)));
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return h;
-    }
-
-    public ArrayList<Hostel> getlHostelByName(String keyword) {
-        ArrayList<Hostel> h = new ArrayList<>();
+    public ArrayList<Hostel> getlHostelByNamePagging(String keyword, int index) {
+        ArrayList<Hostel> list = new ArrayList<>();
         try {
 
             String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom,h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions from Hostels h\n"
@@ -262,44 +333,147 @@ public class HostelDAO extends DBContext {
                     + "                    join District d on h.DistrictID = d.DistrictID\n"
                     + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
                     + "                    join Sellers s on h.SellerID = s.SellerID\n"
-                    + "					where h.HostelName like '%" + keyword + "%'";
+                    + "					where h.HostelName like N'%" + keyword + "%'"
+                    + "order by h.HostelID\n"
+                    + "					OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+
+            PreparedStatement st;
+
+            st = connection.prepareStatement(sql);
+            st.setInt(1, (index - 1) * 6);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Hostel h = new Hostel();
+                h.setHostelID(rs.getInt(1));
+                h.setHostelName(rs.getString(2));
+                h.setSellerName(rs.getString(3));
+                h.setTotalRoom(rs.getInt(4));
+                h.setStatus(rs.getBoolean(5));
+                h.setFloor(rs.getInt(6));
+                h.setCountryName(rs.getString(7));
+                h.setProvinceNamẹ(rs.getString(8));
+                h.setDistrictName(rs.getString(9));
+                h.setAddress(rs.getString(10));
+                h.setCost(rs.getDouble(11));
+                h.setDistance(rs.getDouble(12));
+                h.setDescription(rs.getString(13));
+                list.add(h);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Hostel> getlHostelByName(String keyword) {
+        ArrayList<Hostel> list = new ArrayList<>();
+        try {
+
+            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom,h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions from Hostels h\n"
+                    + "                    join Country c on h.CountryID=c.CountryID\n"
+                    + "                    join District d on h.DistrictID = d.DistrictID\n"
+                    + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
+                    + "                    join Sellers s on h.SellerID = s.SellerID\n"
+                    + "					where h.HostelName like N'%" + keyword + "%'";
 
             PreparedStatement st;
 
             st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
-                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
-                        rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19)));
+                Hostel h = new Hostel();
+                h.setHostelID(rs.getInt(1));
+                h.setHostelName(rs.getString(2));
+                h.setSellerName(rs.getString(3));
+                h.setTotalRoom(rs.getInt(4));
+                h.setStatus(rs.getBoolean(5));
+                h.setFloor(rs.getInt(6));
+                h.setCountryName(rs.getString(7));
+                h.setProvinceNamẹ(rs.getString(8));
+                h.setDistrictName(rs.getString(9));
+                h.setAddress(rs.getString(10));
+                h.setCost(rs.getDouble(11));
+                h.setDistance(rs.getDouble(12));
+                h.setDescription(rs.getString(13));
+                list.add(h);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return h;
+        return list;
     }
 
     // dem so luong nha tro
     public int getTotalPage(String keyword, ArrayList<Hostel> hostels) {
-        if (keyword.isEmpty() || keyword.equalsIgnoreCase("")) {
-            hostels = listHostel();
+        if (keyword == null || keyword == "") {
+            hostels = listAllHostel();
         } else {
             hostels = getlHostelByName(keyword);
         }
-        int totalPage = hostels.size() / 5;
-        if (hostels.size() % 5 != 0) {
+        int totalPage = hostels.size() / 6;
+        if (hostels.size() % 6 != 0) {
             totalPage++;
         }
         return totalPage;
     }
 
+    // dem so luong nha tro theo loc
+    public int getTotalPageByFilter(ArrayList<Hostel> hostels, double costUnder, double costUpper, double distance) {
+        hostels = filterHostel(costUnder, costUpper, distance);
+        int totalPage = hostels.size() / 6;
+        if (hostels.size() % 6 != 0) {
+            totalPage++;
+        }
+        return totalPage;
+    }
+
+    public double getMaxCost() {
+        double maxCost = 0;
+        try {
+
+            String sql = "									select top 1 h.HostelID, Max(h.RentCost) from Hostels h\n"
+                    + "                                        join Country c on h.CountryID =c.CountryID\n"
+                    + "                                       join District d on h.DistrictID = d.DistrictID\n"
+                    + "                                       join Province p on h.ProvinceID = p.ProvinceID\n"
+                    + "                                        join Sellers s on h.SellerID = s.SellerID\n"
+                    + "                                       left join HostelImage i on h.HostelID = i.HostelID\n"
+                    + "									   group by h.HostelID,h.RentCost\n"
+                    + "									   order by h.RentCost desc";
+
+            PreparedStatement st;
+
+            st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Hostel h = new Hostel();
+                h.setHostelID(rs.getInt(1));
+                h.setCost(rs.getDouble(2));
+                maxCost = h.getCost();
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return maxCost;
+    }
+
     public static void main(String[] args) {
         HostelDAO h = new HostelDAO();
-        for (Hostel a : h.listHostelbySeller(2)) {
-            System.out.println(a.getHostelName());
+//        ArrayList<Hostel> hostels = h.filterHostel("t", 1800000, 2000000, 2);
+//        for (Hostel hostel : hostels) {
+//            System.out.println(hostel.getHostelName());;
+//        }
+//        double max = h.getMaxCost();
+//        System.out.println(max);
+        ArrayList<Hostel> hostel = h.filterHostelPagging(1400000, 2500000, 3, 2);
+        for (Hostel hostel1 : hostel) {
+            System.out.println(hostel1.getHostelName());
         }
-
+        System.out.println(hostel.size());
+        int count = h.getTotalPageByFilter(hostel, 1400000, 2500000, 3);
+        System.out.println(count);
     }
 }

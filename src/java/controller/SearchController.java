@@ -35,17 +35,37 @@ public class SearchController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SearchController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SearchController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        request.setCharacterEncoding("utf-8");
+        String keywordHostel = request.getParameter("keywordHostel");
+        int index = Integer.parseInt(request.getParameter("index"));
+        HostelDAO hostelDAO = new HostelDAO();
+        ArrayList<Hostel> hostels = new ArrayList<>();
+
+        if (keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
+//            hostels = hostelDAO.listAllHostel(index);
+        } else {
+            hostels = hostelDAO.getlHostelByName(keywordHostel);
+        }
+        int totalPage = hostelDAO.getTotalPage(keywordHostel, hostels);
+        PrintWriter out = response.getWriter();
+        for (Hostel hostel : hostels) {
+            out.println("<c:forEach items=\"" + hostels + "\" var=\"" + hostel + "\">\n"
+                    + "                    <div>\n"
+                    + "                        <img src=\"img/DH-FPT.jpg\"> <br/>\n"
+                    + "                        Tên nhà trọ: " + hostel.getHostelName() + " <br/>\n"
+                    + "                        Tình trạng: \n"
+                    + "                        <c:if test=\"" + hostel.isStatus() + " eq true}\">\n"
+                    + "                            Còn Phòng\n"
+                    + "                        </c:if>\n"
+                    + "                        <c:if test=\"" + hostel.isStatus() + " eq false}\">\n"
+                    + "                            Hết Phòng\n"
+                    + "                        </c:if>\n"
+                    + "                        <br/>\n"
+                    + "                        Địa chỉ: " + hostel.getAddress() + ", " + hostel.getDistrictName() + ", " + hostel.getProvinceNamẹ() + ", " + hostel.getCountryName() + " <br/>\n"
+                    + "                        Giá: " + hostel.getCost() + " <br/>\n"
+                    + "                        Khoảng cách: " + hostel.getDistance() + "\n"
+                    + "                    </div>\n"
+                    + "                </c:forEach>");
         }
     }
 
@@ -58,9 +78,60 @@ public class SearchController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    public void hostels(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        String keywordHostel = request.getParameter("keywordHostel");
+        String index = request.getParameter("index");
+        if (index == null) {
+            index = "1";
+
+        }
+        HostelDAO hostelDAO = new HostelDAO();
+        ArrayList<Hostel> hostels = new ArrayList<>();
+
+        if (keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
+            int indexPage = Integer.parseInt(index);
+            hostels = hostelDAO.listAllHostelPagging(indexPage);
+        } else {
+            hostels = hostelDAO.getlHostelByName(keywordHostel);
+        }
+        int totalPage = hostelDAO.getTotalPage(keywordHostel, hostels);
+        String keywordRestaurant = request.getParameter("keywordRestaurant");
+
+        request.setAttribute("totalPage", totalPage);
+        request.setAttribute("hostels", hostels);
+        request.setAttribute("keywordHostel", keywordHostel);
+        request.getRequestDispatcher("search.jsp").forward(request, response);
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        String index = request.getParameter("index");
+        if (index == null) {
+            index = "1";
+
+        }
+        HostelDAO hostelDAO = new HostelDAO();
+        ArrayList<Hostel> hostels = new ArrayList<Hostel>();
+        String keywordHostel = request.getParameter("keywordHostel");
+        int totalPage = hostelDAO.getTotalPage(keywordHostel, hostels);
+        if (keywordHostel == null || keywordHostel == "") {
+            int indexPage = Integer.parseInt(index);
+            hostels = hostelDAO.listAllHostelPagging(indexPage);
+        } else {
+            int indexPage = Integer.parseInt(index);
+            hostels = hostelDAO.getlHostelByNamePagging(keywordHostel,indexPage);
+        }
+
+        String keywordRestaurant = request.getParameter("keywordRestaurant");
+
+        request.setAttribute("totalPage", totalPage);
+        request.setAttribute("hostels", hostels);
+        request.setAttribute("keywordHostel", keywordHostel);
         request.getRequestDispatcher("search.jsp").forward(request, response);
     }
 
@@ -78,18 +149,23 @@ public class SearchController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         String keywordHostel = request.getParameter("keywordHostel");
-        
+        String index = request.getParameter("index");
+        if (index == null) {
+            index = "1";
+
+        }
         HostelDAO hostelDAO = new HostelDAO();
         ArrayList<Hostel> hostels = new ArrayList<>();
-        
-        if (keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
-            hostels = hostelDAO.listHostel();
+
+        if (keywordHostel == null || keywordHostel == "") {
+            int indexPage = Integer.parseInt(index);
+            hostels = hostelDAO.listAllHostelPagging(indexPage);
         } else {
-            hostels = hostelDAO.getlHostelByName(keywordHostel);
+            int indexPage = Integer.parseInt(index);
+            hostels = hostelDAO.getlHostelByNamePagging(keywordHostel,indexPage);
         }
         int totalPage = hostelDAO.getTotalPage(keywordHostel, hostels);
-
-        String keywordRestaurant = request.getParameter("keywordRestaurant");
+//        String keywordRestaurant = request.getParameter("keywordRestaurant");
 
         request.setAttribute("totalPage", totalPage);
         request.setAttribute("hostels", hostels);

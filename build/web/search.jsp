@@ -20,76 +20,32 @@
     <body>
         <div style="margin-bottom: 20px">
             <form action="SearchController" method="post">
-                Hostel <input type="text" name="keywordHostel" value="${keywordHostel}"> 
-                <input type="submit" value="Search"> 
-                
-                <div>
-                    Giá: <br/>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="cost">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            <1,000,000
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="cost">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            1,000,000 - 2,000,000
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="cost">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            2,000,000 - 3,000,000
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="cost">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            3,000,000 - 5,000,000
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="cost">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            > 5,000,000
-                        </label>
-                    </div>
-                </div>
-                <div>
-                    Khoảng cách: <br/>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="distance">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            < 1km
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="distance">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            < 2km
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="distance">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            < 3km
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="distance">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            < 5km
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="distance">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            > 5km
-                        </label>
-                    </div>
-                </div>
+                Hostel <input type="text" name="keywordHostel" value="${keywordHostel}" > 
+                <input type="submit" value="Tìm Kiếm">
+            </form>
 
+            <div style="margin-top:  20px;margin-bottom:   20px">
+                <form action="FilterHostelController" method="post">
+                    ${keywordHostel}
+                    Bộ lọc tìm kiếm <br/>
+
+                    Giá: <input type="text" name="under" value="${under}"> - <input type="text" name="upper" value="${upper}"> <br/>
+                    <mark>${costReport}</mark>
+                    <br/>
+                    Khoảng cách: <select name="distance">
+                        <option value="1"> < 1km</option>
+                        <option value="2"> < 2km</option>
+                        <option value="3"> < 3km</option>
+                        <option value="5"> < 5km</option>
+                        <option value="10"> < 10km</option>
+                    </select>
+                    <br/>
+                    <input type="submit" value="Áp Dụng"> 
+                </form>
+
+            </div>
+
+            <div id="listHostel">
 
                 <c:forEach items="${hostels}" var="hostel">
                     <div>
@@ -108,12 +64,13 @@
                         Khoảng cách: ${hostel.distance}
                     </div>
                 </c:forEach>
+            </div>
 
-                <c:forEach begin="1" end="${totalPage}" var="i">
-                    <a href="#">${i}</a>
-                </c:forEach>
+            <c:forEach begin="1" end="${totalPage}" var="i">
+                <a href="SearchController?index=${i}&keywordHostel=${keywordHostel}">${i}</a> 
+            </c:forEach>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-            </form>
         </div>
 
 
