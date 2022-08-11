@@ -19,7 +19,7 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <form action="UpdateSellerProfile" enctype="multipart/form-data"  method="post" >
+                <form action="UpdateSellerProfile" name="updateSellerForm" enctype="multipart/form-data"  method="post" onsubmit="return validateUpdateSeller()" >
                     <div class="container rounded bg-white mt-5 mb-5">
                         <div class="row">
                             <div>
@@ -110,7 +110,7 @@
                                 </div>
                             </div>
                             <div class="text-center mt-5">
-                                <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateProfile()">LƯU HỒ SƠ</button>
+                                <button class="btn btn-primary profile-button" type="submit">LƯU HỒ SƠ</button>
                             </div>
                             <label class="labels">${UpdateError}</label>
                             <label class="labels">${UpdateProcess}</label>
@@ -186,6 +186,19 @@
                 URL.revokeObjectURL(output.src) // free memory
             }
         };
+    </script>
+
+    <script>
+        function validateUpdateSeller() {
+            let isValid = true;
+            const province = document.updateSellerForm.province.value;
+            document.getElementById('errorProvince').innerText = ' ';
+            if (!province) {
+                document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+                isValid = false;
+            }
+            return isValid;
+        }
     </script>
     <%@include file="/footer.jsp" %>
 </html>

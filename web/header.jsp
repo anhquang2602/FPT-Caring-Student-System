@@ -59,6 +59,8 @@
                                 <a class="dropdown-item" style="color: red" href="UpdateStudentProfile">HỒ SƠ CỦA TÔI</a>
                                 <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
                                 <a class="dropdown-item" style="color: red" href="UpdateAdminProfile">HỒ SƠ CỦA TÔI</a>
+                                <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 4) {%>
+                                <a class="dropdown-item" style="color: red" href="UpdateClubProfile">HỒ SƠ CỦA TÔI</a>
                                 <%}%>
                                 <a class="dropdown-item" style="color: red" href="ChangePasswordServlet">ĐỔI MẬT KHẨU</a>
                                 <a class="dropdown-item" style="color: red" href="LogoutServlet">ĐĂNG XUẤT</a>
