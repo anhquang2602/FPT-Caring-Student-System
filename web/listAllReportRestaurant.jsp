@@ -51,9 +51,9 @@
                                                             <tr>
                                                                 <th>Tên Nhà Hàng</th>
                                                                 <th>Spam</th>
-                                                                <th>Violent</th>
-                                                                <th>Offensive</th>
-                                                                <th>Truthless</th>
+                                                                <th>Hình Ảnh Không Phù Hợp</th>
+                                                                <th>Ngôn Từ Đả Kích</th>
+                                                                <th>Thông Tin Sai Sự Thật</th>
                                                                 <th class="text-center">Xem Bài Viết/ Xóa Bài Đăng</th>
                                                             </tr>
                                                         </thead>
