@@ -13,6 +13,7 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
         <style>
@@ -63,8 +64,8 @@
         </c:choose>
         <div class="px-0">
             <%@include file="/header.jsp" %>
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar">
@@ -103,10 +104,11 @@
                                                     </div>
                                                 </div> 
                                             <td>
+                                                
                                                 <div class="stars-outer">
                                                     <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
                                                 </div>
-                                                <span class="number-rating"></span>
+                                                
                                             </td>
                                             </li> 
                                     </c:forEach>
@@ -134,7 +136,7 @@
             $(document).ready(function () {
                 $(".toast").toast({delay: 4000});
                 $(".toast").toast("show");
-
+                
             });
         </script>
     </body>

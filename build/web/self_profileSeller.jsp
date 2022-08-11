@@ -9,14 +9,15 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/profileStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
     <body class="bg-white">
         <div class="px-0 bg-white">
             <%@include file="/header.jsp" %> 
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <form action="UpdateSellerProfile" enctype="multipart/form-data"  method="post" >
@@ -25,12 +26,12 @@
                             <div>
                                 <ul class="breadcrumb bg-white">
                                     <li><a href="home.jsp">Home</a></li>
-                                    <li><a href="UpdateSellerProfile">HỒ SƠ CỦA TÔI</a></li>                                    
+                                    <li><a href="UpdateSellerProfile">Hồ sơ của tôi</a></li>                                    
                                 </ul>
                             </div>
 
                             <div class="col-md-4">
-                                <div class="justify-content-between align-items-center p-3 py-5">
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                     <div class="mt-5">
                                         <img class="rounded-circle justify-content-center" height="200px" width="200px" src="${UserAvatar}" id="output">
                                         <input type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file mt-3" id="avatarImg">
@@ -47,20 +48,36 @@
                                 </div>
                                 <div class="row mt-2">
                                     <input name="id" value="${seller.sellerID}" hidden="">
-                                    <div class="col-md-6"><label class="labels">HỌ</label><input type="text" name="firstName" class="form-control" value="${seller.firstName}"></div>
-                                    <div class="col-md-6"><label class="labels">TÊN</label><input type="text" name="lastName" class="form-control" value="${seller.lastName}"></div>
+                                    <div class="col-md-6">
+                                        <h4>Họ</h4>
+                                        <input type="text" name="firstName" class="form-control" value="${seller.firstName}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>Tên</h4>
+                                        <input type="text" name="lastName" class="form-control" value="${seller.lastName}">
+                                    </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">TUỔI</label><input type="number" name="age" class="form-control"value="${seller.age}"></div>
+                                    <div class="col-md-12">
+                                        <h4>Tuổi</h4>
+                                        <input type="number" name="age" class="form-control"value="${seller.age}">
+                                    </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">SỐ ĐIỆN THOẠI</label><input type="text" name="phone" class="form-control" value="${seller.phone}"></div>
+                                    <div class="col-md-12">
+                                        <h4>Số Điện Thoại</h4>
+                                        <input type="text" name="phone" class="form-control" value="${seller.phone}">
+                                    </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" readonly="" value="${seller.email}"></div>
+                                    <div class="col-md-12">
+                                        <h4>Email</h4>
+                                        <input type="text" class="form-control" readonly="" value="${seller.email}">
+                                    </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">GIỚI TÍNH</label></br>
+                                    <div class="col-md-12">
+                                        <h4>Giới Tính</h4>
                                         <label class="labels" id="genderlable" hidden="">${seller.gender}</label>
                                         <input class="form-check-input" type="radio" name="gender"  id="inlineRadio1" value="1"> Nam
                                         <input class="form-check-input" type="radio" name="gender"  id="inlineRadio2" value="0"> Nữ                                            
@@ -68,23 +85,23 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-11">
-                                        <label class="labels">LINK FACEBOOK</label>
-                                        <input type="text" name="linkFb" class="form-control"value="${seller.linkFb}">
+                                        <label class="labels" style="font-size: 20px">Link Facebook</label>
+                                        <input type="text" name="linkFb" class="form-control" value="${seller.linkFb}">
                                     </div>
-                                    <div class="col-md-1 mt-4">
+                                    <div class="col-md-1 mt-4 my-2">
                                         <a class="login-facebook-icon" style="height: 40px; width: 40px; margin-left: calc(100%-20px)" href="${seller.linkFb}" title="" target="_blank">f</a>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-12">
-                                        <label class="labels" for="cars">Tỉnh, thành phố</label>
+                                        <label class="labels" style="font-size: 20px" for="cars">Tỉnh, Thành Phố</label>
                                         <select name="province" id="province" class="province form-select" onchange>
                                             <option value="">Select Province</option>
                                             <c:forEach items ="${listProvince}" var="o">
                                                 <option value="${o.provinceID}" 
                                                         <c:if test = "${seller.provinceID == o.provinceID }">
                                                             selected="selected"
-                                                        </c:if>    >${o.provinceName}</option>
+                                                        </c:if>>${o.provinceName}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -93,24 +110,27 @@
 
                                 <div class="row mt-3">
                                     <div class="col-md-12">
-                                        <label class="labels" for="cars">Quận, phường</label>
+                                        <label class="labels" style="font-size: 20px" for="cars">Quận, Phường</label>
                                         <select name="district"  id ="district" class="district form-select">
                                             <c:forEach items ="${listDistrict}" var="o">
                                                 <option value="${o.districtID}" 
                                                         <c:if test = "${seller.districtID == o.districtID }">
                                                             selected="selected"
-                                                        </c:if>    >${o.districtName}</option>
+                                                        </c:if>>${o.districtName}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">ĐỊA CHỈ</label><input type="text" name="addressDetail" class="form-control"value="${seller.address}" ></div>
+                                    <div class="col-md-12">
+                                        <h4>Địa Chỉ</h4>
+                                        <input type="text" name="addressDetail" class="form-control"value="${seller.address}">
+                                    </div>
                                 </div>
                             </div>
                             <div class="text-center mt-5">
-                                <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateProfile()">LƯU HỒ SƠ</button>
+                                <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateProfile()">Lưu Hồ Sơ</button>
                             </div>
                             <label class="labels">${UpdateError}</label>
                             <label class="labels">${UpdateProcess}</label>

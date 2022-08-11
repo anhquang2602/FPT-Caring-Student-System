@@ -13,14 +13,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/clubStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
     <body class="bg-white">
         <div class="px-0">
             <%@include file="/header.jsp" %>
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar">
@@ -65,7 +66,7 @@
                                                     ${club.email}
                                                 </td>    
                                                 <td>
-                                                    <a style="text-decoration: none" href="detailClub?id=${club.clubID}">View detail</a>
+                                                    <a style="text-decoration: none" href="detailClub?id=${club.clubID}">Chi Tiết</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
