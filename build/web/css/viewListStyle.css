@@ -114,13 +114,13 @@ form.example::after {
     background-image: linear-gradient(to right, #5d7ecd, #0c91e6);
 }
 .table thead tr th {
-    font-size: 11px;
+    font-size: 18px;
     color: #868585;
     padding: 10px 10px;
     text-align: center;
 }
 .table tbody tr td {
-    font-size: 13.5px;
+    font-size: 18px;
     padding: 10px 10px;
 }
 #navbar {
@@ -137,9 +137,6 @@ form.example::after {
 }
 #navbar a {
     color: black;
-}
-.fas.fa-bars {
-    color: white;
 }
 #navbar2 {
     width: 80%;

@@ -24,7 +24,7 @@
         </style>
     </head>
     <body class="bg-white">
-        <div class="px-0">
+        <div>
             <%@include file="/header.jsp" %> 
             <div class="d-flex nav-item main-home">
                 <ul id="navbar-items">
@@ -111,6 +111,8 @@
                                         <c:if test="${editHostel.img1 != null}">
                                             <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
                                         </c:if>   -->
+
+
 
                                         <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 60px; opacity: 30%">+</label>
