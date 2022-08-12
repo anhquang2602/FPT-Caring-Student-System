@@ -36,7 +36,7 @@
                         <div class="col-md-5">
                             <div class="d-flex justify-content-between align-items-center experience">
                                 <div class="p-3 py-5">
-                                    <img src="https://cdnimg.vietnamplus.vn/t660/uploaded/natmjs/2017_12_21/vnp_xe_buyt.jpg" class="form-control" style="padding: 0px">
+                                    <img src="${busImage}" class="form-control" style="padding: 0px">
                                 </div>
                             </div>
                         </div>
