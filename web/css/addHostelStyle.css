@@ -136,7 +136,6 @@ input[type="radio"]+label{
 
 input[type="radio"]:checked+label {
     animation: check 300ms;
-    border:2px solid blue;
 }
 
 
@@ -485,6 +484,15 @@ input[type="text"]:focus~span {
 }
 .error {
     color: red;
+}
+
+img {
+    border-radius: 4px;
+}
+         
+/* Hover chuột vào thumbnail */
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
 

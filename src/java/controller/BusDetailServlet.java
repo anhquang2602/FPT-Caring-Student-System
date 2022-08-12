@@ -59,10 +59,11 @@ public class BusDetailServlet extends HttpServlet {
             throws ServletException, IOException {
         int number=Integer.parseInt(request.getParameter("number"));
         BusDAO bd=new BusDAO();
-        
+        String busImage=bd.getBusImageByNumber(number);
         String StopPoint=bd.getBusStopByNumber(number);
         request.setAttribute("StopPoint",StopPoint);
         request.setAttribute("busnumber", number);
+        request.setAttribute("busImage", busImage);
         request.getRequestDispatcher("busDetail.jsp").forward(request, response);
         
     }

@@ -25,12 +25,6 @@
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar">
-                    <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-                        <form class="example d-flex align-items-center"> 
-                            <input type="text" placeholder="" name="search"> 
-                            <button type="submit"><i class="fa fa-search"></i></button> 
-                        </form>
-                    </div>
                     <div class="container" style="margin-top: 50px">
                         <div class="row">
                             <div class="col-lg-12 mb-5">
@@ -61,6 +55,7 @@
                                                             src="images/nhà trọ.jpg" </c:if>
                                                          style="width: 150px; height: 150px" >
                                                 </div>
+                                                <a class="btn btn-primary" href="ChartVoteController?hostelId=${d.hostelID}" style="margin-left: 700px">Xem Biểu Đồ</a> 
                                                 <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
 
