@@ -223,7 +223,7 @@
                 </c:forEach>
             </div>
         </div>
-    </div>
+    
 
     <script>
         const allStars = document.querySelectorAll('.star');

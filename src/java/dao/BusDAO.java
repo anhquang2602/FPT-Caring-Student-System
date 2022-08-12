@@ -52,6 +52,24 @@ public class BusDAO extends DBContext{
         return null;
     }
      
+     public String getBusImageByNumber(int number) {
+        String sql = "SELECT Url1 FROM BUSES WHERE BUSNUMBER=?";
+        String Url1=null;
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            st.setInt(1, number);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Url1=rs.getString(1);
+            }
+            return Url1;
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+     
      public List<Bus> pagingBus(int index) {
         List<Bus> list = new ArrayList<>();
         String sql = "SELECT * FROM Buses\n"

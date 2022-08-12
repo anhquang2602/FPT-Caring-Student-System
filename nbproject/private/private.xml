@@ -3,12 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/D:/DoAn_Final/src/java/dao/DBContext.java</file>
+            <file>file:/D:/DoAn_Final/src/java/dao/HostelDAO.java</file>
+            <file>file:/D:/DoAn_Final/web/self_profileClub.jsp</file>
+            <file>file:/D:/DoAn_Final/web/profileStudent.jsp</file>
+            <file>file:/D:/DoAn_Final/web/header.jsp</file>
+            <file>file:/D:/DoAn_Final/nbproject/private/private.xml</file>
+            <file>file:/D:/DoAn_Final/web/self_profileSeller.jsp</file>
+            <file>file:/D:/DoAn_Final/web/listHostelbySeller.jsp</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/ChartVoteController.java</file>
+            <file>file:/D:/DoAn_Final/nbproject/private/private.properties</file>
+            <file>file:/D:/DoAn_Final/web/listRestaurantBySeller.jsp</file>
+            <file>file:/D:/DoAn_Final/web/self_profileAdmin.jsp</file>
+            <file>file:/D:/DoAn_Final/web/self_profileStudent.jsp</file>
+=======
             <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/viewRestaurant.jsp</file>
             <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/editFood.jsp</file>
             <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/model/Restaurant.java</file>
             <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/addFood.jsp</file>
             <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/LoginServlet.java</file>
             <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/addRestaurant.jsp</file>
+>>>>>>> fce697702c286778477d2b956cd04f5b90d6d856
         </group>
     </open-files>
 </project-private>
