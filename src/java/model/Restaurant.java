@@ -115,7 +115,7 @@ public class Restaurant {
     }
 
     public void setCost(String cost) {
-        this.cost = cost;
+        this.cost = cost ;
     }
 
     public float getDistance() {
