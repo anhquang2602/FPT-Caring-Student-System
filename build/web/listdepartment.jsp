@@ -19,14 +19,14 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/departmentStyle.css">
     </head>
-    <body class="bg-white">
-        <div class="px-0">
-            <%@include file="/header.jsp" %>   
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div id="topnavbar">
+                <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
                         <form class="example d-flex align-items-center"> 
                             <input type="text" placeholder="" name="search"> 
@@ -37,7 +37,7 @@
                         <div class="row">
                             <div class="col-lg-12 mt-5 mb-5">
                                 <div>
-                                    <ul class="breadcrumb bg-white">
+                                    <ul class="breadcrumb">
                                         <li><a href="home.jsp">Trang chủ</a></li>
                                         <li><a>Danh sách Phòng Ban</a></li>
                                     </ul>
@@ -45,15 +45,19 @@
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listDepPaging}" var="d" >
                                         <li class="list-group-item">
-                                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
-                                                <div class="media-body order-2 order-lg-1 description" id="description">
-                                                    <h4 class="font-weight-bold mb-3">
-                                                        <a href="detaildepartment?id=${d.depId}" style="text-decoration: none; font-weight: bold">${d.depName}</a>
-                                                    </h4>
-                                                    <p style="font-size: 18px">${d.shortdes}</p>
-                                                </div>
-                                                <div class="media-body order-2 order-lg-1 image">
+                                            <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-2">
+                                                <div class="col-md-3 media-body order-2 order-lg-1 image">
                                                     <img src="${d.img1}" alt="Generic placeholder image">
+                                                </div>
+                                                <div class="col-md-8 media-body order-2 order-lg-1 description ml-5" id="description">
+                                                    <div>
+                                                        <h4 class="font-weight-bold mb-3">
+                                                            <a href="detaildepartment?id=${d.depId}" style="text-decoration: none; font-weight: bold">${d.depName}</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div>
+                                                        <p style="font-size: 18px">${d.shortdes}</p>
+                                                    </div>
                                                 </div>
                                             </div> 
                                         </li> 
@@ -78,6 +82,6 @@
                 </div>
             </div>
         </div>
+        <%@include file="/footer.jsp" %>
     </body>
-    <%@include file="/footer.jsp" %>
 </html>

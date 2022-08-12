@@ -2,19 +2,26 @@
     width: 100%;
 }
 
-.description {
-    float: right;
-    height: 100%;
-    width: 70%;
-}
-
 .image {
-    float: left;
+    float: start;
     height: 100%;
-    width: 20%;
     background-size: cover;
 }
 
+.description {
+    float: left;
+    height: 100%;
+}
+
+.button_edit {
+    float: end;
+    padding-left: 100px;
+}
+
+.button_edit1 {
+    float: end;
+    padding-left: 100px;
+}
 .image img {
     height: 100%;
     width: 100%;
@@ -36,10 +43,11 @@
 ul.breadcrumb {
   padding: 10px 16px;
   list-style: none;
+  background-color: #f2f2f2;
 }
 ul.breadcrumb li {
   display: inline;
-  font-size: 30px;
+  font-size: 22px;
 }
 ul.breadcrumb li+li:before {
   padding: 8px;

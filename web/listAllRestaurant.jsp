@@ -62,13 +62,15 @@
                 </div>
             </c:when>
         </c:choose>
-        <div class="px-0">
-            <%@include file="/header.jsp" %>
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div id="topnavbar">
+                <div id="topnavbar" class="col-md-10">
+
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
                         <form class="example d-flex align-items-center"> 
                             <input type="text" placeholder="" name="search"> 
@@ -79,7 +81,7 @@
                         <div class="row">
                             <div class="col-lg-12 mb-5">
                                 <div>
-                                    <ul class="breadcrumb bg-white">
+
                                         <li><a href="home.jsp">Trang chủ</a></li>
                                         <li><a>Danh sách tất cả nhà hàng</a></li>
                                     </ul>
@@ -87,6 +89,7 @@
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listRestaurant}" var="restaurant" >
                                         <li class="list-group-item">
+
                                             <div class="media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="media-body order-2 order-lg-1 description" id="description">
                                                     <h5 class="mt-0 font-weight-bold mb-2">
@@ -97,11 +100,16 @@
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${restaurant.address}</p>
                                                 </div>
                                                 <div class="media-body order-2 order-lg-1 image">
+
+                                            <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
+                                                <div class="col-md-3 media-body order-2 order-lg-1 image">
+
                                                     <img  <c:if test="${d.img1 != null}">
                                                             src="${d.img1}" </c:if>
                                                         <c:if test="${d.img1 == null}">
                                                             src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
                                                     </div>
+
                                                 </div> 
                                             <td>
                                                 
@@ -111,6 +119,19 @@
                                                 
                                             </td>
                                             </li> 
+
+                                                <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
+                                                    <h3 class="mt-0 font-weight-bold mb-4">
+                                                        <a href="RestaurantListController?id=${restaurant.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${restaurant.restaurantName}</a>
+                                                </h3>
+                                                <p style="font-size: 20px">${restaurant.description}</p>
+                                                <p style="font-size: 20px">${restaurant.address}</p>
+                                            </div>
+                                            <div class="col-md-4 mt-5 stars-outer media-body order-2 order-lg-1 button_edit">
+                                                <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
+                                            </div>
+                                        </li> 
+
                                     </c:forEach>
                                 </ul> 
                                 <div class="clearfix">
@@ -132,6 +153,11 @@
                 </div>
             </div>
         </div>
+
+
+        <%@include file="/footer.jsp" %>
+
+
         <script>
             $(document).ready(function () {
                 $(".toast").toast({delay: 4000});
@@ -141,6 +167,8 @@
         </script>
     </body>
     <%@include file="/footer.jsp" %>
+
 </html>
+
 
 
