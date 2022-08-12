@@ -126,7 +126,7 @@
                                 <div>
                                     <ul class="breadcrumb bg-white">
                                         <li><a href="home.jsp">Trang chủ</a></li>
-                                        <li><a>Danh sách tất cả nhà tro</a></li>
+                                        <li><a>Danh sách tất cả nhà trọ:</a></li>
                                     </ul>
                                 </div>
                                 <ul class="list-group shadow">
