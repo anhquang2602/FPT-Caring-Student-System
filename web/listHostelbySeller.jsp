@@ -57,7 +57,7 @@
                                                 </div>
 
                                                 <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit">
-                                                    <a class="btn btn-primary" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
+                                                    <a class="btn btn-danger" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
                                                     <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="">Chỉnh sửa</a> 
                                                     <a class="btn btn-secondary" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
                                                 </div>
