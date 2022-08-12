@@ -137,9 +137,13 @@ public class UpdateAdminProfile extends HttpServlet {
                 request.getRequestDispatcher("self_profileAdmin.jsp").forward(request, response);
             }
         } else {
+            String avatarName = null;
+            if (email.contains("@gmail.com")) {
+                avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
+            } else if (email.contains("@fpt.edu.vn")) {
+                avatarName = email.replaceFirst("@fpt.edu.vn", "Avatar.jpg");
+            }
 
-           
-            String avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
             UserAvatar = "avatarImages/" + avatarName;
             part.write(realPath + "\\" + avatarName);
             /* try (PrintWriter out = response.getWriter()) {

@@ -93,14 +93,14 @@
                                                             src="${d.img1}" </c:if>
                                                         <c:if test="${d.img1 == null}">
                                                             src="images/nhà trọ.jpg" 
-                                                        </c:if> style="width: 150px; height: 150px" >
+                                                        </c:if> style="width: 170px; height: 170px" >
                                                 </div>
                                                 <div class="col-md-5 media-body order-2 order-lg-1 description">
-                                                    <h5 class="mt-0 font-weight-bold mb-2">
+                                                    <h3 class="mt-0 font-weight-bold mb-4">
                                                         <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
-                                                    </h5>
-                                                    <p class="" style="font-size: 20px">Có ${d.totalRoom} phòng</p>
-                                                    <p class="" style="font-size: 20px">Giá thuê: ${d.cost} VND</p>
+                                                    </h3>
+                                                    <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
+                                                    <p style="font-size: 20px">Giá thuê: ${d.cost} VND</p>
                                                 </div>
                                                 
                                                 <div class="col-md-4 mt-5 stars-outer media-body order-2 order-lg-1 button_edit">

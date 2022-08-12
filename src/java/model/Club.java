@@ -31,6 +31,15 @@ public class Club {
         this.des = des;
     }
 
+    public Club(String avatar, String clubName, String clubPresident, String facebook, String email, String des) {
+        this.avatar = avatar;
+        this.clubName = clubName;
+        this.clubPresident = clubPresident;
+        this.facebook = facebook;
+        this.email = email;
+        this.des = des;
+    }
+
     
     
 

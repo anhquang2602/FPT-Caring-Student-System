@@ -37,7 +37,7 @@
                         <div class="col-md-5">
                             <div class="justify-content-between align-items-center experience">
                                 <div class="p-3 py-5">
-                                    <img src="img1" alt="Generic placeholder image">
+                                    <img src="${busImage}" class="form-control" style="padding: 0px">
                                 </div>
                             </div>
                         </div>

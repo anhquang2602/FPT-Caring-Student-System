@@ -20,9 +20,10 @@
                 <ul id="navbar-items" class="col-md-2 d-flex">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
+<<<<<<< HEAD
                 <div id="topnavbar1" class="col-md-10">
                     <div class="container rounded mt-5 mb-5 p-4">
-                        <form action="UpdateSellerProfile" enctype="multipart/form-data"  method="post" >
+                        <form action="UpdateSellerProfile" name="updateSellerForm" enctype="multipart/form-data"  method="post" onsubmit="return validateUpdateSeller()">
                             <div class="row">
                                 <div>
                                     <ul class="breadcrumb bg-white">
@@ -109,7 +110,6 @@
                                         </div>
                                     </div>
                                     <div class="error" id="errorProvince"></div> 
-
                                     <div class="row mt-3">
                                         <div class="col-md-12">
                                             <label class="labels" style="font-size: 22px" for="cars">Quận, Phường</label>
@@ -132,7 +132,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center mt-5">
-                                    <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateProfile()">Lưu Hồ Sơ</button>
+                                    <button class="btn btn-primary profile-button" type="submit">Lưu Hồ Sơ</button>
                                 </div>
                                 <label class="labels">${UpdateError}</label>
                                 <label class="labels">${UpdateProcess}</label>
@@ -209,6 +209,19 @@
                 URL.revokeObjectURL(output.src) // free memory
             }
         };
+    </script>
+
+    <script>
+        function validateUpdateSeller() {
+            let isValid = true;
+            const province = document.updateSellerForm.province.value;
+            document.getElementById('errorProvince').innerText = ' ';
+            if (!province) {
+                document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+                isValid = false;
+            }
+            return isValid;
+        }
     </script>
     <%@include file="/footer.jsp" %>
 </html>
