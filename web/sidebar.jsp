@@ -22,7 +22,8 @@
                     </a>  
                 </li>
                 <li> 
-                    <a class="bg-hostel-light fs12 ps-3" href="listallhostels">
+
+                    <a class="bg-hostel-light fs12 ps-3" href="FilterHostelController">
                         <span class="fas fa-bed mr-3"></span> 
                         <span>NHÀ TRỌ</span>
                     </a> 
@@ -39,7 +40,7 @@
                     </a> 
                 </li>
                 <li> 
-                    
+
                     <a class="bg-hostel-light fs12 ps-3" href="department">
                         <span class="fas fa-graduation-cap mr-3"></span> 
                         <span>PHÒNG BAN</span>

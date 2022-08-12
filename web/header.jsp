@@ -59,7 +59,7 @@
                     <i class="fas fa-utensils mr-3"></i>
                     <span>NHÀ ĂN</span>
                 </a>  
-                <a class="ml-5" href="listallhostels">
+                <a class="ml-5" href="FilterHostelController">
                     <i class="fas fa-bed mr-3"></i>
                     <span>NHÀ TRỌ</span>
                 </a> 
