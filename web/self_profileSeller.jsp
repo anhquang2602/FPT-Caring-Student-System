@@ -20,7 +20,6 @@
                 <ul id="navbar-items" class="col-md-2 d-flex">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-<<<<<<< HEAD
                 <div id="topnavbar1" class="col-md-10">
                     <div class="container rounded mt-5 mb-5 p-4">
                         <form action="UpdateSellerProfile" name="updateSellerForm" enctype="multipart/form-data"  method="post" onsubmit="return validateUpdateSeller()">
@@ -146,18 +145,18 @@
     <script src="validator/Validator.js"></script>
     <script language="javascript">
 
-                                        var gender = document.getElementById('genderlable').innerHTML;
+                                                var gender = document.getElementById('genderlable').innerHTML;
 
-                                        if (gender == 1) {
-                                            document.getElementById('inlineRadio1').setAttribute('checked', true);
-                                        } else
-                                        {
-                                            document.getElementById('inlineRadio2').setAttribute('checked', true);
-                                        }
+                                                if (gender == 1) {
+                                                    document.getElementById('inlineRadio1').setAttribute('checked', true);
+                                                } else
+                                                {
+                                                    document.getElementById('inlineRadio2').setAttribute('checked', true);
+                                                }
 
 
-                                        // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
-                                        // obj là tham số truyền vào và cũng chính là thẻ select
+                                                // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
+                                                // obj là tham số truyền vào và cũng chính là thẻ select
 
             
            
@@ -168,36 +167,36 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
     <script>
-                                        $(document).on('change', '.province', function () {
-                                            var province = document.getElementById("province").value;
-                                            $('#district').empty();
+                                                $(document).on('change', '.province', function () {
+                                                    var province = document.getElementById("province").value;
+                                                    $('#district').empty();
 
 
-                                            $.ajax({
-                                                type: "GET",
+                                                    $.ajax({
+                                                        type: "GET",
 
-                                                url: "/Test_1/findDistrict",
-                                                data: {
-                                                    province: province,
-                                                },
-                                                headers: {
-                                                    Accept: "application/json; charset=utf-8",
-                                                    contentType: "application/json; charset=utf-8"
-                                                },
+                                                        url: "/Test_1/findDistrict",
+                                                        data: {
+                                                            province: province,
+                                                        },
+                                                        headers: {
+                                                            Accept: "application/json; charset=utf-8",
+                                                            contentType: "application/json; charset=utf-8"
+                                                        },
 
-                                                success: function (data) {
+                                                        success: function (data) {
 
-                                                    data.forEach(function (a) {
-                                                        $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+                                                            data.forEach(function (a) {
+                                                                $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
 
+                                                            });
+                                                        },
+                                                        error: function (e) {
+                                                            console.log("ERROR: ", e);
+                                                        }
                                                     });
-                                                },
-                                                error: function (e) {
-                                                    console.log("ERROR: ", e);
-                                                }
-                                            });
 
-                                        });
+                                                });
     </script>
 
 
