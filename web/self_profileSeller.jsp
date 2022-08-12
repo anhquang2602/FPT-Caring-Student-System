@@ -13,148 +13,151 @@
         <link rel="stylesheet" href="css/profileStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
-    <body class="bg-white">
-        <div class="px-0 bg-white">
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>  
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2 d-flex">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <form action="UpdateSellerProfile" enctype="multipart/form-data"  method="post" >
-                    <div class="container rounded bg-white mt-5 mb-5">
-                        <div class="row">
-                            <div>
-                                <ul class="breadcrumb bg-white">
-                                    <li><a href="home.jsp">Home</a></li>
-                                    <li><a href="UpdateSellerProfile">Hồ sơ của tôi</a></li>                                    
-                                </ul>
-                            </div>
+                <div id="topnavbar1" class="col-md-10">
+                    <div class="container rounded mt-5 mb-5 p-4">
+                        <form action="UpdateSellerProfile" enctype="multipart/form-data"  method="post" >
+                            <div class="row">
+                                <div>
+                                    <ul class="breadcrumb bg-white">
+                                        <li><a href="home.jsp">Trang chủ</a></li>
+                                        <li><a href="UpdateSellerProfile">Hồ sơ của tôi</a></li>                                    
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                                        <div class="mt-5">
+                                            <img class="rounded-circle justify-content-center" height="200px" width="200px" src="${UserAvatar}" id="output">
+                                            <input type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file mt-3 p-3 ml-5" id="avatarImg">
+                                        </div>
+                                        <div id="divCheckImg"></div>
+                                        <div class="mt-5">
+                                            <strong class="text-right fs12">${seller.email}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                        <strong class="text-right fs13">HỒ SƠ CỦA TÔI</strong>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <input name="id" value="${seller.sellerID}" hidden="">
+                                        <div class="col-md-6">
+                                            <strong class="text-right fs-4">Họ</strong>
+                                            <input type="text" name="firstName" class="form-control" value="${seller.firstName}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong class="text-right fs-4">Tên</strong>
+                                            <input type="text" name="lastName" class="form-control" value="${seller.lastName}">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <strong class="text-right fs-4">Tuổi</strong>
+                                            <input type="number" name="age" class="form-control"value="${seller.age}">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <strong class="text-right fs-4">Số Điện Thoại</strong>
+                                            <input type="text" name="phone" class="form-control" value="${seller.phone}">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <strong class="text-right fs-4">Email</strong>
+                                            <input type="text" class="form-control" readonly="" value="${seller.email}">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <strong class="text-right fs-4">Giới Tính</strong>
+                                            <label class="labels" id="genderlable" hidden="">${seller.gender}</label><br/>
+                                            <input class="form-check-input mr-1" type="radio" name="gender"  id="inlineRadio1" value="1"> 
+                                            <span class="mr-4">Nam</span>
+                                            <input class="form-check-input mr-1" type="radio" name="gender"  id="inlineRadio2" value="0"> 
+                                            <span>Nữ</span>                                            
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-11">
+                                            <strong class="text-right fs-4">Link Facebook</strong>
+                                            <input type="text" name="linkFb" class="form-control" value="${seller.linkFb}">
+                                        </div>
+                                        <div class="col-md-1 mt-4 p-2">
+                                            <a class="login-facebook-icon" style="height: 40px; width: 40px; margin-left: calc(100%-20px)" href="${seller.linkFb}" title="" target="_blank">f</a>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <label class="labels" style="font-size: 22px" for="cars">Tỉnh, Thành Phố</label>
+                                            <select name="province" id="province" class="province form-select" onchange>
+                                                <option value="">Select Province</option>
+                                                <c:forEach items ="${listProvince}" var="o">
+                                                    <option value="${o.provinceID}" 
+                                                            <c:if test = "${seller.provinceID == o.provinceID }">
+                                                                selected="selected"
+                                                            </c:if>>${o.provinceName}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="error" id="errorProvince"></div> 
 
-                            <div class="col-md-4">
-                                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                    <div class="mt-5">
-                                        <img class="rounded-circle justify-content-center" height="200px" width="200px" src="${UserAvatar}" id="output">
-                                        <input type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file mt-3" id="avatarImg">
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <label class="labels" style="font-size: 22px" for="cars">Quận, Phường</label>
+                                            <select name="district"  id ="district" class="district form-select">
+                                                <c:forEach items ="${listDistrict}" var="o">
+                                                    <option value="${o.districtID}" 
+                                                            <c:if test = "${seller.districtID == o.districtID }">
+                                                                selected="selected"
+                                                            </c:if>>${o.districtName}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div id="divCheckImg"></div>
-                                    <div class="mt-5">
-                                        <span>${seller.email}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h4 class="text-right">HỒ SƠ CỦA TÔI</h4>
-                                </div>
-                                <div class="row mt-2">
-                                    <input name="id" value="${seller.sellerID}" hidden="">
-                                    <div class="col-md-6">
-                                        <h4>Họ</h4>
-                                        <input type="text" name="firstName" class="form-control" value="${seller.firstName}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4>Tên</h4>
-                                        <input type="text" name="lastName" class="form-control" value="${seller.lastName}">
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <h4>Tuổi</h4>
-                                        <input type="number" name="age" class="form-control"value="${seller.age}">
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <h4>Số Điện Thoại</h4>
-                                        <input type="text" name="phone" class="form-control" value="${seller.phone}">
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <h4>Email</h4>
-                                        <input type="text" class="form-control" readonly="" value="${seller.email}">
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <h4>Giới Tính</h4>
-                                        <label class="labels" id="genderlable" hidden="">${seller.gender}</label>
-                                        <input class="form-check-input" type="radio" name="gender"  id="inlineRadio1" value="1"> Nam
-                                        <input class="form-check-input" type="radio" name="gender"  id="inlineRadio2" value="0"> Nữ                                            
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-11">
-                                        <label class="labels" style="font-size: 20px">Link Facebook</label>
-                                        <input type="text" name="linkFb" class="form-control" value="${seller.linkFb}">
-                                    </div>
-                                    <div class="col-md-1 mt-4 my-2">
-                                        <a class="login-facebook-icon" style="height: 40px; width: 40px; margin-left: calc(100%-20px)" href="${seller.linkFb}" title="" target="_blank">f</a>
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <label class="labels" style="font-size: 20px" for="cars">Tỉnh, Thành Phố</label>
-                                        <select name="province" id="province" class="province form-select" onchange>
-                                            <option value="">Select Province</option>
-                                            <c:forEach items ="${listProvince}" var="o">
-                                                <option value="${o.provinceID}" 
-                                                        <c:if test = "${seller.provinceID == o.provinceID }">
-                                                            selected="selected"
-                                                        </c:if>>${o.provinceName}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="error" id="errorProvince"></div> 
 
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <label class="labels" style="font-size: 20px" for="cars">Quận, Phường</label>
-                                        <select name="district"  id ="district" class="district form-select">
-                                            <c:forEach items ="${listDistrict}" var="o">
-                                                <option value="${o.districtID}" 
-                                                        <c:if test = "${seller.districtID == o.districtID }">
-                                                            selected="selected"
-                                                        </c:if>>${o.districtName}</option>
-                                            </c:forEach>
-                                        </select>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <strong class="text-right fs-4">Địa Chỉ</strong>
+                                            <input type="text" name="addressDetail" class="form-control"value="${seller.address}">
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <h4>Địa Chỉ</h4>
-                                        <input type="text" name="addressDetail" class="form-control"value="${seller.address}">
-                                    </div>
+                                <div class="text-center mt-5">
+                                    <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateProfile()">Lưu Hồ Sơ</button>
                                 </div>
+                                <label class="labels">${UpdateError}</label>
+                                <label class="labels">${UpdateProcess}</label>
                             </div>
-                            <div class="text-center mt-5">
-                                <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateProfile()">Lưu Hồ Sơ</button>
-                            </div>
-                            <label class="labels">${UpdateError}</label>
-                            <label class="labels">${UpdateProcess}</label>
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </body>
     <script src="validator/Validator.js"></script>
     <script language="javascript">
 
-                                    var gender = document.getElementById('genderlable').innerHTML;
+                                        var gender = document.getElementById('genderlable').innerHTML;
 
-                                    if (gender == 1) {
-                                        document.getElementById('inlineRadio1').setAttribute('checked', true);
-                                    } else
-                                    {
-                                        document.getElementById('inlineRadio2').setAttribute('checked', true);
-                                    }
+                                        if (gender == 1) {
+                                            document.getElementById('inlineRadio1').setAttribute('checked', true);
+                                        } else
+                                        {
+                                            document.getElementById('inlineRadio2').setAttribute('checked', true);
+                                        }
 
 
-                                    // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
-                                    // obj là tham số truyền vào và cũng chính là thẻ select
+                                        // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
+                                        // obj là tham số truyền vào và cũng chính là thẻ select
 
             
            
@@ -165,36 +168,36 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
     <script>
-                                    $(document).on('change', '.province', function () {
-                                        var province = document.getElementById("province").value;
-                                        $('#district').empty();
+                                        $(document).on('change', '.province', function () {
+                                            var province = document.getElementById("province").value;
+                                            $('#district').empty();
 
 
-                                        $.ajax({
-                                            type: "GET",
+                                            $.ajax({
+                                                type: "GET",
 
-                                            url: "/Test_1/findDistrict",
-                                            data: {
-                                                province: province,
-                                            },
-                                            headers: {
-                                                Accept: "application/json; charset=utf-8",
-                                                contentType: "application/json; charset=utf-8"
-                                            },
+                                                url: "/Test_1/findDistrict",
+                                                data: {
+                                                    province: province,
+                                                },
+                                                headers: {
+                                                    Accept: "application/json; charset=utf-8",
+                                                    contentType: "application/json; charset=utf-8"
+                                                },
 
-                                            success: function (data) {
+                                                success: function (data) {
 
-                                                data.forEach(function (a) {
-                                                    $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+                                                    data.forEach(function (a) {
+                                                        $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
 
-                                                });
-                                            },
-                                            error: function (e) {
-                                                console.log("ERROR: ", e);
-                                            }
+                                                    });
+                                                },
+                                                error: function (e) {
+                                                    console.log("ERROR: ", e);
+                                                }
+                                            });
+
                                         });
-
-                                    });
     </script>
 
 

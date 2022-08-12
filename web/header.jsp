@@ -16,8 +16,8 @@
         <link rel="stylesheet" href="css/style1.css">
     </header>
     <body>
-        <div class="d-flex main">
-            <div class="d-flex align-items-center left_box1 homenav"> 
+        <div class="main_header col-md-12 d-flex">
+            <div class="align-items-center left_box1 col-md-2"> 
                 <button class="navbar-toggler bg-primary-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-items" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation"> 
                     <span class="fas fa-bars"></span> 
                 </button> 
@@ -25,74 +25,70 @@
                     FCS<span class="fs13 pe-2">.com</span>
                 </a> 
             </div>
-            <div class="topnav">
-                <div class="d-flex">
-                    <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
-                    <a class="col-md-2"  href="SellerListController">
-                        <i class="fas fa-user-tie mr-3"></i>
-                        <span>CHỦ KINH DOANH</span>
-                    </a>  
-                    <a class="col-md-2"  href="StudentListController">
-                        <i class="fas fa-user-graduate mr-3"></i>
-                        <span>SINH VIÊN</span>
-                    </a> 
-                    <a class="col-md-2"  href="ListAllReportHostelController">
-                        <i class="fas fa-bell mr-3"></i>
-                        <span>BÁO CÁO NHÀ TRỌ</span>
-                    </a>
-                    <a class="col-sm-2"  href="ListAllReportRestaurantController">
-                        <i class="fas fa-bell mr-3"></i>
-                        <span>BÁO CÁO NHÀ ĂN</span>
-                    </a>
+            <div class="topnav_header col-md-10 d-flex">
+                <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                <a href="SellerListController">
+                    <i class="fas fa-user-tie"></i>
+                    <span>CHỦ KINH DOANH</span>
+                </a>  
+                <a href="StudentListController">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>SINH VIÊN</span>
+                </a> 
+                <a href="ListAllReportHostelController">
+                    <i class="fas fa-bell"></i>
+                    <span>BÁO CÁO NHÀ TRỌ</span>
+                </a>
+                <a href="ListAllReportRestaurantController">
+                    <i class="fas fa-bell"></i>
+                    <span>BÁO CÁO NHÀ ĂN</span>
+                </a>
 
-                    <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
-                    <a class="col-md-2"></a>
-                    <a class="col-md-3" href="hostellist">
-                        <i class="fas fa-bed mr-3"></i>
-                        <span>NHÀ TRỌ CỦA TÔI</span>
-                    </a>  
-                    <a class="col-md-3" href="ListRestaurantBySeller">
-                        <i class="fas fa-utensils mr-3"></i>
-                        <span>NHÀ ĂN CỦA TÔI</span>
-                    </a>  
+                <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
+                <a class="ml-5" href="hostellist">
+                    <i class="fas fa-bed mr-3"></i>
+                    <span>NHÀ TRỌ CỦA TÔI</span>
+                </a>  
+                <a class="ml-5" href="ListRestaurantBySeller">
+                    <i class="fas fa-utensils mr-3"></i>
+                    <span>NHÀ ĂN CỦA TÔI</span>
+                </a>  
 
-                    <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
-                    <a class="col-md-2"></a>
-                    <a class="col-md-3" href="ListAllRestaurantController">
-                        <i class="fas fa-utensils mr-3"></i>
-                        <span>NHÀ ĂN</span>
-                    </a>  
-                    <a class="col-md-3" href="listallhostels">
-                        <i class="fas fa-bed mr-3"></i>
-                        <span>NHÀ TRỌ</span>
-                    </a> 
-                    <%}%>
-                    <div class="dropdownProfile col-md-2 ml-5">    
-                        <button class="dropdown-toggle mt-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ${sessionScope.username}
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
-                            <a class="dropdown-item" href="UpdateSellerProfile">
-                                <i class="fas fa-id-card-o"></i>HỒ SƠ CỦA TÔI
-                            </a>
-                            <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
-                            <a class="dropdown-item" href="UpdateStudentProfile">
-                                <i class="fas fa-id-card-o"></i>HỒ SƠ CỦA TÔI
-                            </a>
-                            <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
-                            <a class="dropdown-item" href="UpdateAdminProfile">
-                                <i class="fas fa-id-card-o"></i>HỒ SƠ CỦA TÔI
-                            </a>
-                            <%}%>
-                            <a class="dropdown-item" href="ChangePasswordServlet">
-                                ĐỔI MẬT KHẨU
-                            </a>
-                            <a class="dropdown-item" href="LogoutServlet">
-                                ĐĂNG XUẤT
-                                <i class="fas fa-sign-out"></i>
-                            </a>
-                        </div>
+                <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
+                <a class="ml-5" href="ListAllRestaurantController">
+                    <i class="fas fa-utensils mr-3"></i>
+                    <span>NHÀ ĂN</span>
+                </a>  
+                <a class="ml-5" href="listallhostels">
+                    <i class="fas fa-bed mr-3"></i>
+                    <span>NHÀ TRỌ</span>
+                </a> 
+                <%}%>
+                <div class="dropdownProfile ddf">    
+                    <button class="dropdown-toggle mt-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ${sessionScope.username}
+                    </button>
+                    <div class="dropdown-menu dropdown_menu_header" style="position: inherit" aria-labelledby="dropdownMenuButton">
+                        <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
+                        <a class="dropdown-item" href="UpdateSellerProfile">
+                            <i class="fas fa-id-card-o"></i>HỒ SƠ CỦA TÔI
+                        </a>
+                        <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
+                        <a class="dropdown-item" href="UpdateStudentProfile">
+                            <i class="fas fa-id-card-o"></i>HỒ SƠ CỦA TÔI
+                        </a>
+                        <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                        <a class="dropdown-item" href="UpdateAdminProfile">
+                            <i class="fas fa-id-card-o"></i>HỒ SƠ CỦA TÔI
+                        </a>
+                        <%}%>
+                        <a class="dropdown-item" href="ChangePasswordServlet">
+                            ĐỔI MẬT KHẨU
+                        </a>
+                        <a class="dropdown-item" href="LogoutServlet">
+                            ĐĂNG XUẤT
+                            <i class="fas fa-sign-out"></i>
+                        </a>
                     </div>
                 </div>
             </div>

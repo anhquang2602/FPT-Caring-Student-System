@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/editHostel.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/hosteldetail.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/style1.css</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/addHostelStyle.css</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/listdepartment.jsp</file>
             <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/viewListStyle.css</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/addHostel.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/listAllHostels.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/hostelStyle.css</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/listbus.jsp</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/busDetail.jsp</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/departmentStyle.css</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/css/pagingStyle.css</file>
         </group>
     </open-files>
 </project-private>
