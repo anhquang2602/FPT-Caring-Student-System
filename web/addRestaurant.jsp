@@ -46,7 +46,7 @@
                                         <h4>Thêm ảnh nhà hàng</h4>
                                     </div> 
                                     <div class="mt-5">
-                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
+                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="restaurantImage" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 60px; opacity: 30%">+</label>
                                         <img id="output1" width="170px" height="170px"/>
                                         <script>

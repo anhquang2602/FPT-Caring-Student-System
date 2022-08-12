@@ -70,13 +70,6 @@ input:-webkit-autofill:focus {
 	-webkit-box-shadow: 0 0 0px 1000px white inset !important;
 	box-shadow: 0 0 0px 1000px white inset !important;
 }
-.form-control {
-    border: 1px solid #ddd;
-    box-shadow: none;
-    color: #333;
-    font-size: 15px;
-    height: 40px;
-}
 .form-control:focus {
 	border-color: #FFBC53;
 	box-shadow: none;
@@ -439,6 +432,7 @@ button.bg-danger:hover {
 .btn-primary {
 	background-color: #FFBC53;
 	border: 1px solid #FFBC53;
+        font-size: 20px;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -884,27 +878,27 @@ button.bg-danger:hover {
 	border-bottom-color:#FFBC53;
 }
 .bg-info-light{
-	background-color:rgba(2, 182, 179,0.12) !important;
-	color:#1db9aa !important;
+	background-color:white !important;
+	color:rgb(238, 77, 45) !important;
 }
 .bg-primary-light{
-	background-color:rgba(17, 148, 247,0.12) !important;
-	color:#2196f3 !important;
+	background-color:rgb(238, 77, 45) !important;
+	color:white !important;
 }
 .bg-danger-light{
-	background-color:white !important;
 	color:black !important;
 }
-.bg-warning-light{
-	background-color:rgba(255, 152, 0,0.12) !important;
-	color:#f39c12 !important;
+.bg-hostel-light{
+	color:rgb(238, 77, 45) !important;
+}
+.bg-home-light{
+        background-color: rgb(238, 77, 45) !important
+        color:white !important;
 }
 .bg-success-light{
-	background-color:white !important;
         color:red !important;
 }
 .bg-purple-light{
-	background-color:white !important;
 	color:green !important;
 }
 .bg-default-light{

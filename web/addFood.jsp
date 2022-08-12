@@ -55,7 +55,7 @@
                                         </div>
                                         <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                             <div class="d-flex flex-row align-items-center">
-                                                <h4 class="mr-1">${food.cost} VND</h4>
+                                                <h4 class="mr-1">${food.cost}00 VND</h4>
                                             </div>
                                             <a class="btn btn-primary" href="EditFoodController?foodId=${food.foodID}" style="width: 114.86px">Chỉnh sửa</a> 
                                             <a class="btn btn-danger" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà hàng</a>
@@ -114,7 +114,7 @@
 
 
 
-                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
+                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="foodImage" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 60px; opacity: 30%">+</label>
                                         <img id="output1" width="170px" height="170px"/>
                                         <script>
@@ -200,7 +200,7 @@
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá của món ăn!';
                     isValid = false;
                 } else if (!regex.test(distance)) {
-                    document.getElementById('errorCost').innerText = 'Invalid!';
+                    document.getElementById('errorCost').innerText = 'Giá trị nhập không đúng. Giá tiền phải là số!';
                     isValid = false;
                 } else if (distance <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá tiền phải > 0 ';

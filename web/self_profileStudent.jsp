@@ -19,7 +19,7 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <form action="UpdateStudentProfile" enctype="multipart/form-data"  method="post" >
+                <form action="UpdateStudentProfile" enctype="multipart/form-data"  method="post" name="updateStudentForm" onsubmit="return validateUpdateStudent()">
                     <div class="container rounded bg-white mt-5 mb-5">
                         <div class="row">
                             <div>
@@ -90,7 +90,7 @@
                                     <div class="col-md-12"><label class="labels">Address Detail</label><input type="text" name="addressDetail" class="form-control"value="${student.address}" ></div>
                                 </div>
                                 <div class="mt-5 text-center">
-                                    <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateProfile()" >Save Profile</button>
+                                    <button class="btn btn-primary profile-button" type="submit"  >Save Profile</button>
                                 </div>
                                 <label class="labels">${UpdateError}</label>
                                 <label class="labels">${UpdateProcess}</label>
@@ -169,5 +169,18 @@ crossorigin="anonymous"></script>
         }
     };
 </script>
+
+<script>
+        function validateUpdateStudent() {
+            let isValid = true;
+            const province = document.updateStudentForm.province.value;
+            document.getElementById('errorProvince').innerText = ' ';
+            if (!province) {
+                document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+                isValid = false;
+            }
+            return isValid;
+        }
+    </script>
 <%@include file="/footer.jsp" %>
 </html>

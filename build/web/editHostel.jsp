@@ -42,7 +42,6 @@
                                         <strong class="fs-3">Ảnh nhà trọ</strong>
                                     </div>
                                     <div class="mt-5">
-
                                         <input type="file" accept="image/*" onchange="loadFile(event)" name="image1" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(4.5%); opacity: 30%">+</label>
                                         <img id="Url1" name="Url1" width="170rem" height="170rem"
@@ -60,7 +59,7 @@
                                                  };
                                              </script>
                                         <c:if test="${editHostel.img1 != null}">
-                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: calc(6%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
+                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
                                         </c:if>
 
                                         <input type="file" accept="image/*" onchange="loadFile2(event)" name="image2" id="file2">
@@ -80,7 +79,7 @@
                                                  };
                                              </script>
                                         <c:if test="${editHostel.img2 != null}">
-                                            <a id="U2" class ="Url2" style="position: absolute; margin-left: calc(8%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url2">X</a>
+                                            <a id="U2" class ="Url2" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url2">X</a>
                                         </c:if>
 
                                         <input type="file" accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
@@ -100,17 +99,13 @@
                                                  };
                                              </script>
                                         <c:if test="${editHostel.img3 != null}">
-                                            <a id="U3" class ="Url3" style="position: absolute; margin-left: calc(6%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url3">X</a>
+                                            <a id="U3" class ="Url3" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url3">X</a>
                                         </c:if>
                                     </div>
 
                                     <div class="mt-5">    
                                         <input type="file" accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
-                                        <<<<<<< HEAD
                                         <label for="file4" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(5%); opacity: 30%">+</label>
-                                        <img id="Url4" name="Url4"width="170rem" height="170rem"
-
-                                             <label for="file4" style="position: absolute; margin-left: calc(5.5%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="Url4" name="Url4"width="170rem" height="170rem"
                                              <c:if test="${editHostel.img4 != null}">
                                                  src="${editHostel.img4}" </c:if>/>
@@ -126,8 +121,9 @@
                                                  };
                                              </script>
                                         <c:if test="${editHostel.img4 != null}">
-                                            <a id="U4" class ="Url4" style="position: absolute; margin-left: calc(6%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url4">X</a>
+                                            <a id="U4" class ="Url4" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url4">X</a>
                                         </c:if>
+                                            
                                         <input type="file" accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
                                         <label for="file5" style="position: absolute; margin-left: calc(7.5%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="Url5" name="Url5" style="margin-left: calc(4.5%)" width="170rem" height="170rem"
@@ -145,8 +141,9 @@
                                                  };
                                              </script>
                                         <c:if test="${editHostel.img5 != null}">
-                                            <a id="U5" class ="Url5" style="position: absolute; margin-left: calc(6%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url5">X</a>
+                                            <a id="U5" class ="Url5" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url5">X</a>
                                         </c:if>
+                                            
                                         <input type="file" accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
                                         <label for="file6" style="position: absolute; margin-left: calc(7.5%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="Url6" name="Url6" style="margin-left: calc(4.5%)" width="170rem" height="170rem"
@@ -164,7 +161,7 @@
                                                  };
                                              </script>
                                         <c:if test="${editHostel.img6 != null}">
-                                            <a id="U6" class ="Url6" style="position: absolute; margin-left: calc(6%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url6">X</a>
+                                            <a id="U6" class ="Url6" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url6">X</a>
                                         </c:if>
                                     </div> 
                                     <div class="oriton_img"> 
@@ -203,23 +200,23 @@
                                 <div class="right-side">
                                     <strong class="fs-3">Mô tả phòng</strong>
                                     <div class="input_text"> 
-                                        <h4>Tên nhà trọ</h4>
+                                        <strong class="fs-4">Tên nhà trọ</strong>
                                         <input type="text" name="hostelName" value="${editHostel.hostelName}"> 
                                     </div>
                                     <div class="error" id="errorName"></div>
                                     <div class="input_text"> 
-                                        <h4>Số phòng</h4> 
+                                        <strong class="fs-4">Số phòng</strong> 
                                         <input type="text" name="room" value="${editHostel.totalRoom}"> 
                                     </div>   
                                     <div class="error" id="errorRoom"></div>
                                     <div class="input_text"> 
-                                        <h4>Số tầng</h4>
+                                        <strong class="fs-4">Số tầng</strong>
                                         <input type="number" name="floor" value="${editHostel.floor}"> 
                                     </div>
                                     <div class="error" id="errorFloor"></div>
                                     <div class="billing">
                                         <div class="input_text"> 
-                                            <h4>Tỉnh, thành phố</h4>
+                                            <strong class="fs-4">Tỉnh, thành phố</strong>
                                             <select name="province" id="province" class="province">
                                                 <option value="">Select Province</option>
                                                 <c:forEach items ="${listProvince}" var="o">
@@ -236,7 +233,7 @@
                                     <div class="error" id="errorProvince"></div>
                                     <div class="billing">
                                         <div class="input_text"> 
-                                            <h4>Quận, phường</h4> 
+                                            <strong class="fs-4">Quận, phường</strong> 
                                             <select name="district"  id ="district" class="district">
                                                 <c:forEach items ="${listDistrict}" var="o">
                                                     <option value="${o.districtID}" 
@@ -250,22 +247,22 @@
                                         </div>                         
                                     </div>
                                     <div class="input_text"> 
-                                        <h4>Địa chỉ</h4> 
+                                        <strong class="fs-4">Địa chỉ</strong> 
                                         <input type="text" name="address" value="${editHostel.address}"> 
                                     </div>
                                     <div class="error" id="errorAddress"></div>
                                     <div class="input_text"> 
-                                        <h4>Giá thuê</h4> 
+                                        <strong class="fs-4">Giá thuê</strong> 
                                         <input type="text" name="cost" value="${editHostel.cost}"> 
                                     </div>
                                     <div class="error" id="errorCost"></div>
                                     <div class="input_text"> 
-                                        <h4>Khoảng cách</h4>
+                                        <strong class="fs-4">Khoảng cách</strong>
                                         <input type="text" name="distance" value="${editHostel.distance}">
                                     </div>
                                     <div class="error" id="errorDistance"></div>
                                     <div class="input_text"> 
-                                        <h4>Mô tả</h4>  
+                                        <strong class="fs-4">Mô tả</strong>  
                                         <textarea name="description" rows="5" style="width: 100%; margin-top: 10px" name="description">
                                             ${editHostel.description}
                                         </textarea>

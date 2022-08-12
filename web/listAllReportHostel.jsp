@@ -15,14 +15,14 @@
         <link rel="stylesheet" href="css/datatables.min.css">
         <link rel="stylesheet" href="css/style1.css">
     </head>
-    <body class="bg-white">
-        <div class="px-0">
-            <%@include file="/header.jsp" %>
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div id="topnavbar">
+                <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
                         <form class="example d-flex align-items-center"> 
                             <input type="text" placeholder="" name="search"> 
@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="col-lg-12 mb-5">
                                         <div>
-                                            <ul class="breadcrumb bg-white">
+                                            <ul class="breadcrumb">
                                                 <li><a href="home.jsp">Trang chủ</a></li>
                                                 <li><a>Danh sách Báo Cáo Nhà Trọ</a></li>
                                             </ul>
@@ -48,9 +48,9 @@
                                                             <tr>
                                                                 <th>Tên Trọ</th>
                                                                 <th>Spam</th>
-                                                                <th>Violent</th>
-                                                                <th>Offensive</th>
-                                                                <th>Truthless</th>
+                                                                <th>Hình Ảnh Không Phù Hợp</th>
+                                                                <th>Ngôn Từ Đả Kích</th>
+                                                                <th>Thông Tin Sai Sự Thật</th>
                                                                 <th class="text-center">Xem Bài Viết/ Xóa Bài Đăng</th>
                                                             </tr>
                                                         </thead>
@@ -87,6 +87,8 @@
                 </div>
             </div>
         </div>
+        <%@include file="/footer.jsp" %>
+        
         <script src="js/jquery-3.6.0.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -94,5 +96,5 @@
         <script src="js/datatables.min.js"></script>
         <script src="js/script.js"></script>
     </body>
-    <%@include file="/footer.jsp" %>
+
 </html>

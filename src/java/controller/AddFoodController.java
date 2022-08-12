@@ -90,7 +90,7 @@ public class AddFoodController extends HttpServlet {
         Part part = request.getPart("foodImage");
         String realPath1 = request.getServletContext().getRealPath("/foodImages");
         String realPath = realPath1.replaceFirst("build", "");
-        String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+//        String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
         }
