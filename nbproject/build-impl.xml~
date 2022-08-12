@@ -794,7 +794,11 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
         </macrodef>
     </target>
     <target name="-init-taskdefs">
+<<<<<<< HEAD
+      
+=======
        
+>>>>>>> c11cc95c359b3d79763cd3c3d632379e08a3a4d6
         <taskdef classpath="${libs.CopyLibs.classpath}" resource="org/netbeans/modules/java/j2seproject/copylibstask/antlib.xml"/>
     </target>
     <target name="-init-ap-cmdline-properties">
@@ -999,9 +1003,13 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
     </target>
     <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
 <<<<<<< HEAD
+     
+=======
+<<<<<<< HEAD
        
 =======
 >>>>>>> e1f8f6712987d2eb90d322934159df728d15cb24
+>>>>>>> c11cc95c359b3d79763cd3c3d632379e08a3a4d6
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
         <delete dir="${build.web.dir}/WEB-INF/lib"/>
