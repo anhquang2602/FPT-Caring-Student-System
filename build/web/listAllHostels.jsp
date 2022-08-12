@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -80,7 +82,7 @@
                                 <div>
                                     <ul class="breadcrumb bg-white">
                                         <li><a href="home.jsp">Trang chủ</a></li>
-                                        <li><a>Danh sách tất cả nhà tro</a></li>
+                                        <li><a>Danh sách tất cả nhà trọ</a></li>
                                     </ul>
                                 </div>
                                 <ul class="list-group shadow">
@@ -92,8 +94,20 @@
                                                         <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
 
                                                     </h5>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê: ${d.cost} VND</p>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Vị trí cách đại học FPT: ${d.distance} km</p>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">
+                                                        Tình trạng: <c:if test="${d.status == true}" > Còn phòng</c:if>
+                                                        <c:if test="${d.status == false}" >Hết phòng</c:if>
+                                                        </p>
+
+
+                                                        <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê:  
+                                                        <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VNĐ</p>
+
+
+
+
+
                                                 </div>
                                                 <div class="media-body order-2 order-lg-1 image">
                                                     <img  <c:if test="${d.img1 != null}">
@@ -102,14 +116,10 @@
                                                             src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
                                                     </div>
                                                 </div> 
-                                            <td>
-                                                
                                                 <div class="stars-outer">
                                                     <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
-                                                </div>
-                                                
-                                            </td>
-                                            </li> 
+                                            </div>
+                                        </li> 
                                     </c:forEach>
                                 </ul> 
                                 <div class="clearfix">
@@ -135,7 +145,7 @@
             $(document).ready(function () {
                 $(".toast").toast({delay: 4000});
                 $(".toast").toast("show");
-                
+
             });
         </script>
     </body>

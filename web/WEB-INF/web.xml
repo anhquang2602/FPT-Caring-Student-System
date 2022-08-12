@@ -137,8 +137,8 @@
         <servlet-class>controller.RestaurantListController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>StarVotingController</servlet-name>
-        <servlet-class>controller.StarVotingController</servlet-class>
+        <servlet-name>StarVotingHostelController</servlet-name>
+        <servlet-class>controller.StarVotingHostelController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ReportRestaurantController</servlet-name>
@@ -163,6 +163,14 @@
     <servlet>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <servlet-class>controller.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CommentRestaurantController</servlet-name>
+        <servlet-class>controller.CommentRestaurantController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StarVotingRestaurantController</servlet-name>
+        <servlet-class>controller.StarVotingRestaurantController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -301,8 +309,8 @@
         <url-pattern>/RestaurantListController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>StarVotingController</servlet-name>
-        <url-pattern>/star</url-pattern>
+        <servlet-name>StarVotingHostelController</servlet-name>
+        <url-pattern>/starHostel</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReportRestaurantController</servlet-name>
@@ -328,13 +336,21 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/ChangePasswordServlet</url-pattern>
     </servlet-mapping>
-     <servlet>
-        <servlet-name>CommentController</servlet-name>
-        <servlet-class>controller.CommentController</servlet-class>
+    <servlet>
+        <servlet-name>CommentHostelController</servlet-name>
+        <servlet-class>controller.CommentHostelController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CommentController</servlet-name>
-        <url-pattern>/comment</url-pattern>
+        <servlet-name>CommentHostelController</servlet-name>
+        <url-pattern>/commentHostel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentRestaurantController</servlet-name>
+        <url-pattern>/commentRestaurant</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StarVotingRestaurantController</servlet-name>
+        <url-pattern>/starRestaurant</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

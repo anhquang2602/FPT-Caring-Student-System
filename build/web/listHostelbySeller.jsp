@@ -50,17 +50,19 @@
                                                     <h4 class="mt-0 font-weight-bold mb-3">
                                                         <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
                                                     </h4>
-                                                    <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
-                                                    <p style="font-size: 20px">Giá thuê: ${d.cost} VND</p>
+
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê: ${d.cost} VND</p>
+
                                                 </div>
                                                 <div class="media-body order-2 order-lg-1 image">
                                                     <img  <c:if test="${d.img1 != null}">
                                                             src="${d.img1}" </c:if>
                                                         <c:if test="${d.img1 == null}">
                                                             src="images/nhà trọ.jpg" </c:if>
-                                                         style="width: 150px; height: 150px" >
-                                                </div>
-                                                <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
+                                                            style="width: 150px; height: 150px" >
+                                                    </div>
+                                                    <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
 
                                                 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

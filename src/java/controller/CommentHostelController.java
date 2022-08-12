@@ -5,27 +5,20 @@
  */
 package controller;
 
-import com.google.gson.Gson;
-import dao.AddressDAO;
 import dao.StarDAO;
 import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.StarVoting;
-import java.sql.Date;
 
 /**
  *
  * @author nguye
  */
-public class StarVotingController extends HttpServlet {
+public class CommentHostelController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +37,10 @@ public class StarVotingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet StarVotingController</title>");
+            out.println("<title>Servlet CommentController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet StarVotingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CommentController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,28 +58,20 @@ public class StarVotingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-//        PrintWriter out = response.getWriter();
-//
-//        int star = Integer.parseInt(request.getParameter("star"));
-//        int hostelId = Integer.parseInt(request.getParameter("hostelId"));
-//        String comment = request.getParameter("message");
-//        StudentDAO stdao = new StudentDAO();
-//        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
-//
-//        StarDAO dao = new StarDAO();
-//
-//        if (dao.getCommentofStudent(hostelId, studentNo) != null) {
-//            dao.updateStarVoting(dao.getCommentofStudent(hostelId, studentNo).getId(), star, comment);
-//        }
-//
-//        dao.addStarVoting(new StarVoting(studentNo, hostelId, comment, star));
-//        String json = new Gson().toJson(star);
-//
-//        out.print(json);
-//        out.flush();
-//        out.close();
+
+        int hostelID = Integer.parseInt(request.getParameter("hostelID"));
+        StarDAO dao = new StarDAO();
+
+        StudentDAO stdao = new StudentDAO();
+        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
+        request.setAttribute("hostelID", hostelID);
+        if(dao.getCommentofStudent(hostelID, studentNo)==null){
+            request.setAttribute("studentComment", null);
+        }else{
+            request.setAttribute("studentComment", dao.getCommentofStudent(hostelID, studentNo));
+        }
+        
+        request.getRequestDispatcher("commentHostel.jsp").forward(request, response);
 
     }
 
@@ -101,33 +86,7 @@ public class StarVotingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-        int star = Integer.parseInt(request.getParameter("star"));
-        int hostelId = Integer.parseInt(request.getParameter("hostelId"));
-        String comment = request.getParameter("message");
-
-        String json = new Gson().toJson(star);
-        StudentDAO stdao = new StudentDAO();
-
-        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
-
-//        long millis = System.currentTimeMillis();
-//        java.sql.Date date = new java.sql.Date(millis);
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//        java.util.Date date = new java.util.Date(); 
-//       java.sql.Date date1 = new java.sql.Date(dateFormat.format(date));
-        StarDAO dao = new StarDAO();
-
-        if (dao.getCommentofStudent(hostelId, studentNo) != null) {
-            dao.updateStarVoting(dao.getCommentofStudent(hostelId, studentNo).getId(), star, comment);
-        }
-
-        dao.addStarVoting(new StarVoting(studentNo, hostelId, comment, star));
-
-        
-        response.sendRedirect(request.getContextPath() + "/detailhostel?id="+hostelId);
+        processRequest(request, response);
     }
 
     /**
