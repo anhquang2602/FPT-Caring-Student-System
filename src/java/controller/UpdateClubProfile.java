@@ -6,31 +6,26 @@
 package controller;
 
 import dao.AddressDAO;
-import dao.SellerDAO;
+import dao.ClubDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import model.Country;
-import model.District;
-import model.Province;
-import model.Seller;
+import model.Club;
 
 /**
  *
  * @author longn
  */
 @MultipartConfig
-public class UpdateSellerProfile extends HttpServlet {
+public class UpdateClubProfile extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,31 +44,27 @@ public class UpdateSellerProfile extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateSellerProfile</title>");
+            out.println("<title>Servlet UpdateClubProfile</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateSellerProfile at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateClubProfile at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
-
+    
     public void reloadPage(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        SellerDAO sellerDAO = new SellerDAO();
+        ClubDAO clubDAO = new ClubDAO();
         String username = (String) request.getSession().getAttribute("username");
-        Seller seller = sellerDAO.getSellertByUsername(username);
-        String UserAvatar = sellerDAO.getAvatarByUsername(username);
-        request.setAttribute("seller", seller);
+        Club club = clubDAO.getClubByEmail(username);
+        String UserAvatar = clubDAO.getAvatarByUsername(username);
+        request.setAttribute("club", club);
         request.setAttribute("UserAvatar", UserAvatar);
         AddressDAO a = new AddressDAO();
         
-        request.setAttribute("listProvince", a.listProvince());
-        if (seller.getProvinceID()+"" != "") {
-            request.setAttribute("listDistrict", a.listDistrict(seller.getProvinceID()));
-        }
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -91,7 +82,7 @@ public class UpdateSellerProfile extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         reloadPage(request, response);
-        request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+        request.getRequestDispatcher("self_profileClub.jsp").forward(request, response);
     }
 
     /**
@@ -105,12 +96,18 @@ public class UpdateSellerProfile extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //save image
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         String email = (String) request.getSession().getAttribute("username");
         String UserAvatar = null;
         Part part = request.getPart("avatarImage");
+
+        String clubName, clubPresident, description ,linkFb;
+        
+        clubName = request.getParameter("clubName");
+        clubPresident = request.getParameter("clubPresident");
+        description = request.getParameter("description");
+        linkFb = request.getParameter("linkFb");
 
         String realPath1 = request.getServletContext().getRealPath("/avatarImages");
         String realPath = realPath1.replaceFirst("build", "");
@@ -119,34 +116,23 @@ public class UpdateSellerProfile extends HttpServlet {
             Files.createDirectories(Paths.get(realPath));
         }
         if (part.getSize() == 0) {
-            SellerDAO sdb = new SellerDAO();
-            UserAvatar = sdb.getAvatarByUsername(email);
-            String firstName, lastName, addressDetail, phone,linkFb;
-            int age, countryID;
-            int gender = Integer.parseInt(request.getParameter("gender"));
-            int provinceID = Integer.parseInt(request.getParameter("province"));
-            int districtID = Integer.parseInt(request.getParameter("district"));
-            firstName = request.getParameter("firstName");
-            lastName = request.getParameter("lastName");
-            addressDetail = request.getParameter("addressDetail");
-            phone = request.getParameter("phone");
-            age = Integer.parseInt(request.getParameter("age"));
-            linkFb=request.getParameter("linkFb");
-            Seller sellerUpdate = new Seller(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender,linkFb);
-            if (sdb.updateSellerProfile(UserAvatar, sellerUpdate) == true) {
+            ClubDAO cdb = new ClubDAO();
+            UserAvatar = cdb.getAvatarByUsername(email);       
+            //public Club(String avatar, String clubName, String clubPresident, String facebook, String email, String des) {
+            Club clubUpdate = new Club(UserAvatar,clubName,clubPresident,linkFb,email,description);
+            if (cdb.updateClubProfile(UserAvatar, clubUpdate) == true) {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update successfully");
-                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+                request.getRequestDispatcher("self_profileClub.jsp").forward(request, response);
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");
-                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+                request.getRequestDispatcher("self_profileClub.jsp").forward(request, response);
             }
         } else {
 
-            /*SellerDAO sdb = new SellerDAO();
-            Seller seller = sdb.getSellertByUsername(username);*/
-            String avatarName = null;
+           
+           String avatarName = null;
             if (email.contains("@gmail.com")) {
                 avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
             } else if (email.contains("@fpt.edu.vn")) {
@@ -162,30 +148,19 @@ public class UpdateSellerProfile extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }*/
-            String firstName, lastName, addressDetail, phone,linkFb;
-            int age, countryID, provinceID, districtID;
-            int gender = Integer.parseInt(request.getParameter("gender"));
-            firstName = request.getParameter("firstName");
-            lastName = request.getParameter("lastName");
-            addressDetail = request.getParameter("addressDetail");
-            phone = request.getParameter("phone");
-            age = Integer.parseInt(request.getParameter("age"));
-            linkFb = request.getParameter("linkFb");
-            provinceID = Integer.parseInt(request.getParameter("province"));
-            districtID = Integer.parseInt(request.getParameter("district"));
-            Seller sellerUpdate = new Seller(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender,linkFb);
-            SellerDAO sdb = new SellerDAO();
-            if (sdb.updateSellerProfile(UserAvatar, sellerUpdate) == true) {
+            
+            Club clubUpdate = new Club(UserAvatar,clubName,clubPresident,linkFb,email,description);
+            ClubDAO cdb = new ClubDAO();
+            if (cdb.updateClubProfile(UserAvatar, clubUpdate) == true) {
+                reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update successfully");
-                reloadPage(request, response);
-                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+                request.getRequestDispatcher("self_profileClub.jsp").forward(request, response);
             } else {
-                request.setAttribute("UpdateProcess", "Update fail");
                 reloadPage(request, response);
-                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+                request.setAttribute("UpdateProcess", "Update fail");
+                request.getRequestDispatcher("self_profileClub.jsp").forward(request, response);
             }
         }
-
     }
 
     /**

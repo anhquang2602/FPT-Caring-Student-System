@@ -13,7 +13,7 @@
 .main {
     width: 100%;
 }
-.left_box {
+.left_box1 {
     background-color: rgb(238, 77, 45); 
     width: 20%;
 }
@@ -51,10 +51,13 @@
     text-decoration: none;
     border-bottom: 3px solid transparent;
     color: #fff;
-    font-size: 16px
+    font-size: 20px
+}
+.homenav a:hover {
+    color: orange;
 }
 .topnav a:hover {
-    color: black;
+    color: orange;
 }
 .topnav .active {
     color: black;
@@ -164,7 +167,7 @@ ul li:hover .fas {
     color: #f7910c;
 }
 .fs12 {
-    font-size: 18px;
+    font-size: 22px;
 }
 .fs13 {
     font-size: 26px;
@@ -239,7 +242,7 @@ ul li:hover .fas {
 
 .main-sb {
     background-color: #f2f2f2;
-    height: 1100px;
+    height: 1500px;
 }
 .main-sb ul {
     padding-left: 0;
@@ -264,7 +267,7 @@ a .fs12: hover {
 }
 
 .main-home {
-    height: 1100px;
+    height: 1500px;
 }
 
 #topnavbar {

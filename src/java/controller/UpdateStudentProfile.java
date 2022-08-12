@@ -106,7 +106,7 @@ public class UpdateStudentProfile extends HttpServlet {
         String UserAvatar = null;
         Part part = request.getPart("avatarImage");
 
-        String firstName, lastName, addressDetail, phone, linkFb,studentId,unit;
+        String firstName, lastName, addressDetail, phone, linkFb, studentId, unit;
         int age, countryID;
         int gender = Integer.parseInt(request.getParameter("gender"));
         int provinceID = Integer.parseInt(request.getParameter("province"));
@@ -117,10 +117,8 @@ public class UpdateStudentProfile extends HttpServlet {
         phone = request.getParameter("phone");
         age = Integer.parseInt(request.getParameter("age"));
         linkFb = request.getParameter("linkFb");
-        studentId=request.getParameter("studentId");
-        unit=request.getParameter("unit");
-        
-        
+        studentId = request.getParameter("studentId");
+        unit = request.getParameter("unit");
 
         String realPath1 = request.getServletContext().getRealPath("/avatarImages");
         String realPath = realPath1.replaceFirst("build", "");
@@ -147,9 +145,8 @@ public class UpdateStudentProfile extends HttpServlet {
             st.setString(12,student.getStudentID());
             st.setString(13,student.getUnit());
             st.setString(14, student.getEmail());
-            */
-            
-            Student studentUpdate = new Student( studentId,  firstName,  lastName,  age,  phone,  unit,  email,  1,  provinceID,  districtID,  addressDetail,  gender,  linkFb);
+             */
+            Student studentUpdate = new Student(studentId, firstName, lastName, age, phone, unit, email, 1, provinceID, districtID, addressDetail, gender, linkFb);
             if (sdb.updateStudentProfile(UserAvatar, studentUpdate) == true) {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update successfully");
@@ -163,7 +160,12 @@ public class UpdateStudentProfile extends HttpServlet {
 
             /*SellerDAO sdb = new SellerDAO();
             Seller seller = sdb.getSellertByUsername(username);*/
-            String avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
+            String avatarName = null;
+            if (email.contains("@gmail.com")) {
+                avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
+            } else if (email.contains("@fpt.edu.vn")) {
+                avatarName = email.replaceFirst("@fpt.edu.vn", "Avatar.jpg");
+            }
             UserAvatar = "avatarImages/" + avatarName;
             part.write(realPath + "\\" + avatarName);
             /* try (PrintWriter out = response.getWriter()) {
@@ -174,8 +176,8 @@ public class UpdateStudentProfile extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }*/
-            
-            Student studentUpdate = new Student( studentId,  firstName,  lastName,  age,  phone,  unit,  email,  1,  provinceID,  districtID,  addressDetail,  gender,  linkFb);
+
+            Student studentUpdate = new Student(studentId, firstName, lastName, age, phone, unit, email, 1, provinceID, districtID, addressDetail, gender, linkFb);
             StudentDAO sdb = new StudentDAO();
             if (sdb.updateStudentProfile(UserAvatar, studentUpdate) == true) {
                 request.setAttribute("UpdateProcess", "Update successfully");
