@@ -49,7 +49,6 @@ public class FilterHostelController extends HttpServlet {
         String index = request.getParameter("index");
         if (index == null) {
             index = "1";
-
         }
         HostelDAO hostelDAO = new HostelDAO();
         ArrayList<Hostel> hostels = hostelDAO.listAllHostelPagging(Integer.parseInt(index));
