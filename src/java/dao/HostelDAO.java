@@ -72,12 +72,13 @@ public class HostelDAO extends DBContext {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
-            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,h.StarVoting,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
                     + "                    join Country c on h.CountryID =c.CountryID\n"
                     + "                    join District d on h.DistrictID = d.DistrictID\n"
                     + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
                     + "                    join Sellers s on h.SellerID = s.SellerID\n"
-                    + "                    left join HostelImage i on h.HostelID = i.HostelID";
+                    + "                    left join HostelImage i on h.HostelID = i.HostelID\n"
+                    + "                    left join StarVotingHostel v on h.HostelID = v.HostelID";
 
             PreparedStatement st;
 
@@ -87,7 +88,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
 
             }
 
@@ -101,14 +102,15 @@ public class HostelDAO extends DBContext {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
-            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,h.StarVoting,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
                     + "                    join Country c on h.CountryID =c.CountryID\n"
                     + "                    join District d on h.DistrictID = d.DistrictID\n"
                     + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
                     + "                    join Sellers s on h.SellerID = s.SellerID\n"
                     + "                    left join HostelImage i on h.HostelID = i.HostelID\n"
-                    + "					order by h.HostelID\n"
-                    + "					OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+                    + "                    left join StarVotingHostel v on h.HostelID = v.HostelID\n"
+                    + "			   order by h.HostelID\n"
+                    + "			   OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
 
             PreparedStatement st;
 
@@ -119,7 +121,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
 
             }
 
@@ -135,12 +137,13 @@ public class HostelDAO extends DBContext {
 
             String sql = "";
 
-            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,h.StarVoting,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
                     + "                                        join Country c on h.CountryID =c.CountryID\n"
                     + "                                       join District d on h.DistrictID = d.DistrictID\n"
                     + "                                       join Province p on h.ProvinceID = p.ProvinceID\n"
                     + "                                        join Sellers s on h.SellerID = s.SellerID\n"
                     + "                                       left join HostelImage i on h.HostelID = i.HostelID\n"
+                    + "                    left join StarVotingHostel v on h.HostelID = v.HostelID\n"
                     + "									   where h.RentCost between " + costUnder + " and " + costUpper + "\n"
                     + "									   and h.Distance <= " + distance + "\n"
                     + "                    				order by h.HostelID";
@@ -149,10 +152,10 @@ public class HostelDAO extends DBContext {
             st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-               h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
+                h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
             }
 
         } catch (SQLException ex) {
@@ -161,18 +164,19 @@ public class HostelDAO extends DBContext {
         return h;
     }
 
-    public ArrayList<Hostel> filterHostelPagging(double costUnder, double costUpper, double distance, int index) {
+    public ArrayList<Hostel> filterHostelPagging(double costUnder, double costUpper, double distance,int index) {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
             String sql = "";
 
-            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,h.StarVoting,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
                     + "                                        join Country c on h.CountryID =c.CountryID\n"
                     + "                                       join District d on h.DistrictID = d.DistrictID\n"
                     + "                                       join Province p on h.ProvinceID = p.ProvinceID\n"
                     + "                                        join Sellers s on h.SellerID = s.SellerID\n"
                     + "                                       left join HostelImage i on h.HostelID = i.HostelID\n"
+                    + "                    left join StarVotingHostel v on h.HostelID = v.HostelID\n"
                     + "									   where h.RentCost between " + costUnder + " and " + costUpper + "\n"
                     + "									   and h.Distance <= " + distance + "\n"
                     + "                    				order by h.HostelID\n"
@@ -186,7 +190,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
             }
 
         } catch (SQLException ex) {
@@ -213,7 +217,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
 
             }
 
@@ -360,7 +364,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
             }
 
         } catch (SQLException ex) {
@@ -388,7 +392,7 @@ public class HostelDAO extends DBContext {
                 list.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
             }
 
         } catch (SQLException ex) {
@@ -452,8 +456,6 @@ public class HostelDAO extends DBContext {
         return maxCost;
     }
 
-
-
     public List<Hostel> pagingHostels(int index) {
         List<Hostel> list = new ArrayList<>();
         String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
@@ -473,7 +475,7 @@ public class HostelDAO extends DBContext {
                 list.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
             }
         } catch (SQLException ex) {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -588,7 +590,6 @@ public class HostelDAO extends DBContext {
         }
 
     }
-      
 
     public int getNewestHostelID() {
         try {
@@ -632,5 +633,5 @@ public class HostelDAO extends DBContext {
             System.out.println(hostel.getHostelName());
         }
     }
-   
+
 }

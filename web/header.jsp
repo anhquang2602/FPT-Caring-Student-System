@@ -38,7 +38,7 @@
                     <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
                     <a class="col-md-2"></a>
                     <a class="col-md-3" href="ListAllRestaurantController">NHÀ ĂN</a>  
-                    <a class="col-md-3" href="listallhostels">NHÀ TRỌ</a> 
+                    <a class="col-md-3" href="FilterHostelController">NHÀ TRỌ</a> 
                     <%}%>
                     <div class="col-md-1"></div>
                     <div class="dropdownProfile col-md-2 ml-5">    

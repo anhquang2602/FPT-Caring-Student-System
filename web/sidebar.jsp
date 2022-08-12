@@ -21,7 +21,7 @@
                 </li>
                 <li> 
                     <span class="fas fa-chart-line"></span> 
-                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="listallhostels">NHÀ TRỌ</a> 
+                    <a class="fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="FilterHostelController">NHÀ TRỌ</a> 
                 </li>
                 <li> 
                     <span class="fas fa-chart-line"></span> 

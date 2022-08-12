@@ -52,7 +52,7 @@ public class FilterHostelController extends HttpServlet {
 
         }
         HostelDAO hostelDAO = new HostelDAO();
-        ArrayList<Hostel> hostels = new ArrayList<Hostel>();
+        ArrayList<Hostel> hostels = hostelDAO.listAllHostelPagging(Integer.parseInt(index));
         String costUnder = request.getParameter("under");
         String costUpper = request.getParameter("upper");
         String distance = request.getParameter("distance");
@@ -84,7 +84,7 @@ public class FilterHostelController extends HttpServlet {
         request.setAttribute("distance", distance);
         request.setAttribute("under", costUnder);
         request.setAttribute("upper", costUpper);
-        request.getRequestDispatcher("filter.jsp").forward(request, response);
+        request.getRequestDispatcher("listAllHostels.jsp").forward(request, response);
     }
 
     /**
@@ -126,7 +126,7 @@ public class FilterHostelController extends HttpServlet {
         request.setAttribute("distance", distance);
         request.setAttribute("under", costUnder);
         request.setAttribute("upper", costUpper);
-        request.getRequestDispatcher("filter.jsp").forward(request, response);
+        request.getRequestDispatcher("listAllHostels.jsp").forward(request, response);
     }
 
     /**

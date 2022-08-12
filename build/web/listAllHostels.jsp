@@ -70,9 +70,54 @@
                 </ul>
                 <div id="topnavbar">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-                        <form class="example d-flex align-items-center" action="SearchController" method="post"> 
-                            <input type="text" placeholder="" name="search"> 
+                        <form class="example d-flex align-items-center" action="FilterHostelController" method="post"> 
+                            <input type="text" name="keywordHostel" value="${keywordHostel}" >
                             <button type="submit"><i class="fa fa-search"></i></button> 
+                            Bộ lọc tìm kiếm <br/>
+
+                            Giá: <input type="text" name="under" value="${under}"> - <input type="text" name="upper" value="${upper}"> <br/>
+                            <mark>${costReport}</mark>
+                            <br/>
+                            Khoảng cách: <select name="distance">
+                                <option value="6" <c:if test = "${distance == 10 }">
+                                        selected="selected"
+                                    </c:if>> Tất cả</option>
+                                <option value="1" <c:if test = "${distance == 1 }">
+                                        selected="selected"
+                                    </c:if> > < 1km</option>
+                                <option value="2"<c:if test = "${distance == 2 }">
+                                        selected="selected"
+                                    </c:if>> < 2km</option>
+                                <option value="3" <c:if test = "${distance == 3 }">
+                                        selected="selected"
+                                    </c:if>> < 3km</option>
+                                <option value="5" <c:if test = "${distance == 5 }">
+                                        selected="selected"
+                                    </c:if>> < 5km</option>
+                            </select>
+                            <br/>
+                            <br/>
+                            Xếp hạng: <select name="star">
+                                <option value="6" <c:if test = "${star == 6 }">
+                                        selected="selected"
+                                    </c:if>> Tất cả</option>
+                                <option value="1" <c:if test = "${star == 1 }">
+                                        selected="selected"
+                                    </c:if>> 1</option>
+                                <option value="2" <c:if test = "${star == 2 }">
+                                        selected="selected"
+                                    </c:if>> 2</option>
+                                <option value="3" <c:if test = "${star == 3 }">
+                                        selected="selected"
+                                    </c:if>> 3</option>
+                                <option value="4" <c:if test = "${star == 4 }">
+                                        selected="selected"
+                                    </c:if>> 4</option>
+                                <option value="5" <c:if test = "${star == 5 }">
+                                        selected="selected"
+                                    </c:if>> 5</option>
+                            </select>
+                            <<input type="submit" value="Tìm kiếm"> 
                         </form>
                     </div>
                     <div class="container" style="margin-top: 50px">
@@ -85,7 +130,7 @@
                                     </ul>
                                 </div>
                                 <ul class="list-group shadow">
-                                    <c:forEach items="${listHostelPaging}" var="d" >
+                                    <c:forEach items="${hostels}" var="d" >
                                         <li class="list-group-item">
                                             <div class="media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="media-body order-2 order-lg-1 description" id="description">
@@ -95,6 +140,7 @@
                                                     </h5>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê: ${d.cost} VND</p>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Khoảng cách: ${d.distance} km</p>
                                                 </div>
                                                 <div class="media-body order-2 order-lg-1 image">
                                                     <img  <c:if test="${d.img1 != null}">
@@ -104,28 +150,31 @@
                                                     </div>
                                                 </div> 
                                             <td>
-                                                
+
                                                 <div class="stars-outer">
                                                     <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
-                                                </div>
-                                                
-                                            </td>
-                                            </li> 
+                                            </div>
+
+                                        </td>
+                                        </li> 
                                     </c:forEach>
                                 </ul> 
-                                <div class="clearfix">
-                                    <ul class="pagination">
-                                        <c:if test="${tag>1}">
-                                            <li class="page-item disabled"><a href="listallhostels?index=${tag-1}">Previous</a></li>
-                                            </c:if>
-                                            <c:forEach begin="1" end="${endP}" var="i">
-                                            <li class="page-item ${tag==i?"active":""}"><a href="listallhostels?index=${i}" class="page-link">${i}</a></li>
-                                            </c:forEach>
-                                            <c:if test="${tag<endP}">
-                                            <li class="page-item"><a href="listallhostels?index=${tag+1}" class="page-link">Next</a></li>
-                                            </c:if>
-                                    </ul>
-                                </div> 
+                                <!--                                <div class="clearfix">
+                                                                    <ul class="pagination">
+                                <c:if test="${tag>1}">
+                                    <li class="page-item disabled"><a href="FilterHostelController?index=${tag-1}&costUnder=${under}&costUpper=${upper}&distance=${distance}">Previous</a></li>
+                                </c:if>
+                                <c:forEach begin="1" end="${endP}" var="i">
+                                <li class="page-item ${tag==i?"active":""}"><a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}" class="page-link">${i}</a></li>
+                                </c:forEach>
+                                <c:if test="${tag<endP}">
+                                <li class="page-item"><a href="FilterHostelController?index=${tag+1}&costUnder=${under}&costUpper=${upper}&distance=${distance}" class="page-link">Next</a></li>
+                                </c:if>
+                        </ul>
+                    </div> -->
+                                <c:forEach begin="1" end="${totalPage}" var="i">
+                                    <a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}">${i}</a> 
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
@@ -136,7 +185,7 @@
             $(document).ready(function () {
                 $(".toast").toast({delay: 4000});
                 $(".toast").toast("show");
-                
+
             });
         </script>
     </body>
