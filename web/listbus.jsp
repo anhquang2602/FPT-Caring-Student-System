@@ -15,14 +15,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/busStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
     <body class="bg-white">
         <div class="px-0">
             <%@include file="/header.jsp" %> 
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar">

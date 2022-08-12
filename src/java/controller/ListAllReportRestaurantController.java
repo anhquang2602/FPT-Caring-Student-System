@@ -69,8 +69,8 @@ public class ListAllReportRestaurantController extends HttpServlet {
         int index = Integer.parseInt(indexPage);
 
         int total = reportRestaurantDAO.getTotalReportRestaurant();
-        int endPage = total / 20;
-        if (total % 20 != 0) {
+        int endPage = total / 6;
+        if (total % 6 != 0) {
             endPage++;
         }
         ArrayList<ReportRestaurant> reportRestaurant = reportRestaurantDAO.listAllReportRestaurant(index);

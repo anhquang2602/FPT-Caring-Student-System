@@ -1,15 +1,8 @@
-<%-- 
-    Document   : listRestaurantBySeller
-    Created on : Jul 26, 2022, 11:03:49 AM
-    Author     : DELL
---%>
-
-
 
 <%-- 
-    Document   : listRestaurantBySeller
-    Created on : Jul 26, 2022, 11:03:49 AM
-    Author     : DELL
+    Document   : listdepartment
+    Created on : Jun 18, 2022, 2:08:32 PM
+    Author     : nguye
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,119 +10,91 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> 
+<html lang="en">
     <head>
-        <link rel="stylesheet" href="css/listRestaurantBySellerStyle.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/pagingStyle.css">
+        <link rel="stylesheet" href="css/sellerStyle.css">
     </head>
-    <body>
-        <c:choose>
-            <c:when test="${stt.equals('1')}">
-                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
-                    <div class="toast" data-autohide="true">
-                        <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4> ADD SUCCESS </h4></strong>
-                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-                        </div>
-                        <div class="toast-body">
-                            Add New Restaurant Successfully !
-                        </div>
+    <body class="bg-white">
+        <div class="px-0">
+            <%@include file="/header.jsp" %>
+            <div class="d-md-flex">
+                <ul id="navbar-items" class="p-3">
+                    <%@include file="/sidebar.jsp" %>
+                </ul>
+                <div id="topnavbar">
+                    <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
+                        <form class="example d-flex align-items-center"> 
+                            <input type="text" placeholder="" name="search"> 
+                            <button type="submit"><i class="fa fa-search"></i></button> 
+                        </form>
                     </div>
-                </div>
-            </c:when>
-        </c:choose>
-
-
-        <h2>My restaurant</h2>
-
-        <c:forEach items="${listRestaurant}" var="restaurant" >
-            <tr>
-                <td>
-                    <a class = "long" href="">${restaurant.restaurantName}</a>
-                </td>
-
-                <td>
-                    <div class="dropdown">
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="EditRestaurantController?id=${restaurant.restaurantID}">Edit Post</a>
-                            <a class="dropdown-item" href="DeleteRestaurantController?id=${restaurant.restaurantID}">Delete Post</a>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            
-        </c:forEach>
-    </table>-->
-
-        <div class="container">
-            <div class="accordion d-flex justify-content-center align-items-center height" id="accordionExample">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="p-3">
-                            <ul class="testimonial-list">
-                                <c:forEach items="${listRestaurant}" var="restaurant" >
-                                    <li>
-                                        <div class="card p-3" data-toggle="collapse" data-target="#collapse${restaurant.restaurantID}" aria-expanded="true" aria-controls="${restaurant.restaurantID}">
-                                            <div class="d-flex flex-row align-items-center">
-                                                <img src="${restaurant.restaurantImage}" width="50" class="rounded-circle">
-                                                <div class="d-flex flex-column ml-2">
-                                                    <span class="font-weight-normal">${restaurant.restaurantName}</span>
-
+                    <div class="container" style="margin-top: 50px">
+                        <div class="row">
+                            <div class="col-lg-12 mb-5">
+                                <div>
+                                    <ul class="breadcrumb bg-white">
+                                        <li><a href="home.jsp">Trang chủ</a></li>
+                                        <li><a>Nhà hàng của tôi</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mb-3" style="text-align: end">
+                                    <a style="padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="AddRestaurantController">Thêm nhà hàng mới (+)</a>
+                                </div>
+                                <ul class="list-group shadow">
+                                    <c:forEach items="${listRestaurant}" var="r" >
+                                        <li class="list-group-item">
+                                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
+                                                <div class="media-body order-2 order-lg-1 description" id="description">
+                                                    <h5 class="mt-0 font-weight-bold mb-2">
+                                                        <a href="RestaurantListController?id=${r.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
+                                                    </h5>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>
                                                 </div>
-                                                
-                                            </div>
+                                                <div class="media-body order-2 order-lg-1 image">
+                                                    <img src="" style="width: 150px; height: 150px" >
+                                                </div>
+                                                 
+                                                <a class="btn btn-primary" href="EditRestaurantController?id=${r.restaurantID}" style="margin-left: 700px">Chỉnh sửa</a> 
+                                                <a class="btn btn-primary" href="AddFoodController?id=${r.restaurantID}">Menu</a>
+                                                <a class="btn btn-danger" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà hàng</a>
 
-                                        </div>   
-                                    </li>
-                                </c:forEach>                               
-                            </ul>
+                                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                Xoá nhà hàng
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Bạn có chắc chắn muốn xoá nhà hàng này không?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                                                <a class="btn btn-danger btn-ok">Xoá</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </li> 
+                                    </c:forEach>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-
-
-                    <div class="col-md-6">
-                        <div class="p-3 testimonials-margin">
-                            <c:forEach items="${listRestaurant}" var="restaurant" >
-
-                                <div id="collapse${restaurant.restaurantID}" class="collapse" aria-expanded="true" data-parent="#accordionExample" >
-                                    <a class="dropdown-item" href="EditRestaurantController?id=${restaurant.restaurantID}">Edit Post</a>
-
-                                <div id="collapse${restaurant.restaurantID}" class="collapse" data-parent="#accordionExample" >
-                                    <div class="card-body">
-                                        <h4>It was a great experience</h4>
-                                        <div class="ratings">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <p>${restaurant.address}</p>
-                                        <a href="EditRestaurantController?id=${restaurant.restaurantID}">Edit Post</a>
-                                        <a href="DeleteRestaurantController?id=${restaurant.restaurantID}">Delete Post</a>
-                                        <a  href="AddFoodController?id=${restaurant.restaurantID}" >Menu của tôi</a>
-
-                                    </div>
-
-                                </div>  
-                            </c:forEach>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-
         </div>
-        <script>
-            $(document).ready(function () {
-                $(".toast").toast({delay: 4000});
-                $(".toast").toast("show");
-
-            });
-        </script>
     </body>
+    <script>
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+    </script>
+    <%@include file="/footer.jsp" %>
 </html>
-
-
-
 
 

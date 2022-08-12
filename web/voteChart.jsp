@@ -17,11 +17,11 @@
         <div
             id="myChart" style="width:100%; max-width:600px; height:500px;">
         </div>
-        <label class="labels" id="onestar" hidden="">55</label>
-        <label class="labels" id="twostar" hidden="">30</label>
-        <label class="labels" id="threestar" hidden="">49</label>
-        <label class="labels" id="fourstar" hidden="">44</label>
-        <label class="labels" id="fivestar" hidden="">20</label>
+        <label class="labels" id="onestar" hidden="">${oneStar}</label>
+        <label class="labels" id="twostar" hidden="">${twoStar}</label>
+        <label class="labels" id="threestar" hidden="">${threeStar}</label>
+        <label class="labels" id="fourstar" hidden="">${fourStar}</label>
+        <label class="labels" id="fivestar" hidden="">${fiveStar}</label>
         <script>
             
             let onestar = document.getElementById('onestar').innerHTML;

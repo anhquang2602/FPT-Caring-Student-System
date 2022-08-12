@@ -67,26 +67,26 @@ public class StarVotingController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-
-        int star = Integer.parseInt(request.getParameter("star"));
-        int hostelId = Integer.parseInt(request.getParameter("hostelId"));
-        String comment = request.getParameter("message");
-        StudentDAO stdao = new StudentDAO();
-        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
-
-        StarDAO dao = new StarDAO();
-
-        if (dao.getListCommentByStudent(hostelId, studentNo) != null) {
-            dao.updateStarVoting(dao.getListCommentByStudent(hostelId, studentNo).getId(), star, comment);
-        }
-
-        dao.addStarVoting(new StarVoting(studentNo, hostelId, comment, star));
-        String json = new Gson().toJson(star);
-
-        out.print(json);
-        out.flush();
-        out.close();
+//        PrintWriter out = response.getWriter();
+//
+//        int star = Integer.parseInt(request.getParameter("star"));
+//        int hostelId = Integer.parseInt(request.getParameter("hostelId"));
+//        String comment = request.getParameter("message");
+//        StudentDAO stdao = new StudentDAO();
+//        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
+//
+//        StarDAO dao = new StarDAO();
+//
+//        if (dao.getCommentofStudent(hostelId, studentNo) != null) {
+//            dao.updateStarVoting(dao.getCommentofStudent(hostelId, studentNo).getId(), star, comment);
+//        }
+//
+//        dao.addStarVoting(new StarVoting(studentNo, hostelId, comment, star));
+//        String json = new Gson().toJson(star);
+//
+//        out.print(json);
+//        out.flush();
+//        out.close();
 
     }
 
@@ -120,8 +120,8 @@ public class StarVotingController extends HttpServlet {
 //       java.sql.Date date1 = new java.sql.Date(dateFormat.format(date));
         StarDAO dao = new StarDAO();
 
-        if (dao.getListCommentByStudent(hostelId, studentNo) != null) {
-            dao.updateStarVoting(dao.getListCommentByStudent(hostelId, studentNo).getId(), star, comment);
+        if (dao.getCommentofStudent(hostelId, studentNo) != null) {
+            dao.updateStarVoting(dao.getCommentofStudent(hostelId, studentNo).getId(), star, comment);
         }
 
         dao.addStarVoting(new StarVoting(studentNo, hostelId, comment, star));

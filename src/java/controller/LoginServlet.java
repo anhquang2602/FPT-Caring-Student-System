@@ -76,12 +76,10 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("pass");
-        String role;
-       
+        String role;     
         SellerDAO sdao = new SellerDAO();
         AccountDAO dao = new AccountDAO();
         Account a = dao.checkLogin(username, password);
-        
         if (a != null && a.isStatus() == true) {
             request.getSession().setAttribute("role", a.getRoleId());
             request.getSession().setAttribute("username", username);
@@ -93,7 +91,6 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("errorLogin", "Không thể đăng nhập do" + username + "không còn hoạt động");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-
     }
 
     /**

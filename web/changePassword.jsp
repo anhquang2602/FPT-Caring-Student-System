@@ -12,13 +12,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/changePasswordStyle.css">
     </head>
     <body class="bg-white">
         <div class="px-0">
             <%@include file="/header.jsp" %> 
-            <div class="d-md-flex">
-                <ul id="navbar-items" class="p-3">
+            <div class="d-flex nav-item main-home">
+                <ul id="navbar-items">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div class="container mt-5 mb-5">
@@ -31,18 +32,18 @@
                                 <div class="input-field d-flex flex-column mt-3"> 
                                     <form name="changePassForm" action="ChangePasswordServlet" method="post" onsubmit="return checkSend()">
                                         <div class="mt-3">
-                                            Old Password
+                                            Mật khẩu cũ
                                             <input class="form-control" type="password" id="oldpass" name="oldpass" placeholder="Nhập mật khẩu hiện tại của bạn"/>
                                         </div>
                                         <div id="divCheckOldPass"></div>
                                         <div class="mt-3">
-                                        New Password
-                                        <input class="form-control" type="password" id="pass" name="pass" placeholder="Nhập mật khẩu mới của bạn"/>
+                                            Mật khẩu mới
+                                            <input class="form-control" type="password" id="pass" name="pass" placeholder="Nhập mật khẩu mới của bạn"/>
                                         </div>
                                         <div class="mt-3">
-                                        <div id="divCheckPass"></div>
-                                        Re-Password
-                                        <input class="form-control" type="password" id="repass" name="repass" placeholder="Nhập lai mật khẩu mới"/>
+                                            <div id="divCheckPass"></div>
+                                            Nhập lại mật khẩu mới
+                                            <input class="form-control" type="password" id="repass" name="repass" placeholder="Nhập lai mật khẩu mới"/>
                                         </div>
                                         <div id="divCheckRePass"></div>
                                         <input class="mt-5 btn btn-dark d-flex justify-content-center align-items-center" style="background-color: rgb(238, 77, 45); border: none;" type="submit" value="Xác nhận" onclick="checkValidatorForChangePassword()"/>

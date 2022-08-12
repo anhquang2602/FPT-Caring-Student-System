@@ -242,6 +242,23 @@ public class RestaurantDAO extends DBContext {
         }
         return false;
     }
+    
+    public int getResIdbyFoodID(int foodId) {
+        try {
+
+            String sql = "SELECT  restaurantid FROM foods where foodid=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, foodId);
+            ResultSet rs = statement.executeQuery();
+           
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 
     public int getNewestFoodID() {
         try {
