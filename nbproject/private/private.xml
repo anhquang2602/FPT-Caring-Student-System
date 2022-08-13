@@ -3,17 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/nbproject/private/private.xml</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/nbproject/genfiles.properties</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/dao/DBContext.java</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/nbproject/project.properties</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/nbproject/build-impl.xml~</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/controller/LoginServlet.java</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/busDetail.jsp</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/nbproject/project.xml</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/nbproject/private/private.properties</file>
-            <file>file:/C:/Users/asus/Desktop/FCS_Final/build.xml</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/ViewSellerController.java</file>
+            <file>file:/D:/DoAn_Final/src/java/dao/SellerDAO.java</file>
+            <file>file:/D:/DoAn_Final/web/self_profileSeller.jsp</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/UpdateStudentProfile.java</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/UpdateSellerProfile.java</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/UpdateAdminProfile.java</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/UpdateClubProfile.java</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/LoginServlet.java</file>
         </group>
     </open-files>
 </project-private>

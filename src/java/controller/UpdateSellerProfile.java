@@ -68,9 +68,9 @@ public class UpdateSellerProfile extends HttpServlet {
         request.setAttribute("seller", seller);
         request.setAttribute("UserAvatar", UserAvatar);
         AddressDAO a = new AddressDAO();
-        
+
         request.setAttribute("listProvince", a.listProvince());
-        if (seller.getProvinceID()+"" != "") {
+        if (seller.getProvinceID() + "" != "") {
             request.setAttribute("listDistrict", a.listDistrict(seller.getProvinceID()));
         }
 
@@ -115,25 +115,36 @@ public class UpdateSellerProfile extends HttpServlet {
         String realPath1 = request.getServletContext().getRealPath("/avatarImages");
         String realPath = realPath1.replaceFirst("build", "");
         String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+
+        SellerDAO sdb = new SellerDAO();
+        UserAvatar = sdb.getAvatarByUsername(email);
+        String firstName, lastName, addressDetail, phone, linkFb;
+        //   int age, countryID;
+        String gender = request.getParameter("gender");
+//            int provinceID = Integer.parseInt(request.getParameter("province"));
+//            int districtID = Integer.parseInt(request.getParameter("district"));
+        String provinceID = request.getParameter("province");
+
+        String districtID = request.getParameter("district");
+        if (provinceID.isEmpty()) {
+            provinceID = null;
+            districtID = null;
+        }
+        firstName = request.getParameter("firstName");
+        lastName = request.getParameter("lastName");
+        addressDetail = request.getParameter("addressDetail");
+        phone = request.getParameter("phone");
+        // age = Integer.parseInt(request.getParameter("age"));
+        String age = request.getParameter("age");
+        linkFb = request.getParameter("linkFb");
+        
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
         }
         if (part.getSize() == 0) {
-            SellerDAO sdb = new SellerDAO();
-            UserAvatar = sdb.getAvatarByUsername(email);
-            String firstName, lastName, addressDetail, phone,linkFb;
-            int age, countryID;
-            int gender = Integer.parseInt(request.getParameter("gender"));
-            int provinceID = Integer.parseInt(request.getParameter("province"));
-            int districtID = Integer.parseInt(request.getParameter("district"));
-            firstName = request.getParameter("firstName");
-            lastName = request.getParameter("lastName");
-            addressDetail = request.getParameter("addressDetail");
-            phone = request.getParameter("phone");
-            age = Integer.parseInt(request.getParameter("age"));
-            linkFb=request.getParameter("linkFb");
-            Seller sellerUpdate = new Seller(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender,linkFb);
-            if (sdb.updateSellerProfile(UserAvatar, sellerUpdate) == true) {
+            // Seller sellerUpdate = new Seller(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender,linkFb);
+            // if (sdb.updateSellerProfile(UserAvatar, sellerUpdate) == true) {Avatar=?,FirstName=?,LastName=?,Age=?,Phone=?,CountryID=?,ProvinceID=?,DistrictID=?,AddressDetail=?,Gender=?,LinkFacebook=? where email=?";
+            if (sdb.updateSellerProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update successfully");
                 request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
@@ -143,7 +154,6 @@ public class UpdateSellerProfile extends HttpServlet {
                 request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
             }
         } else {
-
             /*SellerDAO sdb = new SellerDAO();
             Seller seller = sdb.getSellertByUsername(username);*/
             String avatarName = null;
@@ -162,26 +172,14 @@ public class UpdateSellerProfile extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }*/
-            String firstName, lastName, addressDetail, phone,linkFb;
-            int age, countryID, provinceID, districtID;
-            int gender = Integer.parseInt(request.getParameter("gender"));
-            firstName = request.getParameter("firstName");
-            lastName = request.getParameter("lastName");
-            addressDetail = request.getParameter("addressDetail");
-            phone = request.getParameter("phone");
-            age = Integer.parseInt(request.getParameter("age"));
-            linkFb = request.getParameter("linkFb");
-            provinceID = Integer.parseInt(request.getParameter("province"));
-            districtID = Integer.parseInt(request.getParameter("district"));
-            Seller sellerUpdate = new Seller(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender,linkFb);
-            SellerDAO sdb = new SellerDAO();
-            if (sdb.updateSellerProfile(UserAvatar, sellerUpdate) == true) {
-                request.setAttribute("UpdateProcess", "Update successfully");
+               
+            if (sdb.updateSellerProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
+                request.setAttribute("UpdateProcess", "Update successfully");
                 request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
             } else {
-                request.setAttribute("UpdateProcess", "Update fail");
                 reloadPage(request, response);
+                request.setAttribute("UpdateProcess", "Update fail");
                 request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
             }
         }

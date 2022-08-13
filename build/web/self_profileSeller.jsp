@@ -20,10 +20,10 @@
                 <ul id="navbar-items" class="col-md-2 d-flex">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-<<<<<<< HEAD
+
                 <div id="topnavbar1" class="col-md-10">
                     <div class="container rounded mt-5 mb-5 p-4">
-                        <form action="UpdateSellerProfile" name="updateSellerForm" enctype="multipart/form-data"  method="post" onsubmit="return validateUpdateSeller()">
+                        <form action="UpdateSellerProfile" name="updateSellerForm" enctype="multipart/form-data"  method="post">
                             <div class="row">
                                 <div>
                                     <ul class="breadcrumb bg-white">

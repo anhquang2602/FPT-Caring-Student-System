@@ -255,4 +255,30 @@ public class SellerDAO extends DBContext {
             return false;
         }
     }
+    
+    public boolean updateSellerProfileNoPro(String avatar, String firstName,String lastName,String age,String phone,String countryId,String provinceId,String districtId,String addressDetail,String gender1,String linkFacebook,String email) {      
+        try {
+            String sql = "UPDATE Sellers SET  Avatar=?,FirstName=?,LastName=?,Age=?,Phone=?,CountryID=?,ProvinceID=?,DistrictID=?,AddressDetail=?,Gender=?,LinkFacebook=? where email=?";
+            PreparedStatement st;
+            st = connection.prepareStatement(sql);
+            st.setString(1, avatar);
+            st.setString(2, firstName);
+            st.setString(3, lastName);
+            st.setString(4, age);
+            st.setString(5, phone);
+            st.setString(6, countryId);
+            st.setString(7, provinceId);
+            st.setString(8, districtId);
+            st.setString(9, addressDetail);
+            st.setString(10, gender1);
+            st.setString(11, linkFacebook);
+            st.setString(12, email);
+            st.executeUpdate();
+            st.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
