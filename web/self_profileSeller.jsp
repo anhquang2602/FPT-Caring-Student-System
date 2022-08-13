@@ -14,6 +14,21 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
     <body>
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Thay Đổi Hồ Sơ Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Thay Đổi Hồ Sơ Thành Công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <%@include file="/header.jsp" %>  
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -22,7 +37,7 @@
                 </ul>
                 <div id="topnavbar1" class="col-md-10">
                     <div class="container rounded mt-5 mb-5 p-4">
-                        <form action="UpdateSellerProfile" name="updateSellerForm" enctype="multipart/form-data"  method="post" onsubmit="return validateUpdateSeller()">
+                        <form action="UpdateSellerProfile" name="updateSellerForm" enctype="multipart/form-data"  method="post">
                             <div class="row">
                                 <div>
                                     <ul class="breadcrumb bg-white">
@@ -142,9 +157,18 @@
             </div>
         </div>
     </body>
+    <script>
+        $(document).ready(function () {
+            $(".toast").toast({delay: 4000});
+            $(".toast").toast("show");
+
+        });
+    </script>
+    
     <script src="validator/Validator.js"></script>
     <script language="javascript">
 
+<<<<<<< HEAD
                                                 var gender = document.getElementById('genderlable').innerHTML;
 
                                                 if (gender == 1) {
@@ -157,6 +181,20 @@
 
                                                 // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
                                                 // obj là tham số truyền vào và cũng chính là thẻ select
+=======
+        var gender = document.getElementById('genderlable').innerHTML;
+
+        if (gender == 1) {
+            document.getElementById('inlineRadio1').setAttribute('checked', true);
+        } else
+        {
+            document.getElementById('inlineRadio2').setAttribute('checked', true);
+        }
+
+
+        // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
+        // obj là tham số truyền vào và cũng chính là thẻ select
+>>>>>>> 10cd79a8847c36b39f45948418a8ec599c969fe5
 
             
            
@@ -167,6 +205,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
     <script>
+<<<<<<< HEAD
                                                 $(document).on('change', '.province', function () {
                                                     var province = document.getElementById("province").value;
                                                     $('#district').empty();
@@ -197,6 +236,38 @@
                                                     });
 
                                                 });
+=======
+        $(document).on('change', '.province', function () {
+            var province = document.getElementById("province").value;
+            $('#district').empty();
+
+
+            $.ajax({
+                type: "GET",
+
+                url: "/Test_1/findDistrict",
+                data: {
+                    province: province,
+                },
+                headers: {
+                    Accept: "application/json; charset=utf-8",
+                    contentType: "application/json; charset=utf-8"
+                },
+
+                success: function (data) {
+
+                    data.forEach(function (a) {
+                        $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+
+                    });
+                },
+                error: function (e) {
+                    console.log("ERROR: ", e);
+                }
+            });
+
+        });
+>>>>>>> 10cd79a8847c36b39f45948418a8ec599c969fe5
     </script>
 
 

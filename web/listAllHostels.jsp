@@ -130,7 +130,7 @@
                                     </ul>
                                 </div>
                                 <ul class="list-group shadow">
-                                    <c:forEach items="${hostels}" var="d" >
+                                    <c:forEach items="${hostels}" var="d">
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-4">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">

@@ -59,7 +59,7 @@
                                         </script>
 
                                         <input type="" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2" onclick="clickImg()">
-                                        <label for="file2" style="position: absolute; margin-left: calc(8.5%); margin-top: calc(5.5%); opacity: 30%">+</label>
+                                        <label for="file2" style="position: absolute; margin-left: calc(8%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="output2" style="margin-left: calc(5%)" width="170rem" height="170rem"/>
                                         <script>
                                             var loadFile2 = function (event) {
@@ -72,7 +72,7 @@
                                         </script>
 
                                         <input type="" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3" onclick="clickImg()">
-                                        <label for="file3" style="position: absolute; margin-left: calc(8.5%); margin-top: calc(5.5%); opacity: 30%">+</label>
+                                        <label for="file3" style="position: absolute; margin-left: calc(8%); margin-top: calc(5%); opacity: 30%">+</label>
                                         <img id="output3" style="margin-left: calc(5%)" width="170rem" height="170rem"/>
                                         <script>
                                             var loadFile3 = function (event) {
@@ -351,7 +351,6 @@
 //                var img5 = document.getElementById('output5').src;
 //                var img6 = document.getElementById('output6').src;
                 if (img1 == "") {
-
                     alert("Bạn phải thêm ảnh 1 đầu tiên");
                     return;
 
