@@ -19,7 +19,7 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <form action="UpdateStudentProfile" enctype="multipart/form-data"  method="post" name="updateStudentForm" onsubmit="return validateUpdateStudent()">
+                <form action="UpdateStudentProfile" enctype="multipart/form-data"  method="post" name="updateStudentForm">
                     <div class="container rounded bg-white mt-5 mb-5">
                         <div class="row">
                             <div>

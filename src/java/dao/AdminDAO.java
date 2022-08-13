@@ -57,7 +57,7 @@ public class AdminDAO extends DBContext {
         }
         return null;
     }
-    
+
     public String getAvatarByUsername(String username) {
         try {
             String sql = "select Avatar\n"
@@ -69,7 +69,7 @@ public class AdminDAO extends DBContext {
             st.setString(1, username);
             rs = st.executeQuery();
             if (rs.next()) {
-                String avatar=rs.getString(1);
+                String avatar = rs.getString(1);
                 st.close();
                 rs.close();
                 return avatar;
@@ -82,31 +82,27 @@ public class AdminDAO extends DBContext {
         }
         return null;
     }
+
+   
     
-    public boolean updateAdminProfile(String avatar, Admin admin) {
-        boolean gender = true;
-        if (admin.getGender() == 1) {
-            gender = true;
-        } else if (admin.getGender() == 0) {
-            gender = false;
-        }
+    public boolean updateAdminProfileNoPro(String avatar, String firstName,String lastName,String age,String phone,String countryId,String provinceId,String districtId,String addressDetail,String gender1,String linkFacebook,String email) {      
         try {
             String sql = "UPDATE Admins SET  Avatar=?,FirstName=?,LastName=?,Age=?,Phone=?,CountryID=?,ProvinceID=?,DistrictID=?,AddressDetail=?,Gender=?,LinkFacebook=? where email=?";
             PreparedStatement st;
             st = connection.prepareStatement(sql);
             st.setString(1, avatar);
-            st.setString(2, admin.getFirstName());
-            st.setString(3, admin.getLastName());
-            st.setInt(4, admin.getAge());
-            st.setString(5, admin.getPhone());
-            st.setInt(6, admin.getCountryID());
-            st.setInt(7, admin.getProvinceID());
-            st.setInt(8, admin.getDistrictID());
-            st.setString(9, admin.getAddress());
-            st.setBoolean(10, gender);
-            st.setString(11, admin.getLinkFb());
-            st.setString(12, admin.getEmail());
-            st.executeUpdate();           
+            st.setString(2, firstName);
+            st.setString(3, lastName);
+            st.setString(4, age);
+            st.setString(5, phone);
+            st.setString(6, countryId);
+            st.setString(7, provinceId);
+            st.setString(8, districtId);
+            st.setString(9, addressDetail);
+            st.setString(10, gender1);
+            st.setString(11, linkFacebook);
+            st.setString(12, email);
+            st.executeUpdate();
             st.close();
             return true;
         } catch (Exception e) {
@@ -114,4 +110,5 @@ public class AdminDAO extends DBContext {
             return false;
         }
     }
+
 }

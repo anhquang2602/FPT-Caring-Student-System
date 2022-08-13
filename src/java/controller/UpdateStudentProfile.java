@@ -105,21 +105,24 @@ public class UpdateStudentProfile extends HttpServlet {
         String email = (String) request.getSession().getAttribute("username");
         String UserAvatar = null;
         Part part = request.getPart("avatarImage");
-
         String firstName, lastName, addressDetail, phone, linkFb, studentId, unit;
-        int age, countryID;
-        int gender = Integer.parseInt(request.getParameter("gender"));
-        int provinceID = Integer.parseInt(request.getParameter("province"));
-        int districtID = Integer.parseInt(request.getParameter("district"));
+        String age, countryID;
+        String gender = request.getParameter("gender");
+        String provinceID = request.getParameter("province");
+        String districtID = request.getParameter("district");
+         if (provinceID.isEmpty()) {
+            provinceID = null;
+            districtID = null;
+        }
         firstName = request.getParameter("firstName");
         lastName = request.getParameter("lastName");
         addressDetail = request.getParameter("addressDetail");
         phone = request.getParameter("phone");
-        age = Integer.parseInt(request.getParameter("age"));
+        age = request.getParameter("age");
         linkFb = request.getParameter("linkFb");
         studentId = request.getParameter("studentId");
         unit = request.getParameter("unit");
-
+        StudentDAO sdb = new StudentDAO();
         String realPath1 = request.getServletContext().getRealPath("/avatarImages");
         String realPath = realPath1.replaceFirst("build", "");
         String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
@@ -127,9 +130,8 @@ public class UpdateStudentProfile extends HttpServlet {
             Files.createDirectories(Paths.get(realPath));
         }
         if (part.getSize() == 0) {
-            StudentDAO sdb = new StudentDAO();
+            
             UserAvatar = sdb.getStAvatarByUsername(email);
-
             /*
             st.setString(1, avatar);
             st.setString(2, student.getFirstName());
@@ -145,9 +147,10 @@ public class UpdateStudentProfile extends HttpServlet {
             st.setString(12,student.getStudentID());
             st.setString(13,student.getUnit());
             st.setString(14, student.getEmail());
+            String avatar, String firstName,String lastName,String age,String phone,String countryId,String provinceId,String districtId,String addressDetail,String gender,String linkFaceBook,String studentId,String unit,String email
              */
-            Student studentUpdate = new Student(studentId, firstName, lastName, age, phone, unit, email, 1, provinceID, districtID, addressDetail, gender, linkFb);
-            if (sdb.updateStudentProfile(UserAvatar, studentUpdate) == true) {
+            //Student studentUpdate = new Student(studentId, firstName, lastName, age, phone, unit, email, 1, provinceID, districtID, addressDetail, gender, linkFb);
+            if (sdb.updateStudentProfileNoPro(UserAvatar, firstName,lastName,age,phone,"1",provinceID,districtID,addressDetail,gender,linkFb,studentId,unit,email) == true) {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update successfully");
                 request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
@@ -177,9 +180,8 @@ public class UpdateStudentProfile extends HttpServlet {
                 e.printStackTrace();
             }*/
 
-            Student studentUpdate = new Student(studentId, firstName, lastName, age, phone, unit, email, 1, provinceID, districtID, addressDetail, gender, linkFb);
-            StudentDAO sdb = new StudentDAO();
-            if (sdb.updateStudentProfile(UserAvatar, studentUpdate) == true) {
+            
+            if (sdb.updateStudentProfileNoPro(UserAvatar, firstName,lastName,age,phone,"1",provinceID,districtID,addressDetail,gender,linkFb,studentId,unit,email) == true) {
                 request.setAttribute("UpdateProcess", "Update successfully");
                 reloadPage(request, response);
                 request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
