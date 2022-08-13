@@ -19,7 +19,7 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <form action="UpdateAdminProfile" enctype="multipart/form-data"  method="post" onsubmit="return validateUpdateAdmin()" name="updateAdminForm">
+                <form action="UpdateAdminProfile" enctype="multipart/form-data"  method="post" name="updateAdminForm">
                     <div class="container rounded bg-white mt-5 mb-5">
                         <div class="row">
                             <div>
