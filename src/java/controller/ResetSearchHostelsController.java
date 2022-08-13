@@ -20,8 +20,8 @@ import model.Hostel;
  *
  * @author win
  */
-@WebServlet(name = "SearchCostController", urlPatterns = {"/FilterHostelController"})
-public class FilterHostelController extends HttpServlet {
+@WebServlet(name = "ResetSearchHostelsController", urlPatterns = {"/ResetSearchHostelsController"})
+public class ResetSearchHostelsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +32,23 @@ public class FilterHostelController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ResetSearchHostelsController</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ResetSearchHostelsController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -49,6 +66,7 @@ public class FilterHostelController extends HttpServlet {
         String index = request.getParameter("index");
         if (index == null) {
             index = "1";
+
         }
         HostelDAO hostelDAO = new HostelDAO();
         ArrayList<Hostel> hostels = hostelDAO.listAllHostelPagging(Integer.parseInt(index));
@@ -70,7 +88,7 @@ public class FilterHostelController extends HttpServlet {
         if (star == null || star.equals("")) {
             star = "6";
         }
-        if (keywordHostel == null ||keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
+        if (keywordHostel == null || keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
             totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
             hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
         } else {
@@ -99,49 +117,7 @@ public class FilterHostelController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-        String index = request.getParameter("index");
-        if (index == null) {
-            index = "1";
-
-        }
-        HostelDAO hostelDAO = new HostelDAO();
-        ArrayList<Hostel> hostels = hostelDAO.listAllHostelPagging(Integer.parseInt(index));
-        String costUnder = request.getParameter("under");
-        String costUpper = request.getParameter("upper");
-        String distance = request.getParameter("distance");
-        String keywordHostel = request.getParameter("keywordHostel");
-        String star = request.getParameter("star");
-        int totalPage = 0;
-        if (costUnder == null || costUnder.equals("")) {
-            costUnder = "0";
-        }
-        if (costUpper == null || costUpper.equals("")) {
-            costUpper = String.valueOf(hostelDAO.getMaxCost());
-        }
-        if (distance == null || distance.equals("")) {
-            distance = "6";
-        }
-        if (star == null || star.equals("")) {
-            star = "6";
-        }
-        if (keywordHostel == null ||keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
-            totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
-            hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
-        } else {
-            totalPage = hostelDAO.getTotalPageTextByFilter(hostels, keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
-            hostels = hostelDAO.filterHostelTextPagging(keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
-        }
-//        totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
-//        hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
-        request.setAttribute("totalPage", totalPage);
-        request.setAttribute("hostels", hostels);
-        request.setAttribute("distance", distance);
-        request.setAttribute("under", costUnder);
-        request.setAttribute("upper", costUpper);
-        request.setAttribute("keywordHostel", keywordHostel);
-        request.getRequestDispatcher("listAllHostels.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

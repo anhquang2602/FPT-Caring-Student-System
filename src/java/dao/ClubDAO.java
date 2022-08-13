@@ -30,13 +30,12 @@ public class ClubDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 listClub.add(new Club(rs.getInt("ClubID"), rs.getString("Avatar"), rs.getString("ClubName"), rs.getString("ClubPresident"), rs.getString("Facebook"), rs.getString("Email"), rs.getString("Description")));
-               
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listClub;
-        
 
     }
 
@@ -62,7 +61,7 @@ public class ClubDAO extends DBContext {
         }
         return club;
     }
-    
+
     public Club getClubByEmail(String email) {
         Club club = new Club();
         String sql = "select * from Clubs where Email = ?";
@@ -85,7 +84,7 @@ public class ClubDAO extends DBContext {
         }
         return club;
     }
-    
+
     public String getAvatarByUsername(String username) {
         try {
             String sql = "select Avatar\n"
@@ -127,13 +126,34 @@ public class ClubDAO extends DBContext {
         }
         return list;
     }
+
+    public ArrayList<Event> getEventByEmail(String id) {
+        ArrayList<Event> list = new ArrayList<>();
+        String sql = "  select * from EventOfClub e join Clubs c on e.ClubID = c.ClubID where  c.Email = ?";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                list.add(new Event(rs.getInt("EventID"), rs.getInt("ClubID"), rs.getString("EventName"), rs.getString("Time"), rs.getString("Description"), rs.getString("Url1")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         ClubDAO club = new ClubDAO();
-        System.out.println(club.getListClubs());
+        ArrayList<Event> e = club.getEventByEmail("jsclub.fpt@gmail.com");
+        for (Event event : e) {
+            System.out.println(event.getEventName());
+        }
     }
-    
+
     public boolean updateClubProfile(String avatar, Club club) {
-        
+
         try {
             String sql = "UPDATE Clubs SET  Avatar=?,ClubName=?,ClubPresident=?,Facebook=?,Description=? where email=?";
             PreparedStatement st;
@@ -143,7 +163,7 @@ public class ClubDAO extends DBContext {
             st.setString(3, club.getClubPresident());
             st.setString(4, club.getFacebook());
             st.setString(5, club.getDes());
-            st.setString(6, club.getEmail());        
+            st.setString(6, club.getEmail());
             st.executeUpdate();
             st.close();
             return true;
