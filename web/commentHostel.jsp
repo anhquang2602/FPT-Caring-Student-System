@@ -202,7 +202,7 @@
                     $.ajax({
                         type: "POST",
 
-                        url: "/Test_1/star",
+                        url: "/Test_1/starHostel",
                         data: {
                             hostelId: hostelId,
                             star: u,

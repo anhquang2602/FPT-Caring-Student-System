@@ -146,7 +146,12 @@ public class UpdateSellerProfile extends HttpServlet {
 
             /*SellerDAO sdb = new SellerDAO();
             Seller seller = sdb.getSellertByUsername(username);*/
-            String avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
+            String avatarName = null;
+            if (email.contains("@gmail.com")) {
+                avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
+            } else if (email.contains("@fpt.edu.vn")) {
+                avatarName = email.replaceFirst("@fpt.edu.vn", "Avatar.jpg");
+            }
             UserAvatar = "avatarImages/" + avatarName;
             part.write(realPath + "\\" + avatarName);
             /* try (PrintWriter out = response.getWriter()) {

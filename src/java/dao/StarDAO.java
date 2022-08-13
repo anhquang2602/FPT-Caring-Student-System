@@ -225,7 +225,7 @@ public class StarDAO extends DBContext {
         }
         return star;
     }
-    
+
     public List<StarVoting> pagingCommentRestaurant(int resID, int index) {
         List<StarVoting> star = new ArrayList<>();
         String sql = "select svh.ID, svh.Comment, svh.[Date], svh.StarVoting, s.FirstName+' '+s.LastName as studentName ,s.Avatar\n"
@@ -264,8 +264,8 @@ public class StarDAO extends DBContext {
 
         return 0;
     }
-    
-        public int getTotalCommentRestaurant(int resID) {
+
+    public int getTotalCommentRestaurant(int resID) {
         String sql = "select count(*) from StarVotingRestaurant where RestaurantID =?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -281,7 +281,22 @@ public class StarDAO extends DBContext {
 
         return 0;
     }
-    
+
+    public void deleteVoteHostel(int hostelID) {
+
+        try {
+
+            String sql = "DELETE FROM [dbo].[StarVotingHostel]\n"
+                    + "      WHERE HostelID=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, hostelID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public static void main(String[] args) {
 //        long millis = System.currentTimeMillis();
 //        java.sql.Date date = new java.sql.Date(millis);

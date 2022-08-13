@@ -3,13 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/HostelDAO.java</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/ListAllHostelController.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/footer.jsp</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DBContext.java</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/HostelDetailController.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/model/Hostel.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/ListHostelbySellerController.java</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/hosteldetail.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listdepartment.jsp</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/DeleteHostel.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/StarVotingHostelController.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/addHostel.jsp</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/self_profileSeller.jsp</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/HostelDAO.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listHostelbySeller.jsp</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/StarDAO.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/css/sellerStyle.css</file>
         </group>
     </open-files>
 </project-private>

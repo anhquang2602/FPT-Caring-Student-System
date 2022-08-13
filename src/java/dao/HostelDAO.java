@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Department;
 import model.Hostel;
+import model.StarVote;
 
 /**
  *
@@ -35,7 +36,8 @@ public class HostelDAO extends DBContext {
                     + "           ,[AddressDetail]\n"
                     + "           ,[RentCost]\n"
                     + "           ,[Distance]\n"
-                    + "           ,[Descriptions])\n"
+                    + "           ,[Descriptions]\n"
+                    + "           ,[StarVoting])\n"
                     + "     VALUES\n"
                     + "           (?\n"
                     + "           ,?\n"
@@ -48,7 +50,8 @@ public class HostelDAO extends DBContext {
                     + "           ,?\n"
                     + "           ,?\n"
                     + "           ,?\n"
-                    + "           ,?)";
+                    + "           ,?\n"
+                    + "           ,0)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, h.getHostelName());
             statement.setInt(2, h.getSellerID());
@@ -86,7 +89,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
 
             }
 
@@ -114,7 +117,7 @@ public class HostelDAO extends DBContext {
                 h.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
 
             }
 
@@ -213,6 +216,7 @@ public class HostelDAO extends DBContext {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public void deleteReportbyHostel(int hostelID) {
         try {
             String sql = "DELETE FROM ReportHostel WHERE HostelID=?";
@@ -257,7 +261,7 @@ public class HostelDAO extends DBContext {
                 list.add(new Hostel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getBoolean(5), rs.getInt(6),
                         rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                         rs.getDouble(11), rs.getDouble(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18),
-                        rs.getString(19),0));
+                        rs.getString(19), 0));
             }
         } catch (SQLException ex) {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -281,7 +285,7 @@ public class HostelDAO extends DBContext {
         return 0;
     }
 
-     public int getSellerIdByHostelId(int hostelID) {
+    public int getSellerIdByHostelId(int hostelID) {
         String sql = "select SellerID from Hostels where HostelID=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -297,7 +301,7 @@ public class HostelDAO extends DBContext {
 
         return 0;
     }
-    
+
     public void addHostelID(int hostelID) {
         try {
 
@@ -355,15 +359,15 @@ public class HostelDAO extends DBContext {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-      public void deleteImage(int hostelID, String indexofURL) {
+
+    public void deleteImage(int hostelID, String indexofURL) {
 
         try {
 
             String sql = "UPDATE [dbo].[HostelImage]\n"
                     + "   SET \n"
                     + indexofURL + "       = NULL\n"
-                    + "WHERE HostelID = ?" ;
+                    + "WHERE HostelID = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, hostelID);
             statement.executeUpdate();
@@ -372,7 +376,6 @@ public class HostelDAO extends DBContext {
         }
 
     }
-      
 
     public int getNewestHostelID() {
         try {
@@ -388,6 +391,41 @@ public class HostelDAO extends DBContext {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
+    }
+
+    public List<StarVote> listStar(int hostelID) {
+        List<StarVote> list = new ArrayList<>();
+        String sql = "SELECT StarVoting, COUNT(*) as numberofvote\n"
+                + "  FROM StarVotingHostel\n"
+                + "  where HostelID=?\n"
+                + "  group by StarVoting";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, hostelID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new StarVote(rs.getInt(1), rs.getInt(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public void updateStarAVG(int hostelID, double starAVG) {
+        try {
+
+            String sql = "UPDATE [dbo].[Hostels]\n"
+                    + "   SET [StarVoting] = ?\n"
+                    + " WHERE HostelID = ? ";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setDouble(1, starAVG);
+            statement.setInt(2, hostelID);
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static void main(String[] args) {

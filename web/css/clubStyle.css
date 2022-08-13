@@ -6,6 +6,8 @@
 
 #club td {
     text-align: center;
+    font-size: 15px;
+    font-weight: inherit;
 }
 
 #club td, #customers th {
@@ -13,11 +15,10 @@
     padding: 8px;
 }
 
-#club tr:nth-child(even){background-color: #f2f2f2;}
-
 #club tr:hover {background-color: #ddd;}
 
 #club th {
+    font-size: 18px;
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;

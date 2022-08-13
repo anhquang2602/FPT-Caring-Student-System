@@ -6,6 +6,7 @@
 package controller;
 
 import dao.HostelDAO;
+import dao.StarDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,7 +33,7 @@ public class DeleteHostel extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,17 +50,18 @@ public class DeleteHostel extends HttpServlet {
             throws ServletException, IOException {
         
         HostelDAO dao = new HostelDAO();
-        int hostelID =Integer.parseInt(request.getParameter("id")) ;
+        StarDAO dao1 = new StarDAO();
+        int role = Integer.parseInt(request.getSession().getAttribute("role").toString());
+        int hostelID = Integer.parseInt(request.getParameter("id"));
         dao.deleteReportbyHostel(hostelID);
         dao.deleteHostelImage(hostelID);
+        dao1.deleteVoteHostel(hostelID);
         dao.deleteHostel(hostelID);
- 
-        response.sendRedirect(request.getContextPath() + "/hostellist");
-        
-        
-       
-        
-         
+        if (role == 3) {
+            response.sendRedirect(request.getContextPath() + "/hostellist");
+        } else if (role == 1) {
+            response.sendRedirect(request.getContextPath() + "/ListAllReportHostelController");
+        }
     }
 
     /**

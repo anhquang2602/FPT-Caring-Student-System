@@ -7,6 +7,7 @@ package controller;
 
 import com.google.gson.Gson;
 import dao.AddressDAO;
+import dao.HostelDAO;
 import dao.StarDAO;
 import dao.StudentDAO;
 import java.io.IOException;
@@ -20,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.StarVoting;
 import java.sql.Date;
+import java.util.ArrayList;
+import model.Hostel;
 
 /**
  *
@@ -126,8 +129,21 @@ public class StarVotingHostelController extends HttpServlet {
 
         dao.addStarVoting(new StarVoting(studentNo, hostelId, comment, star));
 
-        
-        response.sendRedirect(request.getContextPath() + "/detailhostel?id="+hostelId);
+        ArrayList<StarVoting> sv = dao.getListCommentByHostel(hostelId);
+        if (!sv.isEmpty()) {
+
+            int count = 0;
+            double sum = 0;
+            for (StarVoting starVoting : sv) {
+                sum += starVoting.getStarvoting();
+                count++;
+            }
+            HostelDAO h = new HostelDAO();
+            h.updateStarAVG(hostelId, (sum / count));
+
+        }
+
+        response.sendRedirect(request.getContextPath() + "/detailhostel?id=" + hostelId);
     }
 
     /**
