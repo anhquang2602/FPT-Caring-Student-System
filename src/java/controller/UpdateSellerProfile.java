@@ -19,6 +19,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Country;
 import model.District;
@@ -90,8 +91,10 @@ public class UpdateSellerProfile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
         reloadPage(request, response);
         request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**
@@ -108,6 +111,8 @@ public class UpdateSellerProfile extends HttpServlet {
         //save image
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
+        
         String email = (String) request.getSession().getAttribute("username");
         String UserAvatar = null;
         Part part = request.getPart("avatarImage");
@@ -146,8 +151,10 @@ public class UpdateSellerProfile extends HttpServlet {
             // if (sdb.updateSellerProfile(UserAvatar, sellerUpdate) == true) {Avatar=?,FirstName=?,LastName=?,Age=?,Phone=?,CountryID=?,ProvinceID=?,DistrictID=?,AddressDetail=?,Gender=?,LinkFacebook=? where email=?";
             if (sdb.updateSellerProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
-                request.setAttribute("UpdateProcess", "Update successfully");
-                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+                session.setAttribute("stt", "1");
+//                request.setAttribute("UpdateProcess", "Update successfully");
+//                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "/UpdateSellerProfile");
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");
