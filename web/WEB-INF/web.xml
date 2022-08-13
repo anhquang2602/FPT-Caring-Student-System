@@ -177,7 +177,6 @@
         <servlet-class>controller.ChangePasswordServlet</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>CommentRestaurantController</servlet-name>
         <servlet-class>controller.CommentRestaurantController</servlet-class>
     </servlet>
@@ -189,7 +188,14 @@
         <servlet-name>UpdateClubProfile</servlet-name>
         <servlet-class>controller.UpdateClubProfile</servlet-class>
     </servlet>
-  
+    <servlet>
+        <servlet-name>DeleteImageResController</servlet-name>
+        <servlet-class>controller.DeleteImageResController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteFoodImageController</servlet-name>
+        <servlet-class>controller.DeleteFoodImageController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -367,10 +373,8 @@
         <url-pattern>/ChangePasswordServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-
         <servlet-name>CommentHostelController</servlet-name>
         <servlet-class>controller.CommentHostelController</servlet-class>
-   
     </servlet>
     <servlet-mapping>
         <servlet-name>CommentHostelController</servlet-name>
@@ -387,6 +391,14 @@
     <servlet-mapping>
         <servlet-name>UpdateClubProfile</servlet-name>
         <url-pattern>/UpdateClubProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteImageResController</servlet-name>
+        <url-pattern>/deleteimgres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteFoodImageController</servlet-name>
+        <url-pattern>/deleteFoodImage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

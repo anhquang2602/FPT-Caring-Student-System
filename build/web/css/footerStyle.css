@@ -8,6 +8,8 @@ footer {
     padding: 30px 30px;
     bottom: 0;
     color: #fff;
+    position: absolute;
+    z-index: 999;
 }
 
 .footer-navigation h3 {
@@ -114,10 +116,6 @@ div.social-links {
     line-height: 35px;
     margin-right: 5px;
     margin-bottom: 5px;
-}
-
-.footer {
-    bottom: 0;
 }
 
 body {

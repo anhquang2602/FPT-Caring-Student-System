@@ -71,7 +71,7 @@ public class FindDistrictController extends HttpServlet {
         out.flush();
         out.close();
 
-//        response.getWriter().write(json);
+        response.getWriter().write(json);
     }
 
     /**

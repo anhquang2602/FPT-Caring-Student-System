@@ -242,7 +242,7 @@ public class RestaurantDAO extends DBContext {
         }
         return false;
     }
-    
+
     public int getResIdbyFoodID(int foodId) {
         try {
 
@@ -250,7 +250,7 @@ public class RestaurantDAO extends DBContext {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, foodId);
             ResultSet rs = statement.executeQuery();
-           
+
             while (rs.next()) {
                 return rs.getInt(1);
             }
@@ -352,7 +352,7 @@ public class RestaurantDAO extends DBContext {
                 return rs.getInt(1);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
@@ -404,7 +404,38 @@ public class RestaurantDAO extends DBContext {
             statement.setInt(1, foodID);
             statement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        public void updateFoodImage(int foodID) {
+
+        try {
+
+            String sql = "UPDATE [dbo].[FoodImage]\n"
+                    + "   SET \n"
+                    + "      [ImageUrl] = NULL\n"
+                    + " WHERE FoodID =?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, foodID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteRestaurantImage(int resID) {
+
+        try {
+
+            String sql = "UPDATE [dbo].[Restaurants]\n"
+                    + "   SET \n"
+                    + "      [RestaurantImage] = NULL\n"
+                    + " WHERE RestaurantID =?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, resID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -415,27 +446,29 @@ public class RestaurantDAO extends DBContext {
             statement.setInt(1, foodID);
             statement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public void deleteRestaurantIDFromReport(int restaurantID) {
+
+    public void deleteRestaurantIDFromReport(int restaurantID) {
         try {
             String sql = "DELETE FROM ReportRestaurant WHERE RestaurantID=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, restaurantID);
             statement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public void deleteAllFood(int restaurantID) {
+
+    public void deleteAllFood(int restaurantID) {
         try {
             String sql = "DELETE FROM Foods WHERE RestaurantID=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, restaurantID);
             statement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -61,410 +61,260 @@
             }
         </style>
     </head>
-    <body class="bg-white">
-        <div class="px-0">
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
-                    <%@include file="/sidebar.jsp"%>
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
+                    <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div class="container rounded bg-white mt-5 mb-5">
 
-                    <!--                    <div>
-                                            <ul class="breadcrumb bg-white">
-                                                <li><a href="home.jsp">Trang chủ</a></li>
-                                                <li><a href="listallhostels">Danh sách nhà trọ</a></li>
-                                                <li><a>Chi tiết nhà trọ</a></li>
-                                            </ul>
-                                        </div>-->
-                    <div class="row">
-                        <!--                        <div class="col-md-4 mt-5">
-                                                    <div class="d-flex flex-column align-items-center text-center">
-                                                        <form>
-                                                            <div class="form-group row"> 
-                                                                <div class="col mt-5 thumbnail">
-                                                                    <img src="${hosteldetail.img1}"  class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
-                                                                </div>
-                                                                <div class="col mt-5 thumbnail">
-                                                                    <img src="${hosteldetail.img2}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
-                                                                </div>
-                                                                <div class="col mt-5 thumbnail">
-                                                                    <img src="${hosteldetail.img3}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row"> 
-                                                                <div class="col mt-5 thumbnail">
-                                                                    <img src="${hosteldetail.img4}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
-                                                                </div>
-                                                                <div class="col mt-5 thumbnail">
-                                                                    <img src="${hosteldetail.img5}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
-                                                                </div>
-                                                                <div class="col mt-5 thumbnail">
-                                                                    <img src="${hosteldetail.img6}" class="form-control" style="padding: 0px; width: 116.23px; height:116.23px " alt="">
-                                                                </div>
-                                                            </div   >
-                                                        </form>
-                                                        <span class="font-weight-bold labels mt-5" ><label class="labels">Nhà trọ:</label> ${hosteldetail.hostelName}</span>
-                                                        <div class="stars-outer">
-                                                            <div class="stars-inner" style="width: ${hosteldetail.starAVG}%"> </div>
-                                                        </div> <br><br>
-                                                        <span class="font-weight-bold labels"><label class="labels">Chủ trọ:</label>
-                                                            <a href="ViewSellerController?id=${sellerId}" title="" target="_blank">${hosteldetail.sellerName}</a>
-                                                        </span>
-                        
-                        
-                                                                                        <div class="rate">
-                                                        
-                                                                                            <input type="radio" id="star5" name="rate" value="5" />
-                                                                                            <label for="star5" title="text">5 stars</label>
-                                                                                            <input type="radio" id="star4" name="rate" value="4" />
-                                                                                            <label for="star4" title="text">4 stars</label>
-                                                                                            <input type="radio" id="star3" name="rate" value="3" />
-                                                                                            <label for="star3" title="text">3 stars</label>
-                                                                                            <input type="radio" id="star2" name="rate" value="2" />
-                                                                                            <label for="star2" title="text">2 stars</label>
-                                                                                            <input type="radio" id="star1" name="rate" />
-                                                                                            <label for="star1" title="text">1 star</label>
-                                                        
-                                                                                        </div>
-                        
-                        <c:if test = "${isStudent== 1}">
-                            <a href="commentHostel  ?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
-                        </c:if>
-
-
-
-
-
-                                                        <h3 class="rating_heading">Đánh giá 5 sao</h3>
-                                                        <div class ="star_rating">
-                                                            <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
-                                                            <button class="star" id="star1"  value="1">&#9734;</button>
-                                                            <button class="star" id="star2"  value="2">&#9734;</button>
-                                                            <button class="star" id="star3"  value="3">&#9734;</button>
-                                                            <button class="star" id="star4"  value="4">&#9734;</button>
-                                                            <button class="star" id="star5"  value="5">&#9734;</button>
-                                                            <p class="current_rating">0 trên 5</p>
-                                                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="p-3 py-5">
-                        <div class="row mt-3">
+                <div class="container rounded bg-white mt-5 mb-5 col-md-10">
+                    <div class="col-md-12 mb-5">
+                        <div>
+                            <ul class="breadcrumb bg-white">
+                                <li><a href="home.jsp">Trang chủ</a></li>
+                                <li><a href="listallhostels">Danh sách nhà trọ</a></li>
+                                <li><a>Chi tiết nhà trọ</a></li>
+                            </ul>
+                        </div>
+                        <div class="card" >
                             <form class="form" method="POST" id="updateForm" action="edithostel"  name="edithostelForm" onsubmit="return validateEditHostel()">
-                                <div class="col-md-12">
-                                    <label class="labels">Số phòng</label>
-                                    <input type="text" class="form-control" value="${hosteldetail.totalRoom}" readonly="">
+                                <div class="input_text" hidden>
+                                    <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
                                 </div>
-                                <div class="col-md-12">
-                                    <label class="labels">Tình trạng phòng:     </label>
-                                     
-                        <c:if test = "${hosteldetail.status == true}">
-                               <label for="collection1">
-                     <div class="left_box">
-                         <div class="left_box_collection"> 
-                             <div class="radio_button"> <span></span>
-                                 <h4 style="margin-left: 10px">   Còn phòng</h4>
-                             </div>                               
-                         </div>
-                     </div>
-                 </label> 
-                        </c:if> 
-             
-                            
-                        <c:if test = "${hosteldetail.status == false}">
-                            <label for="collection2">
-                     <div class="left_box">
-                         <div class="left_box_collection">
-                             <div class="radio_button"> <span></span>
-                                 <h4  style="margin-left: 10px">   Hết phòng</h4>
-                             </div>
-                         </div>                                    
-                     </div>
-                 </label>
-                        </c:if>  
-             
-             </div>
-             <div class="col-md-12">
-                 <label class="labels">Số tầng</label>
-                 <input type="text" class="form-control" value="${hosteldetail.floor}" readonly="">
-             </div>
-             <div class="col-md-12">
-                 <label class="labels">Tỉnh, Thành phố</label>
-                 <input type="text" class="form-control" value="${hosteldetail.provinceNamẹ}" readonly="">
-             </div>
-             <div class="col-md-12">
-                 <label class="labels">Quận, Huyện</label>
-                 <input type="text" class="form-control" value="${hosteldetail.districtName}" readonly="">
-             </div>
-             <div class="col-md-12">
-                 <label class="labels">Địa chỉ</label>
-                 <input type="text" class="form-control" value="${hosteldetail.address}" readonly="">
-             </div>
-             <div class="col-md-12">
-                 <label class="labels">Giá thuê</label>
-                 <input type="text" class="form-control" value="${hosteldetail.cost}" readonly="">
-             </div>
-             <div class="col-md-12">
-                 <label class="labels">Khoảng cách</label>
-                 <input type="text" class="form-control" value="${hosteldetail.distance}" readonly="">
-             </div>
-             <div class="col-md-12">
-                 <label class="labels">Mô tả</label>
-                 <textarea class="form-control" readonly="" rows="5  ">${hosteldetail.description}</textarea>
+                                <div class="left-side">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <div class="form-group row"> 
+                                            <div class="col mt-5">
+                                                <img src="${hosteldetail.img1}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            </div>
+                                            <div class="col mt-5">
+                                                <img src="${hosteldetail.img2}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            </div>
+                                            <div class="col mt-5">
+                                                <img src="${hosteldetail.img3}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row"> 
+                                            <div class="col mt-5">
+                                                <img src="${hosteldetail.img4}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            </div>
+                                            <div class="col mt-5">
+                                                <img src="${hosteldetail.img5}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            </div>
+                                            <div class="col mt-5">
+                                                <img src="${hosteldetail.img6}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            </div>
+                                        </div>
+                                        <span class="font-weight-bold labels mt-5 fs-4" >
+                                            <label>Nhà trọ:</label> ${hosteldetail.hostelName}
+                                        </span>
+                                        <div class="stars-outer mb-5">
+                                            <div class="stars-inner" style="width: ${hosteldetail.starAVG}%"> </div>
+                                        </div>
+                                        <span class="font-weight-bold labels mb-5">
+                                            <label class="labels">Chủ trọ:</label>
+                                            <a href="ViewSellerController?id=${sellerId}" title="" target="_blank">${hosteldetail.sellerName}</a>
+                                        </span>
 
 
 
-             </div>
 
-                                                     <div class="container mt-7">
-                                                         <div class="d-flex justify-content-center row">
-                                                             <div class="col-md-9" style="min-width: 100%">
-                                                                 <div class="d-flex flex-column comment-section">
 
-                                                                 </div>
-             
-                                                             </div>
-                                                         </div>
-                                                     </div>
 
-         </form>-->
 
-                        <div class="col-md-12 mb-5">
-                            <div>
-                                <ul class="breadcrumb bg-white">
-                                    <li><a href="home.jsp">Trang chủ</a></li>
-                                    <li><a href="listallhostels">Danh sách nhà trọ</a></li>
-                                    <li><a>Chi tiết nhà trọ</a></li>
-                                </ul>
-                            </div>
-                            <div class="card" style="width: 1350px">
-                                <form class="form" method="POST" id="updateForm" action="edithostel"  name="edithostelForm" onsubmit="return validateEditHostel()">
-                                    <div class="input_text" hidden>
-                                        <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
 
+                                        <!--                                        <div class="col-md-12 mb-5">
+                                                                                    <div>
+                                                                                        <ul class="breadcrumb bg-white">
+                                                                                            <li><a href="home.jsp">Trang chủ</a></li>
+                                                                                            <li><a href="listallhostels">Danh sách nhà trọ</a></li>
+                                                                                            <li><a>Chi tiết nhà trọ</a></li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                    <div class="card" style="width: 1350px">
+                                                                                        <form class="form" method="POST" id="updateForm" action="edithostel"  name="edithostelForm" onsubmit="return validateEditHostel()">
+                                                                                            <div class="input_text" hidden>
+                                                                                                <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
+                                        
+                                                                                            </div>
+                                                                                            <div class="left-side">
+                                                                                                <div class="d-flex flex-column align-items-center text-center">
+                                                                                                    <div class="form-group row"> 
+                                                                                                        <div class="col mt-5">
+                                                                                                            <img src="${hosteldetail.img1}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                                                                                        </div>
+                                                                                                        <div class="col mt-5">
+                                                                                                            <img src="${hosteldetail.img2}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                                                                                        </div>
+                                                                                                        <div class="col mt-5">
+                                                                                                            <img src="${hosteldetail.img3}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="form-group row"> 
+                                                                                                        <div class="col mt-5">
+                                                                                                            <img src="${hosteldetail.img4}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                                                                                        </div>
+                                                                                                        <div class="col mt-5">
+                                                                                                            <img src="${hosteldetail.img5}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                                                                                        </div>
+                                                                                                        <div class="col mt-5">
+                                                                                                            <img src="${hosteldetail.img6}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <span class="font-weight-bold labels mt-5 fs-4" >
+                                                                                                        <label>Nhà trọ:</label> ${hosteldetail.hostelName}
+                                                                                                    </span>
+                                                                                                    <div class="stars-outer mb-5">
+                                                                                                        <div class="stars-inner" style="width: ${hosteldetail.starAVG}%"> </div>
+                                                                                                    </div>
+                                                                                                    <span class="font-weight-bold labels mb-5">
+                                                                                                        <label class="labels">Chủ trọ:</label>
+                                                                                                        <a href="ViewSellerController?id=${sellerId}" title="" target="_blank">${hosteldetail.sellerName}</a>
+                                                                                                    </span>-->
+
+                                        <!--                                <div class="rate">
+                                        
+                                                                            <input type="radio" id="star5" name="rate" value="5" />
+                                                                            <label for="star5" title="text">5 stars</label>
+                                                                            <input type="radio" id="star4" name="rate" value="4" />
+                                                                            <label for="star4" title="text">4 stars</label>
+                                                                            <input type="radio" id="star3" name="rate" value="3" />
+                                                                            <label for="star3" title="text">3 stars</label>
+                                                                            <input type="radio" id="star2" name="rate" value="2" />
+                                                                            <label for="star2" title="text">2 stars</label>
+                                                                            <input type="radio" id="star1" name="rate" />
+                                                                            <label for="star1" title="text">1 star</label>
+                                        
+                                                                        </div>-->
+
+                                        <c:if test = "${isStudent == 1}">
+                                            <a href="commentHostel?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
+                                        </c:if>
+
+
+
+                                        <!--                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
+                                                                        <div class ="star_rating">
+                                                                            <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
+                                                                            <button class="star" id="star1"  value="1">&#9734;</button>
+                                                                            <button class="star" id="star2"  value="2">&#9734;</button>
+                                                                            <button class="star" id="star3"  value="3">&#9734;</button>
+                                                                            <button class="star" id="star4"  value="4">&#9734;</button>
+                                                                            <button class="star" id="star5"  value="5">&#9734;</button>
+                                                                            <p class="current_rating">0 trên 5</p>
+                                                                        </div>-->
                                     </div>
-                                    <div class="left-side">
-                                        <div class="d-flex flex-column align-items-center text-center">
-                                            <div class="form-group row"> 
-                                                <div class="col mt-5">
-                                                    <img src="${hosteldetail.img1}" style="padding: 0px;" width="170rem" height="170rem" alt="">
-                                                </div>
-                                                <div class="col mt-5">
-                                                    <img src="${hosteldetail.img2}" style="padding: 0px;" width="170rem" height="170rem" alt="">
-                                                </div>
-                                                <div class="col mt-5">
-                                                    <img src="${hosteldetail.img3}" style="padding: 0px;" width="170rem" height="170rem" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row"> 
-                                                <div class="col mt-5">
-                                                    <img src="${hosteldetail.img4}" style="padding: 0px;" width="170rem" height="170rem" alt="">
-                                                </div>
-                                                <div class="col mt-5">
-                                                    <img src="${hosteldetail.img5}" style="padding: 0px;" width="170rem" height="170rem" alt="">
-                                                </div>
-                                                <div class="col mt-5">
-                                                    <img src="${hosteldetail.img6}" style="padding: 0px;" width="170rem" height="170rem" alt="">
-                                                </div>
-                                            </div>
-                                            <span class="font-weight-bold labels mt-5 fs-4" >
-                                                <label>Nhà trọ:</label> ${hosteldetail.hostelName}
-                                            </span>
-                                            <div class="stars-outer mb-5">
-                                                <div class="stars-inner" style="width: ${hosteldetail.starAVG}%"> </div>
-                                            </div>
-                                            <span class="font-weight-bold labels mb-5">
-                                                <label class="labels">Chủ trọ:</label>
-                                                <a href="ViewSellerController?id=${sellerId}" title="" target="_blank">${hosteldetail.sellerName}</a>
-                                            </span>
-
-                                            <!--                                <div class="rate">
-                                            
-                                                                                <input type="radio" id="star5" name="rate" value="5" />
-                                                                                <label for="star5" title="text">5 stars</label>
-                                                                                <input type="radio" id="star4" name="rate" value="4" />
-                                                                                <label for="star4" title="text">4 stars</label>
-                                                                                <input type="radio" id="star3" name="rate" value="3" />
-                                                                                <label for="star3" title="text">3 stars</label>
-                                                                                <input type="radio" id="star2" name="rate" value="2" />
-                                                                                <label for="star2" title="text">2 stars</label>
-                                                                                <input type="radio" id="star1" name="rate" />
-                                                                                <label for="star1" title="text">1 star</label>
-                                            
-                                                                            </div>-->
-
-                                            <c:if test = "${isStudent == 1}">
-                                                <a href="commentHostel?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
-                                            </c:if>
-
-
-
-                                            <!--                                <h3 class="rating_heading">Đánh giá 5 sao</h3>
-                                                                            <div class ="star_rating">
-                                                                                <p style="font-weight:  bold">Cảm nhận của bạn về nhà trọ này?</p>
-                                                                                <button class="star" id="star1"  value="1">&#9734;</button>
-                                                                                <button class="star" id="star2"  value="2">&#9734;</button>
-                                                                                <button class="star" id="star3"  value="3">&#9734;</button>
-                                                                                <button class="star" id="star4"  value="4">&#9734;</button>
-                                                                                <button class="star" id="star5"  value="5">&#9734;</button>
-                                                                                <p class="current_rating">0 trên 5</p>
-                                                                            </div>-->
-                                        </div>
+                                </div>
+                                <div class="right-side">
+                                    <div class="input_text">
+                                        <strong class="fs-4">Số phòng</strong>
+                                        <input type="text" value="${hosteldetail.totalRoom}" readonly="">
                                     </div>
-                                    <div class="right-side">
-                                        <div class="input_text">
-                                            <strong class="fs-4">Số phòng</strong>
-                                            <input type="text" value="${hosteldetail.totalRoom}" readonly="">
-                                        </div>
-                                        <div class="input_text">
-                                            <strong class="fs-4">Tình trạng phòng</strong>
-                                        </div>
-                                        <div class="left_text">
+                                    <div class="input_text">
+                                        <strong class="fs-4">Tình trạng phòng</strong>
+                                    </div>
+                                    <div class="left_text">
 
-                                            <c:if test = "${hosteldetail.status == true}">
-                                                <label for="collection1">
-                                                    <div class="left_box">
-                                                        <div class="left_box_collection"> 
-                                                         
-                                                                <h4>Còn phòng</h4>
-                                                                                    
-                                                        </div>
+                                        <c:if test = "${hosteldetail.status == true}">
+                                            <label for="collection1">
+                                                <div class="left_box">
+                                                    <div class="left_box_collection"> 
+
+                                                        <h4>Còn phòng</h4>
+
                                                     </div>
-                                                </label> 
-                                            </c:if> 
+                                                </div>
+                                            </label> 
+                                        </c:if> 
 
 
-                                            <c:if test = "${hosteldetail.status == false}">
-                                                <label for="collection2">
-                                                    <div class="left_box">
-                                                        <div class="left_box_collection">
-                                                           
-                                                                <h4>Hết phòng</h4>
-                                                            
-                                                        </div>                                    
+                                        <c:if test = "${hosteldetail.status == false}">
+                                            <label for="collection2">
+                                                <div class="left_box">
+                                                    <div class="left_box_collection">
+
+                                                        <h4>Hết phòng</h4>
+
                                                     </div>                                    
-                                                </label>  
-                                            </c:if> 
-
-                                        </div>
-                                        <div class="input_text">
-                                            <strong class="fs-4">Số tầng</strong>
-                                            <input type="text"  value="${hosteldetail.floor}" readonly="">
-                                        </div>
-                                        <div class="input_text">
-                                            <strong class="fs-4">Tỉnh, Thành phố</strong>
-                                            <input type="text"  value="${hosteldetail.provinceNamẹ}" readonly="">
-                                        </div>
-                                        <div class="input_text">
-                                            <strong class="fs-4">Quận, Huyện</strong>
-                                            <input type="text"  value="${hosteldetail.districtName}" readonly="">
-                                        </div>
-                                        <div class="input_text">
-                                            <strong class="fs-4">Địa chỉ</strong>
-                                            <input type="text" value="${hosteldetail.address}" readonly="">
-                                        </div>
-                                        <div class="input_text">
-                                            <strong class="fs-4">Giá thuê</strong>
-                                            <input type="text" value="${hosteldetail.cost}" readonly="">
-                                        </div>
-                                        <div class="input_text">
-                                            <strong class="fs-4">Khoảng cách</strong>
-                                            <input type="text" value="${hosteldetail.distance}" readonly="">
-                                        </div>
-                                        <div class="input_text">
-                                            <strong class="fs-4">Mô tả</strong>
-                                            <textarea readonly="" rows="5" style="width: 100%">${hosteldetail.description}</textarea>
-                                        </div>
+                                                </div>                                    
+                                            </label>  
+                                        </c:if> 
 
                                     </div>
-                            </div>
-                            <div class="row" style="background-color: #e9ecef" >
-                                <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà trọ:</label>
-                                <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
-                                <c:if test="${listCmtHostelPaging  != null}">
-                                    <c:forEach items="${listCmtHostelPaging}" var="d" >
-                                        <div class="bg-white p-3" style="margin :5px">
-                                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="60" height="60" >
-                                                <div class="d-flex flex-column justify-content-start ml-4" >
-                                                    <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
-                                                    <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
-                                                    <div class="sold_stars m1-auto">
-                                                        <c:forEach begin="1" end="${d.starvoting}" >
-                                                            <i class="fa fa-star"  style=" font-size: 13px;"></i>      
-                                                        </c:forEach>
-                                                        <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
-
-                                                    </div>
-
-                                                </div>
-
-
-
-                                            </div>
-
-
-                                        </div>
-
-
-                                    </c:forEach>
-                                </c:if>
-                                <div class="clearfix">
-                                    <ul class="pagination">
-                                        <c:if test="${tag>1}">
-                                            <li class="page-item disabled"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag-1}">Previous</a></li>
-                                            </c:if>
-                                            <c:forEach begin="1" end="${endP}" var="i">
-                                            <li class="page-item ${tag==i?"active":""}"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${i}" class="page-link">${i}</a></li>
-                                            </c:forEach>
-                                            <c:if test="${tag<endP}">
-                                            <li class="page-item"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag+1}" class="page-link">Next</a></li>
-                                            </c:if>
-                                    </ul>
-                                </div>  
-                            </div>
+                                    <div class="input_text">
+                                        <strong class="fs-4">Số tầng</strong>
+                                        <input type="text"  value="${hosteldetail.floor}" readonly="">
+                                    </div>
+                                    <div class="input_text">
+                                        <strong class="fs-4">Tỉnh, Thành phố</strong>
+                                        <input type="text"  value="${hosteldetail.provinceNamẹ}" readonly="">
+                                    </div>
+                                    <div class="input_text">
+                                        <strong class="fs-4">Quận, Huyện</strong>
+                                        <input type="text"  value="${hosteldetail.districtName}" readonly="">
+                                    </div>
+                                    <div class="input_text">
+                                        <strong class="fs-4">Địa chỉ</strong>
+                                        <input type="text" value="${hosteldetail.address}" readonly="">
+                                    </div>
+                                    <div class="input_text">
+                                        <strong class="fs-4">Giá thuê</strong>
+                                        <input type="text" value="${hosteldetail.cost}" readonly="">
+                                    </div>
+                                    <div class="input_text">
+                                        <strong class="fs-4">Khoảng cách</strong>
+                                        <input type="text" value="${hosteldetail.distance}" readonly="">
+                                    </div>
+                                    <div class="input_text">
+                                        <strong class="fs-4">Mô tả</strong>
+                                        <textarea readonly="" rows="5" style="width: 100%">${hosteldetail.description}</textarea>
+                                    </div>
+                                </div>
                             </form>
+
+                        </div>
+                        <div class="row" style="background-color: #e9ecef" >
+                            <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà trọ:</label>
+                            <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
+                            <c:if test="${listCmtHostelPaging  != null}">
+                                <c:forEach items="${listCmtHostelPaging}" var="d" >
+                                    <div class="bg-white p-3" style="margin :5px">
+                                        <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="60" height="60" >
+                                            <div class="d-flex flex-column justify-content-start ml-4" >
+                                                <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
+                                                <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
+                                                <div class="sold_stars m1-auto">
+                                                    <c:forEach begin="1" end="${d.starvoting}" >
+                                                        <i class="fa fa-star"  style=" font-size: 13px;"></i>      
+                                                    </c:forEach>
+                                                    <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
+                            <div class="clearfix">
+                                <ul class="pagination">
+                                    <c:if test="${tag>1}">
+                                        <li class="page-item disabled"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag-1}">Previous</a></li>
+                                        </c:if>
+                                        <c:forEach begin="1" end="${endP}" var="i">
+                                        <li class="page-item ${tag==i?"active":""}"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${i}" class="page-link">${i}</a></li>
+                                        </c:forEach>
+                                        <c:if test="${tag<endP}">
+                                        <li class="page-item"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag+1}" class="page-link">Next</a></li>
+                                        </c:if>
+                                </ul>
+                            </div>  
                         </div>
                     </div>
-
-                    <!--                <c:forEach items="${listComment}" var="d" >
-                                        <div class="bg-white p-2">
-                                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="40">
-                                                <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">${d.studentName}</span><span class="date text-black-50">${d.date}</span></div>
-                                            </div>
-                                            <div class="sold_stars ml-auto">
-                        <c:forEach begin="1" end="${d.starvoting}" >
-                            <i class="fa fa-star"></i>      
-                        </c:forEach>
-                    </div>
-                    <div class="mt-2">
-                        <p class="comment-text">${d.message}</p>
-                    </div>
-                </div>-->
-                        <!--<<<<<<< HEAD-->
-
-
-                        <!--                                         <div class="container mt-5">
-                                                            <div class="d-flex justify-content-center row">
-                                                                <div class="col-md-8" style="min-width: 100%">
-                                                                    <div class="d-flex flex-column comment-section">-->
-
-
-                        <!--                                            </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>-->
-
-
-                        <!--                </div>   -->
-                        <!--
-                        =======
-                    </c:forEach>
-    >>>>>>> c11cc95c359b3d79763cd3c3d632379e08a3a4d6-->
                 </div>
-
             </div>
         </div>
+
 
         <script>
             const allStars = document.querySelectorAll('.star');

@@ -7,8 +7,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 <!DOCTYPE html>
 <html lang="en">
@@ -42,103 +43,103 @@
                         <div class="card">
                             <form class="form" method="POST" action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()"  enctype="multipart/form-data">
                                 <div class="left-side">
-                                <h3>Menu nhà hàng</h3>    
-                                <c:forEach items="${listFood}" var="food" >
-                                    <div class="row p-2 bg-white border rounded" style="margin-top: 40px; margin-bottom: 40px;">
-                                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="${food.imageURL}"></div>
-                                        <div class="col-md-6 mt-1">
-                                            <label class="labels">${food.foodName}</label>
-
-
-
-                                            <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
-                                        </div>
-                                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                                            <div class="d-flex flex-row align-items-center">
-                                                <h4 class="mr-1">${food.cost} VND</h4>
+                                    <h3>Menu nhà hàng</h3>    
+                                    <c:forEach items="${listFood}" var="food" >
+                                        <div class="row p-2 bg-white border rounded" style="margin-top: 40px; margin-bottom: 40px;">
+                                            <div class="col-md-3 mt-1">
+                                                
+                                                
+<!--                                                <img class="img-fluid img-responsive rounded product-image" src="${food.imageURL}">-->
+                                                
+                                                
+                                                 <img class="img-fluid img-responsive rounded product-image" 
+                                                        <c:if test="${food.imageURL != null}">
+                                                            src="${food.imageURL}" </c:if>
+                                                        <c:if test="${food.imageURL == null}">
+                                                            src="images/food.png" </c:if> >
+                                            
+                                            
                                             </div>
-                                            <a class="btn btn-primary" href="EditFoodController?foodId=${food.foodID}" style="width: 110px">Chỉnh sửa</a> 
-                                            <a class="btn btn-danger" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>
+                                                
+                                                
+                                                
+                                            <div class="col-md-6 mt-1">
+                                                <label class="labels">${food.foodName}</label>
 
-                                            <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            Xoá nhà hàng
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Bạn có chắc chắn muốn xoá món ăn này không?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
-                                                            <a class="btn btn-danger btn-ok">Xoá</a>
+
+
+                                                <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
+                                            </div>
+                                            <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <h4 class="mr-1">${food.cost}00 VND</h4>
+                                                </div>
+                                                <a class="btn btn-primary" href="EditFoodController?foodId=${food.foodID}" style="width: 110px">Chỉnh sửa</a> 
+                                                <a class="btn btn-danger" id="btnDelete" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>
+
+                                               <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                Xoá món ăn
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Bạn có chắc chắn muốn xoá nhà hàng này không?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                                                <a class="btn btn-danger btn-ok">Xoá</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </c:forEach>
+                                    </c:forEach>
 
-                            </div>
-
-                                 <div class="right-side">
-
-                                <div class="input_text" hidden>
-                                    <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
                                 </div>
 
-                                <form action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()" method="post" enctype="multipart/form-data">
-                                    <h3>Thêm món ăn</h3>
-                                    <div class="mt-5">
+                                <div class="right-side">
 
-                                        <!--                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
-                                                                                <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
-                                                                                <img id="Url1" name="Url1" width="170px" height="170px"
-                                        <c:if test="${editHostel.img1 != null}">
-                                            src="${editHostel.img1}" </c:if>/>
-                                        <script>
-                                            var loadFile = function (event) {
-                                                var output = document.getElementById('Url1');
-                                                output.src = URL.createObjectURL(event.target.files[0]);
-                                                output.style.width = "170px";
-                                                output.style.height = "170px";
-                                                output.onload = function () {
-                                                    URL.revokeObjectURL(output.src) // free memory
-                                                }
-                                            };
-                                        </script>
-                                        <c:if test="${editHostel.img1 != null}">
-                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
-                                        </c:if>   -->
+                                    <div class="input_text" hidden>
+                                        <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
+                                    </div>
+
+                                    <form action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()" method="post" enctype="multipart/form-data">
+                                        <h3>Thêm món ăn</h3>
+                                        <div class="mt-5">
 
 
 
-                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="foodImage" id="file1">
-                                        <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 60px; opacity: 30%">+</label>
-                                        <img id="output1" width="170px" height="170px"/>
-                                        <script>
-                                            var loadFile = function (event) {
-                                                var output = document.getElementById('output1');
-                                                output.src = URL.createObjectURL(event.target.files[0]);
-                                                output.onload = function () {
-                                                    URL.revokeObjectURL(output1.src) // free memory
-                                                }
-                                            };
-                                        </script>
-                                        <div class="input_text"> <input type="text" name="foodName" placeholder="Nhập tên món ăn"> <span>Tên món ăn</span> </div>
-                                        <div class="error" id="errorName"></div>
-                                        <div class="input_text"> <input type="text" name="costFood" placeholder="Nhập giá dao động"> <span>Giá món ăn</span>
-                                            <div class="error" id="errorCost"></div></div>
-                                        <div class="input_text"> <span>Mô tả</span> </div>
-                                        <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="description" style="width:250px;height:150px;"></textarea>
-                                        <div class="pay"> 
-                                            <button type="submit" >Thêm món ăn</button>                  
-                                        </div>
-                                    </div> 
-                                </form>
-                            </div>
-                            </form>
+
+                                            <input type="file" accept="image/*" onchange="loadFile(event)" name ="foodImage" id="file1">
+                                            <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 60px; opacity: 30%">+</label>
+                                            <img id="output1" width="170px" height="170px"/>
+                                            
+                                            
+                                            
+                                            <script>
+                                                var loadFile = function (event) {
+                                                    var output = document.getElementById('output1');
+                                                    output.src = URL.createObjectURL(event.target.files[0]);
+                                                    output.onload = function () {
+                                                        URL.revokeObjectURL(output1.src) // free memory
+                                                    }
+                                                };
+                                            </script>
+                                            <div class="input_text"> <input type="text" name="foodName" placeholder="Nhập tên món ăn"> <span>Tên món ăn</span> </div>
+                                            <div class="error" id="errorName"></div>
+                                            <div class="input_text"> <input type="text" name="costFood" placeholder="Nhập giá dao động"> <span>Giá món ăn</span>
+                                                <div class="error" id="errorCost"></div></div>
+                                            <div class="input_text"> <span>Mô tả</span> </div>
+                                            <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="desFood" style="width:250px;height:150px;"></textarea>
+                                            <div class="pay"> 
+                                                <button type="submit" >Thêm món ăn</button>                  
+                                            </div>
+                                        </div> 
+                                    </form>
+                                </div>
+
                         </div>
                     </div>
                 </div>
@@ -200,7 +201,7 @@
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá của món ăn!';
                     isValid = false;
                 } else if (!regex.test(distance)) {
-                    document.getElementById('errorCost').innerText = 'Invalid!';
+                    document.getElementById('errorCost').innerText = 'Giá trị nhập không đúng. Giá tiền phải là số!';
                     isValid = false;
                 } else if (distance <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá tiền phải > 0 ';
@@ -210,6 +211,12 @@
                 return isValid;
             }
         </script>
+            <script>
+        $(document).on('click', '#btnDelete', function () {
+           var link = $(this).attr('data-href');
+            $('.btn-ok').attr('href', link );
+        });
+    </script>
     </body>
     <%@include file="/footer.jsp" %>    
 </html>

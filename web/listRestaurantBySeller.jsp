@@ -1,4 +1,3 @@
-
 <%-- 
     Document   : listdepartment
     Created on : Jun 18, 2022, 2:08:32 PM
@@ -18,19 +17,19 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
     </head>
-    <body class="bg-white">
-        <div class="px-0">
-            <%@include file="/header.jsp" %>
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div id="topnavbar">
+                <div id="topnavbar" class="col-md-10">
                     <div class="container" style="margin-top: 50px">
                         <div class="row">
                             <div class="col-lg-12 mb-5">
                                 <div>
-                                    <ul class="breadcrumb bg-white">
+                                    <ul class="breadcrumb">
                                         <li><a href="home.jsp">Trang chủ</a></li>
                                         <li><a>Nhà hàng của tôi</a></li>
                                     </ul>
@@ -41,22 +40,31 @@
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listRestaurant}" var="r" >
                                         <li class="list-group-item">
-                                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
-                                                <div class="media-body order-2 order-lg-1 description" id="description">
+                                            <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
+                                                <div class="col-md-3 media-body order-2 order-lg-1 image">
+<!--                                                    <img src="${r.restaurantImage}" style="width: 150px; height: 150px" >-->
+                                                    
+                                                    <img class="img-fluid img-responsive rounded product-image" 
+                                                        <c:if test="${r.restaurantImage != null}">
+                                                            src="${r.restaurantImage}" </c:if>
+                                                        <c:if test="${r.restaurantImage == null}">
+                                                            src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px">
+                                                    
+                                                </div>
+                                                <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
                                                     <h5 class="mt-0 font-weight-bold mb-2">
                                                         <a href="RestaurantListController?id=${r.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
                                                     </h5>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>
                                                 </div>
-                                                <div class="media-body order-2 order-lg-1 image">
-                                                    <img src="${r.restaurantImage}" style="width: 150px; height: 150px" >
+                                                <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit1">
+                                                    <a class="btn btn-danger" href="EditRestaurantController?id=${r.restaurantID}">Chỉnh sửa</a> 
+                                                    <a class="btn btn-primary" href="AddFoodController?id=${r.restaurantID}">Menu</a>
+                                                    <a class="btn btn-secondary" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà hàng</a>
+                                              
                                                 </div>
-                                                 
-                                                <a class="btn btn-primary" href="EditRestaurantController?id=${r.restaurantID}" style="margin-left: 700px">Chỉnh sửa</a> 
-                                                <a class="btn btn-primary" href="AddFoodController?id=${r.restaurantID}">Menu</a>
-                                                <a class="btn btn-danger" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà hàng</a>
-
+                                                
                                                 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -83,12 +91,14 @@
                 </div>
             </div>
         </div>
+        <%@include file="/footer.jsp" %>
+
     </body>
     <script>
-        $('#confirm-delete').on('show.bs.modal', function (e) {
-            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+          $(document).on('click', '#btnDelete', function () {
+           var link = $(this).attr('data-href');
+            $('.btn-ok').attr('href', link );
         });
     </script>
-    <%@include file="/footer.jsp" %>
-</html>
 
+</html>

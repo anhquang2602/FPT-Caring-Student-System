@@ -15,49 +15,51 @@
         <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/changePasswordStyle.css">
     </head>
-    <body class="bg-white">
-        <div class="px-0">
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div class="container mt-5 mb-5">
-                    <div class="d-flex justify-content-center row">
-                        <div class="col-md-5 mt-5">
-                            <div class="card p-3">
-                                <div class="d-flex flex-column">  
-                                    <span class="login mt-3">ĐỔI MẬT KHẨU</span> 
+                <div id="topnavbar" class="col-md-10">
+                    <div class="container mt-5 mb-5">
+                        <div class="d-flex justify-content-center">
+                            <div class="col-md-6 mt-5">
+                                <div class="card p-5">
+                                    <div class="d-flex flex-column">  
+                                        <span class="login mt-3">ĐỔI MẬT KHẨU</span> 
+                                    </div>
+                                    <div class="input-field d-flex flex-column mt-5"> 
+                                        <form name="changePassForm" action="ChangePasswordServlet" method="post" onsubmit="return checkSend()">
+                                            <div class="mt-3">
+                                                <strong class="fs-5">Mật khẩu cũ</strong>
+                                                <input class="form-control" type="password" id="oldpass" name="oldpass" placeholder="Nhập mật khẩu hiện tại của bạn"/>
+                                            </div>
+                                            <div id="divCheckOldPass"></div>
+                                            <div class="mt-3">
+                                                <strong class="fs-5">Mật khẩu mới</strong>
+                                                <input class="form-control" type="password" id="pass" name="pass" placeholder="Nhập mật khẩu mới của bạn"/>
+                                            </div>
+                                            <div class="mt-3">
+                                                <div id="divCheckPass"></div>
+                                                <strong class="fs-5">Nhập lại mật khẩu mới</strong>
+                                                <input class="form-control" type="password" id="repass" name="repass" placeholder="Nhập lai mật khẩu mới"/>
+                                            </div>
+                                            <div id="divCheckRePass"></div>
+                                            <input class="mt-5 btn btn-dark d-flex justify-content-center align-items-center" style="background-color: rgb(238, 77, 45); border: none;" type="submit" value="Xác nhận" onclick="checkValidatorForChangePassword()"/>
+                                        </form>
+                                    </div>
+                                    <h4 class="mt-3" style="text-align: center; color: #842029"> ${errorChangePass}</h4>
+                                    <h4 class="mt-3" style="text-align: center; color: #842029"> ${successChangePass}</h4>
                                 </div>
-                                <div class="input-field d-flex flex-column mt-3"> 
-                                    <form name="changePassForm" action="ChangePasswordServlet" method="post" onsubmit="return checkSend()">
-                                        <div class="mt-3">
-                                            Mật khẩu cũ
-                                            <input class="form-control" type="password" id="oldpass" name="oldpass" placeholder="Nhập mật khẩu hiện tại của bạn"/>
-                                        </div>
-                                        <div id="divCheckOldPass"></div>
-                                        <div class="mt-3">
-                                            Mật khẩu mới
-                                            <input class="form-control" type="password" id="pass" name="pass" placeholder="Nhập mật khẩu mới của bạn"/>
-                                        </div>
-                                        <div class="mt-3">
-                                            <div id="divCheckPass"></div>
-                                            Nhập lại mật khẩu mới
-                                            <input class="form-control" type="password" id="repass" name="repass" placeholder="Nhập lai mật khẩu mới"/>
-                                        </div>
-                                        <div id="divCheckRePass"></div>
-                                        <input class="mt-5 btn btn-dark d-flex justify-content-center align-items-center" style="background-color: rgb(238, 77, 45); border: none;" type="submit" value="Xác nhận" onclick="checkValidatorForChangePassword()"/>
-                                    </form>
-                                </div>
-                                <h4 class="mt-3" style="text-align: center; color: #842029"> ${errorChangePass}</h4>
-                                <h4 class="mt-3" style="text-align: center; color: #842029"> ${successChangePass}</h4>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <%@include file="/footer.jsp" %>
     </body>
-    <%@include file="/footer.jsp" %>
     <script src="validator/Validator.js"></script>
 </html>
