@@ -96,7 +96,7 @@ public class EditFoodController extends HttpServlet {
         Part part = request.getPart("foodImage");
         String realPath1 = request.getServletContext().getRealPath("/foodImages");
         String realPath = realPath1.replaceFirst("build", "");
-        String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+//        String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
         }
@@ -115,7 +115,7 @@ public class EditFoodController extends HttpServlet {
                 part.write(realPath + "\\" + foodImg);
                 restaurantDAO.updateFoodImg(foodID, saveFoodImg);
 
-                response.sendRedirect(request.getContextPath() + "/EditRestaurantController?id=" + food.getRestaurantID());
+
 
                response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + food.getRestaurantID());
 
