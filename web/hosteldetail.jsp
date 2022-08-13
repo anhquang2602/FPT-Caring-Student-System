@@ -78,7 +78,9 @@
                                 <li><a>Chi tiết nhà trọ</a></li>
                             </ul>
                         </div>
-                        <div class="card" >
+
+                        <div class="card">
+
                             <form class="form" method="POST" id="updateForm" action="edithostel"  name="edithostelForm" onsubmit="return validateEditHostel()">
                                 <div class="input_text" hidden>
                                     <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
@@ -113,10 +115,26 @@
                                         <div class="stars-outer mb-5">
                                             <div class="stars-inner" style="width: ${hosteldetail.starAVG}%"> </div>
                                         </div>
-                                        <span class="font-weight-bold labels mb-5">
-                                            <label class="labels">Chủ trọ:</label>
-                                            <a href="ViewSellerController?id=${sellerId}" title="" target="_blank">${hosteldetail.sellerName}</a>
+                                        <span class="font-weight-bold labels mb-5 fs-5">
+                                            <label>Chủ trọ:</label>
+                                            <a href="ViewSellerController?id=${sellerId}" style="text-decoration: none" target="_blank">${hosteldetail.sellerName}</a>
                                         </span>
+                                        <c:forEach items="${listComment}" var="d" >
+                                            <div class="p-2">
+                                                <div class="d-flex flex-row user-info">
+                                                    <img class="rounded-circle" src="${d.studentAvatar}" width="40">
+                                                    <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">${d.studentName}</span><span class="date text-black-50">${d.date}</span></div>
+                                                </div>
+                                                <div class="sold_stars ml-auto">
+                                                    <c:forEach begin="1" end="${d.starvoting}" >
+                                                        <i class="fa fa-star"></i>      
+                                                    </c:forEach>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <p class="comment-text">${d.message}</p>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
 
 
 

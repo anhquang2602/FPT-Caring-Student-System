@@ -18,31 +18,29 @@
         <link rel="stylesheet" href="css/profileStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
-    <body class="bg-white">
-        <div class="px-0">
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
-                    <%@include file="/sidebar.jsp" %>
-                </ul>
+    <%@include file="/header.jsp" %>
+    <div class="bg-white">
+        <div class="d-flex nav-item main-home col-md-12">
+            <ul id="navbar-items" class="col-md-2">
+                <%@include file="/sidebar.jsp" %>
+            </ul>
+            <div id="topnavbar1" class="col-md-10">
                 <div class="container rounded bg-white mt-5 mb-5">
+                    <div>
+                        <ul class="breadcrumb bg-white">
+                            <li><a href="home.jsp">Trang chủ</a></li>
+                            <li><a href="ClubListController">Danh sách Câu Lạc Bộ</a></li>
+                            <li><a>Chi tiết Câu Lạc Bộ</a></li>
+                        </ul>
+                    </div>
                     <div class="row">
-                        <div>
-                            <ul class="breadcrumb bg-white">
-                                <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="ClubListController">Danh sách Câu Lạc Bộ</a></li>
-                                <li><a>Chi tiết Câu Lạc Bộ</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-5 ml-4">
-                            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <form action="ClubListController">
-                                    <div class="form-group">
-                                        <img src="${club.avatar}" style="height: 200px">
-                                    </div>
-                                </form>
+                        <div class="col-md-4 ml-5">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <div class="form-group mt-3">
+                                    <img src="${club.avatar}" class="form-control" style="padding: 0px">
+                                </div>
                                 <div class="mt-5">
-                                    <h3 class="font-weight-bold">${club.clubName}</h3>
+                                    <h4 class="font-weight-bold">${club.clubName}</h4>
                                     <h5>${club.email}</span><span></h5>
                                 </div>
                             </div>
@@ -69,16 +67,16 @@
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listEvent}" var="event">
                                         <li class="list-group-item">
-                                            <div class="media align-items-lg-center flex-column flex-lg-row p-1 mt-3">
-                                                <div class="media-body order-2 order-lg-1 description" id="description">
+                                            <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1 mt-3">
+                                                <div class="col-md-4 media-body order-2 order-lg-1 image">
+                                                    <img src="${event.url}" alt="Generic placeholder image">
+                                                </div>
+                                                <div class="col-md-7 media-body order-2 order-lg-1 description ml-5" id="description">
                                                     <h4 class="mt-0 font-weight-bold mb-2 text-center">
                                                         <a style="text-decoration: none; font-weight: bold">${event.eventName}</a>
                                                     </h4>
                                                     <p class="mb-2" style="font-size: 18px">${event.des}</p>
                                                     <p class="text-muted mb-2" style="font-size: 18px; text-align: end">${event.time}</p>
-                                                </div>
-                                                <div class="media-body order-2 order-lg-1 image">
-                                                    <img src="${event.url}" alt="Generic placeholder image">
                                                 </div>
                                             </div> 
                                         </li> 

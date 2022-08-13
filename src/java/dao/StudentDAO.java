@@ -265,6 +265,34 @@ public class StudentDAO extends DBContext {
             return false;
         }
     }
+    
+     public boolean updateStudentProfileNoPro(String avatar, String firstName,String lastName,String age,String phone,String countryId,String provinceId,String districtId,String addressDetail,String gender,String linkFaceBook,String studentId,String unit,String email) {       
+        try {
+            String sql = "UPDATE Students SET  Avatar=?,FirstName=?,LastName=?,Age=?,Phone=?,CountryID=?,ProvinceID=?,DistrictID=?,AddressDetail=?,Gender=?,LinkFacebook=?,StudentID=?,Unit=? where email=?";
+            PreparedStatement st;
+            st = connection.prepareStatement(sql);
+            st.setString(1, avatar);
+            st.setString(2, firstName);
+            st.setString(3, lastName);
+            st.setString(4, age);
+            st.setString(5, phone);
+            st.setString(6, countryId);
+            st.setString(7, provinceId);
+            st.setString(8, districtId);
+            st.setString(9, addressDetail);
+            st.setString(10, gender);
+            st.setString(11, linkFaceBook);
+            st.setString(12, studentId);
+            st.setString(13, unit);
+            st.setString(14, email);
+            st.executeUpdate();
+            st.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 //    public static void main(String[] args) {
 //        Student s=new Student();

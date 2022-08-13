@@ -5,22 +5,25 @@
  */
 package controller;
 
-import dao.RestaurantDAO;
+import dao.ClubDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Restaurant;
+import model.Club;
+import model.Event;
 
 /**
  *
- * @author DELL
+ * @author win
  */
-public class ListAllRestaurantController extends HttpServlet {
+@WebServlet(name = "AllEventByClub", urlPatterns = {"/AllEventByClub"})
+public class AllEventByClub extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,22 +34,7 @@ public class ListAllRestaurantController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ListAllRestaurantController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ListAllRestaurantController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -61,21 +49,12 @@ public class ListAllRestaurantController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        RestaurantDAO dao = new RestaurantDAO();
-        String indexPage = request.getParameter("index");
-        if (indexPage == null) {
-            indexPage = "1";
-        }
-        int index = Integer.parseInt(indexPage);
-
-        int totalPage = dao.getTotalPage("", dao.listAllRes());
-        ArrayList<Restaurant> restaurants = dao.listAllRestaurant(index);
-        request.setAttribute("restaurants", restaurants);
-//        request.setAttribute("endP", endPage);
-//        request.setAttribute("tag", index);
-        request.setAttribute("totalPage", totalPage);
-        request.getRequestDispatcher("listAllRestaurant.jsp").forward(request, response);
-        session.removeAttribute("stt");
+        ClubDAO clubDAO = new ClubDAO();
+        String username = (String) request.getSession().getAttribute("username");
+        Club club = clubDAO.getClubByEmail(username);
+        ArrayList<Event> listEvent = clubDAO.getEventByEmail(username);
+        request.setAttribute("listEvent", listEvent);
+        request.getRequestDispatcher("listAllEventOfClub.jsp").forward(request, response);
     }
 
     /**
@@ -89,7 +68,6 @@ public class ListAllRestaurantController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

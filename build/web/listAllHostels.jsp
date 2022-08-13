@@ -197,7 +197,7 @@
                                 </ul> 
 
                                 <c:forEach begin="1" end="${totalPage}" var="i">
-                                    <a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}">${i}</a> 
+                                    <a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keywordHostel=${keywordHostel}">${i}</a> 
                                 </c:forEach>
 
                             </div>
