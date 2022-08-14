@@ -18,6 +18,48 @@
         <link rel="stylesheet" href="css/sellerStyle.css">
     </head>
     <body>
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Thêm Nhà Hàng Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Thêm nhà hàng thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+            <c:when test="${stt.equals('2')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Nhà Hàng Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Chỉnh sửa nhà hàng thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+            <c:when test="${stt.equals('3')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Xóa Nhà Hàng Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Xóa nhà hàng thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+
+        </c:choose>
         <%@include file="/header.jsp" %>
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -43,17 +85,17 @@
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
 <!--                                                    <img src="${r.restaurantImage}" style="width: 150px; height: 150px" >-->
-                                                    
+
                                                     <img class="img-fluid img-responsive rounded product-image" 
-                                                        <c:if test="${r.restaurantImage != null}">
-                                                            src="${r.restaurantImage}" </c:if>
-                                                        <c:if test="${r.restaurantImage == null}">
-                                                            src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px">
-                                                    
-                                                </div>
-                                                <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
-                                                    <h5 class="mt-0 font-weight-bold mb-2">
-                                                        <a href="RestaurantListController?id=${r.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
+                                                         <c:if test="${r.restaurantImage != null}">
+                                                             src="${r.restaurantImage}" </c:if>
+                                                         <c:if test="${r.restaurantImage == null}">
+                                                             src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px">
+
+                                                    </div>
+                                                    <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
+                                                        <h5 class="mt-0 font-weight-bold mb-2">
+                                                            <a href="RestaurantListController?id=${r.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
                                                     </h5>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>
@@ -62,9 +104,9 @@
                                                     <a class="btn btn-danger" href="EditRestaurantController?id=${r.restaurantID}">Chỉnh sửa</a> 
                                                     <a class="btn btn-primary" href="AddFoodController?id=${r.restaurantID}">Menu</a>
                                                     <a class="btn btn-secondary" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà hàng</a>
-                                              
+
                                                 </div>
-                                                
+
                                                 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -92,13 +134,20 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
+        <script>
+            $(document).on('click', '#btnDelete', function () {
+                var link = $(this).attr('data-href');
+                $('.btn-ok').attr('href', link);
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
 
+            });
+        </script>
     </body>
-    <script>
-          $(document).on('click', '#btnDelete', function () {
-           var link = $(this).attr('data-href');
-            $('.btn-ok').attr('href', link );
-        });
-    </script>
+
 
 </html>

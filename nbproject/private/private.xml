@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/D:/DoAn_Final/src/java/controller/UpdateStudentProfile.java</file>
             <file>file:/D:/DoAn_Final/web/voteChart.jsp</file>
             <file>file:/D:/DoAn_Final/web/WEB-INF/web.xml</file>
@@ -28,6 +29,27 @@
 >>>>>>> 90412d51c9da2c99867f2807b8b0f93bd17b3a91
 >>>>>>> 7c821ad00283108e5420e3e08c76577322ba461f
 >>>>>>> a2537b1cffbb24042cac4bc92eea043f995e16c9
+=======
+
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/editRestaurant.jsp</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/self_profileClub.jsp</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/nbproject/build-impl.xml</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/listAllReportHostel.jsp</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/EditRestaurantController.java</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/AddFoodController.java</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/addFood.jsp</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/ListAllRestaurantController.java</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/editFood.jsp</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/model/Food.java</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/model/Restaurant.java</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/dao/RestaurantDAO.java</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/DeleteFoodController.java</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/EditFoodController.java</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/dao/DBContext.java</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/hosteldetail.jsp</file>
+            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/LoginServlet.java</file>
+
+>>>>>>> 4276bff76ebd4c819fdb573776cfee96eb5666ec
         </group>
     </open-files>
 </project-private>
