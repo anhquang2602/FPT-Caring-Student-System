@@ -3,23 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/DoAn_Final/src/java/dao/DBContext.java</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/UpdateAdminProfile.java</file>
-            <file>file:/D:/DoAn_Final/web/self_profileClub.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/UpdateClubProfile.java</file>
-            <file>file:/D:/DoAn_Final/nbproject/private/private.xml</file>
-            <file>file:/D:/DoAn_Final/nbproject/project.properties</file>
-            <file>file:/D:/DoAn_Final/nbproject/project.xml</file>
-            <file>file:/D:/DoAn_Final/src/java/dao/SellerDAO.java</file>
-            <file>file:/D:/DoAn_Final/web/self_profileSeller.jsp</file>
             <file>file:/D:/DoAn_Final/src/java/controller/UpdateStudentProfile.java</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/UpdateSellerProfile.java</file>
-            <file>file:/D:/DoAn_Final/src/java/dao/AdminDAO.java</file>
-            <file>file:/D:/DoAn_Final/nbproject/genfiles.properties</file>
-            <file>file:/D:/DoAn_Final/nbproject/private/private.properties</file>
-            <file>file:/D:/DoAn_Final/web/self_profileAdmin.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/dao/StudentDAO.java</file>
-            <file>file:/D:/DoAn_Final/web/self_profileStudent.jsp</file>
+            <file>file:/D:/DoAn_Final/web/voteChart.jsp</file>
+            <file>file:/D:/DoAn_Final/web/WEB-INF/web.xml</file>
+            <file>file:/D:/DoAn_Final/web/home.jsp</file>
         </group>
     </open-files>
 </project-private>
