@@ -18,6 +18,48 @@
         <link rel="stylesheet" href="css/sellerStyle.css">
     </head>
     <body>
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Thêm Nhà Hàng Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Thêm nhà hàng thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+            <c:when test="${stt.equals('2')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Nhà Hàng Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Chỉnh sửa nhà hàng thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+            <c:when test="${stt.equals('3')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Xóa Nhà Hàng Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Xóa nhà hàng thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+
+        </c:choose>
         <%@include file="/header.jsp" %>
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -45,6 +87,7 @@
 <!--                                                    <img src="${r.restaurantImage}" style="width: 150px; height: 150px" >-->
 
                                                     <img class="img-fluid img-responsive rounded product-image" 
+
                                                          <c:if test="${r.restaurantImage != null && r.restaurantImage !=''}">
                                                              src="${r.restaurantImage}" </c:if>
                                                          <c:if test="${r.restaurantImage == null }">
@@ -52,6 +95,9 @@
                                                          <c:if test="${r.restaurantImage ==''}">
                                                              src="images/nhà trọ.jpg" </c:if> 
                                                              style="width: 150px; height: 150px">
+
+                                                     
+
 
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
@@ -95,13 +141,22 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
+        <script>
+            $(document).on('click', '#btnDelete', function () {
+                var link = $(this).attr('data-href');
+                $('.btn-ok').attr('href', link);
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
 
+            });
+        </script>
     </body>
-    <script>
-        $(document).on('click', '#btnDelete', function () {
-            var link = $(this).attr('data-href');
-            $('.btn-ok').attr('href', link);
-        });
-    </script>
+
+
+
 
 </html>

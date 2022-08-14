@@ -20,6 +20,14 @@ public class Event {
     public Event() {
     }
 
+    public Event(int clubID, String eventName, String time, String des, String url) {
+        this.clubID = clubID;
+        this.eventName = eventName;
+        this.time = time;
+        this.des = des;
+        this.url = url;
+    }
+
     public Event(int eventID, int clubID, String eventName, String time, String des, String url) {
         this.eventID = eventID;
         this.clubID = clubID;
@@ -28,6 +36,20 @@ public class Event {
         this.des = des;
         this.url = url;
     }
+
+    public Event(String eventName, String time, String des) {
+        this.eventName = eventName;
+        this.time = time;
+        this.des = des;
+    }
+
+    public Event(int clubID, String eventName, String time, String des) {
+        this.clubID = clubID;
+        this.eventName = eventName;
+        this.time = time;
+        this.des = des;
+    }
+    
 
     public int getEventID() {
         return eventID;

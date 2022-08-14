@@ -75,6 +75,7 @@
                         <form class="example d-flex align-items-center" action="FilterHostelController" method="post"> 
                             <input type="text" name="keywordHostel" value="${keywordHostel}" >
                             <button type="submit"><i class="fa fa-search"></i></button> 
+                            <br/>
                             Bộ lọc tìm kiếm <br/>
 
                             Giá: <input type="text" name="under" value="${under}"> - <input type="text" name="upper" value="${upper}"> <br/>
@@ -120,6 +121,7 @@
                                     </c:if>> 5</option>
                             </select>
                             <input type="submit" value="Tìm kiếm"> 
+                            <a href="ResetSearchHostelsController?keywordHostel=${keywordHostel}">Xóa bộ lọc</a>
                         </form>
                     </div>
                     <div class="container" style="margin-top: 50px">

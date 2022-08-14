@@ -41,19 +41,7 @@
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listH}" var="d" >
                                         <li class="list-group-item">
-<!--<<<<<<< HEAD
-                                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
-                                                <div class="media-body order-2 order-lg-1 description" id="description">
-                                                    <h4 class="mt-0 font-weight-bold mb-3">
-                                                        <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
-                                                    </h4>
 
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê:  <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VNĐ</p>
-
-                                                </div>
-                                                <div class="media-body order-2 order-lg-1 image">
-=======-->
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-4">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
 
@@ -61,15 +49,7 @@
                                                             src="${d.img1}" </c:if>
                                                         <c:if test="${d.img1 == null}">
                                                             src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
-<!--<<<<<<< HEAD
 
-                                                         style="width: 150px; height: 150px" >
-                                                </div>
-                                                <a class="btn btn-primary" href="ChartVoteController?hostelId=${d.hostelID}" style="margin-left: 700px">Xem Biểu Đồ</a> 
-                                                <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
-
-                                                <a class="btn btn-danger" id="btnDelete" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
-=======-->
                                                             
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
