@@ -52,7 +52,6 @@ public class DepartmentController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          DepartmentDAO dao = new DepartmentDAO();
-       
         
         String indexPage= request.getParameter("index");
          if(indexPage==null){
