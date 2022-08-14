@@ -65,8 +65,7 @@ public class FindDistrictController extends HttpServlet {
         
         int provinceID = Integer.parseInt(request.getParameter("province"));
         AddressDAO dao = new AddressDAO();
-        
-        String json = new Gson().toJson(dao.listDistrict(21));
+        String json = new Gson().toJson(dao.listDistrict(provinceID));
         out.print(json);
         out.flush();
         out.close();

@@ -18,48 +18,44 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/style1.css">
     </head>
-    <body class="bg-white">
-        <div class="px-0">
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div class="container rounded bg-white mt-5 mb-5">
-                    <div>
-                        <ul class="breadcrumb bg-white">
-                            <li><a href="home.jsp">Home</a></li>
-                            <li><a href="BusPagingServlet">List Bus</a></li>
-                            <li><a>Bus Detail</a></li>
-                        </ul>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="justify-content-between align-items-center experience">
-                                <div class="p-3 py-5">
-                                    <img src="${busImage}" class="form-control" style="padding: 0px">
+                <div id="topnavbar1" class="col-md-10">
+                    <div class="container rounded bg-white mt-5 mb-5">
+                        <div>
+                            <ul class="breadcrumb bg-white">
+                                <li><a href="home.jsp">Home</a></li>
+                                <li><a href="BusPagingServlet">List Bus</a></li>
+                                <li><a>Bus Detail</a></li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="justify-content-between align-items-center experience">
+                                    <div class="p-3 py-5">
+                                        <img src="${busImage}" class="form-control" style="padding: 0px">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <label class="fs12">Tên</label>
-                                        <input type="text" value="Lộ trình xe bus ${busnumber}" readonly="">
-                                    </div>
-                                    <div class="col-md-15">
-                                        <label class="fs12">Mô tả</label>
-                                        <textarea  readonly="" style="width: 700px;" rows="20">
-                                            <%
-                                                String string = (String) request.getAttribute("StopPoint");
-                                                String[] parts = string.split("&&");
-                                            %>
-                                            <% for (String bs : parts) {%>
-                                            <%=bs%>
-                                            <%}%>
-                                        </textarea>
-                                    </div>
+                            <div class="col-md-7">
+                                <div>
+                                    <label class="fs12">Tên</label>
+                                    <input class="form-control" type="text" value="Lộ trình xe bus ${busnumber}" readonly="">
+                                </div>
+                                <div>
+                                    <label class="fs12">Mô tả</label>
+                                    <textarea class="form-control" readonly="" style="width: 100%" rows="20">
+                                        <%String string = (String) request.getAttribute("StopPoint");
+                                            String[] parts = string.split("&&");%>
+                                        <% for (String bs : parts) {%>
+                                        <%=bs%>
+                                        <%}%>
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
@@ -67,6 +63,7 @@
                 </div>
             </div>
         </div>
-    </body>
+    </div>
     <%@include file="/footer.jsp" %>
+</body>
 </html>

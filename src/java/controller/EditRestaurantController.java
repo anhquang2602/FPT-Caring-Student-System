@@ -18,6 +18,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Food;
 import model.Restaurant;
@@ -89,6 +90,7 @@ public class EditRestaurantController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         int restaurantID = Integer.parseInt(request.getParameter("id"));
         String restaurantName = request.getParameter("restaurantName");
@@ -96,7 +98,7 @@ public class EditRestaurantController extends HttpServlet {
         int districtID = Integer.parseInt(request.getParameter("district"));
         String address = request.getParameter("address");
         String cost = request.getParameter("cost");
-     //   String image = request.getParameter("image");
+        //   String image = request.getParameter("image");
         float distance = Float.parseFloat(request.getParameter("distance"));
         String description = request.getParameter("description");
 //        if (restaurantDAO.updateRestaurant(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description,image)) {
@@ -105,20 +107,21 @@ public class EditRestaurantController extends HttpServlet {
         Part part = request.getPart("restaurantImage");
         String realPath1 = request.getServletContext().getRealPath("/restaurantImages");
         String realPath = realPath1.replaceFirst("build", "");
-      
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
         }
         if (part.getSize() == 0) {
             if (restaurantDAO.updateRestaurantNoImg(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description)) {
-                response.sendRedirect("ListRestaurantBySeller");
+                session.setAttribute("stt", "2");
+                response.sendRedirect(request.getContextPath() + "/ListRestaurantBySeller");
             }
         } else {
             String restaurantImg = restaurantName + "img.jpg";
             String SaveRestaurantImg = "restaurantImages/" + restaurantImg;
             part.write(realPath + "\\" + restaurantImg);
             if (restaurantDAO.updateRestaurant(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description, SaveRestaurantImg)) {
-                response.sendRedirect("ListRestaurantBySeller");
+                session.setAttribute("stt", "2");
+                response.sendRedirect(request.getContextPath() + "/ListRestaurantBySeller");
             }
         }
     }
