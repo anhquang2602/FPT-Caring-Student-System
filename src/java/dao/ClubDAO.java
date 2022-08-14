@@ -85,6 +85,25 @@ public class ClubDAO extends DBContext {
         return club;
     }
 
+    public int getClubIDByEmail(String email) {
+        int id = 0;
+        String sql = "SELECT [ClubID]\n"
+                + "     \n"
+                + "  FROM [FCS].[dbo].[Clubs] where email = ?";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+
     public String getAvatarByUsername(String username) {
         try {
             String sql = "select Avatar\n"
@@ -144,12 +163,66 @@ public class ClubDAO extends DBContext {
         return list;
     }
 
+    public Event getEventByID(int id) {
+        Event event = new Event();
+        String sql = "SELECT * FROM [dbo].[EventOfClub] WHERE EventID = " + id + "";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                event.setEventID(rs.getInt(1));
+                event.setClubID(rs.getInt(2));
+                event.setEventName(rs.getString(3));
+                event.setTime(rs.getString(4));
+                event.setDes(rs.getString(5));
+                event.setUrl(rs.getString(6));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return event;
+    }
+    
+    public int getEventIDByName(String name) {
+        int id =0;
+        String sql = "SELECT EventID FROM [dbo].[EventOfClub] WHERE EventName = N'"+name+"'";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+
+    public void updateEvent(Event e, int id) {
+        try {
+
+            String sql = "UPDATE [dbo].[EventOfClub]\n"
+                    + "   SET [EventName] =?\n"
+                    + "      ,[Time] = ?\n"
+                    + "      ,[Description] = ?\n"
+                    + " WHERE EventID = "+id+"";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, e.getEventName());
+            statement.setString(2, e.getTime());
+            statement.setString(3, e.getDes());
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
         ClubDAO club = new ClubDAO();
-        ArrayList<Event> e = club.getEventByEmail("jsclub.fpt@gmail.com");
-        for (Event event : e) {
-            System.out.println(event.getEventName());
-        }
+        Event e = club.getEventByID(2);
+        System.out.println(e.getEventName());
     }
 
     public boolean updateClubProfile(String avatar, Club club) {
@@ -172,4 +245,45 @@ public class ClubDAO extends DBContext {
             return false;
         }
     }
+
+    public void addEvent(Event e) {
+        try {
+            String sql = "INSERT INTO [dbo].[EventOfClub]\n"
+                    + "           ([ClubID]\n"
+                    + "           ,[EventName]\n"
+                    + "           ,[Time]\n"
+                    + "           ,[Description])\n"
+                    //                    + "           ,[Url1])\n"
+                    + "     VALUES\n"
+                    + "           (?\n"
+                    + "           ,?\n"
+                    + "           ,?\n"
+                    //                    + "           ,?\n"
+                    + "           ,?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, e.getClubID());
+            statement.setString(2, e.getEventName());
+            statement.setString(3, e.getTime());
+            statement.setString(4, e.getDes());
+//            statement.setString(5, e.getUrl());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClubDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteEvent(int eventID) {
+
+        try {
+
+            String sql = "DELETE FROM [EventOfClub] WHERE EventID =?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, eventID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 }
