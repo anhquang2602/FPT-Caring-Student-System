@@ -9,6 +9,7 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--        <meta http-equiv="refresh" content="0.1">-->
         <link rel="stylesheet" href="css/profileStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
@@ -28,7 +29,6 @@
                                     <li><a href="UpdateStudentProfile">My Profile</a></li>                                    
                                 </ul>
                             </div>
-
                             <div class="col-md-4">
                                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="${UserAvatar}" id="output">
                                     <div class="form-group mt-3">                       
@@ -90,7 +90,8 @@
                                     <div class="col-md-12"><label class="labels">Address Detail</label><input type="text" name="addressDetail" class="form-control"value="${student.address}" ></div>
                                 </div>
                                 <div class="mt-5 text-center">
-                                    <button class="btn btn-primary profile-button" type="submit"  >Save Profile</button>
+                                    <button onclick="tai_lai_trang()">re load</button>
+                                    <button class="btn btn-primary profile-button" type="submit" >Save Profile</button>
                                 </div>
                                 <label class="labels">${UpdateError}</label>
                                 <label class="labels">${UpdateProcess}</label>
@@ -103,6 +104,12 @@
 </div>
 </body>
 <script src="validator/Validator.js"></script>
+<script>
+        function tai_lai_trang(){
+                   var img = document.getElementById('output').src;
+                   
+        }
+</script>
 <script language="javascript">
 
                                         var gender = document.getElementById('genderlable').innerHTML;

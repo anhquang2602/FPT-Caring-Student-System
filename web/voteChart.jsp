@@ -33,13 +33,15 @@
                                 <div
                                     id="myChart" style="width:1000px; height:1000px;">
                                 </div>
+                                <div
+                                    id="myChart2" style="width:1000px; height:1000px;">
+                                </div>
                                 <label class="labels" id="onestar" hidden="">${oneStar}</label>
                                 <label class="labels" id="twostar" hidden="">${twoStar}</label>
                                 <label class="labels" id="threestar" hidden="">${threeStar}</label>
                                 <label class="labels" id="fourstar" hidden="">${fourStar}</label>
                                 <label class="labels" id="fivestar" hidden="">${fiveStar}</label>
                                 <script>
-
                                     let onestar = document.getElementById('onestar').innerHTML;
                                     let ones = Number(onestar);
                                     let twostar = document.getElementById('twostar').innerHTML;
@@ -69,8 +71,12 @@
 
                                         var chart = new google.visualization.PieChart(document.getElementById('myChart'));
                                         chart.draw(data, options);
+                                        var chart2 = new google.visualization.BarChart(document.getElementById('myChart2'));
+                                        chart2.draw(data, options);
                                     }
                                 </script>
+
+                               
                             </div>
                         </div>
                     </div>

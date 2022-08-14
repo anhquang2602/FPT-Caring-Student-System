@@ -18,7 +18,7 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <form action="EditEvent" method="post">
+                <form action="EditEvent" method="post" enctype="multipart/form-data">
                     <div class="container rounded bg-white mt-5 mb-5">
                         <div class="row">
                             <div>
@@ -30,6 +30,9 @@
                             <a href="AddNewEvent">Thêm sự kiện</a>
                             Event Name: <input type="text" value="${eventName}" name="eventName" readonly=""> <br/>
                             <p>${errorEventName}</p>
+                            Ảnh sự kiện:
+                            <img class="rounded-circle mt-5" width="150px" src="${eventImage}" id="output">
+                            <input style="padding-left: 80px" type="file" name="eventImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="eventImg"><br/>
                             Thời gian: <input type="text" value="${time}" name="time"> <br/>
                             Mô tả: <textarea name="des">${des}</textarea> <br/>
                             <input type="submit" value="Lưu">
@@ -45,4 +48,13 @@
         </div>
 
     </body>
+        <script>
+                                        var loadFile = function (event) {
+                                            var output = document.getElementById('output');
+                                            output.src = URL.createObjectURL(event.target.files[0]);
+                                            output.onload = function () {
+                                                URL.revokeObjectURL(output.src) // free memory
+                                            }
+                                        };
+</script>
 </html>
