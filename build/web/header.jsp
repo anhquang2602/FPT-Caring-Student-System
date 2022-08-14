@@ -62,7 +62,12 @@
                 <a class="ml-5" href="FilterHostelController">
                     <i class="fas fa-bed mr-3"></i>
                     <span>NHÀ TRỌ</span>
-                </a> 
+                </a>
+                <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 4) {%>
+                <a class="ml-5" href="AllEventByClub">
+                    <i class="fas fa-utensils mr-3"></i>
+                    <span>QUẢN LÝ SỰ KIỆN</span>
+                </a>  
                 <%}%>
                 <div class="dropdownProfile ddf">    
                     <button class="dropdown-toggle mt-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,6 +86,10 @@
                         <a class="dropdown-item" href="UpdateAdminProfile">
                             <i class="fas fa-id-card-o"></i>HỒ SƠ CỦA TÔI
                         </a>
+                        <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 4) {%>
+                            <a class="dropdown-item" href="UpdateClubProfile">
+                                <i class="fas fa-id-card-o"></i>HỒ SƠ CỦA TÔI
+                            </a>
                         <%}%>
                         <a class="dropdown-item" href="ChangePasswordServlet">
                             ĐỔI MẬT KHẨU

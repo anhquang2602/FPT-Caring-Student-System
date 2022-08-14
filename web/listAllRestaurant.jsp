@@ -134,9 +134,9 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    <img  <c:if test="${d.img1 != null}">
-                                                            src="${d.img1}" </c:if>
-                                                        <c:if test="${d.img1 == null}">
+                                                    <img  <c:if test="${restaurant.restaurantImage != null}">
+                                                            src="${restaurant.restaurantImage}" </c:if>
+                                                        <c:if test="${restaurant.restaurantImage == null}">
                                                             src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
