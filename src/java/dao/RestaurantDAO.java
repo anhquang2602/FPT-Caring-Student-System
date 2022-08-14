@@ -543,6 +543,7 @@ public class RestaurantDAO extends DBContext {
         
     }
     
+
         public void updateStarAvgRestaurant(int resID, double starAVG) {
         try {
 
@@ -557,6 +558,23 @@ public class RestaurantDAO extends DBContext {
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
+
+      public int getSellerIdByRestaurantId(int restaurantID) {
+        String sql = "select SellerID from Restaurants where RestaurantID=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, restaurantID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return 0;
+
     }
 
     public static void main(String[] args) {

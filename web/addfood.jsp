@@ -109,7 +109,9 @@
                                             </div>
                                             <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                                 <div class="d-flex flex-row align-items-center">
+
                                                     <h4 class="mr-1"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${food.cost}" ></fmt:formatNumber> VND</h4>
+
                                                 </div>
                                                 <a class="btn btn-primary" href="EditFoodController?foodId=${food.foodID}" style="width: 110px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" id="btnDelete" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>
@@ -188,31 +190,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous">
         </script>
-        <script>
-            $(document).on('change', '.province', function () {
-                var province = document.getElementById("province").value;
-                $('#district').empty();
-                $.ajax({
-                    type: "GET",
-                    url: "/Test_1/findDistrict",
-                    data: {
-                        province: province,
-                    },
-                    headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
-                    },
-                    success: function (data) {
 
-                        data.forEach(function (a) {
-                            $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-                        });
-                    },
-                    error: function (e) {
-                        console.log("ERROR: ", e);
-                    }
-                });
-            });</script>
         <script>
             function validateFood() {
                 let isValid = true;

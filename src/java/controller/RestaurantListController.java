@@ -7,8 +7,12 @@ package controller;
 
 import dao.AddressDAO;
 import dao.RestaurantDAO;
+
 import dao.StarDAO;
 import dao.StudentDAO;
+
+import dao.SellerDAO;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -119,10 +123,13 @@ public class RestaurantListController extends HttpServlet {
         
         
         ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(id);
+        int SellerID = restaurantDAO.getSellerIdByRestaurantId(id);
+       
 
         AddressDAO a = new AddressDAO();
         request.setAttribute("listFood", listFood);
         request.setAttribute("restaurant", restaurant);
+        request.setAttribute("sellerId", SellerID);
         
         request.setAttribute("listProvince", a.listProvince());
         request.setAttribute("listDistrict", a.getDistrictByProName(restaurant.getProvinceName()));

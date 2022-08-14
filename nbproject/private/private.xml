@@ -2,36 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/nbproject/private/private.properties</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/EditHostelController.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/self_profileSeller.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/addFood.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DBContext.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/hosteldetail.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/EditFoodController.java</file>
-=======
-
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/editRestaurant.jsp</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/self_profileClub.jsp</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/nbproject/build-impl.xml</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/listAllReportHostel.jsp</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/EditRestaurantController.java</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/AddFoodController.java</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/addFood.jsp</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/ListAllRestaurantController.java</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/editFood.jsp</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/model/Food.java</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/model/Restaurant.java</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/dao/RestaurantDAO.java</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/DeleteFoodController.java</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/EditFoodController.java</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/dao/DBContext.java</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/web/hosteldetail.jsp</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/LoginServlet.java</file>
-
->>>>>>> 4276bff76ebd4c819fdb573776cfee96eb5666ec
-        </group>
+        <group/>
     </open-files>
 </project-private>

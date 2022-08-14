@@ -18,6 +18,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Student;
 
@@ -102,6 +103,7 @@ public class UpdateStudentProfile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
         String email = (String) request.getSession().getAttribute("username");
         String UserAvatar = null;
         Part part = request.getPart("avatarImage");
@@ -110,7 +112,7 @@ public class UpdateStudentProfile extends HttpServlet {
         String gender = request.getParameter("gender");
         String provinceID = request.getParameter("province");
         String districtID = request.getParameter("district");
-         if (provinceID.isEmpty()) {
+        if (provinceID.isEmpty()) {
             provinceID = null;
             districtID = null;
         }
@@ -130,30 +132,31 @@ public class UpdateStudentProfile extends HttpServlet {
             Files.createDirectories(Paths.get(realPath));
         }
         if (part.getSize() == 0) {
-            
+
             UserAvatar = sdb.getStAvatarByUsername(email);
             /*
-            st.setString(1, avatar);
-            st.setString(2, student.getFirstName());
-            st.setString(3, student.getLastName());
-            st.setInt(4, student.getAge());
-            st.setInt(5, student.getPhone());
-            st.setInt(6, student.getCountryID());
-            st.setInt(7, student.getProvinceID());
-            st.setInt(8, student.getDistrictID());
-            st.setString(9, student.getAddress());
-            st.setBoolean(10, gender);
-            st.setString(11, student.getLinkFb());
-            st.setString(12,student.getStudentID());
-            st.setString(13,student.getUnit());
-            st.setString(14, student.getEmail());
-            String avatar, String firstName,String lastName,String age,String phone,String countryId,String provinceId,String districtId,String addressDetail,String gender,String linkFaceBook,String studentId,String unit,String email
+             st.setString(1, avatar);
+             st.setString(2, student.getFirstName());
+             st.setString(3, student.getLastName());
+             st.setInt(4, student.getAge());
+             st.setInt(5, student.getPhone());
+             st.setInt(6, student.getCountryID());
+             st.setInt(7, student.getProvinceID());
+             st.setInt(8, student.getDistrictID());
+             st.setString(9, student.getAddress());
+             st.setBoolean(10, gender);
+             st.setString(11, student.getLinkFb());
+             st.setString(12,student.getStudentID());
+             st.setString(13,student.getUnit());
+             st.setString(14, student.getEmail());
+             String avatar, String firstName,String lastName,String age,String phone,String countryId,String provinceId,String districtId,String addressDetail,String gender,String linkFaceBook,String studentId,String unit,String email
              */
             //Student studentUpdate = new Student(studentId, firstName, lastName, age, phone, unit, email, 1, provinceID, districtID, addressDetail, gender, linkFb);
-            if (sdb.updateStudentProfileNoPro(UserAvatar, firstName,lastName,age,phone,"1",provinceID,districtID,addressDetail,gender,linkFb,studentId,unit,email) == true) {
+            if (sdb.updateStudentProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, studentId, unit, email) == true) {
                 reloadPage(request, response);
-                request.setAttribute("UpdateProcess", "Update successfully");
-                request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
+                session.setAttribute("stt", "1");
+                response.sendRedirect(request.getContextPath() + "/home");
+
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");
@@ -162,7 +165,7 @@ public class UpdateStudentProfile extends HttpServlet {
         } else {
 
             /*SellerDAO sdb = new SellerDAO();
-            Seller seller = sdb.getSellertByUsername(username);*/
+             Seller seller = sdb.getSellertByUsername(username);*/
             String avatarName = null;
             if (email.contains("@gmail.com")) {
                 avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
@@ -172,19 +175,18 @@ public class UpdateStudentProfile extends HttpServlet {
             UserAvatar = "avatarImages/" + avatarName;
             part.write(realPath + "\\" + avatarName);
             /* try (PrintWriter out = response.getWriter()) {
-                out.println("<h1>Name: " + avatarName + "</h1>");
-                out.println("<h1>uplodName: " + realPath.toString() + "</h1>");
-                out.println("<h1>Part: " + part.toString() + "</h1>");
-                out.print("<img src='avatarImages/" + avatarName + "'width='100'>");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
+             out.println("<h1>Name: " + avatarName + "</h1>");
+             out.println("<h1>uplodName: " + realPath.toString() + "</h1>");
+             out.println("<h1>Part: " + part.toString() + "</h1>");
+             out.print("<img src='avatarImages/" + avatarName + "'width='100'>");
+             } catch (Exception e) {
+             e.printStackTrace();
+             }*/
 
-            
-            if (sdb.updateStudentProfileNoPro(UserAvatar, firstName,lastName,age,phone,"1",provinceID,districtID,addressDetail,gender,linkFb,studentId,unit,email) == true) {
+            if (sdb.updateStudentProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, studentId, unit, email) == true) {
                 request.setAttribute("UpdateProcess", "Update successfully");
                 reloadPage(request, response);
-                request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
+                request.getRequestDispatcher("home.jsp").forward(request, response);
             } else {
                 request.setAttribute("UpdateProcess", "Update fail");
                 reloadPage(request, response);
