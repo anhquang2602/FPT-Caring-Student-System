@@ -58,100 +58,11 @@
                                                 }
                                             };
                                         </script>
-
-<!--                                        <input type="file" hidden accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
-                                        <label for="file2" style="position: absolute; margin-left: 100px; margin-top: 60px; opacity: 30%">+</label>
-                                        <img id="output2" style="margin-left: 10px" width="170px" height="170px"/>
-                                        <script>
-                                            var loadFile2 = function (event) {
-                                                var output = document.getElementById('output2');
-                                                output.src = URL.createObjectURL(event.target.files[0]);
-                                                output.onload = function () {
-                                                    URL.revokeObjectURL(output2.src) // free memory
-                                                }
-                                            };
-                                        </script>
-
-                                        <input type="file" hidden accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
-                                        <label for="file3" style="position: absolute; margin-left: 100px; margin-top: 60px; opacity: 30%">+</label>
-                                        <img id="output3" style="margin-left: 10px" width="170px" height="170px"/>
-                                        <script>
-                                            var loadFile3 = function (event) {
-                                                var output = document.getElementById('output3');
-                                                output.src = URL.createObjectURL(event.target.files[0]);
-                                                output.onload = function () {
-                                                    URL.revokeObjectURL(output.src) // free memory
-                                                }
-                                            };
-                                        </script>-->
                                     </div>
-<!--                                    <div class="mt-5">
-                                        <input type="file" hidden accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
-                                        <label for="file4" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 30%">+</label>
-                                        <img id="output4" width="170px" height="170px"/>
-                                        <script>
-                                            var loadFile4 = function (event) {
-                                                var output = document.getElementById('output4');
-                                                output.src = URL.createObjectURL(event.target.files[0]);
-                                                output.onload = function () {
-                                                    URL.revokeObjectURL(output.src) // free memory
-                                                }
-                                            };
-                                        </script>
 
-                                        <input type="file" hidden accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
-                                        <label for="file5" style="position: absolute; margin-left: 100px; margin-top: 65px; opacity: 30%">+</label>
-                                        <img id="output5" style="margin-left: 30px" width="170px" height="170px"/>
-                                        <script>
-                                            var loadFile5 = function (event) {
-                                                var output = document.getElementById('output5');
-                                                output.src = URL.createObjectURL(event.target.files[0]);
-                                                output.onload = function () {
-                                                    URL.revokeObjectURL(output.src) // free memory
-                                                }
-                                            };
-                                        </script> 
-
-                                        <input type="file" hidden accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
-                                        <label for="file6" style="position: absolute; margin-left: 100px; margin-top: 65px; opacity: 30%">+</label>
-                                        <img id="output6" style="margin-left: 30px" width="170px" height="170px"/>
-                                        <script>
-                                            var loadFile6 = function (event) {
-                                                var output = document.getElementById('output6');
-                                                output.src = URL.createObjectURL(event.target.files[0]);
-                                                output.onload = function () {
-                                                    URL.revokeObjectURL(output.src) // free memory
-                                                }
-                                            };
-                                        </script>
-                                    </div>-->
                                     <div class="error" id="errorImg"></div>
 
-<!--                                    <div class="oriton_img"> 
-                                        <h5>Tình trạng phòng</h5>                   
-                                    </div>   
-                                    <div class="left_text">
-                                        <input type="radio" id="collection1" name="status" value="yes"> 
-                                        <label for="collection1">
-                                            <div class="left_box">
-                                                <div class="left_box_collection"> 
-                                                    <div class="radio_button"> <span></span>
-                                                        <h4>Còn phòng</h4>
-                                                    </div>                               
-                                                </div>
-                                            </div>
-                                        </label> 
-                                        <input type="radio" id="collection2" checked name="status" value="no"> 
-                                        <label for="collection2">
-                                            <div class="left_box">
-                                                <div class="left_box_collection">
-                                                    <div class="radio_button"> <span></span>
-                                                        <h4>Hết phòng</h4>
-                                                    </div>
-                                                </div>                                    
-                                            </div>
-                                        </label>
-                                    </div>-->
+
                                 </div>
 
                                 <div class="right-side">
@@ -167,8 +78,14 @@
                                             <span>Tỉnh, thành phố</span> 
                                             <select name="province" id="province" class="province">
                                                 <option value="">Select Province</option>
-                                                <c:forEach items ="${listProvince}" var="o">
-                                                    <option value="${o.provinceID}">${o.provinceName}</option>
+                                                    <c:forEach items ="${listProvince}" var="o">
+                                                    <c:if test ="${o.provinceName == 'Hà Nội'}" >
+                                                        <option value="${o.provinceID}" selected>${o.provinceName}</option>
+                                                    </c:if>
+                                                    <c:if test ="${o.provinceName != 'Hà Nội'}" >
+                                                        <option value="${o.provinceID}" >${o.provinceName}</option>
+                                                    </c:if>
+
                                                 </c:forEach>
                                             </select> 
                                         </div>                         
@@ -210,6 +127,32 @@
             crossorigin="anonymous">
         </script>
         <script>
+            $(document).ready(function () {
+                $.ajax({
+                    type: "GET",
+
+                    url: "/Test_1/findDistrict",
+                    data: {
+                        province: 21,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
+
+                    success: function (data) {
+
+                        data.forEach(function (a) {
+                            $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+
+                        });
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
+
+            });
             $(document).on('change', '.province', function () {
                 var province = document.getElementById("province").value;
                 $('#district').empty();

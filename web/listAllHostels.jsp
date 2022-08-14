@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -73,6 +75,7 @@
                         <form class="example d-flex align-items-center" action="FilterHostelController" method="post"> 
                             <input type="text" name="keywordHostel" value="${keywordHostel}" >
                             <button type="submit"><i class="fa fa-search"></i></button> 
+                            <br/>
                             Bộ lọc tìm kiếm <br/>
 
                             Giá: <input type="text" name="under" value="${under}"> - <input type="text" name="upper" value="${upper}"> <br/>
@@ -117,7 +120,8 @@
                                         selected="selected"
                                     </c:if>> 5</option>
                             </select>
-                            <<input type="submit" value="Tìm kiếm"> 
+                            <input type="submit" value="Tìm kiếm"> 
+                            <a href="ResetSearchHostelsController?keywordHostel=${keywordHostel}">Xóa bộ lọc</a>
                         </form>
                     </div>
                     <div class="container" style="margin-top: 50px">
@@ -132,6 +136,38 @@
                                 <ul class="list-group shadow">
                                     <c:forEach items="${hostels}" var="d">
                                         <li class="list-group-item">
+                                            <!--                                            <<<<<<< HEAD
+                                                                                        <div class="media align-items-lg-center flex-column flex-lg-row p-1">
+                                                                                            <div class="media-body order-2 order-lg-1 description" id="description">
+                                                                                                <h5 class="mt-0 font-weight-bold mb-2">
+                                                                                                    <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
+                                            
+                                                                                                </h5>
+                                                                                                <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Vị trí cách đại học FPT: ${d.distance} km</p>
+                                                                                                <p class="font-italic text-muted mb-0 small" style="font-size: 18px">
+                                                                                                    Tình trạng: <c:if test="${d.status == true}" > Còn phòng</c:if>
+                                            <c:if test="${d.status == false}" >Hết phòng</c:if>
+                                            </p>
+
+
+                                            <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê:  
+                                            <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VNĐ</p>
+
+
+
+
+
+                                        </div>
+                                        <div class="media-body order-2 order-lg-1 image">
+                                            <img  <c:if test="${d.img1 != null}">
+                                                src="${d.img1}" </c:if>
+                                            <c:if test="${d.img1 == null}">
+                                                src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
+                                        </div>
+                                    </div> 
+                                    <div class="stars-outer">
+                                        <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
+                                    =======-->
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-4">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
                                                     <img  <c:if test="${d.img1 != null}">
@@ -144,34 +180,28 @@
                                                     <h3 class="mt-0 font-weight-bold mb-4">
                                                         <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
                                                     </h3>
-                                                    <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
-                                                    <p style="font-size: 20px">Giá thuê: ${d.cost} VND</p>
-                                                    <p style="font-size: 20px">Khoảng cách: ${d.distance} km</p>
+                                                    <p style="font-size: 20px">Vị trí cách đại học FPT: ${d.distance} km</p>
+                                                    <p style="font-size: 20px">Tình trạng: <c:if test="${d.status == true}" > Còn phòng</c:if>
+                                                        <c:if test="${d.status == false}" >Hết phòng</c:if>
+                                                        </p>
+                                                        <p style="font-size: 20px">Giá thuê:  
+                                                        <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VNĐ</p>
+
+                                                    </div>
+
+                                                    <div class="col-md-4 mt-5 stars-outer media-body order-2 order-lg-1 button_edit">
+                                                        <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
                                                 </div>
 
-                                                <div class="col-md-4 mt-5 stars-outer media-body order-2 order-lg-1 button_edit">
-                                                    <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
-                                                </div>
                                             </div>
                                         </li> 
                                     </c:forEach>
                                 </ul> 
-                                <!--                                <div class="clearfix">
-                                                                    <ul class="pagination">
-                                <c:if test="${tag>1}">
-                                    <li class="page-item disabled"><a href="FilterHostelController?index=${tag-1}&costUnder=${under}&costUpper=${upper}&distance=${distance}">Previous</a></li>
-                                </c:if>
-                                <c:forEach begin="1" end="${endP}" var="i">
-                                <li class="page-item ${tag==i?"active":""}"><a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}" class="page-link">${i}</a></li>
-                                </c:forEach>
-                                <c:if test="${tag<endP}">
-                                <li class="page-item"><a href="FilterHostelController?index=${tag+1}&costUnder=${under}&costUpper=${upper}&distance=${distance}" class="page-link">Next</a></li>
-                                </c:if>
-                        </ul>
-                    </div> -->
+
                                 <c:forEach begin="1" end="${totalPage}" var="i">
-                                    <a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}">${i}</a> 
+                                    <a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keywordHostel=${keywordHostel}">${i}</a> 
                                 </c:forEach>
+
                             </div>
                         </div>
                     </div>
