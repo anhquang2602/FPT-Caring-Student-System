@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="css/addHostelStyle.css">
         <link rel="stylesheet" href="css/hostelStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
+           <link rel="stylesheet" href="css/commentStyle.css" />
         <style>
             .labels{
                 font-weight: 800;
@@ -28,6 +29,34 @@
                 color: green;
 
             }
+            .stars-outer {
+                position: relative;
+                display: inline-block;
+                font-size: 15px;
+            }
+
+            .stars-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 0;
+                font-size: 15px;
+            }
+
+            .stars-outer::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #ccc;
+            }
+
+            .stars-inner::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #f8ce0b;
         </style>
     </head>
     <body class="bg-white">
@@ -42,7 +71,7 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="ListRestaurantBySeller">Danh sách nhà hàng</a></li>
+                                <li><a href="ListAllRestaurantController">Danh sách nhà hàng</a></li>
                                 <li><a>Chi tiết nhà hàng</a></li>
                             </ul>
                         </div>
@@ -56,9 +85,7 @@
                                     <h3>Menu nhà hàng</h3>
                                     <div class="mt-5">
 
-                                        <c:if test="${editHostel.img1 != null}">
-                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
-                                        </c:if>   -->
+                                       
 
                                         <c:forEach items="${listFood}" var="food" >
 
@@ -85,10 +112,13 @@
                                 </div>
 
                                 <div class="right-side">
-                                   
+
                                     <h3>Mô tả nhà hàng</h3>    
                                     <div class="col mt-5 thumbnail">
-                                        <img src="${restaurant.restaurantImage}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt="">
+                                        <img src="${restaurant.restaurantImage}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt=""><br>    
+                                            <div class="stars-outer mb-5"> 
+                                            <div class="stars-inner" style="width: ${restaurant.starAVG}%"> </div>
+                                        </div>
                                     </div>                                                                              
                                     <div class="col-md-12">
                                         <label class="labels">Tên nhà hàng</label>
@@ -122,8 +152,48 @@
                                         <textarea class="form-control" readonly="" rows="5  ">${restaurant.description}</textarea>
                                     </div>
 
+                                    <c:if test = "${isStudent == 1}">
+                                        <a href="commentRestaurant?restaurantID=${restaurant.restaurantID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
+                                    </c:if>
+
                                 </div>
+                     
                             </form>
+                                       <div class="row" style="background-color: #e9ecef" >
+                            <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà hàng:</label>
+                            <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
+                            <c:if test="${listCmtHostelPaging  != null}">
+                                <c:forEach items="${listCmtHostelPaging}" var="d" >
+                                    <div class="bg-white p-3" style="margin :5px">
+                                        <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="60" height="60" >
+                                            <div class="d-flex flex-column justify-content-start ml-4" >
+                                                <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
+                                                <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
+                                                <div class="sold_stars m1-auto">
+                                                    <c:forEach begin="1" end="${d.starvoting}" >
+                                                        <i class="fa fa-star"  style=" font-size: 13px;"></i>      
+                                                    </c:forEach>
+                                                    <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
+                            <div class="clearfix">
+                                <ul class="pagination">
+                                    <c:if test="${tag>1}">
+                                        <li class="page-item disabled"><a href="RestaurantListController?id=${restaurant.restaurantID}&&index=${tag-1}">Previous</a></li>
+                                        </c:if>
+                                        <c:forEach begin="1" end="${endP}" var="i">
+                                        <li class="page-item ${tag==i?"active":""}"><a href="RestaurantListController?id=${restaurant.restaurantID}&&index=${i}" class="page-link">${i}</a></li>
+                                        </c:forEach>
+                                        <c:if test="${tag<endP}">
+                                        <li class="page-item"><a href="RestaurantListController?id=${restaurant.restaurantID}&&index=${tag+1}" class="page-link">Next</a></li>
+                                        </c:if>
+                                </ul>
+                            </div>  
+                        </div>
                         </div>
                     </div>
                 </div>

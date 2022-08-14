@@ -43,17 +43,20 @@
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
 <!--                                                    <img src="${r.restaurantImage}" style="width: 150px; height: 150px" >-->
-                                                    
+
                                                     <img class="img-fluid img-responsive rounded product-image" 
-                                                        <c:if test="${r.restaurantImage != null}">
-                                                            src="${r.restaurantImage}" </c:if>
-                                                        <c:if test="${r.restaurantImage == null}">
-                                                            src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px">
-                                                    
-                                                </div>
-                                                <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
-                                                    <h5 class="mt-0 font-weight-bold mb-2">
-                                                        <a href="RestaurantListController?id=${r.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
+                                                         <c:if test="${r.restaurantImage != null && r.restaurantImage !=''}">
+                                                             src="${r.restaurantImage}" </c:if>
+                                                         <c:if test="${r.restaurantImage == null }">
+                                                             src="images/nhà trọ.jpg" </c:if> 
+                                                         <c:if test="${r.restaurantImage ==''}">
+                                                             src="images/nhà trọ.jpg" </c:if> 
+                                                             style="width: 150px; height: 150px">
+
+                                                    </div>
+                                                    <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
+                                                        <h5 class="mt-0 font-weight-bold mb-2">
+                                                            <a href="RestaurantListController?id=${r.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
                                                     </h5>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>
@@ -62,9 +65,9 @@
                                                     <a class="btn btn-danger" href="EditRestaurantController?id=${r.restaurantID}">Chỉnh sửa</a> 
                                                     <a class="btn btn-primary" href="AddFoodController?id=${r.restaurantID}">Menu</a>
                                                     <a class="btn btn-secondary" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà hàng</a>
-                                              
+
                                                 </div>
-                                                
+
                                                 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -95,9 +98,9 @@
 
     </body>
     <script>
-          $(document).on('click', '#btnDelete', function () {
-           var link = $(this).attr('data-href');
-            $('.btn-ok').attr('href', link );
+        $(document).on('click', '#btnDelete', function () {
+            var link = $(this).attr('data-href');
+            $('.btn-ok').attr('href', link);
         });
     </script>
 

@@ -47,26 +47,18 @@
                                     <c:forEach items="${listFood}" var="food" >
                                         <div class="row p-2 bg-white border rounded" style="margin-top: 40px; margin-bottom: 40px;">
                                             <div class="col-md-3 mt-1">
-                                                
-                                                
-<!--                                                <img class="img-fluid img-responsive rounded product-image" src="${food.imageURL}">-->
-                                                
-                                                
-                                                 <img class="img-fluid img-responsive rounded product-image" 
-                                                        <c:if test="${food.imageURL != null}">
-                                                            src="${food.imageURL}" </c:if>
-                                                        <c:if test="${food.imageURL == null}">
-                                                            src="images/food.png" </c:if> >
-                                            
-                                            
-                                            </div>
-                                                
-                                                
-                                                
-                                            <div class="col-md-6 mt-1">
-                                                <label class="labels">${food.foodName}</label>
+                                                <img class="img-fluid img-responsive rounded product-image" 
+                                                     <c:if test="${food.imageURL != null && food.imageURL !=''}">
+                                                         src="${food.imageURL}" </c:if>
+                                                     <c:if test="${food.imageURL == null}">
+                                                         src="images/food.png" </c:if> 
+                                                     <c:if test="${food.imageURL == ''}">
+                                                         src="images/food.png" </c:if>     
+                                                      style="width: 150px; height: 150px">
+                                                </div>
 
-
+                                                <div class="col-md-6 mt-1">
+                                                    <label class="labels">${food.foodName}</label>
 
                                                 <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
                                             </div>
@@ -77,14 +69,14 @@
                                                 <a class="btn btn-primary" href="EditFoodController?foodId=${food.foodID}" style="width: 110px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" id="btnDelete" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>
 
-                                               <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 Xoá món ăn
                                                             </div>
                                                             <div class="modal-body">
-                                                                Bạn có chắc chắn muốn xoá nhà hàng này không?
+                                                                Bạn có chắc chắn muốn xoá món ăn này không?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
@@ -115,9 +107,9 @@
                                             <input type="file" accept="image/*" onchange="loadFile(event)" name ="foodImage" id="file1">
                                             <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 60px; opacity: 30%">+</label>
                                             <img id="output1" width="170px" height="170px"/>
-                                            
-                                            
-                                            
+
+
+
                                             <script>
                                                 var loadFile = function (event) {
                                                     var output = document.getElementById('output1');
@@ -211,12 +203,12 @@
                 return isValid;
             }
         </script>
-            <script>
-        $(document).on('click', '#btnDelete', function () {
-           var link = $(this).attr('data-href');
-            $('.btn-ok').attr('href', link );
-        });
-    </script>
+        <script>
+            $(document).on('click', '#btnDelete', function () {
+                var link = $(this).attr('data-href');
+                $('.btn-ok').attr('href', link);
+            });
+        </script>
     </body>
     <%@include file="/footer.jsp" %>    
 </html>

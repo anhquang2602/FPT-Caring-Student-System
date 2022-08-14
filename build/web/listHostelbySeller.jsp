@@ -93,7 +93,7 @@
                                                             <div class="modal-header">
                                                                 Xoá nhà trọ
                                                             </div>
-                                                            <div class="modal-body">
+                                                                <div class="modal-body">
                                                                 Bạn có chắc chắn muốn xoá nhà trọ này không?
                                                             </div>
                                                             <div class="modal-footer">

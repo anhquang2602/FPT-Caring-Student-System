@@ -116,11 +116,6 @@ public class StarVotingHostelController extends HttpServlet {
 
         int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
 
-//        long millis = System.currentTimeMillis();
-//        java.sql.Date date = new java.sql.Date(millis);
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//        java.util.Date date = new java.util.Date(); 
-//       java.sql.Date date1 = new java.sql.Date(dateFormat.format(date));
         StarDAO dao = new StarDAO();
 
         if (dao.getCommentofStudent(hostelId, studentNo) != null) {

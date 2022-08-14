@@ -28,6 +28,16 @@ public class StarVoting {
     public StarVoting() {
     }
 
+    public StarVoting(int studentNo, String message, int restaurantID, int starvoting) {
+        this.studentNo = studentNo;
+        this.message = message;
+        this.restaurantID = restaurantID;
+        this.starvoting = starvoting;
+    }
+
+    
+    
+    
     public StarVoting( int studentNo, int hostelID, String message, int starvoting) {
         
         this.studentNo = studentNo;

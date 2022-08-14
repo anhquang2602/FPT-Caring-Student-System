@@ -10,7 +10,7 @@
 
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--        <title>Nested Comment Indentation</title>-->
+        <!--        <title>Nested Comment Indentation</title>-->
         <link rel="stylesheet" href="css/commentStyle.css" />
         <style>
 
@@ -80,7 +80,7 @@
 
 
 
-        <input id="hostelId" value="${hostelID}" hidden/>
+        <input id="restaurantId" value="${restaurantID}" hidden/>
 
         <div class="container mt-5">
             <div class="d-flex justify-content-center row">
@@ -88,71 +88,77 @@
                     <div class="d-flex flex-column comment-section">
                         <h3 class="rating_heading">Đánh giá 5 sao</h3>
                         <div class ="star_rating">
-                            <p style="font-weight:  bold; font-size: 30px">Cảm nhận của bạn về nhà trọ này?</p>
-                            	
-                            
+                            <p style="font-weight:  bold; font-size: 30px">Cảm nhận của bạn về nhà hàng này?</p>
+
+
                             <c:if test="${studentComment == null}">
-                            <button class="star" id="star1"  value="1">&#9734;</button>
-                            <button class="star" id="star2"  value="2">&#9734;</button>
-                            <button class="star" id="star3"  value="3">&#9734;</button>
-                            <button class="star" id="star4"  value="4">&#9734;</button>
-                            <button class="star" id="star5"  value="5">&#9734;</button>
-                            <p class="current_rating">0 trên 5</p>
+                                <button class="star" id="star1"  value="1">&#9734;</button>
+                                <button class="star" id="star2"  value="2">&#9734;</button>
+                                <button class="star" id="star3"  value="3">&#9734;</button>
+                                <button class="star" id="star4"  value="4">&#9734;</button>
+                                <button class="star" id="star5"  value="5">&#9734;</button>
+                                <p class="current_rating">0 trên 5</p>
                             </c:if> 
-                            
+
                             <c:if test="${studentComment.starvoting == 1}">
-                            <button class="star" id="star1"  value="1">&#9733;</button>
-                            <button class="star" id="star2"  value="2">&#9734;</button>
-                            <button class="star" id="star3"  value="3">&#9734;</button>
-                            <button class="star" id="star4"  value="4">&#9734;</button>
-                            <button class="star" id="star5"  value="5">&#9734;</button>
-                            <p class="current_rating">1 trên 5</p>
+                                <button class="star" id="star1"  value="1">&#9733;</button>
+                                <button class="star" id="star2"  value="2">&#9734;</button>
+                                <button class="star" id="star3"  value="3">&#9734;</button>
+                                <button class="star" id="star4"  value="4">&#9734;</button>
+                                <button class="star" id="star5"  value="5">&#9734;</button>
+                                <p class="current_rating">1 trên 5</p>
                             </c:if>   
-                            
+
                             <c:if test="${studentComment.starvoting  == 2}">
-                            <button class="star" id="star1"  value="1">&#9733;</button>
-                            <button class="star" id="star2"  value="2">&#9733;</button>
-                            <button class="star" id="star3"  value="3">&#9734;</button>
-                            <button class="star" id="star4"  value="4">&#9734;</button>
-                            <button class="star" id="star5"  value="5">&#9734;</button>
-                            <p class="current_rating">2 trên 5</p>
+                                <button class="star" id="star1"  value="1">&#9733;</button>
+                                <button class="star" id="star2"  value="2">&#9733;</button>
+                                <button class="star" id="star3"  value="3">&#9734;</button>
+                                <button class="star" id="star4"  value="4">&#9734;</button>
+                                <button class="star" id="star5"  value="5">&#9734;</button>
+                                <p class="current_rating">2 trên 5</p>
                             </c:if>  
-                            
+
                             <c:if test="${studentComment.starvoting  == 3}">
-                            <button class="star" id="star1"  value="1">&#9733;</button>
-                            <button class="star" id="star2"  value="2">&#9733;</button>
-                            <button class="star" id="star3"  value="3">&#9733;</button>
-                            <button class="star" id="star4"  value="4">&#9734;</button>
-                            <button class="star" id="star5"  value="5">&#9734;</button>
-                            <p class="current_rating">3 trên 5</p>
+                                <button class="star" id="star1"  value="1">&#9733;</button>
+                                <button class="star" id="star2"  value="2">&#9733;</button>
+                                <button class="star" id="star3"  value="3">&#9733;</button>
+                                <button class="star" id="star4"  value="4">&#9734;</button>
+                                <button class="star" id="star5"  value="5">&#9734;</button>
+                                <p class="current_rating">3 trên 5</p>
                             </c:if>  
-                            
+
                             <c:if test="${studentComment.starvoting == 4}">
-                            <button class="star" id="star1"  value="1">&#9733;</button>
-                            <button class="star" id="star2"  value="2">&#9733;</button>
-                            <button class="star" id="star3"  value="3">&#9733;</button>
-                            <button class="star" id="star4"  value="4">&#9733;</button>
-                            <button class="star" id="star5"  value="5">&#9734;</button>
-                            <p class="current_rating">4 trên 5</p>
+                                <button class="star" id="star1"  value="1">&#9733;</button>
+                                <button class="star" id="star2"  value="2">&#9733;</button>
+                                <button class="star" id="star3"  value="3">&#9733;</button>
+                                <button class="star" id="star4"  value="4">&#9733;</button>
+                                <button class="star" id="star5"  value="5">&#9734;</button>
+                                <p class="current_rating">4 trên 5</p>
                             </c:if>  
-            
+
                             <c:if test="${studentComment.starvoting == 5}">
-                            <button class="star" id="star1"  value="1">&#9733;</button>
-                            <button class="star" id="star2"  value="2">&#9733;</button>
-                            <button class="star" id="star3"  value="3">&#9733;</button>
-                            <button class="star" id="star4"  value="4">&#9733;</button>
-                            <button class="star" id="star5"  value="5">&#9733;</button>
-                            <p class="current_rating">5 trên 5</p></div>
+                                <button class="star" id="star1"  value="1">&#9733;</button>
+                                <button class="star" id="star2"  value="2">&#9733;</button>
+                                <button class="star" id="star3"  value="3">&#9733;</button>
+                                <button class="star" id="star4"  value="4">&#9733;</button>
+                                <button class="star" id="star5"  value="5">&#9733;</button>
+                                <p class="current_rating">5 trên 5</p></div>
                             </c:if>  
-                            
-                            
+
+
 
                         <div class="bg-light p-2">
-                            <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src=" ${studentComment.studentAvatar}" width="40"><textarea class="form-control ml-1 shadow-none textarea" id="message" > ${studentComment.message}</textarea></div>
+                            <div class="d-flex flex-row align-items-start">
+                                <img class="rounded-circle" src=" ${studentComment.studentAvatar}" width="40">
+                                <textarea class="form-control ml-1 shadow-none textarea" id="message" > ${studentComment.message}</textarea>
+                            </div>
 
-                            <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" onclick="postComment()" type="button">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
+                            <div class="mt-2 text-right">
+                                <button class="btn btn-primary btn-sm shadow-none" onclick="postComment()" type="button">Post comment</button>
+                                <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
+                            </div>
                         </div>
-                                
+
 
 
                     </div>
@@ -185,7 +191,7 @@
         <script>
 
             function postComment() {
-                var hostelId = document.getElementById("hostelId").value;
+                var restaurantId = document.getElementById("restaurantId").value;
                 var x = document.getElementById("message").value;
                 var u = 0;
                 allStars.forEach((star, i) => {
@@ -202,9 +208,9 @@
                     $.ajax({
                         type: "POST",
 
-                        url: "/Test_1/star",
+                        url: "/Test_1/starRestaurant",
                         data: {
-                            hostelId: hostelId,
+                            restaurantId: restaurantId,
                             star: u,
                             message: x
                         },
@@ -215,8 +221,8 @@
 
                         success: function (data) {
 
-                            alert('Cảm ơn bạn đã đánh giá nhà trọ!');
-                            window.location="/Test_1/detailhostel?id="+hostelId;
+                            alert('Cảm ơn bạn đã đánh giá nhà hàng!');
+                            window.location = "/Test_1/RestaurantListController?id=" + restaurantId;
                         },
                         error: function (e) {
                             console.log("ERROR: ", e);
@@ -227,7 +233,7 @@
 
 
             $(".btnSave").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
+                var restaurantId = document.getElementById("restaurantId").value;
                 var i = 0;
                 allStars.forEach((star, i) => {
                     i++;
@@ -236,9 +242,9 @@
                 $.ajax({
                     type: "POST",
 
-                    url: "/Test_1/star",
+                    url: "/Test_1/starRestaurant",
                     data: {
-                        hostelId: hostelId,
+                        restaurantId: restaurantId,
                         star: 5,
                     },
                     headers: {
