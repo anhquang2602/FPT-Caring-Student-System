@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="left-side">
                                     <h3>Menu nhà hàng</h3>
-                                      
+
                                     <div class="mt-5">
 
                                         <c:if test="${editHostel.img1 != null}">
@@ -86,15 +86,21 @@
                                 </div>
 
                                 <div class="right-side">
-                                   
+
                                     <h3>Mô tả nhà hàng</h3>    
                                     <div class="col mt-5 thumbnail">
                                         <img src="${restaurant.restaurantImage}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt="">
-                                    </div>                                                                              
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="labels" >Chủ nhà ăn : </label>
+                                        <br>
+                                        <a href="ViewSellerController?id=${sellerId}" style="text-decoration: none" target="_blank">${restaurant.sellerName}</a>
+                                    </div>
                                     <div class="col-md-12">
                                         <label class="labels">Tên nhà hàng</label>
                                         <input type="text" class="form-control" value="${restaurant.restaurantName}" readonly="">
                                     </div>
+
                                     <div class="col-md-12">
                                         <label class="labels">Tỉnh, Thành phố</label>
                                         <input type="text" class="form-control" value="${restaurant.provinceName}" readonly="">
@@ -134,230 +140,230 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-            $(document).on('change', '.province', function () {
-                var province = document.getElementById("province").value;
-                $('#district').empty();
-                $.ajax({
+                    $(document).on('change', '.province', function () {
+            var province = document.getElementById("province").value;
+                    $('#district').empty();
+                    $.ajax({
                     type: "GET",
-                    url: "/Test_1/findDistrict",
-                    data: {
-                        province: province,
-                    },
-                    headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
-                    },
-                    success: function (data) {
+                            url: "/Test_1/findDistrict",
+                            data: {
+                            province: province,
+                            },
+                            headers: {
+                            Accept: "application/json; charset=utf-8",
+                                    contentType: "application/json; charset=utf-8"
+                            },
+                            success: function (data) {
 
-                        data.forEach(function (a) {
+                            data.forEach(function (a) {
                             $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-                        });
-                    },
-                    error: function (e) {
-                        console.log("ERROR: ", e);
-                    }
-                });
+                            });
+                            },
+                            error: function (e) {
+                            console.log("ERROR: ", e);
+                            }
+                    });
             });</script>
         <script>
-            $("#U1").click(function (event) {
-                event.preventDefault();
-                $.ajax({
+                    $("#U1").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
                     url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.src = '';
+                                    output.style.width = "0px"
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
 
 
-                    }
-                });
-                return false; // for good measure
+                            }
+                    });
+                    return false; // for good measure
             });
-            $("#U2").click(function (event) {
-                event.preventDefault();
-                $.ajax({
+                    $("#U2").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
                     url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.src = '';
+                                    output.style.width = "0px"
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
 
 
-                    }
-                });
-                return false; // for good measure
+                            }
+                    });
+                    return false; // for good measure
             });
-            $("#U3").click(function (event) {
-                event.preventDefault();
-                $.ajax({
+                    $("#U3").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
                     url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.src = '';
+                                    output.style.width = "0px"
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
 
 
-                    }
-                });
-                return false; // for good measure
+                            }
+                    });
+                    return false; // for good measure
             });
-            $("#U4").click(function (event) {
-                event.preventDefault();
-                $.ajax({
+                    $("#U4").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
                     url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.src = '';
+                                    output.style.width = "0px"
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
 
 
-                    }
-                });
-                return false; // for good measure
+                            }
+                    });
+                    return false; // for good measure
             });
-            $("#U5").click(function (event) {
-                event.preventDefault();
-                $.ajax({
+                    $("#U5").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
                     url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.src = '';
+                                    output.style.width = "0px"
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
 
 
-                    }
-                });
-                return false; // for good measure
+                            }
+                    });
+                    return false; // for good measure
             });
-            $("#U6").click(function (event) {
-                event.preventDefault();
-                $.ajax({
+                    $("#U6").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
                     url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.src = '';
+                                    output.style.width = "0px"
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
 
 
-                    }
-                });
-                return false; // for good measure
+                            }
+                    });
+                    return false; // for good measure
             });</script>
         <script>
-            function reset() {
-                location.reload();
-            }
+                    function reset() {
+                    location.reload();
+                    }
 
         </script>
 
         <script>
             function validateEditHostel() {
-                let isValid = true;
-                const hostelName = document.edithostelForm.hostelName.value;
-                const room = document.edithostelForm.room.value;
-                const floor = document.edithostelForm.floor.value;
-                const province = document.edithostelForm.province.value;
-                const address = document.edithostelForm.address.value;
-                const cost = document.edithostelForm.cost.value;
-                const distance = document.edithostelForm.distance.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
-                const regex2 = /^[0-9]*$/;
-                const success = document.getElementById('success');
-                document.getElementById('errorName').innerText = ' ';
-                document.getElementById('errorRoom').innerText = ' ';
-                document.getElementById('errorFloor').innerText = ' ';
-                document.getElementById('errorProvince').innerText = ' ';
-                document.getElementById('errorAddress').innerText = ' ';
-                document.getElementById('errorCost').innerText = ' ';
-                document.getElementById('errorDistance').innerText = ' ';
-                if (!hostelName) {
-                    document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
+            let isValid = true;
+                    const hostelName = document.edithostelForm.hostelName.value;
+                    const room = document.edithostelForm.room.value;
+                    const floor = document.edithostelForm.floor.value;
+                    const province = document.edithostelForm.province.value;
+                    const address = document.edithostelForm.address.value;
+                    const cost = document.edithostelForm.cost.value;
+                    const distance = document.edithostelForm.distance.value;
+                    const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                    const regex2 = /^[0-9]*$/;
+                    const success = document.getElementById('success');
+                    document.getElementById('errorName').innerText = ' ';
+                    document.getElementById('errorRoom').innerText = ' ';
+                    document.getElementById('errorFloor').innerText = ' ';
+                    document.getElementById('errorProvince').innerText = ' ';
+                    document.getElementById('errorAddress').innerText = ' ';
+                    document.getElementById('errorCost').innerText = ' ';
+                    document.getElementById('errorDistance').innerText = ' ';
+                    if (!hostelName) {
+            document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
                     isValid = false;
-                }
+            }
 
-                if (!room) {
-                    document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
+            if (!room) {
+            document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
                     isValid = false;
-                } else if (room <= 0) {
-                    document.getElementById('errorRoom').innerText = 'Invalid!';
+            } else if (room <= 0) {
+            document.getElementById('errorRoom').innerText = 'Invalid!';
                     isValid = false;
-                } else if (!regex2.test(room)) {
-                    document.getElementById('errorRoom').innerText = 'Invalid!';
+            } else if (!regex2.test(room)) {
+            document.getElementById('errorRoom').innerText = 'Invalid!';
                     isValid = false;
-                }
+            }
 
-                if (!floor) {
-                    document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
+            if (!floor) {
+            document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
                     isValid = false;
-                } else if (!regex2.test(floor)) {
-                    document.getElementById('errorFloor').innerText = 'Invalid!';
+            } else if (!regex2.test(floor)) {
+            document.getElementById('errorFloor').innerText = 'Invalid!';
                     isValid = false;
-                } else if (floor <= 0) {
-                    document.getElementById('errorFloor').innerText = 'Invalid!';
+            } else if (floor <= 0) {
+            document.getElementById('errorFloor').innerText = 'Invalid!';
                     isValid = false;
-                }
+            }
 
-                if (!province) {
-                    document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+            if (!province) {
+            document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
                     isValid = false;
-                }
+            }
 
-                if (!address) {
-                    document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
+            if (!address) {
+            document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
                     isValid = false;
-                }
+            }
 
-                if (!cost) {
-                    document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
+            if (!cost) {
+            document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
                     isValid = false;
-                } else if (!regex.test(cost)) {
-                    document.getElementById('errorCost').innerText = 'Invalid!';
+            } else if (!regex.test(cost)) {
+            document.getElementById('errorCost').innerText = 'Invalid!';
                     isValid = false;
-                } else if (cost <= 0) {
-                    document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
+            } else if (cost <= 0) {
+            document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
                     isValid = false;
-                }
+            }
 
-                if (!distance) {
-                    document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
+            if (!distance) {
+            document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
                     isValid = false;
-                } else if (!regex.test(distance)) {
-                    document.getElementById('errorDistance').innerText = 'Invalid!';
+            } else if (!regex.test(distance)) {
+            document.getElementById('errorDistance').innerText = 'Invalid!';
                     isValid = false;
-                } else if (distance <= 0) {
-                    document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
+            } else if (distance <= 0) {
+            document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
                     isValid = false;
-                }
+            }
 
-                if (isValid) {
-                    alert('Save successfully!');
-                }
+            if (isValid) {
+            alert('Save successfully!');
+            }
 
-                return isValid;
+            return isValid;
             }
         </script>
 

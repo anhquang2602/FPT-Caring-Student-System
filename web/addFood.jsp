@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -114,6 +115,7 @@
                                             <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                                 <div class="d-flex flex-row align-items-center">
                                                     <h4 class="mr-1">${food.cost}00 VND</h4>
+                                                   
                                                 </div>
                                                 <a class="btn btn-primary" href="EditFoodController?foodId=${food.foodID}" style="width: 110px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" id="btnDelete" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>

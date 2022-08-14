@@ -23,6 +23,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Hostel;
 
@@ -84,7 +85,7 @@ public class AddHostelController extends HttpServlet {
         processRequest(request, response);
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-
+         HttpSession session = request.getSession();
         HostelDAO dao = new HostelDAO();
         String hostelName = request.getParameter("hostelName");
         int room = Integer.parseInt(request.getParameter("room"));
@@ -142,6 +143,7 @@ public class AddHostelController extends HttpServlet {
             }
 
         }
+        session.setAttribute("stt", "1");
         response.sendRedirect(request.getContextPath() + "/hostellist");
     }
 

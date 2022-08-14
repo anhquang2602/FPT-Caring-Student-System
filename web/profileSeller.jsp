@@ -98,10 +98,10 @@
                                         <h4>Giới Tính</h4>
                                         <c:if test="${seller.gender eq 1}">
                                             <span class="ml-3 mr-1">Nam</span><input class="form-check-input" type="radio" name="inlineRadioOptions" checked="" id="inlineRadio1" value="1">
-                                            <span class="ml-3 mr-1">Nữ</span><input class="form-check-input" type="radio" name="inlineRadioOptions"   id="inlineRadio1" value="0" >
+<!--                                            <span class="ml-3 mr-1">Nữ</span><input class="form-check-input" type="radio" name="inlineRadioOptions"   id="inlineRadio1" value="0" >-->
                                         </c:if>
                                         <c:if test="${seller.gender eq 0}">
-                                            <span class="ml-3 mr-1">Nam</span><input class="form-check-input" type="radio" name="inlineRadioOptions"  id="inlineRadio1" value="1">
+<!--                                            <span class="ml-3 mr-1">Nam</span><input class="form-check-input" type="radio" name="inlineRadioOptions"  id="inlineRadio1" value="1">-->
                                             <span class="ml-3 mr-1">Nữ</span><input class="form-check-input" type="radio" name="inlineRadioOptions" checked=""  id="inlineRadio1" value="0">
                                         </c:if>
                                     </div>

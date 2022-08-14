@@ -99,6 +99,7 @@
                                                     </h5>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.distance} km</p>
                                                 </div>
                                                 <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit1">
                                                     <a class="btn btn-danger" href="EditRestaurantController?id=${r.restaurantID}">Chỉnh sửa</a> 
