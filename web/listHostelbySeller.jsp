@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -40,27 +41,51 @@
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listH}" var="d" >
                                         <li class="list-group-item">
+<!--<<<<<<< HEAD
+                                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
+                                                <div class="media-body order-2 order-lg-1 description" id="description">
+                                                    <h4 class="mt-0 font-weight-bold mb-3">
+                                                        <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
+                                                    </h4>
+
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê:  <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VNĐ</p>
+
+                                                </div>
+                                                <div class="media-body order-2 order-lg-1 image">
+=======-->
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-4">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
+
                                                     <img  <c:if test="${d.img1 != null}">
                                                             src="${d.img1}" </c:if>
                                                         <c:if test="${d.img1 == null}">
-                                                            src="images/nhà trọ.jpg" </c:if>
-                                                            style="width: 150px; height: 150px" >
+                                                            src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
+<!--<<<<<<< HEAD
+
+                                                         style="width: 150px; height: 150px" >
+                                                </div>
+                                                <a class="btn btn-primary" href="ChartVoteController?hostelId=${d.hostelID}" style="margin-left: 700px">Xem Biểu Đồ</a> 
+                                                <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
+
+                                                <a class="btn btn-danger" id="btnDelete" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
+=======-->
+                                                            
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
                                                         <h4 class="mt-0 font-weight-bold mb-3">
                                                             <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
                                                     </h4>
                                                     <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
-                                                    <p style="font-size: 20px">Giá thuê: ${d.cost} VND</p>
+                                                    <p style="font-size: 20px">Giá thuê: <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VND</p>
                                                 </div>
 
                                                 <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit">
                                                     <a class="btn btn-danger" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
                                                     <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="">Chỉnh sửa</a> 
-                                                    <a class="btn btn-secondary" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
+                                                    <a class="btn btn-secondary" id="btnDelete" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
                                                 </div>
+
 
                                                 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
@@ -92,8 +117,12 @@
         </div>
     </body>
     <script>
-        $('#confirm-delete').on('show.bs.modal', function (e) {
-            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+//        $('#confirm-delete').on('show.bs.modal', function (e) {
+//            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+//        });
+        $(document).on('click', '#btnDelete', function () {
+           var link = $(this).attr('data-href');
+            $('.btn-ok').attr('href', link );
         });
     </script>
 

@@ -105,7 +105,7 @@ public class EditRestaurantController extends HttpServlet {
         Part part = request.getPart("restaurantImage");
         String realPath1 = request.getServletContext().getRealPath("/restaurantImages");
         String realPath = realPath1.replaceFirst("build", "");
-        String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+//        String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
         }

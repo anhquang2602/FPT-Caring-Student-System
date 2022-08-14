@@ -176,7 +176,13 @@
                                             <select name="province" id="province" class="province">
                                                 <option value="">Select Province</option>
                                                 <c:forEach items ="${listProvince}" var="o">
-                                                    <option value="${o.provinceID}">${o.provinceName}</option>
+                                                    <c:if test ="${o.provinceName == 'Hà Nội'}" >
+                                                        <option value="${o.provinceID}" selected>${o.provinceName}</option>
+                                                    </c:if>
+                                                    <c:if test ="${o.provinceName != 'Hà Nội'}" >
+                                                        <option value="${o.provinceID}" >${o.provinceName}</option>
+                                                    </c:if>
+
                                                 </c:forEach>
                                             </select> 
                                         </div>                         
@@ -225,6 +231,33 @@
             crossorigin="anonymous">
         </script>
         <script>
+            $(document).ready(function () {
+                $.ajax({
+                    type: "GET",
+
+                    url: "/Test_1/findDistrict",
+                    data: {
+                        province: 21,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
+
+                    success: function (data) {
+
+                        data.forEach(function (a) {
+                            $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+
+                        });
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
+
+            });
+            
             $(document).on('change', '.province', function () {
                 var province = document.getElementById("province").value;
                 $('#district').empty();
