@@ -17,19 +17,19 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
     </head>
-    <body class="bg-white">
-        <div>
-            <%@include file="/header.jsp" %>
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div id="topnavbar">
+                <div id="topnavbar" class="col-md-10">
                     <div class="container" style="margin-top: 50px">
                         <div class="row">
                             <div class="col-lg-12 mb-5">
                                 <div>
-                                    <ul class="breadcrumb bg-white">
+                                    <ul class="breadcrumb">
                                         <li><a href="home.jsp">Trang chủ</a></li>
                                         <li><a>Nhà trọ của tôi </a></li>
                                     </ul>
@@ -40,24 +40,27 @@
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listH}" var="d" >
                                         <li class="list-group-item">
-                                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
-                                                <div class="media-body order-2 order-lg-1 description" id="description">
-                                                    <h4 class="mt-0 font-weight-bold mb-3">
-                                                        <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
-                                                    </h4>
-                                                    <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
-                                                    <p style="font-size: 20px">Giá thuê: ${d.cost} VND</p>
-                                                </div>
-                                                <div class="media-body order-2 order-lg-1 image">
+                                            <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-4">
+                                                <div class="col-md-3 media-body order-2 order-lg-1 image">
                                                     <img  <c:if test="${d.img1 != null}">
                                                             src="${d.img1}" </c:if>
                                                         <c:if test="${d.img1 == null}">
                                                             src="images/nhà trọ.jpg" </c:if>
-                                                         style="width: 150px; height: 150px" >
+                                                            style="width: 150px; height: 150px" >
+                                                    </div>
+                                                    <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
+                                                        <h4 class="mt-0 font-weight-bold mb-3">
+                                                            <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
+                                                    </h4>
+                                                    <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
+                                                    <p style="font-size: 20px">Giá thuê: ${d.cost} VND</p>
                                                 </div>
-                                                <a class="btn btn-primary" href="ChartVoteController?hostelId=${d.hostelID}" style="margin-left: 700px">Xem Biểu Đồ</a> 
-                                                <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
-                                                <a class="btn btn-danger" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
+
+                                                <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit">
+                                                    <a class="btn btn-danger" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
+                                                    <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="">Chỉnh sửa</a> 
+                                                    <a class="btn btn-secondary" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
+                                                </div>
 
                                                 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
@@ -84,6 +87,8 @@
                     </div>
                 </div>
             </div>
+            <%@include file="/footer.jsp" %>
+            
         </div>
     </body>
     <script>
@@ -91,6 +96,6 @@
             $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
         });
     </script>
-    <%@include file="/footer.jsp" %>
+
 </html>
 

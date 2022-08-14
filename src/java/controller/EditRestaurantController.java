@@ -96,7 +96,7 @@ public class EditRestaurantController extends HttpServlet {
         int districtID = Integer.parseInt(request.getParameter("district"));
         String address = request.getParameter("address");
         String cost = request.getParameter("cost");
-        String image = request.getParameter("image");
+     //   String image = request.getParameter("image");
         float distance = Float.parseFloat(request.getParameter("distance"));
         String description = request.getParameter("description");
 //        if (restaurantDAO.updateRestaurant(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description,image)) {
@@ -105,7 +105,7 @@ public class EditRestaurantController extends HttpServlet {
         Part part = request.getPart("restaurantImage");
         String realPath1 = request.getServletContext().getRealPath("/restaurantImages");
         String realPath = realPath1.replaceFirst("build", "");
-        String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+      
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
         }

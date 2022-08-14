@@ -54,6 +54,7 @@
                                 </div>
                                 <div class="left-side">
                                     <h3>Menu nhà hàng</h3>
+                                      
                                     <div class="mt-5">
 
                                         <!--                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">

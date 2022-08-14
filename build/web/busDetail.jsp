@@ -16,6 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
+        <link rel="stylesheet" href="css/style1.css">
     </head>
     <body class="bg-white">
         <div class="px-0">
@@ -34,19 +35,22 @@
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <div class="d-flex justify-content-between align-items-center experience">
+                            <div class="justify-content-between align-items-center experience">
                                 <div class="p-3 py-5">
-                                    <img src="https://cdnimg.vietnamplus.vn/t660/uploaded/natmjs/2017_12_21/vnp_xe_buyt.jpg" class="form-control" style="padding: 0px">
+                                    <img src="${busImage}" class="form-control" style="padding: 0px">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <div class="p-3 py-5">
-                                <div class="row mt-3">
-                                    <div class="col-md-5"><label class="labels">Tên</label><input type="text" class="form-control" value="Lộ trình xe bus ${busnumber}" readonly=""></div>
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label class="fs12">Tên</label>
+                                        <input type="text" value="Lộ trình xe bus ${busnumber}" readonly="">
+                                    </div>
                                     <div class="col-md-15">
-                                        <label class="labels">Mô tả</label>
-                                        <textarea class="form-control" readonly="" rows="15">
+                                        <label class="fs12">Mô tả</label>
+                                        <textarea  readonly="" style="width: 700px;" rows="20">
                                             <%
                                                 String string = (String) request.getAttribute("StopPoint");
                                                 String[] parts = string.split("&&");

@@ -109,25 +109,28 @@ public class UpdateAdminProfile extends HttpServlet {
         String realPath1 = request.getServletContext().getRealPath("/avatarImages");
         String realPath = realPath1.replaceFirst("build", "");
         String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+
+        AdminDAO adb = new AdminDAO();
+        UserAvatar = adb.getAvatarByUsername(email);
+        String firstName, lastName, addressDetail, phone, linkFb;
+        String gender = request.getParameter("gender");
+        String provinceID = request.getParameter("province");
+        String districtID = request.getParameter("district");
+        if (provinceID.isEmpty()) {
+            provinceID = null;
+            districtID = null;
+        }
+        firstName = request.getParameter("firstName");
+        lastName = request.getParameter("lastName");
+        addressDetail = request.getParameter("addressDetail");
+        phone = request.getParameter("phone");       
+        String age = request.getParameter("age");
+        linkFb = request.getParameter("linkFb");
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
         }
         if (part.getSize() == 0) {
-            AdminDAO adb = new AdminDAO();
-            UserAvatar = adb.getAvatarByUsername(email);
-            String firstName, lastName, addressDetail, phone, linkFb;
-            int age, countryID;
-            int gender = Integer.parseInt(request.getParameter("gender"));
-            int provinceID = Integer.parseInt(request.getParameter("province"));
-            int districtID = Integer.parseInt(request.getParameter("district"));
-            firstName = request.getParameter("firstName");
-            lastName = request.getParameter("lastName");
-            addressDetail = request.getParameter("addressDetail");
-            phone = request.getParameter("phone");
-            age = Integer.parseInt(request.getParameter("age"));
-            linkFb = request.getParameter("linkFb");
-            Admin adminUpdate = new Admin(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender, linkFb);
-            if (adb.updateAdminProfile(UserAvatar, adminUpdate) == true) {
+           if (adb.updateAdminProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update successfully");
                 request.getRequestDispatcher("self_profileAdmin.jsp").forward(request, response);
@@ -146,28 +149,8 @@ public class UpdateAdminProfile extends HttpServlet {
 
             UserAvatar = "avatarImages/" + avatarName;
             part.write(realPath + "\\" + avatarName);
-            /* try (PrintWriter out = response.getWriter()) {
-                out.println("<h1>Name: " + avatarName + "</h1>");
-                out.println("<h1>uplodName: " + realPath.toString() + "</h1>");
-                out.println("<h1>Part: " + part.toString() + "</h1>");
-                out.print("<img src='avatarImages/" + avatarName + "'width='100'>");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
-            String firstName, lastName, addressDetail, phone, linkFb;
-            int age, countryID, provinceID, districtID;
-            int gender = Integer.parseInt(request.getParameter("gender"));
-            firstName = request.getParameter("firstName");
-            lastName = request.getParameter("lastName");
-            addressDetail = request.getParameter("addressDetail");
-            phone = request.getParameter("phone");
-            age = Integer.parseInt(request.getParameter("age"));
-            linkFb = request.getParameter("linkFb");
-            provinceID = Integer.parseInt(request.getParameter("province"));
-            districtID = Integer.parseInt(request.getParameter("district"));
-            Admin adminUpdate = new Admin(firstName, lastName, age, phone, email, 1, provinceID, districtID, addressDetail, gender, linkFb);
-            AdminDAO adb = new AdminDAO();
-            if (adb.updateAdminProfile(UserAvatar, adminUpdate) == true) {
+            
+            if (adb.updateAdminProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update successfully");
                 request.getRequestDispatcher("self_profileAdmin.jsp").forward(request, response);
