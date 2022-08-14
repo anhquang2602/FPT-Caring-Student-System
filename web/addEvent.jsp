@@ -23,6 +23,9 @@
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <form action="AddNewEvent" enctype="multipart/form-data"  method="post" >
+                    Ảnh sự kiện: 
+                    <img class="rounded-circle mt-5" width="150px" src="${eventImage}" id="output">
+                    <input style="padding-left: 80px" type="file" name="eventImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="eventImg"><br/>
                     Tên sự kiện: <input type="text" value="${eventName}" name="eventName"> <br/>
                     <p>${errorEventName}</p>
                     Thời gian:  <input type="text" value="${time}" name="time"> <br/>
@@ -34,4 +37,13 @@
 
         </div>
     </body>
+    <script>
+                                        var loadFile = function (event) {
+                                            var output = document.getElementById('output');
+                                            output.src = URL.createObjectURL(event.target.files[0]);
+                                            output.onload = function () {
+                                                URL.revokeObjectURL(output.src) // free memory
+                                            }
+                                        };
+</script>
 </html>

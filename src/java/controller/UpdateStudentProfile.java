@@ -153,7 +153,7 @@ public class UpdateStudentProfile extends HttpServlet {
             if (sdb.updateStudentProfileNoPro(UserAvatar, firstName,lastName,age,phone,"1",provinceID,districtID,addressDetail,gender,linkFb,studentId,unit,email) == true) {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update successfully");
-                request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
+                request.getRequestDispatcher("home.jsp").forward(request, response);
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");
@@ -184,7 +184,7 @@ public class UpdateStudentProfile extends HttpServlet {
             if (sdb.updateStudentProfileNoPro(UserAvatar, firstName,lastName,age,phone,"1",provinceID,districtID,addressDetail,gender,linkFb,studentId,unit,email) == true) {
                 request.setAttribute("UpdateProcess", "Update successfully");
                 reloadPage(request, response);
-                request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
+                request.getRequestDispatcher("home.jsp").forward(request, response);
             } else {
                 request.setAttribute("UpdateProcess", "Update fail");
                 reloadPage(request, response);

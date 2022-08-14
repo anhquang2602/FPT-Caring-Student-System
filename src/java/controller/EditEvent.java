@@ -8,12 +8,16 @@ package controller;
 import dao.ClubDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import model.Event;
 
 /**
@@ -21,6 +25,7 @@ import model.Event;
  * @author win
  */
 @WebServlet(name = "EditEvent", urlPatterns = {"/EditEvent"})
+@MultipartConfig
 public class EditEvent extends HttpServlet {
 
     /**
@@ -50,6 +55,8 @@ public class EditEvent extends HttpServlet {
         String eventName = event.getEventName();
         String time = event.getTime();
         String des = event.getDes();
+        String eventImage = event.getUrl();
+        request.setAttribute("eventImage", eventImage);
         request.setAttribute("eventName", eventName);
         request.setAttribute("time", time);
         request.setAttribute("des", des);
@@ -80,10 +87,27 @@ public class EditEvent extends HttpServlet {
 //                request.getRequestDispatcher("editEvent.jsp").forward(request, response);
 //            } 
 //        }
+
+        String eventImgName;
+        Part part = request.getPart("eventImage");
+        String realPath1 = request.getServletContext().getRealPath("/eventImages");
+        String realPath = realPath1.replaceFirst("build", "");
+        //String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+        if (!Files.exists(Paths.get(realPath))) {
+            Files.createDirectories(Paths.get(realPath));
+        }
+        if (part.getSize() == 0) {
+            eventImgName = clubDAO.getImgByEventName(eventName);
+        } else {
+            eventImgName = "eventImages/" + eventName+".jpg";
+            part.write(realPath + "\\" + eventName+".jpg");
+        }
+
         String time = request.getParameter("time");
         String des = request.getParameter("des");
-        Event event = new Event(eventName, time, des);
-        clubDAO.updateEvent(event,id);
+        Event event = new Event(eventName, time, des,eventImgName);
+        clubDAO.updateEvent(event, id);
+        request.setAttribute("eventImage", eventImgName);
         request.setAttribute("eventName", eventName);
         request.setAttribute("time", time);
         request.setAttribute("des", des);
