@@ -120,6 +120,7 @@
                                     </c:if>> 5</option>
                             </select>
                             <input type="submit" value="Tìm kiếm"> 
+                            <a href="ResetSearchHostelsController?keywordHostel=${keywordHostel}">Xóa bộ lọc</a>
                         </form>
                     </div>
                     <div class="container" style="margin-top: 50px">

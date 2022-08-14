@@ -3,12 +3,11 @@
     Created on : Jul 17, 2022, 4:23:34 PM
     Author     : nguye
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,25 +29,25 @@
             }
         </style>
     </head>
-    <body class="bg-white">
-        <div class="px-0">
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div class="container rounded bg-white mt-5 mb-5">
+
+                <div class="container rounded bg-white mt-5 mb-5 col-md-10">
                     <div class="col-xl-12 mb-5">
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="ListRestaurantBySeller">Danh sách nhà hàng</a></li>
+                                <li><a href="ListAllRestaurantController">Danh sách nhà hàng</a></li>
                                 <li><a>Chi tiết nhà hàng</a></li>
                             </ul>
                         </div>
                         <div class="card">
                             <form class="form" method="POST" id="updateForm" action="RestaurantListController"  name="viewRestaurantForm" enctype="multipart/form-data">
-
                                 <div class="input_text" hidden>
                                     <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
                                 </div>
@@ -58,34 +57,24 @@
 
                                         <c:if test="${editHostel.img1 != null}">
                                             <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
-                                        </c:if>   -->
+                                        </c:if>  
 
                                         <c:forEach items="${listFood}" var="food" >
-
-                                            <div class="row p-2 bg-white border rounded" style="margin-top: -40px; margin-bottom: 80px;">
+                                            <div class="row p-1 bg-white border rounded">
                                                 <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="${food.imageURL}"></div>
                                                 <div class="col-md-6 mt-1">
                                                     <label class="labels">${food.foodName}</label>
-
-
-
                                                     <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
                                                 </div>
-                                                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                                                    <div class="d-flex flex-row align-items-center">
-                                                        <h4 class="mr-1">${food.cost} VND</h4> </div>
-
+                                                <div class="col-md-3 align-items-center align-content-center border-left mt-1">
+                                                    <h4 class="mr-1">${food.cost} VND</h4> 
                                                 </div>
                                             </div>
                                         </c:forEach>
-
-                                    </div> 
-
-
-                                </div>
+                                    </div>
+                                </div> 
 
                                 <div class="right-side">
-                                   
                                     <h3>Mô tả nhà hàng</h3>    
                                     <div class="col mt-5 thumbnail">
                                         <img src="${restaurant.restaurantImage}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt="">
@@ -115,13 +104,10 @@
                                         <label class="labels">Khoảng cách</label>
                                         <input type="text" class="form-control" value="${restaurant.distance}" readonly="">
                                     </div>
-
-
                                     <div class="col-md-12">
                                         <label class="labels">Mô tả</label>
                                         <textarea class="form-control" readonly="" rows="5  ">${restaurant.description}</textarea>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
@@ -129,7 +115,6 @@
                 </div>
             </div>
         </div>
-
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>

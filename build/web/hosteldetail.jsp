@@ -80,7 +80,6 @@
                         </div>
 
                         <div class="card">
-
                             <form class="form" method="POST" id="updateForm" action="edithostel"  name="edithostelForm" onsubmit="return validateEditHostel()">
                                 <div class="input_text" hidden>
                                     <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
@@ -135,23 +134,9 @@
                                                 </div>
                                             </div>
                                         </c:forEach>
-
-
-
-
-
-
-
-
-                                      
-
                                         <c:if test = "${isStudent == 1}">
                                             <a href="commentHostel?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
                                         </c:if>
-
-
-
-                               
                                     </div>
                                 </div>
                                 <div class="right-side">
@@ -163,20 +148,15 @@
                                         <strong class="fs-4">Tình trạng phòng</strong>
                                     </div>
                                     <div class="left_text">
-
                                         <c:if test = "${hosteldetail.status == true}">
                                             <label for="collection1">
                                                 <div class="left_box">
                                                     <div class="left_box_collection"> 
-
                                                         <h4>Còn phòng</h4>
-
                                                     </div>
                                                 </div>
                                             </label> 
                                         </c:if> 
-
-
                                         <c:if test = "${hosteldetail.status == false}">
                                             <label for="collection2">
                                                 <div class="left_box">
@@ -188,7 +168,6 @@
                                                 </div>                                    
                                             </label>  
                                         </c:if> 
-
                                     </div>
                                     <div class="input_text">
                                         <strong class="fs-4">Số tầng</strong>
@@ -220,48 +199,49 @@
                                     </div>
                                 </div>
                             </form>
-
                         </div>
-                        <div class="row" style="background-color: #e9ecef" >
-                            <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà trọ:</label>
-                            <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
-                            <c:if test="${listCmtHostelPaging  != null}">
-                                <c:forEach items="${listCmtHostelPaging}" var="d" >
-                                    <div class="bg-white p-3" style="margin :5px">
-                                        <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="60" height="60" >
-                                            <div class="d-flex flex-column justify-content-start ml-4" >
-                                                <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
-                                                <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
-                                                <div class="sold_stars m1-auto">
-                                                    <c:forEach begin="1" end="${d.starvoting}" >
-                                                        <i class="fa fa-star"  style=" font-size: 13px;"></i>      
-                                                    </c:forEach>
-                                                    <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
+                        <div class="card">
+                            <div class="row">
+                                <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà trọ:</label>
+                                <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
+                                <c:if test="${listCmtHostelPaging  != null}">
+                                    <c:forEach items="${listCmtHostelPaging}" var="d" >
+                                        <div class="bg-white p-3" style="margin :5px">
+                                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="60" height="60" >
+                                                <div class="d-flex flex-column justify-content-start ml-4" >
+                                                    <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
+                                                    <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
+                                                    <div class="sold_stars m1-auto">
+                                                        <c:forEach begin="1" end="${d.starvoting}" >
+                                                            <i class="fa fa-star"  style=" font-size: 13px;"></i>      
+                                                        </c:forEach>
+                                                        <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </c:forEach>
-                            </c:if>
-                            <div class="clearfix">
-                                <ul class="pagination">
-                                    <c:if test="${tag>1}">
-                                        <li class="page-item disabled"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag-1}">Previous</a></li>
-                                        </c:if>
-                                        <c:forEach begin="1" end="${endP}" var="i">
-                                        <li class="page-item ${tag==i?"active":""}"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${i}" class="page-link">${i}</a></li>
-                                        </c:forEach>
-                                        <c:if test="${tag<endP}">
-                                        <li class="page-item"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag+1}" class="page-link">Next</a></li>
-                                        </c:if>
-                                </ul>
-                            </div>  
+                                    </c:forEach>
+                                </c:if>
+                                <div class="clearfix">
+                                    <ul class="pagination">
+                                        <c:if test="${tag>1}">
+                                            <li class="page-item disabled"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag-1}">Previous</a></li>
+                                            </c:if>
+                                            <c:forEach begin="1" end="${endP}" var="i">
+                                            <li class="page-item ${tag==i?"active":""}"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${i}" class="page-link">${i}</a></li>
+                                            </c:forEach>
+                                            <c:if test="${tag<endP}">
+                                            <li class="page-item"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag+1}" class="page-link">Next</a></li>
+                                            </c:if>
+                                    </ul>
+                                </div>  
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        <%@include file="/footer.jsp" %>
 
         <script>
             const allStars = document.querySelectorAll('.star');
@@ -416,5 +396,5 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     </body>
-    <%@include file="/footer.jsp" %>
+
 </html>
