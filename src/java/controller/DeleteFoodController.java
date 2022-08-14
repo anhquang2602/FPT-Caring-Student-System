@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Food;
 
 /**
@@ -37,7 +38,7 @@ public class DeleteFoodController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteFoodController</title>");            
+            out.println("<title>Servlet DeleteFoodController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DeleteFoodController at " + request.getContextPath() + "</h1>");
@@ -58,11 +59,14 @@ public class DeleteFoodController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       RestaurantDAO restaurantDAO = new RestaurantDAO();
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
+        HttpSession session = request.getSession();
+
         int foodID = Integer.parseInt(request.getParameter("fid"));
         Food food = restaurantDAO.getFoodID(foodID);
         restaurantDAO.deleteFoodlImage(foodID);
         restaurantDAO.deleteFood(foodID);
+        session.setAttribute("stt", "3");
         response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + food.getRestaurantID());
     }
 

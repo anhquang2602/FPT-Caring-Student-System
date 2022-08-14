@@ -18,7 +18,7 @@
             <br>
             <label>Lí do bị báo cáo bài viết :</label>
             <br>
-            <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
+            <input type="text" name="id" value="${restaurant.restaurantID}">
             <br>
             <input type="checkbox" name="spam" value="1">Spam
             <br>

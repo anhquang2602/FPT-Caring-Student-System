@@ -7,7 +7,6 @@ package controller;
 
 import dao.RestaurantDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Food;
 import model.Restaurant;
@@ -54,6 +54,7 @@ public class AddFoodController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         int id = Integer.parseInt(request.getParameter("id"));
         // int foodID = Integer.parseInt(request.getParameter("foodID"));
         RestaurantDAO restaurantDAO = new RestaurantDAO();
@@ -63,7 +64,8 @@ public class AddFoodController extends HttpServlet {
         request.setAttribute("listFood", listFood);
         request.setAttribute("restaurant", restaurant);
         //  request.setAttribute("food", food);
-        request.getRequestDispatcher("addfood.jsp").forward(request, response);
+        request.getRequestDispatcher("addFood.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**
@@ -79,6 +81,7 @@ public class AddFoodController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
         String foodName = request.getParameter("foodName");
         double costFodd = Double.parseDouble(request.getParameter("costFood"));
         String description = request.getParameter("desFood");
@@ -99,7 +102,7 @@ public class AddFoodController extends HttpServlet {
                 int newestFoodId = restaurantDAO.getNewestFoodID();
                 restaurantDAO.createFoodImg(newestFoodId, "");
                 //response.sendRedirect("ListRestaurantBySeller");
-                
+                session.setAttribute("stt", "1");
                 response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + restaurantID);
             }
         } else {
@@ -110,6 +113,7 @@ public class AddFoodController extends HttpServlet {
                 part.write(realPath + "\\" + foodImg);
                 restaurantDAO.createFoodImg(newestFoodId, saveFoodImg);
                 //response.sendRedirect("ListRestaurantBySeller");
+                session.setAttribute("stt", "1");
                 response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + restaurantID);
             }
         }

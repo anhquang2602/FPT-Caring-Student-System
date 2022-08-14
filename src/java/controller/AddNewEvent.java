@@ -5,19 +5,24 @@
  */
 package controller;
 
+import dao.ClubDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Event;
 
 /**
  *
  * @author win
  */
 @WebServlet(name = "AddNewEvent", urlPatterns = {"/AddNewEvent"})
+@MultipartConfig
 public class AddNewEvent extends HttpServlet {
 
     /**
@@ -29,23 +34,6 @@ public class AddNewEvent extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddNewEvent</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddNewEvent at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -58,7 +46,7 @@ public class AddNewEvent extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("addEvent.jsp").forward(request, response);
     }
 
     /**
@@ -72,7 +60,27 @@ public class AddNewEvent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("addEvent.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        String eventName = request.getParameter("eventName");
+        String time = request.getParameter("time");
+        String des = request.getParameter("des");
+        String username = (String) request.getSession().getAttribute("username");
+        ClubDAO clubDAO = new ClubDAO();
+        ArrayList<Event> events = clubDAO.getEventByEmail(username);
+        int clubID = clubDAO.getClubIDByEmail(username);
+        for (Event event : events) {
+            if(event.getEventName().equalsIgnoreCase(eventName)){
+                request.setAttribute("errorEventName", "EventName already existed!");
+                request.getRequestDispatcher("addEvent.jsp").forward(request, response);
+            } 
+        }
+                Event e = new Event(clubID, eventName, time, des);
+                clubDAO.addEvent(e);
+                request.setAttribute("eventName", eventName);
+                request.setAttribute("time", time);
+                request.setAttribute("des", des);
+                request.getRequestDispatcher("addEvent.jsp").forward(request, response);
     }
 
     /**

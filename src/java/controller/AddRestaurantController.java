@@ -63,7 +63,8 @@ public class AddRestaurantController extends HttpServlet {
         }
         if (part.getSize() == 0) {
             if (restaurantDAO.createRestaurant(restaurantName, Integer.parseInt(sellerID), 1, provinceID, districtID, address, cost, distance, description, "")) {
-                response.sendRedirect("ListRestaurantBySeller");
+                session.setAttribute("stt", "1");
+                response.sendRedirect(request.getContextPath() + "/ListRestaurantBySeller");
             }
         } else {
             String restaurantImg = restaurantName + "img.jpg";

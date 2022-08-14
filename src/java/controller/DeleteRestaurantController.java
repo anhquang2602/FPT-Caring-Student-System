@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import static jdk.nashorn.internal.runtime.Debug.id;
 import model.Food;
 
@@ -60,11 +61,11 @@ public class DeleteRestaurantController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         RestaurantDAO restaurantDAO = new RestaurantDAO();
-       
+
         int role = Integer.parseInt(request.getSession().getAttribute("role").toString());
-       
+
         int restaurantID = Integer.parseInt(request.getParameter("id"));
         ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(restaurantID);
         for (Food f : listFood) {
@@ -73,10 +74,11 @@ public class DeleteRestaurantController extends HttpServlet {
         restaurantDAO.deleteAllFood(restaurantID);
         restaurantDAO.deleteRestaurantIDFromReport(restaurantID);
         restaurantDAO.deleteRestaurant(restaurantID);
-        if(role == 3){
-        response.sendRedirect("ListRestaurantBySeller");
-        }
-        else if(role ==1){
+        if (role == 3) {
+            HttpSession session = request.getSession();
+            session.setAttribute("stt", "3");
+            response.sendRedirect("ListRestaurantBySeller");
+        } else if (role == 1) {
             response.sendRedirect("ListAllReportRestaurantController");
         }
     }

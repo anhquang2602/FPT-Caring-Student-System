@@ -74,7 +74,7 @@ public class HostelDAO extends DBContext {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
-            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,h.StarVoting,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
                     + "                    join Country c on h.CountryID =c.CountryID\n"
                     + "                    join District d on h.DistrictID = d.DistrictID\n"
                     + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
@@ -104,13 +104,12 @@ public class HostelDAO extends DBContext {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
-            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,h.StarVoting,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
                     + "                    join Country c on h.CountryID =c.CountryID\n"
                     + "                    join District d on h.DistrictID = d.DistrictID\n"
                     + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
                     + "                    join Sellers s on h.SellerID = s.SellerID\n"
                     + "                    left join HostelImage i on h.HostelID = i.HostelID\n"
-                    + "                    left join StarVotingHostel v on h.HostelID = v.HostelID\n"
                     + "			   order by h.HostelID\n"
                     + "			   OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
 
@@ -139,7 +138,7 @@ public class HostelDAO extends DBContext {
 
             String sql = "";
 
-            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,h.StarVoting,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
                     + "                                        join Country c on h.CountryID =c.CountryID\n"
                     + "                                       join District d on h.DistrictID = d.DistrictID\n"
                     + "                                       join Province p on h.ProvinceID = p.ProvinceID\n"
@@ -166,13 +165,13 @@ public class HostelDAO extends DBContext {
         return h;
     }
 
-    public ArrayList<Hostel> filterHostelPagging(double costUnder, double costUpper, double distance,int index) {
+    public ArrayList<Hostel> filterHostelPagging(double costUnder, double costUpper, double distance, int index) {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
             String sql = "";
 
-            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,h.StarVoting,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
                     + "                                        join Country c on h.CountryID =c.CountryID\n"
                     + "                                       join District d on h.DistrictID = d.DistrictID\n"
                     + "                                       join Province p on h.ProvinceID = p.ProvinceID\n"
@@ -200,21 +199,21 @@ public class HostelDAO extends DBContext {
         }
         return h;
     }
-    
+
     public ArrayList<Hostel> filterHostelText(String keyword, double costUnder, double costUpper, double distance) {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
             String sql = "";
 
-            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,h.StarVoting,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
                     + "                                        join Country c on h.CountryID =c.CountryID\n"
                     + "                                       join District d on h.DistrictID = d.DistrictID\n"
                     + "                                       join Province p on h.ProvinceID = p.ProvinceID\n"
                     + "                                        join Sellers s on h.SellerID = s.SellerID\n"
                     + "                                       left join HostelImage i on h.HostelID = i.HostelID\n"
                     + "                    left join StarVotingHostel v on h.HostelID = v.HostelID\n"
-                    + "									   where h.HostelName like N'%"+keyword+"%' and h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                    + "									   where h.HostelName like N'%" + keyword + "%' and h.RentCost between " + costUnder + " and " + costUpper + "\n"
                     + "									   and h.Distance <= " + distance + "\n"
                     + "                    				order by h.HostelID";
             PreparedStatement st;
@@ -233,21 +232,21 @@ public class HostelDAO extends DBContext {
         }
         return h;
     }
-    
-    public ArrayList<Hostel> filterHostelTextPagging(String keyword, double costUnder, double costUpper, double distance,int index) {
+
+    public ArrayList<Hostel> filterHostelTextPagging(String keyword, double costUnder, double costUpper, double distance, int index) {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
             String sql = "";
 
-            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,h.StarVoting,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
+            sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
                     + "                                        join Country c on h.CountryID =c.CountryID\n"
                     + "                                       join District d on h.DistrictID = d.DistrictID\n"
                     + "                                       join Province p on h.ProvinceID = p.ProvinceID\n"
                     + "                                        join Sellers s on h.SellerID = s.SellerID\n"
                     + "                                       left join HostelImage i on h.HostelID = i.HostelID\n"
                     + "                    left join StarVotingHostel v on h.HostelID = v.HostelID\n"
-                    + "									   where h.HostelName like N'%"+keyword+"%' and h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                    + "									   where h.HostelName like N'%" + keyword + "%' and h.RentCost between " + costUnder + " and " + costUpper + "\n"
                     + "									   and h.Distance <= " + distance + "\n"
                     + "                    				order by h.HostelID\n"
                     + "                    				OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
@@ -416,11 +415,12 @@ public class HostelDAO extends DBContext {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
-            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom,h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions from Hostels h\n"
+            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom,h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
                     + "                    join Country c on h.CountryID=c.CountryID\n"
                     + "                    join District d on h.DistrictID = d.DistrictID\n"
                     + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
-                    + "                    join Sellers s on h.SellerID = s.SellerID\n"
+                    + "                    join Sellers s on h.SellerID = s.SellerID \n"
+                    + "left join HostelImage i on h.HostelID = i.HostelID\n"
                     + "					where h.HostelName like N'%" + keyword + "%'"
                     + "order by h.HostelID\n"
                     + "					OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
@@ -447,11 +447,12 @@ public class HostelDAO extends DBContext {
         ArrayList<Hostel> list = new ArrayList<>();
         try {
 
-            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom,h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions from Hostels h\n"
+            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom,h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6 from Hostels h\n"
                     + "                    join Country c on h.CountryID=c.CountryID\n"
                     + "                    join District d on h.DistrictID = d.DistrictID\n"
                     + "                    join Province p on h.ProvinceID = p.ProvinceID\n"
                     + "                    join Sellers s on h.SellerID = s.SellerID\n"
+                    + "left join HostelImage i on h.HostelID = i.HostelID\n"
                     + "					where h.HostelName like N'%" + keyword + "%'";
 
             PreparedStatement st;
@@ -494,9 +495,9 @@ public class HostelDAO extends DBContext {
         }
         return totalPage;
     }
-    
-    public int getTotalPageTextByFilter(ArrayList<Hostel> hostels, String keyword ,double costUnder, double costUpper, double distance) {
-        hostels = filterHostelText(keyword,costUnder, costUpper, distance);
+
+    public int getTotalPageTextByFilter(ArrayList<Hostel> hostels, String keyword, double costUnder, double costUpper, double distance) {
+        hostels = filterHostelText(keyword, costUnder, costUpper, distance);
         int totalPage = hostels.size() / 6;
         if (hostels.size() % 6 != 0) {
             totalPage++;
