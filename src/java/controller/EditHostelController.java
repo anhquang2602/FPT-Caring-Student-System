@@ -21,6 +21,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Department;
 import model.Hostel;
@@ -61,7 +62,7 @@ public class EditHostelController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+        HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         
@@ -76,6 +77,7 @@ public class EditHostelController extends HttpServlet {
         request.setAttribute("editHostel", h);
         request.setAttribute("listDistrict", a.getDistrictByProName(h.getProvinceNamẹ()));
         request.getRequestDispatcher("editHostel.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**
@@ -91,6 +93,7 @@ public class EditHostelController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         request.setCharacterEncoding("utf-8");
 
         HostelDAO dao = new HostelDAO();
@@ -145,6 +148,7 @@ public class EditHostelController extends HttpServlet {
 
         Hostel h = new Hostel(id, hostelName, room, status, floor, provinceID, districtID, address, cost, distance, description);
         dao.updateHostel(h);
+        session.setAttribute("stt", "1");
         response.sendRedirect(request.getContextPath() + "/edithostel?id=" + id);
        
     }

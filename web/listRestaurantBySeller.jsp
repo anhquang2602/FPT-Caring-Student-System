@@ -87,10 +87,17 @@
 <!--                                                    <img src="${r.restaurantImage}" style="width: 150px; height: 150px" >-->
 
                                                     <img class="img-fluid img-responsive rounded product-image" 
-                                                         <c:if test="${r.restaurantImage != null}">
+
+                                                         <c:if test="${r.restaurantImage != null && r.restaurantImage !=''}">
                                                              src="${r.restaurantImage}" </c:if>
-                                                         <c:if test="${r.restaurantImage == null}">
-                                                             src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px">
+                                                         <c:if test="${r.restaurantImage == null }">
+                                                             src="images/nhà trọ.jpg" </c:if> 
+                                                         <c:if test="${r.restaurantImage ==''}">
+                                                             src="images/nhà trọ.jpg" </c:if> 
+                                                             style="width: 150px; height: 150px">
+
+                                                     
+
 
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
@@ -99,6 +106,7 @@
                                                     </h5>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>
+                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.distance} km</p>
                                                 </div>
                                                 <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit1">
                                                     <a class="btn btn-danger" href="EditRestaurantController?id=${r.restaurantID}">Chỉnh sửa</a> 
@@ -148,6 +156,8 @@
             });
         </script>
     </body>
+
+
 
 
 </html>
