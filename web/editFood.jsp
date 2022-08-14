@@ -40,13 +40,13 @@
                             </ul>
                         </div>
                         <div class="card">
-                            <form class="form" method="POST" id="updateForm" action="EditRestaurantController"  name="editRestaurantForm" onsubmit="return validateRestaurant()" enctype="multipart/form-data">
+                            <form class="form" method="POST" id="updateForm" action="EditFoodController"  name="editFoodForm" onsubmit="return validateFood()" enctype="multipart/form-data">
                                 <div class="input_text" hidden>
                                     <input type="text" name="foodId" value="${food.foodID}" hidden>
                                 </div>
                                 <div class="left-side">
                                     <div class="mt-5">
-                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
+                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="foodImages" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
                                         <img id="Url1" name="Url1" width="170px" height="170px"
                                              <c:if test="${editHostel.img1 != null}">
@@ -186,7 +186,7 @@
                                         <h3>Mô tả món ăn</h3>
                                         <div class="input_text"> <input type="text" name="foodId" value="${food.foodName}"> <span>Tên món ăn</span> </div>
                                     <div class="error" id="errorName"></div>
-                                    <div class="input_text"> <input type="text" name="costFood" value="${food.cost} VND"> <span>Giá dao động</span> 
+                                    <div class="input_text"> <input type="text" name="costFood" value="${food.cost}"> <span>Giá dao động</span> 
                                         <div class="error" id="errorCost"></div></div>
                                     <div> <span>Mô tả</span> 
                                         <textarea style="width: 100%; margin-top: 10px" type="text" name="desFood">

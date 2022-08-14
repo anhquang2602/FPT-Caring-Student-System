@@ -69,7 +69,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
-                                                                <a class="btn btn-danger btn-ok">Xoá</a>
+                                                                <a class="btn btn-danger btn-ok" href="DeleteRestaurantController?id=${r.restaurantID}">Xoá</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -94,4 +94,3 @@
     </script>
 
 </html>
-

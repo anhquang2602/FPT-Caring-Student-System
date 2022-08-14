@@ -4,10 +4,10 @@
     Author     : dung
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 <!DOCTYPE html>
@@ -53,25 +53,26 @@
 
                                             <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
                                         </div>
-                                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                                            <div class="d-flex flex-row align-items-center">
+                                        <div class="align-items-center align-content-center col-md-3 border-left mt-1 button_edit1">
+                                            <div class="d-flex flex-row align-items-center ">
                                                 <h4 class="mr-1">${food.cost}00 VND</h4>
                                             </div>
+                                            
                                             <a class="btn btn-primary" href="EditFoodController?foodId=${food.foodID}" style="width: 114.86px">Chỉnh sửa</a> 
-                                            <a class="btn btn-danger" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà hàng</a>
+                                            <a class="btn btn-danger" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>
 
                                             <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            Xoá nhà hàng
+                                                            Xoá món ăn
                                                         </div>
                                                         <div class="modal-body">
                                                             Bạn có chắc chắn muốn xoá món ăn này không?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
-                                                            <a class="btn btn-danger btn-ok">Xoá</a>
+                                                            <a class="btn btn-danger btn-ok" href="DeleteFoodController?fid=${food.foodID}">Xoá</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -211,6 +212,10 @@
             }
         </script>
     </body>
+    <script>
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+    </script>
     <%@include file="/footer.jsp" %>    
 </html>
-

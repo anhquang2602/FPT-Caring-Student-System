@@ -15,30 +15,19 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
+                    <file>${file.reference.gson-2.8.0.jar-3}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.sqljdbc42.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
                     <file>${libs.javaee-web-api-7.0.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f26197ffcce80fa93ff321949e2821dbb105c75f
                     <file>${libs.jstl.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.gson-2.8.0.jar-3}</file>
-=======
-                    <file>${file.reference.sqljdbc42.jar}</file>
->>>>>>> 1599b9616c8888c5203a7bd7d497d5fcb355ff13
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.sqljdbc42.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.sqljdbc42.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
