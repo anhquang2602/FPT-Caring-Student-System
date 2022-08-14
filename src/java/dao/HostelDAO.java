@@ -36,7 +36,8 @@ public class HostelDAO extends DBContext {
                     + "           ,[AddressDetail]\n"
                     + "           ,[RentCost]\n"
                     + "           ,[Distance]\n"
-                    + "           ,[Descriptions])\n"
+                    + "           ,[Descriptions]\n"
+                    + "           ,[StarVoting])\n"
                     + "     VALUES\n"
                     + "           (?\n"
                     + "           ,?\n"
@@ -49,7 +50,8 @@ public class HostelDAO extends DBContext {
                     + "           ,?\n"
                     + "           ,?\n"
                     + "           ,?\n"
-                    + "           ,?)";
+                    + "           ,?\n"
+                    + "           ,0)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, h.getHostelName());
             statement.setInt(2, h.getSellerID());
@@ -704,5 +706,28 @@ public class HostelDAO extends DBContext {
         return list;
     }
 
-    
+    public void updateStarAVG(int hostelID, double starAVG) {
+        try {
+
+            String sql = "UPDATE [dbo].[Hostels]\n"
+                    + "   SET [StarVoting] = ?\n"
+                    + " WHERE HostelID = ? ";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setDouble(1, starAVG);
+            statement.setInt(2, hostelID);
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void main(String[] args) {
+        HostelDAO h = new HostelDAO();
+        ArrayList<Hostel> hostels = h.listAllHostelPagging(1);
+        for (Hostel hostel : hostels) {
+            System.out.println(hostel.getHostelName());
+        }
+    }
+
 }

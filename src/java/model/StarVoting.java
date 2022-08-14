@@ -59,6 +59,8 @@ public class StarVoting {
         this.starvoting = starvoting;
         this.studentAvatar = studentAvatar;
     }
+    
+    
 
     public String getStudentName() {
         return studentName;

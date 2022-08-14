@@ -3,12 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/đồ%20án/web/addEvent.jsp</file>
             <file>file:/D:/đồ%20án/src/java/model/Event.java</file>
             <file>file:/D:/đồ%20án/src/java/dao/ClubDAO.java</file>
             <file>file:/D:/đồ%20án/src/java/controller/AddNewEvent.java</file>
             <file>file:/D:/đồ%20án/src/java/dao/HostelDAO.java</file>
             <file>file:/D:/đồ%20án/web/listAllEventOfClub.jsp</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DBContext.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/hosteldetail.jsp</file>
+=======
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/controller/FilterHostelController.java</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/web/listAllHostels.jsp</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/asus/Desktop/FCS_Final/src/java/dao/HostelDAO.java</file>
+>>>>>>> 90412d51c9da2c99867f2807b8b0f93bd17b3a91
+>>>>>>> 7c821ad00283108e5420e3e08c76577322ba461f
         </group>
     </open-files>
 </project-private>

@@ -6,6 +6,7 @@
 package controller;
 
 import dao.HostelDAO;
+import dao.StarDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -49,10 +50,12 @@ public class DeleteHostel extends HttpServlet {
             throws ServletException, IOException {
         
         HostelDAO dao = new HostelDAO();
+        StarDAO dao1 = new StarDAO();
         int role = Integer.parseInt(request.getSession().getAttribute("role").toString());
         int hostelID = Integer.parseInt(request.getParameter("id"));
         dao.deleteReportbyHostel(hostelID);
         dao.deleteHostelImage(hostelID);
+        dao1.deleteVoteHostel(hostelID);
         dao.deleteHostel(hostelID);
         if (role == 3) {
             response.sendRedirect(request.getContextPath() + "/hostellist");
