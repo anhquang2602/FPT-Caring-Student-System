@@ -10,6 +10,7 @@ package model;
  * @author DELL
  */
 public class Restaurant {
+
     private int restaurantID;
     private String restaurantName;
     private int sellerID;
@@ -25,7 +26,7 @@ public class Restaurant {
     private float distance;
     private String description;
     private String restaurantImage;
-    
+    private float star;
 
     public Restaurant() {
     }
@@ -115,7 +116,7 @@ public class Restaurant {
     }
 
     public void setCost(String cost) {
-        this.cost = cost ;
+        this.cost = cost;
     }
 
     public float getDistance() {
@@ -154,10 +155,8 @@ public class Restaurant {
     public void setRestaurantImage(String restaurantImage) {
         this.restaurantImage = restaurantImage;
     }
-    
-    
 
-    public Restaurant(String restaurantName, int sellerID, int countryID,int provinceID, int districtID, String address, String cost, float distance, String description) {
+    public Restaurant(String restaurantName, int sellerID, int countryID, int provinceID, int districtID, String address, String cost, float distance, String description) {
         this.restaurantName = restaurantName;
         this.sellerID = sellerID;
         this.countryID = countryID;
@@ -169,7 +168,7 @@ public class Restaurant {
         this.description = description;
     }
 
-    public Restaurant(int restaurantID, String restaurantName, String sellerName ,String countryName, String provinceName, String districtName, String address, String cost, float distance, String description,String restaurantImage) {
+    public Restaurant(int restaurantID, String restaurantName, String sellerName, String countryName, String provinceName, String districtName, String address, String cost, float distance, String description, String restaurantImage) {
         this.restaurantID = restaurantID;
         this.restaurantName = restaurantName;
         this.sellerName = sellerName;
@@ -180,10 +179,25 @@ public class Restaurant {
         this.cost = cost;
         this.distance = distance;
         this.description = description;
-        this.restaurantImage=restaurantImage;
+        this.restaurantImage = restaurantImage;
     }
 
-    public Restaurant(int restaurantID, String restaurantName, int sellerID, int countryID, int provinceID, int districtID, String address, String cost, float distance, String description,String restaurantImage) {
+    public Restaurant(int restaurantID, String restaurantName, String sellerName, String countryName, String provinceName, String districtName, String address, String cost, float distance, String description, String restaurantImage, float star) {
+        this.restaurantID = restaurantID;
+        this.restaurantName = restaurantName;
+        this.sellerName = sellerName;
+        this.countryName = countryName;
+        this.provinceName = provinceName;
+        this.districtName = districtName;
+        this.address = address;
+        this.cost = cost;
+        this.distance = distance;
+        this.description = description;
+        this.restaurantImage = restaurantImage;
+        this.star = star;
+    }
+
+    public Restaurant(int restaurantID, String restaurantName, int sellerID, int countryID, int provinceID, int districtID, String address, String cost, float distance, String description, String restaurantImage) {
         this.restaurantID = restaurantID;
         this.restaurantName = restaurantName;
         this.sellerID = sellerID;
@@ -194,10 +208,7 @@ public class Restaurant {
         this.cost = cost;
         this.distance = distance;
         this.description = description;
-        this.restaurantImage=restaurantImage;
+        this.restaurantImage = restaurantImage;
     }
 
-   
-    
-    
 }

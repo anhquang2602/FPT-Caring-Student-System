@@ -68,7 +68,7 @@ public class ListAllRestaurantController extends HttpServlet {
         }
         int index = Integer.parseInt(indexPage);
 
-        int totalPage = dao.getTotalPage("", dao.listAllRes());
+        int totalPage = dao.getTotalPage(dao.listAllRes());
         ArrayList<Restaurant> restaurants = dao.listAllRestaurant(index);
         request.setAttribute("restaurants", restaurants);
 //        request.setAttribute("endP", endPage);

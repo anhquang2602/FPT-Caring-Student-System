@@ -73,7 +73,7 @@
                 <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
                         <form class="example d-flex align-items-center" action="FilterHostelController" method="post"> 
-                            <input type="text" name="keywordHostel" value="${keywordHostel}" >
+                            <input type="text" name="keyword" value="${keyword}" >
                             <button type="submit"><i class="fa fa-search"></i></button> 
                             <br/>
                             Bộ lọc tìm kiếm <br/>
@@ -101,7 +101,7 @@
                             <br/>
                             <br/>
                             Xếp hạng: <select name="star">
-                                <option value="6" <c:if test = "${star == 6 }">
+                                <option value="5" <c:if test = "${star == 6 }">
                                         selected="selected"
                                     </c:if>> Tất cả</option>
                                 <option value="1" <c:if test = "${star == 1 }">
@@ -116,12 +116,9 @@
                                 <option value="4" <c:if test = "${star == 4 }">
                                         selected="selected"
                                     </c:if>> 4</option>
-                                <option value="5" <c:if test = "${star == 5 }">
-                                        selected="selected"
-                                    </c:if>> 5</option>
                             </select>
                             <input type="submit" value="Tìm kiếm"> 
-                            <a href="ResetSearchHostelsController?keywordHostel=${keywordHostel}">Xóa bộ lọc</a>
+                            <a href="ResetSearchController?keyword=${keyword}">Xóa bộ lọc</a>
                         </form>
                     </div>
                     <div class="container" style="margin-top: 50px">
@@ -199,7 +196,7 @@
                                 </ul> 
 
                                 <c:forEach begin="1" end="${totalPage}" var="i">
-                                    <a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keywordHostel=${keywordHostel}">${i}</a> 
+                                    <a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keywordHostel=${keywordHostel}&star=${star}">${i}</a> 
                                 </c:forEach>
 
                             </div>
