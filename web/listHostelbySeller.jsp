@@ -38,7 +38,7 @@
                                 <div class="mb-3" style="text-align: end">
                                     <a style="font-size: 20px; padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="addhostel">Thêm nhà trọ mới (+)</a>
                                 </div>
-                                <ul class="list-group shadow">
+                                <ul class="list-group">
                                     <c:forEach items="${listH}" var="d" >
                                         <li class="list-group-item">
 <!--<<<<<<< HEAD

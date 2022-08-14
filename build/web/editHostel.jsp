@@ -263,13 +263,13 @@
                                     <div class="error" id="errorDistance"></div>
                                     <div class="input_text"> 
                                         <strong class="fs-4">Mô tả</strong>  
-                                        <textarea name="description" rows="5" style="width: 100%; margin-top: 10px" name="description">
+                                        <textarea name="description" rows="5" style="width: 100%; margin-top: 10px">
                                             ${editHostel.description}
                                         </textarea>
                                     </div>
                                     <div class="pay"> 
                                         <button type="submit">Save</button> 
-                                        <button style="margin-top: 5px" type="reset">Reset </button>
+                                        <button class="mt-5" type="reset">Reset</button>
                                     </div>
                                 </div>
                             </form>

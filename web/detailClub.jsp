@@ -56,6 +56,10 @@
                                         <h4>Link Facebook</h4>
                                         <input type="text" class="form-control" value="${club.facebook}" readonly="">
                                     </div>
+                                    <div class="col-md-12 mt-3">
+                                        <h4>Giới Thiệu</h4>
+                                        <input type="text" class="form-control" value="${club.des}" readonly="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
