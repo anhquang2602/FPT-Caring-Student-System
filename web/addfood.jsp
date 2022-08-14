@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </c:when>
-             <c:when test="${stt.equals('3')}">
+            <c:when test="${stt.equals('3')}">
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
                         <div class="toast-header bg-success">
@@ -90,17 +90,14 @@
                                         <div class="row p-2 bg-white border rounded" style="margin-top: 40px; margin-bottom: 40px;">
                                             <div class="col-md-3 mt-1">
 
-
-<!--                                                <img class="img-fluid img-responsive rounded product-image" src="${food.imageURL}">-->
-
-
                                                 <img class="img-fluid img-responsive rounded product-image" 
-                                                     <c:if test="${food.imageURL != null}">
+                                                     <c:if test="${food.imageURL != null && food.imageURL !=''}">
                                                          src="${food.imageURL}" </c:if>
                                                      <c:if test="${food.imageURL == null}">
-                                                         src="images/food.png" </c:if> >
-
-
+                                                         src="images/food.png" </c:if> 
+                                                     <c:if test="${food.imageURL == ''}">
+                                                         src="images/food.png" </c:if>     
+                                                         style="width: 150px; height: 150px">
                                                 </div>
 
 
@@ -108,14 +105,13 @@
                                                 <div class="col-md-6 mt-1">
                                                     <label class="labels">${food.foodName}</label>
 
-
-
                                                 <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
                                             </div>
                                             <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                                 <div class="d-flex flex-row align-items-center">
-                                                    <h4 class="mr-1">${food.cost}00 VND</h4>
-                                                   
+
+                                                    <h4 class="mr-1"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${food.cost}" ></fmt:formatNumber> VND</h4>
+
                                                 </div>
                                                 <a class="btn btn-primary" href="EditFoodController?foodId=${food.foodID}" style="width: 110px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" id="btnDelete" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>
@@ -127,7 +123,7 @@
                                                                 Xoá món ăn
                                                             </div>
                                                             <div class="modal-body">
-                                                                Bạn có chắc chắn muốn xoá nhà hàng này không?
+                                                                Bạn có chắc chắn muốn xoá món ăn này không?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
@@ -162,13 +158,13 @@
 
 
                                             <script>
-                                                        var loadFile = function (event) {
-                                                        var output = document.getElementById('output1');
-                                                                output.src = URL.createObjectURL(event.target.files[0]);
-                                                                output.onload = function () {
-                                                                URL.revokeObjectURL(output1.src) // free memory
-                                                                }
-                                                        };</script>
+                                                var loadFile = function (event) {
+                                                    var output = document.getElementById('output1');
+                                                    output.src = URL.createObjectURL(event.target.files[0]);
+                                                    output.onload = function () {
+                                                        URL.revokeObjectURL(output1.src) // free memory
+                                                    }
+                                                };</script>
                                             <div class="input_text"> <input type="text" name="foodName" placeholder="Nhập tên món ăn"> <span>Tên món ăn</span> </div>
                                             <div class="error" id="errorName"></div>
                                             <div class="input_text"> <input type="text" name="costFood" placeholder="Nhập giá dao động"> <span>Giá món ăn</span>
@@ -194,69 +190,47 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous">
         </script>
-        <script>
-                    $(document).on('change', '.province', function () {
-            var province = document.getElementById("province").value;
-                    $('#district').empty();
-                    $.ajax({
-                    type: "GET",
-                            url: "/Test_1/findDistrict",
-                            data: {
-                            province: province,
-                            },
-                            headers: {
-                            Accept: "application/json; charset=utf-8",
-                                    contentType: "application/json; charset=utf-8"
-                            },
-                            success: function (data) {
 
-                            data.forEach(function (a) {
-                            $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-                            });
-                            },
-                            error: function (e) {
-                            console.log("ERROR: ", e);
-                            }
-                    });
-            });</script>
         <script>
-                    function validateFood() {
-                    let isValid = true;
-                            const foodName = document.addFoodForm.foodName.value;
-                            const costFood = document.addFoodForm.costFood.value;
-                            const regex = /[+-]?([0-9]*[.])?[0-9]+/;
-                            const regex2 = /^[0-9]*$/;
-                            document.getElementById('errorName').innerText = ' ';
-                            document.getElementById('errorCost').innerText = ' ';
-                            if (!foodName) {
+            function validateFood() {
+                let isValid = true;
+                const foodName = document.addFoodForm.foodName.value;
+                const costFood = document.addFoodForm.costFood.value;
+                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex2 = /^[0-9]*$/;
+                document.getElementById('errorName').innerText = ' ';
+                document.getElementById('errorCost').innerText = ' ';
+                if (!foodName) {
                     document.getElementById('errorName').innerText = 'Bạn phải nhập tên món ăn!';
-                            isValid = false;
-                    }
-                    if (!costFood) {
+                    isValid = false;
+                }
+                if (!costFood) {
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá của món ăn!';
-                            isValid = false;
-                    } else if (!regex.test(distance)) {
+                    isValid = false;
+                } else if (!regex.test(distance)) {
                     document.getElementById('errorCost').innerText = 'Giá trị nhập không đúng. Giá tiền phải là số!';
-                            isValid = false;
-                    } else if (distance <= 0) {
+                    isValid = false;
+                } else if (distance <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá tiền phải > 0 ';
-                            isValid = false;
-                    }
+                    isValid = false;
+                }
 
-                    return isValid;
-                    }
+                return isValid;
+            }
         </script>
         <script>
             $(document).on('click', '#btnDelete', function () {
-            var link = $(this).attr('data-href');
-                    $('.btn-ok').attr('href', link);
-            });        </script>
-        <script>
-                    $(document).ready(function () {
-            $(".toast").toast({delay: 4000});
-                    $(".toast").toast("show");
+                var link = $(this).attr('data-href');
+                $('.btn-ok').attr('href', link);
             });
         </script>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+            });
+        </script>
+
     </body>
     <%@include file="/footer.jsp" %>    
 </html>

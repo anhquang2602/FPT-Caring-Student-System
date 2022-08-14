@@ -65,7 +65,7 @@ public class AddFoodController extends HttpServlet {
         request.setAttribute("listFood", listFood);
         request.setAttribute("restaurant", restaurant);
         //  request.setAttribute("food", food);
-        request.getRequestDispatcher("addFood.jsp").forward(request, response);
+        request.getRequestDispatcher("addfood.jsp").forward(request, response);
         session.removeAttribute("stt");
     }
 

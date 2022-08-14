@@ -119,39 +119,11 @@
                                             <label>Chủ trọ:</label>
                                             <a href="ViewSellerController?id=${sellerId}" style="text-decoration: none" target="_blank">${hosteldetail.sellerName}</a>
                                         </span>
-                                        <c:forEach items="${listComment}" var="d" >
-                                            <div class="p-2">
-                                                <div class="d-flex flex-row user-info">
-                                                    <img class="rounded-circle" src="${d.studentAvatar}" width="40">
-                                                    <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">${d.studentName}</span><span class="date text-black-50">${d.date}</span></div>
-                                                </div>
-                                                <div class="sold_stars ml-auto">
-                                                    <c:forEach begin="1" end="${d.starvoting}" >
-                                                        <i class="fa fa-star"></i>      
-                                                    </c:forEach>
-                                                </div>
-                                                <div class="mt-2">
-                                                    <p class="comment-text">${d.message}</p>
-                                                </div>
-                                            </div>
-                                        </c:forEach>
-
-
-
-
-
-
-
-
-                                      
 
                                         <c:if test = "${isStudent == 1}">
                                             <a href="commentHostel?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
                                         </c:if>
 
-
-
-                               
                                     </div>
                                 </div>
                                 <div class="right-side">

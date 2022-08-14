@@ -63,7 +63,7 @@
                                                  };
                                              </script>
                                         <c:if test="${food.imageURL != null}">
-                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteFoodImage?foodId=${food.foodID}">X</a>
+                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteFoodImage?foodId=${food.foodID}&url=Url1">X</a>
                                         </c:if>
 
 
@@ -135,8 +135,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
+                        output.removeAttribute('src');
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory

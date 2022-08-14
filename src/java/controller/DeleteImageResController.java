@@ -62,6 +62,8 @@ public class DeleteImageResController extends HttpServlet {
         RestaurantDAO dao = new RestaurantDAO();
         int resID = Integer.parseInt(request.getParameter("id"));
         dao.deleteRestaurantImage(resID);
+        String url = request.getParameter("url");
+        writer.print(url);
         writer.flush();
         writer.close();
     }
