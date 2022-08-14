@@ -12,12 +12,37 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="EditEvent" method="get">
-            Event Name: <input type="text" value="${eventName}"> <br/>
-            Thời gian: <input type="text" value="${time}"> <br/>
-            Mô tả: <input type="text" value="${des}"> <br/>
-            <input type="submit" value="Lưu">
-            <input type="reset" value="Đặt Lại">
-        </form>
+        <div class="px-0 bg-white">
+            <%@include file="/header.jsp" %> 
+            <div class="d-md-flex">
+                <ul id="navbar-items" class="p-3">
+                    <%@include file="/sidebar.jsp" %>
+                </ul>
+                <form action="EditEvent" method="post">
+                    <div class="container rounded bg-white mt-5 mb-5">
+                        <div class="row">
+                            <div>
+                                <ul class="breadcrumb bg-white">
+                                    <li><a href="home.jsp">Trang chủ</a></li>
+                                    <li><a href="UpdateClubProfile">Danh sách sự kiện</a></li>                                    
+                                </ul>
+                            </div>
+                            <a href="AddNewEvent">Thêm sự kiện</a>
+                            Event Name: <input type="text" value="${eventName}" name="eventName" readonly=""> <br/>
+                            <p>${errorEventName}</p>
+                            Thời gian: <input type="text" value="${time}" name="time"> <br/>
+                            Mô tả: <textarea name="des">${des}</textarea> <br/>
+                            <input type="submit" value="Lưu">
+                            <input type="reset" value="Đặt Lại">
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            <%@include file="/footer.jsp" %>
+
+        </div>
+
     </body>
 </html>

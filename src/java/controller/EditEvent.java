@@ -5,13 +5,16 @@
  */
 package controller;
 
+import dao.ClubDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Event;
 
 /**
  *
@@ -29,23 +32,6 @@ public class EditEvent extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EditEvent</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EditEvent at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -58,7 +44,16 @@ public class EditEvent extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        ClubDAO clubDAO = new ClubDAO();
+        int id = Integer.parseInt(request.getParameter("eventID"));
+        Event event = clubDAO.getEventByID(id);
+        String eventName = event.getEventName();
+        String time = event.getTime();
+        String des = event.getDes();
+        request.setAttribute("eventName", eventName);
+        request.setAttribute("time", time);
+        request.setAttribute("des", des);
+        request.getRequestDispatcher("editEvent.jsp").forward(request, response);
     }
 
     /**
@@ -72,7 +67,27 @@ public class EditEvent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        ClubDAO clubDAO = new ClubDAO();
+//        String username = (String) request.getSession().getAttribute("username");
+//        ArrayList<Event> events = clubDAO.getEventByEmail(username);
+        String eventName = request.getParameter("eventName");
+        int id = clubDAO.getEventIDByName(eventName);
+//        for (Event e : events) {
+//            if(e.getEventName().equalsIgnoreCase(eventName)){
+//                request.setAttribute("errorEventName", "EventName already existed!");
+//                request.getRequestDispatcher("editEvent.jsp").forward(request, response);
+//            } 
+//        }
+        String time = request.getParameter("time");
+        String des = request.getParameter("des");
+        Event event = new Event(eventName, time, des);
+        clubDAO.updateEvent(event,id);
+        request.setAttribute("eventName", eventName);
+        request.setAttribute("time", time);
+        request.setAttribute("des", des);
+        request.getRequestDispatcher("editEvent.jsp").forward(request, response);
     }
 
     /**

@@ -37,6 +37,12 @@ public class Event {
         this.url = url;
     }
 
+    public Event(String eventName, String time, String des) {
+        this.eventName = eventName;
+        this.time = time;
+        this.des = des;
+    }
+
     public Event(int clubID, String eventName, String time, String des) {
         this.clubID = clubID;
         this.eventName = eventName;
