@@ -97,7 +97,7 @@
                             <br/>
                             <br/>
                             Xếp hạng: <select name="star">
-                                <option value="5" <c:if test = "${star == 6 }">
+                                <option value="5" <c:if test = "${star == 5  }">
                                         selected="selected"
                                     </c:if>> Tất cả</option>
                                 <option value="1" <c:if test = "${star == 1 }">
@@ -140,36 +140,33 @@
                                                         <c:if test="${restaurant.restaurantImage == null}">
                                                             src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
                                                     </div>
-                                                <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
-                                                    <h3 class="mt-0 font-weight-bold mb-4">
-                                                        <a href="RestaurantListController?id=${restaurant.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${restaurant.restaurantName}</a>
-                                                </h3>
-                                                <p style="font-size: 20px">${restaurant.description}</p>
-                                                <p style="font-size: 20px">${restaurant.address}</p>
-                                            </div>
-                                         
-                                            <div class="col-md-4 mt-5 stars-outer media-body order-2 order-lg-1 button_edit">
-                                                <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
-                                            </div>
+                                                    <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
+                                                        <h3 class="mt-0 font-weight-bold mb-4">
+                                                            <a href="RestaurantListController?id=${restaurant.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${restaurant.restaurantName}</a>
+                                                    </h3>
+                                                    <p style="font-size: 20px">${restaurant.description}</p>
+                                                    <p style="font-size: 20px">${restaurant.address}</p>
+                                                </div>
+
+                                                <div class="col-md-4 mt-5 stars-outer media-body order-2 order-lg-1 button_edit">
+                                                    <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
+                                                </div>
                                         </li> 
                                     </c:forEach>
                                 </ul> 
-                                <!--                                <div class="clearfix">
-                                                                    <ul class="pagination">
-                                <c:if test="${tag>1}">
-                                    <li class="page-item disabled"><a href="ListAllRestaurantController?index=${tag-1}">Previous</a></li>
-                                </c:if>
-                                <c:forEach begin="1" end="${endP}" var="i">
-                                <li class="page-item ${tag==i?"active":""}"><a href="ListAllRestaurantController?index=${i}" class="page-link">${i}</a></li>
-                                </c:forEach>
-                                <c:if test="${tag<endP}">
-                                <li class="page-item"><a href="ListAllRestaurantController?index=${tag+1}" class="page-link">Next</a></li>
-                                </c:if>
-                        </ul>
-                    </div> -->
-                                <c:forEach begin="1" end="${totalPage}" var="i">
-                                    <a href="FilterRestaurantController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keyword=${keyword}&star=${star}">${i}</a> 
-                                </c:forEach>
+                                <div class="clearfix">
+                                    <ul class="pagination">
+                                        <c:if test="${tag>1}">
+                                            <li class="page-item disabled"><a href="FilterRestaurantController?index=${tag-1}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keyword=${keyword}&star=${star}">Previous</a></li>
+                                            </c:if>
+                                            <c:forEach begin="1" end="${endP}" var="i">
+                                            <li class="page-item ${tag==i?"active":""}"><a href="FilterRestaurantController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keyword=${keyword}&star=${star}" class="page-link">${i}</a></li>
+                                            </c:forEach>
+                                            <c:if test="${tag<endP}">
+                                            <li class="page-item"><a href="FilterRestaurantController?index=${tag+1}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keyword=${keyword}&star=${star}" class="page-link">Next</a></li>
+                                            </c:if>
+                                    </ul>
+                                </div> 
                             </div>
                         </div>
                     </div>

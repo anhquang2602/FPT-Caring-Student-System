@@ -134,18 +134,47 @@ public class HostelDAO extends DBContext {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
-            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
-                    + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
-                    + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
-                    + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
-                    + "join Country c on h.CountryID =c.CountryID\n"
-                    + "join District d on h.DistrictID = d.DistrictID\n"
-                    + "join Province p on h.ProvinceID = p.ProvinceID\n"
-                    + "join Sellers s on h.SellerID = s.SellerID\n"
-                    + "left join HostelImage i on h.HostelID = i.HostelID\n"
-                    + "where h.RentCost between " + costUnder + " and " + costUpper + "\n"
-                    + "and h.Distance <= " + distance + " and h.StarVoting <= " + star + "\n"
-                    + "order by h.HostelID ";
+            String sql = "";
+            if (star == 0) {
+                sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
+                        + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
+                        + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
+                        + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
+                        + "join Country c on h.CountryID =c.CountryID\n"
+                        + "join District d on h.DistrictID = d.DistrictID\n"
+                        + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                        + "join Sellers s on h.SellerID = s.SellerID\n"
+                        + "left join HostelImage i on h.HostelID = i.HostelID\n"
+                        + "where h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                        + "and h.Distance <= " + distance + " and h.StarVoting = 0\n"
+                        + "order by h.HostelID";
+            } else if (star == 5) {
+                sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
+                        + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
+                        + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
+                        + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
+                        + "join Country c on h.CountryID =c.CountryID\n"
+                        + "join District d on h.DistrictID = d.DistrictID\n"
+                        + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                        + "join Sellers s on h.SellerID = s.SellerID\n"
+                        + "left join HostelImage i on h.HostelID = i.HostelID\n"
+                        + "where h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                        + "and h.Distance <= " + distance + " and h.StarVoting <= 5\n"
+                        + "order by h.HostelID";
+            } else {
+                sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
+                        + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
+                        + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
+                        + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
+                        + "join Country c on h.CountryID =c.CountryID\n"
+                        + "join District d on h.DistrictID = d.DistrictID\n"
+                        + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                        + "join Sellers s on h.SellerID = s.SellerID\n"
+                        + "left join HostelImage i on h.HostelID = i.HostelID\n"
+                        + "where h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                        + "and h.Distance <= " + distance + " and h.StarVoting >= " + star + "\n"
+                        + "order by h.HostelID";
+            }
             PreparedStatement st;
 
             st = connection.prepareStatement(sql);
@@ -167,18 +196,47 @@ public class HostelDAO extends DBContext {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
-            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
-                    + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
-                    + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
-                    + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
-                    + "join Country c on h.CountryID =c.CountryID\n"
-                    + "join District d on h.DistrictID = d.DistrictID\n"
-                    + "join Province p on h.ProvinceID = p.ProvinceID\n"
-                    + "join Sellers s on h.SellerID = s.SellerID\n"
-                    + "left join HostelImage i on h.HostelID = i.HostelID\n"
-                    + "where h.RentCost between " + costUnder + " and " + costUpper + "\n"
-                    + "and h.Distance <= " + distance + " and h.StarVoting <= " + star + "\n"
-                    + "order by h.HostelID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+            String sql = "";
+            if (star == 0) {
+                sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
+                        + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
+                        + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
+                        + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
+                        + "join Country c on h.CountryID =c.CountryID\n"
+                        + "join District d on h.DistrictID = d.DistrictID\n"
+                        + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                        + "join Sellers s on h.SellerID = s.SellerID\n"
+                        + "left join HostelImage i on h.HostelID = i.HostelID\n"
+                        + "where h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                        + "and h.Distance <= " + distance + " and h.StarVoting = 0\n"
+                        + "order by h.HostelID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+            } else if (star == 5) {
+                sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
+                        + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
+                        + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
+                        + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
+                        + "join Country c on h.CountryID =c.CountryID\n"
+                        + "join District d on h.DistrictID = d.DistrictID\n"
+                        + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                        + "join Sellers s on h.SellerID = s.SellerID\n"
+                        + "left join HostelImage i on h.HostelID = i.HostelID\n"
+                        + "where h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                        + "and h.Distance <= " + distance + " and h.StarVoting <= 5\n"
+                        + "order by h.HostelID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+            } else {
+                sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
+                        + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
+                        + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
+                        + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
+                        + "join Country c on h.CountryID =c.CountryID\n"
+                        + "join District d on h.DistrictID = d.DistrictID\n"
+                        + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                        + "join Sellers s on h.SellerID = s.SellerID\n"
+                        + "left join HostelImage i on h.HostelID = i.HostelID\n"
+                        + "where h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                        + "and h.Distance <= " + distance + " and h.StarVoting >= " + star + "\n"
+                        + "order by h.HostelID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+            }
             PreparedStatement st;
 
             st = connection.prepareStatement(sql);
@@ -236,18 +294,47 @@ public class HostelDAO extends DBContext {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
 
-            String sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
-                    + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
-                    + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
-                    + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
-                    + "join Country c on h.CountryID =c.CountryID\n"
-                    + "join District d on h.DistrictID = d.DistrictID\n"
-                    + "join Province p on h.ProvinceID = p.ProvinceID\n"
-                    + "join Sellers s on h.SellerID = s.SellerID\n"
-                    + "left join HostelImage i on h.HostelID = i.HostelID\n"
-                    + "where h.HostelName like N'%" + keyword + "%' and h.RentCost between " + costUnder + " and " + costUpper + "\n"
-                    + "and h.Distance <= " + distance + " and h.StarVoting <= " + star + "\n"
-                    + "order by h.HostelID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+            String sql = "";
+            if (star == 0) {
+                sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
+                        + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
+                        + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
+                        + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
+                        + "join Country c on h.CountryID =c.CountryID\n"
+                        + "join District d on h.DistrictID = d.DistrictID\n"
+                        + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                        + "join Sellers s on h.SellerID = s.SellerID\n"
+                        + "left join HostelImage i on h.HostelID = i.HostelID\n"
+                        + "where h.HostelName like N'%" + keyword + "%' and h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                        + "and h.Distance <= " + distance + " and h.StarVoting = 0\n"
+                        + "order by h.HostelID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+            } else if (star == 5) {
+                sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
+                        + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
+                        + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
+                        + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
+                        + "join Country c on h.CountryID =c.CountryID\n"
+                        + "join District d on h.DistrictID = d.DistrictID\n"
+                        + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                        + "join Sellers s on h.SellerID = s.SellerID\n"
+                        + "left join HostelImage i on h.HostelID = i.HostelID\n"
+                        + "where h.HostelName like N'%" + keyword + "%' and h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                        + "and h.Distance <= " + distance + " and h.StarVoting <= 5\n"
+                        + "order by h.HostelID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+            } else {
+                sql = "select h.HostelID, h.HostelName,s.FirstName + ' '+ s.LastName as sellerName, h.TotalRoom, \n"
+                        + "h.Status,h.Floors,c.CountryName,p.ProvinceName,d.DistrictName,\n"
+                        + "h.AddressDetail,h.RentCost,h.Distance,h.Descriptions,\n"
+                        + "i.Url1,i.Url2,i.Url3,i.Url4,i.Url5,i.Url6,h.StarVoting from Hostels h\n"
+                        + "join Country c on h.CountryID =c.CountryID\n"
+                        + "join District d on h.DistrictID = d.DistrictID\n"
+                        + "join Province p on h.ProvinceID = p.ProvinceID\n"
+                        + "join Sellers s on h.SellerID = s.SellerID\n"
+                        + "left join HostelImage i on h.HostelID = i.HostelID\n"
+                        + "where h.HostelName like N'%" + keyword + "%' and h.RentCost between " + costUnder + " and " + costUpper + "\n"
+                        + "and h.Distance <= " + distance + " and h.StarVoting >= " + star + "\n"
+                        + "order by h.HostelID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+            }
             PreparedStatement st;
 
             st = connection.prepareStatement(sql);
