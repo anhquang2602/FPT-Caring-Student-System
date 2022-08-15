@@ -70,9 +70,25 @@
                                                                             <a href="RestaurantListController?id=${report.restaurantID}" class="btn btn-sm bg-success-light mr-2">
                                                                                 <i class="fas fa-eye"></i>
                                                                             </a>
-                                                                            <a href="DeleteRestaurantController?id=${report.restaurantID}" class="btn btn-sm bg-danger-light">
+                                                                            <a href="DeleteRestaurantController?id=${report.restaurantID}" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#confirm-delete">
                                                                                 <i class="fas fa-trash"></i>
-                                                                            </a>
+                                                                            </a>      
+                                                                            <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            Xoá bài đăng
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                            Bạn có chắc chắn muốn xoá bài đăng này không?
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                                                                            <a class="btn btn-danger btn-ok" href="DeleteRestaurantController?id=${report.restaurantID}">Xoá</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -91,7 +107,7 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
-        
+
         <script src="js/jquery-3.6.0.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

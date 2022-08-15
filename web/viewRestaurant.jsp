@@ -19,6 +19,58 @@
         <link rel="stylesheet" href="css/commentStyle.css" />
 
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .dialog {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity linear 0.2s;
+            }
+
+            .overlay-close {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                cursor: default;
+            }
+
+            .dialog:target {
+                visibility: visible;
+                opacity: 1;
+            }
+
+
+            .overlay {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+            .dialog-body {
+                max-width: 400px;
+                position: relative;
+                padding: 16px;
+                background-color: #fff;
+            }
+
+            .dialog-close-btn {
+                position: absolute;
+                top: 2px;
+                right: 6px;
+                text-decoration: none;
+                color: #333;
+            }
             .labels{
                 font-weight: 800;
             }

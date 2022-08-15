@@ -55,7 +55,7 @@
                 </a>  
 
                 <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 2) {%>
-                <a class="ml-5" href="ListAllRestaurantController">
+                <a class="ml-5" href="FilterRestaurantController">
                     <i class="fas fa-utensils mr-3"></i>
                     <span>NHÀ ĂN</span>
                 </a>  

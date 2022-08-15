@@ -113,7 +113,7 @@ public class ReportHostelController extends HttpServlet {
             request.setAttribute("endP", endPage);
             request.setAttribute("tag", index);
             session.setAttribute("stt", "1");
-            response.sendRedirect(request.getContextPath() + "/listallhostels");
+            response.sendRedirect(request.getContextPath() + "/detailhostel?id="+ hostelID);
         }
     }
 

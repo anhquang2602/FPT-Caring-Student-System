@@ -47,7 +47,7 @@
                                             <a href="listClubCategories?type=2&key=${key}" class="list-group-item list-group-item-action">Kỹ Năng Sống</a>
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="listClubCategories?type=3&key=${key}" class="list-group-item list-group-item-action">Võ Thuật</a>
+                                            <a href="listClubCategories?type=3&key=${key}" class="list-group-item list-group-item-action">Thể Thao</a>
                                         </div>
                                         <div class="col-md-4">
                                             <a href="listClubCategories?type=4&key=${key}" class="list-group-item list-group-item-action ">Nghệ Thuật</a>

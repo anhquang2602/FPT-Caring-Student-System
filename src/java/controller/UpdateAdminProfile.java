@@ -156,8 +156,10 @@ public class UpdateAdminProfile extends HttpServlet {
 
             if (adb.updateAdminProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
-                request.setAttribute("UpdateProcess", "Update successfully");
-                request.getRequestDispatcher("self_profileAdmin.jsp").forward(request, response);
+                session.setAttribute("stt", "1");
+             
+               response.sendRedirect(request.getContextPath() + "/home" );
+           
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");

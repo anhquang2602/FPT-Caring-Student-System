@@ -28,6 +28,7 @@
                 </ul>
                 <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
+<<<<<<< HEAD
                         <form class="example  align-items-center" action="SellerListController" method="post"> 
                             <div>
                                 <input type="text" placeholder="" name="key" value="${key}"> 
@@ -41,6 +42,18 @@
                                             <option value="">Chọn tỉnh, thành phố</option>
                                             <c:forEach items ="${listProvince}" var="o">
                                                 <option value="${o.provinceID}" 
+=======
+                        <form class="example  align-items-center" action="StudentListController" method="post"> 
+                            <input type="text" placeholder="" name="key" value="${key}"> 
+                            <button type="submit"><i class="fa fa-search"></i></button> 
+                            <br/>
+                            <div class="col-md-12">
+                                <label class="labels" for="cars">Tỉnh, thành phố</label>
+                                <select name="province" id="province" class="province form-select" onchange>
+                                    <option value="">Chọn tỉnh, thành phố</option>
+                                    <c:forEach items ="${listProvince}" var="o">
+                                        <option value="${o.provinceID}" 
+>>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
 
                                                         <c:if test = "${province == o.provinceID }">
                                                             selected="selected"

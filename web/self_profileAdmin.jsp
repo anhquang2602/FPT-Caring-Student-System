@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="${UserAvatar}" id="output">
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" height="150px" width="150px" src="${UserAvatar}" id="output">
                                     <div class="form-group mt-3">                       
                                         <input style="padding-left: 80px" type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="avatarImg">
                                     </div>
