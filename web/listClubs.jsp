@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
+        <link rel="stylesheet" href="css/datatables.min.css">
+        <link rel="stylesheet" href="css/style1.css">
     </head>
     <body>
         <%@include file="/header.jsp" %>
@@ -26,57 +28,73 @@
                 </ul>
                 <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-                        <form class="example d-flex align-items-center"> 
-                            <input type="text" placeholder="" name="search"> 
+                        <form class="example d-flex align-items-center" action="ClubListController" method="post"> 
+                            <input type="text" placeholder="" name="key" value="${key}"> 
                             <button type="submit"><i class="fa fa-search"></i></button> 
+                            DANH MỤC
+                            <div class="list-group">
+                                <a href="listClubCategories?type=1&key=${key}" class="list-group-item list-group-item-action">Học Thuật</a>
+                                <a href="listClubCategories?type=2&key=${key}" class="list-group-item list-group-item-action">Kỹ Năng Sống</a>
+                                <a href="listClubCategories?type=3&key=${key}" class="list-group-item list-group-item-action">Võ Thuật</a>
+                                <a href="listClubCategories?type=4&key=${key}" class="list-group-item list-group-item-action ">Nghệ Thuật</a>
+                            </div>
                         </form>
                     </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 mt-5 mb-5">
-                                <div>
-                                    <ul class="breadcrumb">
-                                        <li><a href="home.jsp">Trang chủ</a></li>
-                                        <li><a>Danh sách Câu Lạc Bộ</a></li>
-                                    </ul>
+                    <div class="main-wrapper">
+                        <div class="page-wrapper">
+                            <div class="content container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12 mb-5">
+                                        <div>
+                                            <ul class="breadcrumb">
+                                                <li><a href="home.jsp">Trang chủ</a></li>
+                                                <li><a>Danh sách Câu Lạc Bộ</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="card card-table">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-center datatable" id="club">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>CÂU LẠC BỘ</th>
+                                                                <th>CHỦ NHIỆM</th>
+                                                                <th>LINK FACEBOOK CÂU LẠC BỘ</th>
+                                                                <th>EMAIL</th>
+                                                                <th>MÔ TẢ</th>
+                                                                <th>XEM CHI TIẾT</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <c:forEach items="${listClubs}" var="club">
+                                                                <tr>
+                                                                    <td>
+                                                                        ${club.clubName}
+                                                                    </td>
+                                                                    <td>
+                                                                        ${club.clubPresident}
+                                                                    </td>
+                                                                    <td>
+                                                                        ${club.facebook}
+                                                                    </td>
+                                                                    <td>
+                                                                        ${club.email}
+                                                                    </td>  
+                                                                    <td>
+                                                                        ${club.des}
+                                                                    </td>
+                                                                    <td>
+                                                                        <a style="text-decoration: none" href="detailClub?id=${club.clubID}">Chi Tiết</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <ul class="list-group shadow">
-                                    <c:forEach items="${listClubs}" var="club">
-                                        <li class="list-group-item">
-                                            <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-2">
-                                                <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    <img src="${club.avatar}" alt="Generic placeholder image">
-                                                </div>
-                                                <div class="col-md-8 media-body order-2 order-lg-1 description ml-5" id="description">
-                                                    <div>
-                                                        <h4 class="font-weight-bold mb-3">
-                                                            <a href="detailClub?id=${club.clubID}" style="text-decoration: none; font-weight: bold">${club.clubName}</a>
-                                                        </h4>
-                                                    </div>
-                                                    <div>
-                                                        <p style="font-size: 18px">${club.clubPresident}</p>
-                                                        <p style="font-size: 18px">${club.facebook}</p>
-                                                        <p style="font-size: 18px">${club.email}</p>
-                                                        <p style="font-size: 18px">${club.des}</p>
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                        </li> 
-                                    </c:forEach>
-                                </ul> 
-<!--                                <div class="clearfix">
-                                    <ul class="pagination">
-                                        <c:if test="${tag>1}">
-                                            <li class="page-item disabled"><a href="department?index=${tag-1}">Previous</a></li>
-                                            </c:if>
-                                            <c:forEach begin="1" end="${endP}" var="i">
-                                            <li class="page-item ${tag==i?"active":""}"><a href="department?index=${i}" class="page-link">${i}</a></li>
-                                            </c:forEach>
-                                            <c:if test="${tag<endP}">
-                                            <li class="page-item"><a href="department?index=${tag+1}" class="page-link">Next</a></li>
-                                            </c:if>
-                                    </ul>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -84,5 +102,13 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
+
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.slimscroll.min.js"></script>
+        <script src="js/datatables.min.js"></script>
+        <script src="js/script.js"></script>
     </body>
+
 </html>

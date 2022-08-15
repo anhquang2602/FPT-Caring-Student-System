@@ -27,11 +27,11 @@
             </div>
             <div class="topnav_header col-md-10 d-flex">
                 <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
-                <a href="SellerListController">
+                <a href="SellerListController?status=3&gender=3">
                     <i class="fas fa-user-tie"></i>
                     <span>CHỦ KINH DOANH</span>
                 </a>  
-                <a href="StudentListController">
+                <a href="StudentListController?status=3&gender=3">
                     <i class="fas fa-user-graduate"></i>
                     <span>SINH VIÊN</span>
                 </a> 

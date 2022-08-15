@@ -28,8 +28,8 @@
                 </ul>
                 <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-                        <form class="example d-flex align-items-center"> 
-                            <input type="text" placeholder="" name="search"> 
+                        <form class="example d-flex align-items-center" action="department" method="post"> 
+                            <input type="text" placeholder="" name="key" value="${key}"> 
                             <button type="submit"><i class="fa fa-search"></i></button> 
                         </form>
                     </div>
@@ -66,13 +66,13 @@
                                 <div class="clearfix">
                                     <ul class="pagination">
                                         <c:if test="${tag>1}">
-                                            <li class="page-item disabled"><a href="department?index=${tag-1}">Previous</a></li>
+                                            <li class="page-item disabled"><a href="department?index=${tag-1}&key=${key}">Previous</a></li>
                                             </c:if>
                                             <c:forEach begin="1" end="${endP}" var="i">
-                                            <li class="page-item ${tag==i?"active":""}"><a href="department?index=${i}" class="page-link">${i}</a></li>
+                                            <li class="page-item ${tag==i?"active":""}"><a href="department?index=${i}&key=${key}" class="page-link">${i}</a></li>
                                             </c:forEach>
                                             <c:if test="${tag<endP}">
-                                            <li class="page-item"><a href="department?index=${tag+1}" class="page-link">Next</a></li>
+                                            <li class="page-item"><a href="department?index=${tag+1}&key=${key}" class="page-link">Next</a></li>
                                             </c:if>
                                     </ul>
                                 </div> 

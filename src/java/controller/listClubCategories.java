@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +20,8 @@ import model.Club;
  *
  * @author win
  */
-public class ClubListController extends HttpServlet {
+@WebServlet(name = "listClubCategories", urlPatterns = {"/listClubCategories"})
+public class listClubCategories extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +40,10 @@ public class ClubListController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ClubListController</title>");
+            out.println("<title>Servlet listClubCategories</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ClubListController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet listClubCategories at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,8 +65,15 @@ public class ClubListController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         ArrayList<Club> listClubs = new ArrayList<>();
         ClubDAO clubDAO = new ClubDAO();
-        listClubs = clubDAO.getListClubs();
+        String key = request.getParameter("key");
+        String type = request.getParameter("type");
+        if (key == null || key.equals("")) {
+            listClubs = clubDAO.getListClubsByCategories(Integer.parseInt(type));
+        } else {
+            listClubs = clubDAO.getClubByTextAndCategories(key,Integer.parseInt(type));
+        }
         request.setAttribute("listClubs", listClubs);
+        request.setAttribute("key", key);
         request.getRequestDispatcher("listClubs.jsp").forward(request, response);
     }
 
@@ -79,19 +88,7 @@ public class ClubListController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-        ArrayList<Club> listClubs = new ArrayList<>();
-        ClubDAO clubDAO = new ClubDAO();
-        String key = request.getParameter("key");
-        if(key == null || key.equals("")){
-            listClubs = clubDAO.getListClubs();
-        } else{
-            listClubs = clubDAO.getClubByText(key);
-        }
-        request.setAttribute("listClubs", listClubs);
-        request.setAttribute("key", key);
-        request.getRequestDispatcher("listClubs.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

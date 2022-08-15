@@ -54,6 +54,446 @@ public class SellerDAO extends DBContext {
         return list;
     }
 
+    public ArrayList<Seller> getAllSellerNoPagging() {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook\n"
+                    + "from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerWithText(String key, int province, int status, int gender) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') AND Sellers.ProvinceID = " + province + " \n"
+                    + "and Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerWithTextNoProNoGenNoSta(String key) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') \n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerWithTextNoProNoGen(String key, int status) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%')  \n"
+                    + "and Account.AccountStatus = " + status + " \n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerWithTextNoProNoSta(String key, int gender) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%')  and Gender = " + gender + "\n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerWithTextNoGenNoSta(String key, int province) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') AND Sellers.ProvinceID = " + province + " \n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerWithTextNoGen(String key, int province, int status) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') AND Sellers.ProvinceID = " + province + " \n"
+                    + "and Account.AccountStatus = " + status + " \n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerWithTextNoSta(String key, int province, int gender) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') AND Sellers.ProvinceID = " + province + " \n"
+                    + "and Gender = " + gender + "\n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerWithTextAndAll(String key, int province, int gender, int status) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') AND Sellers.ProvinceID = " + province + " \n"
+                    + "and Gender = " + gender + "\n"
+                    + "and Account.AccountStatus = " + status + " \n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerWithTextNoProvince(String key, int status, int gender) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') \n"
+                    + "and Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerNoText(int province, int status, int gender) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE Sellers.ProvinceID = " + province + " \n"
+                    + "and Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerNoTextNoGenDerNoStatus(int province) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE Sellers.ProvinceID = " + province + " \n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerNoTextNoStatus(int province, int gender) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE Sellers.ProvinceID = " + province + " and Gender = " + gender + "\n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerNoTextNoGender(int province, int status) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE Sellers.ProvinceID = " + province + " \n"
+                    + "and Account.AccountStatus = " + status + " \n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerNoTextNoProvince(int status, int gender) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerNoTextNoProvinceNoGender(int status) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE Account.AccountStatus = " + status + "\n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Seller> filterSellerNoTextNoProvinceNoStatus(int gender) {
+        ArrayList<Seller> list = new ArrayList<>();
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "WHERE Gender = " + gender + "\n"
+                    + "ORDER BY SellerID";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+//    public ArrayList<Seller> filterSellerNoText(int province, int status, int gender) {
+//        ArrayList<Seller> list = new ArrayList<>();
+//        try {
+//            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
+//                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
+//                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+//                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+//                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+//                    + "inner join Account on Sellers.Email = Account.username\n"
+//                    + "WHERE Sellers.ProvinceID = " + province + " \n"
+//                    + "and Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
+//                    + "ORDER BY SellerID";
+//            PreparedStatement ps = connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                list.add(new Seller(rs.getInt("sellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+//                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook")));
+//            }
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(SellerDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return list;
+//    }
     public int getTotalSeller() {
         String sql = "select count(*) from Sellers";
         try {
@@ -255,8 +695,8 @@ public class SellerDAO extends DBContext {
             return false;
         }
     }
-    
-    public boolean updateSellerProfileNoPro(String avatar, String firstName,String lastName,String age,String phone,String countryId,String provinceId,String districtId,String addressDetail,String gender1,String linkFacebook,String email) {      
+
+    public boolean updateSellerProfileNoPro(String avatar, String firstName, String lastName, String age, String phone, String countryId, String provinceId, String districtId, String addressDetail, String gender1, String linkFacebook, String email) {
         try {
             String sql = "UPDATE Sellers SET  Avatar=?,FirstName=?,LastName=?,Age=?,Phone=?,CountryID=?,ProvinceID=?,DistrictID=?,AddressDetail=?,Gender=?,LinkFacebook=? where email=?";
             PreparedStatement st;
@@ -281,4 +721,5 @@ public class SellerDAO extends DBContext {
             return false;
         }
     }
+
 }
