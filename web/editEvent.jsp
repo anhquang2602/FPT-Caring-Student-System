@@ -47,7 +47,7 @@
                                         <div class="row mt-3">
                                             <div class="col-md-12">
                                                 <strong class="text-right fs-4">Tên Sự Kiện</strong>
-                                                <input type="text" name="eventName" class="form-control"value="${eventName}">
+                                                <input type="text" name="eventName" class="form-control"value="${eventName}" readonly>
                                             </div>
                                         </div>
                                         <div>${errorEventName}</div>
