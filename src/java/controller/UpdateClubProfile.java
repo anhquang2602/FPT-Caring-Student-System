@@ -17,6 +17,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Club;
 
@@ -98,6 +99,7 @@ public class UpdateClubProfile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
         String email = (String) request.getSession().getAttribute("username");
         String UserAvatar = null;
         Part part = request.getPart("avatarImage");
@@ -122,8 +124,8 @@ public class UpdateClubProfile extends HttpServlet {
             Club clubUpdate = new Club(UserAvatar,clubName,clubPresident,linkFb,email,description);
             if (cdb.updateClubProfile(UserAvatar, clubUpdate) == true) {
                 reloadPage(request, response);
-                request.setAttribute("UpdateProcess", "Update successfully");
-                request.getRequestDispatcher("self_profileClub.jsp").forward(request, response);
+                 session.setAttribute("stt", "1");
+              response.sendRedirect(request.getContextPath() + "/home" );
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");

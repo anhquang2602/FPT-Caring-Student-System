@@ -17,6 +17,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Admin;
 
@@ -85,8 +86,10 @@ public class UpdateAdminProfile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
         reloadPage(request, response);
         request.getRequestDispatcher("self_profileAdmin.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**
@@ -105,7 +108,7 @@ public class UpdateAdminProfile extends HttpServlet {
         String email = (String) request.getSession().getAttribute("username");
         String UserAvatar = null;
         Part part = request.getPart("avatarImage");
-
+        HttpSession session = request.getSession();
         String realPath1 = request.getServletContext().getRealPath("/avatarImages");
         String realPath = realPath1.replaceFirst("build", "");
         String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
@@ -123,20 +126,21 @@ public class UpdateAdminProfile extends HttpServlet {
         firstName = request.getParameter("firstName");
         lastName = request.getParameter("lastName");
         addressDetail = request.getParameter("addressDetail");
-        phone = request.getParameter("phone");       
+        phone = request.getParameter("phone");
         String age = request.getParameter("age");
         linkFb = request.getParameter("linkFb");
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
         }
         if (part.getSize() == 0) {
-           if (adb.updateAdminProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
+            if (adb.updateAdminProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
-                request.setAttribute("UpdateProcess", "Update successfully");
-                request.getRequestDispatcher("self_profileAdmin.jsp").forward(request, response);
+                session.setAttribute("stt", "1");
+               // response.sendRedirect(request.getContextPath() + "home.jsp");
+               response.sendRedirect(request.getContextPath() + "/home" );
             } else {
                 reloadPage(request, response);
-                request.setAttribute("UpdateProcess", "Update fail");
+                 session.setAttribute("stt", "1");
                 request.getRequestDispatcher("self_profileAdmin.jsp").forward(request, response);
             }
         } else {
@@ -149,7 +153,7 @@ public class UpdateAdminProfile extends HttpServlet {
 
             UserAvatar = "avatarImages/" + avatarName;
             part.write(realPath + "\\" + avatarName);
-            
+
             if (adb.updateAdminProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update successfully");

@@ -15,6 +15,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Food;
 import model.Restaurant;
@@ -68,12 +69,12 @@ public class EditFoodController extends HttpServlet {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         Food food = restaurantDAO.getFoodID(id);
         request.setAttribute("food", food);
-        int restaurantId = restaurantDAO.getResIdbyFoodID(id);       
+        int restaurantId = restaurantDAO.getResIdbyFoodID(id);
         request.setAttribute("restaurantId", restaurantId);
         request.getRequestDispatcher("editFood.jsp").forward(request, response);
     }
 //run ddi t het pin
-    
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -87,7 +88,8 @@ public class EditFoodController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        RestaurantDAO restaurantDAO = new RestaurantDAO(); 
+        HttpSession session = request.getSession();
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
         String foodName = request.getParameter("foodName");
         double cost = Double.parseDouble(request.getParameter("costFood"));
         int foodID = Integer.parseInt(request.getParameter("foodId"));
@@ -104,22 +106,20 @@ public class EditFoodController extends HttpServlet {
             if (restaurantDAO.updateFood(foodID, foodName, cost, description)) {
 
                 //response.sendRedirect(request.getContextPath() + "/EditRestaurantController?id=" + food.getRestaurantID());
-
+                session.setAttribute("stt", "2");
                 response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + food.getRestaurantID());
 
             }
         } else {
             if (restaurantDAO.updateFood(foodID, foodName, cost, description)) {
-                String foodImg = food.getRestaurantID() + "_" + foodID  + ".jpg";
+                String foodImg = food.getRestaurantID() + "_" + foodID + ".jpg";
                 String saveFoodImg = "foodImages/" + foodImg;
                 part.write(realPath + "\\" + foodImg);
                 restaurantDAO.updateFoodImg(foodID, saveFoodImg);
+                session.setAttribute("stt", "2");
+                response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + food.getRestaurantID());
 
-
-
-               response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + food.getRestaurantID());
-
-            }    
+            }
         }
     }
 

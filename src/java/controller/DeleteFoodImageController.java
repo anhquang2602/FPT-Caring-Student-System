@@ -36,7 +36,7 @@ public class DeleteFoodImageController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteFoodImageController</title>");            
+            out.println("<title>Servlet DeleteFoodImageController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DeleteFoodImageController at " + request.getContextPath() + "</h1>");
@@ -57,10 +57,12 @@ public class DeleteFoodImageController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           PrintWriter writer = response.getWriter();
+        PrintWriter writer = response.getWriter();
         RestaurantDAO dao = new RestaurantDAO();
         int foodID = Integer.parseInt(request.getParameter("foodId"));
         dao.updateFoodImage(foodID);
+        String url = request.getParameter("url");
+        writer.print(url);
         writer.flush();
         writer.close();
     }

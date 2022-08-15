@@ -28,9 +28,16 @@
                 </ul>
                 <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-                        <form class="example d-flex align-items-center"> 
-                            <input type="text" placeholder="" name="search"> 
+                        <form class="example d-flex align-items-center" action="ClubListController" method="post"> 
+                            <input type="text" placeholder="" name="key" value="${key}"> 
                             <button type="submit"><i class="fa fa-search"></i></button> 
+                            DANH MỤC
+                            <div class="list-group">
+                                <a href="listClubCategories?type=1&key=${key}" class="list-group-item list-group-item-action">Học Thuật</a>
+                                <a href="listClubCategories?type=2&key=${key}" class="list-group-item list-group-item-action">Kỹ Năng Sống</a>
+                                <a href="listClubCategories?type=3&key=${key}" class="list-group-item list-group-item-action">Võ Thuật</a>
+                                <a href="listClubCategories?type=4&key=${key}" class="list-group-item list-group-item-action ">Nghệ Thuật</a>
+                            </div>
                         </form>
                     </div>
                     <div class="main-wrapper">
@@ -54,6 +61,7 @@
                                                                 <th>CHỦ NHIỆM</th>
                                                                 <th>LINK FACEBOOK CÂU LẠC BỘ</th>
                                                                 <th>EMAIL</th>
+                                                                <th>MÔ TẢ</th>
                                                                 <th>XEM CHI TIẾT</th>
                                                             </tr>
                                                         </thead>
@@ -71,7 +79,10 @@
                                                                     </td>
                                                                     <td>
                                                                         ${club.email}
-                                                                    </td>    
+                                                                    </td>  
+                                                                    <td>
+                                                                        ${club.des}
+                                                                    </td>
                                                                     <td>
                                                                         <a style="text-decoration: none" href="detailClub?id=${club.clubID}">Chi Tiết</a>
                                                                     </td>
@@ -91,7 +102,7 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
-        
+
         <script src="js/jquery-3.6.0.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

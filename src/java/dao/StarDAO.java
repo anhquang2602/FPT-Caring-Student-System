@@ -292,7 +292,22 @@ public class StarDAO extends DBContext {
             statement.setInt(1, hostelID);
             statement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StarDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+      public void deleteVoteRestaurant(int resID) {
+
+        try {
+
+            String sql = "DELETE FROM [dbo].[StarVotingRestaurant]\n"
+                    + "      WHERE RestaurantID=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, resID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(StarDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -311,14 +326,14 @@ public class StarDAO extends DBContext {
 //        
 //        Date date1 = Date.valueOf(dateFormat.format(date));
 //        System.out.println(dateFormat.format(date));
-        java.util.Date utilDate = new java.util.Date();
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        System.out.println("utilDate:" + utilDate);
-        System.out.println("sqlDate:" + sqlDate);
-        StarDAO dao = new StarDAO();
-        ArrayList<StarVoting> s = dao.getListCommentByHostel(76);
-
-        System.out.println(s.get(0).getDate());
+//        java.util.Date utilDate = new java.util.Date();
+//        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+//        System.out.println("utilDate:" + utilDate);
+//        System.out.println("sqlDate:" + sqlDate);
+//        StarDAO dao = new StarDAO();
+//        ArrayList<StarVoting> s = dao.getListCommentByHostel(76);
+//
+//        System.out.println(s.get(0).getDate());
 
     }
 }

@@ -7,15 +7,23 @@ package controller;
 
 import dao.AddressDAO;
 import dao.RestaurantDAO;
+
+import dao.StarDAO;
+import dao.StudentDAO;
+
+import dao.SellerDAO;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Food;
 import model.Restaurant;
+import model.StarVoting;
 
 /**
  *
@@ -69,11 +77,59 @@ public class RestaurantListController extends HttpServlet {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         Restaurant restaurant = restaurantDAO.getRestaurantID(id);
         
+        StudentDAO stdao = new StudentDAO();
+        if (stdao.getStudentNo((String) request.getSession().getAttribute("username")) != null) {
+            request.setAttribute("isStudent", 1);
+        }
+        
+        StarDAO daost = new StarDAO();
+
+        String indexPage = request.getParameter("index");
+        if (indexPage == null) {
+            indexPage = "1";
+        }
+        int index = Integer.parseInt(indexPage);
+
+        int total = daost.getTotalCommentRestaurant(id);
+        int endPage = total / 5;
+        if (total % 5 != 0) {
+            endPage++;
+        }
+
+        List<StarVoting> sv = daost.pagingCommentRestaurant(id, index);
+         List<StarVoting> sv1 = daost.getListCommentByRestaurant(id);
+        if (!sv1.isEmpty()) {
+
+            int count = 0;
+            float sum = 0;
+            for (StarVoting starVoting : sv1) {
+                sum += starVoting.getStarvoting();
+                count++;
+            }
+
+            restaurant.setStarAVG((sum / count) / 5 * 100);
+        } else {
+            restaurant.setStarAVG(0);
+        }
+        
+
+        
+        request.setAttribute("totalcomment", total);
+        request.setAttribute("listCmtHostelPaging", sv);
+        request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
+        
+        
+        
+        
         ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(id);
+        int SellerID = restaurantDAO.getSellerIdByRestaurantId(id);
+       
 
         AddressDAO a = new AddressDAO();
         request.setAttribute("listFood", listFood);
         request.setAttribute("restaurant", restaurant);
+        request.setAttribute("sellerId", SellerID);
         
         request.setAttribute("listProvince", a.listProvince());
         request.setAttribute("listDistrict", a.getDistrictByProName(restaurant.getProvinceName()));

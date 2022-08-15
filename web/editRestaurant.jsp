@@ -54,6 +54,7 @@
                                         <img id="Url1" name="Url1" width="170px" height="170px"
                                              <c:if test="${restaurant.restaurantImage != null}">
                                                  src="${restaurant.restaurantImage}" </c:if>/>
+                                             
                                              <script>
                                                  var loadFile = function (event) {
                                                      var output = document.getElementById('Url1');
@@ -66,7 +67,7 @@
                                                  };
                                              </script>
                                         <c:if test="${restaurant.restaurantImage != null}">
-                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteimgres?id=${restaurant.restaurantID}">X</a>
+                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteimgres?id=${restaurant.restaurantID}&url=Url1">X</a>
                                         </c:if>
 
 
@@ -172,7 +173,7 @@
                     url: $(this).attr('href'),
                     success: function (response) {
                         var output = document.getElementById(response);
-                        output.src = '';
+                        output.removeAttribute('src');
        
                         $("." + response).remove();
                         output.onload = function () {

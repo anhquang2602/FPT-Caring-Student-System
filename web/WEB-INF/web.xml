@@ -196,6 +196,10 @@
         <servlet-name>DeleteFoodImageController</servlet-name>
         <servlet-class>controller.DeleteFoodImageController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>controller.HomeController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -399,6 +403,10 @@
     <servlet-mapping>
         <servlet-name>DeleteFoodImageController</servlet-name>
         <url-pattern>/deleteFoodImage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
