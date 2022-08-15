@@ -90,8 +90,8 @@
                                     <div class="col-md-12"><label class="labels">Address Detail</label><input type="text" name="addressDetail" class="form-control"value="${student.address}" ></div>
                                 </div>
                                 <div class="mt-5 text-center">
-                                    <button onclick="tai_lai_trang()">re load</button>
                                     <button class="btn btn-primary profile-button" type="submit" >Save Profile</button>
+                                    <button class="btn btn-primary profile-button" onclick="tai_lai_trang()">Reload</button>
                                 </div>
                                 <label class="labels">${UpdateError}</label>
                                 <label class="labels">${UpdateProcess}</label>

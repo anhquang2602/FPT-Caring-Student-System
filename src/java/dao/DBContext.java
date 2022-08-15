@@ -18,22 +18,12 @@ import java.util.logging.Logger;
 public abstract class DBContext {
 
     protected Connection connection;
-//    public DBContext() {
-//        try {
-//            String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS";
-//            String user = "sa";
-//            String pass = "12345678";
-//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//            connection = DriverManager.getConnection(url, user, pass);
-//        } catch (ClassNotFoundException | SQLException ex) {
-//            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-     public DBContext() {
+
+    public DBContext() {
         try {
             String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS";
             String user = "sa";
-            String pass = "123";
+            String pass = "12345678";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException | SQLException ex) {
@@ -41,6 +31,3 @@ public abstract class DBContext {
         }
     }
 }
-
-
-

@@ -65,7 +65,7 @@
                                                                     <td class="text-center">
                                                                         <div class="actions">
                                                                             <a href="detailhostel?id=${report.hostelID}" class="btn btn-sm bg-success-light mr-2">
-                                                                                <i class="fas fa-pen"></i>
+                                                                                <i class="fas fa-eye"></i>
                                                                             </a>
                                                                             <a href="deletehostel?id=${report.hostelID}" class="btn btn-sm bg-danger-light">
                                                                                 <i class="fas fa-trash"></i>
