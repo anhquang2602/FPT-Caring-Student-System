@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : listdepartment
     Created on : Jun 18, 2022, 2:08:32 PM
     Author     : nguye
@@ -158,14 +158,17 @@
 
                                                     </div>
 
-                                                    <div class="col-md-4 mt-5 stars-outer media-body order-2 order-lg-1 button_edit">
-                                                        <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
+                                                    <div class="col-md-4 mt-5  media-body order-2 order-lg-1 button_edit">
+                                                        <div class="stars-outer">
+                                                            <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
+                                                    </div>  
                                                 </div>
 
                                             </div>
                                         </li> 
                                     </c:forEach>
                                 </ul> 
+
                                 <div class="clearfix">
                                     <ul class="pagination">
                                         <c:if test="${tag>1}">
@@ -179,6 +182,7 @@
                                             </c:if>
                                     </ul>
                                 </div>
+
                             </div>
                         </div>
                     </div>

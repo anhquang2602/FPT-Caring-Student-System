@@ -152,8 +152,15 @@
                                         </div> 
                                     </div>
                                     <div class="right-side">
-                                        <h3>Mô tả nhà hàng<a href="#ReportRestaurantController?id=${restaurant.restaurantID}" class="dialog-btn"><img style="float: right; height: 50px " src="images/report.png" >
-                                                    </h3></a>    
+<!--<<<<<<< HEAD
+                                        <h3>Mô tả nhà hàng</h3>    
+                                        <div class="col mt-5 thumbnail"z>
+                                            <img src="${restaurant.restaurantImage}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt=""><br>    
+                                                <div class="stars-outer mb-5"> 
+                                                    <div class="stars-inner" style="width: ${restaurant.starAVG}%"> </div>
+=======-->
+                                        <h3>Mô tả nhà hàng<a href="#ReportRestaurantController?id=${restaurant.restaurantID}" class="dialog-btn"><img style="float: right; height: 40px " src="images/flag.png" >
+                                                    </h3>    
                                                 <div class="dialog overlay" id="ReportRestaurantController?id=${restaurant.restaurantID}">
                                                     <a href="#" class="overlay-close"></a>
 
@@ -161,6 +168,7 @@
                                                         <a class="dialog-close-btn" href="#">&times;</a>
                                                         <%@include file="/reportRestaurant.jsp" %>
                                                     </div>
+
                                                 </div>
                                                 <div class="col mt-5 thumbnail">
                                                     <img src="${restaurant.restaurantImage}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt=""><br>    

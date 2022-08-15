@@ -77,10 +77,10 @@
                                                                                 <div class="modal-dialog">
                                                                                     <div class="modal-content">
                                                                                         <div class="modal-header">
-                                                                                            Xoá nhà hàng
+                                                                                            Xoá bài đăng
                                                                                         </div>
                                                                                         <div class="modal-body">
-                                                                                            Bạn có chắc chắn muốn xoá món ăn này không?
+                                                                                            Bạn có chắc chắn muốn xoá bài đăng này không?
                                                                                         </div>
                                                                                         <div class="modal-footer">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>

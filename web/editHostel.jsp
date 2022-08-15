@@ -63,15 +63,16 @@
                                              <c:if test="${editHostel.img1 != null}">
                                                  src="${editHostel.img1}" </c:if>/>
                                              <script>
-                                                         var loadFile = function (event) {
-                                                         var output = document.getElementById('Url1');
-                                                                 output.src = URL.createObjectURL(event.target.files[0]);
-                                                                 output.style.width = "10.5rem";
-                                                                 output.style.height = "10.5rem";
-                                                                 output.onload = function () {
-                                                                 URL.revokeObjectURL(output.src) // free memory
-                                                                 }
-                                                         };                                             </script>
+                                                 var loadFile = function (event) {
+                                                     var output = document.getElementById('Url1');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "10.5rem";
+                                                     output.style.height = "10.5rem";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };
+                                             </script>
                                         <c:if test="${editHostel.img1 != null}">
                                             <a id="U1" class ="Url1" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
                                         </c:if>
@@ -82,17 +83,17 @@
                                              <c:if test="${editHostel.img2 != null}">
                                                  src="${editHostel.img2}" </c:if>/>
                                              <script>
-                                                         var loadFile2 = function (event) {
-                                                         var output = document.getElementById('Url2');
-                                                                 output.src = URL.createObjectURL(event.target.files[0]);
-                                                                 output.style.width = "10.5rem";
-                                                                 output.style.height = "10.5rem";
-                                                                 output.onload = function () {
-                                                                 URL.revokeObjectURL(output.src) // free memory
-                                                                 }
-                                                         };                                             </script>
-                                        <c:if test="${editHostel.img2 != null}">
-                                            <a id="U2" class ="Url2" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url2">X</a>
+                                                 var loadFile2 = function (event) {
+                                                     var output = document.getElementById('Url2');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "10.5rem";
+                                                     output.style.height = "10.5rem";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };</script>
+                                             <c:if test="${editHostel.img2 != null}">
+                                             <a id="U2" class ="Url2" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url2">X</a>
                                         </c:if>
 
                                         <input type="file" accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
@@ -101,17 +102,17 @@
                                              <c:if test="${editHostel.img3 != null}">
                                                  src="${editHostel.img3}" </c:if>/>
                                              <script>
-                                                         var loadFile3 = function (event) {
-                                                         var output = document.getElementById('Url3');
-                                                                 output.src = URL.createObjectURL(event.target.files[0]);
-                                                                 output.style.width = "10.5rem";
-                                                                 output.style.height = "10.5rem";
-                                                                 output.onload = function () {
-                                                                 URL.revokeObjectURL(output.src) // free memory
-                                                                 }
-                                                         };                                             </script>
-                                        <c:if test="${editHostel.img3 != null}">
-                                            <a id="U3" class ="Url3" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url3">X</a>
+                                                 var loadFile3 = function (event) {
+                                                     var output = document.getElementById('Url3');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "10.5rem";
+                                                     output.style.height = "10.5rem";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };</script>
+                                             <c:if test="${editHostel.img3 != null}">
+                                             <a id="U3" class ="Url3" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url3">X</a>
                                         </c:if>
                                     </div>
 
@@ -122,17 +123,17 @@
                                              <c:if test="${editHostel.img4 != null}">
                                                  src="${editHostel.img4}" </c:if>/>
                                              <script>
-                                                         var loadFile4 = function (event) {
-                                                         var output = document.getElementById('Url4');
-                                                                 output.src = URL.createObjectURL(event.target.files[0]);
-                                                                 output.style.width = "10.5rem";
-                                                                 output.style.height = "10.5rem";
-                                                                 output.onload = function () {
-                                                                 URL.revokeObjectURL(output.src) // free memory
-                                                                 }
-                                                         };                                             </script>
-                                        <c:if test="${editHostel.img4 != null}">
-                                            <a id="U4" class ="Url4" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url4">X</a>
+                                                 var loadFile4 = function (event) {
+                                                     var output = document.getElementById('Url4');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "10.5rem";
+                                                     output.style.height = "10.5rem";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };</script>
+                                             <c:if test="${editHostel.img4 != null}">
+                                             <a id="U4" class ="Url4" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url4">X</a>
                                         </c:if>
 
                                         <input type="file" accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
@@ -141,17 +142,17 @@
                                              <c:if test="${editHostel.img5 != null}">
                                                  src="${editHostel.img5}" </c:if>/>
                                              <script>
-                                                         var loadFile5 = function (event) {
-                                                         var output = document.getElementById('Url5');
-                                                                 output.src = URL.createObjectURL(event.target.files[0]);
-                                                                 output.style.width = "10.5rem";
-                                                                 output.style.height = "10.5rem";
-                                                                 output.onload = function () {
-                                                                 URL.revokeObjectURL(output.src) // free memory
-                                                                 }
-                                                         };                                             </script>
-                                        <c:if test="${editHostel.img5 != null}">
-                                            <a id="U5" class ="Url5" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url5">X</a>
+                                                 var loadFile5 = function (event) {
+                                                     var output = document.getElementById('Url5');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "10.5rem";
+                                                     output.style.height = "10.5rem";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };</script>
+                                             <c:if test="${editHostel.img5 != null}">
+                                             <a id="U5" class ="Url5" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url5">X</a>
                                         </c:if>
 
                                         <input type="file" accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
@@ -160,17 +161,17 @@
                                              <c:if test="${editHostel.img6 != null}">
                                                  src="${editHostel.img6}" </c:if>/>
                                              <script>
-                                                         var loadFile6 = function (event) {
-                                                         var output = document.getElementById('Url6');
-                                                                 output.src = URL.createObjectURL(event.target.files[0]);
-                                                                 output.style.width = "10.5rem";
-                                                                 output.style.height = "10.5rem";
-                                                                 output.onload = function () {
-                                                                 URL.revokeObjectURL(output.src) // free memory
-                                                                 }
-                                                         };                                             </script>
-                                        <c:if test="${editHostel.img6 != null}">
-                                            <a id="U6" class ="Url6" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url6">X</a>
+                                                 var loadFile6 = function (event) {
+                                                     var output = document.getElementById('Url6');
+                                                     output.src = URL.createObjectURL(event.target.files[0]);
+                                                     output.style.width = "10.5rem";
+                                                     output.style.height = "10.5rem";
+                                                     output.onload = function () {
+                                                         URL.revokeObjectURL(output.src) // free memory
+                                                     }
+                                                 };</script>
+                                             <c:if test="${editHostel.img6 != null}">
+                                             <a id="U6" class ="Url6" style="position: absolute; margin-left: calc(-1.5%); text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url6">X</a>
                                         </c:if>
                                     </div> 
                                     <div class="oriton_img"> 
@@ -290,222 +291,222 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-                                                         $(document).on('change', '.province', function () {
-                                                 var province = document.getElementById("province").value;
-                                                         $('#district').empty();
-                                                         $.ajax({
+                                                 $(document).on('change', '.province', function () {
+                                                     var province = document.getElementById("province").value;
+                                                     $('#district').empty();
+                                                     $.ajax({
                                                          type: "GET",
-                                                                 url: "/Test_1/findDistrict",
-                                                                 data: {
-                                                                 province: province,
-                                                                 },
-                                                                 headers: {
-                                                                 Accept: "application/json; charset=utf-8",
-                                                                         contentType: "application/json; charset=utf-8"
-                                                                 },
-                                                                 success: function (data) {
+                                                         url: "/Test_1/findDistrict",
+                                                         data: {
+                                                             province: province,
+                                                         },
+                                                         headers: {
+                                                             Accept: "application/json; charset=utf-8",
+                                                             contentType: "application/json; charset=utf-8"
+                                                         },
+                                                         success: function (data) {
 
-                                                                 data.forEach(function (a) {
+                                                             data.forEach(function (a) {
                                                                  $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-                                                                 });
-                                                                 },
-                                                                 error: function (e) {
-                                                                 console.log("ERROR: ", e);
-                                                                 }
-                                                         });
-                                                 });        </script>
+                                                             });
+                                                         },
+                                                         error: function (e) {
+                                                             console.log("ERROR: ", e);
+                                                         }
+                                                     });
+                                                 });</script>
         <script>
-                    $("#U1").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
+            $("#U1").click(function (event) {
+                event.preventDefault();
+                $.ajax({
                     url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.removeAttribute('src');
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
 
 
-                            }
-                    });
-                    return false; // for good measure
-            });
-                    $("#U2").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
-                    url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-
-
-                            }
-                    });
-                    return false; // for good measure
-            });
-                    $("#U3").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
-                    url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-
-
-                            }
-                    });
-                    return false; // for good measure
-            });
-                    $("#U4").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
-                    url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-
-
-                            }
-                    });
-                    return false; // for good measure
-            });
-                    $("#U5").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
-                    url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-
-
-                            }
-                    });
-                    return false; // for good measure
-            });
-                    $("#U6").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
-                    url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-
-
-                            }
-                    });
-                    return false; // for good measure
-            });        </script>
-        <script>
-                    function reset() {
-                    location.reload();
                     }
+                });
+                return false; // for good measure
+            });
+            $("#U2").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.removeAttribute('src');
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
+
+
+                    }
+                });
+                return false; // for good measure
+            });
+            $("#U3").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.removeAttribute('src');
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
+
+
+                    }
+                });
+                return false; // for good measure
+            });
+            $("#U4").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.removeAttribute('src');
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
+
+
+                    }
+                });
+                return false; // for good measure
+            });
+            $("#U5").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.removeAttribute('src');
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
+
+
+                    }
+                });
+                return false; // for good measure
+            });
+            $("#U6").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.removeAttribute('src');
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
+
+
+                    }
+                });
+                return false; // for good measure
+            });</script>
+        <script>
+            function reset() {
+                location.reload();
+            }
 
         </script>
 
         <script>
             function validateEditHostel() {
-            let isValid = true;
-                    const hostelName = document.edithostelForm.hostelName.value;
-                    const room = document.edithostelForm.room.value;
-                    const floor = document.edithostelForm.floor.value;
-                    const province = document.edithostelForm.province.value;
-                    const address = document.edithostelForm.address.value;
-                    const cost = document.edithostelForm.cost.value;
-                    const distance = document.edithostelForm.distance.value;
-                    const regex = /[+-]?([0-9]*[.])?[0-9]+/;
-                    const regex2 = /^[0-9]*$/;
-                    const success = document.getElementById('success');
-                    document.getElementById('errorName').innerText = ' ';
-                    document.getElementById('errorRoom').innerText = ' ';
-                    document.getElementById('errorFloor').innerText = ' ';
-                    document.getElementById('errorProvince').innerText = ' ';
-                    document.getElementById('errorAddress').innerText = ' ';
-                    document.getElementById('errorCost').innerText = ' ';
-                    document.getElementById('errorDistance').innerText = ' ';
-                    if (!hostelName) {
-            document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
+                let isValid = true;
+                const hostelName = document.edithostelForm.hostelName.value;
+                const room = document.edithostelForm.room.value;
+                const floor = document.edithostelForm.floor.value;
+                const province = document.edithostelForm.province.value;
+                const address = document.edithostelForm.address.value;
+                const cost = document.edithostelForm.cost.value;
+                const distance = document.edithostelForm.distance.value;
+                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex2 = /^[0-9]*$/;
+                const success = document.getElementById('success');
+                document.getElementById('errorName').innerText = ' ';
+                document.getElementById('errorRoom').innerText = ' ';
+                document.getElementById('errorFloor').innerText = ' ';
+                document.getElementById('errorProvince').innerText = ' ';
+                document.getElementById('errorAddress').innerText = ' ';
+                document.getElementById('errorCost').innerText = ' ';
+                document.getElementById('errorDistance').innerText = ' ';
+                if (!hostelName) {
+                    document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
                     isValid = false;
-            }
+                }
 
-            if (!room) {
-            document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
+                if (!room) {
+                    document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
                     isValid = false;
-            } else if (room <= 0) {
-            document.getElementById('errorRoom').innerText = 'Invalid!';
+                } else if (room <= 0) {
+                    document.getElementById('errorRoom').innerText = 'Invalid!';
                     isValid = false;
-            } else if (!regex2.test(room)) {
-            document.getElementById('errorRoom').innerText = 'Invalid!';
+                } else if (!regex2.test(room)) {
+                    document.getElementById('errorRoom').innerText = 'Invalid!';
                     isValid = false;
-            }
+                }
 
-            if (!floor) {
-            document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
+                if (!floor) {
+                    document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
                     isValid = false;
-            } else if (!regex2.test(floor)) {
-            document.getElementById('errorFloor').innerText = 'Invalid!';
+                } else if (!regex2.test(floor)) {
+                    document.getElementById('errorFloor').innerText = 'Invalid!';
                     isValid = false;
-            } else if (floor <= 0) {
-            document.getElementById('errorFloor').innerText = 'Invalid!';
+                } else if (floor <= 0) {
+                    document.getElementById('errorFloor').innerText = 'Invalid!';
                     isValid = false;
-            }
+                }
 
-            if (!province) {
-            document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+                if (!province) {
+                    document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
                     isValid = false;
-            }
+                }
 
-            if (!address) {
-            document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
+                if (!address) {
+                    document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
                     isValid = false;
-            }
+                }
 
-            if (!cost) {
-            document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
+                if (!cost) {
+                    document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
                     isValid = false;
-            } else if (!regex.test(cost)) {
-            document.getElementById('errorCost').innerText = 'Invalid!';
+                } else if (!regex.test(cost)) {
+                    document.getElementById('errorCost').innerText = 'Invalid!';
                     isValid = false;
-            } else if (cost <= 0) {
-            document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
+                } else if (cost <= 0) {
+                    document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
                     isValid = false;
-            }
+                }
 
-            if (!distance) {
-            document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
+                if (!distance) {
+                    document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
                     isValid = false;
-            } else if (!regex.test(distance)) {
-            document.getElementById('errorDistance').innerText = 'Invalid!';
+                } else if (!regex.test(distance)) {
+                    document.getElementById('errorDistance').innerText = 'Invalid!';
                     isValid = false;
-            } else if (distance <= 0) {
-            document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
+                } else if (distance <= 0) {
+                    document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
                     isValid = false;
-            }
+                }
 
-          
 
-            return isValid;
+
+                return isValid;
             }
         </script>
 
@@ -515,9 +516,9 @@
             crossorigin="anonymous">
         </script>
         <script>
-                    $(document).ready(function () {
-            $(".toast").toast({delay: 4000});
-                    $(".toast").toast("show");
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
             });
         </script>
     </body>
