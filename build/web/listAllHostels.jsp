@@ -86,13 +86,16 @@
                                     <div class="col-md-4 mr-5">
                                         <div class="d-flex">
                                             <span class="fs-4 mr-3">Giá: </span>
-                                            <span class="fs-4 mr-1">Từ: </span><input class="mr-1" type="text" name="under" value="${under}"> - <span class="fs-4 ml-1">Đến: </span><input type="text" name="upper" value="${upper}">
+                                            <span class="fs-4 mr-1">Từ: </span>
+                                            <input class="mr-1" type="text" name="under" value="${under}"> - 
+                                            <span class="fs-4 ml-1">Đến: </span>
+                                            <input type="text" name="upper" value="${upper}">
                                             <mark>${costReport}</mark>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <span class="fs-4">Khoảng cách: </span>
-                                        <select name="distance">
+                                        <select name="distance" class="p-2">
                                             <option value="6" <c:if test = "${distance == 10 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
@@ -112,7 +115,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <span class="fs-4">Xếp hạng: </span>
-                                        <select name="star">
+                                        <select name="star" class="p-2">
                                             <option value="6" <c:if test = "${star == 6 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
@@ -135,7 +138,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <input class="fs-4" type="submit" value="Tìm kiếm"> 
-                                        <a href="ResetSearchHostelsController?keywordHostel=${keywordHostel}">Xóa bộ lọc</a>
+                                        <a class="fs-4" href="ResetSearchHostelsController?keywordHostel=${keywordHostel}" style="text-decoration: none">Xóa bộ lọc</a>
                                     </div>
                                 </div>
                             </div>

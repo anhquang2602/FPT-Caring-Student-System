@@ -77,7 +77,7 @@
                                     </ul>
                                 </div>
                                 <div class="mb-3" style="text-align: end">
-                                    <a style="padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="AddRestaurantController">Thêm nhà hàng mới (+)</a>
+                                    <a style="font-size: 20px; padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="AddRestaurantController">Thêm nhà hàng mới (+)</a>
                                 </div>
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listRestaurant}" var="r" >

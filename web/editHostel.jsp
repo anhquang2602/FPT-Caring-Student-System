@@ -272,13 +272,13 @@
                                     <div class="error" id="errorDistance"></div>
                                     <div class="input_text"> 
                                         <strong class="fs-4">Mô tả</strong>  
-                                        <textarea name="description" rows="5" style="width: 100%; margin-top: 10px">
+                                        <textarea name="description" rows="5" style="width: 100%; margin-top: 10px" name="description">
                                             ${editHostel.description}
                                         </textarea>
                                     </div>
                                     <div class="pay"> 
                                         <button type="submit">Save</button> 
-                                        <button class="mt-5" type="reset">Reset</button>
+                                        <button style="margin-top: 5px" type="reset">Reset </button>
                                     </div>
                                 </div>
                             </form>
@@ -304,7 +304,6 @@
                                                                          contentType: "application/json; charset=utf-8"
                                                                  },
                                                                  success: function (data) {
-
                                                                  data.forEach(function (a) {
                                                                  $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
                                                                  });
@@ -326,8 +325,6 @@
                                     output.onload = function () {
                                     URL.revokeObjectURL(output.src) // free memory
                                     }
-
-
                             }
                     });
                     return false; // for good measure
@@ -343,8 +340,6 @@
                                     output.onload = function () {
                                     URL.revokeObjectURL(output.src) // free memory
                                     }
-
-
                             }
                     });
                     return false; // for good measure
@@ -360,8 +355,6 @@
                                     output.onload = function () {
                                     URL.revokeObjectURL(output.src) // free memory
                                     }
-
-
                             }
                     });
                     return false; // for good measure
@@ -377,8 +370,6 @@
                                     output.onload = function () {
                                     URL.revokeObjectURL(output.src) // free memory
                                     }
-
-
                             }
                     });
                     return false; // for good measure
@@ -394,8 +385,6 @@
                                     output.onload = function () {
                                     URL.revokeObjectURL(output.src) // free memory
                                     }
-
-
                             }
                     });
                     return false; // for good measure
@@ -411,8 +400,6 @@
                                     output.onload = function () {
                                     URL.revokeObjectURL(output.src) // free memory
                                     }
-
-
                             }
                     });
                     return false; // for good measure
@@ -421,7 +408,6 @@
                     function reset() {
                     location.reload();
                     }
-
         </script>
 
         <script>
@@ -448,7 +434,6 @@
             document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
                     isValid = false;
             }
-
             if (!room) {
             document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
                     isValid = false;
@@ -459,7 +444,6 @@
             document.getElementById('errorRoom').innerText = 'Invalid!';
                     isValid = false;
             }
-
             if (!floor) {
             document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
                     isValid = false;
@@ -470,17 +454,14 @@
             document.getElementById('errorFloor').innerText = 'Invalid!';
                     isValid = false;
             }
-
             if (!province) {
             document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
                     isValid = false;
             }
-
             if (!address) {
             document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
                     isValid = false;
             }
-
             if (!cost) {
             document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
                     isValid = false;
@@ -491,7 +472,6 @@
             document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
                     isValid = false;
             }
-
             if (!distance) {
             document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
                     isValid = false;
@@ -502,9 +482,7 @@
             document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
                     isValid = false;
             }
-
           
-
             return isValid;
             }
         </script>
@@ -523,4 +501,3 @@
     </body>
     <%@include file="/footer.jsp" %>
 </html>
-

@@ -16,17 +16,6 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/addHostelStyle.css">
         <link rel="stylesheet" href="css/commentStyle.css" />
-        <!--<<<<<<< HEAD
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
-        
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        
-        =======
-        >>>>>>> c11cc95c359b3d79763cd3c3d632379e08a3a4d6-->
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
@@ -75,9 +64,7 @@
                                 <li><a>Chi tiết nhà trọ</a></li>
                             </ul>
                         </div>
-
                         <div class="card">
-
                             <form class="form" method="POST" id="updateForm" action="edithostel"  name="edithostelForm" onsubmit="return validateEditHostel()">
                                 <div class="input_text" hidden>
                                     <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
@@ -85,25 +72,25 @@
                                 <div class="left-side">
                                     <div class="d-flex flex-column align-items-center text-center">
                                         <div class="form-group row"> 
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img1}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img1}" style="padding: 0px;" alt="">
                                             </div>
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img2}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img2}" style="padding: 0px;" alt="">
                                             </div>
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img3}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img3}" style="padding: 0px;" alt="">
                                             </div>
                                         </div>
                                         <div class="form-group row"> 
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img4}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img4}" style="padding: 0px;" alt="">
                                             </div>
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img5}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img5}" style="padding: 0px;" alt="">
                                             </div>
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img6}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img6}" style="padding: 0px;" alt="">
                                             </div>
                                         </div>
                                         <span class="font-weight-bold labels mt-5 fs-4" >
@@ -189,9 +176,8 @@
                                     </div>
                                 </div>
                             </form>
-
                         </div>
-                        <div class="row" style="background-color: #e9ecef" >
+                        <div class="row">
                             <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà trọ:</label>
                             <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
                             <c:if test="${listCmtHostelPaging  != null}">
@@ -230,7 +216,7 @@
                 </div>
             </div>
         </div>
-
+        <%@include file="/footer.jsp" %>                   
 
         <script>
             const allStars = document.querySelectorAll('.star');
@@ -365,5 +351,4 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     </body>
-    <%@include file="/footer.jsp" %>
 </html>
