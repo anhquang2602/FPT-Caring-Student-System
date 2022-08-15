@@ -78,6 +78,7 @@
                         <span>PHÒNG BAN</span>
                     </a> 
                 </li>
+                <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 4) {%>
                 <%}%>
             </ul>
         </div>

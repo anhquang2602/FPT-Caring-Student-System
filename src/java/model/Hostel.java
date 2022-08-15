@@ -122,9 +122,7 @@ public class Hostel {
         this.description = description;
     }
 
-    public Hostel(int aInt, String string, String string0, int aInt0, boolean aBoolean, int aInt1, String string1, String string2, String string3, String string4, double aDouble, double aDouble0, String string5, String string6, String string7, String string8, String string9, String string10, String string11) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ 
 
     public double getStarAVG() {
         return starAVG;

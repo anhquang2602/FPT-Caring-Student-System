@@ -257,16 +257,37 @@ public class ClubDAO extends DBContext {
                     + "   SET [EventName] =?\n"
                     + "      ,[Time] = ?\n"
                     + "      ,[Description] = ?\n"
-                    + " WHERE EventID = " + id + "";
+                    + "      ,[Url1] = ?\n"
+                    + " WHERE EventID = "+id+"";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, e.getEventName());
             statement.setString(2, e.getTime());
             statement.setString(3, e.getDes());
+            statement.setString(4, e.getUrl());
             statement.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public String getImgByEventName(String name) {
+        String img = null;
+        String sql = "SELECT [Url1]\n"
+                + "     \n"
+                + "  FROM EventOfClub where EventName = ?";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            st.setString(1, name);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                img = rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return img;
     }
 
     public static void main(String[] args) {
@@ -302,20 +323,20 @@ public class ClubDAO extends DBContext {
                     + "           ([ClubID]\n"
                     + "           ,[EventName]\n"
                     + "           ,[Time]\n"
-                    + "           ,[Description])\n"
-                    //                    + "           ,[Url1])\n"
+                    + "           ,[Description]\n"
+                    + "           ,[Url1])\n"
                     + "     VALUES\n"
                     + "           (?\n"
                     + "           ,?\n"
                     + "           ,?\n"
-                    //                    + "           ,?\n"
+                    + "           ,?\n"
                     + "           ,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, e.getClubID());
             statement.setString(2, e.getEventName());
             statement.setString(3, e.getTime());
             statement.setString(4, e.getDes());
-//            statement.setString(5, e.getUrl());
+            statement.setString(5, e.getUrl());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ClubDAO.class.getName()).log(Level.SEVERE, null, ex);

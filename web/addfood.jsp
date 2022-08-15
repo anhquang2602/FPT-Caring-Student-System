@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -25,6 +26,47 @@
         </style>
     </head>
     <body class="bg-white">
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Thêm Món Ăn Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Thêm món ăn thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+            <c:when test="${stt.equals('2')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Món Ăn Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Chỉnh sửa món ăn thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+            <c:when test="${stt.equals('3')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Xóa Món Ăn Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Xóa món ăn thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <div>
             <%@include file="/header.jsp" %> 
             <div class="d-flex nav-item main-home">
@@ -47,44 +89,41 @@
                                     <c:forEach items="${listFood}" var="food" >
                                         <div class="row p-2 bg-white border rounded" style="margin-top: 40px; margin-bottom: 40px;">
                                             <div class="col-md-3 mt-1">
-                                                
-                                                
-<!--                                                <img class="img-fluid img-responsive rounded product-image" src="${food.imageURL}">-->
-                                                
-                                                
-                                                 <img class="img-fluid img-responsive rounded product-image" 
-                                                        <c:if test="${food.imageURL != null}">
-                                                            src="${food.imageURL}" </c:if>
-                                                        <c:if test="${food.imageURL == null}">
-                                                            src="images/food.png" </c:if> >
-                                            
-                                            
-                                            </div>
-                                                
-                                                
-                                                
-                                            <div class="col-md-6 mt-1">
-                                                <label class="labels">${food.foodName}</label>
+
+                                                <img class="img-fluid img-responsive rounded product-image" 
+                                                     <c:if test="${food.imageURL != null && food.imageURL !=''}">
+                                                         src="${food.imageURL}" </c:if>
+                                                     <c:if test="${food.imageURL == null}">
+                                                         src="images/food.png" </c:if> 
+                                                     <c:if test="${food.imageURL == ''}">
+                                                         src="images/food.png" </c:if>     
+                                                         style="width: 150px; height: 150px">
+                                                </div>
 
 
+
+                                                <div class="col-md-6 mt-1">
+                                                    <label class="labels">${food.foodName}</label>
 
                                                 <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
                                             </div>
                                             <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                                 <div class="d-flex flex-row align-items-center">
-                                                    <h4 class="mr-1">${food.cost}00 VND</h4>
+
+                                                    <h4 class="mr-1"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${food.cost}" ></fmt:formatNumber> VND</h4>
+
                                                 </div>
                                                 <a class="btn btn-primary" href="EditFoodController?foodId=${food.foodID}" style="width: 110px">Chỉnh sửa</a> 
                                                 <a class="btn btn-danger" id="btnDelete" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>
 
-                                               <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 Xoá món ăn
                                                             </div>
                                                             <div class="modal-body">
-                                                                Bạn có chắc chắn muốn xoá nhà hàng này không?
+                                                                Bạn có chắc chắn muốn xoá món ăn này không?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
@@ -115,9 +154,9 @@
                                             <input type="file" accept="image/*" onchange="loadFile(event)" name ="foodImage" id="file1">
                                             <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 60px; opacity: 30%">+</label>
                                             <img id="output1" width="170px" height="170px"/>
-                                            
-                                            
-                                            
+
+
+
                                             <script>
                                                 var loadFile = function (event) {
                                                     var output = document.getElementById('output1');
@@ -125,8 +164,7 @@
                                                     output.onload = function () {
                                                         URL.revokeObjectURL(output1.src) // free memory
                                                     }
-                                                };
-                                            </script>
+                                                };</script>
                                             <div class="input_text"> <input type="text" name="foodName" placeholder="Nhập tên món ăn"> <span>Tên món ăn</span> </div>
                                             <div class="error" id="errorName"></div>
                                             <div class="input_text"> <input type="text" name="costFood" placeholder="Nhập giá dao động"> <span>Giá món ăn</span>
@@ -152,38 +190,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous">
         </script>
-        <script>
-            $(document).on('change', '.province', function () {
-                var province = document.getElementById("province").value;
-                $('#district').empty();
 
-
-                $.ajax({
-                    type: "GET",
-
-                    url: "/Test_1/findDistrict",
-                    data: {
-                        province: province,
-                    },
-                    headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
-                    },
-
-                    success: function (data) {
-
-                        data.forEach(function (a) {
-                            $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-
-                        });
-                    },
-                    error: function (e) {
-                        console.log("ERROR: ", e);
-                    }
-                });
-
-            });
-        </script>
         <script>
             function validateFood() {
                 let isValid = true;
@@ -211,12 +218,19 @@
                 return isValid;
             }
         </script>
-            <script>
-        $(document).on('click', '#btnDelete', function () {
-           var link = $(this).attr('data-href');
-            $('.btn-ok').attr('href', link );
-        });
-    </script>
+        <script>
+            $(document).on('click', '#btnDelete', function () {
+                var link = $(this).attr('data-href');
+                $('.btn-ok').attr('href', link);
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+            });
+        </script>
+
     </body>
     <%@include file="/footer.jsp" %>    
 </html>

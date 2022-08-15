@@ -8,6 +8,8 @@ package controller;
 import dao.ClubDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -15,6 +17,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import model.Event;
 
 /**
@@ -62,6 +66,16 @@ public class AddNewEvent extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+
+        String eventImgName;
+        Part part = request.getPart("eventImage");
+        String realPath1 = request.getServletContext().getRealPath("/eventImages");
+        String realPath = realPath1.replaceFirst("build", "");
+        //String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+        if (!Files.exists(Paths.get(realPath))) {
+            Files.createDirectories(Paths.get(realPath));
+        }
+
         String eventName = request.getParameter("eventName");
         String time = request.getParameter("time");
         String des = request.getParameter("des");
@@ -70,17 +84,27 @@ public class AddNewEvent extends HttpServlet {
         ArrayList<Event> events = clubDAO.getEventByEmail(username);
         int clubID = clubDAO.getClubIDByEmail(username);
         for (Event event : events) {
-            if(event.getEventName().equalsIgnoreCase(eventName)){
+            if (event.getEventName().equalsIgnoreCase(eventName)) {
                 request.setAttribute("errorEventName", "EventName already existed!");
                 request.getRequestDispatcher("addEvent.jsp").forward(request, response);
-            } 
+            }
         }
-                Event e = new Event(clubID, eventName, time, des);
-                clubDAO.addEvent(e);
-                request.setAttribute("eventName", eventName);
-                request.setAttribute("time", time);
-                request.setAttribute("des", des);
-                request.getRequestDispatcher("addEvent.jsp").forward(request, response);
+
+        if (part.getSize() == 0) {
+            eventImgName = null;
+        } else {
+            eventImgName = "eventImages/" + eventName + ".jpg";
+            part.write(realPath + "\\" + eventName + ".jpg");
+        }
+        Event e = new Event(clubID, eventName, time, des, eventImgName);
+        clubDAO.addEvent(e);
+        request.setAttribute("eventImage", eventImgName);
+        request.setAttribute("eventName", eventName);
+        request.setAttribute("time", time);
+        request.setAttribute("des", des);
+        HttpSession session = request.getSession();
+        session.setAttribute("stt", "1");
+        response.sendRedirect(request.getContextPath() + "/AllEventByClub");
     }
 
     /**

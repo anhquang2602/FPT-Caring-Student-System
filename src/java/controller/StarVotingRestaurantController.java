@@ -5,12 +5,19 @@
  */
 package controller;
 
+import com.google.gson.Gson;
+import dao.HostelDAO;
+import dao.RestaurantDAO;
+import dao.StarDAO;
+import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.StarVoting;
 
 /**
  *
@@ -70,8 +77,41 @@ public class StarVotingRestaurantController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+                PrintWriter out = response.getWriter();
+        int star = Integer.parseInt(request.getParameter("star"));
+        int resId = Integer.parseInt(request.getParameter("restaurantId"));
+        String comment = request.getParameter("message");
+
+        String json = new Gson().toJson(star);
+        StudentDAO stdao = new StudentDAO();
+
+        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
+
+        StarDAO dao = new StarDAO();
+
+        if (dao.getCommentRestaurantOfStudent(resId, studentNo) != null) {
+            dao.updateStarVotingRestaurant(dao.getCommentRestaurantOfStudent(resId, studentNo).getId(), star, comment);
+        }
+
+        dao.addStarVotingRestaurant(new StarVoting(studentNo, comment, resId, star));
+
+        ArrayList<StarVoting> sv = dao.getListCommentByRestaurant(resId);
+        if (!sv.isEmpty()) {
+
+            int count = 0;
+            double sum = 0;
+            for (StarVoting starVoting : sv) {
+                sum += starVoting.getStarvoting();
+                count++;
+            }
+            RestaurantDAO h = new RestaurantDAO();
+            h.updateStarAvgRestaurant(resId, (sum / count));
+
+        }
+
+        response.sendRedirect(request.getContextPath() + "/RestaurantListController?id=" + resId);
     }
+    
 
     /**
      * Returns a short description of the servlet.

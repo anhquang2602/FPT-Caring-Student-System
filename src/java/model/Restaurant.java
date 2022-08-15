@@ -26,7 +26,17 @@ public class Restaurant {
     private float distance;
     private String description;
     private String restaurantImage;
-    private float star;
+
+     private float starAVG;
+
+    public double getStarAVG() {
+        return starAVG;
+    }
+
+    public void setStarAVG(float starAVG) {
+        this.starAVG = starAVG;
+    }
+    
 
     public Restaurant() {
     }
@@ -179,10 +189,10 @@ public class Restaurant {
         this.cost = cost;
         this.distance = distance;
         this.description = description;
-        this.restaurantImage = restaurantImage;
+        this.restaurantImage=restaurantImage;
+        
     }
-
-    public Restaurant(int restaurantID, String restaurantName, String sellerName, String countryName, String provinceName, String districtName, String address, String cost, float distance, String description, String restaurantImage, float star) {
+    public Restaurant(int restaurantID, String restaurantName, String sellerName ,String countryName, String provinceName, String districtName, String address, String cost, float distance, String description,String restaurantImage, float starAVG ) {
         this.restaurantID = restaurantID;
         this.restaurantName = restaurantName;
         this.sellerName = sellerName;
@@ -193,8 +203,8 @@ public class Restaurant {
         this.cost = cost;
         this.distance = distance;
         this.description = description;
-        this.restaurantImage = restaurantImage;
-        this.star = star;
+        this.restaurantImage=restaurantImage;
+        this.starAVG = starAVG;
     }
 
     public Restaurant(int restaurantID, String restaurantName, int sellerID, int countryID, int provinceID, int districtID, String address, String cost, float distance, String description, String restaurantImage) {

@@ -5,6 +5,8 @@
  */
 package controller;
 
+import dao.StarDAO;
+import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -56,7 +58,19 @@ public class CommentRestaurantController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int resID = Integer.parseInt(request.getParameter("restaurantID"));
+        StarDAO dao = new StarDAO();
+        
+        StudentDAO stdao = new StudentDAO();
+        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
+        request.setAttribute("restaurantID", resID);
+        if(dao.getCommentRestaurantOfStudent(resID, studentNo)==null){
+            request.setAttribute("studentComment", null);
+        }else{
+            request.setAttribute("studentComment", dao.getCommentRestaurantOfStudent(resID, studentNo));
+        }
+        
+        request.getRequestDispatcher("commentRestaurant.jsp").forward(request, response);
     }
 
     /**

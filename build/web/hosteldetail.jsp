@@ -35,7 +35,6 @@
                 display: inline-block;
                 font-size: 15px;
             }
-
             .stars-inner {
                 position: absolute;
                 top: 0;
@@ -45,14 +44,12 @@
                 width: 0;
                 font-size: 15px;
             }
-
             .stars-outer::before {
                 content: "\f005 \f005 \f005 \f005 \f005";
                 font-family: "Font Awesome 5 Free";
                 font-weight: 900;
                 color: #ccc;
             }
-
             .stars-inner::before {
                 content: "\f005 \f005 \f005 \f005 \f005";
                 font-family: "Font Awesome 5 Free";
@@ -119,39 +116,11 @@
                                             <label>Chủ trọ:</label>
                                             <a href="ViewSellerController?id=${sellerId}" style="text-decoration: none" target="_blank">${hosteldetail.sellerName}</a>
                                         </span>
-                                        <c:forEach items="${listComment}" var="d" >
-                                            <div class="p-2">
-                                                <div class="d-flex flex-row user-info">
-                                                    <img class="rounded-circle" src="${d.studentAvatar}" width="40">
-                                                    <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">${d.studentName}</span><span class="date text-black-50">${d.date}</span></div>
-                                                </div>
-                                                <div class="sold_stars ml-auto">
-                                                    <c:forEach begin="1" end="${d.starvoting}" >
-                                                        <i class="fa fa-star"></i>      
-                                                    </c:forEach>
-                                                </div>
-                                                <div class="mt-2">
-                                                    <p class="comment-text">${d.message}</p>
-                                                </div>
-                                            </div>
-                                        </c:forEach>
-
-
-
-
-
-
-
-
-                                      
 
                                         <c:if test = "${isStudent == 1}">
                                             <a href="commentHostel?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
                                         </c:if>
 
-
-
-                               
                                     </div>
                                 </div>
                                 <div class="right-side">
@@ -266,7 +235,6 @@
         <script>
             const allStars = document.querySelectorAll('.star');
             let current_rating = document.querySelector('.current_rating');
-
             allStars.forEach((star, i) => {
                 star.onclick = function () {
                     let current_star_level = i + 1;
@@ -280,16 +248,13 @@
                     });
                 };
             });
-
         </script>                            
 
         <script>
             $("#star5").click(function () {
                 var hostelId = document.getElementById("hostelId").value;
-
                 $.ajax({
                     type: "GET",
-
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
@@ -299,9 +264,7 @@
                         Accept: "application/json; charset=utf-8",
                         contentType: "application/json; charset=utf-8"
                     },
-
                     success: function (data) {
-
                         alert(data);
                     },
                     error: function (e) {
@@ -313,7 +276,6 @@
                 var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
                     type: "GET",
-
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
@@ -323,9 +285,7 @@
                         Accept: "application/json; charset=utf-8",
                         contentType: "application/json; charset=utf-8"
                     },
-
                     success: function (data) {
-
                         alert(data);
                     },
                     error: function (e) {
@@ -337,7 +297,6 @@
                 var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
                     type: "GET",
-
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
@@ -347,9 +306,7 @@
                         Accept: "application/json; charset=utf-8",
                         contentType: "application/json; charset=utf-8"
                     },
-
                     success: function (data) {
-
                         alert(data);
                     },
                     error: function (e) {
@@ -361,7 +318,6 @@
                 var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
                     type: "GET",
-
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
@@ -371,9 +327,7 @@
                         Accept: "application/json; charset=utf-8",
                         contentType: "application/json; charset=utf-8"
                     },
-
                     success: function (data) {
-
                         alert(data);
                     },
                     error: function (e) {
@@ -385,7 +339,6 @@
                 var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
                     type: "GET",
-
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
@@ -395,9 +348,7 @@
                         Accept: "application/json; charset=utf-8",
                         contentType: "application/json; charset=utf-8"
                     },
-
                     success: function (data) {
-
                         alert(data);
                     },
                     error: function (e) {
@@ -405,8 +356,6 @@
                     }
                 });
             });
-
-
         </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -19,6 +19,38 @@
         <link rel="stylesheet" href="css/sellerStyle.css">
     </head>
     <body>
+
+
+
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Thêm Nhà Trọ Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Thêm nhà trọ thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+            <c:when test="${stt.equals('2')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Xóa Nhà Trọ Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Xóa nhà trọ thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
+
         <%@include file="/header.jsp" %>
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -41,19 +73,7 @@
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listH}" var="d" >
                                         <li class="list-group-item">
-<!--<<<<<<< HEAD
-                                            <div class="media align-items-lg-center flex-column flex-lg-row p-1">
-                                                <div class="media-body order-2 order-lg-1 description" id="description">
-                                                    <h4 class="mt-0 font-weight-bold mb-3">
-                                                        <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
-                                                    </h4>
 
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Có ${d.totalRoom} phòng</p>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê:  <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VNĐ</p>
-
-                                                </div>
-                                                <div class="media-body order-2 order-lg-1 image">
-=======-->
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-4">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
 
@@ -61,16 +81,8 @@
                                                             src="${d.img1}" </c:if>
                                                         <c:if test="${d.img1 == null}">
                                                             src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
-<!--<<<<<<< HEAD
 
-                                                         style="width: 150px; height: 150px" >
-                                                </div>
-                                                <a class="btn btn-primary" href="ChartVoteController?hostelId=${d.hostelID}" style="margin-left: 700px">Xem Biểu Đồ</a> 
-                                                <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="margin-left: 700px">Chỉnh sửa</a> 
 
-                                                <a class="btn btn-danger" id="btnDelete" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
-=======-->
-                                                            
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
                                                         <h4 class="mt-0 font-weight-bold mb-3">
@@ -78,13 +90,14 @@
                                                     </h4>
                                                     <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
                                                     <p style="font-size: 20px">Giá thuê: <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VND</p>
-                                                </div>
+                                                    </div>
 
-                                                <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit">
-                                                    <a class="btn btn-danger" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
+                                                    <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit">
+                                                        <a class="btn btn-danger" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
                                                     <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="">Chỉnh sửa</a> 
                                                     <a class="btn btn-secondary" id="btnDelete" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
                                                 </div>
+
 
 
                                                 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -99,7 +112,9 @@
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
                                                                 <a class="btn btn-danger btn-ok">Xoá</a>
+
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -113,18 +128,24 @@
                 </div>
             </div>
             <%@include file="/footer.jsp" %>
-            
+
         </div>
+        <script>
+            //        $('#confirm-delete').on('show.bs.modal', function (e) {
+            //            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            //        });
+            $(document).on('click', '#btnDelete', function () {
+                var link = $(this).attr('data-href');
+                $('.btn-ok').attr('href', link);
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+            });
+        </script>
     </body>
-    <script>
-//        $('#confirm-delete').on('show.bs.modal', function (e) {
-//            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-//        });
-        $(document).on('click', '#btnDelete', function () {
-           var link = $(this).attr('data-href');
-            $('.btn-ok').attr('href', link );
-        });
-    </script>
+
 
 </html>
-

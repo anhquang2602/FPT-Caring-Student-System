@@ -37,7 +37,7 @@ public class RestaurantDAO extends DBContext {
 
     public boolean createRestaurant(String restaurantName, int sellerID, int countryID, int provinceID, int districtID, String address, String cost, float distance, String description, String restaurantImage) {
         try {
-            String sql = "INSERT INTO Restaurants (RestaurantName,SellerID,CountryID,ProvinceID,DistrictID,AddressDetail,Cost,Distance,Descriptions,RestaurantImage) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Restaurants (RestaurantName,SellerID,CountryID,ProvinceID,DistrictID,AddressDetail,Cost,Distance,Descriptions,RestaurantImage,StarVoting) VALUES (?,?,?,?,?,?,?,?,?,?,0)";
             stm = connection.prepareStatement(sql);
             stm.setString(1, restaurantName);
             stm.setInt(2, sellerID);
@@ -49,6 +49,7 @@ public class RestaurantDAO extends DBContext {
             stm.setFloat(8, distance);
             stm.setString(9, description);
             stm.setString(10, restaurantImage);
+
             stm.executeUpdate();
             System.out.println(sql);
             System.out.println("Insert OK");
@@ -567,13 +568,46 @@ public class RestaurantDAO extends DBContext {
         return restaurant;
     }
 
-    public int getTotalPage(ArrayList<Restaurant> restaurants, double distance,float star) {
-        restaurants = listAllRes(distance,star);
+    public int getTotalPage(ArrayList<Restaurant> restaurants, double distance, float star) {
+        restaurants = listAllRes(distance, star);
         int totalPage = restaurants.size() / 6;
         if (restaurants.size() % 6 != 0) {
             totalPage++;
         }
         return totalPage;
+
+    }
+
+    public void updateStarAvgRestaurant(int resID, double starAVG) {
+        try {
+
+            String sql = "UPDATE [dbo].[Restaurants]\n"
+                    + "   SET [StarVoting] = ?\n"
+                    + " WHERE RestaurantID = ? ";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setDouble(1, starAVG);
+            statement.setInt(2, resID);
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public int getSellerIdByRestaurantId(int restaurantID) {
+        String sql = "select SellerID from Restaurants where RestaurantID=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, restaurantID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return 0;
 
     }
 

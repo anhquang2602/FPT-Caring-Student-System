@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Hostel;
 
 /**
@@ -58,6 +59,8 @@ public class DeleteHostel extends HttpServlet {
         dao1.deleteVoteHostel(hostelID);
         dao.deleteHostel(hostelID);
         if (role == 3) {
+            HttpSession session = request.getSession();
+              session.setAttribute("stt", "2");
             response.sendRedirect(request.getContextPath() + "/hostellist");
         } else if (role == 1) {
             response.sendRedirect(request.getContextPath() + "/ListAllReportHostelController");
