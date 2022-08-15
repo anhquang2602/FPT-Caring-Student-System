@@ -20,6 +20,7 @@ public abstract class DBContext {
     protected Connection connection;
 
 
+
 //    public DBContext() {
 //        try {
 //
@@ -66,6 +67,7 @@ public abstract class DBContext {
             String url = "jdbc:sqlserver://DESKTOP-PV3034R\\SQLEXPRESS:1433;databaseName=FCS";
             String user = "sa";
             String pass = "12345";
+
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException | SQLException ex) {
@@ -73,6 +75,7 @@ public abstract class DBContext {
         }
     }
 }
+
 //       public DBContext() {
 //        try {
 //
@@ -89,5 +92,6 @@ public abstract class DBContext {
 //            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
+
 
 
