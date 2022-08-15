@@ -154,7 +154,8 @@ public class UpdateSellerProfile extends HttpServlet {
                 session.setAttribute("stt", "1");
 //                request.setAttribute("UpdateProcess", "Update successfully");
 //                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
-                response.sendRedirect(request.getContextPath() + "/UpdateSellerProfile");
+             //    request.getRequestDispatcher("home.jsp").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "/home" );
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");
@@ -182,8 +183,8 @@ public class UpdateSellerProfile extends HttpServlet {
                
             if (sdb.updateSellerProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
-                request.setAttribute("UpdateProcess", "Update successfully");
-                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+                session.setAttribute("stt", "1");
+                response.sendRedirect(request.getContextPath() + "/home");
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");

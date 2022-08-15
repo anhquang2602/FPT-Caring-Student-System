@@ -17,6 +17,21 @@
         <link rel="stylesheet" href="css/style1.css">
     </head>
     <body>
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Hồ Sơ Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Chỉnh sửa hồ sơ thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <%@include file="/header.jsp" %>  
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -62,5 +77,10 @@
         <script src="js/popper.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+            });</script>
     </body>
 </html>

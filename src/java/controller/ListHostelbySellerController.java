@@ -14,6 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Hostel;
 
 /**
@@ -50,6 +51,7 @@ public class ListHostelbySellerController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HostelDAO dao = new HostelDAO();
+         HttpSession session = request.getSession();
 
 //        Cookie[] arr = request.getCookies();
 //        String sellerID = "";
@@ -68,6 +70,7 @@ public class ListHostelbySellerController extends HttpServlet {
 
         request.setAttribute("listH", h);
         request.getRequestDispatcher("listHostelbySeller.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**

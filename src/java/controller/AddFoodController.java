@@ -7,7 +7,6 @@ package controller;
 
 import dao.RestaurantDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -65,7 +64,7 @@ public class AddFoodController extends HttpServlet {
         request.setAttribute("listFood", listFood);
         request.setAttribute("restaurant", restaurant);
         //  request.setAttribute("food", food);
-        request.getRequestDispatcher("addFood.jsp").forward(request, response);
+        request.getRequestDispatcher("addfood.jsp").forward(request, response);
         session.removeAttribute("stt");
     }
 

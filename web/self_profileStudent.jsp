@@ -20,7 +20,7 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <form action="UpdateStudentProfile" enctype="multipart/form-data"  method="post" name="updateStudentForm">
+                <form action="UpdateStudentProfile" enctype="multipart/form-data"  method="post" name="updateStudentForm" onsubmit="return checkSend()">
                     <div class="container rounded bg-white mt-5 mb-5">
                         <div class="row">
                             <div>
@@ -50,10 +50,13 @@
                                         <div class="col-md-6"><label class="labels">Last Name</label><input type="text" name="lastName" class="form-control" value="${student.lastName}" ></div>
                                         <div class="col-md-6"><label class="labels">StudentID</label><input type="text" name="studentId" class="form-control" value="${student.studentID}" ></div>
                                         <div class="col-md-6"><label class="labels">Unit</label><input type="text" name="unit" class="form-control" value="${student.unit}" ></div>
+                                        <div id="divCheckUnit"></div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12"><label class="labels">Age</label><input type="number" name="age" class="form-control"value="${student.age}" ></div>
+                                        <div id="divCheckAge"></div>
                                         <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" value="${student.phone}" ></div>
+                                        <div id="divCheckPhone"></div>
                                         <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" readonly="" value="${student.email}" ></div>
                                         <div class="col-md-12"><label class="labels">Link Facebook</label><input type="text" class="form-control" name="linkFb" value="${student.linkFb}" ></div>
                                         <div class="col-md-12"><label class="labels">Sex</label></br>
@@ -90,8 +93,8 @@
                                     <div class="col-md-12"><label class="labels">Address Detail</label><input type="text" name="addressDetail" class="form-control"value="${student.address}" ></div>
                                 </div>
                                 <div class="mt-5 text-center">
-                                    <button onclick="tai_lai_trang()">re load</button>
-                                    <button class="btn btn-primary profile-button" type="submit" >Save Profile</button>
+                                    
+                                    <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateStudentProfile()">Save Profile</button>
                                 </div>
                                 <label class="labels">${UpdateError}</label>
                                 <label class="labels">${UpdateProcess}</label>
@@ -104,12 +107,7 @@
 </div>
 </body>
 <script src="validator/Validator.js"></script>
-<script>
-        function tai_lai_trang(){
-                   var img = document.getElementById('output').src;
-                   
-        }
-</script>
+
 <script>
         // Create a timestamp
         var timestamp = new Date().getTime();
@@ -195,7 +193,7 @@ crossorigin="anonymous"></script>
 <script>
         function validateUpdateStudent() {
             let isValid = true;
-            const province = document.updateStudentForm.province.value;
+            const phone = document.updateStudentForm.province.value;
             document.getElementById('errorProvince').innerText = ' ';
             if (!province) {
                 document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
