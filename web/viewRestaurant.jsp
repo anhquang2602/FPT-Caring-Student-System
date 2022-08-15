@@ -20,6 +20,58 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/commentStyle.css" />
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .dialog {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity linear 0.2s;
+            }
+
+            .overlay-close {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                cursor: default;
+            }
+
+            .dialog:target {
+                visibility: visible;
+                opacity: 1;
+            }
+
+
+            .overlay {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+            .dialog-body {
+                max-width: 400px;
+                position: relative;
+                padding: 16px;
+                background-color: #fff;
+            }
+
+            .dialog-close-btn {
+                position: absolute;
+                top: 2px;
+                right: 6px;
+                text-decoration: none;
+                color: #333;
+            }
             .labels{
                 font-weight: 800;
             }
@@ -54,6 +106,8 @@
                 font-family: "Font Awesome 5 Free";
                 font-weight: 900;
                 color: #f8ce0b;
+
+
             </style>
         </head>
         <body class="bg-white">
@@ -98,49 +152,66 @@
                                         </div> 
                                     </div>
                                     <div class="right-side">
+<!--<<<<<<< HEAD
                                         <h3>Mô tả nhà hàng</h3>    
                                         <div class="col mt-5 thumbnail"z>
                                             <img src="${restaurant.restaurantImage}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt=""><br>    
                                                 <div class="stars-outer mb-5"> 
                                                     <div class="stars-inner" style="width: ${restaurant.starAVG}%"> </div>
+=======-->
+                                        <h3>Mô tả nhà hàng<a href="#ReportRestaurantController?id=${restaurant.restaurantID}" class="dialog-btn"><img style="float: right; height: 40px " src="images/flag.png" >
+                                                    </h3>    
+                                                <div class="dialog overlay" id="ReportRestaurantController?id=${restaurant.restaurantID}">
+                                                    <a href="#" class="overlay-close"></a>
+
+                                                    <div class="dialog-body">
+                                                        <a class="dialog-close-btn" href="#">&times;</a>
+                                                        <%@include file="/reportRestaurant.jsp" %>
+                                                    </div>
+
                                                 </div>
-                                            </div>  
-                                            <div class="col-md-12">
-                                                <label class="labels" >Chủ nhà ăn : </label>
-                                                <br>
-                                                <a href="ViewSellerController?id=${sellerId}" style="text-decoration: none" target="_blank">${restaurant.sellerName}</a>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="labels">Tên nhà hàng</label>
-                                                <input type="text" class="form-control" value="${restaurant.restaurantName}" readonly="">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="labels">Tỉnh, Thành phố</label>
-                                                <input type="text" class="form-control" value="${restaurant.provinceName}" readonly="">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="labels">Quận, Huyện</label>
-                                                <input type="text" class="form-control" value="${restaurant.districtName}" readonly="">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="labels">Địa chỉ</label>
-                                                <input type="text" class="form-control" value="${restaurant.address}" readonly="">
-                                            </div>                                    
-                                            <div class="col-md-12">
-                                                <label class="labels">Giá chung</label>
-                                                <input type="text" class="form-control" value="${restaurant.cost} VND" readonly="">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="labels">Khoảng cách</label>
-                                                <input type="text" class="form-control" value="${restaurant.distance}" readonly="">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="labels">Mô tả</label>
-                                                <textarea class="form-control" readonly="" rows="5  ">${restaurant.description}</textarea>
-                                            </div>
-                                            <c:if test = "${isStudent == 1}">
-                                                <a href="commentRestaurant?restaurantID=${restaurant.restaurantID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
-                                            </c:if>
+                                                <div class="col mt-5 thumbnail">
+                                                    <img src="${restaurant.restaurantImage}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt=""><br>    
+                                                    <div class="stars-outer mb-5"> 
+                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}%"> </div>
+                                                    </div>
+                                                </div>  
+                                                <div class="col-md-12">
+                                                    <label class="labels" >Chủ nhà ăn : </label>
+                                                    <br>
+                                                    <a href="ViewSellerController?id=${sellerId}" style="text-decoration: none" target="_blank">${restaurant.sellerName}</a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="labels">Tên nhà hàng</label>
+                                                    <input type="text" class="form-control" value="${restaurant.restaurantName}" readonly="">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="labels">Tỉnh, Thành phố</label>
+                                                    <input type="text" class="form-control" value="${restaurant.provinceName}" readonly="">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="labels">Quận, Huyện</label>
+                                                    <input type="text" class="form-control" value="${restaurant.districtName}" readonly="">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="labels">Địa chỉ</label>
+                                                    <input type="text" class="form-control" value="${restaurant.address}" readonly="">
+                                                </div>                                    
+                                                <div class="col-md-12">
+                                                    <label class="labels">Giá chung</label>
+                                                    <input type="text" class="form-control" value="${restaurant.cost} VND" readonly="">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="labels">Khoảng cách</label>
+                                                    <input type="text" class="form-control" value="${restaurant.distance}" readonly="">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="labels">Mô tả</label>
+                                                    <textarea class="form-control" readonly="" rows="5  ">${restaurant.description}</textarea>
+                                                </div>
+                                                <c:if test = "${isStudent == 1}">
+                                                    <a href="commentRestaurant?restaurantID=${restaurant.restaurantID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
+                                                </c:if>
                                         </div>
                                     </form>
                                     <div class="row" style="background-color: #e9ecef" >
