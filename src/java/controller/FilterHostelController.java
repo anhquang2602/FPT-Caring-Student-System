@@ -74,7 +74,8 @@ public class FilterHostelController extends HttpServlet {
             totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
             hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
         } else {
-            hostels = hostelDAO.getlHostelByName(keywordHostel);
+            totalPage = hostelDAO.getTotalPageTextByFilter(hostels, keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
+            hostels = hostelDAO.filterHostelTextPagging(keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
         }
 //        totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
 //        hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
@@ -83,6 +84,7 @@ public class FilterHostelController extends HttpServlet {
         request.setAttribute("distance", distance);
         request.setAttribute("under", costUnder);
         request.setAttribute("upper", costUpper);
+        request.setAttribute("keywordHostel", keywordHostel);
         request.getRequestDispatcher("listAllHostels.jsp").forward(request, response);
     }
 
@@ -102,29 +104,42 @@ public class FilterHostelController extends HttpServlet {
         String index = request.getParameter("index");
         if (index == null) {
             index = "1";
-
         }
         HostelDAO hostelDAO = new HostelDAO();
-        ArrayList<Hostel> hostels = new ArrayList<Hostel>();
+        ArrayList<Hostel> hostels = hostelDAO.listAllHostelPagging(Integer.parseInt(index));
         String costUnder = request.getParameter("under");
         String costUpper = request.getParameter("upper");
         String distance = request.getParameter("distance");
+        String keywordHostel = request.getParameter("keywordHostel");
+        String star = request.getParameter("star");
         int totalPage = 0;
-        if (costUnder.isEmpty() || costUnder.equals("")) {
+        if (costUnder == null || costUnder.equals("")) {
             costUnder = "0";
         }
-        if (costUpper.isEmpty() || costUpper.equals("")) {
+        if (costUpper == null || costUpper.equals("")) {
             costUpper = String.valueOf(hostelDAO.getMaxCost());
         }
-        totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
-        hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
-        String keywordRestaurant = request.getParameter("keywordRestaurant");
-
+        if (distance == null || distance.equals("")) {
+            distance = "6";
+        }
+        if (star == null || star.equals("")) {
+            star = "6";
+        }
+        if (keywordHostel == null ||keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
+            totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
+            hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
+        } else {
+            totalPage = hostelDAO.getTotalPageTextByFilter(hostels, keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
+            hostels = hostelDAO.filterHostelTextPagging(keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
+        }
+//        totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
+//        hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
         request.setAttribute("totalPage", totalPage);
         request.setAttribute("hostels", hostels);
         request.setAttribute("distance", distance);
         request.setAttribute("under", costUnder);
         request.setAttribute("upper", costUpper);
+        request.setAttribute("keywordHostel", keywordHostel);
         request.getRequestDispatcher("listAllHostels.jsp").forward(request, response);
     }
 

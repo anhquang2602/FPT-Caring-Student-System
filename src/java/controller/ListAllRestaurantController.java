@@ -39,7 +39,7 @@ public class ListAllRestaurantController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListAllRestaurantController</title>");            
+            out.println("<title>Servlet ListAllRestaurantController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListAllRestaurantController at " + request.getContextPath() + "</h1>");
@@ -60,25 +60,22 @@ public class ListAllRestaurantController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         RestaurantDAO dao = new RestaurantDAO();
-        String indexPage= request.getParameter("index");
-         if(indexPage==null){
-            indexPage ="1";
+        String indexPage = request.getParameter("index");
+        if (indexPage == null) {
+            indexPage = "1";
         }
         int index = Integer.parseInt(indexPage);
- 
-        int total = dao.getTotalRestaurant();
-        int endPage = total / 6;
-        if (total % 6 != 0) {
-            endPage++;
-        }
-        ArrayList<Restaurant> restaurant = dao.listAllRestaurant(index);
-        request.setAttribute("listRestaurant", restaurant);
-        request.setAttribute("endP", endPage);
-        request.setAttribute("tag", index);
+
+        int totalPage = dao.getTotalPage("", dao.listAllRes());
+        ArrayList<Restaurant> restaurants = dao.listAllRestaurant(index);
+        request.setAttribute("restaurants", restaurants);
+//        request.setAttribute("endP", endPage);
+//        request.setAttribute("tag", index);
+        request.setAttribute("totalPage", totalPage);
         request.getRequestDispatcher("listAllRestaurant.jsp").forward(request, response);
-       session.removeAttribute("stt");
+        session.removeAttribute("stt");
     }
 
     /**

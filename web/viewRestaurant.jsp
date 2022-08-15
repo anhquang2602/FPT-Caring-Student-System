@@ -17,18 +17,7 @@
         <link rel="stylesheet" href="css/addHostelStyle.css">
         <link rel="stylesheet" href="css/hostelStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
-        <style>
-            .labels{
-                font-weight: 800;
-            }
-            .error {
-                color: red;
-            }
-            .message {
-                color: green;
-
-            }
-        </style>
+        
     </head>
     <body class="bg-white">
         <div class="px-0">
@@ -56,29 +45,14 @@
                                     <h3>Menu nhà hàng</h3>
                                     <div class="mt-5">
 
-                                        <!--                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
-                                                                                <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
-                                                                                <img id="Url1" name="Url1" width="170px" height="170px"
-                                        <c:if test="${editHostel.img1 != null}">
-                                            src="${editHostel.img1}" </c:if>/>
-                                        <script>
-                                            var loadFile = function (event) {
-                                                var output = document.getElementById('Url1');
-                                                output.src = URL.createObjectURL(event.target.files[0]);
-                                                output.style.width = "170px";
-                                                output.style.height = "170px";
-                                                output.onload = function () {
-                                                    URL.revokeObjectURL(output.src) // free memory
-                                                }
-                                            };
-                                        </script>
                                         <c:if test="${editHostel.img1 != null}">
                                             <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
-                                        </c:if>   -->
+                                        </c:if>   
 
                                         <c:forEach items="${listFood}" var="food" >
+
                                             <div class="row p-2 bg-white border rounded" style="margin-top: -40px; margin-bottom: 80px;">
-                                                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"></div>
+                                                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="${food.imageURL}"></div>
                                                 <div class="col-md-6 mt-1">
                                                     <label class="labels">${food.foodName}</label>
 
@@ -88,9 +62,8 @@
                                                 </div>
                                                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                                     <div class="d-flex flex-row align-items-center">
-                                                        <h4 class="mr-1">${food.cost} VND</h4>
-                                                    </div>
-                                                    <!--                                                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Details</button><button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button></div>-->
+                                                        <h4 class="mr-1">${food.cost} VND</h4> </div>
+
                                                 </div>
                                             </div>
                                         </c:forEach>
@@ -101,287 +74,290 @@
                                 </div>
 
                                 <div class="right-side">
-                                    <h3>Mô tả nhà hàng</h3> 
-                               
-                                                <div class="col mt-5 thumbnail">
-                                                    <img src="${viiewRestaurant.img1}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt="">
-                                                </div> 
-                                                <div class="col-md-12">
-                                                    <label class="labels">Tên nhà hàng</label>
-                                                    <input type="text" class="form-control" value="${restaurant.restaurantName}" readonly="">
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label class="labels">Tỉnh, Thành phố</label>
-                                                    <input type="text" class="form-control" value="${restaurant.provinceName}" readonly="">
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label class="labels">Quận, Huyện</label>
-                                                    <input type="text" class="form-control" value="${restaurant.districtName}" readonly="">
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label class="labels">Địa chỉ</label>
-                                                    <input type="text" class="form-control" value="${restaurant.address}" readonly="">
-                                                </div>                                    
-                                                <div class="col-md-12">
-                                                    <label class="labels">Giá chung</label>
-                                                    <input type="text" class="form-control" value="${restaurant.cost } VND" readonly="">
-                                                    
-                                                    
-                                                </div>
 
-                                                <div class="col-md-12">
-                                                    <label class="labels">Khoảng cách</label>
-                                                    <input type="text" class="form-control" value="${restaurant.distance}" readonly="">
-                                                </div>
+                                    <h3>Mô tả nhà hàng <a href="ReportRestaurantController?id=${restaurant.restaurantID}"><img style="float: right; height: 50px " src="images/report.png" >
+                                            </h3></a>
 
+                                    <div class="col mt-5 thumbnail">
+                                        <img src="${restaurant.restaurantImage}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt="">
 
-                                                <div class="col-md-12">
-                                                    <label class="labels">Mô tả</label>
-                                                    <textarea class="form-control" readonly="" rows="5  ">${restaurant.description}</textarea>
-                                                </div>
+                                    </div>       
 
-                                                </div>
-                                                </form>
-                                                </div>
-                                                </div>
-                                                </div>
-                                                </div>
-                                                </div>
+                                    <div class="col-md-12">
+                                        <label class="labels">Tên nhà hàng</label>
+                                        <input type="text" class="form-control" value="${restaurant.restaurantName}" readonly="">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="labels">Tỉnh, Thành phố</label>
+                                        <input type="text" class="form-control" value="${restaurant.provinceName}" readonly="">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="labels">Quận, Huyện</label>
+                                        <input type="text" class="form-control" value="${restaurant.districtName}" readonly="">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="labels">Địa chỉ</label>
+                                        <input type="text" class="form-control" value="${restaurant.address}" readonly="">
+                                    </div>                                    
+                                    <div class="col-md-12">
+                                        <label class="labels">Giá chung</label>
+                                        <input type="text" class="form-control" value="${restaurant.cost} VND" readonly="">
+                                    </div>
 
-                                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                                                <script>
-                                                            $(document).on('change', '.province', function () {
-                                                    var province = document.getElementById("province").value;
-                                                            $('#district').empty();
-                                                            $.ajax({
-                                                            type: "GET",
-                                                                    url: "/Test_1/findDistrict",
-                                                                    data: {
-                                                                    province: province,
-                                                                    },
-                                                                    headers: {
-                                                                    Accept: "application/json; charset=utf-8",
-                                                                            contentType: "application/json; charset=utf-8"
-                                                                    },
-                                                                    success: function (data) {
-
-                                                                    data.forEach(function (a) {
-                                                                    $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-                                                                    });
-                                                                    },
-                                                                    error: function (e) {
-                                                                    console.log("ERROR: ", e);
-                                                                    }
-                                                            });
-                                                    });</script>
-                                                <script>
-                                                            $("#U1").click(function (event) {
-                                                    event.preventDefault();
-                                                            $.ajax({
-                                                            url: $(this).attr('href'),
-                                                                    success: function (response) {
-                                                                    var output = document.getElementById(response);
-                                                                            output.src = '';
-                                                                            output.style.width = "0px"
-                                                                            $("." + response).remove();
-                                                                            output.onload = function () {
-                                                                            URL.revokeObjectURL(output.src) // free memory
-                                                                            }
+                                    <div class="col-md-12">
+                                        <label class="labels">Khoảng cách</label>
+                                        <input type="text" class="form-control" value="${restaurant.distance}" readonly="">
+                                    </div>
 
 
-                                                                    }
-                                                            });
-                                                            return false; // for good measure
-                                                    });
-                                                            $("#U2").click(function (event) {
-                                                    event.preventDefault();
-                                                            $.ajax({
-                                                            url: $(this).attr('href'),
-                                                                    success: function (response) {
-                                                                    var output = document.getElementById(response);
-                                                                            output.src = '';
-                                                                            output.style.width = "0px"
-                                                                            $("." + response).remove();
-                                                                            output.onload = function () {
-                                                                            URL.revokeObjectURL(output.src) // free memory
-                                                                            }
+                                    <div class="col-md-12">
+                                        <label class="labels">Mô tả</label>
+                                        <textarea class="form-control" readonly="" rows="5  ">${restaurant.description}</textarea>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-                                                                    }
-                                                            });
-                                                            return false; // for good measure
-                                                    });
-                                                            $("#U3").click(function (event) {
-                                                    event.preventDefault();
-                                                            $.ajax({
-                                                            url: $(this).attr('href'),
-                                                                    success: function (response) {
-                                                                    var output = document.getElementById(response);
-                                                                            output.src = '';
-                                                                            output.style.width = "0px"
-                                                                            $("." + response).remove();
-                                                                            output.onload = function () {
-                                                                            URL.revokeObjectURL(output.src) // free memory
-                                                                            }
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).on('change', '.province', function () {
+                var province = document.getElementById("province").value;
+                $('#district').empty();
+                $.ajax({
+                    type: "GET",
+                    url: "/Test_1/findDistrict",
+                    data: {
+                        province: province,
+                    },
+                    headers: {
+                        Accept: "application/json; charset=utf-8",
+                        contentType: "application/json; charset=utf-8"
+                    },
+                    success: function (data) {
+
+                        data.forEach(function (a) {
+                            $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+                        });
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
+            });</script>
+        <script>
+            $("#U1").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.src = '';
+                        output.style.width = "0px"
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
 
 
-                                                                    }
-                                                            });
-                                                            return false; // for good measure
-                                                    });
-                                                            $("#U4").click(function (event) {
-                                                    event.preventDefault();
-                                                            $.ajax({
-                                                            url: $(this).attr('href'),
-                                                                    success: function (response) {
-                                                                    var output = document.getElementById(response);
-                                                                            output.src = '';
-                                                                            output.style.width = "0px"
-                                                                            $("." + response).remove();
-                                                                            output.onload = function () {
-                                                                            URL.revokeObjectURL(output.src) // free memory
-                                                                            }
+                    }
+                });
+                return false; // for good measure
+            });
+            $("#U2").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.src = '';
+                        output.style.width = "0px"
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
 
 
-                                                                    }
-                                                            });
-                                                            return false; // for good measure
-                                                    });
-                                                            $("#U5").click(function (event) {
-                                                    event.preventDefault();
-                                                            $.ajax({
-                                                            url: $(this).attr('href'),
-                                                                    success: function (response) {
-                                                                    var output = document.getElementById(response);
-                                                                            output.src = '';
-                                                                            output.style.width = "0px"
-                                                                            $("." + response).remove();
-                                                                            output.onload = function () {
-                                                                            URL.revokeObjectURL(output.src) // free memory
-                                                                            }
+                    }
+                });
+                return false; // for good measure
+            });
+            $("#U3").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.src = '';
+                        output.style.width = "0px"
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
 
 
-                                                                    }
-                                                            });
-                                                            return false; // for good measure
-                                                    });
-                                                            $("#U6").click(function (event) {
-                                                    event.preventDefault();
-                                                            $.ajax({
-                                                            url: $(this).attr('href'),
-                                                                    success: function (response) {
-                                                                    var output = document.getElementById(response);
-                                                                            output.src = '';
-                                                                            output.style.width = "0px"
-                                                                            $("." + response).remove();
-                                                                            output.onload = function () {
-                                                                            URL.revokeObjectURL(output.src) // free memory
-                                                                            }
+                    }
+                });
+                return false; // for good measure
+            });
+            $("#U4").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.src = '';
+                        output.style.width = "0px"
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
 
 
-                                                                    }
-                                                            });
-                                                            return false; // for good measure
-                                                    });</script>
-                                                <script>
-                                                            function reset() {
-                                                            location.reload();
-                                                            }
+                    }
+                });
+                return false; // for good measure
+            });
+            $("#U5").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.src = '';
+                        output.style.width = "0px"
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
 
-                                                </script>
 
-                                                <script>
-                                                    function validateEditHostel() {
-                                                    let isValid = true;
-                                                            const hostelName = document.edithostelForm.hostelName.value;
-                                                            const room = document.edithostelForm.room.value;
-                                                            const floor = document.edithostelForm.floor.value;
-                                                            const province = document.edithostelForm.province.value;
-                                                            const address = document.edithostelForm.address.value;
-                                                            const cost = document.edithostelForm.cost.value;
-                                                            const distance = document.edithostelForm.distance.value;
-                                                            const regex = /[+-]?([0-9]*[.])?[0-9]+/;
-                                                            const regex2 = /^[0-9]*$/;
-                                                            const success = document.getElementById('success');
-                                                            document.getElementById('errorName').innerText = ' ';
-                                                            document.getElementById('errorRoom').innerText = ' ';
-                                                            document.getElementById('errorFloor').innerText = ' ';
-                                                            document.getElementById('errorProvince').innerText = ' ';
-                                                            document.getElementById('errorAddress').innerText = ' ';
-                                                            document.getElementById('errorCost').innerText = ' ';
-                                                            document.getElementById('errorDistance').innerText = ' ';
-                                                            if (!hostelName) {
-                                                    document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
-                                                            isValid = false;
-                                                    }
+                    }
+                });
+                return false; // for good measure
+            });
+            $("#U6").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        var output = document.getElementById(response);
+                        output.src = '';
+                        output.style.width = "0px"
+                        $("." + response).remove();
+                        output.onload = function () {
+                            URL.revokeObjectURL(output.src) // free memory
+                        }
 
-                                                    if (!room) {
-                                                    document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
-                                                            isValid = false;
-                                                    } else if (room <= 0) {
-                                                    document.getElementById('errorRoom').innerText = 'Invalid!';
-                                                            isValid = false;
-                                                    } else if (!regex2.test(room)) {
-                                                    document.getElementById('errorRoom').innerText = 'Invalid!';
-                                                            isValid = false;
-                                                    }
 
-                                                    if (!floor) {
-                                                    document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
-                                                            isValid = false;
-                                                    } else if (!regex2.test(floor)) {
-                                                    document.getElementById('errorFloor').innerText = 'Invalid!';
-                                                            isValid = false;
-                                                    } else if (floor <= 0) {
-                                                    document.getElementById('errorFloor').innerText = 'Invalid!';
-                                                            isValid = false;
-                                                    }
+                    }
+                });
+                return false; // for good measure
+            });</script>
+        <script>
+            function reset() {
+                location.reload();
+            }
 
-                                                    if (!province) {
-                                                    document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
-                                                            isValid = false;
-                                                    }
+        </script>
 
-                                                    if (!address) {
-                                                    document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
-                                                            isValid = false;
-                                                    }
+        <script>
+            function validateEditHostel() {
+                let isValid = true;
+                const hostelName = document.edithostelForm.hostelName.value;
+                const room = document.edithostelForm.room.value;
+                const floor = document.edithostelForm.floor.value;
+                const province = document.edithostelForm.province.value;
+                const address = document.edithostelForm.address.value;
+                const cost = document.edithostelForm.cost.value;
+                const distance = document.edithostelForm.distance.value;
+                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex2 = /^[0-9]*$/;
+                const success = document.getElementById('success');
+                document.getElementById('errorName').innerText = ' ';
+                document.getElementById('errorRoom').innerText = ' ';
+                document.getElementById('errorFloor').innerText = ' ';
+                document.getElementById('errorProvince').innerText = ' ';
+                document.getElementById('errorAddress').innerText = ' ';
+                document.getElementById('errorCost').innerText = ' ';
+                document.getElementById('errorDistance').innerText = ' ';
+                if (!hostelName) {
+                    document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
+                    isValid = false;
+                }
 
-                                                    if (!cost) {
-                                                    document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
-                                                            isValid = false;
-                                                    } else if (!regex.test(cost)) {
-                                                    document.getElementById('errorCost').innerText = 'Invalid!';
-                                                            isValid = false;
-                                                    } else if (cost <= 0) {
-                                                    document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
-                                                            isValid = false;
-                                                    }
+                if (!room) {
+                    document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
+                    isValid = false;
+                } else if (room <= 0) {
+                    document.getElementById('errorRoom').innerText = 'Invalid!';
+                    isValid = false;
+                } else if (!regex2.test(room)) {
+                    document.getElementById('errorRoom').innerText = 'Invalid!';
+                    isValid = false;
+                }
 
-                                                    if (!distance) {
-                                                    document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
-                                                            isValid = false;
-                                                    } else if (!regex.test(distance)) {
-                                                    document.getElementById('errorDistance').innerText = 'Invalid!';
-                                                            isValid = false;
-                                                    } else if (distance <= 0) {
-                                                    document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
-                                                            isValid = false;
-                                                    }
+                if (!floor) {
+                    document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
+                    isValid = false;
+                } else if (!regex2.test(floor)) {
+                    document.getElementById('errorFloor').innerText = 'Invalid!';
+                    isValid = false;
+                } else if (floor <= 0) {
+                    document.getElementById('errorFloor').innerText = 'Invalid!';
+                    isValid = false;
+                }
 
-                                                    if (isValid) {
-                                                    alert('Save successfully!');
-                                                    }
+                if (!province) {
+                    document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+                    isValid = false;
+                }
 
-                                                    return isValid;
-                                                    }
-                                                </script>
+                if (!address) {
+                    document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
+                    isValid = false;
+                }
 
-                                                <script
-                                                    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                                                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                                                    crossorigin="anonymous">
-                                                </script>
-                                                </body>
+                if (!cost) {
+                    document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
+                    isValid = false;
+                } else if (!regex.test(cost)) {
+                    document.getElementById('errorCost').innerText = 'Invalid!';
+                    isValid = false;
+                } else if (cost <= 0) {
+                    document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
+                    isValid = false;
+                }
 
-                                                </html>
+                if (!distance) {
+                    document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
+                    isValid = false;
+                } else if (!regex.test(distance)) {
+                    document.getElementById('errorDistance').innerText = 'Invalid!';
+                    isValid = false;
+                } else if (distance <= 0) {
+                    document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    alert('Save successfully!');
+                }
+
+                return isValid;
+            }
+        </script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous">
+        </script>
+    </body>
+
+</html>

@@ -49,11 +49,11 @@
                                 </div>
                                 <div class="left-side">
                                     <div class="mt-5">
-                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="image1" id="file1">
+                                        <input type="file" accept="image/*" onchange="loadFile(event)" name ="restaurantImage" id="file1">
                                         <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
                                         <img id="Url1" name="Url1" width="170px" height="170px"
-                                             <c:if test="${editHostel.img1 != null}">
-                                                 src="${editHostel.img1}" </c:if>/>
+                                             <c:if test="${restaurant.restaurantImage != null}">
+                                                 src="${restaurant.restaurantImage}" </c:if>/>
                                              <script>
                                                  var loadFile = function (event) {
                                                      var output = document.getElementById('Url1');
@@ -65,121 +65,11 @@
                                                      }
                                                  };
                                              </script>
-                                        <c:if test="${editHostel.img1 != null}">
-                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url1">X</a>
+                                        <c:if test="${restaurant.restaurantImage != null}">
+                                            <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteimgres?id=${restaurant.restaurantID}">X</a>
                                         </c:if>
 
-                                        <input type="file" accept="image/*" onchange="loadFile2(event)" name ="image2" id="file2">
-                                        <%--<c:if test="${editHostel.img2 != null}">--%>
-                                            <!--<a id="U2" class ="Url2" href="deleteImage?id=${editHostel.hostelID}&url=Url2">Delete Image</a>-->
-                                        <%--</c:if>--%>
-                                        <label for="file2" style="position: absolute; margin-left: 90px; margin-top: 60px; opacity: 50%">+</label>
-                                        <img id="Url2" name="Url2" style="margin-left: 20px"
-                                             width="170px" height="170px"
-                                             <c:if test="${editHostel.img2 != null}">
-                                                 src="${editHostel.img2}" </c:if>/>
-                                             <script>
-                                                 var loadFile2 = function (event) {
-                                                     var output = document.getElementById('Url2');
-                                                     output.src = URL.createObjectURL(event.target.files[0]);
-                                                     output.style.width = "170px";
-                                                     output.style.height = "170px";
-                                                     output.onload = function () {
-                                                         URL.revokeObjectURL(output.src) // free memory
-                                                     }
-                                                 };
-                                             </script>
 
-                                             <input type="file" accept="image/*" onchange="loadFile3(event)" name ="image3" id="file3">
-                                        <%--<c:if test="${editHostel.img3 != null}">--%>
-                                            <!--<a id="U3" class ="Url3" href="deleteImage?id=${editHostel.hostelID}&url=Url3">Delete Image</a>-->
-                                        <%--</c:if>--%>
-                                        <label for="file3" style="position: absolute; margin-left: 90px; margin-top: 60px; opacity: 50%">+</label>
-                                        <img id="Url3" name="Url3" style="margin-left: 20px"
-                                             width="170px" height="170px"
-                                             <c:if test="${editHostel.img3 != null}">
-                                                 src="${editHostel.img3}" </c:if>/>
-                                             <script>
-                                                 var loadFile3 = function (event) {
-                                                     var output = document.getElementById('Url3');
-                                                     output.src = URL.createObjectURL(event.target.files[0]);
-                                                     output.style.width = "170px";
-                                                     output.style.height = "170px";
-                                                     output.onload = function () {
-                                                         URL.revokeObjectURL(output.src) // free memory
-                                                     }
-                                                 };
-                                             </script>
-                                        <c:if test="${editHostel.img3 != null}">
-                                            <a id="U3" class ="Url3" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteImage?id=${editHostel.hostelID}&url=Url3">X</a>
-                                            <input type="file" accept="image/*" onchange="loadFile(event)" name ="image3" id="file3">
-                                            <label for="file3" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
-                                        </c:if>
-                                    </div>
-
-                                    <div class="mt-5">    
-                                        <input type="file" accept="image/*" onchange="loadFile4(event)" name ="image4" id="file4">
-                                        <%--<c:if test="${editHostel.img4 != null}">--%>
-                                            <!--<a id="U4" class ="Url4" href="deleteImage?id=${editHostel.hostelID}&url=Url4">Delete Image</a>-->
-                                        <%--</c:if>--%>
-                                        <label for="file4" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
-                                        <img id="Url4" name="Url4"
-                                             width="170px" height="170px"
-                                             <c:if test="${editHostel.img4 != null}">
-                                                 src="${editHostel.img4}" </c:if>/>
-                                             <script>
-                                                 var loadFile4 = function (event) {
-                                                     var output = document.getElementById('Url4');
-                                                     output.src = URL.createObjectURL(event.target.files[0]);
-                                                     output.style.width = "170px";
-                                                     output.style.height = "170px";
-                                                     output.onload = function () {
-                                                         URL.revokeObjectURL(output.src) // free memory
-                                                     }
-                                                 };
-                                             </script>
-
-                                             <input type="file" accept="image/*" onchange="loadFile5(event)" name ="image5" id="file5">
-                                        <%--<c:if test="${editHostel.img5 != null}">--%>
-                                            <!--<a id="U5" class ="Url5" href="deleteImage?id=${editHostel.hostelID}&url=Url5">Delete Image</a>-->
-                                        <%--</c:if>--%>
-                                        <label for="file5" style="position: absolute; margin-left: 90px; margin-top: 65px; opacity: 50%">+</label>
-                                        <img id="Url5" name="Url5" style="margin-left: 20px"
-                                             width="170px" height="170px"
-                                             <c:if test="${editHostel.img5 != null}">
-                                                 src="${editHostel.img5}" </c:if>/>
-                                             <script>
-                                                 var loadFile5 = function (event) {
-                                                     var output = document.getElementById('Url5');
-                                                     output.src = URL.createObjectURL(event.target.files[0]);
-                                                     output.style.width = "170px";
-                                                     output.style.height = "170px";
-                                                     output.onload = function () {
-                                                         URL.revokeObjectURL(output.src) // free memory
-                                                     }
-                                                 };
-                                             </script>
-
-                                             <input type="file" accept="image/*" onchange="loadFile6(event)" name ="image6" id="file6">
-                                        <%--<c:if test="${editHostel.img6 != null}">--%>
-                                            <!--<a id="U6" class ="Url6" href="deleteImage?id=${editHostel.hostelID}&url=Url6">Delete Image</a>-->
-                                        <%--</c:if>--%>
-                                        <label for="file6" style="position: absolute; margin-left: 90px; margin-top: 65px; opacity: 50%">+</label>
-                                        <img id="Url6" name="Url6" style="margin-left: 20px"
-                                             width="170px" height="170px"
-                                             <c:if test="${editHostel.img6 != null}">
-                                                 src="${editHostel.img6}" </c:if>/>
-                                             <script>
-                                                 var loadFile6 = function (event) {
-                                                     var output = document.getElementById('Url6');
-                                                     output.src = URL.createObjectURL(event.target.files[0]);
-                                                     output.style.width = "170px";
-                                                     output.style.height = "170px";
-                                                     output.onload = function () {
-                                                         URL.revokeObjectURL(output.src) // free memory
-                                                     }
-                                                 };
-                                             </script>
                                         </div> 
 
 
@@ -187,7 +77,7 @@
 
                                     <div class="right-side">
                                         <h3>Mô tả nhà hàng</h3>
-                                        <div class="input_text"> <input type="text" name="hostelName" value="${restaurant.restaurantName}"> <span>Tên nhà trọ</span> </div>
+                                        <div class="input_text"> <input type="text" name="restaurantName" value="${restaurant.restaurantName}"> <span>Tên nhà trọ</span> </div>
                                     <div class="error" id="errorName"></div>
 
 
@@ -221,7 +111,7 @@
                                     </div>
                                     <div class="input_text"> <input type="text" name="address" value="${restaurant.address}"> <span>Địa chỉ</span> 
                                         <div class="error" id="errorAddress"></div></div>
-                                    <div class="input_text"> <input type="text" name="cost" value="${restaurant.cost} VND"> <span>Giá dao động</span> 
+                                    <div class="input_text"> <input type="text" name="cost" value="${restaurant.cost}"> <span>Giá dao động</span> 
                                         <div class="error" id="errorCost"></div></div>
                                     <div class="input_text"> <input type="text" name="distance" value="${restaurant.distance}"> <span>Khoảng cách</span> 
                                         <div class="error" id="errorDistance"></div></div>
@@ -283,7 +173,7 @@
                     success: function (response) {
                         var output = document.getElementById(response);
                         output.src = '';
-                        output.style.width = "0px"
+       
                         $("." + response).remove();
                         output.onload = function () {
                             URL.revokeObjectURL(output.src) // free memory
@@ -293,97 +183,7 @@
                     }
                 });
                 return false; // for good measure
-            });
-            $("#U2").click(function (event) {
-                event.preventDefault();
-                $.ajax({
-                    url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
-
-
-                    }
-                });
-                return false; // for good measure
-            });
-            $("#U3").click(function (event) {
-                event.preventDefault();
-                $.ajax({
-                    url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
-
-
-                    }
-                });
-                return false; // for good measure
-            });
-            $("#U4").click(function (event) {
-                event.preventDefault();
-                $.ajax({
-                    url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
-
-
-                    }
-                });
-                return false; // for good measure
-            });
-            $("#U5").click(function (event) {
-                event.preventDefault();
-                $.ajax({
-                    url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
-
-
-                    }
-                });
-                return false; // for good measure
-            });
-            $("#U6").click(function (event) {
-                event.preventDefault();
-                $.ajax({
-                    url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.src = '';
-                        output.style.width = "0px"
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
-
-
-                    }
-                });
-                return false; // for good measure
-            });
+            });    
 
         </script>
         <script>
@@ -394,22 +194,17 @@
         </script>
 
         <script>
-            function validateEditHostel() {
+           function validateRestaurant() {
                 let isValid = true;
-                const hostelName = document.edithostelForm.hostelName.value;
-                const room = document.edithostelForm.room.value;
-                const floor = document.edithostelForm.floor.value;
-                const province = document.edithostelForm.province.value;
-                const address = document.edithostelForm.address.value;
-                const cost = document.edithostelForm.cost.value;
-                const distance = document.edithostelForm.distance.value;
+                const hostelName = document.editRestaurantForm.restaurantName.value;
+                const province = document.editRestaurantForm.province.value;
+                const address = document.editRestaurantForm.address.value;
+                const cost = document.editRestaurantForm.cost.value;
+                const distance = document.editRestaurantForm.distance.value;
                 const regex = /[+-]?([0-9]*[.])?[0-9]+/;
                 const regex2 = /^[0-9]*$/;
-                const success = document.getElementById('success');
 
-                document.getElementById('errorName').innerText = ' ';
-                document.getElementById('errorRoom').innerText = ' ';
-                document.getElementById('errorFloor').innerText = ' ';
+                document.getElementById('errorName').innerText = ' ';               
                 document.getElementById('errorProvince').innerText = ' ';
                 document.getElementById('errorAddress').innerText = ' ';
                 document.getElementById('errorCost').innerText = ' ';
@@ -417,31 +212,9 @@
 
 
                 if (!hostelName) {
-                    document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
+                    document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà hàng!';
                     isValid = false;
-                }
-
-                if (!room) {
-                    document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
-                    isValid = false;
-                } else if (room <= 0) {
-                    document.getElementById('errorRoom').innerText = 'Invalid!';
-                    isValid = false;
-                } else if (!regex2.test(room)) {
-                    document.getElementById('errorRoom').innerText = 'Invalid!';
-                    isValid = false;
-                }
-
-                if (!floor) {
-                    document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
-                    isValid = false;
-                } else if (!regex2.test(floor)) {
-                    document.getElementById('errorFloor').innerText = 'Invalid!';
-                    isValid = false;
-                } else if (floor <= 0) {
-                    document.getElementById('errorFloor').innerText = 'Invalid!';
-                    isValid = false;
-                }
+                }                
 
                 if (!province) {
                     document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
@@ -454,7 +227,7 @@
                 }
 
                 if (!cost) {
-                    document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
+                    document.getElementById('errorCost').innerText = 'Bạn phải nhập giá dao động!';
                     isValid = false;
                 } else if (!regex.test(cost)) {
                     document.getElementById('errorCost').innerText = 'Invalid!';
@@ -468,15 +241,11 @@
                     document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
                     isValid = false;
                 } else if (!regex.test(distance)) {
-                document.getElementById('errorDistance').innerText = 'Giá trị nhập không đúng. Khoảng cách phải là số!';
+                document.getElementById('errorDistance').innerText = 'Giá trị nhập không đúng. Khoảng cách phải là số !';
                         isValid = false;
                 } else if (distance <= 0) {
                     document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
                     isValid = false;
-                }
-
-                if (isValid) {
-                    alert('Save successfully!');
                 }
 
                 return isValid;

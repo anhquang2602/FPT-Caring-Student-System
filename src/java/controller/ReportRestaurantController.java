@@ -107,7 +107,7 @@ public class ReportRestaurantController extends HttpServlet {
             session.setAttribute("stt", "1");
           //  response.sendRedirect("ListAllRestaurantController");
            // request.getRequestDispatcher("ListAllRestaurantController").forward(request, response);
-             response.sendRedirect(request.getContextPath() + "/ListAllRestaurantController");
+            response.sendRedirect(request.getContextPath() + "/RestaurantListController?id=" + restaurantID);
         }
     }
 
