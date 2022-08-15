@@ -79,7 +79,6 @@
                             Bộ lọc tìm kiếm <br/>
 
                             Giá: <input type="text" name="under" value="${under}"> - <input type="text" name="upper" value="${upper}"> <br/>
-                            <mark>${costReport}</mark>
                             <br/>
                             Khoảng cách: <select name="distance">
                                 <option value="6" <c:if test = "${distance == 10 }">
