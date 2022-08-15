@@ -8,7 +8,10 @@ package controller;
 import dao.DepartmentDAO;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -51,25 +54,42 @@ public class DepartmentController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         DepartmentDAO dao = new DepartmentDAO();
-       
-        
-        String indexPage= request.getParameter("index");
-         if(indexPage==null){
-            indexPage ="1";
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        DepartmentDAO dao = new DepartmentDAO();
+
+        String indexPage = request.getParameter("index");
+        if (indexPage == null) {
+            indexPage = "1";
         }
         int index = Integer.parseInt(indexPage);
- 
-        int total = dao.getTotalDepartment();
-        int endPage = total / 3;
-        if (total % 3 != 0) {
-            endPage++;
+
+        int total = 1;
+        int endPage = 1;
+
+        ArrayList<Department> pagingDep = new ArrayList<Department>() {
+        };
+        String key = request.getParameter("key");
+        if (key == null || key.equals("")) {
+            total = dao.getTotalDepartment();
+            endPage = total / 3;
+            if (total % 3 != 0) {
+                endPage++;
+            }
+            pagingDep = dao.pagingDepartment(index);
+        } else {
+            total = dao.getTotalDepartmentByText(dao.getAllDepartmentByText(key), key);
+            endPage = total / 3;
+            if (total % 3 != 0) {
+                endPage++;
+            }
+            pagingDep = dao.pagingDepartmentByText(key, index);
         }
-        
-        List<Department> pagingDep = dao.pagingDepartment(index);
+
         request.setAttribute("listDepPaging", pagingDep);
         request.setAttribute("endP", endPage);
         request.setAttribute("tag", index);
+        request.setAttribute("key", key);
         request.getRequestDispatcher("listdepartment.jsp").forward(request, response);
     }
 
@@ -84,7 +104,43 @@ public class DepartmentController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        DepartmentDAO dao = new DepartmentDAO();
+
+        String indexPage = request.getParameter("index");
+        if (indexPage == null) {
+            indexPage = "1";
+        }
+        int index = Integer.parseInt(indexPage);
+
+        int total = 1;
+        int endPage = 1;
+
+        ArrayList<Department> pagingDep = new ArrayList<Department>() {
+        };
+        String key = request.getParameter("key");
+        if (key == null || key.equals("")) {
+            total = dao.getTotalDepartment();
+            endPage = total / 3;
+            if (total % 3 != 0) {
+                endPage++;
+            }
+            pagingDep = dao.pagingDepartment(index);
+        } else {
+            total = dao.getTotalDepartmentByText(dao.getAllDepartmentByText(key), key);
+            endPage = total / 3;
+            if (total % 3 != 0) {
+                endPage++;
+            }
+            pagingDep = dao.pagingDepartmentByText(key, index);
+        }
+
+        request.setAttribute("listDepPaging", pagingDep);
+        request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
+        request.setAttribute("key", key);
+        request.getRequestDispatcher("listdepartment.jsp").forward(request, response);
     }
 
     /**

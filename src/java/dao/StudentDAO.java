@@ -17,7 +17,7 @@ import model.Student;
 
 /**
  *
- * @author DELL
+ * @authFirstNameDELL
  */
 public class StudentDAO extends DBContext {
 
@@ -74,6 +74,657 @@ public class StudentDAO extends DBContext {
         return list;
     }
 
+    public ArrayList<Student> listAllStudent() throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Email , CountryName , ProvinceName , DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students\n"
+                + "inner join Country on Students.CountryID=Country.CountryID\n"
+                + "inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "inner join District on Students.DistrictID = District.DistrictID\n"
+                + "inner join Account on Students.Email = Account.username\n"
+                + "ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudOnlyStus(int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudOnlyGen(int gender) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Gender = " + gender + "\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudOnlyUnit(String unit) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Unit='" + unit + "'\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudUnitStatus(String unit, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Unit='" + unit + "' and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudUnitGen(String unit, int gender) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Unit='" + unit + "' and Gender = " + gender + "\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudUnitGenStus(String unit, int gender, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Unit='" + unit + "' and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudOnlyProvince(int province) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Students.ProvinceID = " + province + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudProvinceStus(int province, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Students.ProvinceID = " + province + " and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudProvinceGen(int province, int gender) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Students.ProvinceID = " + province + " and Gender = " + gender + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudProvinceUnit(int province, String unit) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Students.ProvinceID = " + province + " and Unit='" + unit + "'\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudProvinceUnitStus(int province, String unit, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Students.ProvinceID = " + province + " and Unit='" + unit + "' and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudProvinceUnitGen(int province, String unit, int gender) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Students.ProvinceID = " + province + " and Unit='" + unit + "' and Gender = " + gender + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudProvinceUnitGenStus(int province, String unit, int gender, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Students.ProvinceID = " + province + " and Unit='" + unit + "' and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudProvinceGenStus(int province, int gender, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "		WHERE Students.ProvinceID = " + province + " and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudText(String text) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%')\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudKeyStus(String text, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudKeyGen(String text, int gender) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Gender = " + gender + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudByGenStus(int status, int gender) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "				 WHERE Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudByKeyGenStus(String text, int status, int gender) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudByKeyUnit(String text, String unit) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Unit='" + unit + "'\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudByKeyUnitStus(String text, String unit, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Unit='" + unit + "' and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudByKeyUnitGen(String text, String unit, int gender) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Unit='" + unit + "' and Gender = " + gender + "\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudByKeyUnitGenStus(String text, String unit, int gender, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Unit='" + unit + "' and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID\n"
+                + "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudKeyProvince(String text, int province) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudKeyProStus(String text, int province, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudKeyProGenStus(String text, int province, int gender, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudKeyProUnitStus(String text, int province, String unit, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Unit='" + unit + "' and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudKeyProUnitGen(String text, int province, String unit, int gender) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Unit='" + unit + "' and Gender = " + gender + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudKeyAll(String text, int province, String unit, int gender, int status) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Unit='" + unit + "' and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudKeyProUnit(String text, int province, String unit) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Unit='" + unit + "'\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
+    public ArrayList<Student> filterStudKeyProGen(String text, int province, int gender) throws ClassNotFoundException, SQLException, Exception {
+        ArrayList<Student> list = new ArrayList<>();
+        String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
+                + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
+                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
+                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "                 join Account on Students.Email = Account.username\n"
+                + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Gender = " + gender + "\n"
+                + "                ORDER BY StudentID";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                    rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar")));
+
+        }
+        return list;
+    }
+
     public int getTotalStudent() {
         String sql = "select count(*) from Students";
         try {
@@ -93,8 +744,8 @@ public class StudentDAO extends DBContext {
             String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit,Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus ,Gender, Avatar\n"
                     + "from Students\n"
                     + "inner join Country on Students.CountryID=Country.CountryID\n"
-                    + "inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Students.DistrictID = District.DistrictID\n"
+                    + "left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Students.DistrictID = District.DistrictID\n"
                     + "inner join Account on Students.Email = Account.username\n"
                     + "where StudentID=?";
             PreparedStatement st;
@@ -265,8 +916,8 @@ public class StudentDAO extends DBContext {
             return false;
         }
     }
-    
-     public boolean updateStudentProfileNoPro(String avatar, String firstName,String lastName,String age,String phone,String countryId,String provinceId,String districtId,String addressDetail,String gender,String linkFaceBook,String studentId,String unit,String email) {       
+
+    public boolean updateStudentProfileNoPro(String avatar, String firstName, String lastName, String age, String phone, String countryId, String provinceId, String districtId, String addressDetail, String gender, String linkFaceBook, String studentId, String unit, String email) {
         try {
             String sql = "UPDATE Students SET  Avatar=?,FirstName=?,LastName=?,Age=?,Phone=?,CountryID=?,ProvinceID=?,DistrictID=?,AddressDetail=?,Gender=?,LinkFacebook=?,StudentID=?,Unit=? where email=?";
             PreparedStatement st;

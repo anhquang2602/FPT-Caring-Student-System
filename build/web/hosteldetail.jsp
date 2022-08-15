@@ -35,7 +35,6 @@
                 display: inline-block;
                 font-size: 15px;
             }
-
             .stars-inner {
                 position: absolute;
                 top: 0;
@@ -45,14 +44,12 @@
                 width: 0;
                 font-size: 15px;
             }
-
             .stars-outer::before {
                 content: "\f005 \f005 \f005 \f005 \f005";
                 font-family: "Font Awesome 5 Free";
                 font-weight: 900;
                 color: #ccc;
             }
-
             .stars-inner::before {
                 content: "\f005 \f005 \f005 \f005 \f005";
                 font-family: "Font Awesome 5 Free";
@@ -238,7 +235,6 @@
         <script>
             const allStars = document.querySelectorAll('.star');
             let current_rating = document.querySelector('.current_rating');
-
             allStars.forEach((star, i) => {
                 star.onclick = function () {
                     let current_star_level = i + 1;
@@ -252,16 +248,13 @@
                     });
                 };
             });
-
         </script>                            
 
         <script>
             $("#star5").click(function () {
                 var hostelId = document.getElementById("hostelId").value;
-
                 $.ajax({
                     type: "GET",
-
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
@@ -271,9 +264,7 @@
                         Accept: "application/json; charset=utf-8",
                         contentType: "application/json; charset=utf-8"
                     },
-
                     success: function (data) {
-
                         alert(data);
                     },
                     error: function (e) {
@@ -285,7 +276,6 @@
                 var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
                     type: "GET",
-
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
@@ -295,9 +285,7 @@
                         Accept: "application/json; charset=utf-8",
                         contentType: "application/json; charset=utf-8"
                     },
-
                     success: function (data) {
-
                         alert(data);
                     },
                     error: function (e) {
@@ -309,7 +297,6 @@
                 var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
                     type: "GET",
-
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
@@ -319,9 +306,7 @@
                         Accept: "application/json; charset=utf-8",
                         contentType: "application/json; charset=utf-8"
                     },
-
                     success: function (data) {
-
                         alert(data);
                     },
                     error: function (e) {
@@ -333,7 +318,6 @@
                 var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
                     type: "GET",
-
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
@@ -343,9 +327,7 @@
                         Accept: "application/json; charset=utf-8",
                         contentType: "application/json; charset=utf-8"
                     },
-
                     success: function (data) {
-
                         alert(data);
                     },
                     error: function (e) {
@@ -357,7 +339,6 @@
                 var hostelId = document.getElementById("hostelId").value;
                 $.ajax({
                     type: "GET",
-
                     url: "/Test_1/star",
                     data: {
                         hostelId: hostelId,
@@ -367,9 +348,7 @@
                         Accept: "application/json; charset=utf-8",
                         contentType: "application/json; charset=utf-8"
                     },
-
                     success: function (data) {
-
                         alert(data);
                     },
                     error: function (e) {
@@ -377,8 +356,6 @@
                     }
                 });
             });
-
-
         </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

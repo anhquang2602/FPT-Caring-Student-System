@@ -14,6 +14,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -183,8 +185,21 @@ public class UpdateSellerProfile extends HttpServlet {
                
             if (sdb.updateSellerProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
-                request.setAttribute("UpdateProcess", "Update successfully");
-                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+               
+                
+                
+                
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(UpdateSellerProfile.class.getName()).log(Level.SEVERE, null, ex);
+                }
+           
+                 session.setAttribute("stt", "1");
+//                request.setAttribute("UpdateProcess", "Update successfully");
+//                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
+                 request.getRequestDispatcher("home.jsp").forward(request, response);
+             
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");

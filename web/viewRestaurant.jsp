@@ -28,14 +28,12 @@
             }
             .message {
                 color: green;
-
             }
             .stars-outer {
                 position: relative;
                 display: inline-block;
                 font-size: 15px;
             }
-
             .stars-inner {
                 position: absolute;
                 top: 0;
@@ -45,14 +43,12 @@
                 width: 0;
                 font-size: 15px;
             }
-
             .stars-outer::before {
                 content: "\f005 \f005 \f005 \f005 \f005";
                 font-family: "Font Awesome 5 Free";
                 font-weight: 900;
                 color: #ccc;
             }
-
             .stars-inner::before {
                 content: "\f005 \f005 \f005 \f005 \f005";
                 font-family: "Font Awesome 5 Free";
@@ -78,7 +74,6 @@
                             </div>
                             <div class="card">
                                 <form class="form" method="POST" id="updateForm" action="RestaurantListController"  name="viewRestaurantForm" enctype="multipart/form-data">
-
                                     <div class="input_text" hidden>
                                         <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
                                     </div>
@@ -102,10 +97,9 @@
                                             </c:forEach>
                                         </div> 
                                     </div>
-
                                     <div class="right-side">
                                         <h3>Mô tả nhà hàng</h3>    
-                                        <div class="col mt-5 thumbnail">
+                                        <div class="col mt-5 thumbnail"z>
                                             <img src="${restaurant.restaurantImage}"  class="form-control" style="padding: 0px;margin-top: -40px; width: 116.23px; height:116.23px " alt=""><br>    
                                                 <div class="stars-outer mb-5"> 
                                                     <div class="stars-inner" style="width: ${restaurant.starAVG}%"> </div>
@@ -136,24 +130,18 @@
                                                 <label class="labels">Giá chung</label>
                                                 <input type="text" class="form-control" value="${restaurant.cost} VND" readonly="">
                                             </div>
-
                                             <div class="col-md-12">
                                                 <label class="labels">Khoảng cách</label>
                                                 <input type="text" class="form-control" value="${restaurant.distance}" readonly="">
                                             </div>
-
-
                                             <div class="col-md-12">
                                                 <label class="labels">Mô tả</label>
                                                 <textarea class="form-control" readonly="" rows="5  ">${restaurant.description}</textarea>
                                             </div>
-
                                             <c:if test = "${isStudent == 1}">
                                                 <a href="commentRestaurant?restaurantID=${restaurant.restaurantID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
                                             </c:if>
-
                                         </div>
-
                                     </form>
                                     <div class="row" style="background-color: #e9ecef" >
                                         <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà hàng:</label>
@@ -202,5 +190,4 @@
                 crossorigin="anonymous">
             </script>
         </body>
-
     </html>
