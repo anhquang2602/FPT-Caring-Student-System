@@ -86,7 +86,7 @@ public class ResetSearchHostelsController extends HttpServlet {
             distance = "6";
         }
         if (star == null || star.equals("")) {
-            star = "6";
+            star = "0";
         }
         if (keywordHostel == null ||keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
             totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance),Float.parseFloat(star));

@@ -28,7 +28,7 @@
                 </ul>
                 <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-                        <form class="example  align-items-center" action="SellerListController" method="post"> 
+                        <form class="example  align-items-center" action="StudentListController" method="post"> 
                             <input type="text" placeholder="" name="key" value="${key}"> 
                             <button type="submit"><i class="fa fa-search"></i></button> 
                             <br/>
