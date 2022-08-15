@@ -5,23 +5,20 @@
  */
 package controller;
 
-import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import static jdk.nashorn.internal.runtime.Debug.id;
-import model.Food;
 
 /**
  *
- * @author DELL
+ * @author win
  */
-public class DeleteRestaurantController extends HttpServlet {
+@WebServlet(name = "FindDistrictToSearch", urlPatterns = {"/FindDistrictToSearch"})
+public class FindDistrictToSearch extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +37,10 @@ public class DeleteRestaurantController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteRestaurantController</title>");
+            out.println("<title>Servlet FindDistrictToSearch</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DeleteRestaurantController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet FindDistrictToSearch at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,27 +58,7 @@ public class DeleteRestaurantController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        RestaurantDAO restaurantDAO = new RestaurantDAO();
-
-        int role = Integer.parseInt(request.getSession().getAttribute("role").toString());
-
-        int restaurantID = Integer.parseInt(request.getParameter("id"));
-        ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(restaurantID);
-        for (Food f : listFood) {
-            restaurantDAO.deleteFoodlImage(f.getFoodID());
-        }
-        restaurantDAO.deleteAllFood(restaurantID);
-        restaurantDAO.deleteRestaurantIDFromReport(restaurantID);
-        restaurantDAO.deleteRestaurant(restaurantID);
-        if (role == 3) {
-            HttpSession session = request.getSession();
-            session.setAttribute("stt", "3");
-            response.sendRedirect("ListRestaurantBySeller");
-        } else if (role == 1) {
-            
-            response.sendRedirect("ListAllReportRestaurantController");
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -96,7 +73,6 @@ public class DeleteRestaurantController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**

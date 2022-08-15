@@ -38,8 +38,26 @@ public class ClubDAO extends DBContext {
         return listClub;
 
     }
+    
+    public ArrayList<Club> getListClubsByCategories(int type) {
+        ArrayList<Club> listClub = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Clubs] WHERE [Type] = "+type+"";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                listClub.add(new Club(rs.getInt("ClubID"), rs.getString("Avatar"), rs.getString("ClubName"), rs.getString("ClubPresident"), rs.getString("Facebook"), rs.getString("Email"), rs.getString("Description")));
 
-    public Club getClubByName(int id) {
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listClub;
+
+    }
+
+    public Club getClubByID(int id) {
         Club club = new Club();
         String sql = "select * from Clubs where ClubID = ?";
         PreparedStatement st;
@@ -60,6 +78,38 @@ public class ClubDAO extends DBContext {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return club;
+    }
+
+    public ArrayList getClubByText(String key) {
+        ArrayList<Club> clubs = new ArrayList<>();
+        String sql = "select * from Clubs where ClubName like N'%" + key + "%' or Description like N'%" + key + "%'";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                clubs.add(new Club(rs.getInt("ClubID"), rs.getString("Avatar"), rs.getString("ClubName"), rs.getString("ClubPresident"), rs.getString("Facebook"), rs.getString("Email"), rs.getString("Description")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clubs;
+    }
+    
+    public ArrayList getClubByTextAndCategories(String key, int type) {
+        ArrayList<Club> clubs = new ArrayList<>();
+        String sql = "select * from Clubs where (ClubName like N'%" + key + "%' or Description like N'%" + key + "%') and [Type] = "+type+"";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                clubs.add(new Club(rs.getInt("ClubID"), rs.getString("Avatar"), rs.getString("ClubName"), rs.getString("ClubPresident"), rs.getString("Facebook"), rs.getString("Email"), rs.getString("Description")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clubs;
     }
 
     public Club getClubByEmail(String email) {
@@ -183,10 +233,10 @@ public class ClubDAO extends DBContext {
         }
         return event;
     }
-    
+
     public int getEventIDByName(String name) {
-        int id =0;
-        String sql = "SELECT EventID FROM [dbo].[EventOfClub] WHERE EventName = N'"+name+"'";
+        int id = 0;
+        String sql = "SELECT EventID FROM [dbo].[EventOfClub] WHERE EventName = N'" + name + "'";
         PreparedStatement st;
         try {
             st = connection.prepareStatement(sql);

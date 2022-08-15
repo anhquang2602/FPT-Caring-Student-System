@@ -69,7 +69,7 @@
                                         <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" value="${admin.phone}" ></div>
                                         <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" readonly="" value="${admin.email}" ></div>
                                         <div class="col-md-12"><label class="labels">Link Facebook</label><input type="text" class="form-control" name="linkFb" value="${admin.linkFb}" ></div>
-                                        <div class="col-md-12"><label class="labels">Sex</label></br>
+                                        <div class="col-md-12"><label class="labels">Giới tính</label></br>
                                             <label class="labels" id="genderlable" hidden="">${admin.gender}</label>
                                             <input class="form-check-input" type="radio" name="gender"  id="inlineRadio1" value="1"> Nam
                                             <input class="form-check-input" type="radio" name="gender"  id="inlineRadio2" value="0"> Nữ                                            

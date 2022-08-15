@@ -79,7 +79,19 @@ public class ClubListController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       request.getRequestDispatcher("listClubs.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        ArrayList<Club> listClubs = new ArrayList<>();
+        ClubDAO clubDAO = new ClubDAO();
+        String key = request.getParameter("key");
+        if(key == null || key.equals("")){
+            listClubs = clubDAO.getListClubs();
+        } else{
+            listClubs = clubDAO.getClubByText(key);
+        }
+        request.setAttribute("listClubs", listClubs);
+        request.setAttribute("key", key);
+        request.getRequestDispatcher("listClubs.jsp").forward(request, response);
     }
 
     /**
