@@ -54,11 +54,11 @@
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
                         <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Report Hostel Successfully</h4></strong>
+                            <strong class="mr-auto text-white"><h4>Báo cáo nhà trọ thành công</h4></strong>
                             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                         </div>
                         <div class="toast-body">
-                            Report Hostel Successfully !
+                            Báo cáo nhà trọ thành công !
                         </div>
                     </div>
                 </div>

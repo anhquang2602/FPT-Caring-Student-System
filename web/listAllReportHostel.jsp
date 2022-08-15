@@ -67,9 +67,25 @@
                                                                             <a href="detailhostel?id=${report.hostelID}" class="btn btn-sm bg-success-light mr-2">
                                                                                 <i class="fas fa-pen"></i>
                                                                             </a>
-                                                                            <a href="deletehostel?id=${report.hostelID}" class="btn btn-sm bg-danger-light">
+                                                                            <a href="deletehostel?id=${report.hostelID}" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#confirm-delete" >
                                                                                 <i class="fas fa-trash"></i>
                                                                             </a>
+                                                                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            Xoá nhà hàng
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                            Bạn có chắc chắn muốn xoá món ăn này không?
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                                                                            <a class="btn btn-danger btn-ok" href="deletehostel?id=${report.hostelID}">Xoá</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
