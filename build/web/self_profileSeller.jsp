@@ -157,6 +157,7 @@
             </div>
         </div>
     </body>
+    
     <script>
         $(document).ready(function () {
             $(".toast").toast({delay: 4000});
@@ -183,6 +184,15 @@
 
             
            
+    </script>
+    <script>
+        // Create a timestamp
+        var timestamp = new Date().getTime();
+        // Get the image element
+        var image = document.getElementById("output");
+        // Adding the timestamp parameter to image src
+        image.src=image.src+"?t=" + timestamp;
+        
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script

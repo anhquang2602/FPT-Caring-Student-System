@@ -110,6 +110,21 @@
                    
         }
 </script>
+<script>
+        // Create a timestamp
+        var timestamp = new Date().getTime();
+        // Get the image element
+        var image = document.getElementById("output");
+        // Adding the timestamp parameter to image src
+        image.src=image.src+"?t=" + timestamp;
+        
+        window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload(true);           
+    }
+        }
+    </script>
 <script language="javascript">
 
                                         var gender = document.getElementById('genderlable').innerHTML;
