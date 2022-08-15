@@ -35,7 +35,7 @@
                             <div class="list-group">
                                 <a href="listClubCategories?type=1&key=${key}" class="list-group-item list-group-item-action">Học Thuật</a>
                                 <a href="listClubCategories?type=2&key=${key}" class="list-group-item list-group-item-action">Kỹ Năng Sống</a>
-                                <a href="listClubCategories?type=3&key=${key}" class="list-group-item list-group-item-action">Võ Thuật</a>
+                                <a href="listClubCategories?type=3&key=${key}" class="list-group-item list-group-item-action">Thể Thao</a>
                                 <a href="listClubCategories?type=4&key=${key}" class="list-group-item list-group-item-action ">Nghệ Thuật</a>
                             </div>
                         </form>
