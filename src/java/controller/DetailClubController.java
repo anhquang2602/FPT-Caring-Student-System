@@ -66,7 +66,7 @@ public class DetailClubController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         int id = Integer.parseInt(request.getParameter("id"));
         ClubDAO clubDAO = new ClubDAO();
-        Club club = clubDAO.getClubByName(id);
+        Club club = clubDAO.getClubByID(id);
         ArrayList<Event> listEvent = new ArrayList<>();
         listEvent = clubDAO.getEvent(id);
         request.setAttribute("club", club);

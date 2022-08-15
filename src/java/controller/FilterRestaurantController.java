@@ -63,19 +63,26 @@ public class FilterRestaurantController extends HttpServlet {
             distance = "6";
         }
         if (star == null || star.equals("")) {
-            star = "6";
+            star = "5";
         }
         if (keyword == null || keyword.equalsIgnoreCase("") || keyword.isEmpty()) {
-            totalPage = restaurantDAO.getTotalPage(restaurantDAO.listAllRes());
-            restaurants = restaurantDAO.listAllRestaurant(Integer.parseInt(index));
+            totalPage = restaurantDAO.getTotalPage(restaurantDAO.listAllRes(Double.parseDouble(distance), Float.parseFloat(star)),Double.parseDouble(distance), Float.parseFloat(star));
+            restaurants = restaurantDAO.filterRestaurantPagging(Double.parseDouble(distance), Float.parseFloat(star), Integer.parseInt(index));
+            if (restaurants.isEmpty()) {
+                request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
+            }
         } else {
-            totalPage = restaurantDAO.getTotalPageByText(keyword, restaurants,Double.parseDouble(distance), Float.parseFloat(star));
-            restaurants = restaurantDAO.listAllResByTextPagging(keyword,Double.parseDouble(distance), Float.parseFloat(star),Integer.parseInt(index));
+            totalPage = restaurantDAO.getTotalPageByText(keyword, restaurants, Double.parseDouble(distance), Float.parseFloat(star));
+            restaurants = restaurantDAO.listAllResByTextPagging(keyword, Double.parseDouble(distance), Float.parseFloat(star), Integer.parseInt(index));
+            if (restaurants.isEmpty()) {
+                request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
+            }
         }
         request.setAttribute("totalPage", totalPage);
         request.setAttribute("restaurants", restaurants);
         request.setAttribute("distance", distance);
         request.setAttribute("keyword", keyword);
+        request.setAttribute("star", star);
         request.getRequestDispatcher("listAllRestaurant.jsp").forward(request, response);
     }
 
@@ -110,16 +117,23 @@ public class FilterRestaurantController extends HttpServlet {
             star = "6";
         }
         if (keyword == null || keyword.equalsIgnoreCase("") || keyword.isEmpty()) {
-            totalPage = restaurantDAO.getTotalPage(restaurantDAO.listAllRes());
-            restaurants = restaurantDAO.listAllRestaurant(Integer.parseInt(index));
+            totalPage = restaurantDAO.getTotalPage(restaurantDAO.listAllRes(Double.parseDouble(distance), Float.parseFloat(star)),Double.parseDouble(distance), Float.parseFloat(star));
+            restaurants = restaurantDAO.filterRestaurantPagging(Double.parseDouble(distance), Float.parseFloat(star), Integer.parseInt(index));
+            if (restaurants.isEmpty()) {
+                request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
+            }
         } else {
-            totalPage = restaurantDAO.getTotalPageByText(keyword, restaurants,Double.parseDouble(distance), Float.parseFloat(star));
-            restaurants = restaurantDAO.listAllResByTextPagging(keyword,Double.parseDouble(distance), Float.parseFloat(star),Integer.parseInt(index));
+            totalPage = restaurantDAO.getTotalPageByText(keyword, restaurants, Double.parseDouble(distance), Float.parseFloat(star));
+            restaurants = restaurantDAO.listAllResByTextPagging(keyword, Double.parseDouble(distance), Float.parseFloat(star), Integer.parseInt(index));
+            if (restaurants.isEmpty()) {
+                request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
+            }
         }
         request.setAttribute("totalPage", totalPage);
         request.setAttribute("restaurants", restaurants);
         request.setAttribute("distance", distance);
         request.setAttribute("keyword", keyword);
+        request.setAttribute("star", star);
         request.getRequestDispatcher("listAllRestaurant.jsp").forward(request, response);
     }
 

@@ -116,6 +116,9 @@
                                 <option value="4" <c:if test = "${star == 4 }">
                                         selected="selected"
                                     </c:if>> 4</option>
+                                <option value="0" <c:if test = "${star == 0 }">
+                                        selected="selected"
+                                    </c:if>> Chưa có đánh giá</option>
                             </select>
                             <input type="submit" value="Tìm kiếm"> 
                             <a href="ResetSearchController?keyword=${keyword}">Xóa bộ lọc</a>
@@ -130,6 +133,7 @@
                                         <li><a>Danh sách tất cả nhà trọ</a></li>
                                     </ul>
                                 </div>
+                                ${listSize}
                                 <ul class="list-group shadow">
                                     <c:forEach items="${hostels}" var="d">
                                         <li class="list-group-item">

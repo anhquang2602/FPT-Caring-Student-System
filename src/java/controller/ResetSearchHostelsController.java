@@ -91,9 +91,15 @@ public class ResetSearchHostelsController extends HttpServlet {
         if (keywordHostel == null ||keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
             totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance),Float.parseFloat(star));
             hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index),Float.parseFloat(star));
+            if(hostels.isEmpty()){
+                request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
+            }
         } else {
             totalPage = hostelDAO.getTotalPageTextByFilter(hostels, keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance),Float.parseFloat(star));
             hostels = hostelDAO.filterHostelTextPagging(keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Float.parseFloat(star),Integer.parseInt(index));
+            if(hostels.isEmpty()){
+                request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
+            }
         }
 //        totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
 //        hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));

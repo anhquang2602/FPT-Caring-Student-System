@@ -16,7 +16,7 @@
             <ul>
                 <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
                 <li> 
-                    <a class="bg-hostel-light fs12 ps-3" href="ListAllRestaurantController">
+                    <a class="bg-hostel-light fs12 ps-3" href="FilterRestaurantController">
                         <span class="fas fa-utensils mr-4"></span> 
                         <span>NHÀ ĂN</span>
                     </a>  
@@ -49,13 +49,13 @@
 
                 <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 3) {%>
                 <li> 
-                    <a class="bg-hostel-light fs12 ps-3" href="ListAllRestaurantController">
+                    <a class="bg-hostel-light fs12 ps-3" href="FilterRestaurantController">
                         <span class="fas fa-utensils mr-4"></span> 
                         <span>NHÀ ĂN</span>
                     </a>  
                 </li>
                 <li> 
-                    <a class="bg-hostel-light fs12 ps-3" href="listallhostels">
+                    <a class="bg-hostel-light fs12 ps-3" href="FilterHostelController">
                         <span class="fas fa-bed mr-3"></span> 
                         <span>NHÀ TRỌ</span>
                     </a> 

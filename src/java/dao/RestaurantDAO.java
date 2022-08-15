@@ -544,7 +544,7 @@ public class RestaurantDAO extends DBContext {
         return restaurant;
     }
 
-    public ArrayList<Restaurant> listAllRes() {
+    public ArrayList<Restaurant> listAllRes(double distance, float star) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
             String sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
@@ -554,11 +554,12 @@ public class RestaurantDAO extends DBContext {
                     + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
                     + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
                     + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
-                    + "ORDER BY RestaurantID OFFSET 0 ROWS FETCH NEXT 6 ROWS ONLY;";
+                    + "WHERE Restaurants.Distance <= " + distance + " and Restaurants.StarVoting <= " + star + "\n"
+                    + "ORDER BY RestaurantID";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11),rs.getFloat(sql)));
+                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11), rs.getFloat(12)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -566,8 +567,8 @@ public class RestaurantDAO extends DBContext {
         return restaurant;
     }
 
-    public int getTotalPage(ArrayList<Restaurant> restaurants) {
-        restaurants = listAllRes();
+    public int getTotalPage(ArrayList<Restaurant> restaurants, double distance,float star) {
+        restaurants = listAllRes(distance,star);
         int totalPage = restaurants.size() / 6;
         if (restaurants.size() % 6 != 0) {
             totalPage++;
@@ -577,7 +578,7 @@ public class RestaurantDAO extends DBContext {
     }
 
     public int getTotalPageByText(String keyword, ArrayList<Restaurant> restaurants, double distance, float star) {
-        restaurants = listAllResByText(keyword,distance,star);
+        restaurants = listAllResByText(keyword, distance, star);
         int totalPage = restaurants.size() / 6;
         if (restaurants.size() % 6 != 0) {
             totalPage++;

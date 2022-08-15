@@ -67,8 +67,15 @@ public class ListAllRestaurantController extends HttpServlet {
             indexPage = "1";
         }
         int index = Integer.parseInt(indexPage);
-
-        int totalPage = dao.getTotalPage(dao.listAllRes());
+        String distance = request.getParameter("distance");
+        String star = request.getParameter("star");
+        if (distance == null || distance.equals("")) {
+            distance = "6";
+        }
+        if (star == null || star.equals("")) {
+            star = "6";
+        }
+        int totalPage = dao.getTotalPage(dao.listAllRes(Double.parseDouble(distance), Float.parseFloat(star)), Double.parseDouble(distance), Float.parseFloat(star));
         ArrayList<Restaurant> restaurants = dao.listAllRestaurant(index);
         request.setAttribute("restaurants", restaurants);
 //        request.setAttribute("endP", endPage);

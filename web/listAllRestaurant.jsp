@@ -83,21 +83,21 @@
                                     </c:if>> Tất cả</option>
                                 <option value="1" <c:if test = "${distance == 1 }">
                                         selected="selected"
-                                    </c:if> > < 1km</option>
+                                    </c:if> > <= 1km</option>
                                 <option value="2"<c:if test = "${distance == 2 }">
                                         selected="selected"
-                                    </c:if>> < 2km</option>
+                                    </c:if>> <= 2km</option>
                                 <option value="3" <c:if test = "${distance == 3 }">
                                         selected="selected"
-                                    </c:if>> < 3km</option>
+                                    </c:if>> <= 3km</option>
                                 <option value="5" <c:if test = "${distance == 5 }">
                                         selected="selected"
-                                    </c:if>> < 5km</option>
+                                    </c:if>> <= 5km</option>
                             </select>
                             <br/>
                             <br/>
                             Xếp hạng: <select name="star">
-                                <option value="6" <c:if test = "${star == 6 }">
+                                <option value="5" <c:if test = "${star == 6 }">
                                         selected="selected"
                                     </c:if>> Tất cả</option>
                                 <option value="1" <c:if test = "${star == 1 }">
@@ -112,9 +112,9 @@
                                 <option value="4" <c:if test = "${star == 4 }">
                                         selected="selected"
                                     </c:if>> 4</option>
-                                <option value="5" <c:if test = "${star == 5 }">
+                                <option value="0" <c:if test = "${star == 0 }">
                                         selected="selected"
-                                    </c:if>> 5</option>
+                                    </c:if>> Chưa có đánh giá</option>
                             </select>
                             <input type="submit" value="Tìm kiếm"> 
                             <a href="ResetSearchRes?keyword=${keyword}">Xóa bộ lọc</a>
@@ -129,6 +129,7 @@
                                         <li><a>Danh sách tất cả nhà hàng</a></li>
                                     </ul>
                                 </div>
+                                ${listSize}
                                 <ul class="list-group shadow">
                                     <c:forEach items="${restaurants}" var="restaurant" >
                                         <li class="list-group-item">
@@ -166,7 +167,7 @@
                         </ul>
                     </div> -->
                                 <c:forEach begin="1" end="${totalPage}" var="i">
-                                    <a href="FilterRestaurantController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keyword=${keyword}">${i}</a> 
+                                    <a href="FilterRestaurantController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keyword=${keyword}&star=${star}">${i}</a> 
                                 </c:forEach>
                             </div>
                         </div>

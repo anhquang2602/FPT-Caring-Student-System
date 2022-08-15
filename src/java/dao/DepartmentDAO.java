@@ -31,7 +31,7 @@ public class DepartmentDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 dep.add(new Department(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-                        rs.getString(7), rs.getString(8), rs.getString(9),rs.getString(10)));
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
             }
 
         } catch (SQLException ex) {
@@ -52,7 +52,7 @@ public class DepartmentDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 return new Department(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-                        rs.getString(7), rs.getString(8), rs.getString(9),rs.getString(10));
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DepartmentDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,8 +60,8 @@ public class DepartmentDAO extends DBContext {
         return null;
     }
 
-    public List<Department> pagingDepartment(int index) {
-        List<Department> list = new ArrayList<>();
+    public ArrayList<Department> pagingDepartment(int index) {
+        ArrayList<Department> list = new ArrayList<>();
         String sql = "SELECT * FROM Department\n"
                 + "ORDER BY DepId\n"
                 + "OFFSET ? ROWS FETCH NEXT 3 ROWS ONLY;";
@@ -72,7 +72,7 @@ public class DepartmentDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Department(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-                        rs.getString(7), rs.getString(8), rs.getString(9),rs.getString(10)));
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DepartmentDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,7 +80,6 @@ public class DepartmentDAO extends DBContext {
         return list;
     }
 
-    
     public int getTotalDepartment() {
         String sql = "select count(*) from Department";
         try {
@@ -95,6 +94,48 @@ public class DepartmentDAO extends DBContext {
         }
 
         return 0;
+    }
+
+    public ArrayList<Department> pagingDepartmentByText(String key, int index) {
+        ArrayList<Department> list = new ArrayList<>();
+        String sql = "SELECT * FROM Department where DepName like N'%"+key+"%' or ShortDescription like N'%"+key+"%'\n"
+                + "ORDER BY DepId OFFSET ? ROWS FETCH NEXT 3 ROWS ONLY;";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ps.setInt(1, (index - 1) * 3);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Department(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartmentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    
+    public ArrayList<Department> getAllDepartmentByText(String key) {
+        ArrayList<Department> list = new ArrayList<>();
+        String sql = "SELECT * FROM Department where DepName like N'%"+key+"%' or ShortDescription like N'%"+key+"%'";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Department(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartmentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public int getTotalDepartmentByText(ArrayList dep, String key) {
+        dep = getAllDepartmentByText(key);
+        int totalPage = dep.size();
+        return totalPage;
     }
 
     public static void main(String[] args) {
