@@ -13,6 +13,8 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -186,7 +188,17 @@ public class UpdateStudentProfile extends HttpServlet {
             if (sdb.updateStudentProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, studentId, unit, email) == true) {
                 request.setAttribute("UpdateProcess", "Update successfully");
                 reloadPage(request, response);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(UpdateStudentProfile.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                session.setAttribute("stt", "1");
+//                request.setAttribute("UpdateProcess", "Update successfully");
+//                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
                 request.getRequestDispatcher("home.jsp").forward(request, response);
+            
             } else {
                 request.setAttribute("UpdateProcess", "Update fail");
                 reloadPage(request, response);

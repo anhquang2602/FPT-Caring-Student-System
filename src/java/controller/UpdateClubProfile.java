@@ -12,6 +12,8 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -155,6 +157,11 @@ public class UpdateClubProfile extends HttpServlet {
             ClubDAO cdb = new ClubDAO();
             if (cdb.updateClubProfile(UserAvatar, clubUpdate) == true) {
                 reloadPage(request, response);
+                    try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(UpdateClubProfile.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 request.setAttribute("UpdateProcess", "Update successfully");
                 request.getRequestDispatcher("self_profileClub.jsp").forward(request, response);
             } else {

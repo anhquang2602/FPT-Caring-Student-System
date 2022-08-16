@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -113,6 +115,11 @@ public class AddFoodController extends HttpServlet {
                 part.write(realPath + "\\" + foodImg);
                 restaurantDAO.createFoodImg(newestFoodId, saveFoodImg);
                 //response.sendRedirect("ListRestaurantBySeller");
+                  try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(AddFoodController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 session.setAttribute("stt", "1");
                 response.sendRedirect(request.getContextPath() + "/AddFoodController?id=" + restaurantID);
             }
