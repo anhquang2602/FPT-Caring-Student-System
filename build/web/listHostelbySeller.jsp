@@ -19,6 +19,35 @@
         <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
+         <style>
+            .stars-outer {
+                position: relative;
+                display: inline-block;
+            }
+
+            .stars-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 0;
+            }
+
+            .stars-outer::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #ccc;
+            }
+
+            .stars-inner::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #f8ce0b;
+            }
+        </style>
     </head>
     <body>
         <c:choose>
@@ -90,10 +119,15 @@
                                                     </h4>
                                                     <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
                                                     <p style="font-size: 20px">Giá thuê: <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VND</p>
-                                                    </div>
 
-                                                    <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit">
-                                                        <a class="btn btn-danger" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
+                                                        <div class="stars-outer">
+                                                            <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
+                                                    </div>  
+
+                                                </div>
+
+                                                <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit">
+                                                    <a class="btn btn-danger" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
                                                     <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="">Chỉnh sửa</a> 
                                                     <a class="btn btn-secondary" id="btnDelete" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
                                                 </div>

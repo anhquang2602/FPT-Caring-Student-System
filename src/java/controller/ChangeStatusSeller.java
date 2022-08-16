@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Seller;
 
 /**
@@ -84,6 +85,7 @@ public class ChangeStatusSeller extends HttpServlet {
             Logger.getLogger(SellerListController.class.getName()).log(Level.SEVERE, null, ex);
         }
         ArrayList<Seller> listSeller = new ArrayList<>();
+        HttpSession session = request.getSession();
         int status = Integer.parseInt(request.getParameter("status"));
         String email = (request.getParameter("email"));
         SellerDAO sellerDAO = new SellerDAO();
@@ -109,7 +111,8 @@ public class ChangeStatusSeller extends HttpServlet {
         request.setAttribute("listSeller", listSeller);
         request.setAttribute("endP", endPage);
         request.setAttribute("tag", index);
-        request.getRequestDispatcher("SellerListController?status=3&gender=3").forward(request, response);
+         session.setAttribute("stt", "1");
+       response.sendRedirect(request.getContextPath()+ "/SellerListController?status=3&gender=3");
     }
 
     /**

@@ -14,8 +14,24 @@
         <link rel="stylesheet" href="css/sellerStyle.css">
         <link rel="stylesheet" href="css/datatables.min.css">
         <link rel="stylesheet" href="css/style1.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Xóa Bài Viết Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Xóa Bài Viết Thành Công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <%@include file="/header.jsp" %>
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -64,24 +80,24 @@
                                                                     <td>${report.truthless}</td>
                                                                     <td class="text-center">
                                                                         <div class="actions">
-                                                                            <a href="detailhostel?id=${report.hostelID}" class="btn btn-sm bg-success-light mr-2">
+                                                                            <a href="detailhostel?id=${report.hostelID}&isSeeFromReport=true" class="btn btn-sm bg-success-light mr-2">
                                                                                 <i class="fas fa-eye"></i>
                                                                             </a>
-                                                                            <a href="deletehostel?id=${report.hostelID}" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#confirm-delete" >
+                                                                            <a href="#" data-href="deletehostel?id=${report.hostelID}" id="btnDelete" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#confirm-delete" >
                                                                                 <i class="fas fa-trash"></i>
                                                                             </a>
-                                                                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                            <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                                                 <div class="modal-dialog">
                                                                                     <div class="modal-content">
                                                                                         <div class="modal-header">
-                                                                                            Xoá nhà hàng
+                                                                                            Xoá bài đăng
                                                                                         </div>
                                                                                         <div class="modal-body">
-                                                                                            Bạn có chắc chắn muốn xoá món ăn này không?
+                                                                                            Bạn có chắc chắn muốn xoá bài đăng này không?
                                                                                         </div>
                                                                                         <div class="modal-footer">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
-                                                                                            <a class="btn btn-danger btn-ok" href="deletehostel?id=${report.hostelID}">Xoá</a>
+                                                                                            <a class="btn btn-danger btn-ok" >Xoá</a>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -104,13 +120,28 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
-        
+        <script>
+            //        $('#confirm-delete').on('show.bs.modal', function (e) {
+            //            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            //        });
+            $(document).on('click', '#btnDelete', function () {
+                var link = $(this).attr('data-href');
+                $('.btn-ok').attr('href', link);
+            });
+        </script>
+
         <script src="js/jquery-3.6.0.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.slimscroll.min.js"></script>
         <script src="js/datatables.min.js"></script>
         <script src="js/script.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+            });
+        </script>
     </body>
 
 </html>

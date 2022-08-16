@@ -51,6 +51,7 @@ public class EditEvent extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ClubDAO clubDAO = new ClubDAO();
+        HttpSession session = request.getSession();
         int id = Integer.parseInt(request.getParameter("eventID"));
         Event event = clubDAO.getEventByID(id);
         String eventName = event.getEventName();
@@ -62,6 +63,7 @@ public class EditEvent extends HttpServlet {
         request.setAttribute("time", time);
         request.setAttribute("des", des);
         request.getRequestDispatcher("editEvent.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**
@@ -100,13 +102,13 @@ public class EditEvent extends HttpServlet {
         if (part.getSize() == 0) {
             eventImgName = clubDAO.getImgByEventName(eventName);
         } else {
-            eventImgName = "eventImages/" + eventName+".jpg";
-            part.write(realPath + "\\" + eventName+".jpg");
+            eventImgName = "eventImages/" + eventName + ".jpg";
+            part.write(realPath + "\\" + eventName + ".jpg");
         }
 
         String time = request.getParameter("time");
         String des = request.getParameter("des");
-        Event event = new Event(eventName, time, des,eventImgName);
+        Event event = new Event(eventName, time, des, eventImgName);
         clubDAO.updateEvent(event, id);
         request.setAttribute("eventImage", eventImgName);
         request.setAttribute("eventName", eventName);
@@ -114,9 +116,8 @@ public class EditEvent extends HttpServlet {
         request.setAttribute("des", des);
         HttpSession session = request.getSession();
         session.setAttribute("stt", "2");
-        response.sendRedirect(request.getContextPath() + "/AllEventByClub");
+        response.sendRedirect(request.getContextPath() + "/EditEvent?eventID=" + id);
     }
-    
 
     /**
      * Returns a short description of the servlet.

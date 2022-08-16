@@ -55,7 +55,7 @@
                 <p class="text-sm font-semibold"><jsp:useBean id="date" class="java.util.Date" />
                     Thời gian báo cáo: </p>
                 <p class="text-sm font-semibold" ><fmt:formatDate  value="${date}" pattern="yyyy-MM-dd" /></p>            
-                <button class="continue mt-4 mb-10 h-12 w-full bg-green-400 rounded-lg hover:bg-green-700 text-white text-sm cursor-pointer transition-all" value="Báo Cáo nhà hàng" href="ReportRestaurantController?id=${restaurant.restaurantID}">Báo cáo nhà hàng</button>
+                <button class="continue mt-4 mb-10 h-12 w-full bg-green-400 rounded-lg hover:bg-green-700 text-white text-sm cursor-pointer transition-all" value="Báo Cáo nhà hàng" >Báo cáo nhà hàng</button>
 
             </div>
             <!--                </div>

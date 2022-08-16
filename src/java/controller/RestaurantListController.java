@@ -79,6 +79,11 @@ public class RestaurantListController extends HttpServlet {
             request.setAttribute("isListbySeller", isListbySeller);
         }
         
+        String isSeeFromReport=request.getParameter("isSeeFromReport");
+        if (isSeeFromReport!=null&&isSeeFromReport.equalsIgnoreCase("true")) {
+            isSeeFromReport = "true";
+            request.setAttribute("isSeeFromReport", isSeeFromReport);
+        }
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         Restaurant restaurant = restaurantDAO.getRestaurantID(id);
         

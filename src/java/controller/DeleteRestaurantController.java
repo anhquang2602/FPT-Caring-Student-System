@@ -79,6 +79,8 @@ public class DeleteRestaurantController extends HttpServlet {
             session.setAttribute("stt", "3");
             response.sendRedirect("ListRestaurantBySeller");
         } else if (role == 1) {
+            HttpSession session = request.getSession();
+            session.setAttribute("stt", "1");
             response.sendRedirect("ListAllReportRestaurantController");
         }
     }

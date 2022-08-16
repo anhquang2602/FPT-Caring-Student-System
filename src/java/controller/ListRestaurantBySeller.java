@@ -53,11 +53,8 @@ public class ListRestaurantBySeller extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         RestaurantDAO restaurantDAO = new RestaurantDAO();
-
         SellerDAO sda = new SellerDAO();
-
         String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
-
         ArrayList<Restaurant> listRestaurant = restaurantDAO.listRestaurantBySeller(Integer.parseInt(sellerID));
         
         // ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(Integer.parseInt(restaurantID));
