@@ -66,6 +66,7 @@
                                         <li><a>Danh sách Câu Lạc Bộ</a></li>
                                     </ul>
                                 </div>
+                                <p> ${listNull} </p>
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listClubs}" var="club">
                                         <li class="list-group-item">
@@ -93,13 +94,13 @@
                                 <div class="clearfix">
                                     <ul class="pagination">
                                         <c:if test="${tag>1}">
-                                            <li class="page-item disabled"><a href="department?index=${tag-1}&key=${key}">Previous</a></li>
+                                            <li class="page-item disabled"><a href="ClubListController?index=${tag-1}&key=${key}&type=${type}">Previous</a></li>
                                             </c:if>
                                             <c:forEach begin="1" end="${endP}" var="i">
-                                            <li class="page-item ${tag==i?"active":""}"><a href="department?index=${i}&key=${key}" class="page-link">${i}</a></li>
+                                            <li class="page-item ${tag==i?"active":""}"><a href="ClubListController?index=${i}&key=${key}&type=${type}" class="page-link">${i}</a></li>
                                             </c:forEach>
                                             <c:if test="${tag<endP}">
-                                            <li class="page-item"><a href="department?index=${tag+1}&key=${key}" class="page-link">Next</a></li>
+                                            <li class="page-item"><a href="ClubListController?index=${tag+1}&key=${key}&type=${type}" class="page-link">Next</a></li>
                                             </c:if>
                                     </ul>
                                 </div> 
