@@ -21,6 +21,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Food;
 import model.Restaurant;
 import model.StarVoting;
@@ -143,7 +144,9 @@ public class RestaurantListController extends HttpServlet {
         
         request.setAttribute("listProvince", a.listProvince());
         request.setAttribute("listDistrict", a.getDistrictByProName(restaurant.getProvinceName()));
+        HttpSession session = request.getSession();
         request.getRequestDispatcher("viewRestaurant.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**

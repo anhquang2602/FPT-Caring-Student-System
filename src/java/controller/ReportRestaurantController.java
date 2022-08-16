@@ -105,9 +105,8 @@ public class ReportRestaurantController extends HttpServlet {
         ReportRestaurantDAO reportRestaurantDAO = new ReportRestaurantDAO();
         if (reportRestaurantDAO.createReportRestaurant(restaurantID, spam, offensive, violent, truthless)) {
             session.setAttribute("stt", "1");
-          //  response.sendRedirect("ListAllRestaurantController");
-           // request.getRequestDispatcher("ListAllRestaurantController").forward(request, response);
-
+            //  response.sendRedirect("ListAllRestaurantController");
+            // request.getRequestDispatcher("ListAllRestaurantController").forward(request, response);
             response.sendRedirect(request.getContextPath() + "/RestaurantListController?id=" + restaurantID);
 
         }

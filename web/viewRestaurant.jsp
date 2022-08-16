@@ -109,6 +109,21 @@ Author     : nguye
         </style>
     </head>
     <body class="bg-white">
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Báo Cáo Nhà Hàng Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Báo cáo nhà hàng thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <div class="px-0">
             <%@include file="/header.jsp" %> 
             <div class="d-flex nav-item main-home col-md-12">
@@ -120,7 +135,7 @@ Author     : nguye
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <%if (request.getAttribute("isListbySeller") == "true") {%>
+                                    <%if (request.getAttribute("isListbySeller") == "true") {%>
                                 <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
                                     <%} else if (request.getAttribute("isSeeFromReport") == "true") {%>
                                 <li><a href="ListAllReportRestaurantController">Danh sách báo cáo nhà ăn</a></li>
@@ -290,6 +305,13 @@ Author     : nguye
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous">
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+
+            });
         </script>
     </body>
 </html>

@@ -109,6 +109,21 @@
         </style>
     </head>
     <body>
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Báo Cáo Nhà Trọ Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Báo cáo nhà trọ thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <%@include file="/header.jsp" %>
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -187,241 +202,245 @@
                                         </div>
                                     </div>
                                     <div class="right-side">
-                                        <h3>Mô tả nhà trọ <a href="ReportHostelController?id=${hosteldetail.hostelID}"><img style="float: right; height: 40px " src="images/flag.png" ></a>
-                                                </h3>
-                                            <div class="input_text">
-                                                <strong class="fs-4">Số phòng</strong>
-                                                <input type="text" value="${hosteldetail.totalRoom}" readonly="">
-                                            </div>
-                                            <div class="input_text">
-                                                <strong class="fs-4">Tình trạng phòng</strong>
-                                            </div>
-                                            <div class="left_text">
-                                                    <c:if test = "${hosteldetail.status == true}">
-                                                        <label for="collection1">
-                                                            <div class="left_box">
-                                                                <div class="left_box_collection"> 
-                                                                    <h4>Còn phòng</h4>
-                                                                </div>
-                                                            </div>
-                                                        </label> 
-                                                    </c:if> 
-
-
-                                                    <c:if test = "${hosteldetail.status == false}">
-                                                        <label for="collection2">
-                                                            <div class="left_box">
-                                                                <div class="left_box_collection">
-                                                                    <h4>Hết phòng</h4>
-                                                                </div>                                    
-                                                            </div>                                    
-                                                        </label>  
-                                                    </c:if> 
-
-                                                </div>
-                                                <div class="input_text">
-                                                    <strong class="fs-4">Số tầng</strong>
-                                                    <input type="text"  value="${hosteldetail.floor}" readonly="">
-                                                </div>
-                                                <div class="input_text">
-                                                    <strong class="fs-4">Tỉnh, Thành phố</strong>
-                                                    <input type="text"  value="${hosteldetail.provinceNamẹ}" readonly="">
-                                                </div>
-                                                <div class="input_text">
-                                                    <strong class="fs-4">Quận, Huyện</strong>
-                                                    <input type="text"  value="${hosteldetail.districtName}" readonly="">
-                                                </div>
-                                                <div class="input_text">
-                                                    <strong class="fs-4">Địa chỉ</strong>
-                                                    <input type="text" value="${hosteldetail.address}" readonly="">
-                                                </div>
-                                                <div class="input_text">
-                                                    <strong class="fs-4">Giá thuê</strong>
-                                                    <input type="text" value="${hosteldetail.cost}" readonly="">
-                                                </div>
-                                                <div class="input_text">
-                                                    <strong class="fs-4">Khoảng cách</strong>
-                                                    <input type="text" value="${hosteldetail.distance}" readonly="">
-                                                </div>
-                                                <div class="input_text">
-                                                    <strong class="fs-4">Mô tả</strong>
-                                                    <textarea readonly="" rows="5" style="width: 100%">${hosteldetail.description}</textarea>
-                                                </div>
-                                            </div>
-                                            </form>
-                                    </div>
-                                    <div class="row">
-                                        <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà trọ:</label>
-                                        <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
-                                        <c:if test="${listCmtHostelPaging  != null}">
-                                            <c:forEach items="${listCmtHostelPaging}" var="d" >
-                                                <div class="bg-white p-3" style="margin :5px">
-                                                    <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="60" height="60" >
-                                                        <div class="d-flex flex-column justify-content-start ml-4" >
-                                                            <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
-                                                            <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
-                                                            <div class="sold_stars m1-auto">
-                                                                <c:forEach begin="1" end="${d.starvoting}" >
-                                                                    <i class="fa fa-star"  style=" font-size: 13px;"></i>      
-                                                                </c:forEach>
-                                                                <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
-                                                            </div>
+                                        <h3>Mô tả nhà trọ 
+                                        </h3>
+                                        <div class="input_text">
+                                            <strong class="fs-4">Số phòng</strong>
+                                            <input type="text" value="${hosteldetail.totalRoom}" readonly="">
+                                        </div>
+                                        <div class="input_text">
+                                            <strong class="fs-4">Tình trạng phòng</strong>
+                                        </div>
+                                        <div class="left_text">
+                                            <c:if test = "${hosteldetail.status == true}">
+                                                <label for="collection1">
+                                                    <div class="left_box">
+                                                        <div class="left_box_collection"> 
+                                                            <h4>Còn phòng</h4>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </c:forEach>
-                                        </c:if>
-                                        <div class="clearfix">
-                                            <ul class="pagination">
-                                                <c:if test="${tag>1}">
-                                                    <li class="page-item disabled"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag-1}">Previous</a></li>
-                                                    </c:if>
-                                                    <c:forEach begin="1" end="${endP}" var="i">
-                                                    <li class="page-item ${tag==i?"active":""}"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${i}" class="page-link">${i}</a></li>
-                                                    </c:forEach>
-                                                    <c:if test="${tag<endP}">
-                                                    <li class="page-item"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag+1}" class="page-link">Next</a></li>
-                                                    </c:if>
-                                            </ul>
-                                        </div>  
+                                                </label> 
+                                            </c:if> 
+
+
+                                            <c:if test = "${hosteldetail.status == false}">
+                                                <label for="collection2">
+                                                    <div class="left_box">
+                                                        <div class="left_box_collection">
+                                                            <h4>Hết phòng</h4>
+                                                        </div>                                    
+                                                    </div>                                    
+                                                </label>  
+                                            </c:if> 
+
+                                        </div>
+                                        <div class="input_text">
+                                            <strong class="fs-4">Số tầng</strong>
+                                            <input type="text"  value="${hosteldetail.floor}" readonly="">
+                                        </div>
+                                        <div class="input_text">
+                                            <strong class="fs-4">Tỉnh, Thành phố</strong>
+                                            <input type="text"  value="${hosteldetail.provinceNamẹ}" readonly="">
+                                        </div>
+                                        <div class="input_text">
+                                            <strong class="fs-4">Quận, Huyện</strong>
+                                            <input type="text"  value="${hosteldetail.districtName}" readonly="">
+                                        </div>
+                                        <div class="input_text">
+                                            <strong class="fs-4">Địa chỉ</strong>
+                                            <input type="text" value="${hosteldetail.address}" readonly="">
+                                        </div>
+                                        <div class="input_text">
+                                            <strong class="fs-4">Giá thuê</strong>
+                                            <input type="text" value="${hosteldetail.cost}" readonly="">
+                                        </div>
+                                        <div class="input_text">
+                                            <strong class="fs-4">Khoảng cách</strong>
+                                            <input type="text" value="${hosteldetail.distance}" readonly="">
+                                        </div>
+                                        <div class="input_text">
+                                            <strong class="fs-4">Mô tả</strong>
+                                            <textarea readonly="" rows="5" style="width: 100%">${hosteldetail.description}</textarea>
+                                        </div>
                                     </div>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà trọ:</label>
+                                <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
+                                <c:if test="${listCmtHostelPaging  != null}">
+                                    <c:forEach items="${listCmtHostelPaging}" var="d" >
+                                        <div class="bg-white p-3" style="margin :5px">
+                                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="60" height="60" >
+                                                <div class="d-flex flex-column justify-content-start ml-4" >
+                                                    <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
+                                                    <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
+                                                    <div class="sold_stars m1-auto">
+                                                        <c:forEach begin="1" end="${d.starvoting}" >
+                                                            <i class="fa fa-star"  style=" font-size: 13px;"></i>      
+                                                        </c:forEach>
+                                                        <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </c:if>
+                                <div class="clearfix">
+                                    <ul class="pagination">
+                                        <c:if test="${tag>1}">
+                                            <li class="page-item disabled"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag-1}">Previous</a></li>
+                                            </c:if>
+                                            <c:forEach begin="1" end="${endP}" var="i">
+                                            <li class="page-item ${tag==i?"active":""}"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${i}" class="page-link">${i}</a></li>
+                                            </c:forEach>
+                                            <c:if test="${tag<endP}">
+                                            <li class="page-item"><a href="detailhostel?id=${hosteldetail.hostelID}&&index=${tag+1}" class="page-link">Next</a></li>
+                                            </c:if>
+                                    </ul>
+                                </div>  
                             </div>
                     </div>
                 </div>
             </div>
-            <%@include file="/footer.jsp" %>                   
+        </div>
+        <%@include file="/footer.jsp" %>                   
 
-            <script>
-                const allStars = document.querySelectorAll('.star');
-                let current_rating = document.querySelector('.current_rating');
-                allStars.forEach((star, i) => {
+        <script>
+                    const allStars = document.querySelectorAll('.star');
+                    let current_rating = document.querySelector('.current_rating');
+                    allStars.forEach((star, i) = > {
                     star.onclick = function () {
-                        let current_star_level = i + 1;
-                        current_rating.innerText = current_star_level + ' trên 5 ';
-                        allStars.forEach((star, j) => {
+                    let current_star_level = i + 1;
+                            current_rating.innerText = current_star_level + ' trên 5 ';
+                            allStars.forEach((star, j) = > {
                             if (current_star_level >= j + 1) {
-                                star.innerHTML = '&#9733';
+                            star.innerHTML = '&#9733';
                             } else {
-                                star.innerHTML = '&#9734';
+                            star.innerHTML = '&#9734';
                             }
-                        });
+                            });
                     };
-                });
-            </script>                            
+                    });        </script>                            
 
-            <script>
-                $("#star5").click(function () {
-                    var hostelId = document.getElementById("hostelId").value;
+        <script>
+                    $("#star5").click(function () {
+            var hostelId = document.getElementById("hostelId").value;
                     $.ajax({
-                        type: "GET",
-                        url: "/Test_1/star",
-                        data: {
+                    type: "GET",
+                            url: "/Test_1/star",
+                            data: {
                             hostelId: hostelId,
-                            star: 5
-                        },
-                        headers: {
+                                    star: 5
+                            },
+                            headers: {
                             Accept: "application/json; charset=utf-8",
-                            contentType: "application/json; charset=utf-8"
-                        },
-                        success: function (data) {
+                                    contentType: "application/json; charset=utf-8"
+                            },
+                            success: function (data) {
                             alert(data);
-                        },
-                        error: function (e) {
+                            },
+                            error: function (e) {
                             console.log("ERROR: ", e);
-                        }
+                            }
                     });
-                });
-                $("#star4").click(function () {
-                    var hostelId = document.getElementById("hostelId").value;
+            });
+                    $("#star4").click(function () {
+            var hostelId = document.getElementById("hostelId").value;
                     $.ajax({
-                        type: "GET",
-                        url: "/Test_1/star",
-                        data: {
+                    type: "GET",
+                            url: "/Test_1/star",
+                            data: {
                             hostelId: hostelId,
-                            star: 4
-                        },
-                        headers: {
+                                    star: 4
+                            },
+                            headers: {
                             Accept: "application/json; charset=utf-8",
-                            contentType: "application/json; charset=utf-8"
-                        },
-                        success: function (data) {
+                                    contentType: "application/json; charset=utf-8"
+                            },
+                            success: function (data) {
                             alert(data);
-                        },
-                        error: function (e) {
+                            },
+                            error: function (e) {
                             console.log("ERROR: ", e);
-                        }
+                            }
                     });
-                });
-                $("#star3").click(function () {
-                    var hostelId = document.getElementById("hostelId").value;
+            });
+                    $("#star3").click(function () {
+            var hostelId = document.getElementById("hostelId").value;
                     $.ajax({
-                        type: "GET",
-                        url: "/Test_1/star",
-                        data: {
+                    type: "GET",
+                            url: "/Test_1/star",
+                            data: {
                             hostelId: hostelId,
-                            star: 3
-                        },
-                        headers: {
+                                    star: 3
+                            },
+                            headers: {
                             Accept: "application/json; charset=utf-8",
-                            contentType: "application/json; charset=utf-8"
-                        },
-                        success: function (data) {
+                                    contentType: "application/json; charset=utf-8"
+                            },
+                            success: function (data) {
                             alert(data);
-                        },
-                        error: function (e) {
+                            },
+                            error: function (e) {
                             console.log("ERROR: ", e);
-                        }
+                            }
                     });
-                });
-                $("#star2").click(function () {
-                    var hostelId = document.getElementById("hostelId").value;
+            });
+                    $("#star2").click(function () {
+            var hostelId = document.getElementById("hostelId").value;
                     $.ajax({
-                        type: "GET",
-                        url: "/Test_1/star",
-                        data: {
+                    type: "GET",
+                            url: "/Test_1/star",
+                            data: {
                             hostelId: hostelId,
-                            star: 2
-                        },
-                        headers: {
+                                    star: 2
+                            },
+                            headers: {
                             Accept: "application/json; charset=utf-8",
-                            contentType: "application/json; charset=utf-8"
-                        },
-                        success: function (data) {
+                                    contentType: "application/json; charset=utf-8"
+                            },
+                            success: function (data) {
                             alert(data);
-                        },
-                        error: function (e) {
+                            },
+                            error: function (e) {
                             console.log("ERROR: ", e);
-                        }
+                            }
                     });
-                });
-                $("#star1").click(function () {
-                    var hostelId = document.getElementById("hostelId").value;
+            });
+                    $("#star1").click(function () {
+            var hostelId = document.getElementById("hostelId").value;
                     $.ajax({
-                        type: "GET",
-                        url: "/Test_1/star",
-                        data: {
+                    type: "GET",
+                            url: "/Test_1/star",
+                            data: {
                             hostelId: hostelId,
-                            star: 1
-                        },
-                        headers: {
+                                    star: 1
+                            },
+                            headers: {
                             Accept: "application/json; charset=utf-8",
-                            contentType: "application/json; charset=utf-8"
-                        },
-                        success: function (data) {
+                                    contentType: "application/json; charset=utf-8"
+                            },
+                            success: function (data) {
                             alert(data);
-                        },
-                        error: function (e) {
+                            },
+                            error: function (e) {
                             console.log("ERROR: ", e);
-                        }
+                            }
                     });
-                });
-            </script>
+            });        </script>
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-            <script
-                src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+        <script>
+                  $(document).ready(function () {
+          $(".toast").toast({delay: 4000});
+                  $(".toast").toast("show");
+          });
+        </script>
     </body>
 </html>
