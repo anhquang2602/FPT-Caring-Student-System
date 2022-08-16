@@ -24,8 +24,10 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="SellerListController">Danh sách Chủ Kinh Doanh</a></li>
-                                <li><a>Hồ Sơ Chủ Kinh Doanh</a></li>
+                                <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                                <li><a href="SellerListController?status=3&gender=3">Danh sách Chủ Kinh Doanh</a></li>
+                                <%}%>
+                                <li><a target="_blank">Hồ Sơ Chủ Kinh Doanh</a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">
@@ -43,12 +45,12 @@
                                         <div class="col-md-12">
                                             <input type="text" class="form-control" name="email" value="${seller.email}" readonly="" hidden="">
                                             <c:if test="${seller.status eq 1}">
-                                                <strong class="ml-3 mr-1">Hoạt Động</strong><input class="form-check-input" type="radio" name="status" checked="" id="inlineRadio1" value="1">
-                                                <strong class="ml-3 mr-1">Không Hoạt Động</strong><input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0" >
+                                                <strong class="ml-3 mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked="" id="inlineRadio1" value="1">
+                                                <strong class="ml-3 mr-1">Khóa Tài Khoản</strong><input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0" >
                                             </c:if>
                                             <c:if test="${seller.status eq 0}">
-                                                <strong class="ml-3 mr-1">Hoạt Động</strong><input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">
-                                                <strong class="ml-3 mr-1">Không Hoạt Động</strong><input class="form-check-input" type="radio" name="status" checked=""  id="inlineRadio1" value="0" >
+                                                <strong class="ml-3 mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">
+                                                <strong class="ml-3 mr-1">Khóa Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked=""  id="inlineRadio1" value="0" >
                                             </c:if>
                                             <div class="mt-3">
                                                 <input class="ml-3 p-1" type="submit" value="Confirm"/>

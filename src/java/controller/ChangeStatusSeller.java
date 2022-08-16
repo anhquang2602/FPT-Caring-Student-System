@@ -107,9 +107,9 @@ public class ChangeStatusSeller extends HttpServlet {
         }
         sellerDAO.updateStatus(email, status);
         request.setAttribute("listSeller", listSeller);
-         request.setAttribute("endP", endPage);
+        request.setAttribute("endP", endPage);
         request.setAttribute("tag", index);
-        request.getRequestDispatcher("SellerListController").forward(request, response);
+        request.getRequestDispatcher("SellerListController?status=3&gender=3").forward(request, response);
     }
 
     /**

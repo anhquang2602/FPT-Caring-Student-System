@@ -56,9 +56,15 @@ public class HostelDetailController extends HttpServlet {
         processRequest(request, response);
 
         String id = request.getParameter("id");
+        String isListbySeller=request.getParameter("isListbySeller");
+        if (isListbySeller!=null&&isListbySeller.equalsIgnoreCase("true")) {
+            isListbySeller = "true";
+            request.setAttribute("isListbySeller", isListbySeller);
+        }
+
         HostelDAO dao = new HostelDAO();
         Hostel h = dao.getHostelInfo(Integer.parseInt(id));
-        
+
         StudentDAO stdao = new StudentDAO();
         if (stdao.getStudentNo((String) request.getSession().getAttribute("username")) != null) {
             request.setAttribute("isStudent", 1);
@@ -78,7 +84,7 @@ public class HostelDetailController extends HttpServlet {
         }
 
         List<StarVoting> sv = daost.pagingCommentHostel(Integer.parseInt(id), index);
-         List<StarVoting> sv1 = daost.getListCommentByHostel(Integer.parseInt(id));
+        List<StarVoting> sv1 = daost.getListCommentByHostel(Integer.parseInt(id));
         if (!sv1.isEmpty()) {
 
             int count = 0;
@@ -92,10 +98,9 @@ public class HostelDetailController extends HttpServlet {
         } else {
             h.setStarAVG(0);
         }
-        
-        
+
         int SellerID = dao.getSellerIdByHostelId(Integer.parseInt(id));
-        
+
         request.setAttribute("totalcomment", total);
         request.setAttribute("listCmtHostelPaging", sv);
         request.setAttribute("endP", endPage);

@@ -4,6 +4,8 @@
     Author     : nguye
 --%>
 
+<%@page import="model.Restaurant"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
@@ -77,9 +79,14 @@
                                     </ul>
                                 </div>
                                 <div class="mb-3" style="text-align: end">
-                                    <a style="padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="AddRestaurantController">Thêm nhà hàng mới (+)</a>
+                                    <a style="font-size: 20px; padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="AddRestaurantController">Thêm nhà hàng mới (+)</a>
                                 </div>
                                 <ul class="list-group shadow">
+                                    <%
+                                        ArrayList<Restaurant> r = (ArrayList<Restaurant>) request.getAttribute("listRestaurant");
+                                        if (r.size() == 0) {%>
+                                    <p style="font-size: 20px">Bạn chưa có nhà hàng nào</p>
+                                    <%  }%>
                                     <c:forEach items="${listRestaurant}" var="r" >
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
@@ -102,7 +109,7 @@
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
                                                         <h5 class="mt-0 font-weight-bold mb-2">
-                                                            <a href="RestaurantListController?id=${r.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
+                                                            <a href="RestaurantListController?id=${r.restaurantID}&isListbySeller=true" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
                                                     </h5>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>

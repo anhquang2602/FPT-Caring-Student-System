@@ -75,25 +75,24 @@ public class ResetSearchResController extends HttpServlet {
         String star = request.getParameter("star");
         int totalPage = 1;
         if (distance == null || distance.equals("")) {
-            distance = "6";
+            distance = "10";
         }
         if (star == null || star.equals("")) {
-            star = "6";
+            star = "5";
         }
         if (keyword == null || keyword.equalsIgnoreCase("") || keyword.isEmpty()) {
-            totalPage = restaurantDAO.getTotalPage(restaurantDAO.listAllRes(Double.parseDouble(distance), Float.parseFloat(star)),Double.parseDouble(distance), Float.parseFloat(star));
+            totalPage = restaurantDAO.getTotalPage(restaurantDAO.listAllRes(Double.parseDouble(distance), Float.parseFloat(star)), Double.parseDouble(distance), Float.parseFloat(star));
             restaurants = restaurantDAO.filterRestaurantPagging(Double.parseDouble(distance), Float.parseFloat(star), Integer.parseInt(index));
-            if (restaurants.isEmpty()) {
-                request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
-            }
         } else {
-            totalPage = restaurantDAO.getTotalPageByText(keyword, restaurants,Double.parseDouble(distance), Float.parseFloat(star));
-            restaurants = restaurantDAO.listAllResByTextPagging(keyword,Double.parseDouble(distance), Float.parseFloat(star),Integer.parseInt(index));
-            if(restaurants.isEmpty()){
-                request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
-            }
+            totalPage = restaurantDAO.getTotalPageByText(keyword, restaurants, Double.parseDouble(distance), Float.parseFloat(star));
+            restaurants = restaurantDAO.listAllResByTextPagging(keyword, Double.parseDouble(distance), Float.parseFloat(star), Integer.parseInt(index));
         }
-        request.setAttribute("totalPage", totalPage);
+        if (restaurants.isEmpty()) {
+            request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
+        }
+//        request.setAttribute("totalPage", totalPage);
+        request.setAttribute("endP", totalPage);
+        request.setAttribute("tag", index);
         request.setAttribute("restaurants", restaurants);
         request.setAttribute("distance", distance);
         request.setAttribute("keyword", keyword);

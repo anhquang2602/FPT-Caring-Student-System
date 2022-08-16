@@ -4,6 +4,8 @@
     Author     : dung
 --%>
 
+<%@page import="model.Food"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -86,6 +88,11 @@
                             <form class="form" method="POST" action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()"  enctype="multipart/form-data">
                                 <div class="left-side">
                                     <h3>Menu nhà hàng</h3>    
+                                    <%
+                                        ArrayList<Food> f=(ArrayList<Food>)request.getAttribute("listFood");
+                                        if(f.size()==0){%>
+                                            <p style="font-size: 20px">Hiện tại bạn chưa có món ăn nào</p>
+                                      <%  }%>
                                     <c:forEach items="${listFood}" var="food" >
                                         <div class="row p-2 bg-white border rounded" style="margin-top: 40px; margin-bottom: 40px;">
                                             <div class="col-md-3 mt-1">

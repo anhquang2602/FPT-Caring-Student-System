@@ -59,6 +59,7 @@ public class ListRestaurantBySeller extends HttpServlet {
         String sellerID = sda.getSellerID((String) request.getSession().getAttribute("username"));
 
         ArrayList<Restaurant> listRestaurant = restaurantDAO.listRestaurantBySeller(Integer.parseInt(sellerID));
+        
         // ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(Integer.parseInt(restaurantID));
         request.setAttribute("listRestaurant", listRestaurant);
         //  request.setAttribute("listFood", listFood);

@@ -73,6 +73,11 @@ public class RestaurantListController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         
         int id = Integer.parseInt(request.getParameter("id"));
+        String isListbySeller=request.getParameter("isListbySeller");
+        if (isListbySeller!=null&&isListbySeller.equalsIgnoreCase("true")) {
+            isListbySeller = "true";
+            request.setAttribute("isListbySeller", isListbySeller);
+        }
         
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         Restaurant restaurant = restaurantDAO.getRestaurantID(id);

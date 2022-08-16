@@ -68,7 +68,7 @@
                                                                     <td class="text-center">
                                                                         <div class="actions">
                                                                             <a href="RestaurantListController?id=${report.restaurantID}" class="btn btn-sm bg-success-light mr-2">
-                                                                                <i class="fas fa-pen"></i>
+                                                                                <i class="fas fa-eye"></i>
                                                                             </a>
                                                                             <a href="DeleteRestaurantController?id=${report.restaurantID}" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#confirm-delete">
                                                                                 <i class="fas fa-trash"></i>
@@ -77,10 +77,10 @@
                                                                                 <div class="modal-dialog">
                                                                                     <div class="modal-content">
                                                                                         <div class="modal-header">
-                                                                                            Xoá nhà hàng
+                                                                                            Xoá bài đăng
                                                                                         </div>
                                                                                         <div class="modal-body">
-                                                                                            Bạn có chắc chắn muốn xoá món ăn này không?
+                                                                                            Bạn có chắc chắn muốn xoá bài đăng này không?
                                                                                         </div>
                                                                                         <div class="modal-footer">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>

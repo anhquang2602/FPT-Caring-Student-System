@@ -81,7 +81,6 @@ public class FilterHostelController extends HttpServlet {
         if (hostels.isEmpty()) {
             request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
         }
-//        request.setAttribute("totalPage", totalPage);
         request.setAttribute("endP", totalPage);
         request.setAttribute("tag", index);
         request.setAttribute("hostels", hostels);
