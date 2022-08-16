@@ -163,10 +163,8 @@ public class UpdateAdminProfile extends HttpServlet {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(UpdateAdminProfile.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                session.setAttribute("stt", "1");
-             
+                session.setAttribute("stt", "1");    
                response.sendRedirect(request.getContextPath() + "/UpdateAdminProfile" );
-           
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");

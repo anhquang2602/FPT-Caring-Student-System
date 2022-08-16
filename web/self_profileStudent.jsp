@@ -37,7 +37,7 @@
                 </ul>
                 <div id="topnavbar1" class="col-md-10">
                     <div class="container rounded mt-5 mb-5 p-4">
-                        <form action="UpdateStudentProfile" enctype="multipart/form-data"  method="post" name="updateStudentForm">
+                        <form action="UpdateStudentProfile" enctype="multipart/form-data"  method="post" name="updateStudentForm" onsubmit="return checkSend()">
                             <div class="row">
                                 <div>
                                     <ul class="breadcrumb bg-white">
@@ -78,18 +78,21 @@
                                         <div class="col-md-6">
                                             <strong class="text-right fs-4">Unit</strong>
                                             <input type="text" name="unit" class="form-control" value="${student.unit}" >
+                                            <div id="divCheckUnit"></div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12">
                                             <strong class="text-right fs-4">Tuổi</strong>
                                             <input type="number" name="age" class="form-control"value="${student.age}" >
+                                            <div id="divCheckAge"></div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12">
                                             <strong class="text-right fs-4">Số Điện Thoại</strong>
                                             <input type="text" name="phone" class="form-control" value="${student.phone}" >
+                                            <div id="divCheckPhone"></div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
@@ -97,13 +100,7 @@
                                             <strong class="text-right fs-4">Email</strong>
                                             <input type="text" class="form-control" readonly="" value="${student.email}" >
                                         </div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-md-12">
-                                            <strong class="text-right fs-4">Link Facebook</strong>
-                                            <input type="text" class="form-control" name="linkFb" value="${student.linkFb}" >
-                                        </div>
-                                    </div>
+                                    </div>                                   
                                     <div class="row mt-3">
                                         <div class="col-md-12">
                                             <strong class="text-right fs-4">Giới Tính</strong>
@@ -160,8 +157,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-5 text-center">
-                                    <button class="btn btn-primary profile-button" type="submit" >Lưu Hồ Sơ</button>
-                                    <button class="btn btn-primary profile-button" onclick="tai_lai_trang()">Reload</button>
+                                    <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateStudentProfile()">Lưu Hồ Sơ</button>
                                 </div>
                                 <label class="labels">${UpdateError}</label>
                                 <label class="labels">${UpdateProcess}</label>
@@ -182,11 +178,7 @@
     </body>
     
     <script src="validator/Validator.js"></script>
-    <script>
-            function tai_lai_trang() {
-                var img = document.getElementById('output').src;
-            }
-    </script>
+  
     <script language="javascript">
         var gender = document.getElementById('genderlable').innerHTML;
         if (gender == 1) {
@@ -239,17 +231,4 @@
                 URL.revokeObjectURL(output.src) // free memory
             }
         };</script>
-
-    <script>
-        function validateUpdateStudent() {
-            let isValid = true;
-            const province = document.updateStudentForm.province.value;
-            document.getElementById('errorProvince').innerText = ' ';
-            if (!province) {
-                document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
-                isValid = false;
-            }
-            return isValid;
-        }
-    </script>
 </html>

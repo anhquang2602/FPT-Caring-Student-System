@@ -24,7 +24,9 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="StudentListController">Danh sách Học Sinh</a></li>
+                                <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                                <li><a href="StudentListController?status=3&gender=3">Danh sách Học Sinh</a></li>
+                                <%}%>                              
                                 <li><a>Hồ sơ Học Sinh</a></li>
                             </ul>
                         </div>

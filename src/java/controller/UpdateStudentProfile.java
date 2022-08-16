@@ -158,6 +158,10 @@ public class UpdateStudentProfile extends HttpServlet {
             //Student studentUpdate = new Student(studentId, firstName, lastName, age, phone, unit, email, 1, provinceID, districtID, addressDetail, gender, linkFb);
             if (sdb.updateStudentProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, studentId, unit, email) == true) {
                 reloadPage(request, response);
+                //request.setAttribute("UpdateProcess", "Update successfully");
+                //request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
+                //request.getRequestDispatcher("home.jsp").forward(request, response);
+
                 session.setAttribute("stt", "1");
                 response.sendRedirect(request.getContextPath() + "/UpdateStudentProfile");
 
@@ -188,8 +192,9 @@ public class UpdateStudentProfile extends HttpServlet {
              }*/
 
             if (sdb.updateStudentProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, studentId, unit, email) == true) {
-                request.setAttribute("UpdateProcess", "Update successfully");
+                //request.setAttribute("UpdateProcess", "Update successfully");
                 reloadPage(request, response);
+
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException ex) {
