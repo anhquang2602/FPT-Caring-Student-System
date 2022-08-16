@@ -146,25 +146,25 @@
                                 <div class="left-side">
                                     <div class="d-flex flex-column align-items-center text-center">
                                         <div class="form-group row"> 
-                                            <div class="col mt-5 thumbnail1">
-                                                <img src="${hosteldetail.img1}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                            <div class="col mt-5 mb-5 thumbnail1">
+                                                <img src="${hosteldetail.img1}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                             </div>
-                                            <div class="col mt-5 thumbnail1">
-                                                <img src="${hosteldetail.img2}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                            <div class="col mt-5 mb-5 thumbnail1">
+                                                <img src="${hosteldetail.img2}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                             </div>
-                                            <div class="col mt-5 thumbnail1">
-                                                <img src="${hosteldetail.img3}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                            <div class="col mt-5 mb-5 thumbnail1">
+                                                <img src="${hosteldetail.img3}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                             </div>
                                         </div>
                                         <div class="form-group row"> 
                                             <div class="col mt-5 thumbnail1">
-                                                <img src="${hosteldetail.img4}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                                <img src="${hosteldetail.img4}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                             </div>
                                             <div class="col mt-5 thumbnail1">
-                                                <img src="${hosteldetail.img5}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                                <img src="${hosteldetail.img5}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                             </div>
                                             <div class="col mt-5 thumbnail1">
-                                                <img src="${hosteldetail.img6}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                                <img src="${hosteldetail.img6}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                             </div>
                                         </div>
                                         <span class="font-weight-bold labels mt-5 fs-4" >

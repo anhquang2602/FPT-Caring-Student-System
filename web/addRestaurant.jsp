@@ -23,14 +23,14 @@
             }
         </style>
     </head>
-    <body class="bg-white">
-        <div class="px-0">
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div class="container rounded bg-white mt-5 mb-5">
+                <div class="container rounded bg-white mt-5 mb-5 col-md-10">
                     <div class="col-xl-12 mb-5">
                         <div>
                             <ul class="breadcrumb bg-white">
@@ -69,16 +69,16 @@
                                     <h3>Mô tả nhà hàng</h3>
                                     <div class="input_text"> <input type="text" name="restaurantName" placeholder="Nhập tên nhà hàng"> <span>Tên nhà hàng</span> </div>
                                     <div class="error" id="errorName"></div>
-<!--                                    <div class="input_text"> <input type="text" name="room" placeholder="Nhập số phòng"> <span>Số phòng</span> </div>   
-                                    <div class="error" id="errorRoom"></div>
-                                    <div class="input_text"> <input type="number" name="floor" placeholder="Nhập số tầng"> <span>Số tầng</span> </div>
-                                    <div class="error" id="errorFloor"></div>-->
+                                    <!--                                    <div class="input_text"> <input type="text" name="room" placeholder="Nhập số phòng"> <span>Số phòng</span> </div>   
+                                                                        <div class="error" id="errorRoom"></div>
+                                                                        <div class="input_text"> <input type="number" name="floor" placeholder="Nhập số tầng"> <span>Số tầng</span> </div>
+                                                                        <div class="error" id="errorFloor"></div>-->
                                     <div class="billing">
                                         <div class="input_text"> 
                                             <span>Tỉnh, thành phố</span> 
                                             <select name="province" id="province" class="province">
                                                 <option value="">Select Province</option>
-                                                    <c:forEach items ="${listProvince}" var="o">
+                                                <c:forEach items ="${listProvince}" var="o">
                                                     <c:if test ="${o.provinceName == 'Hà Nội'}" >
                                                         <option value="${o.provinceID}" selected>${o.provinceName}</option>
                                                     </c:if>
@@ -119,7 +119,8 @@
                 </div>
             </div>
         </div>
-
+        <%@include file="/footer.jsp" %> 
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -195,7 +196,7 @@
                 const regex = /[+-]?([0-9]*[.])?[0-9]+/;
                 const regex2 = /^[0-9]*$/;
 
-                document.getElementById('errorName').innerText = ' ';               
+                document.getElementById('errorName').innerText = ' ';
                 document.getElementById('errorProvince').innerText = ' ';
                 document.getElementById('errorAddress').innerText = ' ';
                 document.getElementById('errorCost').innerText = ' ';
@@ -205,7 +206,7 @@
                 if (!hostelName) {
                     document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà hàng!';
                     isValid = false;
-                }                
+                }
 
                 if (!province) {
                     document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
@@ -232,8 +233,8 @@
                     document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
                     isValid = false;
                 } else if (!regex.test(distance)) {
-                document.getElementById('errorDistance').innerText = 'Giá trị nhập không đúng. Khoảng cách phải là số !';
-                        isValid = false;
+                    document.getElementById('errorDistance').innerText = 'Giá trị nhập không đúng. Khoảng cách phải là số !';
+                    isValid = false;
                 } else if (distance <= 0) {
                     document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
                     isValid = false;
@@ -244,6 +245,5 @@
             }
         </script>
     </body>
-    <%@include file="/footer.jsp" %>    
 </html>
 

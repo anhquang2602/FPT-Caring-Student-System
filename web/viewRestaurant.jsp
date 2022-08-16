@@ -145,7 +145,6 @@ Author     : nguye
                                     </div>
                                     <div class="left-side">
                                         <div class="row">
-                                            <!--<h3>Menu nhà hàng</h3>-->
                                             <strong class="fs-4">Menu nhà hàng </strong>
                                             <div class="mt-2">
                                                 <c:forEach items="${listFood}" var="food" >
@@ -175,24 +174,14 @@ Author     : nguye
                                     </div>
                                     <div class="right-side">
                                         <div class="row">
-                                            <!--<h3>Mô tả nhà ăn</h3>-->
                                             <strong class="fs-4">Mô tả nhà ăn </strong>
-
-
-
-
-
-
-
                                             <div class="mt-5 thumbnail">
-    <!--                                            <img src="${restaurant.restaurantImage}"  class="form-control" alt=""/>-->
-
                                                 <img  <c:if test="${restaurant.restaurantImage != null && restaurant.restaurantImage !=''}">
                                                         src="${restaurant.restaurantImage}" </c:if>
                                                     <c:if test="${restaurant.restaurantImage == null}">
                                                         src="images/restaurant.png" </c:if> 
                                                     <c:if test="${restaurant.restaurantImage == ''}">
-                                                        src="images/restaurant.png" </c:if>  style="width: 600px; height: 400px" class="form-control" alt="" >
+                                                        src="images/restaurant.png" </c:if>  width="100%" class="form-control" alt="" >
                                                 </div>
                                                 <div class="col-md-12 text-center mt-3">
                                                     <div class="stars-outer mb-5"> 
