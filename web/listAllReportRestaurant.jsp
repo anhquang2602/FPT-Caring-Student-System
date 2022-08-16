@@ -67,7 +67,7 @@
                                                                     <td>${report.truthless}</td>
                                                                     <td class="text-center">
                                                                         <div class="actions">
-                                                                            <a href="RestaurantListController?id=${report.restaurantID}" class="btn btn-sm bg-success-light mr-2">
+                                                                            <a href="RestaurantListController?id=${report.restaurantID}&isSeeFromReport=true" class="btn btn-sm bg-success-light mr-2">
                                                                                 <i class="fas fa-eye"></i>
                                                                             </a>
                                                                             <a href="DeleteRestaurantController?id=${report.restaurantID}" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#confirm-delete">

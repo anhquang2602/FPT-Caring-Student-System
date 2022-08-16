@@ -59,7 +59,11 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
+                                <%  if (request.getAttribute("isSeeFromReport") == "true") {%>
+                                <li><a href="ListAllReportHostelController">Danh sách báo cáo nhà trọ</a></li>
+                                    <%} else {%>
                                 <li><a href="FilterHostelController">Danh sách nhà trọ</a></li>
+                                    <%}%>                           
                                 <li><a>Chi tiết nhà trọ</a></li>
                             </ul>
                         </div>

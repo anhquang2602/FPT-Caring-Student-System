@@ -120,8 +120,12 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
+                                <%  if (request.getAttribute("isSeeFromReport") == "true") {%>
+                                <li><a href="ListAllReportRestaurantController">Danh sách báo cáo nhà ăn</a></li>
+                                    <%} else {%>
                                 <li><a href="ListAllRestaurantController">Danh sách nhà ăn</a></li>
-                                <li><a>Chi tiết nhà ăn</a></li>
+                                    <%}%>
+                                
                             </ul>
                         </div>
                         <div class="card">
