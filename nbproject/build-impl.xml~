@@ -1001,15 +1001,39 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.smtp.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.javaee-web-api-7.0.classpath}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.jstl.classpath}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        <copyfiles files="${file.reference.gson-2.8.0.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.sqljdbc42.jar-1}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+=======
+>>>>>>> 9567831f178e745dc6c781c7be6962eb09e4cfac
 
         <copyfiles files="${file.reference.gson-2.8.0.jar-3}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.sqljdbc42.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
 
+<<<<<<< HEAD
+=======
+>>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
+>>>>>>> 9567831f178e745dc6c781c7be6962eb09e4cfac
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
     <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
+<<<<<<< HEAD
       
+=======
+<<<<<<< HEAD
+        <copyfiles files="${file.reference.mail.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.smtp.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${libs.javaee-web-api-7.0.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${libs.jstl.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.gson-2.8.0.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.sqljdbc42.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
+=======
+      
+>>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
+>>>>>>> 9567831f178e745dc6c781c7be6962eb09e4cfac
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
         <delete dir="${build.web.dir}/WEB-INF/lib"/>

@@ -72,56 +72,75 @@
                 </ul>
                 <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-                        <form class="example d-flex align-items-center" action="FilterHostelController" method="post"> 
-                            <input type="text" name="keyword" value="${keyword}" >
-                            <button type="submit"><i class="fa fa-search"></i></button> 
-                            <br/>
-                            Bộ lọc tìm kiếm <br/>
-
-                            Giá: <input type="text" name="under" value="${under}"> - <input type="text" name="upper" value="${upper}"> <br/>
-                            <mark>${costReport}</mark>
-                            <br/>
-                            Khoảng cách: <select name="distance">
-                                <option value="6" <c:if test = "${distance == 10 }">
-                                        selected="selected"
-                                    </c:if>> Tất cả</option>
-                                <option value="1" <c:if test = "${distance == 1 }">
-                                        selected="selected"
-                                    </c:if> > <= 1km</option>
-                                <option value="2"<c:if test = "${distance == 2 }">
-                                        selected="selected"
-                                    </c:if>> <= 2km</option>
-                                <option value="3" <c:if test = "${distance == 3 }">
-                                        selected="selected"
-                                    </c:if>> <= 3km</option>
-                                <option value="5" <c:if test = "${distance == 5 }">
-                                        selected="selected"
-                                    </c:if>> <= 5km</option>
-                            </select>
-                            <br/>
-                            <br/>
-                            Xếp hạng: <select name="star">
-                                <option value="5" <c:if test = "${star == 5 }">
-                                        selected="selected"
-                                    </c:if>> Tất cả</option>
-                                <option value="1" <c:if test = "${star == 1 }">
-                                        selected="selected"
-                                    </c:if>> 1 sao trở lên</option>
-                                <option value="2" <c:if test = "${star == 2 }">
-                                        selected="selected"
-                                    </c:if>> 2 sao trở lên</option>
-                                <option value="3" <c:if test = "${star == 3 }">
-                                        selected="selected"
-                                    </c:if>> 3 sao trở lên</option>
-                                <option value="4" <c:if test = "${star == 4 }">
-                                        selected="selected"
-                                    </c:if>> 4 sao trở lên</option>
-                                <option value="0" <c:if test = "${star == 0 }">
-                                        selected="selected"
-                                    </c:if>> Chưa có xếp hạng</option>
-                            </select>
-                            <input type="submit" value="Tìm kiếm"> 
-                            <a href="ResetSearchController?keyword=${keyword}">Xóa bộ lọc</a>
+                        <form class="row example align-items-center" action="FilterHostelController" method="post"> 
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <input type="text" name="keywordHostel" value="${keywordHostel}" >
+                                <button type="submit"><i class="fa fa-search"></i></button> 
+                            </div>
+                            <div class="d-flex mb-3 mt-5 px-md-3 px-2">
+                                <div class="text-center">
+                                    <p class="fs-4 mr-5">Bộ lọc tìm kiếm</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="col-md-4 mr-5">
+                                        <div class="d-flex">
+                                            <span class="fs-4 mr-3">Giá: </span>
+                                            <span class="fs-4 mr-1">Từ: </span>
+                                            <input class="mr-1" type="text" name="under" value="${under}"> - 
+                                            <span class="fs-4 ml-1">Đến: </span>
+                                            <input type="text" name="upper" value="${upper}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="fs-4">Khoảng cách: </span>
+                                        <select name="distance" class="p-2 px-4">
+                                            <option value="6" <c:if test = "${distance == 10 }">
+                                                    selected="selected"
+                                                </c:if>> Tất cả</option>
+                                            <option value="1" <c:if test = "${distance == 1 }">
+                                                    selected="selected"
+                                                </c:if> > < 1km</option>
+                                            <option value="2"<c:if test = "${distance == 2 }">
+                                                    selected="selected"
+                                                </c:if>> < 2km</option>
+                                            <option value="3" <c:if test = "${distance == 3 }">
+                                                    selected="selected"
+                                                </c:if>> < 3km</option>
+                                            <option value="5" <c:if test = "${distance == 5 }">
+                                                    selected="selected"
+                                                </c:if>> < 5km</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 mr-3">
+                                        <span class="fs-4">Xếp hạng: </span>
+                                        <select name="star" class="p-2">
+                                            <option value="6" <c:if test = "${star == 6 }">
+                                                    selected="selected"
+                                                </c:if>> Tất cả</option>
+                                            <option value="1" <c:if test = "${star == 1 }">
+                                                    selected="selected"
+                                                </c:if>> 1</option>
+                                            <option value="2" <c:if test = "${star == 2 }">
+                                                    selected="selected"
+                                                </c:if>> 2</option>
+                                            <option value="3" <c:if test = "${star == 3 }">
+                                                    selected="selected"
+                                                </c:if>> 3</option>
+                                            <option value="4" <c:if test = "${star == 4 }">
+                                                    selected="selected"
+                                                </c:if>> 4</option>
+                                            <option value="5" <c:if test = "${star == 5 }">
+                                                    selected="selected"
+                                                </c:if>> 5</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input class="fs-4" type="submit" value="Tìm kiếm"> 
+                                        <a class="fs-4" href="ResetSearchHostelsController?keywordHostel=${keywordHostel}" style="text-decoration: none">Xóa bộ lọc</a>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="container" style="margin-top: 50px">

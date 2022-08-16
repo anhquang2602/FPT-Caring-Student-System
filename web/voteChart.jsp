@@ -20,7 +20,7 @@
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar" class="col-md-10">
-                    <div class="container" style="margin-top: 50px">
+                    <div class="container mt-5">
                         <div class="row">
                             <div class="col-md-12 mb-5">
                                 <div>
@@ -30,53 +30,54 @@
                                         <li><a>Biểu đồ đánh giá nhà trọ của tôi</a></li>
                                     </ul>
                                 </div>
-                                <div
-                                    id="myChart" style="width:1000px; height:1000px;">
+                                <div>
+                                    <div class="d-flex">
+                                        <div class="col-md-6" id="myChart" style="height: 800px">
+                                        </div>
+                                        <div class="col-md-6" id="myChart2">
+                                        </div>
+                                        <label class="labels" id="onestar" hidden="">${oneStar}</label>
+                                        <label class="labels" id="twostar" hidden="">${twoStar}</label>
+                                        <label class="labels" id="threestar" hidden="">${threeStar}</label>
+                                        <label class="labels" id="fourstar" hidden="">${fourStar}</label>
+                                        <label class="labels" id="fivestar" hidden="">${fiveStar}</label>
+
+                                        <script>
+                                            let onestar = document.getElementById('onestar').innerHTML;
+                                            let ones = Number(onestar);
+                                            let twostar = document.getElementById('twostar').innerHTML;
+                                            let twos = Number(twostar);
+                                            let threestar = document.getElementById('threestar').innerHTML;
+                                            let threes = Number(threestar);
+                                            let fourstar = document.getElementById('fourstar').innerHTML;
+                                            let fours = Number(fourstar);
+                                            let fivestar = document.getElementById('fivestar').innerHTML;
+                                            let fives = Number(fivestar);
+                                            google.charts.load('current', {'packages': ['corechart']});
+                                            google.charts.setOnLoadCallback(drawChart);
+
+                                            function drawChart() {
+                                                var data = google.visualization.arrayToDataTable([
+                                                    ['Sao', 'Số Lượt vote'],
+                                                    ['1 Sao', ones],
+                                                    ['2 Sao', twos],
+                                                    ['3 Sao', threes],
+                                                    ['4 Sao', fours],
+                                                    ['5 Sao', fives]
+                                                ]);
+
+                                                var options = {
+                                                    title: 'Số lượt đánh giá'
+                                                };
+
+                                                var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+                                                chart.draw(data, options);
+                                                var chart2 = new google.visualization.BarChart(document.getElementById('myChart2'));
+                                                chart2.draw(data, options);
+                                            }
+                                        </script>
+                                    </div>
                                 </div>
-                                <div
-                                    id="myChart2" style="width:1000px; height:1000px;">
-                                </div>
-                                <label class="labels" id="onestar" hidden="">${oneStar}</label>
-                                <label class="labels" id="twostar" hidden="">${twoStar}</label>
-                                <label class="labels" id="threestar" hidden="">${threeStar}</label>
-                                <label class="labels" id="fourstar" hidden="">${fourStar}</label>
-                                <label class="labels" id="fivestar" hidden="">${fiveStar}</label>
-                                <script>
-                                    let onestar = document.getElementById('onestar').innerHTML;
-                                    let ones = Number(onestar);
-                                    let twostar = document.getElementById('twostar').innerHTML;
-                                    let twos = Number(twostar);
-                                    let threestar = document.getElementById('threestar').innerHTML;
-                                    let threes = Number(threestar);
-                                    let fourstar = document.getElementById('fourstar').innerHTML;
-                                    let fours = Number(fourstar);
-                                    let fivestar = document.getElementById('fivestar').innerHTML;
-                                    let fives = Number(fivestar);
-                                    google.charts.load('current', {'packages': ['corechart']});
-                                    google.charts.setOnLoadCallback(drawChart);
-
-                                    function drawChart() {
-                                        var data = google.visualization.arrayToDataTable([
-                                            ['Sao', 'Số Lượt vote'],
-                                            ['1 Sao', ones],
-                                            ['2 Sao', twos],
-                                            ['3 Sao', threes],
-                                            ['4 Sao', fours],
-                                            ['5 Sao', fives]
-                                        ]);
-
-                                        var options = {
-                                            title: 'Số lượt đánh giá'
-                                        };
-
-                                        var chart = new google.visualization.PieChart(document.getElementById('myChart'));
-                                        chart.draw(data, options);
-                                        var chart2 = new google.visualization.BarChart(document.getElementById('myChart2'));
-                                        chart2.draw(data, options);
-                                    }
-                                </script>
-
-                               
                             </div>
                         </div>
                     </div>
