@@ -37,7 +37,7 @@ public class ReportRestaurantDAO extends DBContext {
 
     public boolean createReportRestaurant(int restaurantID, int spam, int offensive, int violent, int truthless) {
         try {
-            String sql = "INSERT INTO ReportRestaurant (RestaurantID,Spam,Offensive,Violent,Truthless) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO ReportRestaurant (RestaurantID,Spam,Offensive,Violent,Truthless,ReportTime) VALUES (?,?,?,?,?, GetDate())";
             stm = connection.prepareStatement(sql);
             stm.setInt(1, restaurantID);
             stm.setInt(2, spam);

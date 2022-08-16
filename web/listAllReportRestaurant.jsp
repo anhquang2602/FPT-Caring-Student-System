@@ -85,7 +85,7 @@
                                                                             <a href="RestaurantListController?id=${report.restaurantID}" class="btn btn-sm bg-success-light mr-2">
                                                                                 <i class="fas fa-eye"></i>
                                                                             </a>
-                                                                            <a href="DeleteRestaurantController?id=${report.restaurantID}" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#confirm-delete">
+                                                                            <a href="#" data-href="DeleteRestaurantController?id=${report.restaurantID}"  id="btnDelete" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#confirm-delete">
                                                                                 <i class="fas fa-trash"></i>
                                                                             </a>      
                                                                             <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -99,7 +99,7 @@
                                                                                         </div>
                                                                                         <div class="modal-footer">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
-                                                                                            <a class="btn btn-danger btn-ok" href="DeleteRestaurantController?id=${report.restaurantID}">Xoá</a>
+                                                                                            <a class="btn btn-danger btn-ok" >Xoá</a>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -122,7 +122,15 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
-
+            <script>
+            //        $('#confirm-delete').on('show.bs.modal', function (e) {
+            //            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            //        });
+            $(document).on('click', '#btnDelete', function () {
+                var link = $(this).attr('data-href');
+                $('.btn-ok').attr('href', link);
+            });
+        </script>
         <script src="js/jquery-3.6.0.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
