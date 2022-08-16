@@ -109,7 +109,7 @@ public class ChangeStatusSeller extends HttpServlet {
         }
         sellerDAO.updateStatus(email, status);
         request.setAttribute("listSeller", listSeller);
-         request.setAttribute("endP", endPage);
+        request.setAttribute("endP", endPage);
         request.setAttribute("tag", index);
          session.setAttribute("stt", "1");
        response.sendRedirect(request.getContextPath()+ "/SellerListController?status=3&gender=3");

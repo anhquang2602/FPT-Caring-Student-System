@@ -24,8 +24,10 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="SellerListController">Danh sách Chủ Kinh Doanh</a></li>
-                                <li><a>Hồ Sơ Chủ Kinh Doanh</a></li>
+                                <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                                <li><a href="SellerListController?status=3&gender=3">Danh sách Chủ Kinh Doanh</a></li>
+                                <%}%>
+                                <li><a target="_blank">Hồ Sơ Chủ Kinh Doanh</a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">

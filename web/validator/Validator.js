@@ -46,20 +46,20 @@ function checkMail(nameOfForm) {
  }*/
 
 function checkPhone(nameOfForm) {
-    const phone = document.nameOfForm.phone.value;
-    const re = /^[0-9]{3}-[0-9]{3}-[0-9]{7}$/im;
+    const phone = document[nameOfForm].phone.value;
+    const re = /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
     if (phone == '') {
-        const phoneError = document.createElement('div');
-        phoneError.append('Phone can not empty');
-        phoneError.setAttribute('class', 'alert-danger alert error');
-        phoneError.setAttribute('role', 'alert');
-        //  Append div to parent element
-        document.getElementById('divCheckPhone').appendChild(phoneError);
-        check = 0;
+//        const phoneError = document.createElement('div');
+//        phoneError.append('Phone can not empty');
+//        phoneError.setAttribute('class', 'alert-danger alert error');
+//        phoneError.setAttribute('role', 'alert');
+//        //  Append div to parent element
+//        document.getElementById('divCheckPhone').appendChild(phoneError);
+//        check = 0;
     } else if (!re.test(String(phone).toLowerCase())) {
         // Step 1: Create dynamic div
         const phoneError = document.createElement('div');
-        phoneError.append('Please input your correct phone number(###-###-#######).');
+        phoneError.append('Please input your correct phone number.');
         phoneError.setAttribute('class', 'alert-danger alert error');
         phoneError.setAttribute('role', 'alert');
         // Step 2: Append div to parent element
@@ -68,6 +68,51 @@ function checkPhone(nameOfForm) {
     }
 }
 
+function checkAge(nameOfForm) {
+    const age = document[nameOfForm].age.value;
+    const re = /^(1[0123456789]|[2-9]\d)$/;
+    if (age == '') {
+//        const phoneError = document.createElement('div');
+//        phoneError.append('Phone can not empty');
+//        phoneError.setAttribute('class', 'alert-danger alert error');
+//        phoneError.setAttribute('role', 'alert');
+//        //  Append div to parent element
+//        document.getElementById('divCheckPhone').appendChild(phoneError);
+//        check = 0;
+    } else if (!re.test(String(age).toLowerCase())) {
+        // Step 1: Create dynamic div
+        const ageError = document.createElement('div');
+        ageError.append('Please input your correct age from (10 to 99).');
+        ageError.setAttribute('class', 'alert-danger alert error');
+        ageError.setAttribute('role', 'alert');
+        // Step 2: Append div to parent element
+        document.getElementById('divCheckAge').appendChild(ageError);
+        check = 0;
+    }
+}
+
+function checkUnit(nameOfForm) {
+    const unit = document[nameOfForm].unit.value;
+    const re = /^[Kk]{1}\d{2}$/;
+    if (unit == '') {
+//        const phoneError = document.createElement('div');
+//        phoneError.append('Phone can not empty');
+//        phoneError.setAttribute('class', 'alert-danger alert error');
+//        phoneError.setAttribute('role', 'alert');
+//        //  Append div to parent element
+//        document.getElementById('divCheckPhone').appendChild(phoneError);
+//        check = 0;
+    } else if (!re.test(String(unit).toLowerCase())) {
+        // Step 1: Create dynamic div
+        const unitError = document.createElement('div');
+        unitError.append('Please input your correct unit (eg K13,K14...)');
+        unitError.setAttribute('class', 'alert-danger alert error');
+        unitError.setAttribute('role', 'alert');
+        // Step 2: Append div to parent element
+        document.getElementById('divCheckUnit').appendChild(unitError);
+        check = 0;
+    }
+}
 //
 function checkInputCode(nameOfForm) {
     const code = document[nameOfForm].inputCode.value;
@@ -184,6 +229,8 @@ function checkValidatorForRegister() {
     //checkPositionChoose();
 }
 
+
+
 function checkValidatorForInputNewPass() {
     check = 1;
     document.querySelectorAll('div.error').forEach(e => e.remove());
@@ -218,6 +265,46 @@ function checkValidatorForUpdateProfile()
 
 }
 
+function checkValidatorForUpdateStudentProfile()
+{
+    check = 1;
+    document.querySelectorAll('div.error').forEach(e => e.remove());
+    checkPhone('updateStudentForm');
+    checkAge('updateStudentForm');
+    checkUnit('updateStudentForm');
+    
+
+}
+
+function checkValidatorForUpdateSellerProfile()
+{
+    check = 1;
+    document.querySelectorAll('div.error').forEach(e => e.remove());
+    checkPhone('updateSellerForm');
+    checkAge('updateSellerForm');
+    
+
+}
+
+function checkValidatorForUpdateAdminProfile()
+{
+    check = 1;
+    document.querySelectorAll('div.error').forEach(e => e.remove());
+    checkPhone('updateAdminForm');
+    checkAge('updateAdminForm');
+    
+
+}
+
+function checkValidatorForSearchListStudent()
+{
+    check = 1;
+    document.querySelectorAll('div.error').forEach(e => e.remove());
+    
+    checkUnit('searchListStudent');
+    
+
+}
 
 function checkValidatorForInputCode() {
     check = 1;
@@ -251,6 +338,9 @@ function checkValidatorForgotPassword_InputEmail() {
     //checkCountryChoose();
     //checkPositionChoose();
 }
+
+
+
 
 //check if can send inf 
 function checkSend() {
