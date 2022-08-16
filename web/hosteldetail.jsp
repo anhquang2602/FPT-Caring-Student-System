@@ -20,6 +20,12 @@
 
         <style>
 
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
 
             .dialog {
                 position: fixed;
@@ -95,6 +101,21 @@
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Báo Cáo Nhà Trọ Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Báo cáo nhà trọ thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <%@include file="/header.jsp" %>
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -106,7 +127,15 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
+
+                                <%  if (request.getAttribute("isListbySeller") == "true") {%>
+                                <li><a href="hostellist">Nhà trọ của tôi</a></li>
+                                    <%} else if (request.getAttribute("isSeeFromReport") == "true") {%>
+                                <li><a href="ListAllReportHostelController">Danh sách báo cáo nhà trọ</a></li>
+                                    <%} else {%>
                                 <li><a href="FilterHostelController">Danh sách nhà trọ</a></li>
+                                    <%}%>
+
                                 <li><a>Chi tiết nhà trọ</a></li>
                             </ul>
                         </div>
@@ -127,44 +156,51 @@
                                     </div>
                                     <div class="left-side">
                                         <div class="d-flex flex-column align-items-center text-center">
-                                            <div class="form-group row"> 
-                                                <div class="col mt-5 thumbnail1">
-                                                    <img src="${hosteldetail.img1}" style="padding: 0px;" height="170px" width="170px" alt="">
+
+                                            <div class="form-group row thumbnail1"> 
+                                                <div class="col mt-5 mb-5 ">
+                                                    <img src="${hosteldetail.img1}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                                 </div>
-                                                <div class="col mt-5 thumbnail1">
-                                                    <img src="${hosteldetail.img2}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                                <div class="col mt-5 mb-5 ">
+                                                    <img src="${hosteldetail.img2}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                                 </div>
-                                                <div class="col mt-5 thumbnail1">
-                                                    <img src="${hosteldetail.img3}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                                <div class="col mt-5 mb-5 ">
+                                                    <img src="${hosteldetail.img3}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                                 </div>
                                             </div>
-                                            <div class="form-group row"> 
-                                                <div class="col mt-5 thumbnail1">
-                                                    <img src="${hosteldetail.img4}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                            <div class="form-group row thumbnail1"> 
+                                                <div class="col mt-5 ">
+                                                    <img src="${hosteldetail.img4}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                                 </div>
-                                                <div class="col mt-5 thumbnail1">
-                                                    <img src="${hosteldetail.img5}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                                <div class="col mt-5 ">
+                                                    <img src="${hosteldetail.img5}" style="padding: 0px" width="200rem" height="200rem" alt="">
                                                 </div>
-                                                <div class="col mt-5 thumbnail1">
-                                                    <img src="${hosteldetail.img6}" style="padding: 0px;" height="170px" width="170px" alt="">
+                                                <div class="col mt-5 ">
+                                                    <img src="${hosteldetail.img6}" style="padding: 0px" width="200rem" height="200rem" alt="">
+
                                                 </div>
                                             </div>
                                             <span class="font-weight-bold labels mt-5 fs-4" >
                                                 <label>Nhà trọ:</label> ${hosteldetail.hostelName}
                                             </span>
+
                                             <div class="stars-outer mb-5" style=" font-size: 20px">
                                                 <div class="stars-inner" style="width: ${hosteldetail.starAVG}%; font-size: 20px" > </div>
+
                                             </div>
                                             <span class="font-weight-bold labels mb-5 fs-5">
                                                 <label>Chủ trọ:</label>
                                                 <a href="ViewSellerController?id=${sellerId}" style="text-decoration: none" target="_blank">${hosteldetail.sellerName}</a>
                                             </span>
                                             <c:if test = "${isStudent == 1}">
+
                                                 <a href="commentHostel?hostelID=${hosteldetail.hostelID}" style="font-size: 20px" > <i class='far fa-edit'></i> Viết đánh giá</a> 
+
                                             </c:if>
                                         </div>
                                     </div>
                                     <div class="right-side">
+
                                         <strong class="fs-4">Mô tả nhà trọ</strong>
 
 
@@ -186,6 +222,7 @@
                                                     </div>
                                                 </label> 
                                             </c:if> 
+
 
 
                                             <c:if test = "${hosteldetail.status == false}">
@@ -230,19 +267,25 @@
                                     </div>
                                 </form>
                             </div>
+
                             <div class="row" style="background-color:#f2f2f2" >
+
                                 <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà trọ:</label>
                                 <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
                                 <c:if test="${listCmtHostelPaging  != null}">
                                     <c:forEach items="${listCmtHostelPaging}" var="d" >
                                         <div class="bg-white p-3" style="margin :5px">
+
                                             <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="80" height="50" >
+
                                                 <div class="d-flex flex-column justify-content-start ml-4" >
                                                     <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
                                                     <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
                                                     <div class="sold_stars m1-auto">
                                                         <c:forEach begin="1" end="${d.starvoting}" >
+
                                                             <i class="fa fa-star"  style=" font-size: 17px;"></i>      
+
                                                         </c:forEach>
                                                         <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
                                                     </div>
@@ -274,128 +317,126 @@
         <script>
             const allStars = document.querySelectorAll('.star');
             let current_rating = document.querySelector('.current_rating');
-            allStars.forEach((star, i) => {
-                star.onclick = function () {
-                    let current_star_level = i + 1;
-                    current_rating.innerText = current_star_level + ' trên 5 ';
-                    allStars.forEach((star, j) => {
-                        if (current_star_level >= j + 1) {
-                            star.innerHTML = '&#9733';
-                        } else {
-                            star.innerHTML = '&#9734';
-                        }
-                    });
-                };
+            allStars.forEach((star, i) = > {
+            star.onclick = function () {
+            let current_star_level = i + 1;
+            current_rating.innerText = current_star_level + ' trên 5 ';
+            allStars.forEach((star, j) = > {
+            if (current_star_level >= j + 1) {
+            star.innerHTML = '&#9733';
+            } else {
+            star.innerHTML = '&#9734';
+            }
             });
-        </script>                            
+            };
+            });</script>                            
 
         <script>
             $("#star5").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                $.ajax({
-                    type: "GET",
+            var hostelId = document.getElementById("hostelId").value;
+            $.ajax({
+            type: "GET",
                     url: "/Test_1/star",
                     data: {
-                        hostelId: hostelId,
-                        star: 5
+                    hostelId: hostelId,
+                            star: 5
                     },
                     headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
                     },
                     success: function (data) {
-                        alert(data);
+                    alert(data);
                     },
                     error: function (e) {
-                        console.log("ERROR: ", e);
+                    console.log("ERROR: ", e);
                     }
-                });
+            });
             });
             $("#star4").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                $.ajax({
-                    type: "GET",
+            var hostelId = document.getElementById("hostelId").value;
+            $.ajax({
+            type: "GET",
                     url: "/Test_1/star",
                     data: {
-                        hostelId: hostelId,
-                        star: 4
+                    hostelId: hostelId,
+                            star: 4
                     },
                     headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
                     },
                     success: function (data) {
-                        alert(data);
+                    alert(data);
                     },
                     error: function (e) {
-                        console.log("ERROR: ", e);
+                    console.log("ERROR: ", e);
                     }
-                });
+            });
             });
             $("#star3").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                $.ajax({
-                    type: "GET",
+            var hostelId = document.getElementById("hostelId").value;
+            $.ajax({
+            type: "GET",
                     url: "/Test_1/star",
                     data: {
-                        hostelId: hostelId,
-                        star: 3
+                    hostelId: hostelId,
+                            star: 3
                     },
                     headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
                     },
                     success: function (data) {
-                        alert(data);
+                    alert(data);
                     },
                     error: function (e) {
-                        console.log("ERROR: ", e);
+                    console.log("ERROR: ", e);
                     }
-                });
+            });
             });
             $("#star2").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                $.ajax({
-                    type: "GET",
+            var hostelId = document.getElementById("hostelId").value;
+            $.ajax({
+            type: "GET",
                     url: "/Test_1/star",
                     data: {
-                        hostelId: hostelId,
-                        star: 2
+                    hostelId: hostelId,
+                            star: 2
                     },
                     headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
                     },
                     success: function (data) {
-                        alert(data);
+                    alert(data);
                     },
                     error: function (e) {
-                        console.log("ERROR: ", e);
+                    console.log("ERROR: ", e);
                     }
-                });
+            });
             });
             $("#star1").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                $.ajax({
-                    type: "GET",
+            var hostelId = document.getElementById("hostelId").value;
+            $.ajax({
+            type: "GET",
                     url: "/Test_1/star",
                     data: {
-                        hostelId: hostelId,
-                        star: 1
+                    hostelId: hostelId,
+                            star: 1
                     },
                     headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
                     },
                     success: function (data) {
-                        alert(data);
+                    alert(data);
                     },
                     error: function (e) {
-                        console.log("ERROR: ", e);
+                    console.log("ERROR: ", e);
                     }
-                });
             });
-        </script>
+            });</script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -403,5 +444,11 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function () {
+            $(".toast").toast({delay: 4000});
+            $(".toast").toast("show");
+            });
+        </script>
     </body>
 </html>

@@ -6,6 +6,7 @@
 package controller;
 
 import dao.RestaurantDAO;
+import dao.SendMail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -67,6 +68,8 @@ public class DeleteRestaurantController extends HttpServlet {
         int role = Integer.parseInt(request.getSession().getAttribute("role").toString());
 
         int restaurantID = Integer.parseInt(request.getParameter("id"));
+        String RestaurantName=restaurantDAO.getRestaurantNameByResId(restaurantID);
+        String email=restaurantDAO.getSellerEmailByResId(restaurantID);
         ArrayList<Food> listFood = restaurantDAO.listFoodByRestaurant(restaurantID);
         for (Food f : listFood) {
             restaurantDAO.deleteFoodlImage(f.getFoodID());
@@ -77,8 +80,12 @@ public class DeleteRestaurantController extends HttpServlet {
         if (role == 3) {
             HttpSession session = request.getSession();
             session.setAttribute("stt", "3");
-            response.sendRedirect("ListRestaurantBySeller");
+            response.sendRedirect(request.getContextPath() + "/ListRestaurantBySeller");
         } else if (role == 1) {
+            SendMail sm=new SendMail();          
+            sm.SendMailDelete(RestaurantName, email);
+            HttpSession session = request.getSession();
+            session.setAttribute("stt", "1");
             response.sendRedirect("ListAllReportRestaurantController");
         }
     }

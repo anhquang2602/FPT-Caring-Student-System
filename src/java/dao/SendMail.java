@@ -68,10 +68,28 @@ public class SendMail {
                 + "</head>\n"
                 + "\n"
                 + "<body>\n"
-                + "    <h3 style=\"color: blue;\">Hi,Thank you for signing up for a FCS account</h3>\n"
                 + "    <div>Your authentication code</div>\n"
                 + "    <div>"+code+"</div>\n"               
                 + "    <h3 style=\"color: blue;\">Thank you very much!</h3>\n"
+                + "\n"
+                + "</body>\n"
+                + "\n"
+                + "</html>";
+            SendMail.send(email, subject, message, "fptcaringsystem@gmail.com", "kuhzyylhwlirpwju"); 
+    }
+    
+    public static void SendMailDelete(String name,String email){
+    String subject = "Your post has been removed from FCS";
+            String message = "<!DOCTYPE html>\n"
+                + "<html lang=\"vi\">\n"
+                + "\n"
+                + "<head>\n"
+                + "</head>\n"
+                + "\n"
+                + "<body>\n"
+                + "    <div style=\"color: red;\">Your post '"+name+"' has been deleted by admin for violating community standards</div>\n"
+                + "    <div>We ask you to strictly follow our standards in the next articles</div>\n"               
+                + "    <h3>Thank you very much!</h3>\n"
                 + "\n"
                 + "</body>\n"
                 + "\n"

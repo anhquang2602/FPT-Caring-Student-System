@@ -110,6 +110,21 @@ Author     : nguye
         </style>
     </head>
     <body class="bg-white">
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Báo Cáo Nhà Hàng Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Báo cáo nhà hàng thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <div class="px-0">
             <%@include file="/header.jsp" %> 
             <div class="d-flex nav-item main-home col-md-12">
@@ -121,7 +136,13 @@ Author     : nguye
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
+                                    <%if (request.getAttribute("isListbySeller") == "true") {%>
+                                <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
+                                    <%} else if (request.getAttribute("isSeeFromReport") == "true") {%>
+                                <li><a href="ListAllReportRestaurantController">Danh sách báo cáo nhà ăn</a></li>
+                                    <%} else {%>
                                 <li><a href="ListAllRestaurantController">Danh sách nhà ăn</a></li>
+                                    <%}%>                              
                                 <li><a>Chi tiết nhà ăn</a></li>
                             </ul>
                         </div>
@@ -142,7 +163,6 @@ Author     : nguye
                                     </div>
                                     <div class="left-side">
                                         <div class="row">
-                                            <!--<h3>Menu nhà hàng</h3>-->
                                             <strong class="fs-4">Menu nhà hàng </strong>
                                             <div class="mt-2">
                                                 <c:forEach items="${listFood}" var="food" >
@@ -154,7 +174,7 @@ Author     : nguye
                                                                  <c:if test="${food.imageURL == null}">
                                                                      src="images/food.png" </c:if> 
                                                                  <c:if test="${food.imageURL == ''}">
-                                                                     src="images/food.png" </c:if>   height="170px" width="170px">
+                                                                     src="images/food.png" </c:if> width="150rem" height="150rem">
                                                             </div>
                                                             <div class="col-md-5 mt-1">
                                                                 <label class="labels">${food.foodName}</label>
@@ -172,24 +192,14 @@ Author     : nguye
                                     </div>
                                     <div class="right-side">
                                         <div class="row">
-                                            <!--<h3>Mô tả nhà ăn</h3>-->
                                             <strong class="fs-4">Mô tả nhà ăn </strong>
-
-
-
-
-
-
-
-                                            <div class="mt-5 thumbnail">
-    <!--                                            <img src="${restaurant.restaurantImage}"  class="form-control" alt=""/>-->
-
+                                            <div class="mt-5 thumbnail p-5">
                                                 <img  <c:if test="${restaurant.restaurantImage != null && restaurant.restaurantImage !=''}">
                                                         src="${restaurant.restaurantImage}" </c:if>
                                                     <c:if test="${restaurant.restaurantImage == null}">
                                                         src="images/restaurant.png" </c:if> 
                                                     <c:if test="${restaurant.restaurantImage == ''}">
-                                                        src="images/restaurant.png" </c:if>  style="width: 600px; height: 400px" class="form-control" alt="" >
+                                                        src="images/restaurant.png" </c:if>  width="100%" class="form-control" alt="" >
                                                 </div>
                                                 <div class="col-md-12 text-center mt-3">
                                                     <div class="stars-outer mb-5" style=" font-size: 20px"> 
@@ -285,6 +295,13 @@ Author     : nguye
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous">
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+
+            });
         </script>
     </body>
 </html>

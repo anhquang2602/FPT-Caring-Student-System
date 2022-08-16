@@ -80,6 +80,8 @@ public class FilterHostelController extends HttpServlet {
         }
         if (hostels.isEmpty()) {
             request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
+        } else {
+            request.setAttribute("listSize", "Có " + hostels.size() + " kết quả được tìm thấy");
         }
         request.setAttribute("endP", totalPage);
         request.setAttribute("tag", index);

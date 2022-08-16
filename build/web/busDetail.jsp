@@ -29,9 +29,9 @@
                     <div class="container rounded bg-white mt-5 mb-5">
                         <div>
                             <ul class="breadcrumb bg-white">
-                                <li><a href="home.jsp">Home</a></li>
-                                <li><a href="BusPagingServlet">List Bus</a></li>
-                                <li><a>Bus Detail</a></li>
+                                <li><a href="home.jsp">Trang chủ</a></li>
+                                <li><a href="BusPagingServlet">Danh sách xe Bus</a></li>
+                                <li><a>Chi tiết xe Bus</a></li>
                             </ul>
                         </div>
                         <div class="row">

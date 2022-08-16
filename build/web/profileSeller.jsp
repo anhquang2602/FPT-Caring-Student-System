@@ -24,18 +24,15 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="SellerListController">Danh sách Chủ Kinh Doanh</a></li>
-                                <li><a>Hồ Sơ Chủ Kinh Doanh</a></li>
+                                <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                                <li><a href="SellerListController?status=3&gender=3">Danh sách Chủ Kinh Doanh</a></li>
+                                <%}%>
+                                <li><a target="_blank">Hồ Sơ Chủ Kinh Doanh</a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                 <img class="rounded-circle mt-5" height="170rem" width="170rem" src="${seller.image}">
-                                <!--                                <form action="ViewSellerController" method="post">
-                                                                    <div class="form-group">                       
-                                                                        <input style="padding-left: 80px"type="file" class="form-control-file" id="exampleFormControlFile1">
-                                                                    </div>
-                                                                </form>-->
                                 <a href="${seller.linkFb}" class="mt-3" style="text-decoration: none" title="" target="_blank">My Facebook</a>
                                 <div class="mt-5">
                                     <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
@@ -64,7 +61,7 @@
                                 <div class="d-flex justify-content-between align-items-center mb-5">
                                     <h3 class="text-right">HỒ SƠ CHỦ KINH DOANH</h3>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row mt-3">
                                     <input name="id" value="${seller.sellerID}" hidden="">
                                     <div class="col-md-6">
                                         <h4>Họ</h4>
@@ -75,38 +72,38 @@
                                         <input type="text" class="form-control" value="${seller.lastName}" readonly="">
                                     </div>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Tuổi</h4>
                                         <input type="number" class="form-control"value="${seller.age}" readonly="">
                                     </div>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Số Điện Thoại</h4>
                                         <input type="text" class="form-control" value="0${seller.phone}" readonly="">
                                     </div>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Email</h4>
                                         <input type="text" class="form-control" value="${seller.email}" readonly="">
                                     </div>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Giới Tính</h4>
                                         <c:if test="${seller.gender eq 1}">
                                             <span class="ml-3 mr-1">Nam</span><input class="form-check-input" type="radio" name="inlineRadioOptions" checked="" id="inlineRadio1" value="1">
-<!--                                            <span class="ml-3 mr-1">Nữ</span><input class="form-check-input" type="radio" name="inlineRadioOptions"   id="inlineRadio1" value="0" >-->
+                                            <!--                                            <span class="ml-3 mr-1">Nữ</span><input class="form-check-input" type="radio" name="inlineRadioOptions"   id="inlineRadio1" value="0" >-->
                                         </c:if>
                                         <c:if test="${seller.gender eq 0}">
-<!--                                            <span class="ml-3 mr-1">Nam</span><input class="form-check-input" type="radio" name="inlineRadioOptions"  id="inlineRadio1" value="1">-->
+                                            <!--                                            <span class="ml-3 mr-1">Nam</span><input class="form-check-input" type="radio" name="inlineRadioOptions"  id="inlineRadio1" value="1">-->
                                             <span class="ml-3 mr-1">Nữ</span><input class="form-check-input" type="radio" name="inlineRadioOptions" checked=""  id="inlineRadio1" value="0">
                                         </c:if>
                                     </div>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Đất nước</h4>
                                         <select class="form-select" aria-label="Default select example">
@@ -114,7 +111,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Tỉnh, Thành Phố</h4>
                                         <select class="form-select" aria-label="Default select example">
@@ -122,7 +119,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Quận, Huyện</h4>
                                         <select class="form-select" aria-label="Default select example">
@@ -130,7 +127,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Địa Chỉ</h4>
                                         <input type="text" class="form-control"value="${seller.address}" readonly="">
@@ -142,7 +139,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</body>
-<%@include file="/footer.jsp" %>
+        <%@include file="/footer.jsp" %>
+    </body>
 </html>

@@ -61,7 +61,6 @@ ul.breadcrumb li a:hover {
 
 .thumbnail1 {
     overflow: visible; 
-    padding: 0px;
 }
 
 /* Thumbnail */
@@ -80,7 +79,7 @@ ul.breadcrumb li a:hover {
 
 /* Hover chuá»™t vÃ o thumbnail */
 .thumbnail1 img:hover {
-    position: absolute;
+    position: relative;
     z-index: 999;
     transform: scale(4);
         /* Safari & Google Chrome */
@@ -115,7 +114,7 @@ ul.breadcrumb li a:hover {
 
 /* Hover chuá»™t vÃ o thumbnail */
 .thumbnail2 img:hover {
-    position: absolute;
+    position: relative;
     z-index: 999;
     transform: scale(1.5);
         /* Safari & Google Chrome */
@@ -157,7 +156,7 @@ ul.breadcrumb li a:hover {
          
 /* Hover chuột vào thumbnail */
 .thumbnail img:hover {
-    position: absolute;
+    position: relative;
     z-index: 999;
     transform: scale(1.2);
         /* Safari & Google Chrome */

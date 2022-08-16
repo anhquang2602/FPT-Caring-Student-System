@@ -32,19 +32,7 @@
                     </div>
                 </div>
             </c:when>
-            <c:when test="${stt.equals('2')}">
-                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
-                    <div class="toast" data-autohide="true">
-                        <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Sự Kiện Thành Công</h4></strong>
-                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-                        </div>
-                        <div class="toast-body">
-                            Chỉnh sửa sự kiện thành công !
-                        </div>
-                    </div>
-                </div>
-            </c:when>
+            
             <c:when test="${stt.equals('3')}">
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">

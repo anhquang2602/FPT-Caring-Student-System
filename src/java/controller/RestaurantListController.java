@@ -21,6 +21,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Food;
 import model.Restaurant;
 import model.StarVoting;
@@ -73,7 +74,17 @@ public class RestaurantListController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         
         int id = Integer.parseInt(request.getParameter("id"));
+        String isListbySeller=request.getParameter("isListbySeller");
+        if (isListbySeller!=null&&isListbySeller.equalsIgnoreCase("true")) {
+            isListbySeller = "true";
+            request.setAttribute("isListbySeller", isListbySeller);
+        }
         
+        String isSeeFromReport=request.getParameter("isSeeFromReport");
+        if (isSeeFromReport!=null&&isSeeFromReport.equalsIgnoreCase("true")) {
+            isSeeFromReport = "true";
+            request.setAttribute("isSeeFromReport", isSeeFromReport);
+        }
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         Restaurant restaurant = restaurantDAO.getRestaurantID(id);
         
@@ -133,7 +144,9 @@ public class RestaurantListController extends HttpServlet {
         
         request.setAttribute("listProvince", a.listProvince());
         request.setAttribute("listDistrict", a.getDistrictByProName(restaurant.getProvinceName()));
+        HttpSession session = request.getSession();
         request.getRequestDispatcher("viewRestaurant.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**

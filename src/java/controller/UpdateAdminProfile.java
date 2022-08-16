@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -139,10 +139,10 @@ public class UpdateAdminProfile extends HttpServlet {
                 reloadPage(request, response);
                 session.setAttribute("stt", "1");
                // response.sendRedirect(request.getContextPath() + "home.jsp");
-               response.sendRedirect(request.getContextPath() + "/home" );
+               response.sendRedirect(request.getContextPath() + "/UpdateAdminProfile" );
             } else {
                 reloadPage(request, response);
-                 session.setAttribute("stt", "1");
+                request.setAttribute("UpdateProcess", "Update fail");
                 request.getRequestDispatcher("self_profileAdmin.jsp").forward(request, response);
             }
         } else {
@@ -163,10 +163,8 @@ public class UpdateAdminProfile extends HttpServlet {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(UpdateAdminProfile.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                session.setAttribute("stt", "1");
-             
-               response.sendRedirect(request.getContextPath() + "/home" );
-           
+                session.setAttribute("stt", "1");    
+               response.sendRedirect(request.getContextPath() + "/UpdateAdminProfile" );
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");

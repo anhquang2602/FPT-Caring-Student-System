@@ -24,43 +24,41 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="StudentListController">Danh sách Học Sinh</a></li>
+                                <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
+                                <li><a href="StudentListController?status=3&gender=3">Danh sách Học Sinh</a></li>
+                                <%}%>                              
                                 <li><a>Hồ sơ Học Sinh</a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                                <!--                                <form action="ViewStudentController" method="post">
-                                                                    <div class="form-group">                       
-                                                                        <input style="padding-left: 80px"type="file" class="form-control-file" id="exampleFormControlFile1">
-                                                                    </div>
-                                                                </form>-->
-                                <div class="p-3 py-5">
+                                <img class="rounded-circle mt-5" height="170rem" width="170rem" src="${student.image}">
+                                <a href="${student.linkFb}" class="mt-3" style="text-decoration: none" title="" target="_blank">My Facebook</a>
+                                <div class="mt-5">
+                                    <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
                                     <form action="ChangeStatusStudent" method="post">
-                                        <div class="col-md-12 mt-5 ml-5">
+                                        <div class="col-md-12">
                                             <input type="text" class="form-control" name="email" value="${student.email}" readonly="" hidden="">
-                                        </div>
-                                        <div class="mt-1">
                                             <c:if test="${student.status eq 1}">
-                                                <strong class="ml-3 mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked="" id="inlineRadio1" value="1">
-                                                <strong class="ml-3 mr-1">Không Hoạt Động</strong><input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0">
+                                                <strong class=" mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked="" id="inlineRadio1" value="1">
+                                                <strong class=" mr-1">Không Hoạt Động</strong><input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0">
                                             </c:if>
                                             <c:if test="${student.status eq 0}">
-                                                <strong class="ml-3 mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">
-                                                <strong class="ml-3 mr-1">Khóa Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked=""  id="inlineRadio1" value="0">
+                                                <strong class=" mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">
+                                                <strong class=" mr-1">Khóa Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked=""  id="inlineRadio1" value="0">
                                             </c:if>
                                             <div class="mt-3">
                                                 <input class="ml-3 p-1" type="submit" value="Confirm"/>
                                             </div>
                                         </div>
                                     </form>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="p-3 py-5">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-5">
                                     <h3 class="text-right">HỒ SƠ HỌC SINH</h3>
                                 </div>
                                 <div class="row mt-2">
@@ -131,7 +129,7 @@
                                     <div class="col-md-12">
                                         <h4>Quận, Huyện</h4>
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected value="${student.districID}">${student.districtName}</option>
+                                            <option selected value="${student.districtID}">${student.districtName}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -147,7 +145,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</body>
-<%@include file="/footer.jsp" %>
+        <%@include file="/footer.jsp" %>
+    </body>
 </html>

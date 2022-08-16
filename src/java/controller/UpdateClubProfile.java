@@ -47,7 +47,7 @@ public class UpdateClubProfile extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateClubProfile</title>");            
+            out.println("<title>Servlet UpdateClubProfile</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UpdateClubProfile at " + request.getContextPath() + "</h1>");
@@ -55,7 +55,7 @@ public class UpdateClubProfile extends HttpServlet {
             out.println("</html>");
         }
     }
-    
+
     public void reloadPage(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
@@ -66,8 +66,7 @@ public class UpdateClubProfile extends HttpServlet {
         request.setAttribute("club", club);
         request.setAttribute("UserAvatar", UserAvatar);
         AddressDAO a = new AddressDAO();
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -84,8 +83,10 @@ public class UpdateClubProfile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
         reloadPage(request, response);
         request.getRequestDispatcher("self_profileClub.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**
@@ -106,8 +107,8 @@ public class UpdateClubProfile extends HttpServlet {
         String UserAvatar = null;
         Part part = request.getPart("avatarImage");
 
-        String clubName, clubPresident, description ,linkFb;
-        
+        String clubName, clubPresident, description, linkFb;
+
         clubName = request.getParameter("clubName");
         clubPresident = request.getParameter("clubPresident");
         description = request.getParameter("description");
@@ -121,13 +122,13 @@ public class UpdateClubProfile extends HttpServlet {
         }
         if (part.getSize() == 0) {
             ClubDAO cdb = new ClubDAO();
-            UserAvatar = cdb.getAvatarByUsername(email);       
+            UserAvatar = cdb.getAvatarByUsername(email);
             //public Club(String avatar, String clubName, String clubPresident, String facebook, String email, String des) {
-            Club clubUpdate = new Club(UserAvatar,clubName,clubPresident,linkFb,email,description);
+            Club clubUpdate = new Club(UserAvatar, clubName, clubPresident, linkFb, email, description);
             if (cdb.updateClubProfile(UserAvatar, clubUpdate) == true) {
                 reloadPage(request, response);
-                 session.setAttribute("stt", "1");
-              response.sendRedirect(request.getContextPath() + "/home" );
+                session.setAttribute("stt", "1");
+                response.sendRedirect(request.getContextPath() + "/UpdateClubProfile");
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");
@@ -135,8 +136,7 @@ public class UpdateClubProfile extends HttpServlet {
             }
         } else {
 
-           
-           String avatarName = null;
+            String avatarName = null;
             if (email.contains("@gmail.com")) {
                 avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
             } else if (email.contains("@fpt.edu.vn")) {
@@ -145,25 +145,25 @@ public class UpdateClubProfile extends HttpServlet {
             UserAvatar = "avatarImages/" + avatarName;
             part.write(realPath + "\\" + avatarName);
             /* try (PrintWriter out = response.getWriter()) {
-                out.println("<h1>Name: " + avatarName + "</h1>");
-                out.println("<h1>uplodName: " + realPath.toString() + "</h1>");
-                out.println("<h1>Part: " + part.toString() + "</h1>");
-                out.print("<img src='avatarImages/" + avatarName + "'width='100'>");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
-            
-            Club clubUpdate = new Club(UserAvatar,clubName,clubPresident,linkFb,email,description);
+             out.println("<h1>Name: " + avatarName + "</h1>");
+             out.println("<h1>uplodName: " + realPath.toString() + "</h1>");
+             out.println("<h1>Part: " + part.toString() + "</h1>");
+             out.print("<img src='avatarImages/" + avatarName + "'width='100'>");
+             } catch (Exception e) {
+             e.printStackTrace();
+             }*/
+
+            Club clubUpdate = new Club(UserAvatar, clubName, clubPresident, linkFb, email, description);
             ClubDAO cdb = new ClubDAO();
             if (cdb.updateClubProfile(UserAvatar, clubUpdate) == true) {
                 reloadPage(request, response);
-                    try {
+                try {
                     Thread.sleep(2000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(UpdateClubProfile.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                request.setAttribute("UpdateProcess", "Update successfully");
-                request.getRequestDispatcher("self_profileClub.jsp").forward(request, response);
+                session.setAttribute("stt", "1");
+                response.sendRedirect(request.getContextPath() + "/UpdateClubProfile");
             } else {
                 reloadPage(request, response);
                 request.setAttribute("UpdateProcess", "Update fail");

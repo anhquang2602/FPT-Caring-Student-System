@@ -13,6 +13,21 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
     <body class="bg-white">
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Hồ Sơ Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Chỉnh sửa hồ sơ thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <div class="px-0 bg-white">
             <%@include file="/header.jsp" %> 
             <div class="d-md-flex">
@@ -67,6 +82,11 @@
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $(".toast").toast({delay: 4000});
+        $(".toast").toast("show");
+    });</script>
 </body>
 <script src="validator/Validator.js"></script>
 
@@ -78,13 +98,13 @@ crossorigin="anonymous"></script>
 
 
 <script>
-                                        var loadFile = function (event) {
-                                            var output = document.getElementById('output');
-                                            output.src = URL.createObjectURL(event.target.files[0]);
-                                            output.onload = function () {
-                                                URL.revokeObjectURL(output.src) // free memory
-                                            }
-                                        };
+    var loadFile = function (event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
 </script>
 <%@include file="/footer.jsp" %>
 </html>

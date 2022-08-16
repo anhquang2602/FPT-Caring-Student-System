@@ -18,11 +18,11 @@
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
                         <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Hồ Sơ Thất Bại</h4></strong>
+                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Hồ Sơ Thành Công</h4></strong>
                             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                         </div>
                         <div class="toast-body">
-                            Chỉnh sửa hồ sơ thất bại !
+                            Chỉnh sửa hồ sơ thành công !
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <form action="UpdateAdminProfile" enctype="multipart/form-data"  method="post" name="updateAdminForm">
+                <form action="UpdateAdminProfile" enctype="multipart/form-data"  method="post" name="updateAdminForm" onsubmit="return checkSend()">
                     <div class="container rounded bg-white mt-5 mb-5">
                         <div class="row">
                             <div>
@@ -66,7 +66,9 @@
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12"><label class="labels">Age</label><input type="number" name="age" class="form-control"value="${admin.age}" ></div>
+                                        <div id="divCheckAge"></div>
                                         <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" value="${admin.phone}" ></div>
+                                        <div id="divCheckPhone"></div>
                                         <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" readonly="" value="${admin.email}" ></div>
                                         <div class="col-md-12"><label class="labels">Link Facebook</label><input type="text" class="form-control" name="linkFb" value="${admin.linkFb}" ></div>
                                         <div class="col-md-12"><label class="labels">Giới tính</label></br>
@@ -105,7 +107,7 @@
                                     <div class="col-md-12"><label class="labels">Address Detail</label><input type="text" name="addressDetail" class="form-control"value="${admin.address}" ></div>
                                 </div>
                                 <div class="mt-5 text-center">
-                                    <button class="btn btn-primary profile-button" type="submit" >Save Profile</button>
+                                    <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateAdminProfile()">Save Profile</button>
                                 </div>
                                 <label class="labels">${UpdateError}</label>
                                 <label class="labels">${UpdateProcess}</label>

@@ -77,6 +77,8 @@ public class EditRestaurantController extends HttpServlet {
         request.setAttribute("listProvince", a.listProvince());
         request.setAttribute("listDistrict", a.getDistrictByProName(restaurant.getProvinceName()));
         request.getRequestDispatcher("editRestaurant.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        session.removeAttribute("stt");
     }
 
     /**
@@ -114,21 +116,22 @@ public class EditRestaurantController extends HttpServlet {
         }
         if (part.getSize() == 0) {
             if (restaurantDAO.updateRestaurantNoImg(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description)) {
-                session.setAttribute("stt", "2");
-                response.sendRedirect(request.getContextPath() + "/ListRestaurantBySeller");
+                session.setAttribute("stt", "1");
+                response.sendRedirect(request.getContextPath() + "/EditRestaurantController?id=" + restaurantID);
             }
         } else {
             String restaurantImg = restaurantName + "img.jpg";
             String SaveRestaurantImg = "restaurantImages/" + restaurantImg;
             part.write(realPath + "\\" + restaurantImg);
             if (restaurantDAO.updateRestaurant(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description, SaveRestaurantImg)) {
-                session.setAttribute("stt", "2");
-                  try {
+                session.setAttribute("stt", "1");
+                try {
                     Thread.sleep(3000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(EditRestaurantController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                response.sendRedirect(request.getContextPath() + "/ListRestaurantBySeller");
+                response.sendRedirect(request.getContextPath() + "/EditRestaurantController?id=" + restaurantID);
+
             }
         }
     }

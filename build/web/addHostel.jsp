@@ -17,14 +17,14 @@
         <link rel="stylesheet" href="css/addHostelStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
-    <body class="bg-white">
-        <div>
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div class="container rounded bg-white mt-5 mb-5">
+                <div class="container rounded bg-white mt-5 mb-5 col-md-10">
                     <div class="col-xl-12 mt-5 mb-5">
                         <div>
                             <ul class="breadcrumb bg-white">
@@ -223,7 +223,8 @@
                 </div>
             </div>
         </div>
-
+        <%@include file="/footer.jsp" %> 
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -257,7 +258,7 @@
                 });
 
             });
-            
+
             $(document).on('change', '.province', function () {
                 var province = document.getElementById("province").value;
                 $('#district').empty();
@@ -393,5 +394,4 @@
 
         </script>
     </body>
-    <%@include file="/footer.jsp" %>    
 </html>
