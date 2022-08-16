@@ -120,11 +120,13 @@ Author     : nguye
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <%  if (request.getAttribute("isSeeFromReport") == "true") {%>
+                                <%if (request.getAttribute("isListbySeller") == "true") {%>
+                                <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
+                                    <%} else if (request.getAttribute("isSeeFromReport") == "true") {%>
                                 <li><a href="ListAllReportRestaurantController">Danh sách báo cáo nhà ăn</a></li>
                                     <%} else {%>
                                 <li><a href="ListAllRestaurantController">Danh sách nhà ăn</a></li>
-                                    <%}%>
+                                    <%}%>                              
                                 <li><a>Chi tiết nhà ăn</a></li>
                             </ul>
                         </div>
@@ -156,7 +158,7 @@ Author     : nguye
                                                                  <c:if test="${food.imageURL == null}">
                                                                      src="images/food.png" </c:if> 
                                                                  <c:if test="${food.imageURL == ''}">
-                                                                     src="images/food.png" </c:if>   height="170px" width="170px">
+                                                                     src="images/food.png" </c:if>  height="170px" width="170px">
                                                             </div>
                                                             <div class="col-md-5 mt-1">
                                                                 <label class="labels">${food.foodName}</label>
@@ -175,7 +177,7 @@ Author     : nguye
                                     <div class="right-side">
                                         <div class="row">
                                             <strong class="fs-4">Mô tả nhà ăn </strong>
-                                            <div class="mt-5 thumbnail">
+                                            <div class="mt-5 thumbnail p-5">
                                                 <img  <c:if test="${restaurant.restaurantImage != null && restaurant.restaurantImage !=''}">
                                                         src="${restaurant.restaurantImage}" </c:if>
                                                     <c:if test="${restaurant.restaurantImage == null}">

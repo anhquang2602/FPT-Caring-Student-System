@@ -4,6 +4,8 @@
     Author     : nguye
 --%>
 
+<%@page import="model.Restaurant"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
@@ -97,14 +99,16 @@
                                     <a style="font-size: 20px; padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="AddRestaurantController">Thêm nhà hàng mới (+)</a>
                                 </div>
                                 <ul class="list-group shadow">
+                                    <%
+                                        ArrayList<Restaurant> r = (ArrayList<Restaurant>) request.getAttribute("listRestaurant");
+                                        if (r.size() == 0) {%>
+                                    <p style="font-size: 20px">Bạn chưa có nhà hàng nào</p>
+                                    <%  }%>
                                     <c:forEach items="${listRestaurant}" var="r" >
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-<!--                                                    <img src="${r.restaurantImage}" style="width: 150px; height: 150px" >-->
-
-                                                    <img class="img-fluid img-responsive rounded product-image" 
-
+                                                    <img class="img-fluid img-responsive rounded product-image" id="output"
                                                          <c:if test="${r.restaurantImage != null && r.restaurantImage !=''}">
                                                              src="${r.restaurantImage}" </c:if>
                                                          <c:if test="${r.restaurantImage == null }">
@@ -112,18 +116,14 @@
                                                          <c:if test="${r.restaurantImage ==''}">
                                                              src="images/nhà trọ.jpg" </c:if> 
                                                              style="width: 150px; height: 150px">
-
-                                                     
-
-
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
-                                                        <h5 class="mt-0 font-weight-bold mb-2">
-                                                            <a href="RestaurantListController?id=${r.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
-                                                    </h5>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.distance} km</p>
+                                                        <h4 class="mt-0 font-weight-bold mb-2">
+                                                            <a href="RestaurantListController?id=${r.restaurantID}&isListbySeller=true" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
+                                                    </h4>
+                                                    <p style="font-size: 20px">${r.description}</p>
+                                                    <p style="font-size: 20px">${r.address}</p>
+                                                    <p style="font-size: 20px">${r.distance} km</p>
                                                          <div class="stars-outer">
                                                             <div class="stars-inner" style="width: ${r.starAVG}%">  </div>
                                                     </div>  
@@ -175,6 +175,22 @@
                 $(".toast").toast("show");
 
             });
+        </script>
+
+        <script>
+            // Create a timestamp
+            var timestamp = new Date().getTime();
+            // Get the image element
+            var image = document.getElementById("output");
+            // Adding the timestamp parameter to image src
+            image.src = image.src + "?t=" + timestamp;
+
+            window.onload = function () {
+                if (!window.location.hash) {
+                    window.location = window.location + '#loaded';
+                    window.location.reload(true);
+                }
+            }
         </script>
     </body>
 
