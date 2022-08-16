@@ -125,7 +125,7 @@
                                     <%} else {%>
                                 <li><a href="ListAllRestaurantController">Danh sách nhà ăn</a></li>
                                     <%}%>
-                                
+                                <li><a>Chi tiết nhà ăn</a></li>
                             </ul>
                         </div>
                         <div class="card">

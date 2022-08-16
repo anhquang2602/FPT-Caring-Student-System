@@ -27,46 +27,31 @@
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar" class="col-md-10">
-                    <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-<<<<<<< HEAD
-                        <form class="example  align-items-center" action="SellerListController" method="post"> 
-                            <div>
-                                <input type="text" placeholder="" name="key" value="${key}"> 
-                                <button type="submit"><i class="fa fa-search"></i></button> 
-                            </div>
-                            <div class="d-flex mb-3 mt-5 mr-5">
-                                <div class="d-flex">
-                                    <div class="col-md-4 mt-3 mr-5">
+                    <div class="d-flex  mb-3 mt-5 px-md-3 px-2 align-items-center justify-content-center"> 
+                        <form class="example align-items-center" action="StudentListController" method="post">
+                            <div class="row">
+                                <div>
+                                    <input type="text" placeholder="" name="key" value="${key}"> 
+                                    <button type="submit"><i class="fa fa-search"></i></button> 
+                                </div>
+                                <div class="d-flex mb-3 mt-5 mr-5">
+                                    <div class="col-md-4 mt-3 mr-4">
                                         <label class="fs-4 labels mb-3" for="cars">Tỉnh, thành phố</label>
                                         <select name="province" id="province" class="province form-select" onchange>
                                             <option value="">Chọn tỉnh, thành phố</option>
                                             <c:forEach items ="${listProvince}" var="o">
                                                 <option value="${o.provinceID}" 
-=======
-                        <form class="example  align-items-center" action="StudentListController" method="post"> 
-                            <input type="text" placeholder="" name="key" value="${key}"> 
-                            <button type="submit"><i class="fa fa-search"></i></button> 
-                            <br/>
-                            <div class="col-md-12">
-                                <label class="labels" for="cars">Tỉnh, thành phố</label>
-                                <select name="province" id="province" class="province form-select" onchange>
-                                    <option value="">Chọn tỉnh, thành phố</option>
-                                    <c:forEach items ="${listProvince}" var="o">
-                                        <option value="${o.provinceID}" 
->>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
-
                                                         <c:if test = "${province == o.provinceID }">
                                                             selected="selected"
                                                         </c:if>    >${o.provinceName}</option>
-
                                             </c:forEach>
                                         </select>
                                     </div>
-                                    <div class="col-md-3 mt-3">
+                                    <div class="col-md-1 mt-3 ml-2">
                                         <span class="fs-4">Khóa</span>
                                         <input class="mt-3" type="text" placeholder="Khóa" name="unit" value="${unit}" >
                                     </div>
-                                    <div class="col-md-3 mt-3 ml-4">
+                                    <div class="col-md-2 mt-3 ml-4">
                                         <div class="d-flex">
                                             <div class="row justify-content-center">
                                                 <span class="fs-4">Giới tính</span>
@@ -110,6 +95,55 @@
                                                     <div class="d-flex mt-3 text-center">
                                                         <input class="form-check-input" type="radio" name="gender" checked=""  id="inlineRadio2" value="0">    
                                                         <strong class="ml-2">Nữ</strong>
+                                                    </div>
+                                                </c:if>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mt-3">
+                                        <div class="d-flex">
+                                            <div class="row justify-content-center">
+                                                <span class="fs-4">Trạng Thái</span>
+                                                <c:if test="${status eq 1}">
+                                                    <div class="d-flex mt-3 text-center">
+                                                        <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="3" >
+                                                        <strong class="ml-3 mr-1">Tất Cả</strong>
+                                                    </div>
+                                                    <div class="d-flex mt-3 text-center">
+                                                        <input class="form-check-input" type="radio" name="status" checked="" id="inlineRadio1" value="1">
+                                                        <strong class="ml-3 mr-1">Hoạt Động</strong>
+                                                    </div>
+                                                    <div class="d-flex mt-3 text-center">
+                                                        <input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0" >
+                                                        <strong class="ml-3 mr-1">Không Hoạt Động</strong>
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${status eq 0}">
+                                                    <div class="d-flex mt-3 text-center">
+                                                        <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="3" >
+                                                        <strong class="ml-3 mr-1">Tất Cả</strong>
+                                                    </div>
+                                                    <div class="d-flex mt-3 text-center">
+                                                        <input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">
+                                                        <strong class="ml-3 mr-1">Hoạt Động</strong>
+                                                    </div>
+                                                    <div class="d-flex mt-3 text-center">
+                                                        <input class="form-check-input" type="radio" name="status" checked=""  id="inlineRadio1" value="0" >
+                                                        <strong class="ml-3 mr-1">Không Hoạt Động</strong>
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${status eq 3}">
+                                                    <div class="d-flex mt-3 text-center">
+                                                        <input class="form-check-input" type="radio" name="status" checked=""  id="inlineRadio1" value="3" >
+                                                        <strong class="ml-3 mr-1">Tất Cả</strong>
+                                                    </div>
+                                                    <div class="d-flex mt-3 text-center">
+                                                        <input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">
+                                                        <strong class="ml-3 mr-1">Hoạt Động</strong>
+                                                    </div>
+                                                    <div class="d-flex mt-3 text-center">
+                                                        <input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="0" >
+                                                        <strong class="ml-3 mr-1">Không Hoạt Động</strong>
                                                     </div>
                                                 </c:if>
                                             </div>
