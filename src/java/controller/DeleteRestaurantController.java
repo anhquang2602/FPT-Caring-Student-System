@@ -80,7 +80,7 @@ public class DeleteRestaurantController extends HttpServlet {
         if (role == 3) {
             HttpSession session = request.getSession();
             session.setAttribute("stt", "3");
-            response.sendRedirect("ListRestaurantBySeller");
+            response.sendRedirect(request.getContextPath() + "/ListRestaurantBySeller");
         } else if (role == 1) {
             SendMail sm=new SendMail();          
             sm.SendMailDelete(RestaurantName, email);

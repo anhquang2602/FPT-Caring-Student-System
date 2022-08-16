@@ -63,7 +63,6 @@
                     </div>
                 </div>
             </c:when>
-            
             <c:when test="${stt.equals('3')}">
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
@@ -77,7 +76,6 @@
                     </div>
                 </div>
             </c:when>
-
         </c:choose>
         <%@include file="/header.jsp" %>
         <div class="bg-white">
@@ -108,10 +106,7 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-<!--                                                    <img src="${r.restaurantImage}" style="width: 150px; height: 150px" >-->
-
                                                     <img class="img-fluid img-responsive rounded product-image" id="output"
-
                                                          <c:if test="${r.restaurantImage != null && r.restaurantImage !=''}">
                                                              src="${r.restaurantImage}" </c:if>
                                                          <c:if test="${r.restaurantImage == null }">
@@ -119,18 +114,14 @@
                                                          <c:if test="${r.restaurantImage ==''}">
                                                              src="images/nhà trọ.jpg" </c:if> 
                                                              style="width: 150px; height: 150px">
-
-
-
-
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
-                                                        <h5 class="mt-0 font-weight-bold mb-2">
+                                                        <h4 class="mt-0 font-weight-bold mb-2">
                                                             <a href="RestaurantListController?id=${r.restaurantID}&isListbySeller=true" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
-                                                    </h5>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>
-                                                    <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.distance} km</p>
+                                                    </h4>
+                                                    <p style="font-size: 20px">${r.description}</p>
+                                                    <p style="font-size: 20px">${r.address}</p>
+                                                    <p style="font-size: 20px">${r.distance} km</p>
                                                          <div class="stars-outer">
                                                             <div class="stars-inner" style="width: ${r.starAVG}%">  </div>
                                                     </div>  
@@ -185,21 +176,7 @@
             });
         </script>
 
-        <script>
-            // Create a timestamp
-            var timestamp = new Date().getTime();
-            // Get the image element
-            var image = document.getElementById("output");
-            // Adding the timestamp parameter to image src
-            image.src = image.src + "?t=" + timestamp;
-
-            window.onload = function () {
-                if (!window.location.hash) {
-                    window.location = window.location + '#loaded';
-                    window.location.reload(true);
-                }
-            }
-        </script>
+       
     </body>
 
 
