@@ -382,7 +382,7 @@ public class RestaurantDAO extends DBContext {
             ps.setInt(1, (index - 1) * 6);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11), rs.getFloat(12)));
+                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11), rs.getFloat(12)/ 5 * 100));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -562,7 +562,7 @@ public class RestaurantDAO extends DBContext {
             ps.setInt(1, (index - 1) * 6);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11), rs.getFloat(12)));
+                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11), rs.getFloat(12)/ 5 * 100));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);

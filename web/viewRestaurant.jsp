@@ -1,7 +1,7 @@
 <%-- 
-    Document   : edithostel
-    Created on : Jul 17, 2022, 4:23:34 PM
-    Author     : nguye
+Document   : edithostel
+Created on : Jul 17, 2022, 4:23:34 PM
+Author     : nguye
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
@@ -136,10 +136,16 @@
                                             <c:forEach items="${listFood}" var="food" >
                                                 <div class="row bg-white border rounded p-3 mt-5">
                                                     <div class="col-md-4 mt-1 thumbnail2">
-                                                        <img class="rounded" src="${food.imageURL}" height="170px" width="170px">
-                                                    </div>
-                                                    <div class="col-md-5 mt-1">
-                                                        <label class="labels">${food.foodName}</label>
+                                                        <img class="rounded"  
+                                                             <c:if test="${food.imageURL != null && food.imageURL !=''}">
+                                                                 src="${food.imageURL}" </c:if>
+                                                             <c:if test="${food.imageURL == null}">
+                                                                 src="images/food.png" </c:if> 
+                                                             <c:if test="${food.imageURL == ''}">
+                                                                 src="images/food.png" </c:if>   height="170px" width="170px">
+                                                        </div>
+                                                        <div class="col-md-5 mt-1">
+                                                            <label class="labels">${food.foodName}</label>
                                                         <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
                                                     </div>
                                                     <div class="col-md-3 align-items-center align-content-center border-left mt-1">
@@ -156,7 +162,14 @@
                                     <div class="row">
                                         <h3>Mô tả nhà ăn</h3>    
                                         <div class="mt-5 thumbnail">
-                                            <img src="${restaurant.restaurantImage}"  class="form-control" alt=""/>
+<!--                                            <img src="${restaurant.restaurantImage}"  class="form-control" alt=""/>-->
+
+                                            <img  <c:if test="${restaurant.restaurantImage != null && restaurant.restaurantImage !=''}">
+                                                                 src="${restaurant.restaurantImage}" </c:if>
+                                                             <c:if test="${restaurant.restaurantImage == null}">
+                                                                 src="images/restaurant.png" </c:if> 
+                                                             <c:if test="${restaurant.restaurantImage == ''}">
+                                                                 src="images/restaurant.png" </c:if>  style="width: 600px; height: 400px" class="form-control" alt="" >
                                         </div>
                                         <div class="col-md-12 text-center mt-3">
                                             <div class="stars-outer mb-5"> 
