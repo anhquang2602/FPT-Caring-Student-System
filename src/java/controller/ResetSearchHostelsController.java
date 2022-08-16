@@ -20,7 +20,7 @@ import model.Hostel;
  *
  * @author win
  */
-@WebServlet(name = "ResetSearchHostelsController", urlPatterns = {"/ResetSearchHostelsController"})
+@WebServlet(name = "ResetSearchHostelsController", urlPatterns = {"/ResetSearchController"})
 public class ResetSearchHostelsController extends HttpServlet {
 
     /**
@@ -73,7 +73,7 @@ public class ResetSearchHostelsController extends HttpServlet {
         String costUnder = request.getParameter("under");
         String costUpper = request.getParameter("upper");
         String distance = request.getParameter("distance");
-        String keywordHostel = request.getParameter("keywordHostel");
+        String keywordHostel = request.getParameter("keyword");
         String star = request.getParameter("star");
         int totalPage = 0;
         if (costUnder == null || costUnder.equals("")) {
@@ -86,14 +86,20 @@ public class ResetSearchHostelsController extends HttpServlet {
             distance = "6";
         }
         if (star == null || star.equals("")) {
-            star = "6";
+            star = "0";
         }
-        if (keywordHostel == null || keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
-            totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
-            hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
+        if (keywordHostel == null ||keywordHostel.equalsIgnoreCase("") || keywordHostel.isEmpty()) {
+            totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance),Float.parseFloat(star));
+            hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index),Float.parseFloat(star));
+            if(hostels.isEmpty()){
+                request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
+            }
         } else {
-            totalPage = hostelDAO.getTotalPageTextByFilter(hostels, keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
-            hostels = hostelDAO.filterHostelTextPagging(keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
+            totalPage = hostelDAO.getTotalPageTextByFilter(hostels, keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance),Float.parseFloat(star));
+            hostels = hostelDAO.filterHostelTextPagging(keywordHostel, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Float.parseFloat(star),Integer.parseInt(index));
+            if(hostels.isEmpty()){
+                request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
+            }
         }
 //        totalPage = hostelDAO.getTotalPageByFilter(hostels, Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance));
 //        hostels = hostelDAO.filterHostelPagging(Double.parseDouble(costUnder), Double.parseDouble(costUpper), Double.parseDouble(distance), Integer.parseInt(index));
@@ -102,7 +108,8 @@ public class ResetSearchHostelsController extends HttpServlet {
         request.setAttribute("distance", distance);
         request.setAttribute("under", costUnder);
         request.setAttribute("upper", costUpper);
-        request.setAttribute("keywordHostel", keywordHostel);
+        request.setAttribute("keyword", keywordHostel);
+        request.setAttribute("star", star);
         request.getRequestDispatcher("listAllHostels.jsp").forward(request, response);
     }
 

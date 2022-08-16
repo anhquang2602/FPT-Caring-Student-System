@@ -229,6 +229,8 @@ function checkValidatorForRegister() {
     //checkPositionChoose();
 }
 
+
+
 function checkValidatorForInputNewPass() {
     check = 1;
     document.querySelectorAll('div.error').forEach(e => e.remove());
@@ -274,6 +276,35 @@ function checkValidatorForUpdateStudentProfile()
 
 }
 
+function checkValidatorForUpdateSellerProfile()
+{
+    check = 1;
+    document.querySelectorAll('div.error').forEach(e => e.remove());
+    checkPhone('updateSellerForm');
+    checkAge('updateSellerForm');
+    
+
+}
+
+function checkValidatorForUpdateAdminProfile()
+{
+    check = 1;
+    document.querySelectorAll('div.error').forEach(e => e.remove());
+    checkPhone('updateAdminForm');
+    checkAge('updateAdminForm');
+    
+
+}
+
+function checkValidatorForSearchListStudent()
+{
+    check = 1;
+    document.querySelectorAll('div.error').forEach(e => e.remove());
+    
+    checkUnit('searchListStudent');
+    
+
+}
 
 function checkValidatorForInputCode() {
     check = 1;

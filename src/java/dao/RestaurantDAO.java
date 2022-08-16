@@ -49,7 +49,7 @@ public class RestaurantDAO extends DBContext {
             stm.setFloat(8, distance);
             stm.setString(9, description);
             stm.setString(10, restaurantImage);
-            
+
             stm.executeUpdate();
             System.out.println(sql);
             System.out.println("Insert OK");
@@ -322,21 +322,67 @@ public class RestaurantDAO extends DBContext {
     public ArrayList<Restaurant> listAllRestaurant(int index) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
-            String sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName, \n"
-                    + "Country.CountryName, Province.ProvinceName, District.DistrictName,\n"
-                    + "Restaurants.AddressDetail,Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting\n"
-                    + "from Restaurants\n"
+            String sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                    + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                    + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
                     + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
                     + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
                     + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
                     + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
-                    + "ORDER BY RestaurantID\n"
-                    + "OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+                    + "ORDER BY RestaurantID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, (index - 1) * 6);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11),rs.getDouble(12)));
+                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11), rs.getFloat(12)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return restaurant;
+    }
+
+    public ArrayList<Restaurant> filterRestaurantPagging(double distance, float star, int index) {
+        ArrayList<Restaurant> restaurant = new ArrayList<>();
+        try {
+            String sql = "";
+
+            if (star == 0) {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE Restaurants.Distance <= " + distance + " and Restaurants.StarVoting = 0\n"
+                        + "ORDER BY RestaurantID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+            } else if (star == 5) {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE Restaurants.Distance <= " + distance + " and Restaurants.StarVoting <= 5\n"
+                        + "ORDER BY RestaurantID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+            } else {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE Restaurants.Distance <= " + distance + " and Restaurants.StarVoting >= " + star + "\n"
+                        + "ORDER BY RestaurantID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+            }
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, (index - 1) * 6);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11), rs.getFloat(12)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -408,7 +454,8 @@ public class RestaurantDAO extends DBContext {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        public void updateFoodImage(int foodID) {
+
+    public void updateFoodImage(int foodID) {
 
         try {
 
@@ -473,78 +520,162 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
-    public ArrayList<Restaurant> listAllResByTextPagging(String key, int index) {
+    public ArrayList<Restaurant> listAllResByTextPagging(String key, double distance, float star, int index) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
-            String sql = "select * from Restaurants where RestaurantName like N'%"+key+"%' or Descriptions like N'%"+key+"%'\n"
-                    + "order by RestaurantID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+            String sql = "";
+            if (star == 0) {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE (RestaurantName like N'%" + key + "%' or Descriptions like N'%" + key + "%') and \n"
+                        + "Restaurants.Distance <= " + distance + " and Restaurants.StarVoting = 0\n"
+                        + "ORDER BY RestaurantID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+            } else if (star == 5) {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE (RestaurantName like N'%" + key + "%' or Descriptions like N'%" + key + "%') and \n"
+                        + "Restaurants.Distance <= " + distance + " and Restaurants.StarVoting <= 5\n"
+                        + "ORDER BY RestaurantID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+            } else {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE (RestaurantName like N'%" + key + "%' or Descriptions like N'%" + key + "%') and \n"
+                        + "Restaurants.Distance <= " + distance + " and Restaurants.StarVoting >= " + star + "\n"
+                        + "ORDER BY RestaurantID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+            }
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, (index - 1) * 6);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11)));
+                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11), rs.getFloat(12)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return restaurant;
     }
-    
-    public ArrayList<Restaurant> listAllResByText(String key) {
+
+    public ArrayList<Restaurant> listAllResByText(String key, double distance, float star) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
-            String sql = "select * from Restaurants where RestaurantName like N'%"+key+"%' or Descriptions like N'%"+key+"%'";
+            String sql = "";
+            if (star == 0) {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE (RestaurantName like N'%" + key + "%' or Descriptions like N'%" + key + "%') and \n"
+                        + "Restaurants.Distance <= " + distance + " and Restaurants.StarVoting = 0\n"
+                        + "ORDER BY RestaurantID";
+            } else if (star == 5) {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE (RestaurantName like N'%" + key + "%' or Descriptions like N'%" + key + "%') and \n"
+                        + "Restaurants.Distance <= " + distance + " and Restaurants.StarVoting <= 5\n"
+                        + "ORDER BY RestaurantID";
+            } else {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE (RestaurantName like N'%" + key + "%' or Descriptions like N'%" + key + "%') and \n"
+                        + "Restaurants.Distance <= " + distance + " and Restaurants.StarVoting >= " + star + "\n"
+                        + "ORDER BY RestaurantID";
+            }
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11)));
+                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11), rs.getFloat(12)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return restaurant;
     }
-    
-    public ArrayList<Restaurant> listAllRes() {
+
+    public ArrayList<Restaurant> listAllRes(double distance, float star) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
-            String sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName, \n"
-                    + "Country.CountryName, Province.ProvinceName, District.DistrictName,\n"
-                    + "Restaurants.AddressDetail,Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage\n"
-                    + "from Restaurants\n"
-                    + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
-                    + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
-                    + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
-                    + "ORDER BY RestaurantID";
+            String sql = "";
+            if (star == 0) {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE Restaurants.Distance <= " + distance + " and Restaurants.StarVoting = 0\n"
+                        + "ORDER BY RestaurantID";
+            } else if (star == 5) {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE Restaurants.Distance <= " + distance + " and Restaurants.StarVoting <= 5\n"
+                        + "ORDER BY RestaurantID";
+            } else {
+                sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName,\n"
+                        + "Country.CountryName, Province.ProvinceName, District.DistrictName,Restaurants.AddressDetail,\n"
+                        + "Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage, Restaurants.StarVoting from Restaurants\n"
+                        + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
+                        + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
+                        + "inner join Province on Restaurants.ProvinceID = Province.ProvinceID\n"
+                        + "inner join District on Restaurants.DistrictID = District.DistrictID\n"
+                        + "WHERE Restaurants.Distance <= " + distance + " and Restaurants.StarVoting >= " + star + "\n"
+                        + "ORDER BY RestaurantID";
+            }
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11)));
+                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11), rs.getFloat(12)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return restaurant;
     }
-    
-    public int getTotalPage(String keyword, ArrayList<Restaurant> restaurants) {
-        if (keyword == null || keyword == "") {
-            restaurants = listAllRes();
-        } else {
-            restaurants = listAllResByText(keyword);
-        }
+
+    public int getTotalPage(ArrayList<Restaurant> restaurants, double distance, float star) {
+        restaurants = listAllRes(distance, star);
         int totalPage = restaurants.size() / 6;
         if (restaurants.size() % 6 != 0) {
             totalPage++;
         }
         return totalPage;
-        
-        
-    }
-    
 
-        public void updateStarAvgRestaurant(int resID, double starAVG) {
+    }
+
+    public void updateStarAvgRestaurant(int resID, double starAVG) {
         try {
 
             String sql = "UPDATE [dbo].[Restaurants]\n"
@@ -558,9 +689,9 @@ public class RestaurantDAO extends DBContext {
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }
+    }
 
-      public int getSellerIdByRestaurantId(int restaurantID) {
+    public int getSellerIdByRestaurantId(int restaurantID) {
         String sql = "select SellerID from Restaurants where RestaurantID=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -577,12 +708,22 @@ public class RestaurantDAO extends DBContext {
 
     }
 
-    public static void main(String[] args) {
-        RestaurantDAO aO = new RestaurantDAO();
-        ArrayList<Restaurant> al = aO.listAllResByTextPagging("n",1);
-        ArrayList<Restaurant> a = aO.listAllRestaurant(1);
-        for (Restaurant restaurant : al) {
-            System.out.println(restaurant.getRestaurantName());
+    public int getTotalPageByText(String keyword, ArrayList<Restaurant> restaurants, double distance, float star) {
+        restaurants = listAllResByText(keyword, distance, star);
+        int totalPage = restaurants.size() / 6;
+        if (restaurants.size() % 6 != 0) {
+            totalPage++;
         }
+        return totalPage;
+
     }
+
+//    public static void main(String[] args) {
+//        RestaurantDAO aO = new RestaurantDAO();
+//        ArrayList<Restaurant> al = aO.listAllResByTextPagging("n", 1);
+//        ArrayList<Restaurant> a = aO.listAllRestaurant(1);
+//        for (Restaurant restaurant : al) {
+//            System.out.println(restaurant.getRestaurantName());
+//        }
+//    }
 }

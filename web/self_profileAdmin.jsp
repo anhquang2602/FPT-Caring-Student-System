@@ -34,7 +34,7 @@
                 <ul id="navbar-items" class="p-3">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <form action="UpdateAdminProfile" enctype="multipart/form-data"  method="post" name="updateAdminForm">
+                <form action="UpdateAdminProfile" enctype="multipart/form-data"  method="post" name="updateAdminForm" onsubmit="return checkSend()">
                     <div class="container rounded bg-white mt-5 mb-5">
                         <div class="row">
                             <div>
@@ -66,10 +66,12 @@
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12"><label class="labels">Age</label><input type="number" name="age" class="form-control"value="${admin.age}" ></div>
+                                        <div id="divCheckAge"></div>
                                         <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" value="${admin.phone}" ></div>
+                                        <div id="divCheckPhone"></div>
                                         <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" readonly="" value="${admin.email}" ></div>
                                         <div class="col-md-12"><label class="labels">Link Facebook</label><input type="text" class="form-control" name="linkFb" value="${admin.linkFb}" ></div>
-                                        <div class="col-md-12"><label class="labels">Sex</label></br>
+                                        <div class="col-md-12"><label class="labels">Giới tính</label></br>
                                             <label class="labels" id="genderlable" hidden="">${admin.gender}</label>
                                             <input class="form-check-input" type="radio" name="gender"  id="inlineRadio1" value="1"> Nam
                                             <input class="form-check-input" type="radio" name="gender"  id="inlineRadio2" value="0"> Nữ                                            
@@ -105,7 +107,7 @@
                                     <div class="col-md-12"><label class="labels">Address Detail</label><input type="text" name="addressDetail" class="form-control"value="${admin.address}" ></div>
                                 </div>
                                 <div class="mt-5 text-center">
-                                    <button class="btn btn-primary profile-button" type="submit" >Save Profile</button>
+                                    <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateAdminProfile()">Save Profile</button>
                                 </div>
                                 <label class="labels">${UpdateError}</label>
                                 <label class="labels">${UpdateProcess}</label>

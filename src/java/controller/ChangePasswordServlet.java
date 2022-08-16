@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
@@ -82,8 +83,9 @@ public class ChangePasswordServlet extends HttpServlet {
         if (realpass.equals(oldpass)) {
             if (!newpass.equals(oldpass)) {
                 adb.UpdatePassword(username, newpass);
-                request.setAttribute("successChangePass", "change password successfully");
-                request.getRequestDispatcher("changePassword.jsp").forward(request, response);
+                HttpSession session = request.getSession();
+                session.setAttribute("stt", "2");
+                response.sendRedirect(request.getContextPath() + "/home");
             } else {
                 request.setAttribute("errorChangePass", "Your new password is same with your current password");
                 request.getRequestDispatcher("changePassword.jsp").forward(request, response);

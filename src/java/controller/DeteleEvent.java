@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -49,6 +50,8 @@ public class DeteleEvent extends HttpServlet {
 //        dao.deleteHostelImage(hostelID);
         dao.deleteEvent(eventID);
         if (role == 4) {
+            HttpSession session = request.getSession();
+            session.setAttribute("stt", "3");
             response.sendRedirect(request.getContextPath() + "/AllEventByClub");
 //        } else if (role == 1) {
 //            response.sendRedirect(request.getContextPath() + "/ListAllReportHostelController");

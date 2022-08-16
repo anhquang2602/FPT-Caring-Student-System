@@ -5,6 +5,8 @@
  */
 package controller;
 
+import dao.AddressDAO;
+import dao.SellerDAO;
 import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Seller;
 import model.Student;
 
 /**
@@ -35,23 +38,156 @@ public class StudentListController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         ArrayList<Student> listStudent = new ArrayList<>();
         StudentDAO dao = new StudentDAO();
-        String indexPage= request.getParameter("index");
-         if(indexPage==null){
-            indexPage ="1";
+
+        String key = request.getParameter("key");
+        String province = request.getParameter("province");
+        String gender = request.getParameter("gender");
+        String status = request.getParameter("status");
+        String unit = request.getParameter("unit");
+        AddressDAO a = new AddressDAO();
+
+        if (key == null || key.equalsIgnoreCase("") || key.isEmpty()) {
+            if (province == null || province.equals("") || province.isEmpty()) {
+                if (unit == null || unit.equals("") || unit.isEmpty()) {
+                    if (gender.equals("3")) {
+                        if (status.equals("3")) {
+                            listStudent = dao.listAllStudent();
+                        } else {
+                            listStudent = dao.filterStudOnlyStus(Integer.parseInt(status));
+                        }
+                    } else {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudOnlyGen(Integer.parseInt(gender));
+                        } else {
+                            listStudent = dao.filterStudByGenStus(Integer.parseInt(status), Integer.parseInt(gender));
+                        }
+                    }
+                } else {
+                    if (gender.equals("3")) {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudOnlyUnit(unit);
+                        } else {
+                            listStudent = dao.filterStudUnitStatus(unit, Integer.parseInt(status));
+                        }
+                    } else {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudUnitGen(unit, Integer.parseInt(gender));
+                        } else {
+                            listStudent = dao.filterStudUnitGenStus(unit, Integer.parseInt(status), Integer.parseInt(gender));
+                        }
+                    }
+                }
+
+            } else {
+                if (unit == null || unit.equals("") || unit.isEmpty()) {
+                    if (gender.equals("3")) {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudOnlyProvince(Integer.parseInt(province));
+                        } else {
+                            listStudent = dao.filterStudProvinceStus(Integer.parseInt(province), Integer.parseInt(status));
+                        }
+                    } else {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudProvinceGen(Integer.parseInt(province), Integer.parseInt(gender));
+                        } else {
+                            listStudent = dao.filterStudProvinceGenStus(Integer.parseInt(province), Integer.parseInt(gender), Integer.parseInt(status));
+                        }
+                    }
+                } else {
+                    if (gender.equals("3")) {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudProvinceUnit(Integer.parseInt(province), unit);
+                        } else {
+                            listStudent = dao.filterStudProvinceUnitStus(Integer.parseInt(province), unit, Integer.parseInt(status));
+                        }
+                    } else {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudProvinceUnitGen(Integer.parseInt(province), unit, Integer.parseInt(gender));
+                        } else {
+                            listStudent = dao.filterStudProvinceUnitGenStus(Integer.parseInt(province), unit, Integer.parseInt(gender), Integer.parseInt(status));
+                        }
+                    }
+                }
+            }
+
+        } else {
+            if (province == null || province.equals("") || province.isEmpty()) {
+                if (unit == null || unit.equals("") || unit.isEmpty()) {
+                    if (gender.equals("3")) {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudText(key);
+                        } else {
+                            listStudent = dao.filterStudKeyStus(key, Integer.parseInt(status));
+                        }
+                    } else {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudKeyGen(key, Integer.parseInt(gender));
+                        } else {
+                            listStudent = dao.filterStudByKeyGenStus(key, Integer.parseInt(status), Integer.parseInt(gender));
+                        }
+                    }
+                } else {
+                    if (gender.equals("3")) {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudByKeyUnit(key, unit);
+                        } else {
+                            listStudent = dao.filterStudByKeyUnitStus(key, unit, Integer.parseInt(status));
+                        }
+                    } else {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudByKeyUnitGen(key, unit, Integer.parseInt(gender));
+                        } else {
+                            listStudent = dao.filterStudByKeyUnitGenStus(key, unit, Integer.parseInt(gender), Integer.parseInt(status));
+                        }
+                    }
+                }
+
+            } else {
+                if (unit == null || unit.equals("") || unit.isEmpty()) {
+                    if (gender.equals("3")) {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudKeyProvince(key, Integer.parseInt(province));
+                        } else {
+                            listStudent = dao.filterStudKeyProStus(key, Integer.parseInt(province), Integer.parseInt(status));
+                        }
+                    } else {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudKeyProGen(key, Integer.parseInt(province), Integer.parseInt(gender));
+                        } else {
+                            listStudent = dao.filterStudKeyProGenStus(key, Integer.parseInt(province), Integer.parseInt(gender), Integer.parseInt(status));
+                        }
+                    }
+                } else {
+                    if (gender.equals("3")) {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudKeyProUnit(key, Integer.parseInt(province), unit);
+                        } else {
+                            listStudent = dao.filterStudKeyProUnitStus(key, Integer.parseInt(province), unit, Integer.parseInt(status));
+                        }
+                    } else {
+                        if (status.equals("3")) {
+                            listStudent = dao.filterStudKeyProUnitGen(key, Integer.parseInt(province), unit, Integer.parseInt(gender));
+                        } else {
+                            listStudent = dao.filterStudKeyAll(key, Integer.parseInt(province), unit, Integer.parseInt(gender), Integer.parseInt(status));
+                        }
+                    }
+                }
+            }
         }
-        int index = Integer.parseInt(indexPage);
- 
-        int total = dao.getTotalStudent();
-        int endPage = total / 6;
-        if (total % 6 != 0) {
-            endPage++;
+
+        if (listStudent.isEmpty()) {
+            request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
         }
-        listStudent = dao.getAllStudent(index);
+        request.setAttribute("listProvince", a.listProvince());
         request.setAttribute("listStudent", listStudent);
-         request.setAttribute("endP", endPage);
-        request.setAttribute("tag", index);
+        request.setAttribute("province", province);
+        request.setAttribute("gender", gender);
+        request.setAttribute("status", status);
+        request.setAttribute("key", key);
         request.getRequestDispatcher("student-list.jsp").forward(request, response);
     }
 
@@ -84,7 +220,7 @@ public class StudentListController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-             throws ServletException, IOException {
+            throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (Exception ex) {

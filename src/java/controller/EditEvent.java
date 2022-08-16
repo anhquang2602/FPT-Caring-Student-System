@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Event;
 
@@ -111,8 +112,11 @@ public class EditEvent extends HttpServlet {
         request.setAttribute("eventName", eventName);
         request.setAttribute("time", time);
         request.setAttribute("des", des);
-        request.getRequestDispatcher("editEvent.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        session.setAttribute("stt", "2");
+        response.sendRedirect(request.getContextPath() + "/AllEventByClub");
     }
+    
 
     /**
      * Returns a short description of the servlet.

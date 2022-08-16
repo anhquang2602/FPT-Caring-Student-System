@@ -124,6 +124,8 @@
                                     </div>
                                 </div>
                                 <div class="right-side">
+                                    <h3>Mô tả nhà trọ <a href="ReportHostelController?id=${hosteldetail.hostelID}"><img style="float: right; height: 50px " src="images/report.png" >
+                                            </h3></a>
                                     <div class="input_text">
                                         <strong class="fs-4">Số phòng</strong>
                                         <input type="text" value="${hosteldetail.totalRoom}" readonly="">
