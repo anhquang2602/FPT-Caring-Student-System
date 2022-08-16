@@ -63,7 +63,6 @@
                     </div>
                 </div>
             </c:when>
-            
             <c:when test="${stt.equals('3')}">
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
@@ -77,7 +76,6 @@
                     </div>
                 </div>
             </c:when>
-
         </c:choose>
         <%@include file="/header.jsp" %>
         <div class="bg-white">
@@ -177,21 +175,7 @@
             });
         </script>
 
-        <script>
-            // Create a timestamp
-            var timestamp = new Date().getTime();
-            // Get the image element
-            var image = document.getElementById("output");
-            // Adding the timestamp parameter to image src
-            image.src = image.src + "?t=" + timestamp;
-
-            window.onload = function () {
-                if (!window.location.hash) {
-                    window.location = window.location + '#loaded';
-                    window.location.reload(true);
-                }
-            }
-        </script>
+       
     </body>
 
 

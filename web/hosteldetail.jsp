@@ -109,6 +109,21 @@
         </style>
     </head>
     <body>
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Báo Cáo Nhà Trọ Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Báo cáo nhà trọ thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <%@include file="/header.jsp" %>
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -294,128 +309,126 @@
         <script>
             const allStars = document.querySelectorAll('.star');
             let current_rating = document.querySelector('.current_rating');
-            allStars.forEach((star, i) => {
-                star.onclick = function () {
-                    let current_star_level = i + 1;
-                    current_rating.innerText = current_star_level + ' trên 5 ';
-                    allStars.forEach((star, j) => {
-                        if (current_star_level >= j + 1) {
-                            star.innerHTML = '&#9733';
-                        } else {
-                            star.innerHTML = '&#9734';
-                        }
-                    });
-                };
+            allStars.forEach((star, i) = > {
+            star.onclick = function () {
+            let current_star_level = i + 1;
+            current_rating.innerText = current_star_level + ' trên 5 ';
+            allStars.forEach((star, j) = > {
+            if (current_star_level >= j + 1) {
+            star.innerHTML = '&#9733';
+            } else {
+            star.innerHTML = '&#9734';
+            }
             });
-        </script>                            
+            };
+            });</script>                            
 
         <script>
             $("#star5").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                $.ajax({
-                    type: "GET",
+            var hostelId = document.getElementById("hostelId").value;
+            $.ajax({
+            type: "GET",
                     url: "/Test_1/star",
                     data: {
-                        hostelId: hostelId,
-                        star: 5
+                    hostelId: hostelId,
+                            star: 5
                     },
                     headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
                     },
                     success: function (data) {
-                        alert(data);
+                    alert(data);
                     },
                     error: function (e) {
-                        console.log("ERROR: ", e);
+                    console.log("ERROR: ", e);
                     }
-                });
+            });
             });
             $("#star4").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                $.ajax({
-                    type: "GET",
+            var hostelId = document.getElementById("hostelId").value;
+            $.ajax({
+            type: "GET",
                     url: "/Test_1/star",
                     data: {
-                        hostelId: hostelId,
-                        star: 4
+                    hostelId: hostelId,
+                            star: 4
                     },
                     headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
                     },
                     success: function (data) {
-                        alert(data);
+                    alert(data);
                     },
                     error: function (e) {
-                        console.log("ERROR: ", e);
+                    console.log("ERROR: ", e);
                     }
-                });
+            });
             });
             $("#star3").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                $.ajax({
-                    type: "GET",
+            var hostelId = document.getElementById("hostelId").value;
+            $.ajax({
+            type: "GET",
                     url: "/Test_1/star",
                     data: {
-                        hostelId: hostelId,
-                        star: 3
+                    hostelId: hostelId,
+                            star: 3
                     },
                     headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
                     },
                     success: function (data) {
-                        alert(data);
+                    alert(data);
                     },
                     error: function (e) {
-                        console.log("ERROR: ", e);
+                    console.log("ERROR: ", e);
                     }
-                });
+            });
             });
             $("#star2").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                $.ajax({
-                    type: "GET",
+            var hostelId = document.getElementById("hostelId").value;
+            $.ajax({
+            type: "GET",
                     url: "/Test_1/star",
                     data: {
-                        hostelId: hostelId,
-                        star: 2
+                    hostelId: hostelId,
+                            star: 2
                     },
                     headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
                     },
                     success: function (data) {
-                        alert(data);
+                    alert(data);
                     },
                     error: function (e) {
-                        console.log("ERROR: ", e);
+                    console.log("ERROR: ", e);
                     }
-                });
+            });
             });
             $("#star1").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                $.ajax({
-                    type: "GET",
+            var hostelId = document.getElementById("hostelId").value;
+            $.ajax({
+            type: "GET",
                     url: "/Test_1/star",
                     data: {
-                        hostelId: hostelId,
-                        star: 1
+                    hostelId: hostelId,
+                            star: 1
                     },
                     headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
                     },
                     success: function (data) {
-                        alert(data);
+                    alert(data);
                     },
                     error: function (e) {
-                        console.log("ERROR: ", e);
+                    console.log("ERROR: ", e);
                     }
-                });
             });
-        </script>
+            });</script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -423,5 +436,11 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function () {
+            $(".toast").toast({delay: 4000});
+            $(".toast").toast("show");
+            });
+        </script>
     </body>
 </html>
