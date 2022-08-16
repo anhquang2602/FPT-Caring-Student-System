@@ -38,12 +38,12 @@
                                         <div class="col-md-12">
                                             <input type="text" class="form-control" name="email" value="${student.email}" readonly="" hidden="">
                                             <c:if test="${student.status eq 1}">
-                                                <strong class="ml-3 mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked="" id="inlineRadio1" value="1">
-                                                <strong class="ml-3 mr-1">Không Hoạt Động</strong><input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0">
+                                                <strong class=" mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked="" id="inlineRadio1" value="1">
+                                                <strong class=" mr-1">Không Hoạt Động</strong><input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0">
                                             </c:if>
                                             <c:if test="${student.status eq 0}">
-                                                <strong class="ml-3 mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">
-                                                <strong class="ml-3 mr-1">Khóa Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked=""  id="inlineRadio1" value="0">
+                                                <strong class=" mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">
+                                                <strong class=" mr-1">Khóa Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked=""  id="inlineRadio1" value="0">
                                             </c:if>
                                             <div class="mt-3">
                                                 <input class="ml-3 p-1" type="submit" value="Confirm"/>
@@ -127,7 +127,7 @@
                                     <div class="col-md-12">
                                         <h4>Quận, Huyện</h4>
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected value="${student.districID}">${student.districtName}</option>
+                                            <option selected value="${student.districtID}">${student.districtName}</option>
                                         </select>
                                     </div>
                                 </div>

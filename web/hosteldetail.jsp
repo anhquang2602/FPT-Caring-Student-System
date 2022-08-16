@@ -18,7 +18,68 @@
         <link rel="stylesheet" href="css/commentStyle.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <style>
+              <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .dialog {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity linear 0.2s;
+            }
+
+            .overlay-close {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                cursor: default;
+            }
+
+            .dialog:target {
+                visibility: visible;
+                opacity: 1;
+            }
+
+
+            .overlay {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+            .dialog-body {
+                max-width: 400px;
+                position: relative;
+                padding: 16px;
+                background-color: #fff;
+            }
+
+            .dialog-close-btn {
+                position: absolute;
+                top: 2px;
+                right: 6px;
+                text-decoration: none;
+                color: #333;
+            }
+            .labels{
+                font-weight: 800;
+            }
+            .error {
+                color: red;
+            }
+            .message {
+                color: green;
+            }
             .stars-outer {
                 position: relative;
                 display: inline-block;
@@ -67,6 +128,16 @@
                                 <li><a>Chi tiết nhà trọ</a></li>
                             </ul>
                         </div>
+                              <c:if test = "${isStudent == 1}">
+                            <a href="#ReportRestaurantController?id=${hosteldetail.hostelID}" data-href="ReportRestaurantController?id=${hosteldetail.hostelID}" class="dialog-btn"><img style="float: right; height: 40px " src="images/flag.png" >
+                            </c:if>
+                            <div class="dialog overlay" id="ReportRestaurantController?id=${hosteldetail.hostelID}">
+                                <a href="#" class="overlay-close"></a>
+                                <div class="dialog-body">
+                                    <a class="dialog-close-btn" href="#">&times;</a>
+                                    <%@include file="/reportHostel.jsp" %>
+                                </div>
+                            </div> 
                         <div class="card">
                             <form class="form" method="POST" id="updateForm" action="edithostel"  name="edithostelForm" onsubmit="return validateEditHostel()">
                                 <div class="input_text" hidden>
@@ -112,8 +183,8 @@
                                     </div>
                                 </div>
                                 <div class="right-side">
-                                    <h3>Mô tả nhà trọ <a href="ReportHostelController?id=${hosteldetail.hostelID}"><img style="float: right; height: 40px " src="images/flag.png" >
-                                            </h3></a>
+                                    <h3>Mô tả nhà trọ </h3>
+                                          
                                     <div class="input_text">
                                         <strong class="fs-4">Số phòng</strong>
                                         <input type="text" value="${hosteldetail.totalRoom}" readonly="">

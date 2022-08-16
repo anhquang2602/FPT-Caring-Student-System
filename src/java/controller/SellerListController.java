@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Seller;
 import model.Student;
 
@@ -43,7 +44,7 @@ public class SellerListController extends HttpServlet {
             request.setCharacterEncoding("utf-8");
             ArrayList<Seller> listSeller = new ArrayList<>();
             SellerDAO dao = new SellerDAO();
-
+            HttpSession session = request.getSession();
             String key = request.getParameter("key");
             String province = request.getParameter("province");
             String gender = request.getParameter("gender");
@@ -124,6 +125,7 @@ public class SellerListController extends HttpServlet {
             request.setAttribute("status", status);
             request.setAttribute("key", key);
             request.getRequestDispatcher("seller-list.jsp").forward(request, response);
+            session.removeAttribute("stt");
         } catch (Exception ex) {
             Logger.getLogger(StudentListController.class.getName()).log(Level.SEVERE, null, ex);
         }

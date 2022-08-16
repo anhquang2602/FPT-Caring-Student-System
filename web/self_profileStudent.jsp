@@ -19,11 +19,11 @@
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
                         <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Thay Đổi Hồ Sơ Thành Công</h4></strong>
+                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Hồ Sơ Thành Công</h4></strong>
                             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                         </div>
                         <div class="toast-body">
-                            Thay Đổi Hồ Sơ Thành Công !
+                            Chỉnh sửa hồ sơ thành công !
                         </div>
                     </div>
                 </div>
@@ -172,31 +172,33 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+            });
+        </script>
+        
     </body>
+    
     <script src="validator/Validator.js"></script>
     <script>
-                                        function tai_lai_trang() {
-                                            var img = document.getElementById('output').src;
-
-                                        }
+            function tai_lai_trang() {
+                var img = document.getElementById('output').src;
+            }
     </script>
     <script language="javascript">
-
         var gender = document.getElementById('genderlable').innerHTML;
-
         if (gender == 1) {
             document.getElementById('inlineRadio1').setAttribute('checked', true);
         } else
         {
             document.getElementById('inlineRadio2').setAttribute('checked', true);
         }
-
-
         // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
         // obj là tham số truyền vào và cũng chính là thẻ select
 
-            
-           
+
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
@@ -207,11 +209,8 @@
         $(document).on('change', '.province', function () {
             var province = document.getElementById("province").value;
             $('#district').empty();
-
-
             $.ajax({
                 type: "GET",
-
                 url: "/Test_1/findDistrict",
                 data: {
                     province: province,
@@ -220,21 +219,16 @@
                     Accept: "application/json; charset=utf-8",
                     contentType: "application/json; charset=utf-8"
                 },
-
                 success: function (data) {
-
                     data.forEach(function (a) {
                         $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-
                     });
                 },
                 error: function (e) {
                     console.log("ERROR: ", e);
                 }
             });
-
-        });
-    </script>
+        });</script>
 
 
     <script>
@@ -244,8 +238,7 @@
             output.onload = function () {
                 URL.revokeObjectURL(output.src) // free memory
             }
-        };
-    </script>
+        };</script>
 
     <script>
         function validateUpdateStudent() {
@@ -259,5 +252,4 @@
             return isValid;
         }
     </script>
-
 </html>

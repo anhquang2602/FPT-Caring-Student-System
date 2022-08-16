@@ -16,6 +16,35 @@
         <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
+               <style>
+            .stars-outer {
+                position: relative;
+                display: inline-block;
+            }
+
+            .stars-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 0;
+            }
+
+            .stars-outer::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #ccc;
+            }
+
+            .stars-inner::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #f8ce0b;
+            }
+        </style>
     </head>
     <body>
         <c:choose>
@@ -32,19 +61,7 @@
                     </div>
                 </div>
             </c:when>
-            <c:when test="${stt.equals('2')}">
-                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
-                    <div class="toast" data-autohide="true">
-                        <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Nhà Hàng Thành Công</h4></strong>
-                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-                        </div>
-                        <div class="toast-body">
-                            Chỉnh sửa nhà hàng thành công !
-                        </div>
-                    </div>
-                </div>
-            </c:when>
+            
             <c:when test="${stt.equals('3')}">
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
@@ -107,6 +124,10 @@
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.distance} km</p>
+                                                         <div class="stars-outer">
+                                                            <div class="stars-inner" style="width: ${r.starAVG}%">  </div>
+                                                    </div>  
+
                                                 </div>
                                                 <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit1">
                                                     <a class="btn btn-danger" href="EditRestaurantController?id=${r.restaurantID}">Chỉnh sửa</a> 

@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -12,6 +12,8 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -137,10 +139,10 @@ public class UpdateAdminProfile extends HttpServlet {
                 reloadPage(request, response);
                 session.setAttribute("stt", "1");
                // response.sendRedirect(request.getContextPath() + "home.jsp");
-               response.sendRedirect(request.getContextPath() + "/home" );
+               response.sendRedirect(request.getContextPath() + "/UpdateAdminProfile" );
             } else {
                 reloadPage(request, response);
-                 session.setAttribute("stt", "1");
+                request.setAttribute("UpdateProcess", "Update fail");
                 request.getRequestDispatcher("self_profileAdmin.jsp").forward(request, response);
             }
         } else {
@@ -156,9 +158,14 @@ public class UpdateAdminProfile extends HttpServlet {
 
             if (adb.updateAdminProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, email) == true) {
                 reloadPage(request, response);
+                    try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(UpdateAdminProfile.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 session.setAttribute("stt", "1");
              
-               response.sendRedirect(request.getContextPath() + "/home" );
+               response.sendRedirect(request.getContextPath() + "/UpdateAdminProfile" );
            
             } else {
                 reloadPage(request, response);
