@@ -65,7 +65,7 @@ public class RestaurantDAO extends DBContext {
         try {
             String sql = "select Restaurants.RestaurantID,Restaurants.RestaurantName, Sellers.FirstName + ' '+ Sellers.LastName as sellerName, \n"
                     + "Country.CountryName, Province.ProvinceName, District.DistrictName,\n"
-                    + "Restaurants.AddressDetail,Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage\n"
+                    + "Restaurants.AddressDetail,Restaurants.Cost,Restaurants.Distance,Restaurants.Descriptions, Restaurants.RestaurantImage,Restaurants.StarVoting\n"
                     + "from Restaurants\n"
                     + "inner join Sellers on Restaurants.SellerID = Sellers.SellerID\n"
                     + "inner join Country on Restaurants.CountryID = Country.CountryID\n"
@@ -77,7 +77,7 @@ public class RestaurantDAO extends DBContext {
             statement.setInt(1, sellerID);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11)));
+                restaurant.add(new Restaurant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getString(10), rs.getString(11),rs.getFloat(12)/5*100));
             }
 
         } catch (SQLException ex) {

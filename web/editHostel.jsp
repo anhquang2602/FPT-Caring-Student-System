@@ -296,18 +296,6 @@
                                                      $('#district').empty();
                                                      $.ajax({
                                                          type: "GET",
-<<<<<<< HEAD
-                                                                 url: "/Test_1/findDistrict",
-                                                                 data: {
-                                                                 province: province,
-                                                                 },
-                                                                 headers: {
-                                                                 Accept: "application/json; charset=utf-8",
-                                                                         contentType: "application/json; charset=utf-8"
-                                                                 },
-                                                                 success: function (data) {
-                                                                 data.forEach(function (a) {
-=======
                                                          url: "/Test_1/findDistrict",
                                                          data: {
                                                              province: province,
@@ -319,7 +307,6 @@
                                                          success: function (data) {
 
                                                              data.forEach(function (a) {
->>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
                                                                  $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
                                                              });
                                                          },
@@ -333,98 +320,6 @@
                 event.preventDefault();
                 $.ajax({
                     url: $(this).attr('href'),
-<<<<<<< HEAD
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-                            }
-                    });
-                    return false; // for good measure
-            });
-                    $("#U2").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
-                    url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-                            }
-                    });
-                    return false; // for good measure
-            });
-                    $("#U3").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
-                    url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-                            }
-                    });
-                    return false; // for good measure
-            });
-                    $("#U4").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
-                    url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-                            }
-                    });
-                    return false; // for good measure
-            });
-                    $("#U5").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
-                    url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-                            }
-                    });
-                    return false; // for good measure
-            });
-                    $("#U6").click(function (event) {
-            event.preventDefault();
-                    $.ajax({
-                    url: $(this).attr('href'),
-                            success: function (response) {
-                            var output = document.getElementById(response);
-                                    output.removeAttribute('src');
-                                    $("." + response).remove();
-                                    output.onload = function () {
-                                    URL.revokeObjectURL(output.src) // free memory
-                                    }
-                            }
-                    });
-                    return false; // for good measure
-            });        </script>
-        <script>
-                    function reset() {
-                    location.reload();
-                    }
-=======
                     success: function (response) {
                         var output = document.getElementById(response);
                         output.removeAttribute('src');
@@ -528,7 +423,6 @@
                 location.reload();
             }
 
->>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
         </script>
 
         <script>
@@ -554,16 +448,10 @@
                 if (!hostelName) {
                     document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
                     isValid = false;
-<<<<<<< HEAD
-            }
-            if (!room) {
-            document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
-=======
                 }
 
                 if (!room) {
                     document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
->>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
                     isValid = false;
                 } else if (room <= 0) {
                     document.getElementById('errorRoom').innerText = 'Invalid!';
@@ -571,16 +459,10 @@
                 } else if (!regex2.test(room)) {
                     document.getElementById('errorRoom').innerText = 'Invalid!';
                     isValid = false;
-<<<<<<< HEAD
-            }
-            if (!floor) {
-            document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
-=======
                 }
 
                 if (!floor) {
                     document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
->>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
                     isValid = false;
                 } else if (!regex2.test(floor)) {
                     document.getElementById('errorFloor').innerText = 'Invalid!';
@@ -588,19 +470,6 @@
                 } else if (floor <= 0) {
                     document.getElementById('errorFloor').innerText = 'Invalid!';
                     isValid = false;
-<<<<<<< HEAD
-            }
-            if (!province) {
-            document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
-                    isValid = false;
-            }
-            if (!address) {
-            document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
-                    isValid = false;
-            }
-            if (!cost) {
-            document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
-=======
                 }
 
                 if (!province) {
@@ -615,7 +484,6 @@
 
                 if (!cost) {
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
->>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
                     isValid = false;
                 } else if (!regex.test(cost)) {
                     document.getElementById('errorCost').innerText = 'Invalid!';
@@ -623,16 +491,10 @@
                 } else if (cost <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
                     isValid = false;
-<<<<<<< HEAD
-            }
-            if (!distance) {
-            document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
-=======
                 }
 
                 if (!distance) {
                     document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
->>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
                     isValid = false;
                 } else if (!regex.test(distance)) {
                     document.getElementById('errorDistance').innerText = 'Invalid!';
@@ -640,20 +502,13 @@
                 } else if (distance <= 0) {
                     document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
                     isValid = false;
-<<<<<<< HEAD
-            }
-          
-            return isValid;
-=======
                 }
 
 
 
                 return isValid;
->>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038
             }
         </script>
-
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

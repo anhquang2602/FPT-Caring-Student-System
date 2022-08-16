@@ -16,6 +16,35 @@
         <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
+               <style>
+            .stars-outer {
+                position: relative;
+                display: inline-block;
+            }
+
+            .stars-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 0;
+            }
+
+            .stars-outer::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #ccc;
+            }
+
+            .stars-inner::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #f8ce0b;
+            }
+        </style>
     </head>
     <body>
         <c:choose>
@@ -107,6 +136,10 @@
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.description}</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.address}</p>
                                                     <p class="font-italic text-muted mb-0 small" style="font-size: 18px">${r.distance} km</p>
+                                                         <div class="stars-outer">
+                                                            <div class="stars-inner" style="width: ${r.starAVG}%">  </div>
+                                                    </div>  
+
                                                 </div>
                                                 <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit1">
                                                     <a class="btn btn-danger" href="EditRestaurantController?id=${r.restaurantID}">Chỉnh sửa</a> 
