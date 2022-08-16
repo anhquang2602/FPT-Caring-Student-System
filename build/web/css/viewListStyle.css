@@ -191,7 +191,7 @@ ul li:hover .fas {
     color: greenyellow;
 }
 .example {
-    width: 50%;
+    width: 80%;
 }
 @media (max-width: 376px) {
     #navbar-items {

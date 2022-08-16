@@ -15,6 +15,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Cookie;
@@ -148,7 +150,13 @@ public class EditHostelController extends HttpServlet {
 
         Hostel h = new Hostel(id, hostelName, room, status, floor, provinceID, districtID, address, cost, distance, description);
         dao.updateHostel(h);
+            try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(EditHostelController.class.getName()).log(Level.SEVERE, null, ex);
+                }
         session.setAttribute("stt", "1");
+        
         response.sendRedirect(request.getContextPath() + "/edithostel?id=" + id);
        
     }

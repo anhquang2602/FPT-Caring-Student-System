@@ -56,6 +56,11 @@ public class HostelDetailController extends HttpServlet {
         processRequest(request, response);
 
         String id = request.getParameter("id");
+        String isSeeFromReport=request.getParameter("isSeeFromReport");
+        if (isSeeFromReport!=null&&isSeeFromReport.equalsIgnoreCase("true")) {
+            isSeeFromReport = "true";
+            request.setAttribute("isSeeFromReport", isSeeFromReport);
+        }
         HostelDAO dao = new HostelDAO();
         Hostel h = dao.getHostelInfo(Integer.parseInt(id));
         

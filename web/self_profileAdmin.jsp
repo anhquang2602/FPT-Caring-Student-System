@@ -18,11 +18,11 @@
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
                         <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Hồ Sơ Thất Bại</h4></strong>
+                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Hồ Sơ Thành Công</h4></strong>
                             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                         </div>
                         <div class="toast-body">
-                            Chỉnh sửa hồ sơ thất bại !
+                            Chỉnh sửa hồ sơ thành công !
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="${UserAvatar}" id="output">
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" height="150px" width="150px" src="${UserAvatar}" id="output">
                                     <div class="form-group mt-3">                       
                                         <input style="padding-left: 80px" type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="avatarImg">
                                     </div>

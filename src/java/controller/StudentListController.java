@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Seller;
 import model.Student;
 
@@ -42,7 +43,7 @@ public class StudentListController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         ArrayList<Student> listStudent = new ArrayList<>();
         StudentDAO dao = new StudentDAO();
-
+        HttpSession session = request.getSession();
         String key = request.getParameter("key");
         String province = request.getParameter("province");
         String gender = request.getParameter("gender");
@@ -189,6 +190,7 @@ public class StudentListController extends HttpServlet {
         request.setAttribute("status", status);
         request.setAttribute("key", key);
         request.getRequestDispatcher("student-list.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

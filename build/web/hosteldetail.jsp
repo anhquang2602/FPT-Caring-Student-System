@@ -16,20 +16,70 @@
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/addHostelStyle.css">
         <link rel="stylesheet" href="css/commentStyle.css" />
-        <!--<<<<<<< HEAD
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
-        
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        
-        =======
-        >>>>>>> c11cc95c359b3d79763cd3c3d632379e08a3a4d6-->
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <style>
+              <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .dialog {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity linear 0.2s;
+            }
+
+            .overlay-close {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                cursor: default;
+            }
+
+            .dialog:target {
+                visibility: visible;
+                opacity: 1;
+            }
+
+
+            .overlay {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+            .dialog-body {
+                max-width: 400px;
+                position: relative;
+                padding: 16px;
+                background-color: #fff;
+            }
+
+            .dialog-close-btn {
+                position: absolute;
+                top: 2px;
+                right: 6px;
+                text-decoration: none;
+                color: #333;
+            }
+            .labels{
+                font-weight: 800;
+            }
+            .error {
+                color: red;
+            }
+            .message {
+                color: green;
+            }
             .stars-outer {
                 position: relative;
                 display: inline-block;
@@ -65,19 +115,30 @@
                 <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-
                 <div class="container rounded bg-white mt-5 mb-5 col-md-10">
                     <div class="col-md-12 mb-5">
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="listallhostels">Danh sách nhà trọ</a></li>
+                                <%  if (request.getAttribute("isSeeFromReport") == "true") {%>
+                                <li><a href="ListAllReportHostelController">Danh sách báo cáo nhà trọ</a></li>
+                                    <%} else {%>
+                                <li><a href="FilterHostelController">Danh sách nhà trọ</a></li>
+                                    <%}%>                           
                                 <li><a>Chi tiết nhà trọ</a></li>
                             </ul>
                         </div>
-
+                              <c:if test = "${isStudent == 1}">
+                            <a href="#ReportRestaurantController?id=${hosteldetail.hostelID}" data-href="ReportRestaurantController?id=${hosteldetail.hostelID}" class="dialog-btn"><img style="float: right; height: 40px " src="images/flag.png" >
+                            </c:if>
+                            <div class="dialog overlay" id="ReportRestaurantController?id=${hosteldetail.hostelID}">
+                                <a href="#" class="overlay-close"></a>
+                                <div class="dialog-body">
+                                    <a class="dialog-close-btn" href="#">&times;</a>
+                                    <%@include file="/reportHostel.jsp" %>
+                                </div>
+                            </div> 
                         <div class="card">
-
                             <form class="form" method="POST" id="updateForm" action="edithostel"  name="edithostelForm" onsubmit="return validateEditHostel()">
                                 <div class="input_text" hidden>
                                     <input id="hostelId" value="${hosteldetail.hostelID}" hidden/>
@@ -85,25 +146,25 @@
                                 <div class="left-side">
                                     <div class="d-flex flex-column align-items-center text-center">
                                         <div class="form-group row"> 
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img1}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img1}" style="padding: 0px;" height="170px" width="170px" alt="">
                                             </div>
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img2}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img2}" style="padding: 0px;" height="170px" width="170px" alt="">
                                             </div>
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img3}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img3}" style="padding: 0px;" height="170px" width="170px" alt="">
                                             </div>
                                         </div>
                                         <div class="form-group row"> 
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img4}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img4}" style="padding: 0px;" height="170px" width="170px" alt="">
                                             </div>
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img5}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img5}" style="padding: 0px;" height="170px" width="170px" alt="">
                                             </div>
-                                            <div class="col mt-5">
-                                                <img src="${hosteldetail.img6}" style="padding: 0px;" width="170rem" height="170rem" alt="">
+                                            <div class="col mt-5 thumbnail1">
+                                                <img src="${hosteldetail.img6}" style="padding: 0px;" height="170px" width="170px" alt="">
                                             </div>
                                         </div>
                                         <span class="font-weight-bold labels mt-5 fs-4" >
@@ -116,16 +177,14 @@
                                             <label>Chủ trọ:</label>
                                             <a href="ViewSellerController?id=${sellerId}" style="text-decoration: none" target="_blank">${hosteldetail.sellerName}</a>
                                         </span>
-
                                         <c:if test = "${isStudent == 1}">
                                             <a href="commentHostel?hostelID=${hosteldetail.hostelID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
                                         </c:if>
-
                                     </div>
                                 </div>
                                 <div class="right-side">
-                                    <h3>Mô tả nhà trọ <a href="ReportHostelController?id=${hosteldetail.hostelID}"><img style="float: right; height: 50px " src="images/report.png" >
-                                            </h3></a>
+                                    <h3>Mô tả nhà trọ </h3>
+                                          
                                     <div class="input_text">
                                         <strong class="fs-4">Số phòng</strong>
                                         <input type="text" value="${hosteldetail.totalRoom}" readonly="">
@@ -139,9 +198,7 @@
                                             <label for="collection1">
                                                 <div class="left_box">
                                                     <div class="left_box_collection"> 
-
                                                         <h4>Còn phòng</h4>
-
                                                     </div>
                                                 </div>
                                             </label> 
@@ -152,9 +209,7 @@
                                             <label for="collection2">
                                                 <div class="left_box">
                                                     <div class="left_box_collection">
-
                                                         <h4>Hết phòng</h4>
-
                                                     </div>                                    
                                                 </div>                                    
                                             </label>  
@@ -191,9 +246,8 @@
                                     </div>
                                 </div>
                             </form>
-
                         </div>
-                        <div class="row" style="background-color: #e9ecef" >
+                        <div class="row">
                             <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà trọ:</label>
                             <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
                             <c:if test="${listCmtHostelPaging  != null}">
@@ -232,7 +286,7 @@
                 </div>
             </div>
         </div>
-
+        <%@include file="/footer.jsp" %>                   
 
         <script>
             const allStars = document.querySelectorAll('.star');
@@ -367,5 +421,4 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     </body>
-    <%@include file="/footer.jsp" %>
 </html>

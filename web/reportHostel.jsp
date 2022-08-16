@@ -18,24 +18,20 @@
     </head>
     <body>
         <form action="ReportHostelController" method="post" >
-            <div class="min-h-screen flex justify-center items-center bg-indigo-300 ">
-                <div class="h-auto w-96 font-sans px-4 rounded-lg bg-white ">
+<!--            <div class="min-h-screen flex justify-center items-center  ">
+                <div class="h-auto w-96 font-sans px-4 rounded-lg bg-white ">-->
                     <div class="main">
 
                         <div class="flex justify-center items-center mt-3">
                             <span class="h-20 w-20"><img src="https://imgur.com/4Y88KnF.gif"></span>
                         </div>
-                        
+
                         <p class="text-center mt-4 text-2xl font-semibold">Báo cáo nhà trọ </p>
                         <p class="text-center mt-1 text-sm text-gray-600 font-semibold">Nếu bạn nhận thấy có vấn đề, đừng chần chừ mà hãy báo cáo ngay cho quản trị viên.</p>
                         <hr class="mt-3">
                         <p class="text-lg mt-3 text-red-600 font-semibold">Lí do bị báo cáo của nhà trọ</p>
-                        <p class="text-sm font-semibold"><jsp:useBean  id="date"  class="java.util.Date" />
-                            Thời gian báo cáo: </p>
-                        <p class="text-sm font-semibold" ><fmt:formatDate  value="${date}" pattern="yyyy-mm-dd" /></p>                       
-                        <hr class="mt-3">
                         <div class="flex flex-col mt-3">
-                            <input type="text" name="id" value="${hostel.hostelID}" hidden>
+                            <input type="text" name="id" value="${hosteldetail.hostelID}" hidden>
                             <div>
                                 <input class="cursor-pointer" id="r1" type="checkbox" name="spam" value="1" > 
                                 <label for="r1">Spam</label>
@@ -53,12 +49,17 @@
                                 <label for="r4">Thông Tin Sai Sự Thật</label>
                             </div>
 
-                        </div>
-                        <button class="continue mt-4 mb-10 h-12 w-full bg-green-400 rounded-lg hover:bg-green-700 text-white text-sm cursor-pointer transition-all" value="Báo Cáo nhà trọ" href="ReportHostelController?id=${hostel.hostelID}">Báo cáo nhà trọ</button>
+                        </div>       
+                        <hr class="mt-3">
+                        <br>
+                        <p class="text-sm font-semibold"><jsp:useBean  id="date"  class="java.util.Date" />
+                            Thời gian báo cáo: </p>
+                        <p class="text-sm font-semibold" ><fmt:formatDate  value="${date}" pattern="yyyy-MM-dd" /></p>    
+                        <button class="continue mt-4 mb-10 h-12 w-full bg-green-400 rounded-lg hover:bg-green-700 text-white text-sm cursor-pointer transition-all" value="Báo Cáo nhà trọ" >Báo cáo nhà trọ</button>
 
                     </div>
-                </div>
-            </div>
+<!--                </div>
+            </div>-->
         </form>
     </body>
     <script src="validator/reportProblem.js"></script>
