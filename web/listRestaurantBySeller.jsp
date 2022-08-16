@@ -137,6 +137,7 @@
 
                                                 </div>
                                                 <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit1">
+                                                    <a class="btn btn-primary" href="ChartVoteController_res?restaurantId=${r.restaurantID}">Xem Biểu Đồ</a>
                                                     <a class="btn btn-danger" href="EditRestaurantController?id=${r.restaurantID}">Chỉnh sửa</a> 
                                                     <a class="btn btn-primary" href="AddFoodController?id=${r.restaurantID}">Menu</a>
                                                     <a class="btn btn-secondary" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà hàng</a>
