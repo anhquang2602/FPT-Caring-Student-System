@@ -5,20 +5,23 @@
  */
 package controller;
 
+import dao.ClubDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Club;
 
 /**
  *
  * @author win
  */
-@WebServlet(name = "FindDistrictToSearch", urlPatterns = {"/FindDistrictToSearch"})
-public class FindDistrictToSearch extends HttpServlet {
+@WebServlet(name = "ListClubCategories", urlPatterns = {"/listClubCategories"})
+public class ListClubCategories extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +40,10 @@ public class FindDistrictToSearch extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FindDistrictToSearch</title>");            
+            out.println("<title>Servlet listClubCategories</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet FindDistrictToSearch at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet listClubCategories at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +61,35 @@ public class FindDistrictToSearch extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        ArrayList<Club> listClubs = new ArrayList<>();
+        ClubDAO clubDAO = new ClubDAO();
+        String key = request.getParameter("key");
+        String type = request.getParameter("type");
+        String index = request.getParameter("index");
+        if (index == null) {
+            index = "1";
+        }
+        int totalPage = 1;
+        if (key == null || key.equals("")) {
+            totalPage = clubDAO.getTotalPageCategory(listClubs, Integer.parseInt(type));
+            listClubs = clubDAO.getListClubsByCategories(Integer.parseInt(type));
+        } else {
+            totalPage = clubDAO.getTotalPageByTextType(listClubs, key, Integer.parseInt(type));
+            listClubs = clubDAO.getClubByTextAndCategories(key, Integer.parseInt(type));
+        }
+        if (listClubs.isEmpty()) {
+            request.setAttribute("listNull", "Không tìm thấy kết quả phù hợp!");
+        } else {
+            request.setAttribute("listNull", "Có "+listClubs.size()+" kết quả được tìm thấy");
+        }
+        request.setAttribute("type", type);
+        request.setAttribute("key", key);
+        request.setAttribute("endP", totalPage);
+        request.setAttribute("tag", index);
+        request.setAttribute("listClubs", listClubs);
+        request.getRequestDispatcher("listClubs.jsp").forward(request, response);
     }
 
     /**

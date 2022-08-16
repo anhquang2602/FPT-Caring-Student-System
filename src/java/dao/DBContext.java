@@ -21,6 +21,7 @@ public abstract class DBContext {
 
 
 
+
 //    public DBContext() {
 //        try {
 //
@@ -54,6 +55,7 @@ public abstract class DBContext {
     public DBContext() {
         try {
             String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS";
+
             String user = "sa";
             String pass = "123";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -63,6 +65,7 @@ public abstract class DBContext {
         }
     }
 }
+
 //       public DBContext() {
 //        try {
 //            String url = "jdbc:sqlserver://DESKTOP-PV3034R\\SQLEXPRESS:1433;databaseName=FCS";
