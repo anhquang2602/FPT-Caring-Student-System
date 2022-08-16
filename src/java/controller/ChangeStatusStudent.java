@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Student;
 
 /**
@@ -110,7 +111,11 @@ public class ChangeStatusStudent extends HttpServlet {
         request.setAttribute("listStudent", listStudent);
          request.setAttribute("endP", endPage);
         request.setAttribute("tag", index);
-        request.getRequestDispatcher("StudentListController").forward(request, response);
+       // request.getRequestDispatcher("StudentListController").forward(request, response);
+        // request.getRequestDispatcher("StudentListController?status=3&gender=3").forward(request, response);
+         HttpSession session = request.getSession();
+        session.setAttribute("stt", "1");
+         response.sendRedirect(request.getContextPath()+ "/StudentListController?status=3&gender=3");
     }
 
     /**

@@ -744,8 +744,8 @@ public class StudentDAO extends DBContext {
             String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit,Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus ,Gender, Avatar\n"
                     + "from Students\n"
                     + "inner join Country on Students.CountryID=Country.CountryID\n"
-                    + "inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Students.DistrictID = District.DistrictID\n"
+                    + "left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Students.DistrictID = District.DistrictID\n"
                     + "inner join Account on Students.Email = Account.username\n"
                     + "where StudentID=?";
             PreparedStatement st;

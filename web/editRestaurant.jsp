@@ -27,6 +27,21 @@
         </style>
     </head>
     <body class="bg-white">
+        <c:choose>
+        <c:when test="${stt.equals('1')}">
+            <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                <div class="toast" data-autohide="true">
+                    <div class="toast-header bg-success">
+                        <strong class="mr-auto text-white"><h4>Chỉnh Sửa Nhà Hàng Thành Công</h4></strong>
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                    </div>
+                    <div class="toast-body">
+                        Chỉnh sửa nhà hàng thành công !
+                    </div>
+                </div>
+            </div>
+        </c:when>
+        </c:choose>
         <div class="px-0">
             <%@include file="/header.jsp" %> 
             <div class="d-flex nav-item main-home">
@@ -54,31 +69,30 @@
                                         <img id="Url1" name="Url1" width="170px" height="170px"
                                              <c:if test="${restaurant.restaurantImage != null}">
                                                  src="${restaurant.restaurantImage}" </c:if>/>
-                                             
+
                                              <script>
-                                                 var loadFile = function (event) {
-                                                     var output = document.getElementById('Url1');
-                                                     output.src = URL.createObjectURL(event.target.files[0]);
-                                                     output.style.width = "170px";
-                                                     output.style.height = "170px";
-                                                     output.onload = function () {
-                                                         URL.revokeObjectURL(output.src) // free memory
-                                                     }
-                                                 };
-                                             </script>
+                                                         var loadFile = function (event) {
+                                                         var output = document.getElementById('Url1');
+                                                                 output.src = URL.createObjectURL(event.target.files[0]);
+                                                                 output.style.width = "170px";
+                                                                 output.style.height = "170px";
+                                                                 output.onload = function () {
+                                                                 URL.revokeObjectURL(output.src) // free memory
+                                                                 }
+                                                         };                                             </script>
                                         <c:if test="${restaurant.restaurantImage != null}">
                                             <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteimgres?id=${restaurant.restaurantID}&url=Url1">X</a>
                                         </c:if>
 
 
-                                        </div> 
+                                    </div> 
 
 
-                                    </div>
+                                </div>
 
-                                    <div class="right-side">
-                                        <h3>Mô tả nhà hàng</h3>
-                                        <div class="input_text"> <input type="text" name="restaurantName" value="${restaurant.restaurantName}"> <span>Tên nhà trọ</span> </div>
+                                <div class="right-side">
+                                    <h3>Mô tả nhà hàng</h3>
+                                    <div class="input_text"> <input type="text" name="restaurantName" value="${restaurant.restaurantName}"> <span>Tên nhà trọ</span> </div>
                                     <div class="error" id="errorName"></div>
 
 
@@ -135,122 +149,108 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-                                                 $(document).on('change', '.province', function () {
-                                                     var province = document.getElementById("province").value;
-                                                     $('#district').empty();
-
-
-                                                     $.ajax({
+                                                         $(document).on('change', '.province', function () {
+                                                 var province = document.getElementById("province").value;
+                                                         $('#district').empty();
+                                                         $.ajax({
                                                          type: "GET",
+                                                                 url: "/Test_1/findDistrict",
+                                                                 data: {
+                                                                 province: province,
+                                                                 },
+                                                                 headers: {
+                                                                 Accept: "application/json; charset=utf-8",
+                                                                         contentType: "application/json; charset=utf-8"
+                                                                 },
+                                                                 success: function (data) {
 
-                                                         url: "/Test_1/findDistrict",
-                                                         data: {
-                                                             province: province,
-                                                         },
-                                                         headers: {
-                                                             Accept: "application/json; charset=utf-8",
-                                                             contentType: "application/json; charset=utf-8"
-                                                         },
-
-                                                         success: function (data) {
-
-                                                             data.forEach(function (a) {
+                                                                 data.forEach(function (a) {
                                                                  $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-
-                                                             });
-                                                         },
-                                                         error: function (e) {
-                                                             console.log("ERROR: ", e);
-                                                         }
-                                                     });
-
-                                                 });
-        </script>
+                                                                 });
+                                                                 },
+                                                                 error: function (e) {
+                                                                 console.log("ERROR: ", e);
+                                                                 }
+                                                         });
+                                                 });        </script>
         <script>
-            $("#U1").click(function (event) {
-                event.preventDefault();
-                $.ajax({
+                    $("#U1").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
                     url: $(this).attr('href'),
-                    success: function (response) {
-                        var output = document.getElementById(response);
-                        output.removeAttribute('src');
-       
-                        $("." + response).remove();
-                        output.onload = function () {
-                            URL.revokeObjectURL(output.src) // free memory
-                        }
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.removeAttribute('src');
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
 
 
+                            }
+                    });
+                    return false; // for good measure
+            });        </script>
+        <script>
+                    function reset() {
+                    location.reload();
                     }
-                });
-                return false; // for good measure
-            });    
 
         </script>
+
         <script>
-            function reset() {
-                location.reload();
+            function validateRestaurant() {
+            let isValid = true;
+                    const hostelName = document.editRestaurantForm.restaurantName.value;
+                    const province = document.editRestaurantForm.province.value;
+                    const address = document.editRestaurantForm.address.value;
+                    const cost = document.editRestaurantForm.cost.value;
+                    const distance = document.editRestaurantForm.distance.value;
+                    const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                    const regex2 = /^[0-9]*$/;
+                    document.getElementById('errorName').innerText = ' ';
+                    document.getElementById('errorProvince').innerText = ' ';
+                    document.getElementById('errorAddress').innerText = ' ';
+                    document.getElementById('errorCost').innerText = ' ';
+                    document.getElementById('errorDistance').innerText = ' ';
+                    if (!hostelName) {
+            document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà hàng!';
+                    isValid = false;
             }
 
-        </script>
-
-        <script>
-           function validateRestaurant() {
-                let isValid = true;
-                const hostelName = document.editRestaurantForm.restaurantName.value;
-                const province = document.editRestaurantForm.province.value;
-                const address = document.editRestaurantForm.address.value;
-                const cost = document.editRestaurantForm.cost.value;
-                const distance = document.editRestaurantForm.distance.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
-                const regex2 = /^[0-9]*$/;
-
-                document.getElementById('errorName').innerText = ' ';               
-                document.getElementById('errorProvince').innerText = ' ';
-                document.getElementById('errorAddress').innerText = ' ';
-                document.getElementById('errorCost').innerText = ' ';
-                document.getElementById('errorDistance').innerText = ' ';
-
-
-                if (!hostelName) {
-                    document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà hàng!';
+            if (!province) {
+            document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
                     isValid = false;
-                }                
+            }
 
-                if (!province) {
-                    document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+            if (!address) {
+            document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
                     isValid = false;
-                }
+            }
 
-                if (!address) {
-                    document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
+            if (!cost) {
+            document.getElementById('errorCost').innerText = 'Bạn phải nhập giá dao động!';
                     isValid = false;
-                }
+            } else if (!regex.test(cost)) {
+            document.getElementById('errorCost').innerText = 'Invalid!';
+                    isValid = false;
+            } else if (cost <= 0) {
+            document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
+                    isValid = false;
+            }
 
-                if (!cost) {
-                    document.getElementById('errorCost').innerText = 'Bạn phải nhập giá dao động!';
+            if (!distance) {
+            document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
                     isValid = false;
-                } else if (!regex.test(cost)) {
-                    document.getElementById('errorCost').innerText = 'Invalid!';
+            } else if (!regex.test(distance)) {
+            document.getElementById('errorDistance').innerText = 'Giá trị nhập không đúng. Khoảng cách phải là số !';
                     isValid = false;
-                } else if (cost <= 0) {
-                    document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
+            } else if (distance <= 0) {
+            document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
                     isValid = false;
-                }
+            }
 
-                if (!distance) {
-                    document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
-                    isValid = false;
-                } else if (!regex.test(distance)) {
-                document.getElementById('errorDistance').innerText = 'Giá trị nhập không đúng. Khoảng cách phải là số !';
-                        isValid = false;
-                } else if (distance <= 0) {
-                    document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
-                    isValid = false;
-                }
-
-                return isValid;
-
+            return isValid;
             }
         </script>
 
@@ -258,6 +258,13 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous">
+        </script>
+          <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+
+            });
         </script>
     </body>
     <%@include file="/footer.jsp" %>

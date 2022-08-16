@@ -82,6 +82,8 @@ public class ListAllReportHostelController extends HttpServlet {
         request.setAttribute("endP", endPage);
         request.setAttribute("tag", index);
         request.getRequestDispatcher("listAllReportHostel.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+         session.removeAttribute("stt");
 
     }
 

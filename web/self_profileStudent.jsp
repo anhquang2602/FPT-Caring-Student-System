@@ -9,11 +9,26 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--        <meta http-equiv="refresh" content="0.1">-->
+        <!--        <meta http-equiv="refresh" content="0.1">-->
         <link rel="stylesheet" href="css/profileStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
     <body class="bg-white">
+        <c:choose>
+            <c:when test="${stt.equals('1')}">
+                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
+                    <div class="toast" data-autohide="true">
+                        <div class="toast-header bg-success">
+                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Hồ Sơ Thành Công</h4></strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Chỉnh sửa hồ sơ thành công !
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+        </c:choose>
         <div class="px-0 bg-white">
             <%@include file="/header.jsp" %> 
             <div class="d-md-flex">
@@ -90,8 +105,8 @@
                                     <div class="col-md-12"><label class="labels">Address Detail</label><input type="text" name="addressDetail" class="form-control"value="${student.address}" ></div>
                                 </div>
                                 <div class="mt-5 text-center">
-                                    <button onclick="tai_lai_trang()">re load</button>
                                     <button class="btn btn-primary profile-button" type="submit" >Save Profile</button>
+                                    <button class="btn btn-primary profile-button" onclick="tai_lai_trang()">Reload</button>
                                 </div>
                                 <label class="labels">${UpdateError}</label>
                                 <label class="labels">${UpdateProcess}</label>
@@ -102,28 +117,31 @@
         </form>
     </div>
 </div>
+<script>
+            $(document).ready(function () {
+    $(".toast").toast({delay: 4000});
+            $(".toast").toast("show");
+    });</script>
 </body>
 <script src="validator/Validator.js"></script>
 <script>
-        function tai_lai_trang(){
-                   var img = document.getElementById('output').src;
-                   
-        }
+            function tai_lai_trang(){
+            var img = document.getElementById('output').src;
+            }
 </script>
 <script language="javascript">
 
-                                        var gender = document.getElementById('genderlable').innerHTML;
+    var gender = document.getElementById('genderlable').innerHTML;
+            if (gender == 1) {
+    document.getElementById('inlineRadio1').setAttribute('checked', true);
+    } else
+    {
+    document.getElementById('inlineRadio2').setAttribute('checked', true);
+    }
 
-                                        if (gender == 1) {
-                                            document.getElementById('inlineRadio1').setAttribute('checked', true);
-                                        } else
-                                        {
-                                            document.getElementById('inlineRadio2').setAttribute('checked', true);
-                                        }
 
-
-                                        // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
-                                        // obj là tham số truyền vào và cũng chính là thẻ select
+    // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
+    // obj là tham số truyền vào và cũng chính là thẻ select
 
         
        
@@ -134,60 +152,52 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 crossorigin="anonymous"></script>
 <script>
-                                        $(document).on('change', '.province', function () {
-                                            var province = document.getElementById("province").value;
-                                            $('#district').empty();
+            $(document).on('change', '.province', function () {
+    var province = document.getElementById("province").value;
+            $('#district').empty();
+            $.ajax({
+            type: "GET",
+                    url: "/Test_1/findDistrict",
+                    data: {
+                    province: province,
+                    },
+                    headers: {
+                    Accept: "application/json; charset=utf-8",
+                            contentType: "application/json; charset=utf-8"
+                    },
+                    success: function (data) {
 
-
-                                            $.ajax({
-                                                type: "GET",
-
-                                                url: "/Test_1/findDistrict",
-                                                data: {
-                                                    province: province,
-                                                },
-                                                headers: {
-                                                    Accept: "application/json; charset=utf-8",
-                                                    contentType: "application/json; charset=utf-8"
-                                                },
-
-                                                success: function (data) {
-
-                                                    data.forEach(function (a) {
-                                                        $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-
-                                                    });
-                                                },
-                                                error: function (e) {
-                                                    console.log("ERROR: ", e);
-                                                }
-                                            });
-
-                                        });
-</script>
+                    data.forEach(function (a) {
+                    $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+                    });
+                    },
+                    error: function (e) {
+                    console.log("ERROR: ", e);
+                    }
+            });
+    });</script>
 
 
 <script>
-    var loadFile = function (event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-        output.onload = function () {
-            URL.revokeObjectURL(output.src) // free memory
-        }
-    };
-</script>
+            var loadFile = function (event) {
+            var output = document.getElementById('output');
+                    output.src = URL.createObjectURL(event.target.files[0]);
+                    output.onload = function () {
+                    URL.revokeObjectURL(output.src) // free memory
+                    }
+            };</script>
 
 <script>
-        function validateUpdateStudent() {
+            function validateUpdateStudent() {
             let isValid = true;
-            const province = document.updateStudentForm.province.value;
-            document.getElementById('errorProvince').innerText = ' ';
-            if (!province) {
-                document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
-                isValid = false;
+                    const province = document.updateStudentForm.province.value;
+                    document.getElementById('errorProvince').innerText = ' ';
+                    if (!province) {
+            document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+                    isValid = false;
             }
             return isValid;
-        }
-    </script>
+            }
+</script>
 <%@include file="/footer.jsp" %>
 </html>

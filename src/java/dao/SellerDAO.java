@@ -513,8 +513,8 @@ public class SellerDAO extends DBContext {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus,Gender,Avatar,LinkFacebook\n"
                     + "from Sellers\n"
                     + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "where SellerID=?";
             PreparedStatement st;
