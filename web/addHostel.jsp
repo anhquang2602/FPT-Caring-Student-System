@@ -47,14 +47,15 @@
                                             var loadFile = function (event) {
                                                 var output = document.getElementById('output1');
                                                 output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output1.src); // free memory
+                                                }
                                                 var img2 = document.getElementById('file2').type = "file";
                                                 var img3 = document.getElementById('file3').type = "file";
                                                 var img4 = document.getElementById('file4').type = "file";
                                                 var img5 = document.getElementById('file5').type = "file";
                                                 var img6 = document.getElementById('file6').type = "file";
-                                                output.onload = function () {
-                                                    URL.revokeObjectURL(output1.src); // free memory
-                                                };
+                                                ;
                                             };
                                         </script>
 

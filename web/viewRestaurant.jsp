@@ -158,7 +158,7 @@ Author     : nguye
                                                                  <c:if test="${food.imageURL == null}">
                                                                      src="images/food.png" </c:if> 
                                                                  <c:if test="${food.imageURL == ''}">
-                                                                     src="images/food.png" </c:if>  height="170px" width="170px">
+                                                                     src="images/food.png" </c:if> width="150rem" height="150rem">
                                                             </div>
                                                             <div class="col-md-5 mt-1">
                                                                 <label class="labels">${food.foodName}</label>
