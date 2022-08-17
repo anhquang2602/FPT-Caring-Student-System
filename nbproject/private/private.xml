@@ -3,11 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/D:/FCS_Final158/nbproject/build-impl.xml</file>
+            <file>file:/D:/FCS_Final158/src/java/dao/DBContext.java</file>
+            <file>file:/D:/FCS_Final158/web/hosteldetail.jsp</file>
+            <file>file:/D:/FCS_Final158/web/viewRestaurant.jsp</file>
+            <file>file:/D:/FCS_Final158/web/addHostel.jsp</file>
+            <file>file:/D:/FCS_Final158/test/dao/BusDAOTest.java</file>
+            <file>file:/D:/FCS_Final158/web/css/pagingStyle.css</file>
+=======
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/viewRestaurant.jsp</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listAllHostels.jsp</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listAllRestaurant.jsp</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DBContext.java</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/hosteldetail.jsp</file>
+>>>>>>> f421aa0184fe2e37acd479560101a531220b59d9
         </group>
     </open-files>
 </project-private>
