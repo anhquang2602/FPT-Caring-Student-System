@@ -9,6 +9,7 @@ Author     : nguye
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -201,8 +202,8 @@ Author     : nguye
                                                         src="images/restaurant.png" </c:if>  width="100%" class="form-control" alt="" >
                                                 </div>
                                                 <div class="col-md-12 text-center mt-3">
-                                                    <div class="stars-outer mb-5"> 
-                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}%"> </div>
+                                                    <div class="stars-outer mb-5" style=" font-size: 20px"> 
+                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}% ; font-size: 20px"> </div>
                                                 </div>
                                             </div>  
                                             <div class="col-md-12 mt-3 text-center justify-content-center">
@@ -239,7 +240,7 @@ Author     : nguye
                                             </div>
                                             <div class="text-center mt-5">
                                                 <c:if test = "${isStudent == 1}">
-                                                    <a href="commentRestaurant?restaurantID=${restaurant.restaurantID}" style="font-size: 20px"> <i class="glyphicon glyphicon-edit"></i> Viết đánh giá</a> 
+                                                    <a href="commentRestaurant?restaurantID=${restaurant.restaurantID}" style="font-size: 20px"><i class='far fa-edit'></i> Viết đánh giá</a> 
                                                 </c:if>
                                             </div>
                                         </div>
@@ -247,19 +248,19 @@ Author     : nguye
                                 </form>
 
                             </div>
-                            <div class="row">
+                            <div class="row" style="background-color:#f2f2f2">
                                 <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà ăn:</label>
                                 <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
                                 <c:if test="${listCmtHostelPaging  != null}">
                                     <c:forEach items="${listCmtHostelPaging}" var="d" >
                                         <div class="bg-white p-3" style="margin :5px">
-                                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="60" height="60" >
+                                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="80" height="50" >
                                                 <div class="d-flex flex-column justify-content-start ml-4">
                                                     <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
                                                     <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
                                                     <div class="sold_stars m1-auto">
                                                         <c:forEach begin="1" end="${d.starvoting}" >
-                                                            <i class="fa fa-star"  style=" font-size: 13px;"></i>      
+                                                            <i class="fa fa-star"  style=" font-size: 17px;"></i>      
                                                         </c:forEach>
                                                         <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
                                                     </div>

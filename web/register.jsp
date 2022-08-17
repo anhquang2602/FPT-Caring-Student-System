@@ -28,7 +28,7 @@
                                 <div id="divCheckEmail"></div>
                                 Nhập mật khẩu<input class="form-control" placeholder="Password" type="password" name="pass"/><br/>     
                                 <div id="divCheckPass"></div>
-                                Nhập lại mật khẩu<input class="form-control" placeholder="Re-password" type="password" name="re-pass"/><br/>     
+                                Nhập lại mật khẩu<input class="form-control" placeholder="Re-password" type="password" name="repass"/><br/>     
                                 <div id="divCheckRePass"></div>
                                 Vai trò:
                                 <input class="role" name="role" type="radio" value="2" checked/>Học sinh

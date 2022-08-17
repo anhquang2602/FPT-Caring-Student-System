@@ -5,23 +5,22 @@
  */
 package controller;
 
-import dao.HostelDAO;
-import dao.SendMail;
-import dao.StarDAO;
+import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Hostel;
+import model.StarVote;
 
 /**
  *
- * @author nguye
+ * @author longn
  */
-public class DeleteHostel extends HttpServlet {
+public class ChartVoteController_res extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +34,18 @@ public class DeleteHostel extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ChartVoteController_res</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ChartVoteController_res at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -50,29 +60,31 @@ public class DeleteHostel extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int restaurantId = Integer.parseInt(request.getParameter("restaurantId"));
 
-        HostelDAO dao = new HostelDAO();
-        StarDAO dao1 = new StarDAO();
-        int role = Integer.parseInt(request.getSession().getAttribute("role").toString());
-        int hostelID = Integer.parseInt(request.getParameter("id"));
-        String hostelName=dao.getHostelNameByHostelId(hostelID);
-        String email=dao.getSellerEmailByHostelId(hostelID);
-        dao.deleteReportbyHostel(hostelID);
-        dao.deleteHostelImage(hostelID);
-        dao1.deleteVoteHostel(hostelID);
-        dao.deleteHostel(hostelID);
-        if (role == 3) {
-            HttpSession session = request.getSession();
-            session.setAttribute("stt", "2");
-            response.sendRedirect(request.getContextPath() + "/hostellist");
-        } else if (role == 1) {
-            SendMail sm=new SendMail();          
-            sm.SendMailDelete(hostelName, email);
-            HttpSession session = request.getSession();
-            session.setAttribute("stt", "1");
-            response.sendRedirect(request.getContextPath() + "/ListAllReportHostelController");
-            
+        RestaurantDAO rdb = new RestaurantDAO();
+        List<StarVote> list = new ArrayList<>();
+        list = rdb.listStar(restaurantId);
+        int oneStar = 0, twoStar = 0, fourStar = 0, threeStar = 0, fiveStar = 0;
+        for (StarVote sv : list) {
+            if (sv.getStar() == 1) {
+                oneStar = sv.getNumOfStar();
+            } else if (sv.getStar() == 2) {
+                twoStar = sv.getNumOfStar();
+            } else if (sv.getStar() == 3) {
+                threeStar = sv.getNumOfStar();
+            } else if (sv.getStar() == 4) {
+                fourStar = sv.getNumOfStar();
+            } else if (sv.getStar() == 5) {
+                fiveStar = sv.getNumOfStar();
+            }
         }
+        request.setAttribute("oneStar", oneStar);
+        request.setAttribute("twoStar", twoStar);
+        request.setAttribute("threeStar", threeStar);
+        request.setAttribute("fourStar", fourStar);
+        request.setAttribute("fiveStar", fiveStar);
+        request.getRequestDispatcher("voteChart.jsp").forward(request, response);
     }
 
     /**
