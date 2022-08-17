@@ -42,6 +42,7 @@
                                         <li><a>Danh sách Phòng Ban</a></li>
                                     </ul>
                                 </div>
+                           
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listDepPaging}" var="d" >
                                         <li class="list-group-item">
@@ -76,6 +77,7 @@
                                             </c:if>
                                     </ul>
                                 </div> 
+
                             </div>
                         </div>
                     </div>
