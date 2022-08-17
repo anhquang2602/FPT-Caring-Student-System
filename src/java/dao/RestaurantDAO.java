@@ -23,6 +23,10 @@ public class RestaurantDAO extends DBContext {
     PreparedStatement stm = null;
     ResultSet rs = null;
 
+    /**
+     *
+     * @throws SQLException
+     */
     public void CloseConnection() throws SQLException {
         if (rs != null) {
             rs.close();
@@ -35,6 +39,20 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
+    /**
+     *
+     * @param restaurantName
+     * @param sellerID
+     * @param countryID
+     * @param provinceID
+     * @param districtID
+     * @param address
+     * @param cost
+     * @param distance
+     * @param description
+     * @param restaurantImage
+     * @return
+     */
     public boolean createRestaurant(String restaurantName, int sellerID, int countryID, int provinceID, int districtID, String address, String cost, float distance, String description, String restaurantImage) {
         try {
             String sql = "INSERT INTO Restaurants (RestaurantName,SellerID,CountryID,ProvinceID,DistrictID,AddressDetail,Cost,Distance,Descriptions,RestaurantImage,StarVoting) VALUES (?,?,?,?,?,?,?,?,?,?,0)";
@@ -60,6 +78,11 @@ public class RestaurantDAO extends DBContext {
         return false;
     }
 
+    /**
+     *
+     * @param sellerID
+     * @return
+     */
     public ArrayList<Restaurant> listRestaurantBySeller(int sellerID) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
@@ -86,6 +109,11 @@ public class RestaurantDAO extends DBContext {
         return restaurant;
     }
 
+    /**
+     *
+     * @param restaurantID
+     * @return
+     */
     public ArrayList<Food> listFoodByRestaurant(int restaurantID) {
         ArrayList<Food> food = new ArrayList<>();
         try {
@@ -108,6 +136,11 @@ public class RestaurantDAO extends DBContext {
         return food;
     }
 
+    /**
+     *
+     * @param restaurantID
+     * @return
+     */
     public Restaurant getRestaurantID(int restaurantID) {
         Restaurant restaurant = new Restaurant();
         try {
@@ -143,6 +176,19 @@ public class RestaurantDAO extends DBContext {
         return null;
     }
 
+    /**
+     *
+     * @param restaurantID
+     * @param restaurantName
+     * @param provinceID
+     * @param districtID
+     * @param address
+     * @param cost
+     * @param distance
+     * @param description
+     * @param image
+     * @return
+     */
     public boolean updateRestaurant(int restaurantID, String restaurantName, int provinceID, int districtID, String address, String cost, float distance, String description, String image) {
         try {
             String sql = "UPDATE Restaurants SET  RestaurantName = ?, ProvinceID = ?, DistrictID= ? , "
@@ -171,6 +217,18 @@ public class RestaurantDAO extends DBContext {
         return false;
     }
 
+    /**
+     *
+     * @param restaurantID
+     * @param restaurantName
+     * @param provinceID
+     * @param districtID
+     * @param address
+     * @param cost
+     * @param distance
+     * @param description
+     * @return
+     */
     public boolean updateRestaurantNoImg(int restaurantID, String restaurantName, int provinceID, int districtID, String address, String cost, float distance, String description) {
         try {
             String sql = "UPDATE Restaurants SET  RestaurantName = ?, ProvinceID = ?, DistrictID= ? , "
@@ -199,6 +257,10 @@ public class RestaurantDAO extends DBContext {
         return false;
     }
 
+    /**
+     *
+     * @param restaurantID
+     */
     public void deleteRestaurant(int restaurantID) {
         try {
             String sql = "DELETE FROM Restaurants WHERE RestaurantID=?";
@@ -210,6 +272,14 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
+    /**
+     *
+     * @param restaurantID
+     * @param foodName
+     * @param cost
+     * @param description
+     * @return
+     */
     public boolean createFood(int restaurantID, String foodName, double cost, String description) {
         try {
             String sql = "INSERT INTO Foods (RestaurantID,FoodName,Cost,Descriptions) VALUES (?,?,?,?)";
@@ -228,6 +298,12 @@ public class RestaurantDAO extends DBContext {
         return false;
     }
 
+    /**
+     *
+     * @param foodID
+     * @param foodImg
+     * @return
+     */
     public boolean createFoodImg(int foodID, String foodImg) {
         try {
             String sql = "INSERT INTO FoodImage (foodID,ImageUrl) VALUES (?,?)";
@@ -244,6 +320,11 @@ public class RestaurantDAO extends DBContext {
         return false;
     }
 
+    /**
+     *
+     * @param foodId
+     * @return
+     */
     public int getResIdbyFoodID(int foodId) {
         try {
 
@@ -261,6 +342,10 @@ public class RestaurantDAO extends DBContext {
         return 0;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNewestFoodID() {
         try {
 
@@ -292,7 +377,13 @@ public class RestaurantDAO extends DBContext {
 //        }
 //        return false;
 //    }
-    public Food getFoodID(int foodID) {
+
+    /**
+     *
+     * @param foodID
+     * @return
+     */
+        public Food getFoodID(int foodID) {
         Food food = new Food();
         try {
             String sql = "select Foods.FoodID,Restaurants.RestaurantID,Restaurants.RestaurantName , Foods.FoodName, Foods.Cost, Foods.Descriptions, FoodImage.ImageUrl\n"
@@ -319,6 +410,11 @@ public class RestaurantDAO extends DBContext {
         return null;
     }
 
+    /**
+     *
+     * @param index
+     * @return
+     */
     public ArrayList<Restaurant> listAllRestaurant(int index) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
@@ -342,6 +438,13 @@ public class RestaurantDAO extends DBContext {
         return restaurant;
     }
 
+    /**
+     *
+     * @param distance
+     * @param star
+     * @param index
+     * @return
+     */
     public ArrayList<Restaurant> filterRestaurantPagging(double distance, float star, int index) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
@@ -390,6 +493,10 @@ public class RestaurantDAO extends DBContext {
         return restaurant;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTotalRestaurant() {
         String sql = "select count(*) from Restaurants";
         try {
@@ -404,6 +511,14 @@ public class RestaurantDAO extends DBContext {
         return 0;
     }
 
+    /**
+     *
+     * @param foodID
+     * @param foodName
+     * @param cost
+     * @param description
+     * @return
+     */
     public boolean updateFood(int foodID, String foodName, double cost, String description) {
         try {
             String sql = "UPDATE Foods SET  FoodName = ?, Cost = ?, Descriptions= ? "
@@ -424,6 +539,12 @@ public class RestaurantDAO extends DBContext {
         return false;
     }
 
+    /**
+     *
+     * @param foodID
+     * @param foodImg
+     * @return
+     */
     public boolean updateFoodImg(int foodID, String foodImg) {
         try {
             String sql = "UPDATE FoodImage SET ImageUrl = ?"
@@ -442,6 +563,10 @@ public class RestaurantDAO extends DBContext {
         return false;
     }
 
+    /**
+     *
+     * @param foodID
+     */
     public void deleteFoodlImage(int foodID) {
 
         try {
@@ -455,6 +580,10 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
+    /**
+     *
+     * @param foodID
+     */
     public void updateFoodImage(int foodID) {
 
         try {
@@ -471,6 +600,10 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
+    /**
+     *
+     * @param resID
+     */
     public void deleteRestaurantImage(int resID) {
 
         try {
@@ -487,6 +620,10 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
+    /**
+     *
+     * @param foodID
+     */
     public void deleteFood(int foodID) {
         try {
             String sql = "DELETE FROM Foods WHERE FoodID=?";
@@ -498,6 +635,10 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
+    /**
+     *
+     * @param restaurantID
+     */
     public void deleteRestaurantIDFromReport(int restaurantID) {
         try {
             String sql = "DELETE FROM ReportRestaurant WHERE RestaurantID=?";
@@ -509,6 +650,10 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
+    /**
+     *
+     * @param restaurantID
+     */
     public void deleteAllFood(int restaurantID) {
         try {
             String sql = "DELETE FROM Foods WHERE RestaurantID=?";
@@ -520,6 +665,14 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
+    /**
+     *
+     * @param key
+     * @param distance
+     * @param star
+     * @param index
+     * @return
+     */
     public ArrayList<Restaurant> listAllResByTextPagging(String key, double distance, float star, int index) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
@@ -570,6 +723,13 @@ public class RestaurantDAO extends DBContext {
         return restaurant;
     }
 
+    /**
+     *
+     * @param key
+     * @param distance
+     * @param star
+     * @return
+     */
     public ArrayList<Restaurant> listAllResByText(String key, double distance, float star) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
@@ -619,6 +779,12 @@ public class RestaurantDAO extends DBContext {
         return restaurant;
     }
 
+    /**
+     *
+     * @param distance
+     * @param star
+     * @return
+     */
     public ArrayList<Restaurant> listAllRes(double distance, float star) {
         ArrayList<Restaurant> restaurant = new ArrayList<>();
         try {
@@ -665,6 +831,13 @@ public class RestaurantDAO extends DBContext {
         return restaurant;
     }
 
+    /**
+     *
+     * @param restaurants
+     * @param distance
+     * @param star
+     * @return
+     */
     public int getTotalPage(ArrayList<Restaurant> restaurants, double distance, float star) {
         restaurants = listAllRes(distance, star);
         int totalPage = restaurants.size() / 6;
@@ -675,6 +848,11 @@ public class RestaurantDAO extends DBContext {
 
     }
 
+    /**
+     *
+     * @param resID
+     * @param starAVG
+     */
     public void updateStarAvgRestaurant(int resID, double starAVG) {
         try {
 
@@ -691,6 +869,11 @@ public class RestaurantDAO extends DBContext {
         }
     }
 
+    /**
+     *
+     * @param restaurantID
+     * @return
+     */
     public int getSellerIdByRestaurantId(int restaurantID) {
         String sql = "select SellerID from Restaurants where RestaurantID=?";
         try {
@@ -708,6 +891,14 @@ public class RestaurantDAO extends DBContext {
 
     }
 
+    /**
+     *
+     * @param keyword
+     * @param restaurants
+     * @param distance
+     * @param star
+     * @return
+     */
     public int getTotalPageByText(String keyword, ArrayList<Restaurant> restaurants, double distance, float star) {
         restaurants = listAllResByText(keyword, distance, star);
         int totalPage = restaurants.size() / 6;
