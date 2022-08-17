@@ -85,7 +85,7 @@
                                     <div class="col-md-5 mr-5">
                                         <span class="fs-4">Khoảng cách: </span>
                                         <select name="distance" class="p-2">
-                                            <option value="6" <c:if test = "${distance == 10 }">
+                                            <option value="10" <c:if test = "${distance == 10 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
                                             <option value="1" <c:if test = "${distance == 1 }">
@@ -105,7 +105,7 @@
                                     <div class="col-md-5 mr-5">
                                         <span class="fs-4">Xếp hạng: </span>    
                                         <select name="star" class="p-2">
-                                            <option value="5" <c:if test = "${star == 6 }">
+                                            <option value="5" <c:if test = "${star == 5 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
                                             <option value="1" <c:if test = "${star == 1 }">
@@ -126,7 +126,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <input class="fs-4 mr-5" type="submit" value="Tìm kiếm"> 
+                                        <input class="fs-4 mr-5" type="submit" value="Lọc"> 
                                         <a class="fs-4" href="ResetSearchRes?keyword=${keyword}" style="text-decoration: none">Xóa bộ lọc</a>
                                     </div>
                                 </div>
