@@ -61,7 +61,7 @@
                         <form class="row example align-items-center" action="FilterHostelController" method="post"> 
                             <div class="col-md-2"></div>
                             <div class="col-md-8">
-                                <input type="text" name="keywordHostel" value="${keywordHostel}" >
+                                <input type="text" name="keyword" value="${keyword}" >
                                 <button type="submit"><i class="fa fa-search"></i></button> 
                             </div>
                             <div class="d-flex mb-3 mt-5 px-md-3 px-2">
@@ -71,17 +71,17 @@
                                 <div class="d-flex">
                                     <div class="col-md-4 mr-5">
                                         <div class="d-flex">
-                                            <span class="fs-4 mr-3">Giá: </span>
-                                            <span class="fs-4 mr-1">Từ: </span>
-                                            <input class="mr-1" type="text" name="under" value="${under}"> - 
-                                            <span class="fs-4 ml-1">Đến: </span>
+                                            <span class="fs-4 mr-2">Giá: </span>
+                                            <span class="fs-4 mr-1">Từ</span>
+                                            <input class="mr-1" type="text" name="under" value="${under}">- 
+                                            <span class="fs-4 ml-1">Đến</span>
                                             <input type="text" name="upper" value="${upper}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <span class="fs-4">Khoảng cách: </span>
-                                        <select name="distance" class="p-2 px-4">
-                                            <option value="6" <c:if test = "${distance == 10 }">
+                                        <select name="distance" class="p-2 px-3">
+                                            <option value="10" <c:if test = "${distance == 10 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
                                             <option value="1" <c:if test = "${distance == 1 }">
@@ -98,32 +98,32 @@
                                                 </c:if>> < 5km</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-2 mr-3">
+                                    <div class="col-md-3 mr-1">
                                         <span class="fs-4">Xếp hạng: </span>
                                         <select name="star" class="p-2">
-                                            <option value="6" <c:if test = "${star == 6 }">
+                                            <option value="5" <c:if test = "${star == 5 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
                                             <option value="1" <c:if test = "${star == 1 }">
                                                     selected="selected"
-                                                </c:if>> 1</option>
+                                                </c:if>> 1 sao trở lên</option>
                                             <option value="2" <c:if test = "${star == 2 }">
                                                     selected="selected"
-                                                </c:if>> 2</option>
+                                                </c:if>> 2 sao trở lên</option>
                                             <option value="3" <c:if test = "${star == 3 }">
                                                     selected="selected"
-                                                </c:if>> 3</option>
+                                                </c:if>> 3 sao trở lên</option>
                                             <option value="4" <c:if test = "${star == 4 }">
                                                     selected="selected"
-                                                </c:if>> 4</option>
-                                            <option value="5" <c:if test = "${star == 5 }">
+                                                </c:if>> 4 sao trở lên </option>
+                                            <option value="0" <c:if test = "${star == 0 }">
                                                     selected="selected"
-                                                </c:if>> 5</option>
+                                                </c:if>> Chưa có đánh giá</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-3">
-                                        <input class="fs-4" type="submit" value="Tìm kiếm"> 
-                                        <a class="fs-4" href="ResetSearchHostelsController?keywordHostel=${keywordHostel}" style="text-decoration: none">Xóa bộ lọc</a>
+                                    <div class="col-md-2">
+                                        <input class="fs-4" type="submit" value="Lọc"> 
+                                        <a class="fs-4" href="ResetSearchController?keyword=${keyword}" style="text-decoration: none">Xóa bộ lọc</a>
                                     </div>
                                 </div>
                             </div>

@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -27,7 +27,7 @@
             }
         </style>
     </head>
-    <body class="bg-white">
+    <body>
         <c:choose>
             <c:when test="${stt.equals('1')}">
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
@@ -69,127 +69,112 @@
                 </div>
             </c:when>
         </c:choose>
-        <div>
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
-                    <%@include file="/sidebar.jsp" %>
-                </ul>
-                <div class="container rounded bg-white mt-5 mb-5">
-                    <div class="col-xl-12 mb-5">
-                        <div>
-                            <ul class="breadcrumb bg-white">
-                                <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
-                                <li><a>Menu của tôi</a></li>
-                            </ul>
-                        </div>
-                        <div class="card">
-                            <form class="form" method="POST" action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()"  enctype="multipart/form-data">
-                                <div class="left-side">
-                                    <h3>Menu nhà hàng</h3>    
-                                    <%
-                                        ArrayList<Food> f=(ArrayList<Food>)request.getAttribute("listFood");
-                                        if(f.size()==0){%>
-                                            <p style="font-size: 20px">Hiện tại bạn chưa có món ăn nào</p>
-                                      <%  }%>
-                                    <c:forEach items="${listFood}" var="food" >
-                                        <div class="row p-2 bg-white border rounded" style="margin-top: 40px; margin-bottom: 40px;">
-                                            <div class="col-md-3 mt-1">
-
-                                                <img class="img-fluid img-responsive rounded product-image" 
-                                                     <c:if test="${food.imageURL != null && food.imageURL !=''}">
-                                                         src="${food.imageURL}" </c:if>
-                                                     <c:if test="${food.imageURL == null}">
-                                                         src="images/food.png" </c:if> 
-                                                     <c:if test="${food.imageURL == ''}">
-                                                         src="images/food.png" </c:if>     
-                                                         style="width: 150px; height: 150px">
+        <div class="px-0">
+            <%@include file="/header.jsp" %>
+            <div class="bg-white">
+                <div class="d-flex nav-item main-home col-md-12">
+                    <ul id="navbar-items" class="col-md-2">
+                        <%@include file="/sidebar.jsp" %>
+                    </ul>
+                    <div class="container rounded bg-white mt-5 mb-5 col-md-10">
+                        <div class="col-md-12 mb-5">
+                            <div>
+                                <ul class="breadcrumb bg-white">
+                                    <li><a href="home.jsp">Trang chủ</a></li>
+                                    <li><a href="ListRestaurantBySeller">Nhà ăn của tôi</a></li>
+                                    <li><a>Menu của tôi</a></li>
+                                </ul>
+                            </div>
+                            <div class="card">
+                                <form class="form" method="POST" action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()"  enctype="multipart/form-data">
+                                    <div class="left-side">
+                                        <h3>Menu nhà ăn</h3>    
+                                        <%
+                                            ArrayList<Food> f = (ArrayList<Food>) request.getAttribute("listFood");
+                                            if (f.size() == 0) {%>
+                                        <p style="font-size: 20px">Hiện tại bạn chưa có món ăn nào</p>
+                                        <%  }%>
+                                        <c:forEach items="${listFood}" var="food" >
+                                            <div class="row p-2 bg-white border rounded mb-5 mt-5">
+                                                <div class="col-md-4 mt-1">
+                                                    <img class="img-fluid img-responsive rounded product-image" 
+                                                         <c:if test="${food.imageURL != null && food.imageURL !=''}">
+                                                             src="${food.imageURL}" </c:if>
+                                                         <c:if test="${food.imageURL == null}">
+                                                             src="images/food.png" </c:if> 
+                                                         <c:if test="${food.imageURL == ''}">
+                                                             src="images/food.png" </c:if>     
+                                                             style=" width: 200px; height: 150px">
+                                                    </div>
+                                                    <div class="col-md-4 mt-1">
+                                                        <label class="labels">${food.foodName}</label>
+                                                    <p class="text-justify text-truncate para mb-0">${food.descriptions}</p>
                                                 </div>
+                                                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <h4 class="mr-1"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${food.cost}" ></fmt:formatNumber> VND</h4>
+                                                        </div>
+                                                        <a class="btn btn-primary px-3" href="EditFoodController?foodId=${food.foodID}">Chỉnh sửa</a> 
+                                                    <a class="btn btn-danger" id="btnDelete" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>
 
-
-
-                                                <div class="col-md-6 mt-1">
-                                                    <label class="labels">${food.foodName}</label>
-
-                                                <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
-                                            </div>
-                                            <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                                                <div class="d-flex flex-row align-items-center">
-
-                                                    <h4 class="mr-1"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${food.cost}" ></fmt:formatNumber> VND</h4>
-
-                                                </div>
-                                                <a class="btn btn-primary" href="EditFoodController?foodId=${food.foodID}" style="width: 110px">Chỉnh sửa</a> 
-                                                <a class="btn btn-danger" id="btnDelete" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>
-
-                                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                Xoá món ăn
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Bạn có chắc chắn muốn xoá món ăn này không?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
-                                                                <a class="btn btn-danger btn-ok">Xoá</a>
+                                                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    Xoá món ăn
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Bạn có chắc chắn muốn xoá món ăn này không?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                                                    <a class="btn btn-danger btn-ok">Xoá</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </c:forEach>
-
-                                </div>
-
-                                <div class="right-side">
-
-                                    <div class="input_text" hidden>
-                                        <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
+                                        </c:forEach>
                                     </div>
-
-                                    <form action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()" method="post" enctype="multipart/form-data">
-                                        <h3>Thêm món ăn</h3>
-                                        <div class="mt-5">
-
-
-
-
-                                            <input type="file" accept="image/*" onchange="loadFile(event)" name ="foodImage" id="file1">
-                                            <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 60px; opacity: 30%">+</label>
-                                            <img id="output1" width="170px" height="170px"/>
-
-
-
-                                            <script>
-                                                var loadFile = function (event) {
-                                                    var output = document.getElementById('output1');
-                                                    output.src = URL.createObjectURL(event.target.files[0]);
-                                                    output.onload = function () {
-                                                        URL.revokeObjectURL(output1.src) // free memory
-                                                    }
-                                                };</script>
-                                            <div class="input_text"> <input type="text" name="foodName" placeholder="Nhập tên món ăn"> <span>Tên món ăn</span> </div>
-                                            <div class="error" id="errorName"></div>
-                                            <div class="input_text"> <input type="text" name="costFood" placeholder="Nhập giá dao động"> <span>Giá món ăn</span>
-                                                <div class="error" id="errorCost"></div></div>
-                                            <div class="input_text"> <span>Mô tả</span> </div>
-                                            <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="desFood" style="width:250px;height:150px;"></textarea>
-                                            <div class="pay"> 
-                                                <button type="submit" >Thêm món ăn</button>                  
-                                            </div>
-                                        </div> 
-                                    </form>
-                                </div>
-
+                                    <div class="right-side">
+                                        <div class="input_text" hidden>
+                                            <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
+                                        </div>
+                                        <form action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()" method="post" enctype="multipart/form-data">
+                                            <h3>Thêm món ăn</h3>
+                                            <div class="mt-5">
+                                                <input type="file" accept="image/*" onchange="loadFile(event)" name ="foodImage" id="file1">
+                                                <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 60px; opacity: 30%">+</label>
+                                                <img id="output1" width="170px" height="170px"/>
+                                                <script>
+                                                    var loadFile = function (event) {
+                                                        var output = document.getElementById('output1');
+                                                        output.src = URL.createObjectURL(event.target.files[0]);
+                                                        output.onload = function () {
+                                                            URL.revokeObjectURL(output1.src) // free memory
+                                                        }
+                                                    };</script>
+                                                <div class="input_text"> <input type="text" name="foodName" placeholder="Nhập tên món ăn"> <span>Tên món ăn</span> </div>
+                                                <div class="error" id="errorName"></div>
+                                                <div class="input_text"> <input type="text" name="costFood" placeholder="Nhập giá dao động"> <span>Giá món ăn</span>
+                                                    <div class="error" id="errorCost"></div></div>
+                                                <div class="input_text"> <span>Mô tả</span> </div>
+                                                <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="desFood" style="width:250px;height:150px;"></textarea>
+                                                <div class="pay"> 
+                                                    <button type="submit" >Thêm món ăn</button>                  
+                                                </div>
+                                            </div> 
+                                        </form>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <%@include file="/footer.jsp" %>  
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
@@ -239,5 +224,4 @@
         </script>
 
     </body>
-    <%@include file="/footer.jsp" %>    
 </html>

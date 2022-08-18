@@ -74,9 +74,7 @@ public class FilterRestaurantController extends HttpServlet {
         }
         if (restaurants.isEmpty()) {
             request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
-        } else {
-            request.setAttribute("listSize", "Có " + restaurants.size() + " kết quả được tìm thấy");
-        }
+        } 
 //        request.setAttribute("totalPage", totalPage);
         request.setAttribute("endP", totalPage);
         request.setAttribute("tag", index);
@@ -126,7 +124,7 @@ public class FilterRestaurantController extends HttpServlet {
         }
         if (restaurants.isEmpty()) {
             request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
-        }
+        } 
 //        request.setAttribute("totalPage", totalPage);
         request.setAttribute("endP", totalPage);
         request.setAttribute("tag", index);

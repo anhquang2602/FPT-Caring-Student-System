@@ -47,7 +47,6 @@
         </style>
     </head>
     <body>
-       
         <%@include file="/header.jsp" %>
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -62,16 +61,15 @@
                                 <input type="text" name="keyword" value="${keyword}" >
                                 <button type="submit"><i class="fa fa-search"></i></button> 
                             </div>
-                            <div class="d-flex mb-3 mt-5 px-md-3 px-2">
-                                <div class="text-center">
+                            <div class="d-flex mb-3 mt-5 px-md-5">
+                                <div class="text-center px-5 ml-5">
                                     <p class="fs-4 ml-5">Bộ lọc tìm kiếm</p>
                                 </div>
                                 <div class="d-flex">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-5 mr-5">
+                                    <div class="col-md-4 mr-5">
                                         <span class="fs-4">Khoảng cách: </span>
-                                        <select name="distance" class="p-2">
-                                            <option value="6" <c:if test = "${distance == 10 }">
+                                        <select name="distance" class="py-2">
+                                            <option value="10" <c:if test = "${distance == 10 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
                                             <option value="1" <c:if test = "${distance == 1 }">
@@ -88,10 +86,10 @@
                                                 </c:if>> <= 5km</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-5 mr-5">
+                                    <div class="col-md-5 mr-3">
                                         <span class="fs-4">Xếp hạng: </span>    
-                                        <select name="star" class="p-2">
-                                            <option value="5" <c:if test = "${star == 6 }">
+                                        <select name="star" class="py-2">
+                                            <option value="5" <c:if test = "${star == 5 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
                                             <option value="1" <c:if test = "${star == 1 }">
@@ -111,8 +109,8 @@
                                                 </c:if>> Chưa có đánh giá</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
-                                        <input class="fs-4 mr-5" type="submit" value="Tìm kiếm"> 
+                                    <div class="col-md-3">
+                                        <input class="fs-4" type="submit" value="Lọc">
                                         <a class="fs-4" href="ResetSearchRes?keyword=${keyword}" style="text-decoration: none">Xóa bộ lọc</a>
                                     </div>
                                 </div>
@@ -125,7 +123,7 @@
                                 <div>
                                     <ul class="breadcrumb">
                                         <li><a href="home.jsp">Trang chủ</a></li>
-                                        <li><a>Danh sách tất cả nhà hàng</a></li>
+                                        <li><a>Danh sách tất cả nhà ăn</a></li>
                                     </ul>
                                 </div>
                                 ${listSize}
@@ -134,10 +132,12 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    <img  <c:if test="${restaurant.restaurantImage != null}">
+                                                    <img  <c:if test="${restaurant.restaurantImage != null && restaurant.restaurantImage != ''}">
                                                             src="${restaurant.restaurantImage}" </c:if>
                                                         <c:if test="${restaurant.restaurantImage == null}">
-                                                            src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
+                                                            src="images/res.jpg" </c:if> 
+                                                        <c:if test="${restaurant.restaurantImage == ''}">
+                                                            src="images/res.jpg" </c:if>style="width: 150px; height: 150px" >
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
                                                         <h3 class="mt-0 font-weight-bold mb-4">
@@ -149,7 +149,7 @@
 
                                                 <div class="col-md-4 mt-5  media-body order-2 order-lg-1 button_edit">
                                                     <div class="stars-outer">
-                                                    <div class="stars-inner" style="width: ${restaurant.starAVG}%">  </div>
+                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}%">  </div>
                                                     </div>
                                                 </div>
                                         </li> 

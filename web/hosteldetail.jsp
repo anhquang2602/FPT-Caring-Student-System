@@ -127,15 +127,13 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-
-                                <%  if (request.getAttribute("isListbySeller") == "true") {%>
+                                    <%  if (request.getAttribute("isListbySeller") == "true") {%>
                                 <li><a href="hostellist">Nhà trọ của tôi</a></li>
                                     <%} else if (request.getAttribute("isSeeFromReport") == "true") {%>
                                 <li><a href="ListAllReportHostelController">Danh sách báo cáo nhà trọ</a></li>
                                     <%} else {%>
                                 <li><a href="FilterHostelController">Danh sách nhà trọ</a></li>
                                     <%}%>
-
                                 <li><a>Chi tiết nhà trọ</a></li>
                             </ul>
                         </div>
@@ -159,24 +157,24 @@
 
                                             <div class="form-group row thumbnail1"> 
                                                 <div class="col mt-5 mb-5 ">
-                                                    <img src="${hosteldetail.img1}" style="padding: 0px" width="200rem" height="200rem" alt="">
+                                                    <img src="${hosteldetail.img1}" style="padding: 0px"  alt="">
                                                 </div>
                                                 <div class="col mt-5 mb-5 ">
-                                                    <img src="${hosteldetail.img2}" style="padding: 0px" width="200rem" height="200rem" alt="">
+                                                    <img src="${hosteldetail.img2}" style="padding: 0px"  alt="">
                                                 </div>
                                                 <div class="col mt-5 mb-5 ">
-                                                    <img src="${hosteldetail.img3}" style="padding: 0px" width="200rem" height="200rem" alt="">
+                                                    <img src="${hosteldetail.img3}" style="padding: 0px"  alt="">
                                                 </div>
                                             </div>
                                             <div class="form-group row thumbnail1"> 
                                                 <div class="col mt-5 ">
-                                                    <img src="${hosteldetail.img4}" style="padding: 0px" width="200rem" height="200rem" alt="">
+                                                    <img src="${hosteldetail.img4}" style="padding: 0px"  alt="">
                                                 </div>
                                                 <div class="col mt-5 ">
-                                                    <img src="${hosteldetail.img5}" style="padding: 0px" width="200rem" height="200rem" alt="">
+                                                    <img src="${hosteldetail.img5}" style="padding: 0px"  alt="">
                                                 </div>
                                                 <div class="col mt-5 ">
-                                                    <img src="${hosteldetail.img6}" style="padding: 0px" width="200rem" height="200rem" alt="">
+                                                    <img src="${hosteldetail.img6}" style="padding: 0px"  alt="">
 
                                                 </div>
                                             </div>
@@ -200,10 +198,7 @@
                                         </div>
                                     </div>
                                     <div class="right-side">
-
                                         <strong class="fs-4">Mô tả nhà trọ</strong>
-
-
                                         <div class="input_text">
                                             <strong class="fs-4">Số phòng</strong>
                                             <input type="text" value="${hosteldetail.totalRoom}" readonly="">
@@ -212,7 +207,6 @@
                                             <strong class="fs-4">Tình trạng phòng</strong>
                                         </div>
                                         <div class="left_text">
-
                                             <c:if test = "${hosteldetail.status == true}">
                                                 <label for="collection1">
                                                     <div class="left_box">
@@ -222,9 +216,6 @@
                                                     </div>
                                                 </label> 
                                             </c:if> 
-
-
-
                                             <c:if test = "${hosteldetail.status == false}">
                                                 <label for="collection2">
                                                     <div class="left_box">
@@ -234,7 +225,6 @@
                                                     </div>                                    
                                                 </label>  
                                             </c:if> 
-
                                         </div>
                                         <div class="input_text">
                                             <strong class="fs-4">Số tầng</strong>
@@ -262,33 +252,40 @@
                                         </div>
                                         <div class="input_text">
                                             <strong class="fs-4">Mô tả</strong>
-                                            <textarea readonly="" rows="5" style="width: 100%">${hosteldetail.description}</textarea>
+                                            <textarea rows="5" style="width: 100%" readonly="">${hosteldetail.description}</textarea>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-
-                            <div class="row" style="background-color:#f2f2f2" >
-
+                            <div class="row comment-vote" style="background-color:#f2f2f2; padding: 20px">
                                 <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà trọ:</label>
                                 <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
                                 <c:if test="${listCmtHostelPaging  != null}">
                                     <c:forEach items="${listCmtHostelPaging}" var="d" >
                                         <div class="bg-white p-3" style="margin :5px">
 
-                                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="80" height="50" >
+                                            <div class="d-flex flex-row user-info">
+                                                <img class="rounded-circle"
+                                                     <c:if test="${d.studentAvatar != Null}">
+                                                         src="${d.studentAvatar}"</c:if>
+                                                     <c:if test="${d.studentAvatar == Null}">
+                                                         src="images/user.jpg"</c:if>
+                                                         width="80" height="50" >
+                                                     <div class="d-flex flex-column justify-content-start ml-4" >
+                                                         <span class="d-block font-weight-bold name" style=" font-size: 15px;">
+                                                         <c:if test="${d.studentName != Null}">
+                                                             ${d.studentName}</c:if>
+                                                         <c:if test="${d.studentName == Null}">
+                                                             Người dùng</c:if> </span>
+                                                     <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
+                                                     <div class="sold_stars m1-auto">
+                                                         <c:forEach begin="1" end="${d.starvoting}" >
 
-                                                <div class="d-flex flex-column justify-content-start ml-4" >
-                                                    <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
-                                                    <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
-                                                    <div class="sold_stars m1-auto">
-                                                        <c:forEach begin="1" end="${d.starvoting}" >
+                                                             <i class="fa fa-star"  style=" font-size: 17px;"></i>      
 
-                                                            <i class="fa fa-star"  style=" font-size: 17px;"></i>      
-
-                                                        </c:forEach>
-                                                        <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
-                                                    </div>
+                                                         </c:forEach>
+                                                         <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
+                                                     </div>
                                                 </div>
                                             </div>
                                         </div>

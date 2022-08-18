@@ -9,7 +9,7 @@ Author     : nguye
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -115,11 +115,11 @@ Author     : nguye
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
                         <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Báo Cáo Nhà Hàng Thành Công</h4></strong>
+                            <strong class="mr-auto text-white"><h4>Báo Cáo Nhà Ăn Thành Công</h4></strong>
                             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                         </div>
                         <div class="toast-body">
-                            Báo cáo nhà hàng thành công !
+                            Báo cáo nhà ăn thành công !
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@ Author     : nguye
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
                                     <%if (request.getAttribute("isListbySeller") == "true") {%>
-                                <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
+                                <li><a href="ListRestaurantBySeller">Nhà ăn của tôi</a></li>
                                     <%} else if (request.getAttribute("isSeeFromReport") == "true") {%>
                                 <li><a href="ListAllReportRestaurantController">Danh sách báo cáo nhà ăn</a></li>
                                     <%} else {%>
@@ -163,37 +163,41 @@ Author     : nguye
                                     </div>
                                     <div class="left-side">
                                         <div class="row">
-                                            <strong class="fs-4">Menu nhà hàng </strong>
+                                            <strong class="fs-4">Menu nhà ăn </strong>
                                             <div class="mt-2">
                                                 <c:forEach items="${listFood}" var="food" >
-                                                    <div class="row bg-white border rounded p-3 mt-5">
+                                                    <div class="row bg-white border rounded p-1 mt-5">
                                                         <div class="col-md-4 mt-1 thumbnail2">
                                                             <img class="rounded"  
                                                                  <c:if test="${food.imageURL != null && food.imageURL !=''}">
                                                                      src="${food.imageURL}" </c:if>
                                                                  <c:if test="${food.imageURL == null}">
-                                                                     src="images/food.png" </c:if> 
+                                                                     src="images/food1.png" </c:if> 
                                                                  <c:if test="${food.imageURL == ''}">
-                                                                     src="images/food.png" </c:if> width="150rem" height="150rem">
+                                                                     src="images/food.png" </c:if> width="200px" height="200px">
                                                             </div>
                                                             <div class="col-md-5 mt-1">
                                                                 <label class="labels">${food.foodName}</label>
                                                             <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
                                                         </div>
-                                                        <div class="col-md-3 align-items-center align-content-center border-left mt-1">
+                                                        <div class="col-md-2 align-items-center align-content-center border-left mt-1">
                                                             <div class="d-flex flex-row align-items-center">
-                                                                <h4 class="mr-1"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${food.cost}" ></fmt:formatNumber> VND</h4> 
+                                                                <h4 class="mr-1">
+                                                                    <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${food.cost}" ></fmt:formatNumber> VND</h4> 
                                                                 </div>
                                                             </div>
                                                         </div>
                                                 </c:forEach>
+                                                <c:if test="${listFood.size() == 0}">
+                                                    <p class="fs-4">Hiện menu chưa được cập nhật </p>
+                                                </c:if>
                                             </div> 
                                         </div>
                                     </div>
                                     <div class="right-side">
                                         <div class="row">
                                             <strong class="fs-4">Mô tả nhà ăn </strong>
-                                            <div class="mt-5 thumbnail p-5">
+                                            <div class="mt-3 thumbnail p-5">
                                                 <img  <c:if test="${restaurant.restaurantImage != null && restaurant.restaurantImage !=''}">
                                                         src="${restaurant.restaurantImage}" </c:if>
                                                     <c:if test="${restaurant.restaurantImage == null}">
@@ -246,24 +250,37 @@ Author     : nguye
                                         </div>
                                     </div>
                                 </form>
-
                             </div>
-                            <div class="row" style="background-color:#f2f2f2">
+                            <div class="row" style="background-color:#f2f2f2; padding: 20px">
                                 <label class="labels" style="font-size: 30px; font-weight: bold">Đánh giá nhà ăn:</label>
                                 <c:if test="${totalcomment == 0}"> <h3>Chưa có đánh giá nào</h3> </c:if>
                                 <c:if test="${listCmtHostelPaging  != null}">
                                     <c:forEach items="${listCmtHostelPaging}" var="d" >
                                         <div class="bg-white p-3" style="margin :5px">
-                                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="80" height="50" >
-                                                <div class="d-flex flex-column justify-content-start ml-4">
-                                                    <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
-                                                    <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
-                                                    <div class="sold_stars m1-auto">
-                                                        <c:forEach begin="1" end="${d.starvoting}" >
-                                                            <i class="fa fa-star"  style=" font-size: 17px;"></i>      
-                                                        </c:forEach>
-                                                        <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
-                                                    </div>
+                                            <div class="d-flex flex-row user-info">                                            
+                                                <img class="rounded-circle" 
+                                                     <c:if test="${d.studentAvatar != Null}">
+                                                         src="${d.studentAvatar}"</c:if>
+                                                     <c:if test="${d.studentAvatar == Null}">
+                                                         src="images/user.jpg"</c:if>                                                                                     
+                                                         width="80" height="50" >
+                                                     <div class="d-flex flex-column justify-content-start ml-4">
+                                                         <span class="d-block font-weight-bold name" style=" font-size: 15px;">
+                                                         <c:if test="${d.studentName != Null}">
+                                                             ${d.studentName}</c:if>
+                                                         <c:if test="${d.studentName == Null}">
+                                                             Người dùng</c:if> 
+
+
+
+                                                         </span>
+                                                         <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
+                                                     <div class="sold_stars m1-auto">
+                                                         <c:forEach begin="1" end="${d.starvoting}" >
+                                                             <i class="fa fa-star"  style=" font-size: 17px;"></i>      
+                                                         </c:forEach>
+                                                         <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
+                                                     </div>
                                                 </div>
                                             </div>
                                         </div>

@@ -26,17 +26,23 @@ public class DepartmentDAOTest {
 
     @Test
     public void testGetDepartmentDetailbyID() {
+
+        String depEmail = "dichvusinhvien@fe.edu.vn";
+        assertEquals(depEmail, d.getDepartmentDetailbyID(4).getEmail());
+        
     }
 
     @Test
     public void testPagingDepartment() {
+        
     }
 
     @Test
     public void testGetTotalDepartment() {
         int total = d.getTotalDepartment();
-        int expected = 7;
+        int expected = 6;
         assertEquals(expected, total);
+    
     }
     
  
