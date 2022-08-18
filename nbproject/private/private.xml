@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/viewRestaurant.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listAllHostels.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listAllRestaurant.jsp</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/StarVotingHostelController.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/test/dao/HostelDAOTest.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/HostelDAO.java</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DBContext.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/hosteldetail.jsp</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/test/dao/DepartmentDAOTest.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DepartmentDAO.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/StarVotingRestaurantController.java</file>
         </group>
     </open-files>
 </project-private>
