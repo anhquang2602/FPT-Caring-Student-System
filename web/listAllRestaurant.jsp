@@ -132,10 +132,12 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    <img  <c:if test="${restaurant.restaurantImage != null}">
+                                                    <img  <c:if test="${restaurant.restaurantImage != null && restaurant.restaurantImage != ''}">
                                                             src="${restaurant.restaurantImage}" </c:if>
                                                         <c:if test="${restaurant.restaurantImage == null}">
-                                                            src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
+                                                            src="images/res.jpg" </c:if> 
+                                                        <c:if test="${restaurant.restaurantImage == ''}">
+                                                            src="images/res.jpg" </c:if>style="width: 150px; height: 150px" >
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
                                                         <h3 class="mt-0 font-weight-bold mb-4">
@@ -147,7 +149,7 @@
 
                                                 <div class="col-md-4 mt-5  media-body order-2 order-lg-1 button_edit">
                                                     <div class="stars-outer">
-                                                    <div class="stars-inner" style="width: ${restaurant.starAVG}%">  </div>
+                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}%">  </div>
                                                     </div>
                                                 </div>
                                         </li> 

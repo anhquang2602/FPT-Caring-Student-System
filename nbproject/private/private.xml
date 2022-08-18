@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/D:/FCS_Final158/web/commentRestaurant.jsp</file>
             <file>file:/D:/FCS_Final158/web/editRestaurant.jsp</file>
@@ -17,5 +18,8 @@
             <file>file:/D:/FCS_Final158/nbproject/private/private.properties</file>
             <file>file:/D:/FCS_Final158/web/css/pagingStyle.css</file>
         </group>
+=======
+        <group/>
+>>>>>>> f2301aa14fe75976b158ba6f031b6db7e15f03d2
     </open-files>
 </project-private>

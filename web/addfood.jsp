@@ -81,14 +81,14 @@
                             <div>
                                 <ul class="breadcrumb bg-white">
                                     <li><a href="home.jsp">Trang chủ</a></li>
-                                    <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
+                                    <li><a href="ListRestaurantBySeller">Nhà ăn của tôi</a></li>
                                     <li><a>Menu của tôi</a></li>
                                 </ul>
                             </div>
                             <div class="card">
                                 <form class="form" method="POST" action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()"  enctype="multipart/form-data">
                                     <div class="left-side">
-                                        <h3>Menu nhà hàng</h3>    
+                                        <h3>Menu nhà ăn</h3>    
                                         <%
                                             ArrayList<Food> f = (ArrayList<Food>) request.getAttribute("listFood");
                                             if (f.size() == 0) {%>
@@ -108,8 +108,7 @@
                                                     </div>
                                                     <div class="col-md-4 mt-1">
                                                         <label class="labels">${food.foodName}</label>
-
-                                                    <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
+                                                    <p class="text-justify text-truncate para mb-0">${food.descriptions}</p>
                                                 </div>
                                                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                                     <div class="d-flex flex-row align-items-center">

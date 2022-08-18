@@ -120,9 +120,11 @@ public class StarVotingHostelController extends HttpServlet {
 
         if (dao.getCommentofStudent(hostelId, studentNo) != null) {
             dao.updateStarVoting(dao.getCommentofStudent(hostelId, studentNo).getId(), star, comment);
+        }else{
+            dao.addStarVoting(new StarVoting(studentNo, hostelId, comment, star));
         }
 
-        dao.addStarVoting(new StarVoting(studentNo, hostelId, comment, star));
+        
 
         ArrayList<StarVoting> sv = dao.getListCommentByHostel(hostelId);
         if (!sv.isEmpty()) {

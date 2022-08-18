@@ -264,17 +264,28 @@
                                     <c:forEach items="${listCmtHostelPaging}" var="d" >
                                         <div class="bg-white p-3" style="margin :5px">
 
-                                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="80" height="50" >
+                                            <div class="d-flex flex-row user-info">
+                                                <img class="rounded-circle"
+                                                     <c:if test="${d.studentAvatar != Null}">
+                                                         src="${d.studentAvatar}"</c:if>
+                                                     <c:if test="${d.studentAvatar == Null}">
+                                                         src="images/user.jpg"</c:if>
+                                                         width="80" height="50" >
+                                                     <div class="d-flex flex-column justify-content-start ml-4" >
+                                                         <span class="d-block font-weight-bold name" style=" font-size: 15px;">
+                                                         <c:if test="${d.studentName != Null}">
+                                                             ${d.studentName}</c:if>
+                                                         <c:if test="${d.studentName == Null}">
+                                                             Người dùng</c:if> </span>
+                                                     <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
+                                                     <div class="sold_stars m1-auto">
+                                                         <c:forEach begin="1" end="${d.starvoting}" >
 
-                                                <div class="d-flex flex-column justify-content-start ml-4" >
-                                                    <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
-                                                    <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
-                                                    <div class="sold_stars m1-auto">
-                                                        <c:forEach begin="1" end="${d.starvoting}" >
-                                                            <i class="fa fa-star"  style=" font-size: 17px;"></i>      
-                                                        </c:forEach>
-                                                        <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
-                                                    </div>
+                                                             <i class="fa fa-star"  style=" font-size: 17px;"></i>      
+
+                                                         </c:forEach>
+                                                         <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
+                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
