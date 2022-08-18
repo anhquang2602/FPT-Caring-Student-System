@@ -25,7 +25,7 @@
                 <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div id="topnavbar1" class="col-md-10">
+                <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
                         <form class="row example d-flex align-items-center" action="ClubListController" method="post"> 
                             <div class="col-md-2"></div>
@@ -40,16 +40,16 @@
                                 </div>
                                 <div class="list-group text-center">
                                     <div class="d-flex">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <a href="listClubCategories?type=1&key=${key}" class="list-group-item list-group-item-action">Học Thuật</a>
                                         </div>
                                         <div class="col-md-4">
                                             <a href="listClubCategories?type=2&key=${key}" class="list-group-item list-group-item-action">Kỹ Năng Sống</a>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <a href="listClubCategories?type=3&key=${key}" class="list-group-item list-group-item-action">Thể Thao</a>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <a href="listClubCategories?type=4&key=${key}" class="list-group-item list-group-item-action ">Nghệ Thuật</a>
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@
                         <div class="row">
                             <div class="col-lg-12 mt-5 mb-5">
                                 <div>
-                                    <ul class="breadcrumb bg-white">
+                                    <ul class="breadcrumb">
                                         <li><a href="home.jsp">Trang chủ</a></li>
                                         <li><a>Danh sách Câu Lạc Bộ</a></li>
                                     </ul>
@@ -72,7 +72,7 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-2">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    <img src="${club.avatar}" alt="Generic placeholder image">
+                                                    <img src="${club.avatar}" width="300px" height="300px" alt="Generic placeholder image">
                                                 </div>
                                                 <div class="col-md-8 media-body order-2 order-lg-1 description ml-5" id="description">
                                                     <div>

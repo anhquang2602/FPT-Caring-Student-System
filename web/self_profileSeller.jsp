@@ -158,29 +158,32 @@
                 </div>
             </div>
         </div>
+        <%@include file="/footer.jsp" %>
+
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+
+            });
+        </script>
     </body>
     <script src="validator/Validator.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".toast").toast({delay: 4000});
-            $(".toast").toast("show");
 
-        });
-    </script>
     <script language="javascript">
 
-        var gender = document.getElementById('genderlable').innerHTML;
+            var gender = document.getElementById('genderlable').innerHTML;
 
-        if (gender == 1) {
-            document.getElementById('inlineRadio1').setAttribute('checked', true);
-        } else
-        {
-            document.getElementById('inlineRadio2').setAttribute('checked', true);
-        }
+            if (gender == 1) {
+                document.getElementById('inlineRadio1').setAttribute('checked', true);
+            } else
+            {
+                document.getElementById('inlineRadio2').setAttribute('checked', true);
+            }
 
 
-        // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
-        // obj là tham số truyền vào và cũng chính là thẻ select
+            // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
+            // obj là tham số truyền vào và cũng chính là thẻ select
 
             
            
@@ -191,8 +194,8 @@
         // Get the image element
         var image = document.getElementById("output");
         // Adding the timestamp parameter to image src
-        image.src=image.src+"?t=" + timestamp;
-        
+        image.src = image.src + "?t=" + timestamp;
+
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
@@ -255,5 +258,4 @@
             return isValid;
         }
     </script>
-    <%@include file="/footer.jsp" %>
 </html>
