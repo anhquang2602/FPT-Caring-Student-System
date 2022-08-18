@@ -110,9 +110,9 @@
                                                          <c:if test="${r.restaurantImage != null && r.restaurantImage !=''}">
                                                              src="${r.restaurantImage}" </c:if>
                                                          <c:if test="${r.restaurantImage == null }">
-                                                             src="images/nhà trọ.jpg" </c:if> 
+                                                             src="images/res.jpg" </c:if> 
                                                          <c:if test="${r.restaurantImage ==''}">
-                                                             src="images/nhà trọ.jpg" </c:if> 
+                                                             src="images/res.jpg" </c:if> 
                                                              style="width: 150px; height: 150px">
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
