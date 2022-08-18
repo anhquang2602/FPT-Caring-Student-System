@@ -98,7 +98,7 @@ public class ResetSearchHostelsController extends HttpServlet {
         }
         if (hostels.isEmpty()) {
             request.setAttribute("listSize", "Không tìm thấy kết quả phù hợp");
-        }
+        } 
         request.setAttribute("endP", totalPage);
         request.setAttribute("tag", index);
         request.setAttribute("hostels", hostels);
