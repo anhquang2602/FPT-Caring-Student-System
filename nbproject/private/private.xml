@@ -4,6 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/StarVotingHostelController.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/test/dao/HostelDAOTest.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/HostelDAO.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DBContext.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/test/dao/DepartmentDAOTest.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DepartmentDAO.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/StarVotingRestaurantController.java</file>
+=======
+<<<<<<< HEAD
             <file>file:/D:/FCS_Final158/nbproject/build-impl.xml</file>
             <file>file:/D:/FCS_Final158/src/java/dao/DBContext.java</file>
             <file>file:/D:/FCS_Final158/web/hosteldetail.jsp</file>
@@ -18,6 +27,7 @@
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DBContext.java</file>
             <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/hosteldetail.jsp</file>
 >>>>>>> f421aa0184fe2e37acd479560101a531220b59d9
+>>>>>>> b38a3ffe0af210090873fbf1a13bc3448a390666
         </group>
     </open-files>
 </project-private>
