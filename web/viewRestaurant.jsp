@@ -9,7 +9,7 @@ Author     : nguye
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -164,6 +164,8 @@ Author     : nguye
                                     <div class="left-side">
                                         <div class="row">
                                             <strong class="fs-4">Menu nhà hàng </strong>
+
+
                                             <div class="mt-2">
                                                 <c:forEach items="${listFood}" var="food" >
                                                     <div class="row bg-white border rounded p-3 mt-5">
@@ -172,9 +174,9 @@ Author     : nguye
                                                                  <c:if test="${food.imageURL != null && food.imageURL !=''}">
                                                                      src="${food.imageURL}" </c:if>
                                                                  <c:if test="${food.imageURL == null}">
-                                                                     src="images/food.png" </c:if> 
+                                                                     src="images/food1.png" </c:if> 
                                                                  <c:if test="${food.imageURL == ''}">
-                                                                     src="images/food.png" </c:if> width="150rem" height="150rem">
+                                                                     src="images/food1.png" </c:if> width="150rem" height="150rem">
                                                             </div>
                                                             <div class="col-md-5 mt-1">
                                                                 <label class="labels">${food.foodName}</label>
@@ -187,6 +189,9 @@ Author     : nguye
                                                             </div>
                                                         </div>
                                                 </c:forEach>
+                                                <c:if test="${listFood.size() == 0}">
+                                                    <p class="fs-4">Hiện menu chưa được cập nhật </p>
+                                                </c:if>
                                             </div> 
                                         </div>
                                     </div>
@@ -254,16 +259,30 @@ Author     : nguye
                                 <c:if test="${listCmtHostelPaging  != null}">
                                     <c:forEach items="${listCmtHostelPaging}" var="d" >
                                         <div class="bg-white p-3" style="margin :5px">
-                                            <div class="d-flex flex-row user-info"><img class="rounded-circle" src="${d.studentAvatar}" width="80" height="50" >
-                                                <div class="d-flex flex-column justify-content-start ml-4">
-                                                    <span class="d-block font-weight-bold name" style=" font-size: 15px;">${d.studentName}</span>
-                                                    <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
-                                                    <div class="sold_stars m1-auto">
-                                                        <c:forEach begin="1" end="${d.starvoting}" >
-                                                            <i class="fa fa-star"  style=" font-size: 17px;"></i>      
-                                                        </c:forEach>
-                                                        <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
-                                                    </div>
+                                            <div class="d-flex flex-row user-info">                                            
+                                                <img class="rounded-circle" 
+                                                     <c:if test="${d.studentAvatar != Null}">
+                                                         src="${d.studentAvatar}"</c:if>
+                                                     <c:if test="${d.studentAvatar == Null}">
+                                                         src="images/user.jpg"</c:if>                                                                                     
+                                                         width="80" height="50" >
+                                                     <div class="d-flex flex-column justify-content-start ml-4">
+                                                         <span class="d-block font-weight-bold name" style=" font-size: 15px;">
+                                                               <c:if test="${d.studentName != Null}">
+                                                         ${d.studentName}</c:if>
+                                                     <c:if test="${d.studentName == Null}">
+                                                        Người dùng</c:if> 
+                                                            
+                                                         
+                                                         
+                                                         </span>
+                                                     <span class="date text-black-50" style=" font-size: 12px;">${d.date}</span>
+                                                     <div class="sold_stars m1-auto">
+                                                         <c:forEach begin="1" end="${d.starvoting}" >
+                                                             <i class="fa fa-star"  style=" font-size: 17px;"></i>      
+                                                         </c:forEach>
+                                                         <p class="comment-text" style=" font-size: 15px;">${d.message}</p>
+                                                     </div>
                                                 </div>
                                             </div>
                                         </div>

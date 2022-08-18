@@ -101,9 +101,9 @@
                                                      <c:if test="${food.imageURL != null && food.imageURL !=''}">
                                                          src="${food.imageURL}" </c:if>
                                                      <c:if test="${food.imageURL == null}">
-                                                         src="images/food.png" </c:if> 
+                                                         src="images/food1.png" </c:if> 
                                                      <c:if test="${food.imageURL == ''}">
-                                                         src="images/food.png" </c:if>     
+                                                         src="images/food1.png" </c:if>     
                                                          style="width: 150px; height: 150px">
                                                 </div>
 
