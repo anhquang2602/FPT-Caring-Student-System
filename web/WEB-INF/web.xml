@@ -200,6 +200,10 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controller.HomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChartVoteController_res</servlet-name>
+        <servlet-class>controller.ChartVoteController_res</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -407,6 +411,10 @@
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChartVoteController_res</servlet-name>
+        <url-pattern>/ChartVoteController_res</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

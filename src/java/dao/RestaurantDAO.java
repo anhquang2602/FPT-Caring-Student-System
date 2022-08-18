@@ -9,10 +9,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Food;
 import model.Restaurant;
+import model.StarVote;
 
 /**
  *
@@ -37,6 +39,57 @@ public class RestaurantDAO extends DBContext {
         if (connection != null) {
             connection.close();
         }
+    }
+    
+    public String getRestaurantNameByResId(int restaurantID) {
+        String sql = "select RestaurantName from Restaurants where RestaurantID=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, restaurantID);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public String getSellerEmailByResId(int restaurantID) {
+        String sql = "Select Sellers.Email from Restaurants join Sellers on Sellers.SellerID=Restaurants.SellerID where RestaurantID=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, restaurantID);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public List<StarVote> listStar(int restaurantID) {
+        List<StarVote> list = new ArrayList<>();
+        String sql = "SELECT StarVoting, COUNT(*) as numberofvote\n"
+                + "  FROM StarVotingRestaurant\n"
+                + "  where RestaurantID=?\n"
+                + "  group by StarVoting";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, restaurantID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new StarVote(rs.getInt(1), rs.getInt(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 
     /**

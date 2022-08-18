@@ -6,6 +6,7 @@
 package controller;
 
 import dao.HostelDAO;
+import dao.SendMail;
 import dao.StarDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -54,6 +55,8 @@ public class DeleteHostel extends HttpServlet {
         StarDAO dao1 = new StarDAO();
         int role = Integer.parseInt(request.getSession().getAttribute("role").toString());
         int hostelID = Integer.parseInt(request.getParameter("id"));
+        String hostelName=dao.getHostelNameByHostelId(hostelID);
+        String email=dao.getSellerEmailByHostelId(hostelID);
         dao.deleteReportbyHostel(hostelID);
         dao.deleteHostelImage(hostelID);
         dao1.deleteVoteHostel(hostelID);
@@ -63,9 +66,12 @@ public class DeleteHostel extends HttpServlet {
             session.setAttribute("stt", "2");
             response.sendRedirect(request.getContextPath() + "/hostellist");
         } else if (role == 1) {
+            SendMail sm=new SendMail();          
+            sm.SendMailDelete(hostelName, email);
             HttpSession session = request.getSession();
             session.setAttribute("stt", "1");
             response.sendRedirect(request.getContextPath() + "/ListAllReportHostelController");
+            
         }
     }
 

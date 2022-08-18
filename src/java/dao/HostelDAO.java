@@ -68,6 +68,8 @@ public class HostelDAO extends DBContext {
             Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
 
     public ArrayList<Hostel> listAllHostel() {
         ArrayList<Hostel> h = new ArrayList<>();
@@ -255,6 +257,8 @@ public class HostelDAO extends DBContext {
         return h;
     }
 
+    
+    
     public ArrayList<Hostel> filterHostelText(String keyword, double costUnder, double costUpper, double distance, float star) {
         ArrayList<Hostel> h = new ArrayList<>();
         try {
@@ -685,6 +689,38 @@ public class HostelDAO extends DBContext {
         return 0;
     }
 
+    public String getHostelNameByHostelId(int hostelID) {
+        String sql = "select HostelName from Hostels where HostelID=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, hostelID);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public String getSellerEmailByHostelId(int hostelID) {
+        String sql = "Select Sellers.Email from Hostels join Sellers on Sellers.SellerID=Hostels.SellerID where HostelID=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, hostelID);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public void addHostelID(int hostelID) {
         try {
 

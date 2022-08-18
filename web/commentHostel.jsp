@@ -81,7 +81,9 @@
                         <div class="container mt-5">
                             <div class="d-flex justify-content-center row">
                                 <div class="col-md-8" style="min-width: 100%">
+                                      <div class="row" style="background-color: #ffffff">
                                     <div class="d-flex flex-column comment-section">
+                                      
                                         <h3 class="rating_heading">Đánh giá 5 sao</h3>
                                         <div class ="star_rating">
                                             <p style="font-weight:  bold; font-size: 30px">Cảm nhận của bạn về nhà trọ này?</p>
@@ -140,6 +142,7 @@
                                             <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" onclick="postComment()" type="button">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
                                         </div>
                                     </div>
+                                            </div>
                                 </div>
                             </div>
                         </div>
