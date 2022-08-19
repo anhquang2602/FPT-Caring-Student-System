@@ -12,11 +12,14 @@ import static org.junit.Assert.*;
  *
  * @author nguye
  */
-public class DepartmentDAOTest {
+public class FCS_UnitTest {
     DepartmentDAO d;
+    HostelDAO h;
+    AccountDAO a;
     
-    public DepartmentDAOTest() {
+    public FCS_UnitTest() {
          d = new DepartmentDAO();
+         h = new HostelDAO();
         
     }
 
