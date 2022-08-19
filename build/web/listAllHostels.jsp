@@ -123,7 +123,10 @@
                                     </div>
                                     <div class="col-md-2">
                                         <input class="fs-4" type="submit" value="Lọc"> 
-                                        <a class="fs-4" href="ResetSearchController?keyword=${keyword}" style="text-decoration: none">Xóa bộ lọc</a>
+<!--                                        <a class="fs-4" href="ResetSearchController?keyword=${keyword}" style="text-decoration: none">Xóa bộ lọc</a>-->
+                                        
+                                        <input class="fs-4" type=button onClick="location.href='ResetSearchController?keyword=${keyword}'"
+                                                            value='Xoá bộ lọc'>
                                     </div>
                                 </div>
                             </div>
