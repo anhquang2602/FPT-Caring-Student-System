@@ -63,7 +63,7 @@
                             </div>
                             <div class="d-flex mb-3 mt-5 px-md-5">
                                 <div class="text-center px-5 ml-5">
-                                    <p class="fs-4 ml-5">Bộ lọc tìm kiếm</p>
+                                    <p class="fs-4 ml-5" style="text-decoration: none; color:rgb(238, 77, 45); font-weight: bold">Bộ lọc tìm kiếm</p>
                                 </div>
                                 <div class="d-flex">
                                     <div class="col-md-4 mr-5">
@@ -113,7 +113,7 @@
                                         <input class="fs-4" type="submit" value="Lọc">
                                     
                                         
-                                        <input class="fs-4" type=button onClick="location.href='ResetSearchRes?keyword=${keyword}'"
+                                        <input class="fs-4 ml-2" type=button onClick="location.href='ResetSearchRes?keyword=${keyword}'"
                                                             value='Xoá bộ lọc'>
                                     </div>
                                 </div>
@@ -148,11 +148,12 @@
                                                     </h3>
                                                     <p style="font-size: 20px">${restaurant.description}</p>
                                                     <p style="font-size: 20px">${restaurant.address}</p>
+                                                    <p style="font-size: 20px">${restaurant.cost}</p>
                                                 </div>
 
                                                 <div class="col-md-4 mt-5  media-body order-2 order-lg-1 button_edit">
-                                                    <div class="stars-outer">
-                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}%">  </div>
+                                                    <div class="stars-outer" style=" font-size: 20px">
+                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}%;font-size: 20px">  </div>
                                                     </div>
                                                 </div>
                                         </li> 

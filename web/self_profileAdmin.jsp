@@ -48,7 +48,16 @@
                                 <div class="col-md-4">
                                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                         <div class="mt-5">
-                                            <img class="rounded-circle justify-content-center" height="200px" width="200px" src="${UserAvatar}" id="output">
+                                            <img class="rounded-circle justify-content-center" height="200px" width="200px" 
+                                                 
+                                                      <c:if test="${UserAvatar != null && UserAvatar !=''}">
+                                                             src="${UserAvatar}" </c:if>
+                                                         <c:if test="${UserAvatar == null}">
+                                                             src="images/user.jpg" </c:if> 
+                                                         <c:if test="${UserAvatar == ''}">
+                                                             src="images/user.jpg" </c:if>  
+                                                 
+                                                 id="output">
                                             <input style="padding-left: 80px" type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file mt-3 p-3 ml-5" id="avatarImg">
                                         </div>
                                         <div id="divCheckImg"></div>
