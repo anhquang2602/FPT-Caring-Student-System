@@ -54,11 +54,11 @@
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
                         <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Thêm Nhà Hàng Thành Công</h4></strong>
+                            <strong class="mr-auto text-white"><h4>Thêm Nhà Ăn Thành Công</h4></strong>
                             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                         </div>
                         <div class="toast-body">
-                            Thêm nhà hàng thành công !
+                            Thêm nhà ăn thành công !
                         </div>
                     </div>
                 </div>
@@ -67,11 +67,11 @@
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
                         <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Xóa Nhà Hàng Thành Công</h4></strong>
+                            <strong class="mr-auto text-white"><h4>Xóa Nhà Ăn Thành Công</h4></strong>
                             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                         </div>
                         <div class="toast-body">
-                            Xóa nhà hàng thành công !
+                            Xóa nhà ăn thành công !
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                                 <div>
                                     <ul class="breadcrumb">
                                         <li><a href="home.jsp">Trang chủ</a></li>
-                                        <li><a>Nhà hàng của tôi</a></li>
+                                        <li><a>Nhà ăn của tôi</a></li>
                                     </ul>
                                 </div>
                                 <div class="mb-3" style="text-align: end">
@@ -100,7 +100,7 @@
                                     <%
                                         ArrayList<Restaurant> r = (ArrayList<Restaurant>) request.getAttribute("listRestaurant");
                                         if (r.size() == 0) {%>
-                                    <p style="font-size: 20px">Bạn chưa có nhà hàng nào</p>
+                                    <p style="font-size: 20px">Bạn chưa có nhà ăn nào</p>
                                     <%  }%>
                                     <c:forEach items="${listRestaurant}" var="r" >
                                         <li class="list-group-item">
@@ -139,10 +139,10 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                Xoá nhà hàng
+                                                                Xoá nhà ăn
                                                             </div>
                                                             <div class="modal-body">
-                                                                Bạn có chắc chắn muốn xoá nhà hàng này không?
+                                                                Bạn có chắc chắn muốn xoá nhà ăn này không?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
@@ -175,11 +175,5 @@
 
             });
         </script>
-
-       
     </body>
-
-
-
-
 </html>

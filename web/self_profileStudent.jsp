@@ -32,7 +32,7 @@
         <%@include file="/header.jsp" %>  
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
-                <ul id="navbar-items" class="col-md-2 d-flex">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar1" class="col-md-10">
@@ -48,7 +48,7 @@
                                 <div class="col-md-4">
                                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                         <div class="mt-5">
-                                            <img class="rounded-circle mt-5" height="200px" width="200px" src="${UserAvatar}" id="output">
+                                            <img class="rounded-circle mt-5 mb-3" height="200px" width="200px" src="${UserAvatar}" id="output">
                                             <input style="padding-left: 80px" type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="avatarImg">
                                         </div>
                                         <div id="divCheckImg"></div>

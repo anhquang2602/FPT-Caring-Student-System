@@ -73,7 +73,7 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1 mt-3">
                                                 <div class="col-md-4 media-body order-2 order-lg-1 image">
-                                                    <img src="${event.url}" alt="Generic placeholder image">
+                                                    <img src="${event.url}" width="300px" height="300px" alt="Generic placeholder image">
                                                 </div>
                                                 <div class="col-md-7 media-body order-2 order-lg-1 description ml-5" id="description">
                                                     <h4 class="mt-0 font-weight-bold mb-2 text-center">

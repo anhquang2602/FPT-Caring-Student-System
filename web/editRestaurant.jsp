@@ -68,23 +68,23 @@
                                         </div>
                                         <div class="mt-3">
                                             <input type="file" accept="image/*" onchange="loadFile(event)" name ="restaurantImage" id="file1">
-                                            <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
-                                            <img id="Url1" name="Url1" width="100%" height="100%"
+                                            <label for="file1" style="position: absolute; margin-left: 300px; margin-top: 190px; opacity: 30%">+</label>
+                                            <img id="Url1" name="Url1" width="600px" height="350px"
                                                  <c:if test="${restaurant.restaurantImage != null}">
                                                      src="${restaurant.restaurantImage}" </c:if>/>
                                                  <script>
                                                      var loadFile = function (event) {
                                                          var output = document.getElementById('Url1');
                                                          output.src = URL.createObjectURL(event.target.files[0]);
-                                                         output.style.width = "170px";
-                                                         output.style.height = "170px";
+                                                         output.style.width = "600px";
+                                                         output.style.height = "350px";
                                                          output.onload = function () {
                                                              URL.revokeObjectURL(output.src) // free memory
                                                          }
                                                      };
                                                  </script>
                                             <c:if test="${restaurant.restaurantImage != null}">
-                                                <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteimgres?id=${restaurant.restaurantID}&url=Url1">X</a>
+                                                <a id="U1" class ="Url1" style="position: absolute; margin-top: -350px; margin-left: 580px; text-decoration: none" href="deleteimgres?id=${restaurant.restaurantID}&url=Url1">X</a>
                                             </c:if>
                                         </div> 
                                     </div>

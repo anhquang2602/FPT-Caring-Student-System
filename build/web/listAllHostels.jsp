@@ -71,16 +71,16 @@
                                 <div class="d-flex">
                                     <div class="col-md-4 mr-5">
                                         <div class="d-flex">
-                                            <span class="fs-4 mr-3">Giá: </span>
-                                            <span class="fs-4 mr-1">Từ: </span>
-                                            <input class="mr-1" type="text" name="under" value="${under}"> - 
-                                            <span class="fs-4 ml-1">Đến: </span>
+                                            <span class="fs-4 mr-2">Giá: </span>
+                                            <span class="fs-4 mr-1">Từ</span>
+                                            <input class="mr-1" type="text" name="under" value="${under}">- 
+                                            <span class="fs-4 ml-1">Đến</span>
                                             <input type="text" name="upper" value="${upper}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <span class="fs-4">Khoảng cách: </span>
-                                        <select name="distance" class="p-2 px-4">
+                                        <select name="distance" class="p-2 px-3">
                                             <option value="10" <c:if test = "${distance == 10 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
@@ -98,7 +98,7 @@
                                                 </c:if>> < 5km</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-2 mr-3">
+                                    <div class="col-md-3 mr-1">
                                         <span class="fs-4">Xếp hạng: </span>
                                         <select name="star" class="p-2">
                                             <option value="5" <c:if test = "${star == 5 }">
@@ -121,7 +121,7 @@
                                                 </c:if>> Chưa có đánh giá</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <input class="fs-4" type="submit" value="Lọc"> 
                                         <a class="fs-4" href="ResetSearchController?keyword=${keyword}" style="text-decoration: none">Xóa bộ lọc</a>
                                     </div>

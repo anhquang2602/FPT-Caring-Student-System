@@ -19,6 +19,7 @@ public class ReportHostel {
     private int offensive;
     private int violent;
     private int truthless;
+    private int allReport;
     private Date reportDate;
     private int studentID;
 
@@ -37,6 +38,15 @@ public class ReportHostel {
     public ReportHostel() {
     }
 
+    public int getAllReport() {
+        return allReport;
+    }
+
+    public void setAllReport(int allReport) {
+        this.allReport = allReport;
+    }
+
+    
     public int getReportID() {
         return reportID;
     }
@@ -109,14 +119,16 @@ public class ReportHostel {
         this.truthless = truthless;
     }
 
-    public ReportHostel(int hostelID, String hostelName, int spam, int offensive, int violent, int truthless) {
+    public ReportHostel(int hostelID, String hostelName, int spam, int offensive, int violent, int truthless, int allReport) {
         this.hostelID = hostelID;
         this.hostelName = hostelName;
         this.spam = spam;
         this.offensive = offensive;
         this.violent = violent;
         this.truthless = truthless;
+        this.allReport = allReport;
     }
+
 
     public ReportHostel(int hostelID, String hostelName, int spam, int offensive, int violent, int truthless, Date reportDate, int studentID) {
         this.hostelID = hostelID;
@@ -129,6 +141,7 @@ public class ReportHostel {
         this.studentID = studentID;
     }
     
+
    
     
     
