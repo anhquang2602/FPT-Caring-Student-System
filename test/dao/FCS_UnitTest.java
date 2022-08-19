@@ -179,8 +179,7 @@ public class FCS_UnitTest {
         assertEquals(expected, rs);
     }
         
-    
-
+   
     @Test
     public void testGetSellerID() {
         int id = Integer.parseInt(s.getSellerID("nguyenngoccau2004@gmail.com"));
