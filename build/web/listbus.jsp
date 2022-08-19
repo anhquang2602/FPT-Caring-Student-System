@@ -52,7 +52,7 @@
                                                 <h5 class="mt-0 font-weight-bold mb-2">
                                                     <a href="BusDetailServlet?number=<%=b.getNumber()%>" style="text-decoration: none; font-weight: bold">Xe <%=b.getNumber()%></a>
                                                 </h5>
-                                                <p style="font-size: 18px"><%=b.getShortDes()%></p>
+                                                <p style="font-size: 20px"><%=b.getShortDes()%></p>
                                             </div>
                                         </div> 
                                     </li> 

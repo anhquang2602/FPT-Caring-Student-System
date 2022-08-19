@@ -48,7 +48,16 @@
                                 <div class="col-md-4">
                                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                         <div class="mt-5">
-                                            <img class="rounded-circle mt-5 mb-3" height="200px" width="200px" src="${UserAvatar}" id="output">
+                                            <img class="rounded-circle mt-5 mb-3" height="200px" width="200px" 
+                                                 
+                                                   <c:if test="${UserAvatar != null && UserAvatar !=''}">
+                                                             src="${UserAvatar}" </c:if>
+                                                         <c:if test="${UserAvatar == null}">
+                                                             src="images/user.jpg" </c:if> 
+                                                         <c:if test="${UserAvatar == ''}">
+                                                             src="images/user.jpg" </c:if>  
+                                                 
+                                                 id="output">
                                             <input style="padding-left: 80px" type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="avatarImg">
                                         </div>
                                         <div id="divCheckImg"></div>
@@ -72,11 +81,11 @@
                                             <input type="text" name="lastName" class="form-control" value="${student.lastName}" >
                                         </div>
                                         <div class="col-md-6">
-                                            <strong class="text-right fs-4">StudentID</strong>
+                                            <strong class="text-right fs-4">Mã số sinh viên</strong>
                                             <input type="text" name="studentId" class="form-control" value="${student.studentID}" >
                                         </div>
                                         <div class="col-md-6">
-                                            <strong class="text-right fs-4">Unit</strong>
+                                            <strong class="text-right fs-4">Khoá</strong>
                                             <input type="text" name="unit" class="form-control" value="${student.unit}" >
                                             <div id="divCheckUnit"></div>
                                         </div>
