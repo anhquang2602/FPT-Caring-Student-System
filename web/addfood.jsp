@@ -203,7 +203,7 @@
                 let isValid = true;
                 const foodName = document.addFoodForm.foodName.value;
                 const costFood = document.addFoodForm.costFood.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex = /^(?!0\d)\d*(\.\d+)?$/;
                 const regex2 = /^[0-9]*$/;
                 document.getElementById('errorName').innerText = ' ';
                 document.getElementById('errorCost').innerText = ' ';
@@ -214,10 +214,10 @@
                 if (!costFood) {
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá của món ăn!';
                     isValid = false;
-                } else if (!regex.test(distance)) {
+                } else if (!regex.test(costFood)) {
                     document.getElementById('errorCost').innerText = 'Giá trị nhập không đúng. Giá tiền phải là số!';
                     isValid = false;
-                } else if (distance <= 0) {
+                } else if (costFood <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá tiền phải > 0 ';
                     isValid = false;
                 }

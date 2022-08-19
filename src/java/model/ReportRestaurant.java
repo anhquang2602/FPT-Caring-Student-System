@@ -21,6 +21,17 @@ public class ReportRestaurant {
     private int violent;
     private int truthless;
     private Date reportTime;
+    private int studentID;
+
+    public int getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+    
+    
 
     public ReportRestaurant() {
     }
@@ -114,6 +125,18 @@ public class ReportRestaurant {
         this.offensive = offensive;
         this.violent = violent;
         this.truthless = truthless;
+    }
+
+    public ReportRestaurant(int restaurantID, String restaurantName, int countReport, int spam, int offensive, int violent, int truthless, Date reportTime, int studentID) {
+        this.restaurantID = restaurantID;
+        this.restaurantName = restaurantName;
+        this.countReport = countReport;
+        this.spam = spam;
+        this.offensive = offensive;
+        this.violent = violent;
+        this.truthless = truthless;
+        this.reportTime = reportTime;
+        this.studentID = studentID;
     }
 
  

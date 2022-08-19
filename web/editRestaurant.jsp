@@ -207,7 +207,7 @@
                 const address = document.editRestaurantForm.address.value;
                 const cost = document.editRestaurantForm.cost.value;
                 const distance = document.editRestaurantForm.distance.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex = /^(?!0\d)\d*(\.\d+)?$/;
                 const regex2 = /^[0-9]*$/;
                 document.getElementById('errorName').innerText = ' ';
                 document.getElementById('errorProvince').innerText = ' ';
@@ -232,10 +232,7 @@
                 if (!cost) {
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá dao động!';
                     isValid = false;
-                } else if (!regex.test(cost)) {
-                    document.getElementById('errorCost').innerText = 'Invalid!';
-                    isValid = false;
-                } else if (cost <= 0) {
+                }  else if (cost <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
                     isValid = false;
                 }

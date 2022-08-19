@@ -7,6 +7,7 @@ package controller;
 
 import dao.HostelDAO;
 import dao.ReportHostelDAO;
+import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -72,6 +73,10 @@ public class ReportHostelController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         int hostelID = Integer.parseInt(request.getParameter("id"));
+         StudentDAO stdao = new StudentDAO();
+
+        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
+        
         //System.out.println(hostelID);
         String spamStr = request.getParameter("spam");
         int spam = 1;
@@ -95,7 +100,7 @@ public class ReportHostelController extends HttpServlet {
         }
 
         ReportHostelDAO reportHostelDAO = new ReportHostelDAO();
-        if (reportHostelDAO.createReportHostel(hostelID, spam, offensive, violent, truthless)) {
+        if (reportHostelDAO.createReportHostel(hostelID, spam, offensive, violent, truthless,studentNo)) {
             HostelDAO hostelDAO = new HostelDAO();
             String indexPage = request.getParameter("index");
             if (indexPage == null) {

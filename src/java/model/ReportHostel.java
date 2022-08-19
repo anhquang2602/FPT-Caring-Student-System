@@ -20,7 +20,20 @@ public class ReportHostel {
     private int violent;
     private int truthless;
     private Date reportDate;
+    private int studentID;
 
+    public int getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+    
+    
+    
+    
+    
     public ReportHostel() {
     }
 
@@ -105,6 +118,17 @@ public class ReportHostel {
         this.truthless = truthless;
     }
 
+    public ReportHostel(int hostelID, String hostelName, int spam, int offensive, int violent, int truthless, Date reportDate, int studentID) {
+        this.hostelID = hostelID;
+        this.hostelName = hostelName;
+        this.spam = spam;
+        this.offensive = offensive;
+        this.violent = violent;
+        this.truthless = truthless;
+        this.reportDate = reportDate;
+        this.studentID = studentID;
+    }
+    
    
     
     

@@ -34,15 +34,16 @@ public class ReportHostelDAO extends DBContext {
         }
     }
 
-    public boolean createReportHostel(int hostelID, int spam, int offensive, int violent, int truthless) {
+    public boolean createReportHostel(int hostelID, int spam, int offensive, int violent, int truthless,int studentID) {
         try {
-            String sql = "INSERT INTO ReportHostel (HostelID,Spam,Offensive,Violent,Truthless,ReportTime) VALUES (?,?,?,?,?,GetDate())";
+            String sql = "INSERT INTO ReportHostel (HostelID,Spam,Offensive,Violent,Truthless,ReportTime,StudentID) VALUES (?,?,?,?,?,GetDate(),?)";
             stm = connection.prepareStatement(sql);
             stm.setInt(1, hostelID);
             stm.setInt(2, spam);
             stm.setInt(3, offensive);
             stm.setInt(4, violent);
             stm.setInt(5, truthless);
+             stm.setInt(6, studentID);
             stm.executeUpdate();
             System.out.println(sql);
             System.out.println("Insert OK");
