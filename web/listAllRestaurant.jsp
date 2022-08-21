@@ -63,7 +63,7 @@
                             </div>
                             <div class="d-flex mb-3 mt-5 px-md-5">
                                 <div class="text-center px-5 ml-5">
-                                    <p class="fs-4 ml-5">Bộ lọc tìm kiếm</p>
+                                    <p class="fs-4 ml-5" style="text-decoration: none; color:rgb(238, 77, 45); font-weight: bold">Bộ lọc tìm kiếm</p>
                                 </div>
                                 <div class="d-flex">
                                     <div class="col-md-4 mr-5">
@@ -94,16 +94,16 @@
                                                 </c:if>> Tất cả</option>
                                             <option value="1" <c:if test = "${star == 1 }">
                                                     selected="selected"
-                                                </c:if>> 1</option>
+                                                </c:if>> 1 sao trở lên</option>
                                             <option value="2" <c:if test = "${star == 2 }">
                                                     selected="selected"
-                                                </c:if>> 2</option>
+                                                </c:if>> 2 sao trở lên</option>
                                             <option value="3" <c:if test = "${star == 3 }">
                                                     selected="selected"
-                                                </c:if>> 3</option>
+                                                </c:if>> 3 sao trở lên</option>
                                             <option value="4" <c:if test = "${star == 4 }">
                                                     selected="selected"
-                                                </c:if>> 4</option>
+                                                </c:if>> 4 sao trở lên</option>
                                             <option value="0" <c:if test = "${star == 0 }">
                                                     selected="selected"
                                                 </c:if>> Chưa có đánh giá</option>
@@ -111,7 +111,10 @@
                                     </div>
                                     <div class="col-md-3">
                                         <input class="fs-4" type="submit" value="Lọc">
-                                        <a class="fs-4" href="ResetSearchRes?keyword=${keyword}" style="text-decoration: none">Xóa bộ lọc</a>
+                                    
+                                        
+                                        <input class="fs-4 ml-2" type=button onClick="location.href='ResetSearchRes?keyword=${keyword}'"
+                                                            value='Xoá bộ lọc'>
                                     </div>
                                 </div>
                             </div>
@@ -145,11 +148,12 @@
                                                     </h3>
                                                     <p style="font-size: 20px">${restaurant.description}</p>
                                                     <p style="font-size: 20px">${restaurant.address}</p>
+                                                    <p style="font-size: 20px">${restaurant.cost}</p>
                                                 </div>
 
                                                 <div class="col-md-4 mt-5  media-body order-2 order-lg-1 button_edit">
-                                                    <div class="stars-outer">
-                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}%">  </div>
+                                                    <div class="stars-outer" style=" font-size: 20px">
+                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}%;font-size: 20px">  </div>
                                                     </div>
                                                 </div>
                                         </li> 

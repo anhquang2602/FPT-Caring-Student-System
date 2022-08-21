@@ -61,6 +61,7 @@
                                                                 <th>Hình Ảnh Không Phù Hợp</th>
                                                                 <th>Ngôn Từ Đả Kích</th>
                                                                 <th>Thông Tin Sai Sự Thật</th>
+                                                                <th>Tổng số báo cáo</th>
                                                                 <th class="text-center">Xem Bài Viết/ Xóa Bài Đăng</th>
                                                             </tr>
                                                         </thead>
@@ -72,6 +73,7 @@
                                                                     <td>${report.violent}</td>
                                                                     <td>${report.offensive}</td>
                                                                     <td>${report.truthless}</td>
+                                                                    <td>${report.allReport}</td>
                                                                     <td class="text-center">
                                                                         <div class="actions">
                                                                             <a href="detailhostel?id=${report.hostelID}&isSeeFromReport=true" class="btn btn-sm bg-success-light mr-2">

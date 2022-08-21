@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
-               <style>
+        <style>
             .stars-outer {
                 position: relative;
                 display: inline-block;
@@ -115,43 +115,45 @@
                                                              src="images/res.jpg" </c:if> 
                                                              style="width: 150px; height: 150px">
                                                     </div>
-                                                    <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
+                                                    <div class="col-md-4 media-body order-2 order-lg-1 description" id="description">
                                                         <h4 class="mt-0 font-weight-bold mb-2">
                                                             <a href="RestaurantListController?id=${r.restaurantID}&isListbySeller=true" style="text-decoration: none; color:blue; font-weight: bold">${r.restaurantName}</a>
                                                     </h4>
                                                     <p style="font-size: 20px">${r.description}</p>
                                                     <p style="font-size: 20px">${r.address}</p>
                                                     <p style="font-size: 20px">${r.distance} km</p>
-                                                         <div class="stars-outer">
-                                                            <div class="stars-inner" style="width: ${r.starAVG}%">  </div>
+                                                    <div class="stars-outer">
+                                                        <div class="stars-inner" style="width: ${r.starAVG}%">  
+                                                        </div>
                                                     </div>  
 
                                                 </div>
-                                                <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit1">
-                                                    <a class="btn btn-primary" href="ChartVoteController_res?restaurantId=${r.restaurantID}">Xem Biểu Đồ</a>
+                                                <div class="col-md-3 mt-5 media-body order-2 order-lg-1 button_edit1">
+                                                    <a class="btn btn-success" href="ChartVoteController_res?restaurantId=${r.restaurantID}">Xem Biểu Đồ</a>
                                                     <a class="btn btn-danger" href="EditRestaurantController?id=${r.restaurantID}">Chỉnh sửa</a> 
                                                     <a class="btn btn-primary" href="AddFoodController?id=${r.restaurantID}">Menu</a>
-                                                    <a class="btn btn-secondary" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà ăn</a>
-
+                                                </div>
+                                                <div class="col-md-2 mt-5 media-body order-2 order-lg-1 button_edit">
+                                                    <a class="btn btn-secondary" style="margin-top: 100px; margin-left: 100px" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà ăn</a>
                                                 </div>
 
-                                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                Xoá nhà ăn
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Bạn có chắc chắn muốn xoá nhà ăn này không?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
-                                                                <a class="btn btn-danger btn-ok">Xoá</a>
+                                                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    Xoá nhà ăn
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Bạn có chắc chắn muốn xoá nhà ăn này không?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                                                    <a class="btn btn-danger btn-ok">Xoá</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div> 
+                                                </div> 
                                         </li> 
                                     </c:forEach>
                                 </ul>

@@ -63,6 +63,7 @@
                                                                 <th>Hình Ảnh Không Phù Hợp</th>
                                                                 <th>Ngôn Từ Đả Kích</th>
                                                                 <th>Thông Tin Sai Sự Thật</th>
+                                                                <th>Tổng số báo cáo</th>
                                                                 <th class="text-center">Xem Bài Viết/ Xóa Bài Đăng</th>
                                                             </tr>
                                                         </thead>
@@ -74,6 +75,7 @@
                                                                     <td>${report.violent}</td>
                                                                     <td>${report.offensive}</td>
                                                                     <td>${report.truthless}</td>
+                                                                    <td>${report.allReport}</td>
                                                                     <td class="text-center">
                                                                         <div class="actions">
                                                                             <a href="RestaurantListController?id=${report.restaurantID}&isSeeFromReport=true" class="btn btn-sm bg-success-light mr-2">
@@ -116,7 +118,7 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
-            <script>
+        <script>
             //        $('#confirm-delete').on('show.bs.modal', function (e) {
             //            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
             //        });

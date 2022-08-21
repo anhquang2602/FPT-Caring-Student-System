@@ -438,7 +438,7 @@
                 const address = document.edithostelForm.address.value;
                 const cost = document.edithostelForm.cost.value;
                 const distance = document.edithostelForm.distance.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex = /^(?!0\d)\d*(\.\d+)?$/;
                 const regex2 = /^[0-9]*$/;
                 const success = document.getElementById('success');
                 document.getElementById('errorName').innerText = ' ';
@@ -457,10 +457,10 @@
                     document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
                     isValid = false;
                 } else if (room <= 0) {
-                    document.getElementById('errorRoom').innerText = 'Invalid!';
+                    document.getElementById('errorRoom').innerText = 'Số phòng phải > 0!';
                     isValid = false;
                 } else if (!regex2.test(room)) {
-                    document.getElementById('errorRoom').innerText = 'Invalid!';
+                    document.getElementById('errorRoom').innerText = 'Sai cú pháp!';
                     isValid = false;
                 }
 
@@ -468,10 +468,10 @@
                     document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
                     isValid = false;
                 } else if (!regex2.test(floor)) {
-                    document.getElementById('errorFloor').innerText = 'Invalid!';
+                    document.getElementById('errorFloor').innerText = 'Số tầng phải > 0!';
                     isValid = false;
                 } else if (floor <= 0) {
-                    document.getElementById('errorFloor').innerText = 'Invalid!';
+                    document.getElementById('errorFloor').innerText = 'Sai cú pháp!';
                     isValid = false;
                 }
 
@@ -489,7 +489,7 @@
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
                     isValid = false;
                 } else if (!regex.test(cost)) {
-                    document.getElementById('errorCost').innerText = 'Invalid!';
+                    document.getElementById('errorCost').innerText = 'Sai cú pháp!';
                     isValid = false;
                 } else if (cost <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
@@ -500,7 +500,7 @@
                     document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
                     isValid = false;
                 } else if (!regex.test(distance)) {
-                    document.getElementById('errorDistance').innerText = 'Invalid!';
+                    document.getElementById('errorDistance').innerText = 'Sai cú pháp!';
                     isValid = false;
                 } else if (distance <= 0) {
                     document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';

@@ -47,7 +47,16 @@
                                 <div class="col-md-4">
                                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                         <div class="">    
-                                            <img class="rounded-circle" height="200px" width="200px" src="${UserAvatar}" id="output">
+                                            <img class="rounded-circle" height="200px" width="200px" 
+                                                 
+                                                      <c:if test="${UserAvatar != null && UserAvatar !=''}">
+                                                             src="${UserAvatar}" </c:if>
+                                                         <c:if test="${UserAvatar == null}">
+                                                             src="images/user.jpg" </c:if> 
+                                                         <c:if test="${UserAvatar == ''}">
+                                                             src="images/user.jpg" </c:if>  
+                                                 
+                                                 id="output">
                                             <input style="padding-left: 80px" type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file" id="avatarImg">
                                         </div>
                                         <div id="divCheckImg"></div>
@@ -61,8 +70,8 @@
                                         </div>
                                         <div class="row mt-2">
                                             <input name="id" value="${club.clubID}" hidden="">
-                                            <div class="col-md-6"><strong class="text-right fs-4">Tên CLB</strong><input type="text" name="clubName" class="form-control" value="${club.clubName}" ></div>
-                                            <div class="col-md-6"><strong class="text-right fs-4">Chủ Nhiệm CLB</strong><input type="text" name="clubPresident" class="form-control" value="${club.clubPresident}" ></div>
+                                            <div class="col-md-6"><strong class="text-right fs-4">Tên Câu Lạc Bộ</strong><input type="text" name="clubName" class="form-control" value="${club.clubName}" ></div>
+                                            <div class="col-md-6"><strong class="text-right fs-4">Chủ Nhiệm </strong><input type="text" name="clubPresident" class="form-control" value="${club.clubPresident}" ></div>
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col-md-12"><strong class="text-right fs-4">Email</strong><input type="text" class="form-control" readonly="" value="${club.email}" ></div>

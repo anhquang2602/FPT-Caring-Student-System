@@ -49,7 +49,7 @@
                                         <div class="col-md-3">
                                             <a href="listClubCategories?type=3&key=${key}" class="list-group-item list-group-item-action">Thể Thao</a>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <a href="listClubCategories?type=4&key=${key}" class="list-group-item list-group-item-action ">Nghệ Thuật</a>
                                         </div>
                                     </div>
@@ -72,7 +72,12 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-2">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    <img src="${club.avatar}" width="300px" height="300px" alt="Generic placeholder image">
+                                                    
+                                                     <img  <c:if test="${club.avatar != null}">
+                                                            src="${club.avatar}" </c:if>
+                                                        <c:if test="${club.avatar == null}">
+                                                            src="images/club.jpg" 
+                                                        </c:if> style="width: 170px; height: 170px" >
                                                 </div>
                                                 <div class="col-md-8 media-body order-2 order-lg-1 description ml-5" id="description">
                                                     <div>
@@ -81,10 +86,10 @@
                                                         </h4>
                                                     </div>
                                                     <div>
-                                                        <p style="font-size: 18px">${club.clubPresident}</p>
-                                                        <p style="font-size: 18px">${club.facebook}</p>
-                                                        <p style="font-size: 18px">${club.email}</p>
-                                                        <p style="font-size: 18px">${club.des}</p>
+                                                        <p style="font-size: 20px">Chủ nhiệm: ${club.clubPresident}</p>
+                                                        <p style="font-size: 20px">Fanpage: ${club.facebook}</p>
+                                                        <p style="font-size: 20px">Email: ${club.email}</p>
+<!--                                                        <p style="font-size: 20px">${club.des}</p>-->
                                                     </div>
                                                 </div>
                                             </div> 
