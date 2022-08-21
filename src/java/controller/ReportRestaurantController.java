@@ -7,6 +7,7 @@ package controller;
 
 import dao.ReportRestaurantDAO;
 import dao.RestaurantDAO;
+import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -82,6 +83,9 @@ public class ReportRestaurantController extends HttpServlet {
         HttpSession session = request.getSession();
         int restaurantID = Integer.parseInt(request.getParameter("id"));
         String spamStr = request.getParameter("spam");
+          StudentDAO stdao = new StudentDAO();
+
+        int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));
         int spam = 1;
         if (spamStr == null) {
             spam = 0;
@@ -103,7 +107,7 @@ public class ReportRestaurantController extends HttpServlet {
         }
 
         ReportRestaurantDAO reportRestaurantDAO = new ReportRestaurantDAO();
-        if (reportRestaurantDAO.createReportRestaurant(restaurantID, spam, offensive, violent, truthless)) {
+        if (reportRestaurantDAO.createReportRestaurant(restaurantID, spam, offensive, violent, truthless,studentNo)) {
             session.setAttribute("stt", "1");
             //  response.sendRedirect("ListAllRestaurantController");
             // request.getRequestDispatcher("ListAllRestaurantController").forward(request, response);

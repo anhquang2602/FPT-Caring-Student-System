@@ -54,13 +54,13 @@
                 <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div id="topnavbar1" class="col-md-10">
+                <div id="topnavbar" class="col-md-10">
                     <form action="AddNewEvent" enctype="multipart/form-data"  method="post" >
                         <div class="container" style="margin-top: 50px">
                             <div class="col-lg-12 mb-5">
                                 <div class="row">
                                     <div>
-                                        <ul class="breadcrumb bg-white">
+                                        <ul class="breadcrumb">
                                             <li><a href="home.jsp">Trang chủ</a></li>
                                             <li><a>Danh sách sự kiện</a></li>                                    
                                         </ul>
@@ -73,7 +73,7 @@
                                             <li class="list-group-item">
                                                 <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1 mt-3">
                                                     <div class="col-md-4 media-body order-2 order-lg-1 text-center image">
-                                                        <img src="${event.url}" alt="Generic placeholder image">
+                                                        <img src="${event.url}" width="400px" height="400px" alt="Generic placeholder image">
                                                         <a class="btn btn-primary mt-5" href="EditEvent?eventID=${event.eventID}">Chỉnh sửa </a>
                                                         <a class="btn btn-secondary mt-5" href="DeteleEvent?eventID=${event.eventID}">Xóa </a>
                                                         

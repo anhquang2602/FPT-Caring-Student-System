@@ -6,9 +6,9 @@
             <file>file:/D:/đồ%20án/src/java/dao/ClubDAO.java</file>
             <file>file:/D:/đồ%20án/web/hosteldetail.jsp</file>
             <file>file:/D:/đồ%20án/src/java/controller/DeteleEvent.java</file>
-            <file>file:/D:/đồ%20án/test/dao/DepartmentDAOTest.java</file>
             <file>file:/D:/đồ%20án/src/java/controller/ClubListController.java</file>
             <file>file:/D:/đồ%20án/src/java/filter/UrlFilter.java</file>
+            <file>file:/D:/đồ%20án/nbproject/private/private.xml</file>
             <file>file:/D:/đồ%20án/web/css/pagingStyle.css</file>
             <file>file:/D:/đồ%20án/src/java/controller/AuthenticateServlet.java</file>
             <file>file:/D:/đồ%20án/src/java/dao/RestaurantDAO.java</file>
@@ -20,8 +20,9 @@
             <file>file:/D:/đồ%20án/src/java/dao/DBContext.java</file>
             <file>file:/D:/đồ%20án/src/java/dao/HostelDAO.java</file>
             <file>file:/D:/đồ%20án/src/java/controller/ForgotPass_InputEmailServlet.java</file>
+            <file>file:/D:/đồ%20án/test/dao/FCS_UnitTest.java</file>
+            <file>file:/D:/đồ%20án/nbproject/build-impl.xml</file>
             <file>file:/D:/đồ%20án/web/listAllHostels.jsp</file>
-            <file>file:/D:/đồ%20án/test/dao/AccountDAOTest.java</file>
         </group>
     </open-files>
 </project-private>

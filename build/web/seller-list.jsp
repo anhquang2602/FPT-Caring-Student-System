@@ -161,7 +161,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-10 mt-5 p-3">
-                                        <button class="form-control fs-4 p-2" type="submit">Lọc</button> 
+                                        <button class="form-control fs-5 p-1" type="submit">Lọc</button> 
                                     </div>
                                 </div>
                             </div>
