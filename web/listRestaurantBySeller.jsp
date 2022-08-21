@@ -94,7 +94,7 @@
                                     </ul>
                                 </div>
                                 <div class="mb-3" style="text-align: end">
-                                    <a style="font-size: 20px; padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="AddRestaurantController">Thêm nhà hàng mới (+)</a>
+                                    <a style="font-size: 20px; padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="AddRestaurantController">Thêm nhà ăn mới (+)</a>
                                 </div>
                                 <ul class="list-group shadow">
                                     <%
@@ -131,7 +131,7 @@
                                                     <a class="btn btn-primary" href="ChartVoteController_res?restaurantId=${r.restaurantID}">Xem Biểu Đồ</a>
                                                     <a class="btn btn-danger" href="EditRestaurantController?id=${r.restaurantID}">Chỉnh sửa</a> 
                                                     <a class="btn btn-primary" href="AddFoodController?id=${r.restaurantID}">Menu</a>
-                                                    <a class="btn btn-secondary" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà hàng</a>
+                                                    <a class="btn btn-secondary" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà ăn</a>
 
                                                 </div>
 

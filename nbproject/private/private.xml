@@ -2,24 +2,26 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/D:/FCS_Final158/web/commentRestaurant.jsp</file>
+            <file>file:/D:/FCS_Final158/web/addRestaurant.jsp</file>
+            <file>file:/D:/FCS_Final158/nbproject/build-impl.xml</file>
+            <file>file:/D:/FCS_Final158/web/addfood.jsp</file>
+            <file>file:/D:/FCS_Final158/src/java/dao/ReportHostelDAO.java</file>
             <file>file:/D:/FCS_Final158/web/editRestaurant.jsp</file>
-            <file>file:/D:/FCS_Final158/web/listAllHostels.jsp</file>
+            <file>file:/D:/FCS_Final158/src/java/controller/RestaurantListController.java</file>
+            <file>file:/D:/FCS_Final158/src/java/dao/RestaurantDAO.java</file>
             <file>file:/D:/FCS_Final158/src/java/dao/DBContext.java</file>
-            <file>file:/D:/FCS_Final158/web/hosteldetail.jsp</file>
-            <file>file:/D:/FCS_Final158/web/addHostel.jsp</file>
+            <file>file:/D:/FCS_Final158/src/java/dao/HostelDAO.java</file>
+            <file>file:/D:/FCS_Final158/web/listRestaurantBySeller.jsp</file>
             <file>file:/D:/FCS_Final158/nbproject/build-impl.xml~</file>
-            <file>file:/D:/FCS_Final158/web/commentHostel.jsp</file>
+            <file>file:/D:/FCS_Final158/web/self_profileSeller.jsp</file>
+            <file>file:/D:/FCS_Final158/src/java/controller/ChartVoteController.java</file>
+            <file>file:/D:/FCS_Final158/src/java/dao/ReportRestaurantDAO.java</file>
+            <file>file:/D:/FCS_Final158/web/listAllRestaurant.jsp</file>
+            <file>file:/D:/FCS_Final158/web/editHostel.jsp</file>
             <file>file:/D:/FCS_Final158/web/viewRestaurant.jsp</file>
+            <file>file:/D:/FCS_Final158/src/java/controller/ReportRestaurantController.java</file>
             <file>file:/D:/FCS_Final158/test/dao/BusDAOTest.java</file>
-            <file>file:/D:/FCS_Final158/web/header.jsp</file>
-            <file>file:/D:/FCS_Final158/nbproject/private/private.properties</file>
-            <file>file:/D:/FCS_Final158/web/css/pagingStyle.css</file>
         </group>
-=======
-        <group/>
->>>>>>> f2301aa14fe75976b158ba6f031b6db7e15f03d2
     </open-files>
 </project-private>

@@ -35,15 +35,15 @@
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
-                                <li><a>Thêm nhà hàng mới</a></li>
+                                <li><a href="ListRestaurantBySeller">Nhà ăn của tôi</a></li>
+                                <li><a>Thêm nhà ăn mới</a></li>
                             </ul>
                         </div>
                         <div class="card">
                             <form class="form" method="POST" action="AddRestaurantController" name="addRestaurantForm" onsubmit="return validateRestaurant()"  enctype="multipart/form-data">
                                 <div class="left-side">
                                     <div class="left_top">
-                                        <h4>Thêm ảnh nhà hàng</h4>
+                                        <h4>Thêm ảnh nhà ăn</h4>
                                     </div> 
                                     <div class="mt-5">
                                         <input type="file" accept="image/*" onchange="loadFile(event)" name ="restaurantImage" id="file1">
@@ -66,8 +66,8 @@
                                 </div>
 
                                 <div class="right-side">
-                                    <h3>Mô tả nhà hàng</h3>
-                                    <div class="input_text"> <input type="text" name="restaurantName" placeholder="Nhập tên nhà hàng"> <span>Tên nhà hàng</span> </div>
+                                    <h3>Mô tả nhà ăn</h3>
+                                    <div class="input_text"> <input type="text" name="restaurantName" placeholder="Nhập tên nhà ăn"> <span>Tên nhà ăn</span> </div>
                                     <div class="error" id="errorName"></div>
                                     <!--                                    <div class="input_text"> <input type="text" name="room" placeholder="Nhập số phòng"> <span>Số phòng</span> </div>   
                                                                         <div class="error" id="errorRoom"></div>
@@ -109,7 +109,7 @@
                                     <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="description" style="width:250px;height:150px;"></textarea>
 
                                     <div class="pay"> 
-                                        <button type="submit" >Thêm nhà hàng</button>                  
+                                        <button type="submit" >Thêm nhà ăn</button>                  
                                     </div>
 
                                 </div>

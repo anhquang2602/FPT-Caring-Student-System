@@ -54,7 +54,7 @@
                                 <ul class="breadcrumb bg-white">
                                     <li><a href="home.jsp">Trang chủ</a></li>
                                     <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
-                                    <li><a>Chi tiết nhà hàng</a></li>
+                                    <li><a>Chỉnh sửa nhà hàng</a></li>
                                 </ul>
                             </div>
                             <div class="card">
@@ -135,8 +135,8 @@
                                             </textarea>
                                         </div>
                                         <div class="pay"> 
-                                            <button type="submit">Save</button> 
-                                            <button style="margin-top: 5px" type="reset">Reset </button>
+                                            <button type="submit">Lưu</button> 
+                                            <button style="margin-top: 5px" type="reset">Sắp lại</button>
                                         </div>
                                     </div>
                                 </form>
