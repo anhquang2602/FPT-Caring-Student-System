@@ -3,21 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/FCS_Final158/nbproject/build-impl.xml</file>
-            <file>file:/D:/FCS_Final158/src/java/dao/DBContext.java</file>
-            <file>file:/D:/FCS_Final158/web/hosteldetail.jsp</file>
-            <file>file:/D:/FCS_Final158/web/viewRestaurant.jsp</file>
-            <file>file:/D:/FCS_Final158/web/addHostel.jsp</file>
-            <file>file:/D:/FCS_Final158/test/dao/BusDAOTest.java</file>
-            <file>file:/D:/FCS_Final158/web/css/pagingStyle.css</file>
-=======
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/viewRestaurant.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listAllHostels.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/listAllRestaurant.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/DBContext.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/hosteldetail.jsp</file>
->>>>>>> f421aa0184fe2e37acd479560101a531220b59d9
+            <file>file:/D:/đồ%20án/src/java/dao/ClubDAO.java</file>
+            <file>file:/D:/đồ%20án/web/hosteldetail.jsp</file>
+            <file>file:/D:/đồ%20án/src/java/controller/DeteleEvent.java</file>
+            <file>file:/D:/đồ%20án/test/dao/DepartmentDAOTest.java</file>
+            <file>file:/D:/đồ%20án/src/java/controller/ClubListController.java</file>
+            <file>file:/D:/đồ%20án/src/java/filter/UrlFilter.java</file>
+            <file>file:/D:/đồ%20án/web/css/pagingStyle.css</file>
+            <file>file:/D:/đồ%20án/src/java/controller/AuthenticateServlet.java</file>
+            <file>file:/D:/đồ%20án/src/java/dao/RestaurantDAO.java</file>
+            <file>file:/D:/đồ%20án/src/java/controller/EditEvent.java</file>
+            <file>file:/D:/đồ%20án/web/listAllRestaurant.jsp</file>
+            <file>file:/D:/đồ%20án/nbproject/private/private.properties</file>
+            <file>file:/D:/đồ%20án/src/java/controller/AddNewEvent.java</file>
+            <file>file:/D:/đồ%20án/nbproject/genfiles.properties</file>
+            <file>file:/D:/đồ%20án/src/java/dao/DBContext.java</file>
+            <file>file:/D:/đồ%20án/src/java/dao/HostelDAO.java</file>
+            <file>file:/D:/đồ%20án/src/java/controller/ForgotPass_InputEmailServlet.java</file>
+            <file>file:/D:/đồ%20án/web/listAllHostels.jsp</file>
+            <file>file:/D:/đồ%20án/test/dao/AccountDAOTest.java</file>
         </group>
     </open-files>
 </project-private>
