@@ -185,7 +185,6 @@
                                                     <table class="table table-hover table-center datatable" id="seller">
                                                         <thead>
                                                             <tr>
-                                                                <th>ID Chủ Kinh Doanh</th>
                                                                 <th>Tên Chủ Kinh Doanh</th>
                                                                 <th>Tuổi</th>
                                                                 <th>Giới Tính</th>
@@ -198,14 +197,19 @@
                                                         <tbody>
                                                             <c:forEach items="${listSeller}" var="seller">
                                                                 <tr>
-                                                                    <td>${seller.sellerID}</td>
                                                                     <td>${seller.firstName} ${seller.lastName}</td>
-                                                                    <td>${seller.age}</td>
+                                                                    <td><c:if test="${seller.age eq 0}">
+                                                                        </c:if>
+                                                                        <c:if test="${seller.age == null}">
+                                                                        </c:if>
+                                                                        <c:if test="${seller.age != 0}">
+                                                                            ${seller.age}</td> 
+                                                                        </c:if>
                                                                     <td>
                                                                         <c:if test="${seller.gender==1}">Nam</c:if>
                                                                         <c:if test="${seller.gender==0}">Nữ</c:if>
                                                                         </td>
-                                                                        <td>0${seller.phone}</td>
+                                                                        <td>${seller.phone}</td>
                                                                     <td>${seller.email}</td>
                                                                     <td class="text-center">
                                                                         <c:if test="${seller.status==1}">
