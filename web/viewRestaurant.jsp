@@ -172,7 +172,7 @@ Author     : nguye
                                                                  <c:if test="${food.imageURL != null && food.imageURL !=''}">
                                                                      src="${food.imageURL}" </c:if>
                                                                  <c:if test="${food.imageURL == null}">
-                                                                     src="images/food1.png" </c:if> 
+                                                                     src="images/food.png" </c:if> 
                                                                  <c:if test="${food.imageURL == ''}">
                                                                      src="images/food.png" </c:if> width="200px" height="200px">
                                                             </div>
