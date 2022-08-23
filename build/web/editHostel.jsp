@@ -279,8 +279,8 @@
                                             </textarea>
                                         </div>
                                         <div class="pay"> 
-                                            <button type="submit">Save</button> 
-                                            <button style="margin-top: 5px" type="reset">Reset </button>
+                                            <button type="submit">Lưu</button> 
+                                            <button style="margin-top: 5px" type="reset">Khôi phục</button>
                                         </div>
                                     </div>
                                 </form>

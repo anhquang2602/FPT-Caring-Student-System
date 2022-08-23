@@ -41,7 +41,7 @@
                                             <input type="text" class="form-control" name="email" value="${student.email}" readonly="" hidden="">
                                             <c:if test="${student.status eq 1}">
                                                 <strong class=" mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status" checked="" id="inlineRadio1" value="1">
-                                                <strong class=" mr-1">Không Hoạt Động</strong><input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0">
+                                                <strong class=" mr-1">Khóa Tài Khoản</strong><input class="form-check-input" type="radio" name="status"   id="inlineRadio1" value="0">
                                             </c:if>
                                             <c:if test="${student.status eq 0}">
                                                 <strong class=" mr-1">Kích Hoạt Tài Khoản</strong><input class="form-check-input" type="radio" name="status"  id="inlineRadio1" value="1">
@@ -81,7 +81,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Số điện thoại</h4>
-                                        <input type="text" class="form-control" value="0${student.phone}" readonly="">
+                                        <input type="text" class="form-control" value="${student.phone}" readonly="">
                                     </div>
                                 </div>
                                 <div class="row mt-3">

@@ -209,26 +209,26 @@
                                                                         <c:if test="${student.gender==1}">Nam</c:if>
                                                                         <c:if test="${student.gender==0}">Nữ</c:if>
                                                                         </td>
-                                                                        <td>0${student.phone}</td>
+                                                                        <td>${student.phone}</td>
                                                                     <td>${student.email}</td>
                                                                     <td class="text-center">
                                                                         <c:if test="${student.status==1}">
                                                                             <div class="actions">
-                                                                                <a href="ChangeStatusCriteria?id=${student.studentNo}" class="btn btn-sm bg-purple-light mr-2">
+                                                                                 <a class="btn btn-sm bg-purple-light mr-2">
                                                                                     <i class="fas fa-check-square"></i>
                                                                                 </a>
                                                                             </div>
                                                                         </c:if>
                                                                         <c:if test="${student.status==0}">
                                                                             <div class="actions">
-                                                                                <a href="ChangeStatusCriteria?id=${student.studentNo}" class="btn btn-sm bg-default-light mr-2">
+                                                                                <a class="btn btn-sm bg-default-light mr-2">
                                                                                     <i class="fas fa-square"></i>
                                                                                 </a>
                                                                             </div>
                                                                         </c:if>
                                                                     </td>
                                                                     <td>
-                                                                        <a href="ViewStudentController?id=${student.studentID}" style="text-decoration: none">Chi Tiết</a>
+                                                                        <a href="ViewStudentController?email=${student.email}" style="text-decoration: none">Chi Tiết</a>
                                                                     </td>
                                                                 </tr>
                                                             </c:forEach>
