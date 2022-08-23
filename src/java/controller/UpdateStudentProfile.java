@@ -129,6 +129,15 @@ public class UpdateStudentProfile extends HttpServlet {
         studentId = request.getParameter("studentId");
         unit = request.getParameter("unit");
         StudentDAO sdb = new StudentDAO();
+        boolean studentIdExist = false;
+        if (studentId != null && !studentId.isEmpty() && studentId != "") {
+            if (studentId.equalsIgnoreCase(sdb.getStudentIdByEmai(email))) {
+                studentIdExist = false;
+            } else {
+                studentIdExist = sdb.isStudentIdExsit(studentId);
+            }
+        }
+
         String realPath1 = request.getServletContext().getRealPath("/avatarImages");
         String realPath = realPath1.replaceFirst("build", "");
         String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
@@ -136,44 +145,23 @@ public class UpdateStudentProfile extends HttpServlet {
             Files.createDirectories(Paths.get(realPath));
         }
         if (part.getSize() == 0) {
-
             UserAvatar = sdb.getStAvatarByUsername(email);
-            /*
-             st.setString(1, avatar);
-             st.setString(2, student.getFirstName());
-             st.setString(3, student.getLastName());
-             st.setInt(4, student.getAge());
-             st.setInt(5, student.getPhone());
-             st.setInt(6, student.getCountryID());
-             st.setInt(7, student.getProvinceID());
-             st.setInt(8, student.getDistrictID());
-             st.setString(9, student.getAddress());
-             st.setBoolean(10, gender);
-             st.setString(11, student.getLinkFb());
-             st.setString(12,student.getStudentID());
-             st.setString(13,student.getUnit());
-             st.setString(14, student.getEmail());
-             String avatar, String firstName,String lastName,String age,String phone,String countryId,String provinceId,String districtId,String addressDetail,String gender,String linkFaceBook,String studentId,String unit,String email
-             */
-            //Student studentUpdate = new Student(studentId, firstName, lastName, age, phone, unit, email, 1, provinceID, districtID, addressDetail, gender, linkFb);
-            if (sdb.updateStudentProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, studentId, unit, email) == true) {
-                reloadPage(request, response);
-                //request.setAttribute("UpdateProcess", "Update successfully");
-                //request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
-                //request.getRequestDispatcher("home.jsp").forward(request, response);
-
-                session.setAttribute("stt", "1");
-                response.sendRedirect(request.getContextPath() + "/UpdateStudentProfile");
-
+            if (studentIdExist == false) {
+                if (sdb.updateStudentProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, studentId, unit, email) == true) {
+                    reloadPage(request, response);
+                    session.setAttribute("stt", "1");
+                    response.sendRedirect(request.getContextPath() + "/UpdateStudentProfile");
+                } else {
+                    reloadPage(request, response);
+                    request.setAttribute("UpdateProcess", "Update fail");
+                    request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
+                }
             } else {
+                request.setAttribute("UpdateProcess", "Cập nhật thất bại do mã số sinh viên đã tồn tại");
                 reloadPage(request, response);
-                request.setAttribute("UpdateProcess", "Update fail");
                 request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
             }
         } else {
-
-            /*SellerDAO sdb = new SellerDAO();
-             Seller seller = sdb.getSellertByUsername(username);*/
             String avatarName = null;
             if (email.contains("@gmail.com")) {
                 avatarName = email.replaceFirst("@gmail.com", "Avatar.jpg");
@@ -182,33 +170,23 @@ public class UpdateStudentProfile extends HttpServlet {
             }
             UserAvatar = "avatarImages/" + avatarName;
             part.write(realPath + "\\" + avatarName);
-            /* try (PrintWriter out = response.getWriter()) {
-             out.println("<h1>Name: " + avatarName + "</h1>");
-             out.println("<h1>uplodName: " + realPath.toString() + "</h1>");
-             out.println("<h1>Part: " + part.toString() + "</h1>");
-             out.print("<img src='avatarImages/" + avatarName + "'width='100'>");
-             } catch (Exception e) {
-             e.printStackTrace();
-             }*/
-
-            if (sdb.updateStudentProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, studentId, unit, email) == true) {
-                //request.setAttribute("UpdateProcess", "Update successfully");
-                reloadPage(request, response);
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(UpdateStudentProfile.class.getName()).log(Level.SEVERE, null, ex);
+            if (studentIdExist == false) {
+                if (sdb.updateStudentProfileNoPro(UserAvatar, firstName, lastName, age, phone, "1", provinceID, districtID, addressDetail, gender, linkFb, studentId, unit, email) == true) {
+                    reloadPage(request, response);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(UpdateStudentProfile.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    session.setAttribute("stt", "1");
+                    response.sendRedirect(request.getContextPath() + "/UpdateStudentProfile");
+                } else {
+                    request.setAttribute("UpdateProcess", "Update fail");
+                    reloadPage(request, response);
+                    request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
                 }
-
-              
-//                request.setAttribute("UpdateProcess", "Update successfully");
-//                request.getRequestDispatcher("self_profileSeller.jsp").forward(request, response);
-                session.setAttribute("stt", "1");
-                response.sendRedirect(request.getContextPath() + "/UpdateStudentProfile");
-
             } else {
-                request.setAttribute("UpdateProcess", "Update fail");
+                request.setAttribute("UpdateProcess", "Cập nhật thất bại do mã số sinh viên đã tồn tại");
                 reloadPage(request, response);
                 request.getRequestDispatcher("self_profileStudent.jsp").forward(request, response);
             }

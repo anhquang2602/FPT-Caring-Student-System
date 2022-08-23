@@ -113,6 +113,29 @@ function checkUnit(nameOfForm) {
         check = 0;
     }
 }
+
+function checkMSSV(nameOfForm) {
+    const mssv = document[nameOfForm].studentId.value;
+    const re =  /^[Kk]{1}\d{2}$/;
+    if (mssv == '') {
+//        const phoneError = document.createElement('div');
+//        phoneError.append('Phone can not empty');
+//        phoneError.setAttribute('class', 'alert-danger alert error');
+//        phoneError.setAttribute('role', 'alert');
+//        //  Append div to parent element
+//        document.getElementById('divCheckPhone').appendChild(phoneError);
+//        check = 0;
+    } else if (!re.test(String(mssv).toLowerCase())) {
+        // Step 1: Create dynamic div
+        const mssvError = document.createElement('div');
+        mssvError.append('Hãy nhập chính xác mã số sinh viên (vd HE130111,HE140249...)');
+        mssvError.setAttribute('class', 'alert-danger alert error');
+        mssvError.setAttribute('role', 'alert');
+        // Step 2: Append div to parent element
+        document.getElementById('divCheckstudentId').appendChild(mssvError);
+        check = 0;
+    }
+}
 //
 function checkInputCode(nameOfForm) {
     const code = document[nameOfForm].inputCode.value;
@@ -272,6 +295,7 @@ function checkValidatorForUpdateStudentProfile()
     checkPhone('updateStudentForm');
     checkAge('updateStudentForm');
     checkUnit('updateStudentForm');
+ //   checkMSSV('updateStudentForm');
     
 
 }

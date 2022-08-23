@@ -52,6 +52,22 @@ public class StudentDAO extends DBContext {
         }
         return null;
     }
+    
+    public boolean isStudentIdExsit(String studentId) {
+        String sql = "select StudentId from Students where StudentId = ?";
+        PreparedStatement st;
+        try {
+            st = connection.prepareCall(sql);
+            st.setString(1, studentId);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public ArrayList<Student> getAllStudent(int index) throws ClassNotFoundException, SQLException, Exception {
         ArrayList<Student> list = new ArrayList<>();
@@ -797,6 +813,8 @@ public class StudentDAO extends DBContext {
         }
         return false;
     }
+    
+    
 
     public String getStAvatarByUsername(String username) {
         try {
@@ -882,6 +900,27 @@ public class StudentDAO extends DBContext {
         }
         return null;
     }
+    
+    public String getStudentIdByEmai(String email) {
+        try {
+            String sql = "select StudentID from Students where Email=?";
+            PreparedStatement st;
+            ResultSet rs;
+            st = connection.prepareStatement(sql);
+            st.setString(1, email);
+            rs = st.executeQuery();
+            while (rs.next()) {               
+                return rs.getString(1);
+            }
+            st.close();
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    
       public Student getStudentByEmail(String email) {
         try {
             String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit,Email ,  CountryName , ProvinceName , DistrictName  "
