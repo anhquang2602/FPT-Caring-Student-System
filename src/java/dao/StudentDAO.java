@@ -900,6 +900,7 @@ public class StudentDAO extends DBContext {
         }
         return null;
     }
+
     
     public String getStudentIdByEmai(String email) {
         try {
@@ -921,6 +922,7 @@ public class StudentDAO extends DBContext {
         return null;
     }
     
+
       public Student getStudentByEmail(String email) {
         try {
             String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit,Email ,  CountryName , ProvinceName , DistrictName  "
