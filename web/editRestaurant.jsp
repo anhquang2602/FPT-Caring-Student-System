@@ -54,7 +54,7 @@
                                 <ul class="breadcrumb bg-white">
                                     <li><a href="home.jsp">Trang chủ</a></li>
                                     <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
-                                    <li><a>Chi tiết nhà hàng</a></li>
+                                    <li><a>Chỉnh sửa nhà hàng</a></li>
                                 </ul>
                             </div>
                             <div class="card">
@@ -68,23 +68,23 @@
                                         </div>
                                         <div class="mt-3">
                                             <input type="file" accept="image/*" onchange="loadFile(event)" name ="restaurantImage" id="file1">
-                                            <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 65px; opacity: 50%">+</label>
-                                            <img id="Url1" name="Url1" width="100%" height="100%"
+                                            <label for="file1" style="position: absolute; margin-left: 300px; margin-top: 190px; opacity: 30%">+</label>
+                                            <img id="Url1" name="Url1" width="600px" height="350px"
                                                  <c:if test="${restaurant.restaurantImage != null}">
                                                      src="${restaurant.restaurantImage}" </c:if>/>
                                                  <script>
                                                      var loadFile = function (event) {
                                                          var output = document.getElementById('Url1');
                                                          output.src = URL.createObjectURL(event.target.files[0]);
-                                                         output.style.width = "170px";
-                                                         output.style.height = "170px";
+                                                         output.style.width = "600px";
+                                                         output.style.height = "350px";
                                                          output.onload = function () {
                                                              URL.revokeObjectURL(output.src) // free memory
                                                          }
                                                      };
                                                  </script>
                                             <c:if test="${restaurant.restaurantImage != null}">
-                                                <a id="U1" class ="Url1" style="position: absolute; margin-left: -20px; text-decoration: none" href="deleteimgres?id=${restaurant.restaurantID}&url=Url1">X</a>
+                                                <a id="U1" class ="Url1" style="position: absolute; margin-top: -350px; margin-left: 580px; text-decoration: none" href="deleteimgres?id=${restaurant.restaurantID}&url=Url1">X</a>
                                             </c:if>
                                         </div> 
                                     </div>
@@ -135,8 +135,8 @@
                                             </textarea>
                                         </div>
                                         <div class="pay"> 
-                                            <button type="submit">Save</button> 
-                                            <button style="margin-top: 5px" type="reset">Reset </button>
+                                            <button type="submit">Lưu</button> 
+                                            <button style="margin-top: 5px" type="reset">Sắp lại</button>
                                         </div>
                                     </div>
                                 </form>
@@ -207,7 +207,7 @@
                 const address = document.editRestaurantForm.address.value;
                 const cost = document.editRestaurantForm.cost.value;
                 const distance = document.editRestaurantForm.distance.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex = /^(?!0\d)\d*(\.\d+)?$/;
                 const regex2 = /^[0-9]*$/;
                 document.getElementById('errorName').innerText = ' ';
                 document.getElementById('errorProvince').innerText = ' ';
@@ -232,10 +232,7 @@
                 if (!cost) {
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá dao động!';
                     isValid = false;
-                } else if (!regex.test(cost)) {
-                    document.getElementById('errorCost').innerText = 'Invalid!';
-                    isValid = false;
-                } else if (cost <= 0) {
+                }  else if (cost <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
                     isValid = false;
                 }

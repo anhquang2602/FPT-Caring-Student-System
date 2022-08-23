@@ -79,6 +79,12 @@
                     </a> 
                 </li>
                 <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 4) {%>
+                <li>    
+                    <a class="bg-hostel-light fs12 ps-3" style="text-decoration: none; color: rgb(238, 77, 45)" href="ClubListController">
+                        <span class="fas fa-user-friends mr-3"></span> 
+                        <span class="text-center">CÁC CÂU LẠC BỘ</span>
+                    </a>
+                </li>
                 <%}%>
             </ul>
         </div>

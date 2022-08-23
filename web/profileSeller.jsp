@@ -33,7 +33,7 @@
                         <div class="col-md-4">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                 <img class="rounded-circle mt-5" height="170rem" width="170rem" src="${seller.image}">
-                                <a href="${seller.linkFb}" class="mt-3" style="text-decoration: none" title="" target="_blank">My Facebook</a>
+                                <a href="${seller.linkFb}" class="mt-5 fs13" style="text-decoration: none" title="" target="_blank">Facebook của tôi</a>
                                 <div class="mt-5">
                                     <%if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 1) {%>
                                     <form action="ChangeStatusSeller" method="post">
@@ -81,7 +81,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Số Điện Thoại</h4>
-                                        <input type="text" class="form-control" value="0${seller.phone}" readonly="">
+                                        <input type="text" class="form-control" value="${seller.phone}" readonly="">
                                     </div>
                                 </div>
                                 <div class="row mt-3">

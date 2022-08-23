@@ -47,7 +47,6 @@
         </style>
     </head>
     <body>
-       
         <%@include file="/header.jsp" %>
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -62,15 +61,14 @@
                                 <input type="text" name="keyword" value="${keyword}" >
                                 <button type="submit"><i class="fa fa-search"></i></button> 
                             </div>
-                            <div class="d-flex mb-3 mt-5 px-md-3 px-2">
-                                <div class="text-center">
-                                    <p class="fs-4 ml-5">Bộ lọc tìm kiếm</p>
+                            <div class="d-flex mb-3 mt-5 px-md-5">
+                                <div class="text-center px-5 ml-5">
+                                    <p class="fs-4 ml-5" style="text-decoration: none; color:rgb(238, 77, 45); font-weight: bold">Bộ lọc tìm kiếm</p>
                                 </div>
                                 <div class="d-flex">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-5 mr-5">
+                                    <div class="col-md-4 mr-5">
                                         <span class="fs-4">Khoảng cách: </span>
-                                        <select name="distance" class="p-2">
+                                        <select name="distance" class="py-2">
                                             <option value="10" <c:if test = "${distance == 10 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
@@ -88,32 +86,35 @@
                                                 </c:if>> <= 5km</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-5 mr-5">
+                                    <div class="col-md-5 mr-3">
                                         <span class="fs-4">Xếp hạng: </span>    
-                                        <select name="star" class="p-2">
+                                        <select name="star" class="py-2">
                                             <option value="5" <c:if test = "${star == 5 }">
                                                     selected="selected"
                                                 </c:if>> Tất cả</option>
                                             <option value="1" <c:if test = "${star == 1 }">
                                                     selected="selected"
-                                                </c:if>> 1</option>
+                                                </c:if>> 1 sao trở lên</option>
                                             <option value="2" <c:if test = "${star == 2 }">
                                                     selected="selected"
-                                                </c:if>> 2</option>
+                                                </c:if>> 2 sao trở lên</option>
                                             <option value="3" <c:if test = "${star == 3 }">
                                                     selected="selected"
-                                                </c:if>> 3</option>
+                                                </c:if>> 3 sao trở lên</option>
                                             <option value="4" <c:if test = "${star == 4 }">
                                                     selected="selected"
-                                                </c:if>> 4</option>
+                                                </c:if>> 4 sao trở lên</option>
                                             <option value="0" <c:if test = "${star == 0 }">
                                                     selected="selected"
                                                 </c:if>> Chưa có đánh giá</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
-                                        <input class="fs-4 mr-5" type="submit" value="Lọc"> 
-                                        <a class="fs-4" href="ResetSearchRes?keyword=${keyword}" style="text-decoration: none">Xóa bộ lọc</a>
+                                    <div class="col-md-3">
+                                        <input class="fs-4" type="submit" value="Lọc">
+                                    
+                                        
+                                        <input class="fs-4 ml-2" type=button onClick="location.href='ResetSearchRes?keyword=${keyword}'"
+                                                            value='Xoá bộ lọc'>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +126,7 @@
                                 <div>
                                     <ul class="breadcrumb">
                                         <li><a href="home.jsp">Trang chủ</a></li>
-                                        <li><a>Danh sách tất cả nhà hàng</a></li>
+                                        <li><a>Danh sách tất cả nhà ăn</a></li>
                                     </ul>
                                 </div>
                                 ${listSize}
@@ -134,10 +135,12 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    <img  <c:if test="${restaurant.restaurantImage != null}">
+                                                    <img  <c:if test="${restaurant.restaurantImage != null && restaurant.restaurantImage != ''}">
                                                             src="${restaurant.restaurantImage}" </c:if>
                                                         <c:if test="${restaurant.restaurantImage == null}">
-                                                            src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
+                                                            src="images/res.jpg" </c:if> 
+                                                        <c:if test="${restaurant.restaurantImage == ''}">
+                                                            src="images/res.jpg" </c:if>style="width: 150px; height: 150px" >
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
                                                         <h3 class="mt-0 font-weight-bold mb-4">
@@ -145,11 +148,12 @@
                                                     </h3>
                                                     <p style="font-size: 20px">${restaurant.description}</p>
                                                     <p style="font-size: 20px">${restaurant.address}</p>
+                                                    <p style="font-size: 20px">${restaurant.cost}</p>
                                                 </div>
 
                                                 <div class="col-md-4 mt-5  media-body order-2 order-lg-1 button_edit">
-                                                    <div class="stars-outer">
-                                                    <div class="stars-inner" style="width: ${restaurant.starAVG}%">  </div>
+                                                    <div class="stars-outer" style=" font-size: 20px">
+                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}%;font-size: 20px">  </div>
                                                     </div>
                                                 </div>
                                         </li> 

@@ -48,7 +48,16 @@
                                 <div class="col-md-4">
                                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                         <div class="mt-5">
-                                            <img class="rounded-circle justify-content-center" height="200px" width="200px" src="${UserAvatar}" id="output">
+                                            <img class="rounded-circle justify-content-center" height="200px" width="200px" 
+                                                 
+                                                      <c:if test="${UserAvatar != null && UserAvatar !=''}">
+                                                             src="${UserAvatar}" </c:if>
+                                                         <c:if test="${UserAvatar == null}">
+                                                             src="images/user.jpg" </c:if> 
+                                                         <c:if test="${UserAvatar == ''}">
+                                                             src="images/user.jpg" </c:if>  
+                                                 
+                                                 id="output">
                                             <input type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file mt-3 p-3 ml-5" id="avatarImg">
                                         </div>
                                         <div id="divCheckImg"></div>
@@ -158,29 +167,32 @@
                 </div>
             </div>
         </div>
+        <%@include file="/footer.jsp" %>
+
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+
+            });
+        </script>
     </body>
     <script src="validator/Validator.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".toast").toast({delay: 4000});
-            $(".toast").toast("show");
 
-        });
-    </script>
     <script language="javascript">
 
-        var gender = document.getElementById('genderlable').innerHTML;
+            var gender = document.getElementById('genderlable').innerHTML;
 
-        if (gender == 1) {
-            document.getElementById('inlineRadio1').setAttribute('checked', true);
-        } else
-        {
-            document.getElementById('inlineRadio2').setAttribute('checked', true);
-        }
+            if (gender == 1) {
+                document.getElementById('inlineRadio1').setAttribute('checked', true);
+            } else
+            {
+                document.getElementById('inlineRadio2').setAttribute('checked', true);
+            }
 
 
-        // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
-        // obj là tham số truyền vào và cũng chính là thẻ select
+            // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
+            // obj là tham số truyền vào và cũng chính là thẻ select
 
             
            
@@ -191,8 +203,8 @@
         // Get the image element
         var image = document.getElementById("output");
         // Adding the timestamp parameter to image src
-        image.src=image.src+"?t=" + timestamp;
-        
+        image.src = image.src + "?t=" + timestamp;
+
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
@@ -255,5 +267,4 @@
             return isValid;
         }
     </script>
-    <%@include file="/footer.jsp" %>
 </html>

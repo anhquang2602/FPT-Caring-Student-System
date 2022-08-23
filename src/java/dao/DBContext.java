@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -20,6 +20,7 @@ public abstract class DBContext {
     protected Connection connection;
 
     public DBContext() {
+
         try {
             String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS";
             String user = "sa";
@@ -30,4 +31,5 @@ public abstract class DBContext {
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }

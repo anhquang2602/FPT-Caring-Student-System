@@ -38,9 +38,9 @@ public class SellerDAO extends DBContext {
         ArrayList<Seller> list = new ArrayList<>();
         String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook\n"
                 + "from Sellers\n"
-                + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                + "left join District on Sellers.DistrictID = District.DistrictID\n"
                 + "inner join Account on Sellers.Email = Account.username\n"
                 + "ORDER BY SellerID\n"
                 + "OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
@@ -59,9 +59,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook\n"
                     + "from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "ORDER BY SellerID";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -82,9 +82,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') AND Sellers.ProvinceID = " + province + " \n"
                     + "and Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
@@ -107,9 +107,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') \n"
                     + "ORDER BY SellerID";
@@ -131,9 +131,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%')  \n"
                     + "and Account.AccountStatus = " + status + " \n"
@@ -156,9 +156,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%')  and Gender = " + gender + "\n"
                     + "ORDER BY SellerID";
@@ -180,9 +180,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') AND Sellers.ProvinceID = " + province + " \n"
                     + "ORDER BY SellerID";
@@ -204,9 +204,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') AND Sellers.ProvinceID = " + province + " \n"
                     + "and Account.AccountStatus = " + status + " \n"
@@ -229,9 +229,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') AND Sellers.ProvinceID = " + province + " \n"
                     + "and Gender = " + gender + "\n"
@@ -254,9 +254,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') AND Sellers.ProvinceID = " + province + " \n"
                     + "and Gender = " + gender + "\n"
@@ -280,9 +280,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE (FirstName LIKE N'%" + key + "%' OR LastName LIKE N'%" + key + "%') \n"
                     + "and Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
@@ -305,9 +305,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE Sellers.ProvinceID = " + province + " \n"
                     + "and Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
@@ -330,9 +330,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE Sellers.ProvinceID = " + province + " \n"
                     + "ORDER BY SellerID";
@@ -354,9 +354,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE Sellers.ProvinceID = " + province + " and Gender = " + gender + "\n"
                     + "ORDER BY SellerID";
@@ -378,9 +378,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE Sellers.ProvinceID = " + province + " \n"
                     + "and Account.AccountStatus = " + status + " \n"
@@ -403,9 +403,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
                     + "ORDER BY SellerID";
@@ -427,9 +427,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE Account.AccountStatus = " + status + "\n"
                     + "ORDER BY SellerID";
@@ -451,9 +451,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
                     + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "WHERE Gender = " + gender + "\n"
                     + "ORDER BY SellerID";
@@ -475,9 +475,9 @@ public class SellerDAO extends DBContext {
 //        try {
 //            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , \n"
 //                    + "AddressDetail ,Account.AccountStatus , Gender,Avatar,LinkFacebook from Sellers\n"
-//                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-//                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-//                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+//                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+//                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+//                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
 //                    + "inner join Account on Sellers.Email = Account.username\n"
 //                    + "WHERE Sellers.ProvinceID = " + province + " \n"
 //                    + "and Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
@@ -512,15 +512,45 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus,Gender,Avatar,LinkFacebook\n"
                     + "from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
                     + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
                     + "left join District on Sellers.DistrictID = District.DistrictID\n"
-                    + "inner join Account on Sellers.Email = Account.username\n"
+                    + "left join Account on Sellers.Email = Account.username\n"
                     + "where SellerID=?";
             PreparedStatement st;
             ResultSet rs;
             st = connection.prepareStatement(sql);
             st.setInt(1, sellerID);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                Seller seller = new Seller(rs.getInt("SellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook"));
+                st.close();
+                rs.close();
+                return seller;
+            }
+            st.close();
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+    
+    public Seller getSellertBySellerEmail(String sellerEmail) {
+        try {
+            String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus,Gender,Avatar,LinkFacebook\n"
+                    + "from Sellers\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Account on Sellers.Email = Account.username\n"
+                    + "where Email=?";
+            PreparedStatement st;
+            ResultSet rs;
+            st = connection.prepareStatement(sql);
+            st.setString(1, sellerEmail);
             rs = st.executeQuery();
             while (rs.next()) {
                 Seller seller = new Seller(rs.getInt("SellerID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
@@ -559,9 +589,9 @@ public class SellerDAO extends DBContext {
         try {
             String sql = "select SellerID, FirstName , LastName , Age , Phone , Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus,Gender,Avatar,LinkFacebook\n"
                     + "from Sellers\n"
-                    + "inner join Country on Sellers.CountryID=Country.CountryID\n"
-                    + "inner join Province on Sellers.ProvinceID = Province.ProvinceID\n"
-                    + "inner join District on Sellers.DistrictID = District.DistrictID\n"
+                    + "left join Country on Sellers.CountryID=Country.CountryID\n"
+                    + "left join Province on Sellers.ProvinceID = Province.ProvinceID\n"
+                    + "left join District on Sellers.DistrictID = District.DistrictID\n"
                     + "inner join Account on Sellers.Email = Account.username\n"
                     + "where Email=?";
             PreparedStatement st;

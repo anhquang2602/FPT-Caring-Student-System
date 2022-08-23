@@ -39,12 +39,6 @@
                     <%@include file="/sidebar.jsp" %>
                 </ul>
                 <div id="topnavbar" class="col-md-10">
-                    <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-                        <form class="example d-flex align-items-center"> 
-                            <input type="text" placeholder="" name="search"> 
-                            <button type="submit"><i class="fa fa-search"></i></button> 
-                        </form>
-                    </div>
                     <div class="main-wrapper">
                         <div class="page-wrapper">
                             <div class="content container-fluid">
@@ -67,6 +61,7 @@
                                                                 <th>Hình Ảnh Không Phù Hợp</th>
                                                                 <th>Ngôn Từ Đả Kích</th>
                                                                 <th>Thông Tin Sai Sự Thật</th>
+                                                                <th>Tổng số báo cáo</th>
                                                                 <th class="text-center">Xem Bài Viết/ Xóa Bài Đăng</th>
                                                             </tr>
                                                         </thead>
@@ -78,6 +73,7 @@
                                                                     <td>${report.violent}</td>
                                                                     <td>${report.offensive}</td>
                                                                     <td>${report.truthless}</td>
+                                                                    <td>${report.allReport}</td>
                                                                     <td class="text-center">
                                                                         <div class="actions">
                                                                             <a href="detailhostel?id=${report.hostelID}&isSeeFromReport=true" class="btn btn-sm bg-success-light mr-2">

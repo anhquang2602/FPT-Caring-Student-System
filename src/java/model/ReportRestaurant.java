@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author DELL
  */
 public class ReportRestaurant {
+
     private int reportID;
     private int restaurantID;
     private String restaurantName;
@@ -20,9 +21,29 @@ public class ReportRestaurant {
     private int offensive;
     private int violent;
     private int truthless;
+    private int allReport;
     private Date reportTime;
+    private int studentID;
+
+    public int getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+    
+    
 
     public ReportRestaurant() {
+    }
+
+    public int getAllReport() {
+        return allReport;
+    }
+
+    public void setAllReport(int allReport) {
+        this.allReport = allReport;
     }
 
     public int getReportID() {
@@ -96,7 +117,6 @@ public class ReportRestaurant {
     public void setCountReport(int countReport) {
         this.countReport = countReport;
     }
-    
 
     public ReportRestaurant(int restaurantID, int spam, int offensive, int violent, int truthless) {
         this.restaurantID = restaurantID;
@@ -104,22 +124,32 @@ public class ReportRestaurant {
         this.offensive = offensive;
         this.violent = violent;
         this.truthless = truthless;
-        
+
     }
 
-    public ReportRestaurant(int restaurantID, String restaurantName, int spam, int offensive, int violent, int truthless) {
+    public ReportRestaurant(int restaurantID, String restaurantName, int spam, int offensive, int violent, int truthless, int allReport) {
         this.restaurantID = restaurantID;
         this.restaurantName = restaurantName;
         this.spam = spam;
         this.offensive = offensive;
         this.violent = violent;
         this.truthless = truthless;
+        this.allReport = allReport;
+    }
+
+
+    public ReportRestaurant(int restaurantID, String restaurantName, int countReport, int spam, int offensive, int violent, int truthless, Date reportTime, int studentID) {
+        this.restaurantID = restaurantID;
+        this.restaurantName = restaurantName;
+        this.countReport = countReport;
+        this.spam = spam;
+        this.offensive = offensive;
+        this.violent = violent;
+        this.truthless = truthless;
+        this.reportTime = reportTime;
+        this.studentID = studentID;
     }
 
  
-   
 
-   
-    
-    
 }
