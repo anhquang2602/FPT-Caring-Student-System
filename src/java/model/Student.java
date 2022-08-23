@@ -62,6 +62,26 @@ public class Student {
         this.gender = gender;
     }
 
+    public Student(int studentNo, String studentID, String firstName, String lastName, int age, String phone, String unit, String email, String countryName, String provinceName, String districtName, String address, int status, int gender, String image, String linkFb) {
+        this.studentNo = studentNo;
+        this.studentID = studentID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.phone = phone;
+        this.unit = unit;
+        this.email = email;
+        this.countryName = countryName;
+        this.provinceName = provinceName;
+        this.districtName = districtName;
+        this.address = address;
+        this.status = status;
+        this.gender = gender;
+        this.image = image;
+        this.linkFb = linkFb;
+    }
+    
+    
     public Student(String studentID, String firstName, String lastName, int age, String phone, String unit, String email, int countryId, int provinceId, int districtId, String address, int gender, String linkFb) {
         this.studentID = studentID;
         this.firstName = firstName;

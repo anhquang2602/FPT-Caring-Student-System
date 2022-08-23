@@ -11,6 +11,8 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -62,6 +64,7 @@ public class EditEvent extends HttpServlet {
         request.setAttribute("eventName", eventName);
         request.setAttribute("time", time);
         request.setAttribute("des", des);
+        request.setAttribute("eventID", id);
         request.getRequestDispatcher("editEvent.jsp").forward(request, response);
         session.removeAttribute("stt");
     }
@@ -83,7 +86,7 @@ public class EditEvent extends HttpServlet {
 //        String username = (String) request.getSession().getAttribute("username");
 //        ArrayList<Event> events = clubDAO.getEventByEmail(username);
         String eventName = request.getParameter("eventName");
-        int id = clubDAO.getEventIDByName(eventName);
+        int id = Integer.parseInt(request.getParameter("eventID"));
 //        for (Event e : events) {
 //            if(e.getEventName().equalsIgnoreCase(eventName)){
 //                request.setAttribute("errorEventName", "EventName already existed!");
@@ -115,6 +118,12 @@ public class EditEvent extends HttpServlet {
         request.setAttribute("time", time);
         request.setAttribute("des", des);
         HttpSession session = request.getSession();
+        
+           try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(EditEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
         session.setAttribute("stt", "2");
         response.sendRedirect(request.getContextPath() + "/EditEvent?eventID=" + id);
     }

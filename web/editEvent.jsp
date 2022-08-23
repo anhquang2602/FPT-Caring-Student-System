@@ -42,6 +42,7 @@
                     <div class="container rounded mt-5 mb-5 p-4">
                         <form action="EditEvent" method="post" enctype="multipart/form-data">
                             <div class="row">
+                                
                                 <div>
                                     <ul class="breadcrumb bg-white">
                                         <li><a href="home.jsp">Trang chủ</a></li>
@@ -53,6 +54,7 @@
                                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                         <div class="mt-5">
                                             <img width="200px" height="200px" src="${eventImage}" id="output">
+                                            <input type="text" value="${eventID}" name="eventID" hidden >
                                             <input style="padding-left: 80px" type="file" name="eventImage" accept="image/*" onchange="loadFile(event)" class="form-control-file mt-5" id="eventImg">
                                         </div>
                                     </div>

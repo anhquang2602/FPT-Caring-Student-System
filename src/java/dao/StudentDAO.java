@@ -854,7 +854,7 @@ public class StudentDAO extends DBContext {
         return null;
     }
 
-    public Student getStudentByEmail(String email) {
+    public Student getStudentByEmail2(String email) {
         try {
             String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit,Email , Students.CountryId , Students.ProvinceId "
                     + ", Students.DistrictId , AddressDetail , Account.AccountStatus ,Gender,Avatar,LinkFacebook,StudentNo\n"
@@ -870,6 +870,37 @@ public class StudentDAO extends DBContext {
                 Student student = new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
                         rs.getString("Unit"), rs.getString("Email"), rs.getInt("CountryID"), rs.getInt("ProvinceID"), rs.getInt("DistrictID"),
                         rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook"), rs.getInt("StudentNo"));
+                st.close();
+                rs.close();
+                return student;
+            }
+            st.close();
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+      public Student getStudentByEmail(String email) {
+        try {
+            String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit,Email ,  CountryName , ProvinceName , DistrictName  "
+                    + ", AddressDetail , Account.AccountStatus ,Gender,Avatar,LinkFacebook,StudentNo\n"
+                    + " from Students\n"
+                    + " join Account on Students.Email = Account.username\n"
+                    + " left join Country on Students.CountryID=Country.CountryID\n"
+                    + " left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                    + " left join District on Students.DistrictID = District.DistrictID\n"
+                    + " where Email=?";
+            PreparedStatement st;
+            ResultSet rs;
+            st = connection.prepareStatement(sql);
+            st.setString(1, email);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                Student student = new Student(rs.getInt("StudentNo"),rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
+                        rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"),
+                        rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook") );
                 st.close();
                 rs.close();
                 return student;
