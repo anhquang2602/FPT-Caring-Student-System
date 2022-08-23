@@ -56,6 +56,7 @@ public class AccountDAOTest {
     public void testInsertNewAccount() {       
     }
 
+
     @Test
     public void testCheckLogin() {
         Account accountRs = new Account();
@@ -74,5 +75,5 @@ public class AccountDAOTest {
         String rs=adb.getPasswordByUsername("longnguyenhuuhoang@gmail.com");
         assertEquals(expected, rs);
     }
-
+    
 }
