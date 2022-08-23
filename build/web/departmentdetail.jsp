@@ -51,7 +51,7 @@
                                     <div class="row mt-3">
                                         <div class="col-md-12">
                                             <h4>Số điện thoại</h4>
-                                            <input type="text" class="form-control" value="0${departmentdetail.phone}" readonly="">
+                                            <input type="text" class="form-control" value="${departmentdetail.phone}" readonly="">
                                         </div>
                                         <div class="col-md-12 mt-3">
                                             <h4>Thời gian hoạt động</h4>
