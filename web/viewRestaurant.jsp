@@ -3,6 +3,8 @@ Document   : edithostel
 Created on : Jul 17, 2022, 4:23:34 PM
 Author     : nguye
 --%>
+<%@page import="model.Food"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -288,8 +290,14 @@ Author     : nguye
                                     </div>
                                     <div class="left-side">
                                         <div class="row">
-                                            <strong class="fs-4">Menu nhà ăn </strong>
-                                            <div class="mt-2">
+                                            <strong class="fs-4">Menu nhà hàng </strong>
+                                            <%
+                                                ArrayList<Food> f = (ArrayList<Food>) request.getAttribute("listFood");
+                                                if (f.size() == 0) {%>
+                                            <p style="font-size: 20px">Hiện tại bạn chưa có món ăn nào</p>
+                                            <%  }%>
+                                            <div class="mt-2">                                               
+
                                                 <c:forEach items="${listFood}" var="food" >
                                                     <div class="row bg-white border rounded p-1 mt-5">
                                                         <div class="col-md-4 mt-1 thumbnail2">
