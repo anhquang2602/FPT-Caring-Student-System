@@ -94,11 +94,7 @@
                                     </ul>
                                 </div>
                                 <div class="mb-3" style="text-align: end">
-<<<<<<< HEAD
-                                    <a style="font-size: 20px; padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="AddRestaurantController">Thêm nhà hàng mới (+)</a>
-=======
                                     <a style="font-size: 20px; padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="AddRestaurantController">Thêm nhà ăn mới (+)</a>
->>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
                                 </div>
                                 <ul class="list-group shadow">
                                     <%

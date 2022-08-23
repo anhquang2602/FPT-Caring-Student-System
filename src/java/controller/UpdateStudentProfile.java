@@ -62,7 +62,7 @@ public class UpdateStudentProfile extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         StudentDAO stDAO = new StudentDAO();
         String username = (String) request.getSession().getAttribute("username");
-        Student student = stDAO.getStudentByEmail(username);
+        Student student = stDAO.getStudentByEmail2(username);
         String UserAvatar = stDAO.getStAvatarByUsername(username);
         request.setAttribute("student", student);
         request.setAttribute("UserAvatar", UserAvatar);

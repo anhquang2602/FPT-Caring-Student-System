@@ -53,9 +53,7 @@ public class ClubListController extends HttpServlet {
             }
             if (listClubs.isEmpty()) {
                 request.setAttribute("listNull", "Không tìm thấy kết quả phù hợp!");
-            } else {
-                request.setAttribute("listNull", "Có " + listClubs.size() + " kết quả được tìm thấy");
-            }
+            } 
         } else {
             if (key == null || key.equals("")) {
                 totalPage = clubDAO.getTotalPageCategory(listClubs, Integer.parseInt(type));
@@ -66,9 +64,7 @@ public class ClubListController extends HttpServlet {
             }
             if (listClubs.isEmpty()) {
                 request.setAttribute("listNull", "Không tìm thấy kết quả phù hợp!");
-            } else {
-                request.setAttribute("listNull", "Có " + listClubs.size() + " kết quả được tìm thấy");
-            }
+            } 
         }
         request.setAttribute("endP", totalPage);
         request.setAttribute("tag", index);
