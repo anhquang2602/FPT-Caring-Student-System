@@ -83,6 +83,7 @@
                                         <div class="col-md-6">
                                             <strong class="text-right fs-4">Mã số sinh viên</strong>
                                             <input type="text" name="studentId" class="form-control" value="${student.studentID}" >
+                                             <div id="divCheckstudentId"></div>
                                         </div>
                                         <div class="col-md-6">
                                             <strong class="text-right fs-4">Khoá</strong>
