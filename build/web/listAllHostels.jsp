@@ -153,6 +153,7 @@
                                         <li><a>Danh sách tất cả nhà trọ</a></li>
                                     </ul>
                                 </div>
+                                ${listSize}
                                 <ul class="list-group shadow">
                                     <c:forEach items="${hostels}" var="d">
                                         <li class="list-group-item">
@@ -168,15 +169,15 @@
                                                                                                     Tình trạng: <c:if test="${d.status == true}" > Còn phòng</c:if>
                                             <c:if test="${d.status == false}" >Hết phòng</c:if>
                                             </p>
-    
-    
+
+
                                             <p class="font-italic text-muted mb-0 small" style="font-size: 18px">Giá thuê:  
                                             <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VNĐ</p>
-    
-    
-    
-    
-    
+
+
+
+
+
                                         </div>
                                         <div class="media-body order-2 order-lg-1 image">
                                             <img  <c:if test="${d.img1 != null}">
@@ -209,10 +210,8 @@
 
                                                     </div>
 
-                                                    <div class="col-md-4 mt-5  media-body order-2 order-lg-1 button_edit">
-                                                        <div class="stars-outer">
-                                                            <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
-                                                    </div>
+                                                    <div class="col-md-4 mt-5 stars-outer media-body order-2 order-lg-1 button_edit">
+                                                        <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
                                                 </div>
 
                                             </div>
@@ -221,7 +220,7 @@
                                 </ul> 
 
                                 <c:forEach begin="1" end="${totalPage}" var="i">
-                                    <a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keywordHostel=${keywordHostel}">${i}</a> 
+                                    <a href="FilterHostelController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keywordHostel=${keywordHostel}&star=${star}">${i}</a> 
                                 </c:forEach>
 
                             </div>
@@ -242,3 +241,4 @@
     </body>
 
 </html>
+

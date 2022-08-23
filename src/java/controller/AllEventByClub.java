@@ -55,6 +55,7 @@ public class AllEventByClub extends HttpServlet {
         ArrayList<Event> listEvent = clubDAO.getEventByEmail(username);
         request.setAttribute("listEvent", listEvent);
         request.getRequestDispatcher("listAllEventOfClub.jsp").forward(request, response);
+        session.removeAttribute("stt");
     }
 
     /**

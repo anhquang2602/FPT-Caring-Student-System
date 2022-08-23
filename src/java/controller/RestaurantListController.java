@@ -101,7 +101,7 @@ public class RestaurantListController extends HttpServlet {
         if (!sv1.isEmpty()) {
 
             int count = 0;
-            double sum = 0;
+            float sum = 0;
             for (StarVoting starVoting : sv1) {
                 sum += starVoting.getStarvoting();
                 count++;

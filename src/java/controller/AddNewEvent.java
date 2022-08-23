@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Event;
 
@@ -92,16 +93,18 @@ public class AddNewEvent extends HttpServlet {
         if (part.getSize() == 0) {
             eventImgName = null;
         } else {
-            eventImgName = "eventImages/" + eventName+".jpg";
-            part.write(realPath + "\\" + eventName+".jpg");
+            eventImgName = "eventImages/" + eventName + ".jpg";
+            part.write(realPath + "\\" + eventName + ".jpg");
         }
-        Event e = new Event(clubID, eventName, time, des,eventImgName);
+        Event e = new Event(clubID, eventName, time, des, eventImgName);
         clubDAO.addEvent(e);
         request.setAttribute("eventImage", eventImgName);
         request.setAttribute("eventName", eventName);
         request.setAttribute("time", time);
         request.setAttribute("des", des);
-        request.getRequestDispatcher("addEvent.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        session.setAttribute("stt", "1");
+        response.sendRedirect(request.getContextPath() + "/AllEventByClub");
     }
 
     /**
