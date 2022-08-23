@@ -32,19 +32,7 @@
                     </div>
                 </div>
             </c:when>
-            <c:when test="${stt.equals('2')}">
-                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
-                    <div class="toast" data-autohide="true">
-                        <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Chỉnh Sửa Sự Kiện Thành Công</h4></strong>
-                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-                        </div>
-                        <div class="toast-body">
-                            Chỉnh sửa sự kiện thành công !
-                        </div>
-                    </div>
-                </div>
-            </c:when>
+            
             <c:when test="${stt.equals('3')}">
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
@@ -66,13 +54,13 @@
                 <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div id="topnavbar1" class="col-md-10">
+                <div id="topnavbar" class="col-md-10">
                     <form action="AddNewEvent" enctype="multipart/form-data"  method="post" >
                         <div class="container" style="margin-top: 50px">
                             <div class="col-lg-12 mb-5">
                                 <div class="row">
                                     <div>
-                                        <ul class="breadcrumb bg-white">
+                                        <ul class="breadcrumb">
                                             <li><a href="home.jsp">Trang chủ</a></li>
                                             <li><a>Danh sách sự kiện</a></li>                                    
                                         </ul>
@@ -85,7 +73,7 @@
                                             <li class="list-group-item">
                                                 <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1 mt-3">
                                                     <div class="col-md-4 media-body order-2 order-lg-1 text-center image">
-                                                        <img src="${event.url}" alt="Generic placeholder image">
+                                                        <img src="${event.url}" width="400px" height="400px" alt="Generic placeholder image">
                                                         <a class="btn btn-primary mt-5" href="EditEvent?eventID=${event.eventID}">Chỉnh sửa </a>
                                                         <a class="btn btn-secondary mt-5" href="DeteleEvent?eventID=${event.eventID}">Xóa </a>
                                                         

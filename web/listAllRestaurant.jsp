@@ -47,21 +47,6 @@
         </style>
     </head>
     <body>
-        <c:choose>
-            <c:when test="${stt.equals('1')}">
-                <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
-                    <div class="toast" data-autohide="true">
-                        <div class="toast-header bg-success">
-                            <strong class="mr-auto text-white"><h4>Report Restaurant Successfully</h4></strong>
-                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-                        </div>
-                        <div class="toast-body">
-                            Report Restaurant Successfully !
-                        </div>
-                    </div>
-                </div>
-            </c:when>
-        </c:choose>
         <%@include file="/header.jsp" %>
         <div class="bg-white">
             <div class="d-flex nav-item main-home col-md-12">
@@ -70,54 +55,69 @@
                 </ul>
                 <div id="topnavbar" class="col-md-10">
                     <div class="d-flex align-items-center mb-3 mt-5 px-md-3 px-2 justify-content-center"> 
-                        <form class="example d-flex align-items-center" action="FilterRestaurantController" method="post"> 
-                            <input type="text" name="keyword" value="${keyword}" >
-                            <button type="submit"><i class="fa fa-search"></i></button> 
-                            <br/>
-                            Bộ lọc tìm kiếm <br/>
-
-
-                            Khoảng cách: <select name="distance">
-                                <option value="6" <c:if test = "${distance == 10 }">
-                                        selected="selected"
-                                    </c:if>> Tất cả</option>
-                                <option value="1" <c:if test = "${distance == 1 }">
-                                        selected="selected"
-                                    </c:if> > <= 1km</option>
-                                <option value="2"<c:if test = "${distance == 2 }">
-                                        selected="selected"
-                                    </c:if>> <= 2km</option>
-                                <option value="3" <c:if test = "${distance == 3 }">
-                                        selected="selected"
-                                    </c:if>> <= 3km</option>
-                                <option value="5" <c:if test = "${distance == 5 }">
-                                        selected="selected"
-                                    </c:if>> <= 5km</option>
-                            </select>
-                            <br/>
-                            <br/>
-                            Xếp hạng: <select name="star">
-                                <option value="5" <c:if test = "${star == 6 }">
-                                        selected="selected"
-                                    </c:if>> Tất cả</option>
-                                <option value="1" <c:if test = "${star == 1 }">
-                                        selected="selected"
-                                    </c:if>> 1</option>
-                                <option value="2" <c:if test = "${star == 2 }">
-                                        selected="selected"
-                                    </c:if>> 2</option>
-                                <option value="3" <c:if test = "${star == 3 }">
-                                        selected="selected"
-                                    </c:if>> 3</option>
-                                <option value="4" <c:if test = "${star == 4 }">
-                                        selected="selected"
-                                    </c:if>> 4</option>
-                                <option value="0" <c:if test = "${star == 0 }">
-                                        selected="selected"
-                                    </c:if>> Chưa có đánh giá</option>
-                            </select>
-                            <input type="submit" value="Tìm kiếm"> 
-                            <a href="ResetSearchRes?keyword=${keyword}">Xóa bộ lọc</a>
+                        <form class="row example d-flex align-items-center" action="FilterRestaurantController" method="post"> 
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <input type="text" name="keyword" value="${keyword}" >
+                                <button type="submit"><i class="fa fa-search"></i></button> 
+                            </div>
+                            <div class="d-flex mb-3 mt-5 px-md-5">
+                                <div class="text-center px-5 ml-5">
+                                    <p class="fs-4 ml-5" style="text-decoration: none; color:rgb(238, 77, 45); font-weight: bold">Bộ lọc tìm kiếm</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="col-md-4 mr-5">
+                                        <span class="fs-4">Khoảng cách: </span>
+                                        <select name="distance" class="py-2">
+                                            <option value="10" <c:if test = "${distance == 10 }">
+                                                    selected="selected"
+                                                </c:if>> Tất cả</option>
+                                            <option value="1" <c:if test = "${distance == 1 }">
+                                                    selected="selected"
+                                                </c:if> > <= 1km</option>
+                                            <option value="2"<c:if test = "${distance == 2 }">
+                                                    selected="selected"
+                                                </c:if>> <= 2km</option>
+                                            <option value="3" <c:if test = "${distance == 3 }">
+                                                    selected="selected"
+                                                </c:if>> <= 3km</option>
+                                            <option value="5" <c:if test = "${distance == 5 }">
+                                                    selected="selected"
+                                                </c:if>> <= 5km</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5 mr-3">
+                                        <span class="fs-4">Xếp hạng: </span>    
+                                        <select name="star" class="py-2">
+                                            <option value="5" <c:if test = "${star == 5 }">
+                                                    selected="selected"
+                                                </c:if>> Tất cả</option>
+                                            <option value="1" <c:if test = "${star == 1 }">
+                                                    selected="selected"
+                                                </c:if>> 1 sao trở lên</option>
+                                            <option value="2" <c:if test = "${star == 2 }">
+                                                    selected="selected"
+                                                </c:if>> 2 sao trở lên</option>
+                                            <option value="3" <c:if test = "${star == 3 }">
+                                                    selected="selected"
+                                                </c:if>> 3 sao trở lên</option>
+                                            <option value="4" <c:if test = "${star == 4 }">
+                                                    selected="selected"
+                                                </c:if>> 4 sao trở lên</option>
+                                            <option value="0" <c:if test = "${star == 0 }">
+                                                    selected="selected"
+                                                </c:if>> Chưa có đánh giá</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input class="fs-4" type="submit" value="Lọc">
+                                    
+                                        
+                                        <input class="fs-4 ml-2" type=button onClick="location.href='ResetSearchRes?keyword=${keyword}'"
+                                                            value='Xoá bộ lọc'>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="container" style="margin-top: 50px">
@@ -126,7 +126,7 @@
                                 <div>
                                     <ul class="breadcrumb">
                                         <li><a href="home.jsp">Trang chủ</a></li>
-                                        <li><a>Danh sách tất cả nhà hàng</a></li>
+                                        <li><a>Danh sách tất cả nhà ăn</a></li>
                                     </ul>
                                 </div>
                                 ${listSize}
@@ -135,54 +135,48 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    <img  <c:if test="${restaurant.restaurantImage != null}">
+                                                    <img  <c:if test="${restaurant.restaurantImage != null && restaurant.restaurantImage != ''}">
                                                             src="${restaurant.restaurantImage}" </c:if>
                                                         <c:if test="${restaurant.restaurantImage == null}">
-                                                            src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
+                                                            src="images/res.jpg" </c:if> 
+                                                        <c:if test="${restaurant.restaurantImage == ''}">
+                                                            src="images/res.jpg" </c:if>style="width: 150px; height: 150px" >
                                                     </div>
-                                                <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
-                                                    <h3 class="mt-0 font-weight-bold mb-4">
-                                                        <a href="RestaurantListController?id=${restaurant.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${restaurant.restaurantName}</a>
-                                                </h3>
-                                                <p style="font-size: 20px">${restaurant.description}</p>
-                                                <p style="font-size: 20px">${restaurant.address}</p>
-                                            </div>
-                                         
-                                            <div class="col-md-4 mt-5 stars-outer media-body order-2 order-lg-1 button_edit">
-                                                <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
-                                            </div>
+                                                    <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
+                                                        <h3 class="mt-0 font-weight-bold mb-4">
+                                                            <a href="RestaurantListController?id=${restaurant.restaurantID}" style="text-decoration: none; color:blue; font-weight: bold">${restaurant.restaurantName}</a>
+                                                    </h3>
+                                                    <p style="font-size: 20px">${restaurant.description}</p>
+                                                    <p style="font-size: 20px">${restaurant.address}</p>
+                                                    <p style="font-size: 20px">${restaurant.cost}</p>
+                                                </div>
+
+                                                <div class="col-md-4 mt-5  media-body order-2 order-lg-1 button_edit">
+                                                    <div class="stars-outer" style=" font-size: 20px">
+                                                        <div class="stars-inner" style="width: ${restaurant.starAVG}%;font-size: 20px">  </div>
+                                                    </div>
+                                                </div>
                                         </li> 
                                     </c:forEach>
                                 </ul> 
-                                <!--                                <div class="clearfix">
-                                                                    <ul class="pagination">
-                                <c:if test="${tag>1}">
-                                    <li class="page-item disabled"><a href="ListAllRestaurantController?index=${tag-1}">Previous</a></li>
-                                </c:if>
-                                <c:forEach begin="1" end="${endP}" var="i">
-                                <li class="page-item ${tag==i?"active":""}"><a href="ListAllRestaurantController?index=${i}" class="page-link">${i}</a></li>
-                                </c:forEach>
-                                <c:if test="${tag<endP}">
-                                <li class="page-item"><a href="ListAllRestaurantController?index=${tag+1}" class="page-link">Next</a></li>
-                                </c:if>
-                        </ul>
-                    </div> -->
-                                <c:forEach begin="1" end="${totalPage}" var="i">
-                                    <a href="FilterRestaurantController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keyword=${keyword}&star=${star}">${i}</a> 
-                                </c:forEach>
+                                <div class="clearfix">
+                                    <ul class="pagination">
+                                        <c:if test="${tag>1}">
+                                            <li class="page-item disabled"><a href="FilterRestaurantController?index=${tag-1}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keyword=${keyword}&star=${star}">Previous</a></li>
+                                            </c:if>
+                                            <c:forEach begin="1" end="${endP}" var="i">
+                                            <li class="page-item ${tag==i?"active":""}"><a href="FilterRestaurantController?index=${i}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keyword=${keyword}&star=${star}" class="page-link">${i}</a></li>
+                                            </c:forEach>
+                                            <c:if test="${tag<endP}">
+                                            <li class="page-item"><a href="FilterRestaurantController?index=${tag+1}&costUnder=${under}&costUpper=${upper}&distance=${distance}&keyword=${keyword}&star=${star}" class="page-link">Next</a></li>
+                                            </c:if>
+                                    </ul>
+                                </div> 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <script>
-            $(document).ready(function () {
-                $(".toast").toast({delay: 4000});
-                $(".toast").toast("show");
-
-            });
-        </script>
     </body>
 </html>

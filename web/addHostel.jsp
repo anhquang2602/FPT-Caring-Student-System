@@ -17,14 +17,14 @@
         <link rel="stylesheet" href="css/addHostelStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
     </head>
-    <body class="bg-white">
-        <div>
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div class="container rounded bg-white mt-5 mb-5">
+                <div class="container rounded bg-white mt-5 mb-5 col-md-10">
                     <div class="col-xl-12 mt-5 mb-5">
                         <div>
                             <ul class="breadcrumb bg-white">
@@ -223,7 +223,8 @@
                 </div>
             </div>
         </div>
-
+        <%@include file="/footer.jsp" %> 
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -257,7 +258,7 @@
                 });
 
             });
-            
+
             $(document).on('change', '.province', function () {
                 var province = document.getElementById("province").value;
                 $('#district').empty();
@@ -299,7 +300,7 @@
                 const address = document.addhostelForm.address.value;
                 const cost = document.addhostelForm.cost.value;
                 const distance = document.addhostelForm.distance.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex = /^(?!0\d)\d*(\.\d+)?$/;
                 const regex2 = /^[0-9]*$/;
 
                 document.getElementById('errorName').innerText = ' ';
@@ -320,10 +321,10 @@
                     document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
                     isValid = false;
                 } else if (room <= 0) {
-                    document.getElementById('errorRoom').innerText = 'Invalid!';
+                    document.getElementById('errorRoom').innerText = 'Số phòng phải > 0!';
                     isValid = false;
                 } else if (!regex2.test(room)) {
-                    document.getElementById('errorRoom').innerText = 'Invalid!';
+                    document.getElementById('errorRoom').innerText = 'Sai cú pháp!';
                     isValid = false;
                 }
 
@@ -331,10 +332,10 @@
                     document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
                     isValid = false;
                 } else if (!regex2.test(floor)) {
-                    document.getElementById('errorFloor').innerText = 'Invalid!';
+                    document.getElementById('errorFloor').innerText = 'Sai cú pháp!';
                     isValid = false;
                 } else if (floor <= 0) {
-                    document.getElementById('errorFloor').innerText = 'Invalid!';
+                    document.getElementById('errorFloor').innerText = 'Số tầng phải > 0!';
                     isValid = false;
                 }
 
@@ -352,7 +353,7 @@
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
                     isValid = false;
                 } else if (!regex.test(cost)) {
-                    document.getElementById('errorCost').innerText = 'Invalid!';
+                    document.getElementById('errorCost').innerText = 'Sai cú pháp!';
                     isValid = false;
                 } else if (cost <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
@@ -363,7 +364,7 @@
                     document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
                     isValid = false;
                 } else if (!regex.test(distance)) {
-                    document.getElementById('errorDistance').innerText = 'Invalid!';
+                    document.getElementById('errorDistance').innerText = 'Sai cú pháp!';
                     isValid = false;
                 } else if (distance <= 0) {
                     document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
@@ -393,6 +394,4 @@
 
         </script>
     </body>
-    <%@include file="/footer.jsp" %>    
 </html>
-

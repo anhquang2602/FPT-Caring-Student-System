@@ -4,6 +4,8 @@
     Author     : nguye
 --%>
 
+<%@page import="model.Hostel"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
@@ -17,6 +19,35 @@
         <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
+         <style>
+            .stars-outer {
+                position: relative;
+                display: inline-block;
+            }
+
+            .stars-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 0;
+            }
+
+            .stars-outer::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #ccc;
+            }
+
+            .stars-inner::before {
+                content: "\f005 \f005 \f005 \f005 \f005";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: #f8ce0b;
+            }
+        </style>
     </head>
     <body>
         <c:choose>
@@ -66,8 +97,13 @@
                                 </div>
                                 <div class="mb-3" style="text-align: end">
                                     <a style="font-size: 20px; padding: 20px; background-color: #04AA6D; color: white; border: none; text-decoration: none" href="addhostel">Thêm nhà trọ mới (+)</a>
-                                </div>
-                                <ul class="list-group shadow">
+                                </div>                               
+                                <ul class="list-group shadow">    
+                                    <%
+                                        ArrayList<Hostel> h=(ArrayList<Hostel>)request.getAttribute("listH");
+                                        if(h.size()==0){%>
+                                            <p style="font-size: 20px">Bạn chưa có nhà trọ nào</p>
+                                      <%  }%>
                                     <c:forEach items="${listH}" var="d" >
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-4">
@@ -79,14 +115,19 @@
                                                     </div>
                                                     <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
                                                         <h4 class="mt-0 font-weight-bold mb-3">
-                                                            <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
+                                                            <a href="detailhostel?id=${d.hostelID}&isListbySeller=true" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
                                                     </h4>
                                                     <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
                                                     <p style="font-size: 20px">Giá thuê: <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VND</p>
-                                                    </div>
 
-                                                    <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit">
-                                                        <a class="btn btn-danger" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
+                                                        <div class="stars-outer">
+                                                            <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
+                                                    </div>  
+
+                                                </div>
+
+                                                <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit">
+                                                    <a class="btn btn-danger" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
                                                     <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="">Chỉnh sửa</a> 
                                                     <a class="btn btn-secondary" id="btnDelete" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
                                                 </div>

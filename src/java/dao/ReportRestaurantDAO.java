@@ -19,10 +19,10 @@ import model.ReportRestaurant;
  * @author DELL
  */
 public class ReportRestaurantDAO extends DBContext {
-
+    
     PreparedStatement stm = null;
     ResultSet rs = null;
-
+    
     public void CloseConnection() throws SQLException {
         if (rs != null) {
             rs.close();
@@ -35,15 +35,20 @@ public class ReportRestaurantDAO extends DBContext {
         }
     }
 
-    public boolean createReportRestaurant(int restaurantID, int spam, int offensive, int violent, int truthless) {
+    public boolean createReportRestaurant(int restaurantID, int spam, int offensive, int violent, int truthless,int studentID) {
+
+    
+
         try {
-            String sql = "INSERT INTO ReportRestaurant (RestaurantID,Spam,Offensive,Violent,Truthless) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO ReportRestaurant (RestaurantID,Spam,Offensive,Violent,Truthless,ReportTime,StudentID) VALUES (?,?,?,?,?, GetDate(),?)";
             stm = connection.prepareStatement(sql);
             stm.setInt(1, restaurantID);
             stm.setInt(2, spam);
             stm.setInt(3, offensive);
             stm.setInt(4, violent);
             stm.setInt(5, truthless);
+
+            stm.setInt(6, studentID);
 
             stm.executeUpdate();
             System.out.println(sql);
@@ -54,33 +59,33 @@ public class ReportRestaurantDAO extends DBContext {
         }
         return false;
     }
-
+    
     public ArrayList<ReportRestaurant> listAllReportRestaurant(int index) {
         ArrayList<ReportRestaurant> report = new ArrayList<>();
         try {
             String sql = "Select a.RestaurantID,a.RestaurantName, SUM( a.Spam) Spam, SUM(a.Violent) Violent,\n"
-                    + "                    SUM(a.Offensive) Offensive,SUM(a.Truthless) Truthless\n"
-                    + "                    from\n"
-                    + "                    (\n"
-                    + "                   select rt.RestaurantID,rt.RestaurantName RestaurantName, CONVERT(INT, rr.Spam) Spam, CONVERT(INT,rr.Offensive) Offensive,\n"
-                    + "                   CONVERT(INT, rr.Violent) Violent, CONVERT(INT, rr.Truthless) Truthless\n"
-                    + "                   from Restaurants rt\n"
-                    + "                   inner join ReportRestaurant rr on rt.RestaurantID = rr.RestaurantID) as a\n"
-                    + "                    group by a.RestaurantName, a.RestaurantID\n"
+                    + "SUM(a.Offensive) Offensive,SUM(a.Truthless) Truthless , ( SUM( a.Spam)+SUM(a.Violent)+SUM(a.Offensive)+SUM(a.Truthless) ) AllReport\n"
+                    + " from\n"
+                    + " (\n"
+                    + " select rt.RestaurantID,rt.RestaurantName RestaurantName, CONVERT(INT, rr.Spam) Spam, CONVERT(INT,rr.Offensive) Offensive,\n"
+                    + "CONVERT(INT, rr.Violent) Violent, CONVERT(INT, rr.Truthless) Truthless\n"
+                    + " from Restaurants rt\n"
+                    + " inner join ReportRestaurant rr on rt.RestaurantID = rr.RestaurantID) as a\n"
+                    + " group by a.RestaurantName, a.RestaurantID\n"
                     + "ORDER BY RestaurantID\n"
                     + "OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, (index - 1) * 6);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                report.add(new ReportRestaurant(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
+                report.add(new ReportRestaurant(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return report;
     }
-
+    
     public int getTotalReportRestaurant() {
         String sql = "select COUNT (RestaurantName) from Restaurants";
         try {

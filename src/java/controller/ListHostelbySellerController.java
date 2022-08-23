@@ -10,7 +10,6 @@ import dao.SellerDAO;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -66,8 +65,7 @@ public class ListHostelbySellerController extends HttpServlet {
         SellerDAO sda = new SellerDAO();
         String sellerID = sda.getSellerID((String)request.getSession().getAttribute("username"));
 
-        ArrayList<Hostel> h = dao.listHostelbySeller(Integer.parseInt(sellerID));
-
+        ArrayList<Hostel> h = dao.listHostelbySeller(Integer.parseInt(sellerID));       
         request.setAttribute("listH", h);
         request.getRequestDispatcher("listHostelbySeller.jsp").forward(request, response);
         session.removeAttribute("stt");

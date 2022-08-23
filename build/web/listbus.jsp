@@ -29,7 +29,7 @@
                 <div id="topnavbar" class="col-md-10">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mt-5">
                                 <div>
                                     <ul class="breadcrumb">
                                         <li><a href="home.jsp">Trang chủ</a></li>
@@ -46,13 +46,13 @@
                                     <li class="list-group-item">
                                         <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1">
                                             <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                <img src="<%=b.getUrl1()%>" alt="Generic placeholder image">
+                                                <img src="<%=b.getUrl1()%>" width="300px" height="300px" alt="Generic placeholder image">
                                             </div>
                                             <div class="col-md-8 media-body order-2 order-lg-1 description ml-5" id="description">
                                                 <h5 class="mt-0 font-weight-bold mb-2">
                                                     <a href="BusDetailServlet?number=<%=b.getNumber()%>" style="text-decoration: none; font-weight: bold">Xe <%=b.getNumber()%></a>
                                                 </h5>
-                                                <p style="font-size: 18px"><%=b.getShortDes()%></p>
+                                                <p style="font-size: 20px"><%=b.getShortDes()%></p>
                                             </div>
                                         </div> 
                                     </li> 

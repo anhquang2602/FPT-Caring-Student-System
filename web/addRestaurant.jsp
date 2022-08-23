@@ -23,27 +23,27 @@
             }
         </style>
     </head>
-    <body class="bg-white">
-        <div class="px-0">
-            <%@include file="/header.jsp" %> 
-            <div class="d-flex nav-item main-home">
-                <ul id="navbar-items">
+    <body>
+        <%@include file="/header.jsp" %>
+        <div class="bg-white">
+            <div class="d-flex nav-item main-home col-md-12">
+                <ul id="navbar-items" class="col-md-2">
                     <%@include file="/sidebar.jsp" %>
                 </ul>
-                <div class="container rounded bg-white mt-5 mb-5">
+                <div class="container rounded bg-white mt-5 mb-5 col-md-10">
                     <div class="col-xl-12 mb-5">
                         <div>
                             <ul class="breadcrumb bg-white">
                                 <li><a href="home.jsp">Trang chủ</a></li>
-                                <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
-                                <li><a>Thêm nhà hàng mới</a></li>
+                                <li><a href="ListRestaurantBySeller">Nhà ăn của tôi</a></li>
+                                <li><a>Thêm nhà ăn mới</a></li>
                             </ul>
                         </div>
                         <div class="card">
                             <form class="form" method="POST" action="AddRestaurantController" name="addRestaurantForm" onsubmit="return validateRestaurant()"  enctype="multipart/form-data">
                                 <div class="left-side">
                                     <div class="left_top">
-                                        <h4>Thêm ảnh nhà hàng</h4>
+                                        <h4>Thêm ảnh nhà ăn</h4>
                                     </div> 
                                     <div class="mt-5">
                                         <input type="file" accept="image/*" onchange="loadFile(event)" name ="restaurantImage" id="file1">
@@ -66,19 +66,19 @@
                                 </div>
 
                                 <div class="right-side">
-                                    <h3>Mô tả nhà hàng</h3>
-                                    <div class="input_text"> <input type="text" name="restaurantName" placeholder="Nhập tên nhà hàng"> <span>Tên nhà hàng</span> </div>
+                                    <h3>Mô tả nhà ăn</h3>
+                                    <div class="input_text"> <input type="text" name="restaurantName" placeholder="Nhập tên nhà ăn"> <span>Tên nhà ăn</span> </div>
                                     <div class="error" id="errorName"></div>
-<!--                                    <div class="input_text"> <input type="text" name="room" placeholder="Nhập số phòng"> <span>Số phòng</span> </div>   
-                                    <div class="error" id="errorRoom"></div>
-                                    <div class="input_text"> <input type="number" name="floor" placeholder="Nhập số tầng"> <span>Số tầng</span> </div>
-                                    <div class="error" id="errorFloor"></div>-->
+                                    <!--                                    <div class="input_text"> <input type="text" name="room" placeholder="Nhập số phòng"> <span>Số phòng</span> </div>   
+                                                                        <div class="error" id="errorRoom"></div>
+                                                                        <div class="input_text"> <input type="number" name="floor" placeholder="Nhập số tầng"> <span>Số tầng</span> </div>
+                                                                        <div class="error" id="errorFloor"></div>-->
                                     <div class="billing">
                                         <div class="input_text"> 
                                             <span>Tỉnh, thành phố</span> 
                                             <select name="province" id="province" class="province">
                                                 <option value="">Select Province</option>
-                                                    <c:forEach items ="${listProvince}" var="o">
+                                                <c:forEach items ="${listProvince}" var="o">
                                                     <c:if test ="${o.provinceName == 'Hà Nội'}" >
                                                         <option value="${o.provinceID}" selected>${o.provinceName}</option>
                                                     </c:if>
@@ -109,7 +109,7 @@
                                     <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="description" style="width:250px;height:150px;"></textarea>
 
                                     <div class="pay"> 
-                                        <button type="submit" >Thêm nhà hàng</button>                  
+                                        <button type="submit" >Thêm nhà ăn</button>                  
                                     </div>
 
                                 </div>
@@ -119,7 +119,8 @@
                 </div>
             </div>
         </div>
-
+        <%@include file="/footer.jsp" %> 
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -192,10 +193,10 @@
                 const address = document.addRestaurantForm.address.value;
                 const cost = document.addRestaurantForm.cost.value;
                 const distance = document.addRestaurantForm.distance.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex = /^(?!0\d)\d*(\.\d+)?$/;
                 const regex2 = /^[0-9]*$/;
 
-                document.getElementById('errorName').innerText = ' ';               
+                document.getElementById('errorName').innerText = ' ';
                 document.getElementById('errorProvince').innerText = ' ';
                 document.getElementById('errorAddress').innerText = ' ';
                 document.getElementById('errorCost').innerText = ' ';
@@ -205,7 +206,7 @@
                 if (!hostelName) {
                     document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà hàng!';
                     isValid = false;
-                }                
+                }
 
                 if (!province) {
                     document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
@@ -220,10 +221,7 @@
                 if (!cost) {
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá dao động!';
                     isValid = false;
-                } else if (!regex.test(cost)) {
-                    document.getElementById('errorCost').innerText = 'Invalid!';
-                    isValid = false;
-                } else if (cost <= 0) {
+                }  else if (cost <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
                     isValid = false;
                 }
@@ -232,8 +230,8 @@
                     document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
                     isValid = false;
                 } else if (!regex.test(distance)) {
-                document.getElementById('errorDistance').innerText = 'Giá trị nhập không đúng. Khoảng cách phải là số !';
-                        isValid = false;
+                    document.getElementById('errorDistance').innerText = 'Giá trị nhập không đúng. Khoảng cách phải là số !';
+                    isValid = false;
                 } else if (distance <= 0) {
                     document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
                     isValid = false;
@@ -244,6 +242,5 @@
             }
         </script>
     </body>
-    <%@include file="/footer.jsp" %>    
 </html>
 

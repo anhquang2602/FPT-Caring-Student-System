@@ -1,4 +1,4 @@
-<%--<%@page import="model.Seller"%>--%>
+<%@page import="model.Seller"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
@@ -37,7 +37,7 @@
                 </ul>
                 <div id="topnavbar1" class="col-md-10">
                     <div class="container rounded mt-5 mb-5 p-4">
-                        <form action="UpdateSellerProfile" name="updateSellerForm" enctype="multipart/form-data"  method="post">
+                        <form action="UpdateSellerProfile" name="updateSellerForm" enctype="multipart/form-data"  method="post" onsubmit="return checkSend()">
                             <div class="row">
                                 <div>
                                     <ul class="breadcrumb bg-white">
@@ -48,7 +48,16 @@
                                 <div class="col-md-4">
                                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                         <div class="mt-5">
-                                            <img class="rounded-circle justify-content-center" height="200px" width="200px" src="${UserAvatar}" id="output">
+                                            <img class="rounded-circle justify-content-center" height="200px" width="200px" 
+                                                 
+                                                      <c:if test="${UserAvatar != null && UserAvatar !=''}">
+                                                             src="${UserAvatar}" </c:if>
+                                                         <c:if test="${UserAvatar == null}">
+                                                             src="images/user.jpg" </c:if> 
+                                                         <c:if test="${UserAvatar == ''}">
+                                                             src="images/user.jpg" </c:if>  
+                                                 
+                                                 id="output">
                                             <input type="file" name="avatarImage" accept="image/*" onchange="loadFile(event)" class="form-control-file mt-3 p-3 ml-5" id="avatarImg">
                                         </div>
                                         <div id="divCheckImg"></div>
@@ -76,12 +85,14 @@
                                         <div class="col-md-12">
                                             <strong class="text-right fs-4">Tuổi</strong>
                                             <input type="number" name="age" class="form-control"value="${seller.age}">
+                                            <div id="divCheckAge"></div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12">
                                             <strong class="text-right fs-4">Số Điện Thoại</strong>
                                             <input type="text" name="phone" class="form-control" value="${seller.phone}">
+                                            <div id="divCheckPhone"></div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
@@ -146,7 +157,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center mt-5">
-                                    <button class="btn btn-primary profile-button" type="submit">Lưu Hồ Sơ</button>
+                                    <button class="btn btn-primary profile-button" type="submit" onclick="checkValidatorForUpdateSellerProfile()">Lưu Hồ Sơ</button>
                                 </div>
                                 <label class="labels">${UpdateError}</label>
                                 <label class="labels">${UpdateProcess}</label>
@@ -156,33 +167,44 @@
                 </div>
             </div>
         </div>
+        <%@include file="/footer.jsp" %>
+
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+
+            });
+        </script>
     </body>
-    <script>
-        $(document).ready(function () {
-            $(".toast").toast({delay: 4000});
-            $(".toast").toast("show");
-
-        });
-    </script>
-
     <script src="validator/Validator.js"></script>
+
     <script language="javascript">
 
-        var gender = document.getElementById('genderlable').innerHTML;
+            var gender = document.getElementById('genderlable').innerHTML;
 
-        if (gender == 1) {
-            document.getElementById('inlineRadio1').setAttribute('checked', true);
-        } else
-        {
-            document.getElementById('inlineRadio2').setAttribute('checked', true);
-        }
+            if (gender == 1) {
+                document.getElementById('inlineRadio1').setAttribute('checked', true);
+            } else
+            {
+                document.getElementById('inlineRadio2').setAttribute('checked', true);
+            }
 
 
-        // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
-        // obj là tham số truyền vào và cũng chính là thẻ select
+            // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
+            // obj là tham số truyền vào và cũng chính là thẻ select
 
             
            
+    </script>
+    <script>
+        // Create a timestamp
+        var timestamp = new Date().getTime();
+        // Get the image element
+        var image = document.getElementById("output");
+        // Adding the timestamp parameter to image src
+        image.src = image.src + "?t=" + timestamp;
+
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
@@ -245,5 +267,4 @@
             return isValid;
         }
     </script>
-    <%@include file="/footer.jsp" %>
 </html>

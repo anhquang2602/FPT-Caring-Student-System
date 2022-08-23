@@ -42,12 +42,13 @@
                                         <li><a>Danh sách Phòng Ban</a></li>
                                     </ul>
                                 </div>
+                           
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listDepPaging}" var="d" >
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-2">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    <img src="${d.img1}" alt="Generic placeholder image">
+                                                    <img src="${d.img1}" width="300px" height="300px" alt="Generic placeholder image">
                                                 </div>
                                                 <div class="col-md-8 media-body order-2 order-lg-1 description ml-5" id="description">
                                                     <div>
@@ -76,6 +77,7 @@
                                             </c:if>
                                     </ul>
                                 </div> 
+
                             </div>
                         </div>
                     </div>
