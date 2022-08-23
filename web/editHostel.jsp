@@ -283,8 +283,38 @@
                                             <button style="margin-top: 5px" type="reset">Sắp lại</button>
                                         </div>
                                     </div>
+<<<<<<< HEAD
+                                    <div class="input_text"> 
+                                        <strong class="fs-4">Địa chỉ</strong> 
+                                        <input type="text" name="address" value="${editHostel.address}"> 
+                                    </div>
+                                    <div class="error" id="errorAddress"></div>
+                                    <div class="input_text"> 
+                                        <strong class="fs-4">Giá thuê</strong> 
+                                        <input type="text" name="cost" value="${editHostel.cost}"> 
+                                    </div>
+                                    <div class="error" id="errorCost"></div>
+                                    <div class="input_text"> 
+                                        <strong class="fs-4">Khoảng cách</strong>
+                                        <input type="text" name="distance" value="${editHostel.distance}">
+                                    </div>
+                                    <div class="error" id="errorDistance"></div>
+                                    <div class="input_text"> 
+                                        <strong class="fs-4">Mô tả</strong>  
+                                        <textarea name="description" rows="5" style="width: 100%; margin-top: 10px" name="description">
+                                            ${editHostel.description}
+                                        </textarea>
+                                    </div>
+                                    <div class="pay"> 
+                                        <button type="submit">Save</button> 
+                                        <button style="margin-top: 5px" type="reset">Reset </button>
+                                    </div>
+                                </div>
+                            </form>
+=======
                                 </form>
                             </div>
+>>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
                         </div>
                     </div>
                 </div>
@@ -305,10 +335,16 @@
                                                              },
                                                              headers: {
                                                                  Accept: "application/json; charset=utf-8",
+<<<<<<< HEAD
+                                                                         contentType: "application/json; charset=utf-8"
+                                                                 },
+                                                                 success: function (data) {
+=======
                                                                  contentType: "application/json; charset=utf-8"
                                                              },
                                                              success: function (data) {
 
+>>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
                                                                  data.forEach(function (a) {
                                                                      $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
                                                                  });
@@ -323,6 +359,98 @@
                 event.preventDefault();
                 $.ajax({
                     url: $(this).attr('href'),
+<<<<<<< HEAD
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.removeAttribute('src');
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
+                            }
+                    });
+                    return false; // for good measure
+            });
+                    $("#U2").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
+                    url: $(this).attr('href'),
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.removeAttribute('src');
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
+                            }
+                    });
+                    return false; // for good measure
+            });
+                    $("#U3").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
+                    url: $(this).attr('href'),
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.removeAttribute('src');
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
+                            }
+                    });
+                    return false; // for good measure
+            });
+                    $("#U4").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
+                    url: $(this).attr('href'),
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.removeAttribute('src');
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
+                            }
+                    });
+                    return false; // for good measure
+            });
+                    $("#U5").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
+                    url: $(this).attr('href'),
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.removeAttribute('src');
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
+                            }
+                    });
+                    return false; // for good measure
+            });
+                    $("#U6").click(function (event) {
+            event.preventDefault();
+                    $.ajax({
+                    url: $(this).attr('href'),
+                            success: function (response) {
+                            var output = document.getElementById(response);
+                                    output.removeAttribute('src');
+                                    $("." + response).remove();
+                                    output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                    }
+                            }
+                    });
+                    return false; // for good measure
+            });        </script>
+        <script>
+                    function reset() {
+                    location.reload();
+                    }
+=======
                     success: function (response) {
                         var output = document.getElementById(response);
                         output.removeAttribute('src');
@@ -426,6 +554,7 @@
                 location.reload();
             }
 
+>>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
         </script>
 
         <script>
@@ -451,10 +580,16 @@
                 if (!hostelName) {
                     document.getElementById('errorName').innerText = 'Bạn phải nhập tên nhà trọ!';
                     isValid = false;
+<<<<<<< HEAD
+            }
+            if (!room) {
+            document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
+=======
                 }
 
                 if (!room) {
                     document.getElementById('errorRoom').innerText = 'Bạn phải nhập số phòng!';
+>>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
                     isValid = false;
                 } else if (room <= 0) {
                     document.getElementById('errorRoom').innerText = 'Số phòng phải > 0!';
@@ -462,10 +597,16 @@
                 } else if (!regex2.test(room)) {
                     document.getElementById('errorRoom').innerText = 'Sai cú pháp!';
                     isValid = false;
+<<<<<<< HEAD
+            }
+            if (!floor) {
+            document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
+=======
                 }
 
                 if (!floor) {
                     document.getElementById('errorFloor').innerText = 'Bạn phải nhập số tầng!';
+>>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
                     isValid = false;
                 } else if (!regex2.test(floor)) {
                     document.getElementById('errorFloor').innerText = 'Số tầng phải > 0!';
@@ -473,6 +614,19 @@
                 } else if (floor <= 0) {
                     document.getElementById('errorFloor').innerText = 'Sai cú pháp!';
                     isValid = false;
+<<<<<<< HEAD
+            }
+            if (!province) {
+            document.getElementById('errorProvince').innerText = 'Bạn phải chọn tỉnh!';
+                    isValid = false;
+            }
+            if (!address) {
+            document.getElementById('errorAddress').innerText = 'Bạn phải nhập địa chỉ!';
+                    isValid = false;
+            }
+            if (!cost) {
+            document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
+=======
                 }
 
                 if (!province) {
@@ -487,6 +641,7 @@
 
                 if (!cost) {
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá thuê!';
+>>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
                     isValid = false;
                 } else if (!regex.test(cost)) {
                     document.getElementById('errorCost').innerText = 'Sai cú pháp!';
@@ -494,10 +649,16 @@
                 } else if (cost <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
                     isValid = false;
+<<<<<<< HEAD
+            }
+            if (!distance) {
+            document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
+=======
                 }
 
                 if (!distance) {
                     document.getElementById('errorDistance').innerText = 'Bạn phải nhập khoảng cách!';
+>>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
                     isValid = false;
                 } else if (!regex.test(distance)) {
                     document.getElementById('errorDistance').innerText = 'Sai cú pháp!';
@@ -505,11 +666,17 @@
                 } else if (distance <= 0) {
                     document.getElementById('errorDistance').innerText = 'Khoảng cách phải > 0 ';
                     isValid = false;
+<<<<<<< HEAD
+            }
+          
+            return isValid;
+=======
                 }
 
 
 
                 return isValid;
+>>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
             }
         </script>
         <script
@@ -524,4 +691,8 @@
             });
         </script>
     </body>
+<<<<<<< HEAD
+    <%@include file="/footer.jsp" %>
+=======
+>>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
 </html>

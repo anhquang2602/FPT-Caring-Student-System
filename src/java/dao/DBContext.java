@@ -18,9 +18,7 @@ import java.util.logging.Logger;
 public abstract class DBContext {
 
     protected Connection connection;
-
     public DBContext() {
-
         try {
             String url = "jdbc:sqlserver://localhost:1433;databaseName=FCS";
             String user = "sa";
