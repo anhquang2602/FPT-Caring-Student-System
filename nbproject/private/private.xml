@@ -3,27 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/ClubDAO.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/DeteleEvent.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/ClubListController.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/AddNewEvent.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/DetailClubController.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/AllEventByClub.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/ListClubCategories.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/dao/HostelDAO.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/web/departmentdetail.jsp</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/EditEvent.java</file>
-            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codenewest/src/java/controller/RegisterServlet.java</file>
-=======
-            <file>file:/D:/đồ%20án/src/java/dao/StudentDAO.java</file>
-            <file>file:/D:/đồ%20án/web/seller-list.jsp</file>
-            <file>file:/D:/đồ%20án/src/java/controller/RegisterServlet.java</file>
-            <file>file:/D:/đồ%20án/web/hosteldetail.jsp</file>
-            <file>file:/D:/đồ%20án/src/java/controller/ViewSellerController.java</file>
-            <file>file:/D:/đồ%20án/src/java/dao/SellerDAO.java</file>
-            <file>file:/D:/đồ%20án/web/addfood.jsp</file>
->>>>>>> 78707b25053ba382b1881c3e356ce3dc45fd8d71
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codefinal/src/java/controller/UpdateStudentProfile.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codefinal/src/java/dao/DBContext.java</file>
         </group>
     </open-files>
 </project-private>
