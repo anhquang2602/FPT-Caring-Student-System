@@ -10,7 +10,7 @@ function checkMail(nameOfForm) {
     if (email == '') {
         // Create dynamic div
         const mailError = document.createElement('div');
-        mailError.append('The Email should not be blank.');
+        mailError.append('Email không được để trống.');
         mailError.setAttribute('class', 'alert-danger alert error');
         mailError.setAttribute('role', 'alert');
         //  Append div to parent element
@@ -21,7 +21,7 @@ function checkMail(nameOfForm) {
     else if (!re.test(String(email).toLowerCase())) {
         // Create dynamic div
         const mailError = document.createElement('div');
-        mailError.append('Please input your correct email address.');
+        mailError.append('Vui lòng nhập đúng Email của bạn.');
         mailError.setAttribute('class', 'alert-danger alert error');
         mailError.setAttribute('role', 'alert');
         // Step 2: Append div to parent element
@@ -59,7 +59,7 @@ function checkPhone(nameOfForm) {
     } else if (!re.test(String(phone).toLowerCase())) {
         // Step 1: Create dynamic div
         const phoneError = document.createElement('div');
-        phoneError.append('Please input your correct phone number.');
+        phoneError.append('Vui lòng nhập đúng Số điện thoại của bạn.');
         phoneError.setAttribute('class', 'alert-danger alert error');
         phoneError.setAttribute('role', 'alert');
         // Step 2: Append div to parent element
@@ -82,7 +82,7 @@ function checkAge(nameOfForm) {
     } else if (!re.test(String(age).toLowerCase())) {
         // Step 1: Create dynamic div
         const ageError = document.createElement('div');
-        ageError.append('Please input your correct age from (10 to 99).');
+        ageError.append('Vui lòng nhập đúng tuổi từ 10 đến 99.');
         ageError.setAttribute('class', 'alert-danger alert error');
         ageError.setAttribute('role', 'alert');
         // Step 2: Append div to parent element
@@ -105,34 +105,11 @@ function checkUnit(nameOfForm) {
     } else if (!re.test(String(unit).toLowerCase())) {
         // Step 1: Create dynamic div
         const unitError = document.createElement('div');
-        unitError.append('Please input your correct unit (eg K13,K14...)');
+        unitError.append('Vui lòng nhập đúng Khóa của bạn (VD: K13, K14, ...).');
         unitError.setAttribute('class', 'alert-danger alert error');
         unitError.setAttribute('role', 'alert');
         // Step 2: Append div to parent element
         document.getElementById('divCheckUnit').appendChild(unitError);
-        check = 0;
-    }
-}
-
-function checkMSSV(nameOfForm) {
-    const mssv = document[nameOfForm].studentId.value;
-    const re =  /^[Kk]{1}\d{2}$/;
-    if (mssv == '') {
-//        const phoneError = document.createElement('div');
-//        phoneError.append('Phone can not empty');
-//        phoneError.setAttribute('class', 'alert-danger alert error');
-//        phoneError.setAttribute('role', 'alert');
-//        //  Append div to parent element
-//        document.getElementById('divCheckPhone').appendChild(phoneError);
-//        check = 0;
-    } else if (!re.test(String(mssv).toLowerCase())) {
-        // Step 1: Create dynamic div
-        const mssvError = document.createElement('div');
-        mssvError.append('Hãy nhập chính xác mã số sinh viên (vd HE130111,HE140249...)');
-        mssvError.setAttribute('class', 'alert-danger alert error');
-        mssvError.setAttribute('role', 'alert');
-        // Step 2: Append div to parent element
-        document.getElementById('divCheckstudentId').appendChild(mssvError);
         check = 0;
     }
 }
@@ -142,7 +119,7 @@ function checkInputCode(nameOfForm) {
     
     if (code == '') {
         const phoneError = document.createElement('div');
-        phoneError.append('code can not empty');
+        phoneError.append('Code không được để trống');
         phoneError.setAttribute('class', 'alert-danger alert error');
         phoneError.setAttribute('role', 'alert');
         //  Append div to parent element
@@ -156,7 +133,7 @@ function checkRepass(nameOfForm) {
     const repass = document[nameOfForm].repass.value;
     if (pass != repass) {
         const repassError = document.createElement('div');
-        repassError.append('re-password not match password');
+        repassError.append('Mật khẩu nhập lại không trùng với mật khẩu mới.');
         repassError.setAttribute('class', 'alert-danger alert error');
         repassError.setAttribute('role', 'alert');
         //  Append div to parent element
@@ -172,7 +149,7 @@ function checkImg() {
 
         } else {
             const imgError = document.createElement('div');
-            imgError.append('Unsupported File!');
+            imgError.append('Định dạng không được hỗ trợ!');
             imgError.setAttribute('class', 'alert-danger alert error');
             imgError.setAttribute('role', 'alert');
             document.getElementById('divCheckImg').appendChild(imgError);
@@ -189,7 +166,7 @@ function checkPass(nameOfForm) {
     if (password == '') {
         // Create dynamic div
         const passError = document.createElement('div');
-        passError.append('The password should not be blank.');
+        passError.append('Mật khẩu không được để trống.');
         passError.setAttribute('class', 'alert-danger alert error');
         passError.setAttribute('role', 'alert');
         //  Append div to parent element
@@ -200,7 +177,7 @@ function checkPass(nameOfForm) {
     else if (!re.test(String(password))) {
         // Create dynamic div
         const passError = document.createElement('div');
-        passError.append('Please input your correct password form (minimum eight characters, at least one letter and one number).');
+        passError.append('Vui lòng nhập đúng định dạng mật khẩu (mật khẩu ít nhất 8 kí tự trong đó gồm ít nhất 1 chữ và 1 số.');
         passError.setAttribute('class', 'alert-danger alert error');
         passError.setAttribute('role', 'alert');
         // Step 2: Append div to parent element
@@ -295,7 +272,6 @@ function checkValidatorForUpdateStudentProfile()
     checkPhone('updateStudentForm');
     checkAge('updateStudentForm');
     checkUnit('updateStudentForm');
- //   checkMSSV('updateStudentForm');
     
 
 }

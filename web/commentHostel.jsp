@@ -141,8 +141,8 @@
                                                 </div>
 
                                                 <div class="mt-2 text-right mt-5">
-                                                    <button class="btn btn-primary btn-sm shadow-none" onclick="postComment()" type="button">Post comment</button>
-                                                    <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
+                                                    <button class="btn btn-primary btn-sm shadow-none" onclick="postComment()" type="button">Lưu</button>
+                                                    <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Huỷ</button>
                                                 </div>
                                             </div>
                                         </div>
