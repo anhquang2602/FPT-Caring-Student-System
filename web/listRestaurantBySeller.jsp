@@ -134,7 +134,7 @@
                                                     <a class="btn btn-primary" href="AddFoodController?id=${r.restaurantID}">Menu</a>
                                                 </div>
                                                 <div class="col-md-2 mt-5 media-body order-2 order-lg-1 button_edit">
-                                                    <a class="btn btn-secondary" style="margin-top: 100px; margin-left: 100px" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà ăn</a>
+                                                    <a class="btn btn-secondary" style="margin-top: 100px; margin-left: 100px" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá</a>
                                                 </div>
 
                                                     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

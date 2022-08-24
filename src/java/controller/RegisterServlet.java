@@ -91,7 +91,7 @@ public class RegisterServlet extends HttpServlet {
             boolean status = true;
             AccountDAO adb = new AccountDAO();
             if (adb.exsitedAccount(username)) {
-                request.setAttribute("errorRegister", username + " exsited!!!");
+                request.setAttribute("errorRegister","Email "+ username + " đã tồn tại!");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
             } else {
                 Account a = new Account(username, pass, Integer.parseInt(role), status);

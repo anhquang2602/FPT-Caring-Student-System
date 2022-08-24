@@ -85,7 +85,7 @@ public class AuthenticateServlet extends HttpServlet {
                 request.setAttribute("accept", "YES");
                 request.getRequestDispatcher((String) request.getSession().getAttribute("directAfterAuthen")).forward(request, response);
             } else {
-                request.setAttribute("errorAuthentication", "The authentication code is not match");
+                request.setAttribute("errorAuthentication", "Mã OTP không khớp!");
                 request.getRequestDispatcher("authentication.jsp").forward(request, response);
             }
         }

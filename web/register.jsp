@@ -14,7 +14,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/registerStyle.css">
     </head>
-    <body>
+    <body style="background-image: url(images/logo.jpg); background-size: 100% 100%">
+        
         <div class="container mt-5 mb-5 g-0">
             <div class="d-flex flex row">
                 <div class="col-md-6 mx-auto">
@@ -26,13 +27,13 @@
                             <form name="registerForm" action="RegisterServlet" method="post" onsubmit="return checkSend()">
                                 Nhâp email<input class="form-control" placeholder="Email" type="text" name="username"/><br/>
                                 <div id="divCheckEmail"></div>
-                                Nhập mật khẩu<input class="form-control" placeholder="Password" type="password" name="pass"/><br/>     
+                                Nhập mật khẩu<input class="form-control" placeholder="Mật khẩu" type="password" name="pass"/><br/>     
                                 <div id="divCheckPass"></div>
-                                Nhập lại mật khẩu<input class="form-control" placeholder="Re-password" type="password" name="repass"/><br/>     
+                                Nhập lại mật khẩu<input class="form-control" placeholder="Nhập lại mật khẩu" type="password" name="repass"/><br/>     
                                 <div id="divCheckRePass"></div>
                                 Vai trò:
-                                <input class="role" name="role" type="radio" value="2" checked/>Học sinh
-                                <input class="role" name="role" type="radio" value="3" />Người bán hàng
+                                <input class="role" name="role" type="radio" value="2" checked/> Học sinh
+                                <input class="role" name="role" type="radio" value="3" /> Chủ kinh doanh
                                 <input class="mt-4 btn btn-dark " type="submit" value="Đăng ký ngay" onclick="checkValidatorForRegister()"/>
                                 <div class="text1 mt-4"> 
                                     <span>Bạn đã có tài khoản?
@@ -49,5 +50,5 @@
             </div>
         </div>
     </body>
-    <script src="validator/Validator.js"></script>
+    <script src="validator/validate.js"></script>
 </html>

@@ -87,11 +87,11 @@ public class ChangePasswordServlet extends HttpServlet {
                 session.setAttribute("stt", "2");
                 response.sendRedirect(request.getContextPath() + "/home");
             } else {
-                request.setAttribute("errorChangePass", "Your new password is same with your current password");
+                request.setAttribute("errorChangePass", "Mật khẩu mới không được trùng với mật khẩu hiện tại của bạn.");
                 request.getRequestDispatcher("changePassword.jsp").forward(request, response);
             }
         } else {
-            request.setAttribute("errorChangePass", "Your current password is not correct");
+            request.setAttribute("errorChangePass", "Mật khẩu hiện tại của bạn không đúng.");
             request.getRequestDispatcher("changePassword.jsp").forward(request, response);
         }
 
