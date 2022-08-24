@@ -42,6 +42,7 @@
                     <div class="container rounded mt-5 mb-5 p-4">
                         <form action="EditEvent" method="post" enctype="multipart/form-data">
                             <div class="row">
+
                                 <div>
                                     <ul class="breadcrumb bg-white">
                                         <li><a href="home.jsp">Trang chủ</a></li>
@@ -52,7 +53,15 @@
                                 <div class="col-md-4">
                                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                         <div class="mt-5">
-                                            <img width="200px" height="200px" src="${eventImage}" id="output">
+                                            <img width="200px" height="200px"
+                                                 <c:if test="${eventImage == null}">
+                                                     src="images/noImg.jpg"
+                                                 </c:if>
+                                                 <c:if test="${eventImage != null}">
+                                                     src="${eventImage}"
+                                                 </c:if> 
+                                                 id="output">
+                                            <input type="text" value="${eventID}" name="eventID" hidden >
                                             <input style="padding-left: 80px" type="file" name="eventImage" accept="image/*" onchange="loadFile(event)" class="form-control-file mt-5" id="eventImg">
                                         </div>
                                     </div>
@@ -81,8 +90,8 @@
                                             </div>
                                         </div>
                                         <div class="text-center mt-5"> 
-                                            <button class="btn btn-primary profile-button" type="submit">Lưu Hồ Sơ</button>
-                                            <button class="btn btn-primary profile-button" type="reset">Reset</button>
+                                            <button class="btn btn-primary profile-button" type="submit">Lưu</button>
+                                            <button class="btn btn-primary profile-button" type="reset">Khôi phục</button>
                                         </div>
                                     </div>
                                 </div>
@@ -93,12 +102,12 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
-          <script>
-        $(document).ready(function () {
-            $(".toast").toast({delay: 4000});
-            $(".toast").toast("show");
-        });
-    </script>
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast({delay: 4000});
+                $(".toast").toast("show");
+            });
+        </script>
     </body>
     <script>
         var loadFile = function (event) {
@@ -109,5 +118,5 @@
             }
         };
     </script>
-  
+
 </html>

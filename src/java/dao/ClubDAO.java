@@ -323,6 +323,23 @@ public class ClubDAO extends DBContext {
         }
         return list;
     }
+//    public ArrayList<Event> getEventByEmailPagging(String email, int index) {
+//        ArrayList<Event> list = new ArrayList<>();
+//        String sql = "select * from EventOfClub where Email = ? ORDER BY EventID OFFSET ? ROWS FETCH NEXT 2 ROWS ONLY;";
+//        PreparedStatement st;
+//        try {
+//            st = connection.prepareStatement(sql);
+//            st.setInt(1, id);
+//            st.setInt(2, (index-1)*2);
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                list.add(new Event(rs.getInt("EventID"), rs.getInt("ClubID"), rs.getString("EventName"), rs.getString("Time"), rs.getString("Description"), rs.getString("Url1")));
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return list;
+//    }
     
     public ArrayList<Event> getEventByEmail(String id) {
         ArrayList<Event> list = new ArrayList<>();

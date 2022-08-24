@@ -280,7 +280,7 @@
                                         </div>
                                         <div class="pay"> 
                                             <button type="submit">Lưu</button> 
-                                            <button style="margin-top: 5px" type="reset">Sắp lại</button>
+                                            <button style="margin-top: 5px" type="reset">Khôi phục</button>
                                         </div>
                                     </div>
                                 </form>

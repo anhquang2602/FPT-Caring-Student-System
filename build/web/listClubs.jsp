@@ -72,8 +72,8 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-2">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    
-                                                     <img  <c:if test="${club.avatar != null}">
+
+                                                    <img  <c:if test="${club.avatar != null}">
                                                             src="${club.avatar}" </c:if>
                                                         <c:if test="${club.avatar == null}">
                                                             src="images/club.jpg" 
@@ -96,6 +96,19 @@
                                         </li> 
                                     </c:forEach>
                                 </ul> 
+                                <div class="clearfix">
+                                    <ul class="pagination">
+                                        <c:if test="${tag>1}">
+                                            <li class="page-item disabled"><a href="ClubListController?index=${tag-1}&key=${key}&type=${type}">Previous</a></li>
+                                            </c:if>
+                                            <c:forEach begin="1" end="${endP}" var="i">
+                                            <li class="page-item ${tag==i?"active":""}"><a href="ClubListController?index=${i}&key=${key}&type=${type}" class="page-link">${i}</a></li>
+                                            </c:forEach>
+                                            <c:if test="${tag<endP}">
+                                            <li class="page-item"><a href="ClubListController?index=${tag+1}&key=${key}&type=${type}" class="page-link">Next</a></li>
+                                            </c:if>
+                                    </ul>
+                                </div> 
                             </div>
                         </div>
                     </div>

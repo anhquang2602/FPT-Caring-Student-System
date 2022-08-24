@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -73,11 +75,34 @@
                                             <li class="list-group-item">
                                                 <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-1 mt-3">
                                                     <div class="col-md-4 media-body order-2 order-lg-1 text-center image">
-                                                        <img src="${event.url}" width="400px" height="400px" alt="Generic placeholder image">
+                                                        <img 
+                                                            <c:if test="${event.url == null}">
+                                                                src="images/event.jpg"
+                                                            </c:if>
+                                                            <c:if test="${event.url != null}">
+                                                                src="${event.url}"
+                                                            </c:if> 
+                                                            width="400px" height="400px" alt="Generic placeholder image">
                                                         <a class="btn btn-primary mt-5" href="EditEvent?eventID=${event.eventID}">Chỉnh sửa </a>
-                                                        <a class="btn btn-secondary mt-5" href="DeteleEvent?eventID=${event.eventID}">Xóa </a>
-
+                                                        <a class="btn btn-secondary mt-5" id="btnDelete" href="#" data-href="DeteleEvent?eventID=${event.eventID}" data-toggle="modal" data-target="#confirm-delete">Xoá sự kiện</a>
                                                     </div>
+                                                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    Xoá sự kiện
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Bạn có chắc chắn muốn xoá sự kiện này không?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                                                    <a class="btn btn-danger btn-ok">Xoá</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-7 media-body order-2 order-lg-1 description ml-5" id="description">
                                                         <h4 class="mt-0 font-weight-bold mb-2 text-center">
                                                             <a style="text-decoration: none; font-weight: bold">${event.eventName}</a>
@@ -115,6 +140,13 @@
                 $(".toast").toast({delay: 4000});
                 $(".toast").toast("show");
 
+            });
+        </script>
+        <script>
+
+            $(document).on('click', '#btnDelete', function () {
+                var link = $(this).attr('data-href');
+                $('.btn-ok').attr('href', link);
             });
         </script>
     </body>

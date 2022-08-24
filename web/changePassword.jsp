@@ -61,5 +61,5 @@
         </div>
         <%@include file="/footer.jsp" %>
     </body>
-    <script src="validator/Validator.js"></script>
+    <script src="validator/validate.js"></script>
 </html>
