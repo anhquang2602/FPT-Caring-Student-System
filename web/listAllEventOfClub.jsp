@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/sellerStyle.css">
     </head>
     <body>
-         <c:choose>
+        <c:choose>
             <c:when test="${stt.equals('1')}">
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </c:when>
-            
+
             <c:when test="${stt.equals('3')}">
                 <div class="position-fixed bottom-0 end-0 p-3" style="right: 10px; bottom: 10px; z-index: 11">
                     <div class="toast" data-autohide="true">
@@ -76,7 +76,7 @@
                                                         <img src="${event.url}" width="400px" height="400px" alt="Generic placeholder image">
                                                         <a class="btn btn-primary mt-5" href="EditEvent?eventID=${event.eventID}">Chỉnh sửa </a>
                                                         <a class="btn btn-secondary mt-5" href="DeteleEvent?eventID=${event.eventID}">Xóa </a>
-                                                        
+
                                                     </div>
                                                     <div class="col-md-7 media-body order-2 order-lg-1 description ml-5" id="description">
                                                         <h4 class="mt-0 font-weight-bold mb-2 text-center">
@@ -89,6 +89,19 @@
                                             </li> 
                                         </c:forEach>
                                     </ul>
+                                    <div class="clearfix">
+                                        <ul class="pagination">
+                                            <c:if test="${tag>1}">
+                                                <li class="page-item disabled"><a href="AllEventByClub?index=${tag-1}">Previous</a></li>
+                                                </c:if>
+                                                <c:forEach begin="1" end="${endP}" var="i">
+                                                <li class="page-item ${tag==i?"active":""}"><a href="AllEventByClub?index=${i}" class="page-link">${i}</a></li>
+                                                </c:forEach>
+                                                <c:if test="${tag<endP}">
+                                                <li class="page-item"><a href="AllEventByClub?index=${tag+1}" class="page-link">Next</a></li>
+                                                </c:if>
+                                        </ul>
+                                    </div> 
                                 </div>
                             </div>
                         </div>

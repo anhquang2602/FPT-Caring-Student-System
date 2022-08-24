@@ -67,7 +67,7 @@
                 </a>  
                 <%} else if (Integer.parseInt(request.getSession().getAttribute("role").toString()) == 4) {%>
                 <a class="ml-5 col-md-3"></a>
-                <a class="ml-5" href="AllEventByClub">
+                <a class="ml-5" href="AllEventByClub?index=${index}">
                     <i class="fas fa-chalkboard-teacher mr-3"></i>
                     <span>QUẢN LÝ SỰ KIỆN</span>
                 </a>  

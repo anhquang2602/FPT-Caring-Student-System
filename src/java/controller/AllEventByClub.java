@@ -34,8 +34,6 @@ public class AllEventByClub extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -51,9 +49,23 @@ public class AllEventByClub extends HttpServlet {
         HttpSession session = request.getSession();
         ClubDAO clubDAO = new ClubDAO();
         String username = (String) request.getSession().getAttribute("username");
-        Club club = clubDAO.getClubByEmail(username);
+//        Club club = clubDAO.getClubByEmail(username);
+        String index = request.getParameter("index");
+        if (index == null || index.equals("") || index == "") {
+            index = "1";
+        }
         ArrayList<Event> listEvent = clubDAO.getEventByEmail(username);
-        request.setAttribute("listEvent", listEvent);
+        ArrayList<Event> listEventPagging = clubDAO.getEventByEmail2(username, Integer.parseInt(index));
+
+        int totalPage = 1;
+        if (listEvent.size() % 2 == 0) {
+            totalPage = listEvent.size() / 2;
+        } else {
+            totalPage = listEvent.size() / 2 + 1;
+        }
+        request.setAttribute("endP", totalPage);
+        request.setAttribute("tag", index);
+        request.setAttribute("listEvent", listEventPagging);
         request.getRequestDispatcher("listAllEventOfClub.jsp").forward(request, response);
         session.removeAttribute("stt");
     }

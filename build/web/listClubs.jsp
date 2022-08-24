@@ -82,7 +82,7 @@
                                                 <div class="col-md-8 media-body order-2 order-lg-1 description ml-5" id="description">
                                                     <div>
                                                         <h4 class="font-weight-bold mb-3">
-                                                            <a href="detailClub?id=${club.clubID}" style="text-decoration: none; font-weight: bold">${club.clubName}</a>
+                                                            <a href="detailClub?email=${club.email}" style="text-decoration: none; font-weight: bold">${club.clubName}</a>
                                                         </h4>
                                                     </div>
                                                     <div>
@@ -96,19 +96,6 @@
                                         </li> 
                                     </c:forEach>
                                 </ul> 
-                                <div class="clearfix">
-                                    <ul class="pagination">
-                                        <c:if test="${tag>1}">
-                                            <li class="page-item disabled"><a href="ClubListController?index=${tag-1}&key=${key}&type=${type}">Previous</a></li>
-                                            </c:if>
-                                            <c:forEach begin="1" end="${endP}" var="i">
-                                            <li class="page-item ${tag==i?"active":""}"><a href="ClubListController?index=${i}&key=${key}&type=${type}" class="page-link">${i}</a></li>
-                                            </c:forEach>
-                                            <c:if test="${tag<endP}">
-                                            <li class="page-item"><a href="ClubListController?index=${tag+1}&key=${key}&type=${type}" class="page-link">Next</a></li>
-                                            </c:if>
-                                    </ul>
-                                </div> 
                             </div>
                         </div>
                     </div>
