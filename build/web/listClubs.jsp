@@ -72,8 +72,8 @@
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-2">
                                                 <div class="col-md-3 media-body order-2 order-lg-1 image">
-                                                    
-                                                     <img  <c:if test="${club.avatar != null}">
+
+                                                    <img  <c:if test="${club.avatar != null}">
                                                             src="${club.avatar}" </c:if>
                                                         <c:if test="${club.avatar == null}">
                                                             src="images/club.jpg" 
@@ -82,7 +82,7 @@
                                                 <div class="col-md-8 media-body order-2 order-lg-1 description ml-5" id="description">
                                                     <div>
                                                         <h4 class="font-weight-bold mb-3">
-                                                            <a href="detailClub?id=${club.clubID}" style="text-decoration: none; font-weight: bold">${club.clubName}</a>
+                                                            <a href="detailClub?email=${club.email}" style="text-decoration: none; font-weight: bold">${club.clubName}</a>
                                                         </h4>
                                                     </div>
                                                     <div>

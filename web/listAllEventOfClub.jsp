@@ -85,7 +85,6 @@
                                                             width="400px" height="400px" alt="Generic placeholder image">
                                                         <a class="btn btn-primary mt-5" href="EditEvent?eventID=${event.eventID}">Chỉnh sửa </a>
                                                         <a class="btn btn-secondary mt-5" id="btnDelete" href="#" data-href="DeteleEvent?eventID=${event.eventID}" data-toggle="modal" data-target="#confirm-delete">Xoá sự kiện</a>
-
                                                     </div>
                                                     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -115,6 +114,19 @@
                                             </li> 
                                         </c:forEach>
                                     </ul>
+                                    <div class="clearfix">
+                                        <ul class="pagination">
+                                            <c:if test="${tag>1}">
+                                                <li class="page-item disabled"><a href="AllEventByClub?index=${tag-1}">Previous</a></li>
+                                                </c:if>
+                                                <c:forEach begin="1" end="${endP}" var="i">
+                                                <li class="page-item ${tag==i?"active":""}"><a href="AllEventByClub?index=${i}" class="page-link">${i}</a></li>
+                                                </c:forEach>
+                                                <c:if test="${tag<endP}">
+                                                <li class="page-item"><a href="AllEventByClub?index=${tag+1}" class="page-link">Next</a></li>
+                                                </c:if>
+                                        </ul>
+                                    </div> 
                                 </div>
                             </div>
                         </div>

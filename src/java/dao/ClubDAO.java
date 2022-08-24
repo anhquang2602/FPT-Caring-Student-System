@@ -305,14 +305,68 @@ public class ClubDAO extends DBContext {
         }
         return list;
     }
-
+    
+    public ArrayList<Event> getEventPagging(int id, int index) {
+        ArrayList<Event> list = new ArrayList<>();
+        String sql = "select * from EventOfClub where ClubID = ? ORDER BY EventID OFFSET ? ROWS FETCH NEXT 2 ROWS ONLY;";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            st.setInt(2, (index-1)*2);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                list.add(new Event(rs.getInt("EventID"), rs.getInt("ClubID"), rs.getString("EventName"), rs.getString("Time"), rs.getString("Description"), rs.getString("Url1")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+//    public ArrayList<Event> getEventByEmailPagging(String email, int index) {
+//        ArrayList<Event> list = new ArrayList<>();
+//        String sql = "select * from EventOfClub where Email = ? ORDER BY EventID OFFSET ? ROWS FETCH NEXT 2 ROWS ONLY;";
+//        PreparedStatement st;
+//        try {
+//            st = connection.prepareStatement(sql);
+//            st.setInt(1, id);
+//            st.setInt(2, (index-1)*2);
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                list.add(new Event(rs.getInt("EventID"), rs.getInt("ClubID"), rs.getString("EventName"), rs.getString("Time"), rs.getString("Description"), rs.getString("Url1")));
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return list;
+//    }
+    
     public ArrayList<Event> getEventByEmail(String id) {
         ArrayList<Event> list = new ArrayList<>();
-        String sql = "  select * from EventOfClub e join Clubs c on e.ClubID = c.ClubID where  c.Email = ?";
+        String sql = "  select * from EventOfClub e join Clubs c on e.ClubID = c.ClubID where  c.Email = ? ";
         PreparedStatement st;
         try {
             st = connection.prepareStatement(sql);
             st.setString(1, id);
+//            st.setInt(2, index);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                list.add(new Event(rs.getInt("EventID"), rs.getInt("ClubID"), rs.getString("EventName"), rs.getString("Time"), rs.getString("Description"), rs.getString("Url1")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Event> getEventByEmail2(String id, int index) {
+        ArrayList<Event> list = new ArrayList<>();
+        String sql = "  select * from EventOfClub e join Clubs c on e.ClubID = c.ClubID where  c.Email = ? ORDER BY EventID OFFSET ? ROWS FETCH NEXT 2 ROWS ONLY;";
+        PreparedStatement st;
+        try {
+            st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            st.setInt(2, (index-1)*2);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 list.add(new Event(rs.getInt("EventID"), rs.getInt("ClubID"), rs.getString("EventName"), rs.getString("Time"), rs.getString("Description"), rs.getString("Url1")));

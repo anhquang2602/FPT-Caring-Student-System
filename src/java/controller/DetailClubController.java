@@ -64,14 +64,48 @@ public class DetailClubController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        int id = Integer.parseInt(request.getParameter("id"));
         ClubDAO clubDAO = new ClubDAO();
-        Club club = clubDAO.getClubByID(id);
-        ArrayList<Event> listEvent = new ArrayList<>();
-        listEvent = clubDAO.getEvent(id);
-        request.setAttribute("club", club);
-        request.setAttribute("listEvent", listEvent);
-        request.getRequestDispatcher("detailClub.jsp").forward(request, response);
+        String index = request.getParameter("index");
+        if (index == null || index.equals("") || index == "") {
+            index = "1";
+        }
+//        try {
+//            int id = Integer.parseInt(request.getParameter("id"));
+//            Club club = clubDAO.getClubByID(id);
+//            ArrayList<Event> listEvent = new ArrayList<>();
+//            listEvent = clubDAO.getEvent(id);
+//            int totalPage = 1;
+//            if (listEvent.size() % 2 == 0) {
+//                totalPage = listEvent.size() / 2;
+//            } else {
+//                totalPage = listEvent.size() / 2 + 1;
+//            }
+//            ArrayList<Event> listEventPagging = clubDAO.getEventPagging(id, Integer.parseInt(index));
+//
+//            request.setAttribute("club", club);
+//            request.setAttribute("listEvent", listEventPagging);
+//            request.setAttribute("endP", totalPage);
+//            request.setAttribute("tag", index);
+//            request.getRequestDispatcher("detailClub.jsp").forward(request, response);
+//        } catch (Exception e) {
+            String email = request.getParameter("email");
+            Club club = clubDAO.getClubByEmail(email);
+            ArrayList<Event> listEvent = new ArrayList<>();
+            listEvent = clubDAO.getEventByEmail(email);
+            int totalPage = 1;
+            if (listEvent.size() % 2 == 0) {
+                totalPage = listEvent.size() / 2;
+            } else {
+                totalPage = listEvent.size() / 2 + 1;
+            }
+            ArrayList<Event> listEventPagging = clubDAO.getEventByEmail2(email, Integer.parseInt(index));
+
+            request.setAttribute("club", club);
+            request.setAttribute("listEvent", listEventPagging);
+            request.setAttribute("endP", totalPage);
+            request.setAttribute("tag", index);
+            request.getRequestDispatcher("detailClub.jsp").forward(request, response);
+//        }
     }
 
     /**
