@@ -83,6 +83,7 @@
                                         <div class="col-md-6">
                                             <strong class="text-right fs-4">Mã số sinh viên</strong>
                                             <input type="text" name="studentId" class="form-control" value="${student.studentID}" >
+                                             <div id="divCheckstudentId"></div>
                                         </div>
                                         <div class="col-md-6">
                                             <strong class="text-right fs-4">Khoá</strong>
@@ -221,6 +222,7 @@
                     contentType: "application/json; charset=utf-8"
                 },
                 success: function (data) {
+                     $("#district").append('<option >Chọn quận, phường</option>');
                     data.forEach(function (a) {
                         $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
                     });

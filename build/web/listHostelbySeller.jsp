@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="css/viewListStyle.css">
         <link rel="stylesheet" href="css/pagingStyle.css">
         <link rel="stylesheet" href="css/sellerStyle.css">
-         <style>
+        <style>
             .stars-outer {
                 position: relative;
                 display: inline-block;
@@ -100,10 +100,10 @@
                                 </div>                               
                                 <ul class="list-group shadow">    
                                     <%
-                                        ArrayList<Hostel> h=(ArrayList<Hostel>)request.getAttribute("listH");
-                                        if(h.size()==0){%>
-                                            <p style="font-size: 20px">Bạn chưa có nhà trọ nào</p>
-                                      <%  }%>
+                                        ArrayList<Hostel> h = (ArrayList<Hostel>) request.getAttribute("listH");
+                                        if (h.size() == 0) {%>
+                                    <p style="font-size: 20px">Bạn chưa có nhà trọ nào</p>
+                                    <%  }%>
                                     <c:forEach items="${listH}" var="d" >
                                         <li class="list-group-item">
                                             <div class="d-flex media align-items-lg-center flex-column flex-lg-row p-4">
@@ -113,7 +113,7 @@
                                                         <c:if test="${d.img1 == null}">
                                                             src="images/nhà trọ.jpg" </c:if> style="width: 150px; height: 150px" >
                                                     </div>
-                                                    <div class="col-md-5 media-body order-2 order-lg-1 description" id="description">
+                                                    <div class="col-md-4 media-body order-2 order-lg-1 description" id="description">
                                                         <h4 class="mt-0 font-weight-bold mb-3">
                                                             <a href="detailhostel?id=${d.hostelID}&isListbySeller=true" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
                                                     </h4>
@@ -126,11 +126,14 @@
 
                                                 </div>
 
-                                                <div class="col-md-4 mt-5 media-body order-2 order-lg-1 button_edit">
-                                                    <a class="btn btn-danger" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
-                                                    <a class="btn btn-primary" href="edithostel?id=${d.hostelID}" style="">Chỉnh sửa</a> 
-                                                    <a class="btn btn-secondary" id="btnDelete" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá nhà trọ</a>
+                                                <div class="col-md-3 mt-5 media-body order-2 order-lg-1 button_edit">
+                                                    <a class="btn btn-success" href="ChartVoteController?hostelId=${d.hostelID}">Xem Biểu Đồ</a>
+                                                    <a class="btn btn-danger" href="edithostel?id=${d.hostelID}" style="">Chỉnh sửa</a> 
                                                 </div>
+                                                <div class="col-md-2 mt-5 media-body order-2 order-lg-1 button_edit">
+                                                    <a class="btn btn-secondary" style="margin-top: 100px; margin-left: 100px" id="btnDelete" href="#" data-href="deletehostel?id=${d.hostelID}" data-toggle="modal" data-target="#confirm-delete">Xoá</a>
+                                                </div>
+
                                                 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -160,9 +163,7 @@
 
         </div>
         <script>
-            //        $('#confirm-delete').on('show.bs.modal', function (e) {
-            //            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-            //        });
+
             $(document).on('click', '#btnDelete', function () {
                 var link = $(this).attr('data-href');
                 $('.btn-ok').attr('href', link);

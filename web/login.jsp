@@ -74,6 +74,5 @@
             });
         </script>
     </body>
-    <script src="validator/Validator.js"></script>
-    
+    <script src="validator/validate.js"></script>
 </html>

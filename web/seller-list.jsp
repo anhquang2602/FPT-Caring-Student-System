@@ -198,13 +198,15 @@
                                                             <c:forEach items="${listSeller}" var="seller">
                                                                 <tr>
                                                                     <td>${seller.firstName} ${seller.lastName}</td>
-                                                                    <td><c:if test="${seller.age eq 0}">
+                                                                    <td>
+                                                                        <c:if test="${seller.age eq 0}">
                                                                         </c:if>
                                                                         <c:if test="${seller.age == null}">
                                                                         </c:if>
                                                                         <c:if test="${seller.age != 0}">
-                                                                            ${seller.age}</td> 
-                                                                        </c:if>
+                                                                            ${seller.age}                                                                      
+                                                                        </c:if> 
+                                                                    </td>
                                                                     <td>
                                                                         <c:if test="${seller.gender==1}">Nam</c:if>
                                                                         <c:if test="${seller.gender==0}">Nữ</c:if>

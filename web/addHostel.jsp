@@ -188,12 +188,16 @@
                                         </div>                         
                                     </div>
                                     <div class="error" id="errorProvince"></div>
+                                    
                                     <div class="billing">
                                         <div class="input_text"> 
                                             <strong class="fs-4">Quận, phường</strong> 
-                                            <select name="district"  id ="district" class="district"></select>
+                                            <select name="district"  id ="district" class="district"> </select>
+                                                
+                                           
                                         </div>                         
                                     </div>
+                                    
                                     <div class="input_text"> 
                                         <strong class="fs-4">Địa chỉ</strong> 
                                         <input type="text" name="address" placeholder="Nhập địa chỉ cụ thể"> 
@@ -238,7 +242,7 @@
 
                     url: "/Test_1/findDistrict",
                     data: {
-                        province: 21,
+                        province: 21,                      
                     },
                     headers: {
                         Accept: "application/json; charset=utf-8",
@@ -246,8 +250,13 @@
                     },
 
                     success: function (data) {
-
+                        $("#district").append('<option >Chọn quận, phường</option>');
                         data.forEach(function (a) {
+                            
+                            if(a.districtID === 28){
+                                $("#district").append('<option value="' + a.districtID + '" selected>' + a.districtName + '</option>');
+                            }
+                            
                             $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
 
                         });
@@ -277,7 +286,7 @@
                     },
 
                     success: function (data) {
-
+                        $("#district").append('<option >Chọn quận, phường</option>');
                         data.forEach(function (a) {
                             $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
 

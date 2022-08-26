@@ -3,8 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package unittest;
 
+import dao.AccountDAO;
+import dao.BusDAO;
+import dao.ClubDAO;
+import dao.DepartmentDAO;
+import dao.HostelDAO;
+import dao.RestaurantDAO;
+import dao.SellerDAO;
 import model.Account;
 import org.junit.Test;
 import static org.junit.Assert.*;
