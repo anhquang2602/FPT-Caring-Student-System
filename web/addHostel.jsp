@@ -300,7 +300,7 @@
                 const address = document.addhostelForm.address.value;
                 const cost = document.addhostelForm.cost.value;
                 const distance = document.addhostelForm.distance.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex = /^(?!0\d)\d*(\.\d+)?$/;
                 const regex2 = /^[0-9]*$/;
 
                 document.getElementById('errorName').innerText = ' ';

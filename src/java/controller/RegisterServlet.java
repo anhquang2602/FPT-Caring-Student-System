@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
@@ -98,6 +99,7 @@ public class RegisterServlet extends HttpServlet {
                 request.getSession().setAttribute("account", a);
                 request.getSession().setAttribute("directAfterAuthen", "RegisterServlet");
                 request.setAttribute("email", username);
+
                 //request.getSession().setAttribute("code", code); // add to session
                 //this.getServletConfig().getServletContext().setAttribute("code", code); // add to application context
                 request.getRequestDispatcher("/AuthenticateServlet").forward(request, response);
@@ -110,14 +112,16 @@ public class RegisterServlet extends HttpServlet {
                 a = (Account) request.getSession().getAttribute("account");
                 adb.insertNewAccount(a);
                 if (a.getRoleId() == 2) {
-                   StudentDAO stda=new StudentDAO();
-                   stda.insertNewStudent(a.getUsername());
+                    StudentDAO stda = new StudentDAO();
+                    stda.insertNewStudent(a.getUsername());
                 } else if (a.getRoleId() == 3) {
-                    SellerDAO sda=new SellerDAO();
+                    SellerDAO sda = new SellerDAO();
                     sda.insertNewSeller(a.getUsername());
                 }
                 request.getSession().invalidate();
                 request.removeAttribute("accept");
+                HttpSession session = request.getSession();
+                session.setAttribute("stt", "1");
                 response.sendRedirect("login.jsp");
             }
         }

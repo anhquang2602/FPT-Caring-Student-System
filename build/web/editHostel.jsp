@@ -279,8 +279,8 @@
                                             </textarea>
                                         </div>
                                         <div class="pay"> 
-                                            <button type="submit">Save</button> 
-                                            <button style="margin-top: 5px" type="reset">Reset </button>
+                                            <button type="submit">Lưu</button> 
+                                            <button style="margin-top: 5px" type="reset">Sắp lại</button>
                                         </div>
                                     </div>
                                 </form>
@@ -438,7 +438,7 @@
                 const address = document.edithostelForm.address.value;
                 const cost = document.edithostelForm.cost.value;
                 const distance = document.edithostelForm.distance.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex = /^(?!0\d)\d*(\.\d+)?$/;
                 const regex2 = /^[0-9]*$/;
                 const success = document.getElementById('success');
                 document.getElementById('errorName').innerText = ' ';

@@ -57,10 +57,10 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Email , CountryName , ProvinceName , DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
                 + "from Students\n"
-                + "inner join Country on Students.CountryID=Country.CountryID\n"
-                + "inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "inner join District on Students.DistrictID = District.DistrictID\n"
-                + "inner join Account on Students.Email = Account.username\n"
+                + "left join Country on Students.CountryID=Country.CountryID\n"
+                + "left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "left join District on Students.DistrictID = District.DistrictID\n"
+                + "join Account on Students.Email = Account.username\n"
                 + "ORDER BY StudentID\n"
                 + "OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
         PreparedStatement ps = connection.prepareStatement(sql);
@@ -78,10 +78,10 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Email , CountryName , ProvinceName , DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
                 + "from Students\n"
-                + "inner join Country on Students.CountryID=Country.CountryID\n"
-                + "inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "inner join District on Students.DistrictID = District.DistrictID\n"
-                + "inner join Account on Students.Email = Account.username\n"
+                + "left join Country on Students.CountryID=Country.CountryID\n"
+                + "left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "left join District on Students.DistrictID = District.DistrictID\n"
+                + " join Account on Students.Email = Account.username\n"
                 + "ORDER BY StudentID";
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
@@ -97,9 +97,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID\n"
@@ -118,9 +118,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Gender = " + gender + "\n"
                 + "                ORDER BY StudentID\n"
@@ -139,9 +139,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Unit='" + unit + "'\n"
                 + "                ORDER BY StudentID\n"
@@ -160,9 +160,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Unit='" + unit + "' and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID\n"
@@ -181,9 +181,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Unit='" + unit + "' and Gender = " + gender + "\n"
                 + "                ORDER BY StudentID\n"
@@ -202,9 +202,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Unit='" + unit + "' and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID\n"
@@ -223,9 +223,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Students.ProvinceID = " + province + "\n"
                 + "                ORDER BY StudentID";
@@ -243,9 +243,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Students.ProvinceID = " + province + " and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID";
@@ -263,9 +263,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Students.ProvinceID = " + province + " and Gender = " + gender + "\n"
                 + "                ORDER BY StudentID";
@@ -283,9 +283,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Students.ProvinceID = " + province + " and Unit='" + unit + "'\n"
                 + "                ORDER BY StudentID";
@@ -303,9 +303,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Students.ProvinceID = " + province + " and Unit='" + unit + "' and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID";
@@ -323,9 +323,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Students.ProvinceID = " + province + " and Unit='" + unit + "' and Gender = " + gender + "\n"
                 + "                ORDER BY StudentID";
@@ -343,9 +343,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Students.ProvinceID = " + province + " and Unit='" + unit + "' and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID";
@@ -363,9 +363,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "		WHERE Students.ProvinceID = " + province + " and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID";
@@ -383,9 +383,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%')\n"
                 + "                ORDER BY StudentID";
@@ -403,9 +403,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID";
@@ -423,9 +423,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Gender = " + gender + "\n"
                 + "                ORDER BY StudentID";
@@ -443,9 +443,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "				 WHERE Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
                 + "                ORDER BY StudentID\n"
@@ -464,9 +464,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Account.AccountStatus = " + status + " and Gender = " + gender + "\n"
                 + "                ORDER BY StudentID\n"
@@ -485,9 +485,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Unit='" + unit + "'\n"
                 + "                ORDER BY StudentID\n"
@@ -506,9 +506,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Unit='" + unit + "' and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID\n"
@@ -527,9 +527,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Unit='" + unit + "' and Gender = " + gender + "\n"
                 + "                ORDER BY StudentID\n"
@@ -548,9 +548,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Unit='" + unit + "' and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID\n"
@@ -569,9 +569,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + "\n"
                 + "                ORDER BY StudentID";
@@ -589,9 +589,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID";
@@ -609,9 +609,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID";
@@ -629,9 +629,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Unit='" + unit + "' and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID";
@@ -649,9 +649,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Unit='" + unit + "' and Gender = " + gender + "\n"
                 + "                ORDER BY StudentID";
@@ -669,9 +669,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Unit='" + unit + "' and Gender = " + gender + " and Account.AccountStatus = " + status + "\n"
                 + "                ORDER BY StudentID";
@@ -689,9 +689,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Unit='" + unit + "'\n"
                 + "                ORDER BY StudentID";
@@ -709,9 +709,9 @@ public class StudentDAO extends DBContext {
         ArrayList<Student> list = new ArrayList<>();
         String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit , Students.Email , CountryName , ProvinceName , \n"
                 + "DistrictName , AddressDetail ,Account.AccountStatus , Gender, Avatar\n"
-                + "from Students inner join Country on Students.CountryID=Country.CountryID\n"
-                + "                inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                + "                inner join District on Students.DistrictID = District.DistrictID\n"
+                + "from Students left join Country on Students.CountryID=Country.CountryID\n"
+                + "                left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                + "                left join District on Students.DistrictID = District.DistrictID\n"
                 + "                 join Account on Students.Email = Account.username\n"
                 + "WHERE (FirstName like N'%" + text + "%' OR LastName like N'%" + text + "%') and Students.ProvinceID = " + province + " and Gender = " + gender + "\n"
                 + "                ORDER BY StudentID";
@@ -741,12 +741,12 @@ public class StudentDAO extends DBContext {
 
     public Student getStudentByStudentID(String studentID) {
         try {
-            String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit,Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus ,Gender, Avatar\n"
+            String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit,Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus ,Gender, Avatar, LinkFacebook,StudentNo\n"
                     + "from Students\n"
-                    + "inner join Country on Students.CountryID=Country.CountryID\n"
+                    + "left join Country on Students.CountryID=Country.CountryID\n"
                     + "left join Province on Students.ProvinceID = Province.ProvinceID\n"
                     + "left join District on Students.DistrictID = District.DistrictID\n"
-                    + "inner join Account on Students.Email = Account.username\n"
+                    + "left join Account on Students.Email = Account.username\n"
                     + "where StudentID=?";
             PreparedStatement st;
             ResultSet rs;
@@ -754,9 +754,9 @@ public class StudentDAO extends DBContext {
             st.setString(1, studentID);
             rs = st.executeQuery();
             while (rs.next()) {
-
                 Student student = new Student(rs.getString("StudentID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"), rs.getString("Phone"),
-                        rs.getString("Unit"), rs.getString("Email"), rs.getString("CountryName"), rs.getString("ProvinceName"), rs.getString("DistrictName"), rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"));
+                        rs.getString("Unit"), rs.getString("Email"), rs.getInt("CountryID"), rs.getInt("ProvinceID"), rs.getInt("DistrictID"),
+                        rs.getString("AddressDetail"), rs.getInt("AccountStatus"), rs.getInt("Gender"), rs.getString("Avatar"), rs.getString("LinkFacebook"), rs.getInt("StudentNo"));
                 st.close();
                 rs.close();
                 return student;
@@ -827,10 +827,10 @@ public class StudentDAO extends DBContext {
         try {
             String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit,Email , CountryName , ProvinceName , DistrictName , AddressDetail , Account.AccountStatus ,Gender,Avatar\n"
                     + " from Students\n"
-                    + " inner join Country on Students.CountryID=Country.CountryID\n"
-                    + " inner join Province on Students.ProvinceID = Province.ProvinceID\n"
-                    + " inner join District on Students.DistrictID = District.DistrictID\n"
-                    + " inner join Account on Students.Email = Account.username\n"
+                    + " left join Country on Students.CountryID=Country.CountryID\n"
+                    + " left join Province on Students.ProvinceID = Province.ProvinceID\n"
+                    + " left join District on Students.DistrictID = District.DistrictID\n"
+                    + " left join Account on Students.Email = Account.username\n"
                     + " where Email=?";
             PreparedStatement st;
             ResultSet rs;
@@ -859,7 +859,7 @@ public class StudentDAO extends DBContext {
             String sql = "select StudentID, FirstName , LastName , Age , Phone , Unit,Email , Students.CountryId , Students.ProvinceId "
                     + ", Students.DistrictId , AddressDetail , Account.AccountStatus ,Gender,Avatar,LinkFacebook,StudentNo\n"
                     + " from Students\n"
-                    + " inner join Account on Students.Email = Account.username\n"
+                    + " left join Account on Students.Email = Account.username\n"
                     + " where Email=?";
             PreparedStatement st;
             ResultSet rs;

@@ -59,8 +59,8 @@ public class ViewStudentController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         StudentDAO studentDAO = new StudentDAO();
-        String studentID = request.getParameter("id");
-        Student student = studentDAO.getStudentByStudentID(studentID);
+        String studentEmail = request.getParameter("email");
+        Student student = studentDAO.getStudentByEmail(studentEmail);
         request.setAttribute("student", student);
         request.getRequestDispatcher("profileStudent.jsp").forward(request, response);
     }

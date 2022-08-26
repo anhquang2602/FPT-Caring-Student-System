@@ -54,7 +54,7 @@
                                 <ul class="breadcrumb bg-white">
                                     <li><a href="home.jsp">Trang chủ</a></li>
                                     <li><a href="ListRestaurantBySeller">Nhà hàng của tôi</a></li>
-                                    <li><a>Chi tiết nhà hàng</a></li>
+                                    <li><a>Chỉnh sửa nhà hàng</a></li>
                                 </ul>
                             </div>
                             <div class="card">
@@ -135,8 +135,8 @@
                                             </textarea>
                                         </div>
                                         <div class="pay"> 
-                                            <button type="submit">Save</button> 
-                                            <button style="margin-top: 5px" type="reset">Reset </button>
+                                            <button type="submit">Lưu</button> 
+                                            <button style="margin-top: 5px" type="reset">Sắp lại</button>
                                         </div>
                                     </div>
                                 </form>
@@ -207,7 +207,7 @@
                 const address = document.editRestaurantForm.address.value;
                 const cost = document.editRestaurantForm.cost.value;
                 const distance = document.editRestaurantForm.distance.value;
-                const regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                const regex = /^(?!0\d)\d*(\.\d+)?$/;
                 const regex2 = /^[0-9]*$/;
                 document.getElementById('errorName').innerText = ' ';
                 document.getElementById('errorProvince').innerText = ' ';
@@ -232,10 +232,7 @@
                 if (!cost) {
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá dao động!';
                     isValid = false;
-                } else if (!regex.test(cost)) {
-                    document.getElementById('errorCost').innerText = 'Invalid!';
-                    isValid = false;
-                } else if (cost <= 0) {
+                }  else if (cost <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
                     isValid = false;
                 }

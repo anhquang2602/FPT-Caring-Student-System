@@ -81,7 +81,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Số điện thoại</h4>
-                                        <input type="text" class="form-control" value="0${student.phone}" readonly="">
+                                        <input type="text" class="form-control" value="${student.phone}" readonly="">
                                     </div>
                                 </div>
                                 <div class="row mt-3">

@@ -66,19 +66,21 @@
                             </div>
                             <div class="d-flex mb-3 mt-5 px-md-3 px-2">
                                 <div class="text-center">
-                                    <p class="fs-4 mr-5">Bộ lọc tìm kiếm</p>
+                                    <p class="fs-4 mr-5" style="text-decoration: none; color:rgb(238, 77, 45); font-weight: bold">Bộ lọc tìm kiếm</p>
                                 </div>
                                 <div class="d-flex">
-                                    <div class="col-md-4 mr-5">
+                                    <div class="col-md-3.5 mr-5">
                                         <div class="d-flex">
                                             <span class="fs-4 mr-2">Giá: </span>
-                                            <span class="fs-4 mr-1">Từ</span>
+                                           
+                                            <span class="fs-4 mr-2 ">Từ</span>
                                             <input class="mr-1" type="text" name="under" value="${under}">- 
-                                            <span class="fs-4 ml-1">Đến</span>
+                                            <span class="fs-4 ml-1 mr-2">Đến</span>
                                             <input type="text" name="upper" value="${upper}">
+                                           
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 ml-1">
                                         <span class="fs-4">Khoảng cách: </span>
                                         <select name="distance" class="p-2 px-3">
                                             <option value="10" <c:if test = "${distance == 10 }">
@@ -99,7 +101,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-3 mr-1">
-                                        <span class="fs-4">Xếp hạng: </span>
+                                        <span class="fs-4 ">Xếp hạng: </span>
                                         <select name="star" class="p-2">
                                             <option value="5" <c:if test = "${star == 5 }">
                                                     selected="selected"
@@ -123,7 +125,10 @@
                                     </div>
                                     <div class="col-md-2">
                                         <input class="fs-4" type="submit" value="Lọc"> 
-                                        <a class="fs-4" href="ResetSearchController?keyword=${keyword}" style="text-decoration: none">Xóa bộ lọc</a>
+<!--                                        <a class="fs-4" href="ResetSearchController?keyword=${keyword}" style="text-decoration: none">Xóa bộ lọc</a>-->
+                                        
+                                        <input class="fs-4 ml-2" type=button onClick="location.href='ResetSearchController?keyword=${keyword}'"
+                                                            value='Xoá bộ lọc'>
                                     </div>
                                 </div>
                             </div>
@@ -165,8 +170,8 @@
                                                     </div>
 
                                                     <div class="col-md-4 mt-5  media-body order-2 order-lg-1 button_edit">
-                                                        <div class="stars-outer">
-                                                            <div class="stars-inner" style="width: ${d.starAVG}%">  </div>
+                                                        <div class="stars-outer" style=" font-size: 20px">
+                                                            <div class="stars-inner" style="width: ${d.starAVG}%; font-size: 20px">  </div>
                                                         </div>  
                                                 </div>
 
