@@ -135,6 +135,7 @@
                                         </div>
                                     </div>
                                     <div class="error" id="errorProvince"></div> 
+                                    
                                     <div class="row mt-3">
                                         <div class="col-md-12">
                                             <label class="labels" style="font-size: 22px" for="cars">Quận, Phường</label>
@@ -148,6 +149,7 @@
                                             </select>
                                         </div>
                                     </div>
+                                    
 
                                     <div class="row mt-3">
                                         <div class="col-md-12">
@@ -230,7 +232,7 @@
                 },
 
                 success: function (data) {
-
+                     $("#district").append('<option >Chọn quận, phường</option>');
                     data.forEach(function (a) {
                         $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
 

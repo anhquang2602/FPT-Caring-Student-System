@@ -241,7 +241,11 @@
                                                 </select> 
                                             </div>                         
                                         </div>
+                                        
+                                        
                                         <div class="error" id="errorProvince"></div>
+                                        
+                                        
                                         <div class="billing">
                                             <div class="input_text"> 
                                                 <strong class="fs-4">Quận, phường</strong> 
@@ -257,6 +261,8 @@
                                                 </select>
                                             </div>                         
                                         </div>
+                                        
+                                        
                                         <div class="input_text"> 
                                             <strong class="fs-4">Địa chỉ</strong> 
                                             <input type="text" name="address" value="${editHostel.address}"> 
@@ -291,7 +297,7 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %>
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
                                                      $(document).on('change', '.province', function () {
@@ -308,7 +314,7 @@
                                                                  contentType: "application/json; charset=utf-8"
                                                              },
                                                              success: function (data) {
-
+                                                                 $("#district").append('<option >Chọn quận, phường</option>');
                                                                  data.forEach(function (a) {
                                                                      $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
                                                                  });

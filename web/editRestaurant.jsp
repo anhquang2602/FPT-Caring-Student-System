@@ -164,7 +164,7 @@
                                                              contentType: "application/json; charset=utf-8"
                                                          },
                                                          success: function (data) {
-
+                                                             $("#district").append('<option >Chọn quận, phường</option>');
                                                              data.forEach(function (a) {
                                                                  $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
                                                              });
