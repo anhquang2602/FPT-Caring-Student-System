@@ -75,7 +75,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-12">
                                         <h4>Tuổi</h4>
-                                        <input type="number" class="form-control"value="${seller.age}" readonly="">
+                                        <input type="text" class="form-control"value="${seller.age}" readonly="">
                                     </div>
                                 </div>
                                 <div class="row mt-3">

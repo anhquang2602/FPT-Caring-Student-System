@@ -86,8 +86,10 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } else if (a == null) {
             request.setAttribute("errorLogin","Email hoặc mật khẩu chưa đúng !");
+            request.setAttribute("username", username);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else if (a.isStatus() == false) {
+            request.setAttribute("username", username);
             request.setAttribute("errorLogin", "Không thể đăng nhập do tài khoản" + username + " đã bị khoá");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

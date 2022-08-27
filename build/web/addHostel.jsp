@@ -192,6 +192,7 @@
                                         <div class="input_text"> 
                                             <strong class="fs-4">Quận, phường</strong> 
                                             <select name="district"  id ="district" class="district"></select>
+                                            
                                         </div>                         
                                     </div>
                                     <div class="input_text"> 
@@ -248,7 +249,14 @@
                     success: function (data) {
 
                         data.forEach(function (a) {
+                            if(a.districtID==28)
+                            {
+                            $("#district").append('<option value="' + a.districtID + '"selected>' + a.districtName + '</option>');
+                        }
+                        else{
                             $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
+                            
+                        }
 
                         });
                     },

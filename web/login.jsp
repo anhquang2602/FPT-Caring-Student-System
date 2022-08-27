@@ -24,9 +24,9 @@
                         </div>
                         <div class="input-field d-flex flex-column mt-3"> 
                             <form name="loginForm" action="LoginServlet" method="post" onsubmit="return checkSend()">
-                                Nhập email<input class="form-control" placeholder="Nhập email của bạn" type="text" name="username"/><br/>
+                                Nhập email<input class="form-control" placeholder="Nhập email của bạn" type="text" name="username" value="${username}"/><br/>
                                 <div id="divCheckEmail"></div>
-                                Nhập mật khẩu<input class="form-control" placeholder="Nhập mật khẩu của bạn" type="password" name="pass"/><br/>            
+                                Nhập mật khẩu<input class="form-control" placeholder="Nhập mật khẩu của bạn" type="password" name="pass"/><br/>              
                                 <input class="mt-4 btn btn-dark d-flex justify-content-center align-items-center" type="submit" value="Đăng nhập" onclick="checkValidatorForLogin()"/>
                             </form>
                             <div class="text1 mt-4"> <a style="text-decoration: none; color: rgb(238, 77, 45); margin-left: 10px" href="forgotPass_InputEmail.jsp">Quên mật khẩu</a> </div>
