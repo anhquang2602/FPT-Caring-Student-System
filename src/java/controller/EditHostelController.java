@@ -67,12 +67,10 @@ public class EditHostelController extends HttpServlet {
         HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        
+
         String id = request.getParameter("id");
         HostelDAO dao = new HostelDAO();
         Hostel h = dao.getHostelInfo(Integer.parseInt(id));
-      
-        
 
         AddressDAO a = new AddressDAO();
         request.setAttribute("listProvince", a.listProvince());
@@ -100,7 +98,7 @@ public class EditHostelController extends HttpServlet {
 
         HostelDAO dao = new HostelDAO();
         int id = Integer.parseInt(request.getParameter("hostelId"));
-        
+
         String hostelName = request.getParameter("hostelName");
         int room = Integer.parseInt(request.getParameter("room"));
         boolean status = request.getParameter("status").equals("yes");
@@ -150,15 +148,15 @@ public class EditHostelController extends HttpServlet {
 
         Hostel h = new Hostel(id, hostelName, room, status, floor, provinceID, districtID, address, cost, distance, description);
         dao.updateHostel(h);
-            try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(EditHostelController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(EditHostelController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         session.setAttribute("stt", "1");
-        
+
         response.sendRedirect(request.getContextPath() + "/edithostel?id=" + id);
-       
+
     }
 
     /**
@@ -172,4 +170,3 @@ public class EditHostelController extends HttpServlet {
     }// </editor-fold>
 
 }
-    
