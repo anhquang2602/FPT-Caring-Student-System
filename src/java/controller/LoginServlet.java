@@ -14,6 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
@@ -60,7 +61,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            response.sendRedirect("login.jsp");
+        HttpSession session = request.getSession();
+        response.sendRedirect("login.jsp");
+        session.removeAttribute("stt");
     }
 
     /**
@@ -76,9 +79,11 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("pass");
-        String role;     
+        String role;
         SellerDAO sdao = new SellerDAO();
         AccountDAO dao = new AccountDAO();
+        HttpSession session = request.getSession();
+        session.removeAttribute("stt");
         Account a = dao.checkLogin(username, password);
         if (a != null && a.isStatus() == true) {
             request.getSession().setAttribute("role", a.getRoleId());
@@ -93,6 +98,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("errorLogin", "Không thể đăng nhập do tài khoản" + username + " đã bị khoá");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+
     }
 
     /**

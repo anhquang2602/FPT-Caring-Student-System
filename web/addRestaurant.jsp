@@ -120,7 +120,7 @@
             </div>
         </div>
         <%@include file="/footer.jsp" %> 
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -142,8 +142,13 @@
                     },
 
                     success: function (data) {
-
+                        $("#district").append('<option >Chọn quận, phường</option>');
                         data.forEach(function (a) {
+
+                            if(a.districtID === 28){
+                                $("#district").append('<option value="' + a.districtID + '" selected>' + a.districtName + '</option>');
+                            }
+
                             $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
 
                         });
@@ -172,8 +177,9 @@
                     },
 
                     success: function (data) {
-
+                        $("#district").append('<option >Chọn quận, phường</option>');
                         data.forEach(function (a) {
+
                             $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
 
                         });
@@ -221,7 +227,7 @@
                 if (!cost) {
                     document.getElementById('errorCost').innerText = 'Bạn phải nhập giá dao động!';
                     isValid = false;
-                }  else if (cost <= 0) {
+                } else if (cost <= 0) {
                     document.getElementById('errorCost').innerText = 'Giá thuê phải > 0 ';
                     isValid = false;
                 }

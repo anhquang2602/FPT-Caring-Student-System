@@ -204,7 +204,16 @@
                                                                 <tr>
                                                                     <td>${student.studentID}</td>
                                                                     <td>${student.firstName}${student.lastName}</td>
-                                                                    <td>${student.age}</td>
+                                                                    <td>
+                                                                        <c:if test="${student.age eq 0}">
+                                                                        </c:if>
+                                                                        <c:if test="${student.age == null}">
+                                                                        </c:if>
+                                                                        <c:if test="${student.age != 0}">
+                                                                            ${student.age}                                                                      
+                                                                        </c:if> 
+
+                                                                    </td>
                                                                     <td>
                                                                         <c:if test="${student.gender==1}">Nam</c:if>
                                                                         <c:if test="${student.gender==0}">Nữ</c:if>
@@ -214,7 +223,7 @@
                                                                     <td class="text-center">
                                                                         <c:if test="${student.status==1}">
                                                                             <div class="actions">
-                                                                                 <a class="btn btn-sm bg-purple-light mr-2">
+                                                                                <a class="btn btn-sm bg-purple-light mr-2">
                                                                                     <i class="fas fa-check-square"></i>
                                                                                 </a>
                                                                             </div>

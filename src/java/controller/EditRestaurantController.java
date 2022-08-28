@@ -126,7 +126,7 @@ public class EditRestaurantController extends HttpServlet {
             if (restaurantDAO.updateRestaurant(restaurantID, restaurantName, provinceID, districtID, address, cost, distance, description, SaveRestaurantImg)) {
                 session.setAttribute("stt", "1");
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(4000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(EditRestaurantController.class.getName()).log(Level.SEVERE, null, ex);
                 }

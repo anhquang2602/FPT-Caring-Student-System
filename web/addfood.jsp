@@ -106,16 +106,16 @@
                                                              src="images/food.png" </c:if>     
                                                              style=" width: 200px; height: 150px">
                                                     </div>
-                                                    <div class="col-md-4 mt-1">
+                                                    <div class="col-md-5 mt-1">
                                                         <label class="labels">${food.foodName}</label>
                                                     <p class="text-justify text-truncate para mb-0">${food.descriptions}</p>
                                                 </div>
-                                                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                                                <div class="align-items-center align-content-center col-md-2 border-left mt-1">
                                                     <div class="d-flex flex-row align-items-center">
                                                         <h4 class="mr-1"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${food.cost}" ></fmt:formatNumber> VND</h4>
                                                         </div>
-                                                        <a class="btn btn-primary px-3" href="EditFoodController?foodId=${food.foodID}">Chỉnh sửa</a> 
-                                                    <a class="btn btn-danger" id="btnDelete" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá món ăn</a>
+                                                        <a class="btn btn-primary px-3" href="EditFoodController?foodId=${food.foodID}">Sửa</a> 
+                                                    <a class="btn btn-danger" id="btnDelete" href="#" data-href="DeleteFoodController?fid=${food.foodID}" data-toggle="modal" data-target="#confirm-delete">Xoá</a>
 
                                                     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">

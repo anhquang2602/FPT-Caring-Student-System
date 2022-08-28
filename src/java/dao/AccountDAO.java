@@ -27,7 +27,7 @@ public class AccountDAO extends DBContext {
             st.setString(2, pass);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                return new Account(user, pass, rs.getInt(2),rs.getBoolean(5));
+                return new Account(user, pass, rs.getInt(3),rs.getBoolean(5));
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
