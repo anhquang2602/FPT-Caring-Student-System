@@ -126,7 +126,6 @@ public class EditHostelController extends HttpServlet {
         listPart.add(part6);
         String realPath1 = request.getServletContext().getRealPath("/HostelImages");
         String realPath = realPath1.replaceFirst("build", "");
-
         if (!Files.exists(Paths.get(realPath))) {
             Files.createDirectories(Paths.get(realPath));
         }
@@ -140,7 +139,7 @@ public class EditHostelController extends HttpServlet {
                 String imgName = hostelName + "url" + (i + 1) + ".jpg";
                 hostelImg = "HostelImages/" + imgName;
                 listPart.get(i).write(realPath + "/" + imgName);
-
+                
                 dao.addEachImage(id, hostelImg, "url" + (i + 1));
 
 //                } 

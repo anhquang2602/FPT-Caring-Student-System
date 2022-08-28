@@ -118,7 +118,7 @@
                                                             <a href="detailhostel?id=${d.hostelID}&isListbySeller=true" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
                                                     </h4>
                                                     <p style="font-size: 20px">Có ${d.totalRoom} phòng</p>
-                                                    <p style="font-size: 20px">Giá thuê: <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VND</p>
+                                                    <p style="font-size: 20px">Giá thuê: <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.cost}" ></fmt:formatNumber> VNĐ</p>
 
                                                         <div class="stars-outer">
                                                             <div class="stars-inner" style="width: ${d.starAVG}%">  </div>

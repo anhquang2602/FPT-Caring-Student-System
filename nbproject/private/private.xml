@@ -3,6 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codefinal/src/java/controller/ForgotPass_InputNewPassServlet.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codefinal/src/java/controller/ForgotPass_InputEmailServlet.java</file>
+            <file>file:/C:/Users/nguye/Desktop/Code%20DareDevils/codefinal/src/java/dao/DBContext.java</file>
+=======
             <file>file:/D:/đồ%20án/web/editFood.jsp</file>
             <file>file:/D:/đồ%20án/web/viewRestaurant.jsp</file>
             <file>file:/D:/đồ%20án/web/HostelImages/Chung%20Cư%20Phenikaaurl4.jpg</file>
@@ -21,6 +26,7 @@
             <file>file:/D:/đồ%20án/web/avatarImages/hongptthe141389Avatar.jpg</file>
             <file>file:/D:/đồ%20án/src/java/controller/LoginServlet.java</file>
             <file>file:/D:/đồ%20án/web/addfood.jsp</file>
+>>>>>>> 9fb17961869abe31d323ce0e08ce7b6d67d53632
         </group>
     </open-files>
 </project-private>

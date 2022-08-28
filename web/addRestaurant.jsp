@@ -101,9 +101,9 @@
 
                                     <div class="input_text"> <input type="text" name="address" placeholder="Nhập địa chỉ cụ thể"> <span>Địa chỉ</span> 
                                         <div class="error" id="errorAddress"></div></div>
-                                    <div class="input_text"> <input type="text" name="cost" placeholder="Nhập giá dao động"> <span>Giá chung</span>
+                                    <div class="input_text"> <input type="text" name="cost" placeholder="Nhập giá dao động"> <span>Giá dao động</span>
                                         <div class="error" id="errorCost"></div></div>
-                                    <div class="input_text"> <input type="text" name="distance" placeholder="Nhập khoảng cách"> <span>Khoảng cách</span> 
+                                    <div class="input_text"> <input type="text" name="distance" placeholder="Nhập khoảng cách"> <span>Khoảng cách (km)</span> 
                                         <div class="error" id="errorDistance"></div></div>
                                     <div class="input_text"> <span>Mô tả</span> </div>
                                     <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="description" style="width:250px;height:150px;"></textarea>

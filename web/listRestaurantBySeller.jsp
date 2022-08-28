@@ -8,6 +8,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -121,9 +122,16 @@
                                                     </h4>
                                                     <p style="font-size: 20px">${r.description}</p>
                                                     <p style="font-size: 20px">${r.address}</p>
-                                                    <p style="font-size: 20px">${r.distance} km</p>
-                                                    <div class="stars-outer">
-                                                        <div class="stars-inner" style="width: ${r.starAVG}%">  
+                                                    <p style="font-size: 20px">
+
+                                                        <c:if test="${r.distance < 1}"> 
+                                                        <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${r.distance* 1000}" ></fmt:formatNumber> m</p>
+                                                        </c:if>
+                                                        <c:if test="${r.distance >= 1}"> ${r.distance} km</c:if>
+
+                                                        </p>
+                                                        <div class="stars-outer">
+                                                            <div class="stars-inner" style="width: ${r.starAVG}%">  
                                                         </div>
                                                     </div>  
 
@@ -137,23 +145,23 @@
                                                     <a class="btn btn-secondary" style="margin-top: 100px; margin-left: 100px" id="btnDelete" href="#" data-href="DeleteRestaurantController?id=${r.restaurantID}" data-toggle="modal" data-target="#confirm-delete">Xoá</a>
                                                 </div>
 
-                                                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    Xoá nhà ăn
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Bạn có chắc chắn muốn xoá nhà ăn này không?
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
-                                                                    <a class="btn btn-danger btn-ok">Xoá</a>
-                                                                </div>
+                                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                Xoá nhà ăn
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Bạn có chắc chắn muốn xoá nhà ăn này không?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                                                <a class="btn btn-danger btn-ok">Xoá</a>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> 
+                                                </div>
+                                            </div> 
                                         </li> 
                                     </c:forEach>
                                 </ul>
