@@ -156,7 +156,8 @@
                                 <div class="right-side">
                                     <strong class="fs-3">Mô tả phòng</strong>
                                     <div class="input_text">
-                                        <h4>Tên nhà trọ</h4>
+                                        <strong class="fs-4">Tên nhà trọ</strong>
+                                     
                                         <input type="text" name="hostelName" placeholder="Nhập tên nhà trọ">  
                                     </div>
                                     <div class="error" id="errorName"></div>
@@ -204,12 +205,12 @@
                                     </div>
                                     <div class="error" id="errorAddress"></div>
                                     <div class="input_text"> 
-                                        <strong class="fs-4">Giá thuê</strong>
+                                        <strong class="fs-4">Giá thuê (VNĐ)</strong>
                                         <input type="text" name="cost" placeholder="Nhập giá thuê"> 
                                     </div>
                                     <div class="error" id="errorCost"></div>
                                     <div class="input_text"> 
-                                        <strong class="fs-4">Khoảng cách</strong> 
+                                        <strong class="fs-4">Khoảng cách (km)</strong> 
                                         <input type="text" name="distance" placeholder="Nhập khoảng cách"> 
                                     </div>
                                     <div class="error" id="errorDistance"></div>

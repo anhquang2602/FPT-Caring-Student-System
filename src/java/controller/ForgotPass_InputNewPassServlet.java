@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -82,13 +83,14 @@ public class ForgotPass_InputNewPassServlet extends HttpServlet {
             AccountDAO ad = new AccountDAO();
             if (ad.UpdatePassword(username, pass)) {
                 request.setAttribute("errorInputNewPass", "update password successfully");
+                HttpSession session = request.getSession();
+                session.setAttribute("stt", "2");
                 response.sendRedirect("login.jsp");
             } else {
                 request.setAttribute("errorInputNewPass", "update password fail");
                 request.getRequestDispatcher("forgotPass_InputNewPass.jsp").forward(request, response);
             }
         }
-        
 
     }
 

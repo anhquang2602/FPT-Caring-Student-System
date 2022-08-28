@@ -160,7 +160,13 @@
                                                     <h3 class="mt-0 font-weight-bold mb-4">
                                                         <a href="detailhostel?id=${d.hostelID}" style="text-decoration: none; color:blue; font-weight: bold">Nhà trọ ${d.hostelName}</a>
                                                     </h3>
-                                                    <p style="font-size: 20px">Vị trí cách đại học FPT: ${d.distance} km</p>
+                                                    <p style="font-size: 20px">Vị trí cách đại học FPT: 
+                                                        
+                                                        <c:if test="${d.distance < 1}"> 
+                                                        <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${d.distance* 1000}" ></fmt:formatNumber> m</p>
+                                                        </c:if>
+                                                         <c:if test="${d.distance >= 1}"> ${d.distance} km</c:if>
+                                                         </p>
                                                     <p style="font-size: 20px">Tình trạng: <c:if test="${d.status == true}" > Còn phòng</c:if>
                                                         <c:if test="${d.status == false}" >Hết phòng</c:if>
                                                         </p>

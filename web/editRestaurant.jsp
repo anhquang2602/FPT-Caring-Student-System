@@ -127,7 +127,7 @@
                                             <div class="error" id="errorAddress"></div></div>
                                         <div class="input_text"> <input type="text" name="cost" value="${restaurant.cost}"> <span>Giá dao động</span> 
                                             <div class="error" id="errorCost"></div></div>
-                                        <div class="input_text"> <input type="text" name="distance" value="${restaurant.distance}"> <span>Khoảng cách</span> 
+                                        <div class="input_text"> <input type="text" name="distance" value="${restaurant.distance}"> <span>Khoảng cách (km)</span> 
                                             <div class="error" id="errorDistance"></div></div>
                                         <div> <span>Mô tả</span> 
                                             <textarea style="width: 100%; margin-top: 10px" type="text" name="description">
