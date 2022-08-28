@@ -3,10 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/RegisterServlet.java</file>
-            <file>file:/D:/FPTU/HK9/DATN/Code/Code%20New/src/java/controller/LoginServlet.java</file>
-
+            <file>file:/D:/đồ%20án/web/editFood.jsp</file>
+            <file>file:/D:/đồ%20án/web/viewRestaurant.jsp</file>
+            <file>file:/D:/đồ%20án/web/HostelImages/Chung%20Cư%20Phenikaaurl4.jpg</file>
+            <file>file:/D:/đồ%20án/src/java/controller/RestaurantListController.java</file>
+            <file>file:/D:/đồ%20án/web/editHostel.jsp</file>
+            <file>file:/D:/đồ%20án/web/hosteldetail.jsp</file>
+            <file>file:/D:/đồ%20án/web/addHostel.jsp</file>
+            <file>file:/D:/đồ%20án/web/login.jsp</file>
+            <file>file:/D:/đồ%20án/web/css/pagingStyle.css</file>
+            <file>file:/D:/đồ%20án/src/java/controller/EditHostelController.java</file>
+            <file>file:/D:/đồ%20án/web/listAllRestaurant.jsp</file>
+            <file>file:/D:/đồ%20án/web/addRestaurant.jsp</file>
+            <file>file:/D:/đồ%20án/web/HostelImages/KTX%20Ông%20Bàurl2.jpg</file>
+            <file>file:/D:/đồ%20án/src/java/dao/DBContext.java</file>
+            <file>file:/D:/đồ%20án/web/HostelImages/Thanh%20Bìnhurl4.jpg</file>
+            <file>file:/D:/đồ%20án/web/avatarImages/hongptthe141389Avatar.jpg</file>
+            <file>file:/D:/đồ%20án/src/java/controller/LoginServlet.java</file>
+            <file>file:/D:/đồ%20án/web/addfood.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -178,7 +178,8 @@ Author     : nguye
                                                             </div>
                                                             <div class="col-md-5 mt-1">
                                                                 <label class="labels">${food.foodName}</label>
-                                                            <p class="text-justify text-truncate para mb-0">${food.descriptions}<br><br></p>
+                                                                <!--<textarea class="text-justify text-truncate para mb-0" readonly="">${food.descriptions}</textarea>-->
+                                                                <p class="text-justify text-truncate para mb-0" >${food.descriptions}<br><br></p>
                                                         </div>
                                                         <div class="col-md-2 align-items-center align-content-center border-left mt-1">
                                                             <div class="d-flex flex-row align-items-center">

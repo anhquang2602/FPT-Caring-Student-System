@@ -85,7 +85,7 @@
                                         <div class="row mt-3">
                                             <div class="col-md-12">
                                                 <strong class="text-right fs-4">Tuổi</strong>
-                                                <input type="number" name="age" class="form-control"value="${admin.age}">
+                                                <input type="text" name="age" class="form-control"value="${admin.age}">
                                                 <div id="divCheckAge"></div>
                                             </div>
                                         </div>
