@@ -78,7 +78,8 @@ public class AddNewEvent extends HttpServlet {
 
         String eventName = request.getParameter("eventName");
         String time = request.getParameter("time");
-        String des = request.getParameter("des");
+        String des1 = request.getParameter("des");
+        String des = des1.replaceAll("(\r\n|\n)", "<br>");
         String username = (String) request.getSession().getAttribute("username");
         ClubDAO clubDAO = new ClubDAO();
         ArrayList<Event> events = clubDAO.getEventByEmail(username);
