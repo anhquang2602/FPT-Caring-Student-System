@@ -257,9 +257,9 @@
                             if(a.districtID === 28){
                                 $("#district").append('<option value="' + a.districtID + '" selected>' + a.districtName + '</option>');
                             }
-                            
+                            else{
                             $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-
+                            }
                         });
                     },
                     error: function (e) {
