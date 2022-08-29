@@ -3,19 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/DoAn_Final/src/java/dao/DBContext.java</file>
             <file>file:/D:/DoAn_Final/web/listAllRestaurant.jsp</file>
             <file>file:/D:/DoAn_Final/web/editHostel.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/controller/UpdateClubProfile.java</file>
             <file>file:/D:/DoAn_Final/src/java/controller/EditEvent.java</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/EditHostelController.java</file>
             <file>file:/D:/DoAn_Final/web/hosteldetail.jsp</file>
             <file>file:/D:/DoAn_Final/src/java/controller/RegisterServlet.java</file>
-            <file>file:/D:/DoAn_Final/web/voteChart_res.jsp</file>
-            <file>file:/D:/DoAn_Final/web/addHostel.jsp</file>
-            <file>file:/D:/DoAn_Final/web/listRestaurantBySeller.jsp</file>
-            <file>file:/D:/DoAn_Final/src/java/dao/StudentDAO.java</file>
+            <file>file:/D:/DoAn_Final/web/validator/Validator.js</file>
+            <file>file:/D:/DoAn_Final/web/HostelImages/12url1.jpg</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/EditFoodController.java</file>
             <file>file:/D:/DoAn_Final/src/java/controller/ViewStudentController.java</file>
             <file>file:/D:/DoAn_Final/web/editRestaurant.jsp</file>
+            <file>file:/D:/DoAn_Final/src/java/dao/DBContext.java</file>
+            <file>file:/D:/DoAn_Final/web/css/hostelStyle.css</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/UpdateClubProfile.java</file>
+            <file>file:/D:/DoAn_Final/web/css/commentStyle.css</file>
+            <file>file:/D:/DoAn_Final/web/voteChart_res.jsp</file>
+            <file>file:/D:/DoAn_Final/web/addHostel.jsp</file>
+            <file>file:/D:/DoAn_Final/web/HostelImages/1url1.jpg</file>
+            <file>file:/D:/DoAn_Final/web/HostelImages/abcurl1.jpg</file>
+            <file>file:/D:/DoAn_Final/src/java/controller/AddHostelController.java</file>
+            <file>file:/D:/DoAn_Final/web/HostelImages/2url1.jpg</file>
+            <file>file:/D:/DoAn_Final/web/css/pagingStyle.css</file>
+            <file>file:/D:/DoAn_Final/web/listRestaurantBySeller.jsp</file>
+            <file>file:/D:/DoAn_Final/src/java/dao/StudentDAO.java</file>
+            <file>file:/D:/DoAn_Final/web/WEB-INF/web.xml</file>
+            <file>file:/D:/DoAn_Final/web/HostelImages/abcurl2.jpg</file>
         </group>
     </open-files>
 </project-private>
