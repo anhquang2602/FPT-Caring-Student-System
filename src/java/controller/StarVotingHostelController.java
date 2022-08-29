@@ -111,7 +111,7 @@ public class StarVotingHostelController extends HttpServlet {
         int hostelId = Integer.parseInt(request.getParameter("hostelId"));
         String comment = request.getParameter("message");
 
-        String json = new Gson().toJson(star);
+       
         StudentDAO stdao = new StudentDAO();
 
         int studentNo = Integer.parseInt(stdao.getStudentNo((String) request.getSession().getAttribute("username")));

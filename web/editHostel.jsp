@@ -284,9 +284,7 @@
                                         <div class="error" id="errorDistance"></div>
                                         <div class="input_text"> 
                                             <strong class="fs-4">Mô tả</strong>  
-                                            <textarea name="description" rows="5" style="width: 100%; margin-top: 10px" name="description">
-                                                ${editHostel.description}
-                                            </textarea>
+                                            <textarea name="description" rows="5"  style="width: 100%; margin-top: 10px " name="description">${editHostel.description}</textarea>
                                         </div>
                                         <div class="pay"> 
                                             <button type="submit">Lưu</button> 

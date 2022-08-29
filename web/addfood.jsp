@@ -88,10 +88,10 @@
                             <div class="card">
                                 <form class="form" method="POST" action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()"  enctype="multipart/form-data">
                                     <div class="left-side">
-                                        <h3>Menu nhà ăn</h3>    
-                                        <%
-                                            ArrayList<Food> f = (ArrayList<Food>) request.getAttribute("listFood");
-                                            if (f.size() == 0) {%>
+                                        <h3><Strong>Menu nhà ăn</Strong></h3>    
+                                                <%
+                                                    ArrayList<Food> f = (ArrayList<Food>) request.getAttribute("listFood");
+                                                    if (f.size() == 0) {%>
                                         <p style="font-size: 20px">Hiện tại bạn chưa có món ăn nào</p>
                                         <%  }%>
                                         <c:forEach items="${listFood}" var="food" >
@@ -142,7 +142,7 @@
                                             <input type="text" name="id" value="${restaurant.restaurantID}" hidden>
                                         </div>
                                         <form action="AddFoodController" name="addFoodForm" onsubmit="return validateFood()" method="post" enctype="multipart/form-data">
-                                            <h3>Thêm món ăn</h3>
+                                            <h3><Strong>Thêm món ăn</strong></h3>
                                             <div class="mt-5">
                                                 <input type="file" accept="image/*" onchange="loadFile(event)" name ="foodImage" id="file1">
                                                 <label for="file1" style="position: absolute; margin-left: 70px; margin-top: 60px; opacity: 30%">+</label>
@@ -155,11 +155,11 @@
                                                             URL.revokeObjectURL(output1.src) // free memory
                                                         }
                                                     };</script>
-                                                <div class="input_text"> <input type="text" name="foodName" placeholder="Nhập tên món ăn"> <span>Tên món ăn</span> </div>
+                                                <div class="input_text"> <input type="text" name="foodName" placeholder="Nhập tên món ăn"> <span><strong>Tên món ăn</strong></span> </div>
                                                 <div class="error" id="errorName"></div>
-                                                <div class="input_text"> <input type="text" name="costFood" placeholder="Nhập giá dao động"> <span>Giá món ăn</span>
+                                                <div class="input_text"> <input type="text" name="costFood" placeholder="Nhập giá dao động"> <span><strong>Giá món ăn</strong></span>
                                                     <div class="error" id="errorCost"></div></div>
-                                                <div class="input_text"> <span>Mô tả</span> </div>
+                                                    <div class="input_text"> <span><strong>Mô tả</strong></span> </div>
                                                 <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="desFood" style="width:250px;height:150px;"></textarea>
                                                 <div class="pay"> 
                                                     <button type="submit" >Thêm món ăn</button>                  

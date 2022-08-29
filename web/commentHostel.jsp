@@ -219,35 +219,7 @@
             }
 
 
-            $(".btnSave").click(function () {
-                var hostelId = document.getElementById("hostelId").value;
-                var i = 0;
-                allStars.forEach((star, i) => {
-                    i++;
-                });
-                alert(i);
-                $.ajax({
-                    type: "POST",
-
-                    url: "/Test_1/star",
-                    data: {
-                        hostelId: hostelId,
-                        star: 5,
-                    },
-                    headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
-                    },
-
-                    success: function (data) {
-
-                        alert(data);
-                    },
-                    error: function (e) {
-                        console.log("ERROR: ", e);
-                    }
-                });
-            });
+           
         </script>
         <%@include file="/footer.jsp" %>
     </body>

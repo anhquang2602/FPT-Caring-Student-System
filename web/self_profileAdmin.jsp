@@ -207,7 +207,7 @@
                     type: "GET",
                     url: "/Test_1/findDistrict",
                     data: {
-                        province: province,
+                        province: province,   //gui parameter
                     },
                     headers: {
                         Accept: "application/json; charset=utf-8",

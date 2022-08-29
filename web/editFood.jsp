@@ -79,9 +79,9 @@
                                     <div class="input_text"> <input type="text" name="costFood" value="${food.cost}"> <span>Giá dao động</span> 
                                         <div class="error" id="errorCost"></div></div>
                                     <div> <span>Mô tả</span> 
-                                        <textarea style="width: 100%; margin-top: 10px" type="text" name="desFood">
-                                            ${food.descriptions}
-                                        </textarea>
+                                        <textarea style="width: 100%; margin-top: 10px" type="text" name="desFood">${food.descriptions}</textarea>
+                                            
+                                        
                                     </div>
                                     <div class="pay"> 
                                         <button type="submit">Save</button> 
