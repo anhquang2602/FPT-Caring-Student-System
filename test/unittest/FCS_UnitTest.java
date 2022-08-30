@@ -13,8 +13,6 @@ import dao.HostelDAO;
 import dao.RestaurantDAO;
 import dao.SellerDAO;
 import model.Account;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
