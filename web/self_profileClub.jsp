@@ -86,7 +86,7 @@
                                         </div>
                                     </div>
                                         <div class="row mt-3">
-                                            <div class="col-md-12"><strong class="text-right fs-4">Mô Tả</strong><input type="text" name="description" class="form-control"value="${club.des}" ></div>
+                                            <div class="col-md-12"><strong class="text-right fs-4">Mô Tả</strong><textarea name="description" class="form-control" >${club.des}</textarea></div>
                                         </div>
                                     </div>
                                     <div class="mt-5 text-center">

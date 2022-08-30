@@ -18,17 +18,17 @@
                     <h3><a href="#">FCS</a></h3>
                     <p class="links"><a href="#">Home</a><strong> &middot; </strong><a href="#">Blog</a><strong> &middot; </strong><a href="#">Pricing</a><strong> &middot; </strong><a href="#">About</a><strong> &middot; </strong><a href="#">Faq</a><strong> &middot; </strong><a href="#">Contact</a></p>
                     <p class="company-name">FCS.COM &copy; 2022</p>
-                    <p class="company-name">FCS.com is one of the leading website for caring students in FPT University.</p>
+                    <p class="company-name">FPT Caring Student System - Developed by DareDevils Team</p>
                 </div>
                 <div class="col-md-5 footer-contacts">
                     <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
                         <p><span class="new-line-span">FPT University</span>HN, VN</p>
                     </div>
                     <div><i class="fa fa-phone footer-contacts-icon"></i>
-                        <p class="footer-center-info email text-left"> +1 9485045958</p>
+                        <p class="footer-center-info email text-left"> 09485045958</p>
                     </div>
                     <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                        <p> <a href="#" target="_blank">fptcaringsystem@gmail.com</a></p>
+                        <p> fptcaringsystem@gmail.com</p>
                     </div>
                 </div>
 <!--                <div class="col-md-4 text-center justify-content-center">

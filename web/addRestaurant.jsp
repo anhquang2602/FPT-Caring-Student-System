@@ -62,10 +62,7 @@
                                     </div>
 
                                     <div class="error" id="errorImg"></div>
-
-
                                 </div>
-
                                 <div class="right-side">
                                     
                                     <strong class="fs-3">Mô tả nhà ăn</strong>
@@ -112,11 +109,9 @@
                                         <div class="error" id="errorDistance"></div></div>
                                         <div class="input_text"> <span><strong>Mô tả</strong></span> </div>
                                     <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="description" style="width:250px;height:150px;"></textarea>
-
                                     <div class="pay"> 
                                         <button type="submit" >Thêm nhà ăn</button>                  
                                     </div>
-
                                 </div>
                             </form>
                         </div>
