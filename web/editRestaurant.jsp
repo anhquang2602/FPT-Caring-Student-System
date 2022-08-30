@@ -90,14 +90,14 @@
                                     </div>
 
                                     <div class="right-side">
-                                        <h3>Mô tả nhà hàng</h3>
-                                        <div class="input_text"> <input type="text" name="restaurantName" value="${restaurant.restaurantName}"> <span>Tên nhà trọ</span> </div>
+                                        <h3><strong>Mô tả nhà hàng</strong></h3>
+                                        <div class="input_text"> <input type="text" name="restaurantName" value="${restaurant.restaurantName}"> <span><strong>Tên nhà ăn</strong></span> </div>
                                         <div class="error" id="errorName"></div>
 
 
                                         <div class="billing">
                                             <div class="input_text"> 
-                                                <span>Tỉnh, thành phố</span> 
+                                                <span><strong>Tỉnh, thành phố</strong></span> 
                                                 <select name="province" id="province" class="province">
                                                     <option value="">Select Province</option>
                                                     <c:forEach items ="${listProvince}" var="o">
@@ -112,7 +112,7 @@
                                         <div class="error" id="errorProvince"></div>
                                         <div class="billing">
                                             <div class="input_text"> 
-                                                <span>Quận, phường</span> 
+                                                <span><strong>Quận, phường</strong></span> 
                                                 <select name="district"  id ="district" class="district">
                                                     <c:forEach items ="${listDistrict}" var="o">
                                                         <option value="${o.districtID}" 
@@ -123,16 +123,16 @@
                                                 </select>
                                             </div>                         
                                         </div>
-                                        <div class="input_text"> <input type="text" name="address" value="${restaurant.address}"> <span>Địa chỉ</span> 
+                                        <div class="input_text"> <input type="text" name="address" value="${restaurant.address}"> <span><strong>Địa chỉ</strong></span> 
                                             <div class="error" id="errorAddress"></div></div>
-                                        <div class="input_text"> <input type="text" name="cost" value="${restaurant.cost}"> <span>Giá dao động</span> 
+                                        <div class="input_text"> <input type="text" name="cost" value="${restaurant.cost}"> <span><strong>Giá dao động</strong></span> 
                                             <div class="error" id="errorCost"></div></div>
-                                        <div class="input_text"> <input type="text" name="distance" value="${restaurant.distance}"> <span>Khoảng cách</span> 
+                                        <div class="input_text"> <input type="text" name="distance" value="${restaurant.distance}"> <span><strong>Khoảng cách (km)</strong></span> 
                                             <div class="error" id="errorDistance"></div></div>
-                                        <div> <span>Mô tả</span> 
-                                            <textarea style="width: 100%; margin-top: 10px" type="text" name="description">
-                                                ${restaurant.description}
-                                            </textarea>
+                                        <div> <span><strong>Mô tả</strong></span> 
+                                            <textarea style="width: 100%; margin-top: 10px" rows="5" type="text" name="description">${restaurant.description}</textarea>
+                                               
+                                           
                                         </div>
                                         <div class="pay"> 
                                             <button type="submit">Lưu</button> 

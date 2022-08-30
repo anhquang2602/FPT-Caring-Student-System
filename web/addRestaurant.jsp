@@ -43,7 +43,8 @@
                             <form class="form" method="POST" action="AddRestaurantController" name="addRestaurantForm" onsubmit="return validateRestaurant()"  enctype="multipart/form-data">
                                 <div class="left-side">
                                     <div class="left_top">
-                                        <h4>Thêm ảnh nhà ăn</h4>
+                                       
+                                        <strong class="fs-3">Thêm ảnh nhà ăn</strong>
                                     </div> 
                                     <div class="mt-5">
                                         <input type="file" accept="image/*" onchange="loadFile(event)" name ="restaurantImage" id="file1">
@@ -63,8 +64,12 @@
                                     <div class="error" id="errorImg"></div>
                                 </div>
                                 <div class="right-side">
-                                    <h3>Mô tả nhà ăn</h3>
-                                    <div class="input_text"> <input type="text" name="restaurantName" placeholder="Nhập tên nhà ăn"> <span>Tên nhà ăn</span> </div>
+                                    
+                                    <strong class="fs-3">Mô tả nhà ăn</strong>
+                                    <div class="input_text"> <input type="text" name="restaurantName" placeholder="Nhập tên nhà ăn"> 
+                                        <span><strong>Tên nhà ăn</strong> </span> 
+                                    
+                                    </div>
                                     <div class="error" id="errorName"></div>
                                     <!--                                    <div class="input_text"> <input type="text" name="room" placeholder="Nhập số phòng"> <span>Số phòng</span> </div>   
                                                                         <div class="error" id="errorRoom"></div>
@@ -72,7 +77,7 @@
                                                                         <div class="error" id="errorFloor"></div>-->
                                     <div class="billing">
                                         <div class="input_text"> 
-                                            <span>Tỉnh, thành phố</span> 
+                                            <span><strong>Tỉnh, thành phố</strong></span> 
                                             <select name="province" id="province" class="province">
                                                 <option value="">Select Province</option>
                                                 <c:forEach items ="${listProvince}" var="o">
@@ -91,18 +96,18 @@
 
                                     <div class="billing">
                                         <div class="input_text"> 
-                                            <span>Quận, phường</span> 
+                                            <span><strong>Quận, phường</strong></span> 
                                             <select name="district"  id ="district" class="district"></select>
                                         </div>                         
                                     </div>
 
-                                    <div class="input_text"> <input type="text" name="address" placeholder="Nhập địa chỉ cụ thể"> <span>Địa chỉ</span> 
+                                    <div class="input_text"> <input type="text" name="address" placeholder="Nhập địa chỉ cụ thể"> <span><strong>Địa chỉ</strong></span> 
                                         <div class="error" id="errorAddress"></div></div>
-                                    <div class="input_text"> <input type="text" name="cost" placeholder="Nhập giá dao động"> <span>Giá chung</span>
+                                        <div class="input_text"> <input type="text" name="cost" placeholder="Nhập giá dao động"> <span><strong>Giá dao động</strong></span>
                                         <div class="error" id="errorCost"></div></div>
-                                    <div class="input_text"> <input type="text" name="distance" placeholder="Nhập khoảng cách"> <span>Khoảng cách</span> 
+                                        <div class="input_text"> <input type="text" name="distance" placeholder="Nhập khoảng cách"> <span><strong>Khoảng cách (km)</strong></span> 
                                         <div class="error" id="errorDistance"></div></div>
-                                    <div class="input_text"> <span>Mô tả</span> </div>
+                                        <div class="input_text"> <span><strong>Mô tả</strong></span> </div>
                                     <textarea placeholder="Nhập mô tả" rows="5" style="width: 100%; margin-top: 10px"  class="input_text" name="description" style="width:250px;height:150px;"></textarea>
                                     <div class="pay"> 
                                         <button type="submit" >Thêm nhà ăn</button>                  
@@ -143,9 +148,9 @@
                             if(a.districtID === 28){
                                 $("#district").append('<option value="' + a.districtID + '" selected>' + a.districtName + '</option>');
                             }
-
+                            else{
                             $("#district").append('<option value="' + a.districtID + '">' + a.districtName + '</option>');
-
+                        }
                         });
                     },
                     error: function (e) {

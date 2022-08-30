@@ -219,40 +219,9 @@
             }
 
 
-            $(".btnSave").click(function () {
-                var restaurantId = document.getElementById("restaurantId").value;
-                var i = 0;
-                allStars.forEach((star, i) => {
-                    i++;
-                });
-                alert(i);
-                $.ajax({
-                    type: "POST",
-
-                    url: "/Test_1/starRestaurant",
-                    data: {
-                        restaurantId: restaurantId,
-                        star: 5,
-                    },
-                    headers: {
-                        Accept: "application/json; charset=utf-8",
-                        contentType: "application/json; charset=utf-8"
-                    },
-
-                    success: function (data) {
-
-                        alert(data);
-                    },
-                    error: function (e) {
-                        console.log("ERROR: ", e);
-                    }
-                });
-            });
+     
         </script>
     </body>
-    <<<<<<< HEAD
+    
 </html>
-=======
 
-</html>
->>>>>>> e97cb61cc179d4a750c9c8828f5d5754f7166038

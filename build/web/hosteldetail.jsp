@@ -302,11 +302,11 @@
                                             <input type="text" value="${hosteldetail.address}" readonly="">
                                         </div>
                                         <div class="input_text">
-                                            <strong class="fs-4">Giá thuê</strong>
+                                            <strong class="fs-4">Giá thuê (VNĐ)</strong>
                                             <input type="text" value="${hosteldetail.cost}" readonly="">
                                         </div>
                                         <div class="input_text">
-                                            <strong class="fs-4">Khoảng cách</strong>
+                                            <strong class="fs-4">Khoảng cách (km)</strong>
                                             <input type="text" value="${hosteldetail.distance}" readonly="">
                                         </div>
                                         <div class="input_text">

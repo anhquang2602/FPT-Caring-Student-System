@@ -269,20 +269,22 @@
                                         </div>
                                         <div class="error" id="errorAddress"></div>
                                         <div class="input_text"> 
-                                            <strong class="fs-4">Giá thuê (VND)</strong> 
+
+                                            <strong class="fs-4">Giá thuê (VNĐ)</strong> 
+
                                             <input type="text" name="cost" value="${editHostel.cost}"> 
                                         </div>
                                         <div class="error" id="errorCost"></div>
                                         <div class="input_text"> 
+
                                             <strong class="fs-4">Khoảng cách (Km)</strong>
+
                                             <input type="text" name="distance" value="${editHostel.distance}">
                                         </div>
                                         <div class="error" id="errorDistance"></div>
                                         <div class="input_text"> 
                                             <strong class="fs-4">Mô tả</strong>  
-                                            <textarea name="description" rows="5" style="width: 100%; margin-top: 10px" name="description">
-                                                ${editHostel.description}
-                                            </textarea>
+                                            <textarea name="description" rows="5"  style="width: 100%; margin-top: 10px " name="description">${editHostel.description}</textarea>
                                         </div>
                                         <div class="pay"> 
                                             <button type="submit">Lưu</button> 

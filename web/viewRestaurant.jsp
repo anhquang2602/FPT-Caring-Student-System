@@ -236,7 +236,7 @@ Author     : nguye
                                                 <input type="text" class="form-control" value="${restaurant.cost} VND" readonly="">
                                             </div>
                                             <div class="col-md-12 mt-3">
-                                                <strong class="fs-4">Khoảng cách</strong>
+                                                <strong class="fs-4">Khoảng cách (km)</strong>
                                                 <input type="text" class="form-control" value="${restaurant.distance}" readonly="">
                                             </div>
                                             <div class="col-md-12 mt-3">

@@ -71,9 +71,9 @@
                                         <div class="row mt-3">
                                             <div class="col-md-12">
                                                 <strong class="text-right fs-4">Mô Tả</strong>
-                                                <textarea rows="10" style="width: 100%" name="des" class="form-control">
-                                                    ${des}
-                                                </textarea>
+                                                <textarea rows="10" style="width: 100%" name="des" class="form-control"> ${des}</textarea>
+                                                   
+                                                
                                             </div>
                                         </div>
                                         <div class="text-center mt-5"> 
