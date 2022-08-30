@@ -99,7 +99,9 @@ public class DetailClubController extends HttpServlet {
                 totalPage = listEvent.size() / 2 + 1;
             }
             ArrayList<Event> listEventPagging = clubDAO.getEventByEmail2(email, Integer.parseInt(index));
-
+            if(listEvent.isEmpty()){
+                request.setAttribute("eventNull", "Chưa có sự kiện nào");
+            }
             request.setAttribute("club", club);
             request.setAttribute("listEvent", listEventPagging);
             request.setAttribute("endP", totalPage);

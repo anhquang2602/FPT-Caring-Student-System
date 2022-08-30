@@ -58,7 +58,9 @@ public class EditEvent extends HttpServlet {
         Event event = clubDAO.getEventByID(id);
         String eventName = event.getEventName();
         String time = event.getTime();
-        String des = event.getDes();
+        String des1 = event.getDes();
+//        String des1 = request.getParameter("des");
+        String des = des1.replaceAll("(\r\n|\n)", "<br>");
         String eventImage = event.getUrl();
         request.setAttribute("eventImage", eventImage);
         request.setAttribute("eventName", eventName);
@@ -118,8 +120,8 @@ public class EditEvent extends HttpServlet {
         request.setAttribute("time", time);
         request.setAttribute("des", des);
         HttpSession session = request.getSession();
-        
-           try {
+
+        try {
             Thread.sleep(3000);
         } catch (InterruptedException ex) {
             Logger.getLogger(EditEvent.class.getName()).log(Level.SEVERE, null, ex);

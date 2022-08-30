@@ -36,9 +36,16 @@
                     <div class="row">
                         <div class="col-md-4 ml-5">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <div class="form-group mt-3">
-                                    <img src="${club.avatar}" class="form-control" style="padding: 0px">
-                                </div>
+                                <c:if test="${club.avatar != null}">
+                                    <div class="form-group mt-3">
+                                        <img src="${club.avatar}" class="form-control" style="padding: 0px">
+                                    </div>
+                                </c:if>
+                                <c:if test="${club.avatar == null}">
+                                    <div class="form-group mt-3">
+                                        <img class="form-control" style="padding: 0px; width: 200px; height: 200px">
+                                    </div>
+                                </c:if>
                                 <div class="mt-5">
                                     <h4 class="font-weight-bold">${club.clubName}</h4>
                                     <h5>${club.email}</span><span></h5>
@@ -58,7 +65,8 @@
                                     </div>
                                     <div class="col-md-12 mt-3">
                                         <h4>Giới Thiệu</h4>
-                                        <input type="text" class="form-control" value="${club.des}" readonly="">
+                                        <textarea class="form-control" readonly="re">${club.des}</textarea>
+                                        <!--<input type="text" class="form-control" value="${club.des}" readonly="" maxlength="">-->
                                     </div>
                                 </div>
                             </div>
@@ -68,6 +76,7 @@
                                 <div style="border: 1px solid greenyellow; background-color: greenyellow; border-radius: 0.5; width: auto; height: auto; color: brown">
                                     <h3 class="text-center">SỰ KIỆN CÂU LẠC BỘ</h3>
                                 </div>
+                                <span style="font-size: 25">${eventNull}</span> 
                                 <ul class="list-group shadow">
                                     <c:forEach items="${listEvent}" var="event">
                                         <li class="list-group-item">

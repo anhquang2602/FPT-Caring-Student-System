@@ -416,9 +416,22 @@
         <servlet-name>ChartVoteController_res</servlet-name>
         <url-pattern>/ChartVoteController_res</url-pattern>
     </servlet-mapping>
+    <!--    <session-config>
+        <session-timeout>
+            60
+        </session-timeout>
+    </session-config>-->
     <session-config>
         <session-timeout>
             60
         </session-timeout>
     </session-config>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/login.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/login.jsp</location>
+    </error-page>
 </web-app>

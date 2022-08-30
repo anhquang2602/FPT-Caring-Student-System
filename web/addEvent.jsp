@@ -42,7 +42,12 @@
                                                 <strong class="fs-4">Ảnh Sự Kiện</strong>
                                             </div> 
                                             <div class="mt-4">
-                                                <img width="200px" height="200px" src="${eventImage}" id="output">
+                                                <c:if test="${eventImage == null}">
+                                                    <img width="200px" height="200px" id="output">
+                                                </c:if>
+                                                <c:if test="${eventImage != null}">
+                                                    <img width="200px" height="200px" src="${eventImage}" id="output">
+                                                </c:if>
                                                 <input style="padding-left: 80px" type="file" name="eventImage" accept="image/*" onchange="loadFile(event)" class="form-control-file mt-5" id="eventImg">
                                             </div>
                                         </div>

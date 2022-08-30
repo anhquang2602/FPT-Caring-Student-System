@@ -156,18 +156,78 @@
                                         <div class="d-flex flex-column align-items-center text-center">
 
                                             <div class="form-group row thumbnail1"> 
-                                                <div class="col mt-5 mb-5 ">
+                                                <c:if test="${hosteldetail.img1 == null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img  style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${hosteldetail.img1 != null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img src="${hosteldetail.img1}" style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${hosteldetail.img2 == null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${hosteldetail.img2 != null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img src="${hosteldetail.img2}" style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${hosteldetail.img3 == null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img  style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${hosteldetail.img3 != null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img src="${hosteldetail.img3}" style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+<!--                                                <div class="col mt-5 mb-5 ">
                                                     <img src="${hosteldetail.img1}" style="padding: 0px"  alt="">
                                                 </div>
                                                 <div class="col mt-5 mb-5 ">
                                                     <img src="${hosteldetail.img2}" style="padding: 0px"  alt="">
-                                                </div>
-                                                <div class="col mt-5 mb-5 ">
+                                                </div>-->
+<!--                                                <div class="col mt-5 mb-5 ">
                                                     <img src="${hosteldetail.img3}" style="padding: 0px"  alt="">
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="form-group row thumbnail1"> 
-                                                <div class="col mt-5 ">
+                                                <c:if test="${hosteldetail.img4 == null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img  style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${hosteldetail.img4 != null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img src="${hosteldetail.img4}" style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${hosteldetail.img5 == null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${hosteldetail.img5 != null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img src="${hosteldetail.img5}" style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${hosteldetail.img6 == null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${hosteldetail.img6 != null}">
+                                                    <div class="col mt-5 mb-5 ">
+                                                        <img src="${hosteldetail.img6}" style="padding: 0px"  alt="">
+                                                    </div>
+                                                </c:if>
+<!--                                                <div class="col mt-5 ">
                                                     <img src="${hosteldetail.img4}" style="padding: 0px"  alt="">
                                                 </div>
                                                 <div class="col mt-5 ">
@@ -175,8 +235,7 @@
                                                 </div>
                                                 <div class="col mt-5 ">
                                                     <img src="${hosteldetail.img6}" style="padding: 0px"  alt="">
-
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <span class="font-weight-bold labels mt-5 fs-4" >
                                                 <label>Nhà trọ:</label> ${hosteldetail.hostelName}

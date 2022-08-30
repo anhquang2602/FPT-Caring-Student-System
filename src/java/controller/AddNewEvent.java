@@ -11,6 +11,8 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -78,7 +80,8 @@ public class AddNewEvent extends HttpServlet {
 
         String eventName = request.getParameter("eventName");
         String time = request.getParameter("time");
-        String des = request.getParameter("des");
+        String des1 = request.getParameter("des");
+        String des = des1.replaceAll("(\r\n|\n)", "<br>");
         String username = (String) request.getSession().getAttribute("username");
         ClubDAO clubDAO = new ClubDAO();
         ArrayList<Event> events = clubDAO.getEventByEmail(username);
@@ -103,6 +106,11 @@ public class AddNewEvent extends HttpServlet {
         request.setAttribute("time", time);
         request.setAttribute("des", des);
         HttpSession session = request.getSession();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(AddNewEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
         session.setAttribute("stt", "1");
         response.sendRedirect(request.getContextPath() + "/AllEventByClub");
     }
