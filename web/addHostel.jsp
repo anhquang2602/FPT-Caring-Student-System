@@ -156,7 +156,7 @@
                                 <div class="right-side">
                                     <strong class="fs-3">Mô tả phòng</strong>
                                     <div class="input_text">
-                                        <strong class="fs-4">Tên nhà tro</strong>
+                                        <strong class="fs-4">Tên nhà trọ</strong>
                                      
                                         <input type="text" name="hostelName" placeholder="Nhập tên nhà trọ">  
                                     </div>
